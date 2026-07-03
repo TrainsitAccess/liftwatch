@@ -10,7 +10,10 @@
   "scripts": {
     "poll": "tsx src/poll.ts",
     "poll:mta": "tsx src/poll.ts mta-nyct",
+    "poll:bart": "tsx src/poll.ts bart-bay-area",
     "poll:dry": "tsx src/poll.ts mta-nyct --dry-run",
+    "poll:bart:dry": "tsx src/poll.ts bart-bay-area --dry-run",
+    "demo:access": "tsx src/checks/accessibility-demo.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

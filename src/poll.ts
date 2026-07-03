@@ -1,6 +1,7 @@
 import type { NormalizedRead } from "./types.js";
 import { getAdapter, knownSystemIds } from "./adapters/registry.js";
 import { getSystem } from "./catalog/systems.js";
+import { overridesFor, type RedundancyOverride } from "./catalog/redundancy-overrides.js";
 import { getSupabase } from "./lib/supabase.js";
 import { ingest } from "./ingest.js";
 
@@ -9,14 +10,18 @@ import { ingest } from "./ingest.js";
 //   npm run poll:dry           (mta-nyct, no DB writes)
 // With no Supabase env configured, always runs dry (fetch + normalize only).
 
-function summarize(read: NormalizedRead): void {
-  const redundantByExt = new Map(read.units.map((u) => [u.externalId, u.isRedundant]));
+function summarize(
+  read: NormalizedRead,
+  overrides: Map<string, RedundancyOverride>,
+  baseline: "assumed" | "confirmed-none",
+): void {
+  // Effective redundancy = adapter signal, overridden by any curated entry.
+  const effRedundant = (ext: string): boolean | undefined =>
+    overrides.has(ext) ? overrides.get(ext)!.isRedundant : read.units.find((u) => u.externalId === ext)?.isRedundant;
   const planned = read.outages.filter((o) => o.isPlanned).length;
   const unplanned = read.outages.length - planned;
   const adaMissing = read.units.filter((u) => u.isAda).length;
-  const soleAccessDown = read.outages.filter(
-    (o) => redundantByExt.get(o.unitExternalId) === false,
-  ).length;
+  const soleAccessDown = read.outages.filter((o) => effRedundant(o.unitExternalId) === false).length;
   const activeUnits = read.units.filter((u) => u.isActive).length;
   const pctDown = activeUnits ? ((read.outages.length / activeUnits) * 100).toFixed(1) : "0.0";
 
@@ -37,6 +42,23 @@ function summarize(read: NormalizedRead): void {
       console.log(`    [${tag}] ${o.unitExternalId.padEnd(8)} ${o.stationName} — ${o.reason ?? "?"}`);
     }
   }
+
+  if (overrides.size) {
+    const knownExt = new Set(read.units.map((u) => u.externalId));
+    console.log(`\n  curated redundancy (${overrides.size}):`);
+    for (const [ext, o] of overrides) {
+      const state = !knownExt.has(ext)
+        ? "⚠ UNKNOWN UNIT — check the id"
+        : o.isRedundant
+          ? "redundant  "
+          : "sole access";
+      console.log(`    ${ext.padEnd(8)} ${state}  — ${o.note.slice(0, 60)}…`);
+    }
+    if (baseline === "confirmed-none") {
+      const others = read.units.length - overrides.size;
+      console.log(`    + ${others} other stations confirmed non-redundant (baseline)`);
+    }
+  }
 }
 
 async function main(): Promise<void> {
@@ -51,7 +73,7 @@ async function main(): Promise<void> {
   console.log(`\nLiftWatch poll — ${system.name} (${system.id})`);
 
   const read = await getAdapter(systemId).fetch();
-  summarize(read);
+  summarize(read, overridesFor(systemId), system.redundancyBaseline ?? "assumed");
 
   const db = dryFlag ? null : getSupabase();
   if (!db) {

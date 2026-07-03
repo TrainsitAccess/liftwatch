@@ -1,6 +1,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { REDUNDANCY_PRECEDENCE, type NormalizedRead, type NormalizedUnit, type RedundancySource } from "./types.js";
 import type { SystemCatalogEntry } from "./catalog/systems.js";
+import { overridesFor, type RedundancyOverride } from "./catalog/redundancy-overrides.js";
 import { nowUtcIso } from "./lib/time.js";
 
 export interface IngestResult {
@@ -21,17 +22,21 @@ function fail(context: string, error: { message: string } | null): void {
 interface Resolved {
   value: boolean;
   source: RedundancySource;
+  note: string | null;
   changed: boolean; // differs from stored value/source
   flag?: { curatedValue: boolean; incomingValue: boolean; incomingSource: RedundancySource };
 }
 
 // Decide a unit's redundancy from the best available signal, respecting stored
-// precedence. Curated values are never overwritten; a real (non-'assumed')
-// signal that contradicts a curated value produces a flag for human review.
+// precedence. A human-curated override (from the versioned overrides file) wins
+// outright; any curated value is never overwritten by re-polling, and a real
+// (non-'assumed') signal that contradicts it produces a flag for human review.
 function resolveRedundancy(
   u: NormalizedUnit,
   stationElevatorCount: number,
   existing: { value: boolean | null; source: RedundancySource } | undefined,
+  override: RedundancyOverride | undefined,
+  baseline: "assumed" | "confirmed-none",
 ): Resolved {
   let incoming: { value: boolean; source: RedundancySource };
   if (u.redundancySource) {
@@ -42,13 +47,41 @@ function resolveRedundancy(
     incoming = { value: false, source: "assumed" }; // policy: assume non-redundant
   }
 
-  if (!existing) return { value: incoming.value, source: incoming.source, changed: true };
+  // Curated override (versioned file) is authoritative; re-asserted every poll.
+  if (override) {
+    const contradicts = incoming.source !== "assumed" && incoming.value !== override.isRedundant;
+    const changed = !existing || existing.value !== override.isRedundant || existing.source !== "curated";
+    return {
+      value: override.isRedundant,
+      source: "curated",
+      note: override.note,
+      changed,
+      flag: contradicts
+        ? { curatedValue: override.isRedundant, incomingValue: incoming.value, incomingSource: incoming.source }
+        : undefined,
+    };
+  }
+
+  // System baseline: when redundancy is fully curated, no model = confirmed
+  // non-redundant (upgrades the 'assumed' default to 'curated').
+  if (baseline === "confirmed-none" && incoming.source === "assumed") {
+    const changed = !existing || existing.value !== false || existing.source !== "curated";
+    return {
+      value: false,
+      source: "curated",
+      note: "Confirmed non-redundant — not among this system's curated redundant stations.",
+      changed,
+    };
+  }
+
+  if (!existing) return { value: incoming.value, source: incoming.source, note: null, changed: true };
 
   if (existing.source === "curated") {
     const contradicts = incoming.source !== "assumed" && incoming.value !== existing.value;
     return {
       value: existing.value ?? false,
       source: "curated",
+      note: null,
       changed: false,
       flag: contradicts
         ? { curatedValue: existing.value ?? false, incomingValue: incoming.value, incomingSource: incoming.source }
@@ -60,10 +93,11 @@ function resolveRedundancy(
     return {
       value: incoming.value,
       source: incoming.source,
+      note: null,
       changed: incoming.value !== existing.value || incoming.source !== existing.source,
     };
   }
-  return { value: existing.value ?? false, source: existing.source, changed: false };
+  return { value: existing.value ?? false, source: existing.source, note: null, changed: false };
 }
 
 // Turns one normalized read into archive writes: upsert system/stations/units
@@ -149,14 +183,21 @@ export async function ingest(
       ]),
     );
 
-    // 4. Units (redundancy resolved to the winning source; note preserved).
+    // 4. Units (redundancy resolved to the winning source; curated overrides win).
+    const overrides = overridesFor(system.id);
     const knownUnitIds = new Set<string>();
     const changedRedundancy: string[] = [];
     const flags: { unitId: string; curatedValue: boolean; incomingValue: boolean; incomingSource: RedundancySource }[] = [];
     const unitRows = read.units.map((u) => {
       const id = unitId(system.id, u.externalId);
       knownUnitIds.add(id);
-      const r = resolveRedundancy(u, elevatorCountByStation.get(u.stationExternalId) ?? 0, storedRedundancy.get(id));
+      const r = resolveRedundancy(
+        u,
+        elevatorCountByStation.get(u.stationExternalId) ?? 0,
+        storedRedundancy.get(id),
+        overrides.get(u.externalId),
+        system.redundancyBaseline ?? "assumed",
+      );
       if (r.changed) changedRedundancy.push(id);
       if (r.flag) flags.push({ unitId: id, ...r.flag });
       return {
@@ -170,6 +211,7 @@ export async function ingest(
         is_ada: u.isAda,
         is_redundant: r.value,
         redundancy_source: r.source,
+        redundancy_note: r.note,
         is_active: u.isActive,
         last_seen: now,
       };

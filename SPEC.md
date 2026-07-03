@@ -146,9 +146,22 @@ source:
 - **curated** — a human confirmed it via the curation queue. Highest precedence;
   **never overwritten** by re-polling. Lives on the unit row (no override table).
 
+**Curation store** (`src/catalog/redundancy-overrides.ts`): curated redundancy
+lives in a **version-controlled file** — reviewable in git, survives DB rebuilds,
+re-asserted by ingest on every poll at top precedence. For station-level systems
+(BART) the entry is keyed by station code and answers "does a single elevator
+outage here sever step-free access?". A poll validates entries against live units
+(unknown ids are flagged). Seeded example: BART `ASHB` (Ashby) = redundant.
+
+**Curated baseline** (`systems.redundancyBaseline`): a system whose redundancy is
+fully hand-curated sets `confirmed-none`, so any un-modeled station is treated as
+`curated` non-redundant (not merely `assumed`) — absence from the model list is
+itself a confirmed statement. BART uses this: 7 stations modeled + the rest
+confirmed non-redundant = the whole system is human-confirmed, no `assumed` left.
+
 **Curation workflow** (admin view, Phase 2): a queue of `assumed` units ranked by
-impact (busiest / most-broken first) with a yes/no redundancy review that writes
-`source = 'curated'`.
+impact (busiest / most-broken first) with a yes/no review that appends to the
+overrides file (`source = 'curated'`).
 
 **Contradiction flags** (`redundancy_flags`): when a *real* signal (explicit /
 single_elevator / pathways / serving_text — never `assumed`) disagrees with a
@@ -156,9 +169,29 @@ curated value, the curated value is kept and a flag opens for human recheck (the
 real world may have changed — e.g. an elevator was decommissioned). The
 `assumed` default never raises a flag, avoiding false alarms.
 
-Caveat (methodology): true step-free access is a chain (street → mezzanine →
-platform). v1 approximates it as "inaccessible when any non-redundant unit is
-out" — a slight over-count, disclosed rather than overclaimed.
+#### Chain-aware accessibility model
+
+Step-free access is a chain of **segments** (street → concourse → platform). Each
+segment is served by one or more elevators and is "up" if any of its elevators
+works — or if a non-elevator step-free path exists (ramp, sunken parking lot). A
+station is accessible only if **every** segment is up. (`src/lib/accessibility.ts`)
+
+Redundancy is derived from this, not hand-set: a station is redundant iff no
+single elevator outage severs access; an elevator is redundant iff its own outage
+doesn't. Curated station structure lives in `src/catalog/station-models.ts`
+(source of truth); the station-level redundancy flag is derived from it.
+
+Worked example (12th St): street segment {14th St, 11th St} + platform segment
+{platform}. 14th St out → still accessible (11th St covers it); platform out →
+inaccessible (no backup). Ashby: street segment has a step-free alternative
+(parking lot), platform segment has two elevators → only both-platforms-out fails.
+
+Attribution (station-level feeds like BART): an advisory names a station but often
+not which elevator. Each curated elevator carries `matchHints` to attribute the
+outage from the advisory text when specific enough; when it's too vague, fall back
+conservatively (don't assert "accessible"). Systems that identify the failed
+elevator (MTA) drive this model exactly. Deferred: wiring attribution + live
+accessibility state into ingest, and per-segment modeling for MTA.
 
 Rules baked into the metrics:
 - Currently-out = streak of 0 ("currently out of service"), never a stale streak.
@@ -218,3 +251,25 @@ external id · `stationcomplexid` → station id · `elevatorsgtfsstopid` → GT
 `isactive=Y` → `is_active` · `ismaintenanceoutage=Y` or `reason` ~ planned/capital →
 `is_planned` · `outagedate` → `source_started_at` · `estimatedreturntoservice` →
 `estimated_return`.
+
+### BART feeds (in use) — best-effort, station-level
+
+BART exposes no structured per-elevator status. `data_quality: 'best_effort'`.
+- Real-time (in use): `bsa.aspx?cmd=elev` — a free-text, **station-level**
+  advisory ("2 elevators out: MLBR: Station; RICH: Station"). Parsed by matching
+  station codes against the station list.
+- Station list (in use): `stn.aspx?cmd=stns` — all ~50 stations + coordinates;
+  serves as the geo source and the denominator (one synthetic "station elevator
+  access" unit per station).
+- Public key `MW9S-E7SL-26DU-VV8V` (override via `BART_API_KEY`).
+
+Modeling: one synthetic unit per station; outages are stations named in the
+advisory. Redundancy is `assumed` (GTFS has **no** `pathways.txt`, so Tier-B
+derivation is unavailable). All real-time outages are unplanned.
+
+Deferred sources (not parsed):
+- GTFS static — no pathways/levels; nothing beyond the station list. Not used.
+- Planned-advisories RSS (`rss/news/planned-elevator-advisories.xml`) —
+  per-elevator, dated, prose (states redundancy in English). Brittle to parse;
+  a future "maintenance calendar" source and useful reference for the manual
+  redundancy curation queue.

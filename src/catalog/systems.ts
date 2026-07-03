@@ -14,6 +14,9 @@ export interface SystemCatalogEntry {
   timezone: string; // IANA
   adapter: string;
   dataQuality: "good" | "fair" | "best_effort";
+  // "confirmed-none": redundancy is fully curated, so a station with no model is a
+  // confirmed non-redundant station (not merely 'assumed'). Defaults to "assumed".
+  redundancyBaseline?: "assumed" | "confirmed-none";
 }
 
 export const SYSTEMS: SystemCatalogEntry[] = [
@@ -29,6 +32,23 @@ export const SYSTEMS: SystemCatalogEntry[] = [
     timezone: "America/New_York",
     adapter: "mta",
     dataQuality: "good",
+  },
+  {
+    id: "bart-bay-area",
+    name: "Bay Area Rapid Transit",
+    shortName: "BART",
+    city: "San Francisco",
+    metroArea: "San Francisco Bay Area",
+    country: "United States",
+    countryCode: "US",
+    continent: "North America",
+    timezone: "America/Los_Angeles",
+    adapter: "bart",
+    // Station-level advisory feed only; no per-elevator data or redundancy.
+    dataQuality: "best_effort",
+    // BART redundancy is fully hand-curated: every redundant station is modeled,
+    // so any un-modeled station is a confirmed single point of failure.
+    redundancyBaseline: "confirmed-none",
   },
 ];
 
