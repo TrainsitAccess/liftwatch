@@ -1,0 +1,26 @@
+{
+  "name": "liftwatch",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Monitor transit elevator reliability worldwide and rank it on split-flap leaderboards.",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "poll": "tsx src/poll.ts",
+    "poll:mta": "tsx src/poll.ts mta-nyct",
+    "poll:dry": "tsx src/poll.ts mta-nyct --dry-run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0",
+    "luxon": "^3.5.0"
+  },
+  "devDependencies": {
+    "@types/luxon": "^3.4.2",
+    "@types/node": "^20.14.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}
