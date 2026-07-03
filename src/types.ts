@@ -75,8 +75,6 @@ export interface NormalizedRead {
 
 /** The contract every system adapter implements. */
 export interface Adapter {
-  /** Adapter type id, e.g. "mta". Many systems can share one adapter. */
-  readonly id: string;
   /** The system this instance is bound to, e.g. "mta-nyct". */
   readonly systemId: string;
   fetch(): Promise<NormalizedRead>;

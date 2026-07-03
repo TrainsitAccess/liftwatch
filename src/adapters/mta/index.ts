@@ -29,8 +29,11 @@ const isPlanned = (raw: MtaOutageRaw): boolean =>
   isYes(raw.ismaintenanceoutage) || PLANNED_REASON.test(raw.reason ?? "");
 
 async function fetchJson<T>(url: string): Promise<T> {
-  const res = await fetch(url, { headers: { accept: "application/json" } });
-  if (!res.ok) throw new Error(`MTA feed ${url} returned HTTP ${res.status}`);
+  const res = await fetch(url, {
+    headers: { accept: "application/json" },
+    signal: AbortSignal.timeout(30_000), // a hung feed must not hang the poll
+  });
+  if (!res.ok) throw new Error(`MTA feed ${url.split("?")[0]} returned HTTP ${res.status}`);
   return (await res.json()) as T;
 }
 
@@ -54,7 +57,6 @@ export function createMtaAdapter(config: MtaConfig = MTA_NYCT_CONFIG): Adapter {
   });
 
   return {
-    id: "mta",
     systemId: config.systemId,
 
     async fetch(): Promise<NormalizedRead> {

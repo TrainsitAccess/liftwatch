@@ -6,11 +6,12 @@ import type { BartBsaRaw, BartElevResponse, BartStationRaw, BartStnResponse, Bar
 
 // BART exposes no structured per-elevator status. The real-time `cmd=elev`
 // advisory is a free-text, STATION-level sentence ("2 elevators out: MLBR:
-// Station; RICH: Station"). So BART is modeled as one synthetic "station
-// elevator access" unit per station (station list = the denominator), with
-// data_quality best_effort. Its GTFS has no pathways.txt, so redundancy can't
-// be derived and is left 'assumed'. The planned-advisories RSS (per-elevator,
-// prose) is intentionally not parsed here — see SPEC.
+// Station; RICH: Station"); data_quality best_effort. Stations with a curated
+// model (station-models.ts) expand into per-elevator units and advisories are
+// attributed via matchHints (specific elevator > segment-only > unspecified —
+// never a guess). Un-modeled stations stay one station-level unit. Its GTFS has
+// no pathways.txt, so redundancy is all curation. The planned-advisories RSS
+// (per-elevator, prose) is intentionally not parsed here — see SPEC.
 
 export interface BartConfig {
   systemId: string;
@@ -38,22 +39,33 @@ const asArray = <T>(v: T | T[] | undefined): T[] =>
 
 // Pull station codes out of the advisory sentence: tokens like "MLBR:" followed
 // by a short description, kept only if the code is a real station abbreviation.
-function parseAffected(text: string, validAbbrs: Set<string>): Map<string, string> {
-  const affected = new Map<string, string>();
+// A station may appear MULTIPLE times (two elevators out at one station) — all
+// entries are preserved; only exact duplicates (same station + same text) dedupe.
+function parseAffected(text: string, validAbbrs: Set<string>): { abbr: string; desc: string }[] {
+  const affected: { abbr: string; desc: string }[] = [];
+  const seen = new Set<string>();
   const re = /([A-Z0-9]{2,4}):\s*([^;]+)/g;
   let m: RegExpExecArray | null;
   while ((m = re.exec(text)) !== null) {
     const abbr = m[1]!.toUpperCase();
-    if (validAbbrs.has(abbr) && !affected.has(abbr)) {
-      affected.set(abbr, m[2]!.trim());
+    const desc = m[2]!.trim();
+    const key = `${abbr}|${desc}`;
+    if (validAbbrs.has(abbr) && !seen.has(key)) {
+      seen.add(key);
+      affected.push({ abbr, desc });
     }
   }
   return affected;
 }
 
 async function fetchJson<T>(url: string): Promise<T> {
-  const res = await fetch(url, { headers: { accept: "application/json" } });
-  if (!res.ok) throw new Error(`BART feed ${url} returned HTTP ${res.status}`);
+  const res = await fetch(url, {
+    headers: { accept: "application/json" },
+    signal: AbortSignal.timeout(30_000), // a hung feed must not hang the poll
+  });
+  // Redact the query string in errors — it carries the API key, and error text
+  // is persisted to poll_runs.error.
+  if (!res.ok) throw new Error(`BART feed ${url.split("?")[0]} returned HTTP ${res.status}`);
   return (await res.json()) as T;
 }
 
@@ -62,7 +74,6 @@ export function createBartAdapter(config: BartConfig = BART_CONFIG): Adapter {
   const elevUrl = `${config.apiBase}/bsa.aspx?cmd=elev&key=${config.apiKey}&json=y`;
 
   return {
-    id: "bart",
     systemId: config.systemId,
 
     async fetch(): Promise<NormalizedRead> {
@@ -128,7 +139,7 @@ export function createBartAdapter(config: BartConfig = BART_CONFIG): Adapter {
         .join("; ");
       const affected = parseAffected(advisoryText, new Set(stationByAbbr.keys()));
 
-      const outages: NormalizedOutage[] = [...affected].map(([abbr, desc]) => {
+      const outages: NormalizedOutage[] = affected.map(({ abbr, desc }) => {
         const stationName = stationByAbbr.get(abbr)?.name ?? abbr;
         const model = models.get(abbr);
         const base = {
@@ -140,10 +151,16 @@ export function createBartAdapter(config: BartConfig = BART_CONFIG): Adapter {
         };
         if (model) {
           const attr = attributeOutage(desc, model);
-          if (attr) {
+          if (attr?.elevatorExternalId) {
+            // Uniquely named elevator — full attribution.
             return { ...base, unitExternalId: attr.elevatorExternalId, segmentId: attr.segmentId, attributed: true, reason: desc || "Elevator out of service" };
           }
-          // Too vague to attribute -> conservative: unspecified elevator at station.
+          if (attr) {
+            // Segment identified but elevator ambiguous — never guess a specific
+            // unit (it would corrupt per-elevator stats).
+            return { ...base, unitExternalId: `${abbr}-${attr.segmentId.toUpperCase()}-UNSPECIFIED`, segmentId: attr.segmentId, attributed: false, reason: `${desc || "Elevator out of service"} (elevator within ${attr.segmentId} — ambiguous, conservative)` };
+          }
+          // Too vague to attribute at all -> unspecified elevator at station.
           return { ...base, unitExternalId: `${abbr}-UNSPECIFIED`, attributed: false, reason: `${desc || "Elevator out of service"} (unspecified elevator — conservative)` };
         }
         return { ...base, unitExternalId: abbr, attributed: false, reason: desc || "Elevator out of service" };

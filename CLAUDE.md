@@ -62,11 +62,16 @@ parking lot). A station is accessible only if **every** segment is up.
 
 - Curated station structure lives in `src/catalog/station-models.ts` (source of
   truth). The simple redundant/not flag is **derived** from it (a station is
-  redundant iff no single elevator outage severs access) — never hand-typed.
-- `src/catalog/redundancy-overrides.ts` turns models into the station-level flags
-  ingest consumes, at top precedence (`curated`).
+  redundant iff no single elevator outage severs access) — never hand-typed. The
+  adapter expands modeled stations into per-elevator units carrying that curated
+  redundancy.
+- `src/catalog/redundancy-overrides.ts` is a slim MANUAL escape hatch only (quick
+  boolean calls for units without a station model). The dry-run poll warns about
+  override ids that match no live unit.
 - **Precedence** (ingest resolves + never clobbers higher):
   `curated > explicit > pathways > serving_text > single_elevator > assumed`.
+  Curated-vs-curated: incoming curated wins, so **editing your curation
+  propagates**; only non-curated feed signals are blocked (they flag instead).
 - **Baseline** (`systems.redundancyBaseline`): `confirmed-none` means a fully-curated
   system treats un-modeled stations as *confirmed* non-redundant. BART uses this →
   all 50 stations human-confirmed, zero `assumed`.
@@ -89,10 +94,17 @@ parking lot). A station is accessible only if **every** segment is up.
 ## Gotchas / deferred
 
 - **BART is station-level**: the `cmd=elev` advisory names a station, usually not
-  which elevator. Per-elevator *attribution* is **wired** — modeled stations expand
-  into per-elevator units, outages are attributed via `matchHints`, and vague text
-  falls back to `{ABBR}-UNSPECIFIED` → station reads AT RISK (see `poll:bart:dry`).
-  Its GTFS has no `pathways.txt` (checked), so redundancy is all curation.
+  which elevator. Per-elevator *attribution* is **wired**, three levels, never a
+  guess: unique hint → specific elevator; multi-hit → `{ABBR}-{SEG}-UNSPECIFIED`
+  (guessing would corrupt per-elevator stats); vague → `{ABBR}-UNSPECIFIED` →
+  station reads AT RISK (see `poll:bart:dry`). Multiple outages at one station
+  are preserved, not collapsed. Its GTFS has no `pathways.txt` (checked), so
+  redundancy is all curation.
+- **RLS is enabled on every table, no policies** — anon key can do nothing;
+  the poller's service_role key bypasses it. Add read-only policies in Phase 2.
 - **No DB yet**: everything is dry-run until Supabase is set up.
+- Feed fetches have 30s timeouts; error text redacts query strings (API keys).
+- `demo:access` is an asserting check (exits non-zero on failure) — run it after
+  touching accessibility/attribution/station models.
 - MTA per-segment modeling not done (MTA's explicit `redundant` flag suffices for
   now).

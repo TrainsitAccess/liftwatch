@@ -1,15 +1,17 @@
-import { STATION_MODELS } from "./station-models.js";
-import { isSingleFaultTolerant } from "../lib/accessibility.js";
-
-// Human-curated station-level redundancy — the source of truth for confirmed
-// redundancy, applied by ingest at the top of the precedence chain (`curated`),
-// re-asserted on every poll. Two inputs:
-//   1. DERIVED — computed from the structural station models (station-models.ts):
-//      a station is redundant iff no single elevator outage severs access.
-//   2. MANUAL — simple boolean calls for stations we haven't structurally modeled.
+// MANUAL redundancy overrides — a slim escape hatch for quick, human-confirmed
+// boolean calls on units that DON'T have a structural station model.
 //
-// unitExternalId is the adapter's unit id. For station-level systems like BART
-// that means the station code (e.g. "ASHB").
+// This is NOT the main curation mechanism. Structured curation lives in
+// station-models.ts: modeled stations expand into per-elevator units in the
+// adapter, each carrying derived, `curated`-source redundancy. Use this file
+// only for simple cases (e.g. "unit X on system Y is confirmed redundant")
+// where building a full segment model isn't warranted yet.
+//
+// Applied by ingest at top precedence (`curated`), re-asserted every poll, and
+// keyed by the unit's externalId as the adapter emits it. Editing an entry
+// propagates on the next poll (curated-vs-curated: the file wins). A real feed
+// signal that contradicts an entry raises a redundancy_flag instead of
+// overwriting. The dry-run poll warns about entries that match no live unit.
 
 export interface RedundancyOverride {
   systemId: string;
@@ -19,19 +21,10 @@ export interface RedundancyOverride {
   reviewedOn: string; // ISO date
 }
 
-const DERIVED: RedundancyOverride[] = STATION_MODELS.map((m) => ({
-  systemId: m.systemId,
-  unitExternalId: m.stationExternalId,
-  isRedundant: isSingleFaultTolerant(m),
-  note: m.note ?? "Derived from the station accessibility model.",
-  reviewedOn: "2026-07-03",
-}));
-
-const MANUAL: RedundancyOverride[] = [
-  // e.g. { systemId: "bart-bay-area", unitExternalId: "XXXX", isRedundant: false, note: "...", reviewedOn: "..." },
+export const REDUNDANCY_OVERRIDES: RedundancyOverride[] = [
+  // e.g. { systemId: "mta-nyct", unitExternalId: "EL123", isRedundant: true,
+  //        note: "…", reviewedOn: "2026-07-03" },
 ];
-
-export const REDUNDANCY_OVERRIDES: RedundancyOverride[] = [...DERIVED, ...MANUAL];
 
 export function overridesFor(systemId: string): Map<string, RedundancyOverride> {
   return new Map(

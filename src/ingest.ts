@@ -10,6 +10,7 @@ export interface IngestResult {
   eventsOpened: number;
   eventsClosed: number;
   flagsRaised: number;
+  upcomingStored: number;
 }
 
 const unitId = (systemId: string, ext: string) => `${systemId}:${ext}`;
@@ -28,9 +29,11 @@ interface Resolved {
 }
 
 // Decide a unit's redundancy from the best available signal, respecting stored
-// precedence. A human-curated override (from the versioned overrides file) wins
-// outright; any curated value is never overwritten by re-polling, and a real
-// (non-'assumed') signal that contradicts it produces a flag for human review.
+// precedence. Curated data (manual override file, or adapter-carried curated
+// values derived from station models) is the source of truth: incoming curated
+// always wins — so EDITING your curation propagates. A stored curated value is
+// protected only against non-curated feed signals; a real (non-'assumed') signal
+// that contradicts it produces a flag for human review instead of overwriting.
 function resolveRedundancy(
   u: NormalizedUnit,
   stationElevatorCount: number,
@@ -76,7 +79,9 @@ function resolveRedundancy(
 
   if (!existing) return { value: incoming.value, source: incoming.source, note: null, changed: true };
 
-  if (existing.source === "curated") {
+  // Protect stored curated values from FEED signals only. Incoming curated data
+  // (the human edited their curation) falls through to precedence and wins.
+  if (existing.source === "curated" && incoming.source !== "curated") {
     const contradicts = incoming.source !== "assumed" && incoming.value !== existing.value;
     return {
       value: existing.value ?? false,
@@ -240,6 +245,10 @@ export async function ingest(
         unit_type: o.unitType,
         description: o.reason ?? null,
         is_ada: false,
+        // Explicit, conservative redundancy (don't rely on DB defaults): an
+        // unknown/unspecified unit is treated as a single point of failure.
+        is_redundant: false,
+        redundancy_source: "assumed",
         is_active: true,
         last_seen: now,
       });
@@ -291,6 +300,10 @@ export async function ingest(
     let eventsOpened = 0;
     for (const o of read.outages) {
       const uId = unitId(system.id, o.unitExternalId);
+      // Two advisory entries can resolve to the same unit (e.g. two ambiguous
+      // outages in one segment). Process each unit once — a second insert would
+      // violate the one-open-outage-per-unit index.
+      if (currentlyOut.has(uId)) continue;
       currentlyOut.add(uId);
       const existing = openByUnit.get(uId);
       if (existing === undefined) {
@@ -339,12 +352,39 @@ export async function ingest(
       eventsClosed++;
     }
 
+    // 7. Upcoming (scheduled) outages: a snapshot, wiped and replaced each poll —
+    //    agencies revise schedules, so history of "upcoming" is not meaningful.
+    fail(
+      "clear upcoming",
+      (await db.from("upcoming_outages").delete().eq("system_id", system.id)).error,
+    );
+    if (read.upcoming.length) {
+      fail(
+        "insert upcoming",
+        (
+          await db.from("upcoming_outages").insert(
+            read.upcoming.map((o) => ({
+              system_id: system.id,
+              station_id: o.stationExternalId ? stationId(system.id, o.stationExternalId) : null,
+              unit_external_id: o.unitExternalId,
+              reason: o.reason ?? null,
+              is_planned: o.isPlanned,
+              source_started_at: o.sourceStartedAt ?? null,
+              estimated_return: o.estimatedReturn ?? null,
+              fetched_at: now,
+            })),
+          )
+        ).error,
+      );
+    }
+
     const result: IngestResult = {
       unitsSeen: unitRows.length,
       outagesOpen: read.outages.length,
       eventsOpened,
       eventsClosed,
       flagsRaised,
+      upcomingStored: read.upcoming.length,
     };
 
     fail(
@@ -367,10 +407,14 @@ export async function ingest(
 
     return result;
   } catch (err) {
-    await db
-      .from("poll_runs")
-      .update({ finished_at: nowUtcIso(), status: "error", error: String(err) })
-      .eq("id", runId);
+    try {
+      await db
+        .from("poll_runs")
+        .update({ finished_at: nowUtcIso(), status: "error", error: String(err) })
+        .eq("id", runId);
+    } catch {
+      // Recording the failure must never mask the original error.
+    }
     throw err;
   }
 }

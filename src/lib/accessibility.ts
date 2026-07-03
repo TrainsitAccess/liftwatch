@@ -65,14 +65,17 @@ export function findElevator(model: StationModel, externalId: string): CuratedEl
 }
 
 export interface Attribution {
-  elevatorExternalId: string;
+  // null => the segment is identified but the specific elevator is ambiguous.
+  // Never guess a specific elevator: a wrong guess corrupts per-elevator stats
+  // (chronic-offender boards would blame the wrong unit).
+  elevatorExternalId: string | null;
   segmentId: string;
 }
 
-// Best-effort attribution of a station-level advisory to a specific elevator via
-// matchHints. Matches only when exactly ONE segment is implicated (otherwise the
-// text is ambiguous). Returns the specifically-named elevator when unique, else a
-// representative of the matched segment. null => too vague; caller falls back.
+// Best-effort attribution of a station-level advisory via matchHints. Matches
+// only when exactly ONE segment is implicated (otherwise the text is ambiguous).
+// Within that segment: a unique hit names the elevator; multiple hits identify
+// only the segment. null => too vague entirely; caller falls back conservatively.
 export function attributeOutage(description: string, model: StationModel): Attribution | null {
   const d = description.toLowerCase();
   const matched = model.segments
@@ -80,8 +83,7 @@ export function attributeOutage(description: string, model: StationModel): Attri
     .filter((x) => x.hits.length > 0);
   if (matched.length !== 1) return null;
   const { seg, hits } = matched[0]!;
-  const elevator = hits.length === 1 ? hits[0]! : seg.elevators[0]!;
-  return { elevatorExternalId: elevator.externalId, segmentId: seg.id };
+  return { elevatorExternalId: hits.length === 1 ? hits[0]!.externalId : null, segmentId: seg.id };
 }
 
 export type AccessState = "accessible" | "inaccessible" | "at_risk";

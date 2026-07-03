@@ -1,6 +1,8 @@
+import "dotenv/config"; // load .env before anything reads process.env
 import type { NormalizedOutage, NormalizedRead } from "./types.js";
 import { getAdapter, knownSystemIds } from "./adapters/registry.js";
 import { getSystem } from "./catalog/systems.js";
+import { overridesFor } from "./catalog/redundancy-overrides.js";
 import { stationModelsFor } from "./catalog/station-models.js";
 import { findElevator, stationAccessibilityState } from "./lib/accessibility.js";
 import { getSupabase } from "./lib/supabase.js";
@@ -60,7 +62,9 @@ function summarize(read: NormalizedRead, baseline: "assumed" | "confirmed-none")
       for (const o of outs) {
         const what = o.attributed
           ? `${findElevator(model, o.unitExternalId)?.label ?? o.unitExternalId}${o.segmentId ? `  [${o.segmentId}]` : ""}`
-          : "unspecified elevator — could not attribute (conservative)";
+          : o.segmentId
+            ? `elevator within ${o.segmentId} — ambiguous (conservative)`
+            : "unspecified elevator — could not attribute (conservative)";
         console.log(`        - ${what}`);
       }
     }
@@ -85,6 +89,14 @@ async function main(): Promise<void> {
   const read = await getAdapter(systemId).fetch();
   summarize(read, system.redundancyBaseline ?? "assumed");
 
+  // Validate manual overrides against live units — catches typo'd ids.
+  const knownExt = new Set(read.units.map((u) => u.externalId));
+  for (const ext of overridesFor(systemId).keys()) {
+    if (!knownExt.has(ext)) {
+      console.warn(`  ⚠ manual redundancy override "${ext}" matches no live unit — check the id`);
+    }
+  }
+
   const db = dryFlag ? null : getSupabase();
   if (!db) {
     console.log(`\n  ${dryFlag ? "--dry-run" : "no SUPABASE_* env"}: fetch + normalize only, nothing written.\n`);
@@ -93,7 +105,7 @@ async function main(): Promise<void> {
 
   const result = await ingest(db, system, read);
   console.log(
-    `\n  archived → opened ${result.eventsOpened}, closed ${result.eventsClosed}, ${result.outagesOpen} currently open.`,
+    `\n  archived → opened ${result.eventsOpened}, closed ${result.eventsClosed}, ${result.outagesOpen} currently open, ${result.upcomingStored} upcoming stored.`,
   );
   if (result.flagsRaised) {
     console.log(`  ⚠ ${result.flagsRaised} redundancy flag(s) raised for review.`);

@@ -54,8 +54,13 @@ geographic lineage so any leaderboard can filter by continent / country / metro.
   start (may predate our monitoring). `ended_at` null = ongoing. `is_planned` flag.
 - `daily_rollups` — precomputed per-unit daily downtime for fast uptime %/trends.
 - `poll_runs` — per-poll health record for adapter monitoring at scale.
+- `upcoming_outages` — scheduled future work; a snapshot wiped and replaced each
+  poll (agencies revise schedules, so "upcoming" history isn't meaningful).
 
-See `db/schema.sql` for the authoritative definitions.
+See `db/schema.sql` for the authoritative definitions. **Row Level Security is
+enabled on every table** with no policies: the anon key can't read or write
+anything (the poller's service_role key bypasses RLS). Explicit read-only
+policies get added in Phase 2 when the site needs public reads.
 
 ### Event derivation (the core loop)
 
@@ -146,12 +151,14 @@ source:
 - **curated** — a human confirmed it via the curation queue. Highest precedence;
   **never overwritten** by re-polling. Lives on the unit row (no override table).
 
-**Curation store** (`src/catalog/redundancy-overrides.ts`): curated redundancy
-lives in a **version-controlled file** — reviewable in git, survives DB rebuilds,
-re-asserted by ingest on every poll at top precedence. For station-level systems
-(BART) the entry is keyed by station code and answers "does a single elevator
-outage here sever step-free access?". A poll validates entries against live units
-(unknown ids are flagged). Seeded example: BART `ASHB` (Ashby) = redundant.
+**Curation store**: structured curation lives in `src/catalog/station-models.ts`
+(version-controlled — reviewable in git, survives DB rebuilds). Modeled stations
+expand into per-elevator units in the adapter, each carrying derived
+`curated`-source redundancy, re-asserted every poll. A slim **manual override**
+file (`src/catalog/redundancy-overrides.ts`) remains for simple boolean calls on
+units without a station model; the dry-run poll warns about override ids matching
+no live unit. Editing curation propagates on the next poll (curated-vs-curated:
+the file wins); only non-curated *feed* signals are blocked from overwriting.
 
 **Curated baseline** (`systems.redundancyBaseline`): a system whose redundancy is
 fully hand-curated sets `confirmed-none`, so any un-modeled station is treated as
@@ -188,14 +195,20 @@ inaccessible (no backup). Ashby: street segment has a step-free alternative
 
 Attribution (station-level feeds like BART) — **wired**: modeled stations expand
 into per-elevator units (`segment` + derived redundancy). Each advisory outage is
-attributed to a specific elevator via `matchHints` (`attributeOutage`); when the
-text is too vague (the current live "RICH: Station"), it falls back to an
-`{ABBR}-UNSPECIFIED` unit and the station reads **AT RISK** — never a confident
-"accessible". Station accessibility = `stationAccessibilityState` (accessible /
-inaccessible / at_risk). Un-modeled stations stay station-level. Systems that
-identify the failed elevator (MTA) would drive this exactly. Deferred: per-segment
-modeling for MTA; storing/surfacing a live accessibility view beyond the poll
-output.
+attributed via `matchHints` (`attributeOutage`) at three levels, never guessing:
+1. **Specific elevator** (unique hint match) → that unit, `attributed = true`.
+2. **Segment only** (hints match multiple elevators in one segment) →
+   `{ABBR}-{SEGMENT}-UNSPECIFIED` unit. Guessing a specific elevator would corrupt
+   per-elevator stats (chronic-offender boards would blame the wrong unit).
+3. **Unattributable** (the current live "RICH: Station") → `{ABBR}-UNSPECIFIED`;
+   the station reads **AT RISK** — never a confident "accessible".
+A station may appear multiple times in one advisory (two elevators out); entries
+are preserved, not collapsed. Station accessibility =
+`stationAccessibilityState` (accessible / inaccessible / at_risk). Un-modeled
+stations stay station-level. Systems that identify the failed elevator (MTA)
+would drive this exactly. Known limitation (methodology): an outage that later
+becomes attributable splits into two events. Deferred: per-segment modeling for
+MTA; storing/surfacing a live accessibility view beyond the poll output.
 
 Rules baked into the metrics:
 - Currently-out = streak of 0 ("currently out of service"), never a stale streak.

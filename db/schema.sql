@@ -17,7 +17,8 @@ create table if not exists systems (
   continent     text not null,                 -- 'North America'
   timezone      text not null,                 -- IANA tz, e.g. 'America/New_York'
   adapter       text not null,                 -- which adapter drives it, e.g. 'mta'
-  data_quality  text not null default 'good',  -- good | fair | best_effort
+  data_quality  text not null default 'good'
+                check (data_quality in ('good', 'fair', 'best_effort')),
   created_at    timestamptz not null default now()
 );
 
@@ -48,14 +49,17 @@ create table if not exists units (
   system_id    text not null references systems(id),
   station_id   text references stations(id),
   external_id  text not null,                  -- 'EL293'
-  unit_type    text not null default 'elevator', -- elevator | escalator (reserved)
+  unit_type    text not null default 'elevator'
+               check (unit_type in ('elevator', 'escalator')), -- escalator reserved
   description  text,
   lines        text,
   is_ada       boolean not null default false,
   is_redundant boolean,                         -- false => sole step-free access
   -- how is_redundant was determined; also the precedence order (curated wins).
   -- curated > explicit > pathways > serving_text > single_elevator > assumed
-  redundancy_source text not null default 'assumed',
+  redundancy_source text not null default 'assumed'
+                    check (redundancy_source in
+                      ('assumed', 'single_elevator', 'serving_text', 'pathways', 'explicit', 'curated')),
   redundancy_note   text,                        -- reviewer note for curated entries
   redundancy_updated_at timestamptz,             -- when redundancy was last set
   segment      text,                              -- access-chain leg (curated per-elevator model)
@@ -112,7 +116,8 @@ create table if not exists poll_runs (
   system_id      text not null,
   started_at     timestamptz not null default now(),
   finished_at    timestamptz,
-  status         text not null default 'running', -- running | success | error
+  status         text not null default 'running'
+                 check (status in ('running', 'success', 'error')),
   units_seen     integer,
   outages_open   integer,
   events_opened  integer,
@@ -142,3 +147,35 @@ create table if not exists redundancy_flags (
 create unique index if not exists one_open_flag_per_unit
   on redundancy_flags (unit_id) where resolved_at is null;
 create index if not exists redundancy_flags_open on redundancy_flags (system_id) where resolved_at is null;
+
+-- ---------------------------------------------------------------------------
+-- upcoming_outages: scheduled future work (snapshot — wiped and replaced per
+-- poll, since agencies revise schedules; history is not meaningful here).
+-- ---------------------------------------------------------------------------
+create table if not exists upcoming_outages (
+  id                bigint generated always as identity primary key,
+  system_id         text not null,
+  station_id        text,
+  unit_external_id  text not null,
+  reason            text,
+  is_planned        boolean not null default true,
+  source_started_at timestamptz,               -- scheduled start
+  estimated_return  timestamptz,
+  fetched_at        timestamptz not null
+);
+create index if not exists upcoming_outages_system on upcoming_outages (system_id);
+
+-- ---------------------------------------------------------------------------
+-- Row Level Security: Supabase exposes tables via its public REST API. With no
+-- RLS, the anon key could read AND write everything. Enabling RLS with no
+-- policies denies the anon role entirely; the poller's service_role key
+-- bypasses RLS. Add explicit read-only policies later when the site needs them.
+-- ---------------------------------------------------------------------------
+alter table systems           enable row level security;
+alter table stations          enable row level security;
+alter table units             enable row level security;
+alter table outage_events     enable row level security;
+alter table daily_rollups     enable row level security;
+alter table poll_runs         enable row level security;
+alter table redundancy_flags  enable row level security;
+alter table upcoming_outages  enable row level security;
