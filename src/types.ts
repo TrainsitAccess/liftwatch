@@ -40,6 +40,7 @@ export interface NormalizedUnit {
   // Set only when the adapter has a real signal (explicit / pathways / serving_text).
   // Left undefined otherwise; ingest then applies single_elevator or assumed.
   redundancySource?: RedundancySource;
+  segment?: string; // access-chain leg this elevator serves (curated per-elevator model)
   isActive: boolean;
   gtfsStopId?: string;
   latitude?: number;
@@ -57,6 +58,10 @@ export interface NormalizedOutage {
   reason?: string;
   sourceStartedAt?: string; // ISO-8601 UTC (feed-reported start; may predate us)
   estimatedReturn?: string; // ISO-8601 UTC
+  // Station-level feeds (BART): whether we mapped this to a specific curated
+  // elevator (true) or fell back to an unspecified/conservative unit (false).
+  attributed?: boolean;
+  segmentId?: string;
 }
 
 /** A single point-in-time read of a system. */

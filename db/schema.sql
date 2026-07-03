@@ -58,6 +58,7 @@ create table if not exists units (
   redundancy_source text not null default 'assumed',
   redundancy_note   text,                        -- reviewer note for curated entries
   redundancy_updated_at timestamptz,             -- when redundancy was last set
+  segment      text,                              -- access-chain leg (curated per-elevator model)
   is_active    boolean not null default true,
   first_seen   timestamptz not null default now(), -- monitoring start (streak fairness)
   last_seen    timestamptz not null default now(),
@@ -77,6 +78,7 @@ create table if not exists outage_events (
   started_at        timestamptz not null,      -- when WE first observed it out
   ended_at          timestamptz,               -- null => still ongoing
   is_planned        boolean not null default false,
+  attributed        boolean,                   -- station-level feeds: mapped to a specific elevator?
   reason            text,
   source_started_at timestamptz,               -- feed-reported start (may predate us)
   estimated_return  timestamptz,

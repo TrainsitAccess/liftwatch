@@ -1,5 +1,7 @@
 import type { Adapter, NormalizedOutage, NormalizedRead, NormalizedUnit } from "../../types.js";
 import { nowUtcIso } from "../../lib/time.js";
+import { attributeOutage, elevatorRedundant } from "../../lib/accessibility.js";
+import { stationModelsFor } from "../../catalog/station-models.js";
 import type { BartBsaRaw, BartElevResponse, BartStationRaw, BartStnResponse, BartText } from "./raw.js";
 
 // BART exposes no structured per-elevator status. The real-time `cmd=elev`
@@ -71,22 +73,53 @@ export function createBartAdapter(config: BartConfig = BART_CONFIG): Adapter {
 
       const stations: BartStationRaw[] = stnsRes.root?.stations?.station ?? [];
       const stationByAbbr = new Map(stations.map((s) => [s.abbr.toUpperCase(), s]));
+      const models = stationModelsFor(config.systemId);
 
-      // One synthetic unit per station = the elevator-access denominator.
-      const units: NormalizedUnit[] = stations.map((s) => ({
-        externalId: s.abbr.toUpperCase(),
-        unitType: "elevator",
-        stationExternalId: s.abbr.toUpperCase(),
-        stationName: s.name,
-        borough: s.city,
-        description: "Station elevator access (BART reports at station level)",
-        isAda: true, // every BART station is step-free accessible
-        isRedundant: false,
-        redundancySource: "assumed", // GTFS has no pathways; can't derive
-        isActive: true,
-        latitude: num(s.gtfs_latitude),
-        longitude: num(s.gtfs_longitude),
-      }));
+      // Modeled stations expand into per-elevator units (with segment + derived
+      // redundancy); un-modeled stations stay a single station-level unit.
+      const units: NormalizedUnit[] = [];
+      for (const s of stations) {
+        const abbr = s.abbr.toUpperCase();
+        const lat = num(s.gtfs_latitude);
+        const lon = num(s.gtfs_longitude);
+        const model = models.get(abbr);
+        if (model) {
+          for (const seg of model.segments) {
+            for (const e of seg.elevators) {
+              units.push({
+                externalId: e.externalId,
+                unitType: "elevator",
+                stationExternalId: abbr,
+                stationName: s.name,
+                borough: s.city,
+                description: e.label,
+                segment: seg.id,
+                isAda: true,
+                isRedundant: elevatorRedundant(model, e.externalId),
+                redundancySource: "curated",
+                isActive: true,
+                latitude: lat,
+                longitude: lon,
+              });
+            }
+          }
+        } else {
+          units.push({
+            externalId: abbr,
+            unitType: "elevator",
+            stationExternalId: abbr,
+            stationName: s.name,
+            borough: s.city,
+            description: "Station elevator access (BART reports at station level)",
+            isAda: true,
+            isRedundant: false,
+            redundancySource: "assumed", // -> confirmed non-redundant via baseline
+            isActive: true,
+            latitude: lat,
+            longitude: lon,
+          });
+        }
+      }
 
       // Concatenate all elevator advisories, then extract affected stations.
       const advisoryText = asArray<BartBsaRaw>(elevRes.root?.bsa)
@@ -95,15 +128,26 @@ export function createBartAdapter(config: BartConfig = BART_CONFIG): Adapter {
         .join("; ");
       const affected = parseAffected(advisoryText, new Set(stationByAbbr.keys()));
 
-      const outages: NormalizedOutage[] = [...affected].map(([abbr, desc]) => ({
-        unitExternalId: abbr,
-        unitType: "elevator",
-        stationExternalId: abbr,
-        stationName: stationByAbbr.get(abbr)?.name ?? abbr,
-        isPlanned: false, // real-time advisory = unplanned; planned RSS deferred
-        isUpcoming: false,
-        reason: desc || "Elevator out of service",
-      }));
+      const outages: NormalizedOutage[] = [...affected].map(([abbr, desc]) => {
+        const stationName = stationByAbbr.get(abbr)?.name ?? abbr;
+        const model = models.get(abbr);
+        const base = {
+          unitType: "elevator" as const,
+          stationExternalId: abbr,
+          stationName,
+          isPlanned: false, // real-time advisory = unplanned; planned RSS deferred
+          isUpcoming: false,
+        };
+        if (model) {
+          const attr = attributeOutage(desc, model);
+          if (attr) {
+            return { ...base, unitExternalId: attr.elevatorExternalId, segmentId: attr.segmentId, attributed: true, reason: desc || "Elevator out of service" };
+          }
+          // Too vague to attribute -> conservative: unspecified elevator at station.
+          return { ...base, unitExternalId: `${abbr}-UNSPECIFIED`, attributed: false, reason: `${desc || "Elevator out of service"} (unspecified elevator — conservative)` };
+        }
+        return { ...base, unitExternalId: abbr, attributed: false, reason: desc || "Elevator out of service" };
+      });
 
       return {
         systemId: config.systemId,

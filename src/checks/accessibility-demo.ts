@@ -1,5 +1,12 @@
 import { STATION_MODELS } from "../catalog/station-models.js";
-import { downSegments, isSingleFaultTolerant, stationAccessible, type StationModel } from "../lib/accessibility.js";
+import {
+  attributeOutage,
+  downSegments,
+  findElevator,
+  isSingleFaultTolerant,
+  stationAccessible,
+  type StationModel,
+} from "../lib/accessibility.js";
 
 // Demonstrates the chain-aware model on the curated BART stations. No feeds, no
 // DB — just the logic. Run: npm run demo:access
@@ -43,4 +50,17 @@ const warm = models.get("WARM")!;
 console.log(`\n  Warm Springs  (redundant: ${isSingleFaultTolerant(warm)})`);
 line("one street + one platform out", warm, ["WARM-ST-1", "WARM-PLAT-1"]);
 line("both platform elevators out", warm, ["WARM-PLAT-1", "WARM-PLAT-2"]);
+
+// Attribution: mapping a station-level advisory string to a specific elevator.
+function attrLine(model: StationModel, description: string): void {
+  const a = attributeOutage(description, model);
+  const result = a ? `${findElevator(model, a.elevatorExternalId)?.label} [${a.segmentId}]` : "unattributed -> conservative fallback";
+  console.log(`    "${description}"`.padEnd(38) + ` -> ${result}`);
+}
+console.log(`\n  attribution (advisory text -> specific elevator):`);
+attrLine(twelfth, "14th St elevator");
+attrLine(twelfth, "platform elevator out");
+attrLine(twelfth, "Station"); // the current live BART text — too vague
+attrLine(richmond, "platform");
+attrLine(richmond, "street entrance");
 console.log("");

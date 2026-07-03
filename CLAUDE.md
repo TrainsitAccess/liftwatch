@@ -89,10 +89,10 @@ parking lot). A station is accessible only if **every** segment is up.
 ## Gotchas / deferred
 
 - **BART is station-level**: the `cmd=elev` advisory names a station, usually not
-  which elevator. Per-elevator *attribution* (advisory text → specific curated
-  elevator via `matchHints`, with conservative fallback) is **designed but not yet
-  wired**. Its GTFS has no `pathways.txt` (checked), so redundancy can't be derived
-  from it — it's all curation.
+  which elevator. Per-elevator *attribution* is **wired** — modeled stations expand
+  into per-elevator units, outages are attributed via `matchHints`, and vague text
+  falls back to `{ABBR}-UNSPECIFIED` → station reads AT RISK (see `poll:bart:dry`).
+  Its GTFS has no `pathways.txt` (checked), so redundancy is all curation.
 - **No DB yet**: everything is dry-run until Supabase is set up.
 - MTA per-segment modeling not done (MTA's explicit `redundant` flag suffices for
   now).

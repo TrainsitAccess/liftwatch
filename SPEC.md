@@ -186,12 +186,16 @@ Worked example (12th St): street segment {14th St, 11th St} + platform segment
 inaccessible (no backup). Ashby: street segment has a step-free alternative
 (parking lot), platform segment has two elevators → only both-platforms-out fails.
 
-Attribution (station-level feeds like BART): an advisory names a station but often
-not which elevator. Each curated elevator carries `matchHints` to attribute the
-outage from the advisory text when specific enough; when it's too vague, fall back
-conservatively (don't assert "accessible"). Systems that identify the failed
-elevator (MTA) drive this model exactly. Deferred: wiring attribution + live
-accessibility state into ingest, and per-segment modeling for MTA.
+Attribution (station-level feeds like BART) — **wired**: modeled stations expand
+into per-elevator units (`segment` + derived redundancy). Each advisory outage is
+attributed to a specific elevator via `matchHints` (`attributeOutage`); when the
+text is too vague (the current live "RICH: Station"), it falls back to an
+`{ABBR}-UNSPECIFIED` unit and the station reads **AT RISK** — never a confident
+"accessible". Station accessibility = `stationAccessibilityState` (accessible /
+inaccessible / at_risk). Un-modeled stations stay station-level. Systems that
+identify the failed elevator (MTA) would drive this exactly. Deferred: per-segment
+modeling for MTA; storing/surfacing a live accessibility view beyond the poll
+output.
 
 Rules baked into the metrics:
 - Currently-out = streak of 0 ("currently out of service"), never a stale streak.

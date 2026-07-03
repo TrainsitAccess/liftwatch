@@ -59,3 +59,37 @@ export function isSingleFaultTolerant(model: StationModel): boolean {
 export function elevatorRedundant(model: StationModel, externalId: string): boolean {
   return stationAccessible(model, new Set([externalId]));
 }
+
+export function findElevator(model: StationModel, externalId: string): CuratedElevator | undefined {
+  return allElevators(model).find((e) => e.externalId === externalId);
+}
+
+export interface Attribution {
+  elevatorExternalId: string;
+  segmentId: string;
+}
+
+// Best-effort attribution of a station-level advisory to a specific elevator via
+// matchHints. Matches only when exactly ONE segment is implicated (otherwise the
+// text is ambiguous). Returns the specifically-named elevator when unique, else a
+// representative of the matched segment. null => too vague; caller falls back.
+export function attributeOutage(description: string, model: StationModel): Attribution | null {
+  const d = description.toLowerCase();
+  const matched = model.segments
+    .map((seg) => ({ seg, hits: seg.elevators.filter((e) => (e.matchHints ?? []).some((h) => d.includes(h))) }))
+    .filter((x) => x.hits.length > 0);
+  if (matched.length !== 1) return null;
+  const { seg, hits } = matched[0]!;
+  const elevator = hits.length === 1 ? hits[0]! : seg.elevators[0]!;
+  return { elevatorExternalId: elevator.externalId, segmentId: seg.id };
+}
+
+export type AccessState = "accessible" | "inaccessible" | "at_risk";
+
+// Conservative: an outage we couldn't attribute (a down id not in the model)
+// yields "at_risk" — never a confident "accessible".
+export function stationAccessibilityState(model: StationModel, downIds: Set<string>): AccessState {
+  const modelIds = new Set(allElevators(model).map((e) => e.externalId));
+  if ([...downIds].some((id) => !modelIds.has(id))) return "at_risk";
+  return stationAccessible(model, downIds) ? "accessible" : "inaccessible";
+}

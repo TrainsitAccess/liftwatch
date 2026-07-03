@@ -212,6 +212,7 @@ export async function ingest(
         is_redundant: r.value,
         redundancy_source: r.source,
         redundancy_note: r.note,
+        segment: u.segment ?? null,
         is_active: u.isActive,
         last_seen: now,
       };
@@ -302,6 +303,7 @@ export async function ingest(
               station_id: o.stationExternalId ? stationId(system.id, o.stationExternalId) : null,
               started_at: now,
               is_planned: o.isPlanned,
+              attributed: o.attributed ?? null,
               reason: o.reason ?? null,
               source_started_at: o.sourceStartedAt ?? null,
               estimated_return: o.estimatedReturn ?? null,
