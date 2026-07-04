@@ -1,0 +1,27 @@
+name: keepalive
+
+# GitHub disables scheduled workflows after 60 days without repo activity.
+# Calling the workflow "enable" API resets that timer (and re-enables anything
+# already disabled) — no dummy commits needed. Runs monthly; covers the poller
+# and itself.
+
+on:
+  schedule:
+    - cron: "17 3 1 * *" # monthly, 1st at 03:17 UTC
+  workflow_dispatch: {}
+
+permissions:
+  actions: write
+
+jobs:
+  keepalive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Reset scheduled-workflow disable timers
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api -X PUT "repos/${{ github.repository }}/actions/workflows/poll.yml/enable"
+          gh api -X PUT "repos/${{ github.repository }}/actions/workflows/keepalive.yml/enable"
+          echo "Timers reset for poll.yml and keepalive.yml"
