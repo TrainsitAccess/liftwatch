@@ -1,5 +1,6 @@
 node_modules/
 dist/
+backup-out/
 .env
 .env.local
 *.log

@@ -1,0 +1,54 @@
+name: backup
+
+# Weekly off-platform backup: dump every table to a dated XLSX + JSON and commit
+# them to the private liftwatch-backups repo (versioned insurance against losing
+# the Supabase archive). Pushes via a deploy key stored as BACKUP_SSH_KEY_B64.
+
+on:
+  schedule:
+    - cron: "23 9 * * 0" # Sundays 09:23 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+
+      - name: Export archive
+        run: npm run backup
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+
+      - name: Commit to private backups repo
+        env:
+          SSH_KEY_B64: ${{ secrets.BACKUP_SSH_KEY_B64 }}
+        run: |
+          set -euo pipefail
+          mkdir -p ~/.ssh
+          echo "$SSH_KEY_B64" | base64 -d > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts 2>/dev/null
+          export GIT_SSH_COMMAND="ssh -i ~/.ssh/id_ed25519 -o IdentitiesOnly=yes"
+          git clone --depth 1 git@github.com:TrainsitAccess/liftwatch-backups.git repo
+          cp -r backup-out/* repo/
+          cd repo
+          git config user.name "liftwatch-backup"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to back up."
+          else
+            git commit -m "Archive backup $(date -u +%Y-%m-%d)"
+            git push
+          fi

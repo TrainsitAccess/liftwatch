@@ -17,11 +17,13 @@
     "db:status": "tsx src/checks/db-status.ts",
     "site:data": "tsx src/site/build-data.ts",
     "site:serve": "node scripts/serve.mjs",
+    "backup": "tsx src/backup/run.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.45.0",
     "dotenv": "^17.4.2",
+    "exceljs": "^4.4.0",
     "luxon": "^3.5.0"
   },
   "devDependencies": {
