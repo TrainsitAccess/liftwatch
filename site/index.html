@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LiftWatch — transit elevator outages</title>
+<meta name="description" content="Tracking public-transit elevator outages, forever. Split-flap leaderboards for the most and least broken systems, stations, and elevators.">
+<style>
+  :root {
+    --bg: #17170f;
+    --board: #121210;
+    --cell: #080807;
+    --text: #efe9db;
+    --amber: #e8b64c;
+    --red: #e05c4a;
+    --dim: #6f6f66;
+    --hairline: #2a2a26;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; background: var(--bg); color: var(--text);
+    font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    display: flex; flex-direction: column; align-items: center; padding: 40px 16px 64px;
+  }
+  header { width: min(760px, 100%); margin-bottom: 28px; }
+  h1 { font-size: 26px; font-weight: 500; letter-spacing: 0.22em; margin: 0; }
+  h1 .lift { color: var(--amber); }
+  .tag { color: var(--dim); font-size: 12px; letter-spacing: 0.08em; margin-top: 6px; }
+  .board {
+    width: min(760px, 100%); background: var(--board);
+    border: 1px solid var(--hairline); border-radius: 10px;
+    padding: 16px 16px 12px; margin-bottom: 26px; overflow-x: auto;
+  }
+  .board-head { display: flex; justify-content: space-between; align-items: baseline; margin: 0 2px 12px; }
+  .board-head .t { color: var(--amber); font-size: 13px; letter-spacing: 0.14em; }
+  .board-head .s { color: var(--dim); font-size: 11px; letter-spacing: 0.08em; }
+  .row { display: flex; margin: 3px 0; width: max-content; }
+  .cell {
+    width: 21px; height: 29px; margin: 1px; border-radius: 3px;
+    background: var(--cell); color: var(--text);
+    font-size: 16px; font-weight: 500; line-height: 29px; text-align: center;
+    position: relative; overflow: hidden; flex: 0 0 auto;
+  }
+  .cell::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: rgba(0,0,0,.65); }
+  .cell.amber { color: var(--amber); }
+  .cell.red { color: var(--red); }
+  .cell.dim { color: var(--dim); font-size: 12px; }
+  .legend { color: var(--dim); font-size: 11px; letter-spacing: 0.06em; margin: 10px 2px 0; }
+  .legend .red { color: var(--red); }
+  footer { width: min(760px, 100%); color: var(--dim); font-size: 12px; line-height: 1.7; }
+  footer a { color: var(--amber); }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+</style>
+</head>
+<body>
+<header>
+  <h1><span class="lift">LIFT</span>WATCH</h1>
+  <p class="tag">TRACKING TRANSIT ELEVATOR OUTAGES · THE ARCHIVE NOBODY ELSE KEEPS</p>
+</header>
+
+<section class="board" aria-hidden="true">
+  <div class="board-head"><span class="t">OUT OF SERVICE</span><span class="s" id="sys-sub">SHARE OF FLEET DOWN</span></div>
+  <div id="systems-board"></div>
+  <p class="legend">DOWN / FLEET · % OF ACTIVE ELEVATORS OUT RIGHT NOW</p>
+</section>
+
+<section class="board" aria-hidden="true">
+  <div class="board-head"><span class="t">LONGEST CURRENT OUTAGES</span><span class="s">DAYS SINCE REPORTED OUT</span></div>
+  <div id="outages-board"></div>
+  <p class="legend"><span class="red">▮</span> SOLE STEP-FREE ACCESS — STATION LOSES ACCESSIBILITY WHILE THIS ELEVATOR IS OUT</p>
+</section>
+
+<div id="sr-data" class="sr-only" role="region" aria-label="Leaderboard data"></div>
+
+<footer>
+  <p id="updated">Loading live data…</p>
+  <p>An elevator outage strands wheelchair users, strollers, and anyone who can't take the stairs.
+     Agencies overwrite this data constantly — LiftWatch archives it permanently.
+     Early preview: 2 systems monitored, more coming. Counts include planned maintenance.</p>
+</footer>
+
+<script>
+const CH = " ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.%/-▮!";
+const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function makeRow(container, segs) {
+  const row = document.createElement("div");
+  row.className = "row";
+  const cells = [];
+  for (const seg of segs) {
+    for (const chr of seg.str) {
+      const c = document.createElement("div");
+      c.className = "cell" + (seg.cls ? " " + seg.cls : "");
+      c.textContent = " ";
+      row.appendChild(c);
+      cells.push({ el: c, target: chr.toUpperCase() });
+    }
+  }
+  container.appendChild(row);
+  return cells;
+}
+
+function riffle(allCells) {
+  allCells.forEach(({ el, target }, i) => {
+    if (REDUCED) { el.textContent = target; return; }
+    const tIdx = Math.max(0, CH.indexOf(target));
+    let cur = 0, remaining = (tIdx % CH.length) + 8;
+    const tick = () => {
+      cur = (cur + 1) % CH.length;
+      el.textContent = CH[cur];
+      if (--remaining > 0) setTimeout(tick, 26);
+      else el.textContent = target;
+    };
+    setTimeout(tick, i * 6);
+  });
+}
+
+const pad = (s, n) => String(s).slice(0, n).padEnd(n, " ");
+const rpad = (s, n) => String(s).slice(0, n).padStart(n, " ");
+
+fetch("./data.json").then(r => r.json()).then(data => {
+  const cells = [];
+
+  const sys = document.getElementById("systems-board");
+  data.systems.forEach((s, i) => {
+    cells.push(...makeRow(sys, [
+      { str: rpad(i + 1, 2) + " ", cls: "dim" },
+      { str: pad(s.name, 13), cls: "" },
+      { str: " " + rpad(s.down + "/" + s.activeUnits, 7) + " ", cls: "dim" },
+      { str: rpad(s.pctDown.toFixed(1) + "%", 6), cls: "amber" },
+    ]));
+  });
+
+  const out = document.getElementById("outages-board");
+  data.longestOutages.forEach(o => {
+    cells.push(...makeRow(out, [
+      { str: o.soleAccess ? "▮ " : "  ", cls: "red" },
+      { str: pad(o.station, 17), cls: "" },
+      { str: " " + pad(o.unit, 7), cls: "dim" },
+      { str: rpad(o.days + "D", 5), cls: o.days > 180 ? "red" : "amber" },
+    ]));
+  });
+
+  riffle(cells);
+
+  const t = new Date(data.generatedAt);
+  document.getElementById("updated").textContent =
+    `Snapshot: ${t.toLocaleString()} · ${data.totals.down} of ${data.totals.activeUnits} monitored elevators out of service across ${data.totals.systems} systems.`;
+
+  const sr = document.getElementById("sr-data");
+  sr.innerHTML =
+    "<h2>Systems by share of elevators out of service</h2><ol>" +
+    data.systems.map(s => `<li>${s.name} (${s.city}): ${s.down} of ${s.activeUnits} elevators out (${s.pctDown}%)</li>`).join("") +
+    "</ol><h2>Longest current outages</h2><ol>" +
+    data.longestOutages.map(o => `<li>${o.station} (${o.system}), unit ${o.unit}: out ${o.days} days${o.soleAccess ? " — sole step-free access, station currently inaccessible" : ""}</li>`).join("") +
+    "</ol>";
+}).catch(err => {
+  document.getElementById("updated").textContent = "Could not load data.json — run: npm run site:data";
+});
+</script>
+</body>
+</html>

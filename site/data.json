@@ -1,0 +1,112 @@
+{
+  "generatedAt": "2026-07-04T03:07:41.934Z",
+  "totals": {
+    "systems": 2,
+    "activeUnits": 474,
+    "down": 42
+  },
+  "systems": [
+    {
+      "id": "mta-nyct",
+      "name": "NYC Subway",
+      "city": "New York",
+      "dataQuality": "good",
+      "activeUnits": 408,
+      "down": 40,
+      "downUnplanned": 22,
+      "pctDown": 9.8
+    },
+    {
+      "id": "bart-bay-area",
+      "name": "BART",
+      "city": "San Francisco",
+      "dataQuality": "best_effort",
+      "activeUnits": 66,
+      "down": 2,
+      "downUnplanned": 2,
+      "pctDown": 3
+    }
+  ],
+  "longestOutages": [
+    {
+      "system": "NYC Subway",
+      "station": "42St/Port Authority-Bus Terminal",
+      "unit": "EL290X",
+      "soleAccess": false,
+      "planned": false,
+      "days": 613
+    },
+    {
+      "system": "NYC Subway",
+      "station": "161 St-Yankee Stadium",
+      "unit": "EL132",
+      "soleAccess": true,
+      "planned": true,
+      "days": 604
+    },
+    {
+      "system": "NYC Subway",
+      "station": "161 St-Yankee Stadium",
+      "unit": "EL133",
+      "soleAccess": true,
+      "planned": true,
+      "days": 604
+    },
+    {
+      "system": "NYC Subway",
+      "station": "Jamaica-179 St",
+      "unit": "EL432",
+      "soleAccess": true,
+      "planned": true,
+      "days": 223
+    },
+    {
+      "system": "NYC Subway",
+      "station": "Jamaica-179 St",
+      "unit": "EL431",
+      "soleAccess": true,
+      "planned": true,
+      "days": 223
+    },
+    {
+      "system": "NYC Subway",
+      "station": "Jamaica-179 St",
+      "unit": "EL433",
+      "soleAccess": true,
+      "planned": true,
+      "days": 223
+    },
+    {
+      "system": "NYC Subway",
+      "station": "Crown Hts-Utica Av",
+      "unit": "EL323",
+      "soleAccess": true,
+      "planned": true,
+      "days": 213
+    },
+    {
+      "system": "NYC Subway",
+      "station": "Crown Hts-Utica Av",
+      "unit": "EL322",
+      "soleAccess": true,
+      "planned": true,
+      "days": 213
+    },
+    {
+      "system": "NYC Subway",
+      "station": "Prospect Park",
+      "unit": "EL383",
+      "soleAccess": true,
+      "planned": true,
+      "days": 212
+    },
+    {
+      "system": "NYC Subway",
+      "station": "Prospect Park",
+      "unit": "EL382",
+      "soleAccess": true,
+      "planned": true,
+      "days": 212
+    }
+  ]
+}
