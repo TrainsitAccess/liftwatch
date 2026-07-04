@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-07-04T03:07:41.934Z",
+  "generatedAt": "2026-07-04T19:25:50.642Z",
   "totals": {
-    "systems": 2,
-    "activeUnits": 474,
-    "down": 42
+    "systems": 4,
+    "activeUnits": 712,
+    "down": 51
   },
   "systems": [
     {
@@ -11,20 +11,44 @@
       "name": "NYC Subway",
       "city": "New York",
       "dataQuality": "good",
+      "inventoryComplete": true,
       "activeUnits": 408,
-      "down": 40,
-      "downUnplanned": 22,
-      "pctDown": 9.8
+      "down": 36,
+      "downUnplanned": 18,
+      "pctDown": 8.8
     },
     {
       "id": "bart-bay-area",
       "name": "BART",
       "city": "San Francisco",
       "dataQuality": "best_effort",
-      "activeUnits": 66,
+      "inventoryComplete": true,
+      "activeUnits": 67,
       "down": 2,
       "downUnplanned": 2,
       "pctDown": 3
+    },
+    {
+      "id": "mbta-boston",
+      "name": "MBTA",
+      "city": "Boston",
+      "dataQuality": "good",
+      "inventoryComplete": true,
+      "activeUnits": 237,
+      "down": 7,
+      "downUnplanned": 5,
+      "pctDown": 3
+    },
+    {
+      "id": "wmata-dc",
+      "name": "DC Metro",
+      "city": "Washington",
+      "dataQuality": "fair",
+      "inventoryComplete": false,
+      "activeUnits": null,
+      "down": 6,
+      "downUnplanned": 3,
+      "pctDown": null
     }
   ],
   "longestOutages": [
@@ -34,15 +58,7 @@
       "unit": "EL290X",
       "soleAccess": false,
       "planned": false,
-      "days": 613
-    },
-    {
-      "system": "NYC Subway",
-      "station": "161 St-Yankee Stadium",
-      "unit": "EL132",
-      "soleAccess": true,
-      "planned": true,
-      "days": 604
+      "days": 614
     },
     {
       "system": "NYC Subway",
@@ -50,7 +66,15 @@
       "unit": "EL133",
       "soleAccess": true,
       "planned": true,
-      "days": 604
+      "days": 605
+    },
+    {
+      "system": "NYC Subway",
+      "station": "161 St-Yankee Stadium",
+      "unit": "EL132",
+      "soleAccess": true,
+      "planned": true,
+      "days": 605
     },
     {
       "system": "NYC Subway",
@@ -58,15 +82,7 @@
       "unit": "EL432",
       "soleAccess": true,
       "planned": true,
-      "days": 223
-    },
-    {
-      "system": "NYC Subway",
-      "station": "Jamaica-179 St",
-      "unit": "EL431",
-      "soleAccess": true,
-      "planned": true,
-      "days": 223
+      "days": 224
     },
     {
       "system": "NYC Subway",
@@ -74,7 +90,15 @@
       "unit": "EL433",
       "soleAccess": true,
       "planned": true,
-      "days": 223
+      "days": 224
+    },
+    {
+      "system": "NYC Subway",
+      "station": "Jamaica-179 St",
+      "unit": "EL431",
+      "soleAccess": true,
+      "planned": true,
+      "days": 224
     },
     {
       "system": "NYC Subway",
@@ -82,7 +106,7 @@
       "unit": "EL323",
       "soleAccess": true,
       "planned": true,
-      "days": 213
+      "days": 214
     },
     {
       "system": "NYC Subway",
@@ -90,7 +114,7 @@
       "unit": "EL322",
       "soleAccess": true,
       "planned": true,
-      "days": 213
+      "days": 214
     },
     {
       "system": "NYC Subway",
@@ -98,7 +122,7 @@
       "unit": "EL383",
       "soleAccess": true,
       "planned": true,
-      "days": 212
+      "days": 213
     },
     {
       "system": "NYC Subway",
@@ -106,7 +130,7 @@
       "unit": "EL382",
       "soleAccess": true,
       "planned": true,
-      "days": 212
+      "days": 213
     }
   ]
 }
