@@ -5,7 +5,7 @@
   "type": "module",
   "description": "Monitor transit elevator reliability worldwide and rank it on split-flap leaderboards.",
   "engines": {
-    "node": ">=18"
+    "node": ">=22"
   },
   "scripts": {
     "poll": "tsx src/poll.ts",
