@@ -250,7 +250,7 @@ Hybrid, per decision:
 
 ## 8. Data sources (launch targets — quality first)
 
-MTA (NYC) ✓ · WMATA (DC) · MBTA (Boston) · BART (SF) · TfL (London) ·
+MTA (NYC) ✓ · BART (SF) ✓ · MBTA (Boston) ✓ · WMATA (DC) · TfL (London) ·
 Deutsche Bahn FaSta (Germany) · Wiener Linien (Vienna) · BVG/VBB (Berlin).
 
 ### MTA feeds (in use)
@@ -290,3 +290,26 @@ Deferred sources (not parsed):
   per-elevator, dated, prose (states redundancy in English). Brittle to parse;
   a future "maintenance calendar" source and useful reference for the manual
   redundancy curation queue.
+
+### MBTA feeds (in use) — genuinely per-elevator
+
+JSON:API (`https://api-v3.mbta.com`), `data_quality: 'good'`. Optional
+`x-api-key` header (`MBTA_API_KEY`; unauthenticated works at 20 req/min, which
+covers our cadence — a key raises it to 1,000/min).
+- `/facilities?filter[type]=ELEVATOR&include=stop` — 237 elevators across 80
+  stations (one page, `page[limit]=200` + pagination guard for headroom).
+  `include=stop` gives station name, municipality, and coordinates directly —
+  no separate geo enrichment needed, unlike MTA/BART.
+- `/alerts?filter[activity]=USING_WHEELCHAIR` — kept only where
+  `effect = "ELEVATOR_CLOSURE"`; `active_period[0].start/end` are **already
+  ISO-8601 with a UTC offset** (no local-time parsing, unlike MTA/BART).
+  `cause` in `{MAINTENANCE, CONSTRUCTION}` → planned. `lifecycle`/future
+  `active_period.start` splits current vs. `upcoming`.
+- One alert's `informed_entity` can list the same `facility` id many times
+  (once per affected stop/route) — deduped to unique facility ids per alert.
+- No explicit redundancy field — falls through to the existing precedence
+  engine (`single_elevator` / `assumed`), same as any uncurated system. Some
+  facility `properties` include `alternate-service-text` naming a backup
+  elevator in prose (e.g. "use the nearby Elevator 736") — a candidate for
+  future curation, intentionally not auto-parsed (same policy as BART's
+  planned RSS).

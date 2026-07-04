@@ -44,3 +44,11 @@ jobs:
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+
+      - name: Poll MBTA (Boston)
+        if: ${{ !cancelled() }}
+        run: npm run poll -- mbta-boston
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          MBTA_API_KEY: ${{ secrets.MBTA_API_KEY }}

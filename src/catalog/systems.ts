@@ -50,6 +50,22 @@ export const SYSTEMS: SystemCatalogEntry[] = [
     // so any un-modeled station is a confirmed single point of failure.
     redundancyBaseline: "confirmed-none",
   },
+  {
+    id: "mbta-boston",
+    name: "Massachusetts Bay Transportation Authority",
+    shortName: "MBTA",
+    city: "Boston",
+    metroArea: "Greater Boston",
+    country: "United States",
+    countryCode: "US",
+    continent: "North America",
+    timezone: "America/New_York",
+    adapter: "mbta",
+    // Genuinely per-elevator, real ISO timestamps — same tier as MTA. No
+    // explicit redundancy field yet (falls to assumed/single_elevator), so no
+    // redundancyBaseline until a curation pass is done.
+    dataQuality: "good",
+  },
 ];
 
 export function getSystem(id: string): SystemCatalogEntry | undefined {
