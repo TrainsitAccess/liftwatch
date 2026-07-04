@@ -62,8 +62,13 @@ const toIso = (v: string | null | undefined): string | undefined => {
 };
 
 export function createMbtaAdapter(config: MbtaConfig = MBTA_CONFIG): Adapter {
-  const facilitiesUrl = `${config.apiBase}/facilities?filter%5Btype%5D=ELEVATOR&page%5Blimit%5D=200&include=stop`;
-  const alertsUrl = `${config.apiBase}/alerts?filter%5Bactivity%5D=USING_WHEELCHAIR&page%5Blimit%5D=200`;
+  // sort=id is required for pagination correctness: JSON:API offset pagination
+  // across independent requests is only stable with an explicit deterministic
+  // sort. Without it, two page fetches can return overlapping/missing rows
+  // under real load — observed in CI (30 duplicate ids, ~30 elevators silently
+  // dropped) even though a quick manual re-check moments later looked clean.
+  const facilitiesUrl = `${config.apiBase}/facilities?filter%5Btype%5D=ELEVATOR&sort=id&page%5Blimit%5D=200&include=stop`;
+  const alertsUrl = `${config.apiBase}/alerts?filter%5Bactivity%5D=USING_WHEELCHAIR&sort=id&page%5Blimit%5D=200`;
 
   return {
     systemId: config.systemId,
