@@ -1,0 +1,45 @@
+name: poll
+
+# The heartbeat of the archive: poll every agency feed and derive outage events.
+# Also keeps the Supabase free-tier project from pausing (constant activity).
+# GitHub may delay scheduled runs by a few minutes under load — the event
+# derivation is idempotent, so jitter is harmless.
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: poll
+  cancel-in-progress: false
+
+jobs:
+  poll:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Poll MTA (NYC)
+        run: npm run poll -- mta-nyct
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+
+      - name: Poll BART (Bay Area)
+        if: ${{ !cancelled() }} # one system failing must not stop the others
+        run: npm run poll -- bart-bay-area
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
