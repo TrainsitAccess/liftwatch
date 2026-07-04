@@ -88,10 +88,15 @@ parking lot). A station is accessible only if **every** segment is up.
   survives rebuilds, re-asserted every poll.
 - **Timezones**: feeds report local wall-clock; parse to UTC (`src/lib/time.ts`,
   Luxon). Store UTC everywhere.
-- Three systems, deliberately different fidelity: **MTA** and **MBTA** =
-  per-elevator (`data_quality: good`); **BART** = station-level advisory
-  (`best_effort`). MBTA's alert timestamps are already ISO-8601 with offset —
-  no local-time parsing needed, unlike MTA/BART.
+- Four systems, deliberately different fidelity: **MTA** and **MBTA** =
+  per-elevator with full inventory (`data_quality: good`); **WMATA** =
+  per-elevator ids but the feed only lists broken units (`fair`,
+  `inventoryComplete: false` — no %-down, no single_elevator inference, units
+  discovered as they break; station list IS complete via
+  `NormalizedRead.stations`); **BART** = station-level advisory
+  (`best_effort`). Timestamps: MBTA = ISO w/ offset (no tz parsing); WMATA =
+  ISO w/o offset = ET wall-clock (`parseIsoLocalToUtcIso`); MTA/BART = US
+  date format wall-clock (`parseZonedToUtcIso`).
 
 ## Gotchas / deferred
 

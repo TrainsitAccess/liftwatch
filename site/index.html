@@ -123,11 +123,13 @@ fetch("./data.json").then(r => r.json()).then(data => {
 
   const sys = document.getElementById("systems-board");
   data.systems.forEach((s, i) => {
+    const fleet = s.activeUnits == null ? s.down + "/-" : s.down + "/" + s.activeUnits;
+    const pct = s.pctDown == null ? "-" : s.pctDown.toFixed(1) + "%";
     cells.push(...makeRow(sys, [
       { str: rpad(i + 1, 2) + " ", cls: "dim" },
       { str: pad(s.name, 13), cls: "" },
-      { str: " " + rpad(s.down + "/" + s.activeUnits, 7) + " ", cls: "dim" },
-      { str: rpad(s.pctDown.toFixed(1) + "%", 6), cls: "amber" },
+      { str: " " + rpad(fleet, 7) + " ", cls: "dim" },
+      { str: rpad(pct, 6), cls: s.pctDown == null ? "dim" : "amber" },
     ]));
   });
 
@@ -150,7 +152,9 @@ fetch("./data.json").then(r => r.json()).then(data => {
   const sr = document.getElementById("sr-data");
   sr.innerHTML =
     "<h2>Systems by share of elevators out of service</h2><ol>" +
-    data.systems.map(s => `<li>${s.name} (${s.city}): ${s.down} of ${s.activeUnits} elevators out (${s.pctDown}%)</li>`).join("") +
+    data.systems.map(s => `<li>${s.name} (${s.city}): ${s.pctDown == null
+      ? `${s.down} elevators out (fleet size unknown — this agency only reports broken units)`
+      : `${s.down} of ${s.activeUnits} elevators out (${s.pctDown}%)`}</li>`).join("") +
     "</ol><h2>Longest current outages</h2><ol>" +
     data.longestOutages.map(o => `<li>${o.station} (${o.system}), unit ${o.unit}: out ${o.days} days${o.soleAccess ? " — sole step-free access, station currently inaccessible" : ""}</li>`).join("") +
     "</ol>";

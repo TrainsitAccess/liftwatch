@@ -64,13 +64,29 @@ export interface NormalizedOutage {
   segmentId?: string;
 }
 
+/** A station known independently of any unit (e.g. from a full station-list feed). */
+export interface NormalizedStation {
+  externalId: string;
+  name: string;
+  nameNative?: string;
+  borough?: string;
+  latitude?: number;
+  longitude?: number;
+  gtfsStopId?: string;
+}
+
 /** A single point-in-time read of a system. */
 export interface NormalizedRead {
   systemId: string;
   fetchedAt: string; // ISO-8601 UTC
-  units: NormalizedUnit[]; // full inventory = the denominator
+  units: NormalizedUnit[]; // full inventory = the denominator (or discovered units, see catalog inventoryComplete)
   outages: NormalizedOutage[]; // currently out
   upcoming: NormalizedOutage[]; // scheduled future work
+  // Optional complete station list, for systems whose station feed is richer
+  // than their unit feed (WMATA: all 102 stations w/ coords, but units are
+  // only discovered as they break). Ingest upserts these BEFORE unit-derived
+  // stations; units still add any station missing from this list.
+  stations?: NormalizedStation[];
 }
 
 /** The contract every system adapter implements. */

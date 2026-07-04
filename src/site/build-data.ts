@@ -1,5 +1,6 @@
 import "dotenv/config";
 import { mkdirSync, writeFileSync } from "node:fs";
+import { getSystem } from "../catalog/systems.js";
 import { getSupabase } from "../lib/supabase.js";
 
 // Snapshot the archive into site/data.json for the static site. Server-side
@@ -37,6 +38,9 @@ for (const e of events.data ?? []) {
 
 const systemRows = (systems.data ?? [])
   .map((s) => {
+    // A system with an incomplete inventory (feed lists broken units only —
+    // WMATA) has no honest denominator: pctDown/activeUnits become null.
+    const inventoryComplete = getSystem(s.id as string)?.inventoryComplete !== false;
     const active = (units.data ?? []).filter((u) => u.system_id === s.id && u.is_active).length;
     const down = openBySystem.get(s.id) ?? 0;
     return {
@@ -44,13 +48,14 @@ const systemRows = (systems.data ?? [])
       name: s.short_name as string,
       city: s.city as string,
       dataQuality: s.data_quality as string,
-      activeUnits: active,
+      inventoryComplete,
+      activeUnits: inventoryComplete ? active : null,
       down,
       downUnplanned: unplannedBySystem.get(s.id) ?? 0,
-      pctDown: active ? Math.round((down / active) * 1000) / 10 : 0,
+      pctDown: inventoryComplete && active ? Math.round((down / active) * 1000) / 10 : null,
     };
   })
-  .sort((a, b) => b.pctDown - a.pctDown);
+  .sort((a, b) => (b.pctDown ?? -1) - (a.pctDown ?? -1));
 
 const outageRows = (events.data ?? [])
   .map((e) => {
@@ -73,7 +78,7 @@ const data = {
   generatedAt: new Date(now).toISOString(),
   totals: {
     systems: systemRows.length,
-    activeUnits: systemRows.reduce((n, s) => n + s.activeUnits, 0),
+    activeUnits: systemRows.reduce((n, s) => n + (s.activeUnits ?? 0), 0),
     down: systemRows.reduce((n, s) => n + s.down, 0),
   },
   systems: systemRows,

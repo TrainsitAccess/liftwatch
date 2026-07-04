@@ -17,6 +17,11 @@ export interface SystemCatalogEntry {
   // "confirmed-none": redundancy is fully curated, so a station with no model is a
   // confirmed non-redundant station (not merely 'assumed'). Defaults to "assumed".
   redundancyBaseline?: "assumed" | "confirmed-none";
+  // false => the feed only reveals units as they break (no denominator feed).
+  // Suppresses %-of-fleet-down displays AND the single_elevator redundancy
+  // inference (counting broken units as the station's whole fleet would be
+  // wrong). Defaults to true.
+  inventoryComplete?: boolean;
 }
 
 export const SYSTEMS: SystemCatalogEntry[] = [
@@ -65,6 +70,23 @@ export const SYSTEMS: SystemCatalogEntry[] = [
     // explicit redundancy field yet (falls to assumed/single_elevator), so no
     // redundancyBaseline until a curation pass is done.
     dataQuality: "good",
+  },
+  {
+    id: "wmata-dc",
+    name: "Washington Metropolitan Area Transit Authority",
+    shortName: "DC Metro",
+    city: "Washington",
+    metroArea: "Washington DC",
+    country: "United States",
+    countryCode: "US",
+    continent: "North America",
+    timezone: "America/New_York",
+    adapter: "wmata",
+    // Per-elevator outage ids, but the API only lists BROKEN units — no full
+    // inventory feed and no GTFS crosswalk (verified: UnitNames appear nowhere
+    // in GTFS). Units are discovered as they break.
+    dataQuality: "fair",
+    inventoryComplete: false,
   },
 ];
 

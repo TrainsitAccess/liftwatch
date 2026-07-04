@@ -17,6 +17,19 @@ export function parseZonedToUtcIso(
   return dt.toUTC().toISO() ?? undefined;
 }
 
+// WMATA-style timestamps: ISO 8601 with NO offset ("2026-07-03T11:52:00"),
+// implicitly local wall-clock in the given IANA zone. Luxon applies the zone
+// then converts to UTC (DST-correct). Returns undefined for blank/unparseable.
+export function parseIsoLocalToUtcIso(
+  value: string | null | undefined,
+  zone: string,
+): string | undefined {
+  if (!value || !value.trim()) return undefined;
+  const dt = DateTime.fromISO(value.trim(), { zone });
+  if (!dt.isValid) return undefined;
+  return dt.toUTC().toISO() ?? undefined;
+}
+
 export function nowUtcIso(): string {
   // UTC-now is always a valid instant, so toISO() never returns null here.
   return DateTime.utc().toISO() as string;

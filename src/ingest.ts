@@ -143,8 +143,26 @@ export async function ingest(
       ).error,
     );
 
-    // 2. Stations (deduped from inventory; geo inherits system geo for now).
+    // 2. Stations. Seed from the adapter's complete station list when provided
+    //    (WMATA: all 102 stations w/ coords even though units are discovered),
+    //    then fill any stations only known via units.
     const stationsById = new Map<string, Record<string, unknown>>();
+    for (const s of read.stations ?? []) {
+      const id = stationId(system.id, s.externalId);
+      stationsById.set(id, {
+        id,
+        system_id: system.id,
+        name: s.name,
+        name_native: s.nameNative ?? null,
+        borough: s.borough ?? null,
+        metro_area: system.metroArea,
+        country: system.country,
+        continent: system.continent,
+        gtfs_stop_id: s.gtfsStopId ?? null,
+        latitude: s.latitude ?? null,
+        longitude: s.longitude ?? null,
+      });
+    }
     const elevatorCountByStation = new Map<string, number>();
     for (const u of read.units) {
       elevatorCountByStation.set(
@@ -212,9 +230,12 @@ export async function ingest(
     const unitRows = dedupedUnits.map((u) => {
       const id = unitId(system.id, u.externalId);
       knownUnitIds.add(id);
+      // With an incomplete inventory (WMATA), units = currently-broken units,
+      // so "station has exactly 1 elevator" can't be inferred from counts —
+      // report 0 to disable the single_elevator branch (falls to 'assumed').
       const r = resolveRedundancy(
         u,
-        elevatorCountByStation.get(u.stationExternalId) ?? 0,
+        system.inventoryComplete === false ? 0 : (elevatorCountByStation.get(u.stationExternalId) ?? 0),
         storedRedundancy.get(id),
         overrides.get(u.externalId),
         system.redundancyBaseline ?? "assumed",

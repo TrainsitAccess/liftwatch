@@ -52,3 +52,11 @@ jobs:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
           MBTA_API_KEY: ${{ secrets.MBTA_API_KEY }}
+
+      - name: Poll WMATA (DC)
+        if: ${{ !cancelled() }}
+        run: npm run poll -- wmata-dc
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          WMATA_API_KEY: ${{ secrets.WMATA_API_KEY }}

@@ -13,7 +13,11 @@ import { ingest } from "./ingest.js";
 //   npm run poll:dry           (mta-nyct, no DB writes)
 // With no Supabase env configured, always runs dry (fetch + normalize only).
 
-function summarize(read: NormalizedRead, baseline: "assumed" | "confirmed-none"): void {
+function summarize(
+  read: NormalizedRead,
+  baseline: "assumed" | "confirmed-none",
+  inventoryComplete: boolean,
+): void {
   const models = stationModelsFor(read.systemId);
   const redundantByExt = new Map(read.units.map((u) => [u.externalId, u.isRedundant]));
   const activeUnits = read.units.filter((u) => u.isActive).length;
@@ -25,8 +29,13 @@ function summarize(read: NormalizedRead, baseline: "assumed" | "confirmed-none")
 
   console.log(`\n  ${read.systemId}  ·  fetched ${read.fetchedAt}`);
   console.log(`  ${"-".repeat(48)}`);
-  console.log(`  elevators (inventory)      ${read.units.length}  (${activeUnits} active, ${adaCount} ADA)`);
-  console.log(`  currently out of service   ${read.outages.length}  (${pctDown}% of active)`);
+  if (inventoryComplete) {
+    console.log(`  elevators (inventory)      ${read.units.length}  (${activeUnits} active, ${adaCount} ADA)`);
+    console.log(`  currently out of service   ${read.outages.length}  (${pctDown}% of active)`);
+  } else {
+    console.log(`  elevators (discovered)     ${read.units.length}  — feed lists broken units only, no denominator`);
+    console.log(`  currently out of service   ${read.outages.length}  (% of fleet: n/a)`);
+  }
   console.log(`     unplanned               ${unplanned}`);
   console.log(`     planned / maintenance   ${planned}`);
   console.log(`     sole step-free access   ${soleAccessDown}  <- confirmed non-redundant`);
@@ -87,7 +96,7 @@ async function main(): Promise<void> {
   console.log(`\nLiftWatch poll — ${system.name} (${system.id})`);
 
   const read = await getAdapter(systemId).fetch();
-  summarize(read, system.redundancyBaseline ?? "assumed");
+  summarize(read, system.redundancyBaseline ?? "assumed", system.inventoryComplete !== false);
 
   // Validate manual overrides against live units — catches typo'd ids.
   const knownExt = new Set(read.units.map((u) => u.externalId));

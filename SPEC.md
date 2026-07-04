@@ -250,7 +250,7 @@ Hybrid, per decision:
 
 ## 8. Data sources (launch targets — quality first)
 
-MTA (NYC) ✓ · BART (SF) ✓ · MBTA (Boston) ✓ · WMATA (DC) · TfL (London) ·
+MTA (NYC) ✓ · BART (SF) ✓ · MBTA (Boston) ✓ · WMATA (DC) ✓ · TfL (London) ·
 Deutsche Bahn FaSta (Germany) · Wiener Linien (Vienna) · BVG/VBB (Berlin).
 
 ### MTA feeds (in use)
@@ -313,3 +313,34 @@ covers our cadence — a key raises it to 1,000/min).
   elevator in prose (e.g. "use the nearby Elevator 736") — a candidate for
   future curation, intentionally not auto-parsed (same policy as BART's
   planned RSS).
+
+### WMATA feeds (in use) — per-elevator ids, discovered inventory
+
+`https://api.wmata.com`, header `api_key` (**required** — no unauthenticated
+tier; free Default Tier = 10 calls/sec, 50k/day). `data_quality: 'fair'`,
+`inventoryComplete: false`. All facts below live-verified 2026-07-04.
+- `Incidents.svc/json/ElevatorIncidents` — despite the name it mixes in
+  ESCALATORs (28 of 33 live); filter `UnitType === "ELEVATOR"`. `UnitName`
+  (`A14X01`; prefix = StationCode) is a **stable per-unit id** → real per-
+  elevator tracking (MTTR, chronic offenders). Dates are ISO-8601 with **no
+  offset** = America/New_York wall-clock (`parseIsoLocalToUtcIso`).
+  `EstimatedReturnToService` is date-level (always T23:59:59). Planned mapping
+  from open-ended `SymptomDescription`: /modernization|preventive maintenance|
+  safety inspection|scheduled|rehabilitation/i → planned; everything else
+  (Service Call, Minor/Major Repair, Other, unseen values) → unplanned.
+- `Rail.svc/json/jStations` — **complete** station layer: 102 codes with
+  coords; transfer stations are separate codes cross-linked by
+  `StationTogether1` (A01/C01 Metro Center etc.), kept separate since
+  incidents reference a specific code. Join incidents on `StationCode`, never
+  on name (incident `StationName` is decorated with entrance detail). Emitted
+  via `NormalizedRead.stations`.
+- **The denominator problem**: the API only lists *broken* units, and GTFS
+  offers no crosswalk — pathways.txt models 212 elevator edges (mode 5) with
+  synthetic node ids (`NODE_N06_S_PAV_ELV_BT`), and live UnitNames appear
+  **nowhere** in any GTFS file (grep-verified, 0 matches; garage elevators
+  like B11X05 aren't modeled at all). So units are discovered as they break:
+  `inventoryComplete: false` suppresses %-of-fleet displays (site shows "—")
+  and disables the `single_elevator` redundancy inference (broken-unit counts
+  are not fleet counts). GTFS pathway-graph redundancy (Tier B) remains
+  possible per-station someday, but is blocked on a manual UnitName↔pathway
+  crosswalk — future curation.
