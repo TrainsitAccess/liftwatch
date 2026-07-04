@@ -22,6 +22,19 @@ export interface SystemCatalogEntry {
   // inference (counting broken units as the station's whole fleet would be
   // wrong). Defaults to true.
   inventoryComplete?: boolean;
+  // A system-wide fleet total the agency has PUBLISHED (a press/website
+  // statistic), for systems with inventoryComplete: false. USED as the pctDown
+  // denominator and DOES participate in ranking — it's the best available
+  // number when no live inventory feed exists. But it is static (not from a
+  // live feed) and will drift as the agency's real fleet changes, so every
+  // display of a percentage computed from it must be visibly marked (e.g. an
+  // asterisk) and carry its source + as-of date, so it's never confused with a
+  // system whose percentage comes from a live, currently-active fleet count.
+  staticFleetReference?: {
+    totalUnits: number;
+    asOfDate: string; // ISO date the figure was checked/published
+    source: string; // URL
+  };
 }
 
 export const SYSTEMS: SystemCatalogEntry[] = [
@@ -87,6 +100,14 @@ export const SYSTEMS: SystemCatalogEntry[] = [
     // in GTFS). Units are discovered as they break.
     dataQuality: "fair",
     inventoryComplete: false,
+    // No live inventory API exists (exhaustively verified — see SPEC.md); this
+    // is WMATA's own published PR figure, used as the pctDown denominator
+    // (marked with an asterisk on the site — see build-data.ts/index.html).
+    staticFleetReference: {
+      totalUnits: 320,
+      asOfDate: "2026-07-04",
+      source: "https://www.wmata.com/ride/elevators-escalators.html",
+    },
   },
 ];
 

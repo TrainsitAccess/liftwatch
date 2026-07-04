@@ -40,19 +40,37 @@ const systemRows = (systems.data ?? [])
   .map((s) => {
     // A system with an incomplete inventory (feed lists broken units only —
     // WMATA) has no honest denominator: pctDown/activeUnits become null.
-    const inventoryComplete = getSystem(s.id as string)?.inventoryComplete !== false;
+    const catalogEntry = getSystem(s.id as string);
+    const inventoryComplete = catalogEntry?.inventoryComplete !== false;
     const active = (units.data ?? []).filter((u) => u.system_id === s.id && u.is_active).length;
     const down = openBySystem.get(s.id) ?? 0;
+    const staticFleet = catalogEntry?.staticFleetReference;
+
+    // Denominator: a live active-unit count when the inventory is complete;
+    // otherwise the agency's published static total, if one exists. Either
+    // way pctDown participates in ranking — fleetSource records which kind of
+    // denominator produced it, so the site can mark static ones distinctly
+    // (asterisk + source/date) rather than presenting them as equally live.
+    const fleetSource: "live" | "static" | "none" = inventoryComplete
+      ? "live"
+      : staticFleet
+        ? "static"
+        : "none";
+    const fleetTotal = inventoryComplete ? active : (staticFleet?.totalUnits ?? null);
+
     return {
       id: s.id,
       name: s.short_name as string,
       city: s.city as string,
       dataQuality: s.data_quality as string,
       inventoryComplete,
-      activeUnits: inventoryComplete ? active : null,
+      fleetSource,
+      activeUnits: fleetTotal,
       down,
       downUnplanned: unplannedBySystem.get(s.id) ?? 0,
-      pctDown: inventoryComplete && active ? Math.round((down / active) * 1000) / 10 : null,
+      pctDown: fleetTotal ? Math.round((down / fleetTotal) * 1000) / 10 : null,
+      staticFleetAsOf: staticFleet?.asOfDate ?? null,
+      staticFleetSource: staticFleet?.source ?? null,
     };
   })
   .sort((a, b) => (b.pctDown ?? -1) - (a.pctDown ?? -1));

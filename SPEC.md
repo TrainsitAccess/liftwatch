@@ -339,8 +339,24 @@ tier; free Default Tier = 10 calls/sec, 50k/day). `data_quality: 'fair'`,
   synthetic node ids (`NODE_N06_S_PAV_ELV_BT`), and live UnitNames appear
   **nowhere** in any GTFS file (grep-verified, 0 matches; garage elevators
   like B11X05 aren't modeled at all). So units are discovered as they break:
-  `inventoryComplete: false` suppresses %-of-fleet displays (site shows "—")
-  and disables the `single_elevator` redundancy inference (broken-unit counts
-  are not fleet counts). GTFS pathway-graph redundancy (Tier B) remains
-  possible per-station someday, but is blocked on a manual UnitName↔pathway
-  crosswalk — future curation.
+  `inventoryComplete: false` disables the `single_elevator` redundancy
+  inference (broken-unit counts are not fleet counts). GTFS pathway-graph
+  redundancy (Tier B) remains possible per-station someday, but is blocked on
+  a manual UnitName↔pathway crosswalk — future curation.
+  - **No API, dataset, or GIS layer publishes a real elevator inventory**
+    anywhere (exhaustively verified: WMATA's full API surface via its own
+    published definition, its ArcGIS Online org — 108 datasets enumerated —
+    and opendata.dc.gov all checked live, none exists). `jStationEntrances`
+    tags 82 of 275 entrances "(ELEVATOR)" but that counts entrances, not
+    units, and can't be trusted as a fleet total.
+  - The one real number is WMATA's own **published static figure** — "320
+    elevators system-wide" stated in prose on wmata.com. `staticFleetReference`
+    (`src/catalog/systems.ts`) captures this (count + as-of date + source URL)
+    and it **is used as the pctDown denominator and participates in
+    ranking** — it's the best available number when no live feed exists. Every
+    percentage computed from it is visibly marked with a trailing `*` on the
+    site plus a footnoted source/date, so it's never confused with a system
+    whose percentage comes from a live fleet count. `fleetSource` on each site
+    system row records `live` / `static` / `none` for this purpose. This is
+    the general mechanism — any future discovered-inventory system reuses the
+    same field.

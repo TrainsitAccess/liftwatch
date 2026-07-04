@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-07-04T19:25:50.642Z",
+  "generatedAt": "2026-07-04T19:38:15.864Z",
   "totals": {
     "systems": 4,
-    "activeUnits": 712,
+    "activeUnits": 1032,
     "down": 51
   },
   "systems": [
@@ -12,10 +12,13 @@
       "city": "New York",
       "dataQuality": "good",
       "inventoryComplete": true,
+      "fleetSource": "live",
       "activeUnits": 408,
       "down": 36,
       "downUnplanned": 18,
-      "pctDown": 8.8
+      "pctDown": 8.8,
+      "staticFleetAsOf": null,
+      "staticFleetSource": null
     },
     {
       "id": "bart-bay-area",
@@ -23,10 +26,13 @@
       "city": "San Francisco",
       "dataQuality": "best_effort",
       "inventoryComplete": true,
+      "fleetSource": "live",
       "activeUnits": 67,
       "down": 2,
       "downUnplanned": 2,
-      "pctDown": 3
+      "pctDown": 3,
+      "staticFleetAsOf": null,
+      "staticFleetSource": null
     },
     {
       "id": "mbta-boston",
@@ -34,10 +40,13 @@
       "city": "Boston",
       "dataQuality": "good",
       "inventoryComplete": true,
+      "fleetSource": "live",
       "activeUnits": 237,
       "down": 7,
       "downUnplanned": 5,
-      "pctDown": 3
+      "pctDown": 3,
+      "staticFleetAsOf": null,
+      "staticFleetSource": null
     },
     {
       "id": "wmata-dc",
@@ -45,10 +54,13 @@
       "city": "Washington",
       "dataQuality": "fair",
       "inventoryComplete": false,
-      "activeUnits": null,
+      "fleetSource": "static",
+      "activeUnits": 320,
       "down": 6,
       "downUnplanned": 3,
-      "pctDown": null
+      "pctDown": 1.9,
+      "staticFleetAsOf": "2026-07-04",
+      "staticFleetSource": "https://www.wmata.com/ride/elevators-escalators.html"
     }
   ],
   "longestOutages": [
