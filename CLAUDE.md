@@ -91,9 +91,15 @@ parking lot). A station is accessible only if **every** segment is up.
 - Four systems, deliberately different fidelity: **MTA** and **MBTA** =
   per-elevator with full inventory (`data_quality: good`); **WMATA** =
   per-elevator ids but the feed only lists broken units (`fair`,
-  `inventoryComplete: false` — no %-down, no single_elevator inference, units
-  discovered as they break; station list IS complete via
-  `NormalizedRead.stations`); **BART** = station-level advisory
+  `inventoryComplete: false`, no single_elevator inference, units discovered
+  as they break; station list IS complete via `NormalizedRead.stations`).
+  WMATA has no live fleet total anywhere (exhaustively verified), so its %
+  ranking uses `staticFleetReference` — WMATA's own published "320 elevators"
+  figure — as the denominator. It **does** rank (currently ~1.9%\*), but every
+  number derived from it (fleet count, %, and the site's aggregate total) is
+  marked with a trailing `*` + source/date, since it's static, not live. This
+  mechanism is general (`fleetSource: live|static|none`), reusable by any
+  future discovered-inventory system. **BART** = station-level advisory
   (`best_effort`). Timestamps: MBTA = ISO w/ offset (no tz parsing); WMATA =
   ISO w/o offset = ET wall-clock (`parseIsoLocalToUtcIso`); MTA/BART = US
   date format wall-clock (`parseZonedToUtcIso`).

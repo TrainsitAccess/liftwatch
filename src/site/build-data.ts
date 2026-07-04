@@ -39,7 +39,11 @@ for (const e of events.data ?? []) {
 const systemRows = (systems.data ?? [])
   .map((s) => {
     // A system with an incomplete inventory (feed lists broken units only —
-    // WMATA) has no honest denominator: pctDown/activeUnits become null.
+    // WMATA) has no LIVE denominator. pctDown/activeUnits are null only when
+    // fleetSource is "none" (no staticFleetReference either); when a static
+    // reference exists they're populated from it (fleetSource: "static") and
+    // must be rendered with disclosure everywhere they're used, including in
+    // any aggregate that sums across systems.
     const catalogEntry = getSystem(s.id as string);
     const inventoryComplete = catalogEntry?.inventoryComplete !== false;
     const active = (units.data ?? []).filter((u) => u.system_id === s.id && u.is_active).length;
@@ -92,11 +96,23 @@ const outageRows = (events.data ?? [])
   .sort((a, b) => b.days - a.days)
   .slice(0, 10);
 
+// The aggregate "N of M monitored" figure is the site's most prominent
+// number — it must carry the same live-vs-static disclosure as every
+// per-system row, so a static reference blended into "M" is never silently
+// presented as a live monitored count.
+const staticUnitsInTotal = systemRows
+  .filter((s) => s.fleetSource === "static")
+  .reduce((n, s) => n + (s.activeUnits ?? 0), 0);
+
 const data = {
   generatedAt: new Date(now).toISOString(),
   totals: {
     systems: systemRows.length,
     activeUnits: systemRows.reduce((n, s) => n + (s.activeUnits ?? 0), 0),
+    // Of the total above, how many come from a static (non-live) reference —
+    // 0 when every system's fleet count is live. Site renders a "*" + note on
+    // the aggregate sentence whenever this is nonzero.
+    staticUnitsInTotal,
     down: systemRows.reduce((n, s) => n + s.down, 0),
   },
   systems: systemRows,

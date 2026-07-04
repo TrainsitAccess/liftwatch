@@ -126,14 +126,17 @@ fetch("./data.json").then(r => r.json()).then(data => {
 
   const sys = document.getElementById("systems-board");
   data.systems.forEach((s, i) => {
-    const fleet = s.activeUnits == null ? s.down + "/-" : s.down + "/" + s.activeUnits;
-    // Static-denominator percentages (agency-published total, not a live feed)
-    // carry a trailing "*" so they're never mistaken for a live-fleet figure.
-    const pct = s.pctDown == null ? "-" : s.pctDown.toFixed(1) + "%" + (s.fleetSource === "static" ? "*" : "");
+    // Static-denominator fleet counts AND percentages (agency-published
+    // total, not a live feed) both carry a trailing "*" so neither is
+    // mistaken for a live-fleet figure — the marking must be on every cell
+    // derived from the static reference, not just the percentage.
+    const isStatic = s.fleetSource === "static";
+    const fleet = s.activeUnits == null ? s.down + "/-" : s.down + "/" + s.activeUnits + (isStatic ? "*" : "");
+    const pct = s.pctDown == null ? "-" : s.pctDown.toFixed(1) + "%" + (isStatic ? "*" : "");
     cells.push(...makeRow(sys, [
       { str: rpad(i + 1, 2) + " ", cls: "dim" },
       { str: pad(s.name, 13), cls: "" },
-      { str: " " + rpad(fleet, 7) + " ", cls: "dim" },
+      { str: " " + rpad(fleet, 8) + " ", cls: "dim" },
       { str: rpad(pct, 7), cls: s.pctDown == null ? "dim" : "amber" },
     ]));
   });
@@ -159,8 +162,15 @@ fetch("./data.json").then(r => r.json()).then(data => {
   riffle(cells);
 
   const t = new Date(data.generatedAt);
+  // The aggregate total can include static (non-live) fleet references
+  // blended in with live counts — mark it with the same "*" convention as
+  // the per-system rows rather than presenting a blended figure as fully live.
+  const totalMark = data.totals.staticUnitsInTotal > 0 ? "*" : "";
   document.getElementById("updated").textContent =
-    `Snapshot: ${t.toLocaleString()} · ${data.totals.down} of ${data.totals.activeUnits} monitored elevators out of service across ${data.totals.systems} systems.`;
+    `Snapshot: ${t.toLocaleString()} · ${data.totals.down} of ${data.totals.activeUnits}${totalMark} monitored elevators out of service across ${data.totals.systems} systems.`
+    + (data.totals.staticUnitsInTotal > 0
+      ? ` * ${data.totals.staticUnitsInTotal} of this total is a static agency-published figure, not a live count — see leaderboard note above.`
+      : "");
 
   const sr = document.getElementById("sr-data");
   sr.innerHTML =
