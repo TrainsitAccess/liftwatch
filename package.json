@@ -14,6 +14,7 @@
     "poll:dry": "tsx src/poll.ts mta-nyct --dry-run",
     "poll:bart:dry": "tsx src/poll.ts bart-bay-area --dry-run",
     "demo:access": "tsx src/checks/accessibility-demo.ts",
+    "db:status": "tsx src/checks/db-status.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
