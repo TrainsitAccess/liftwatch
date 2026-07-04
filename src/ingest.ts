@@ -189,11 +189,27 @@ export async function ingest(
     );
 
     // 4. Units (redundancy resolved to the winning source; curated overrides win).
+    // Dedupe by unit id BEFORE mapping (first occurrence wins) — a single
+    // upsert statement can't touch the same conflict-key row twice, and this
+    // guarantees that invariant regardless of whether an adapter ever emits a
+    // repeated id (a transient API hiccup, pagination overlap, a future bug).
     const overrides = overridesFor(system.id);
     const knownUnitIds = new Set<string>();
     const changedRedundancy: string[] = [];
     const flags: { unitId: string; curatedValue: boolean; incomingValue: boolean; incomingSource: RedundancySource }[] = [];
-    const unitRows = read.units.map((u) => {
+    const seenUnitIds = new Set<string>();
+    const dedupedUnits = read.units.filter((u) => {
+      const id = unitId(system.id, u.externalId);
+      if (seenUnitIds.has(id)) return false;
+      seenUnitIds.add(id);
+      return true;
+    });
+    if (dedupedUnits.length !== read.units.length) {
+      console.warn(
+        `  ⚠ ${system.id}: ${read.units.length - dedupedUnits.length} duplicate unit id(s) in adapter output, deduped`,
+      );
+    }
+    const unitRows = dedupedUnits.map((u) => {
       const id = unitId(system.id, u.externalId);
       knownUnitIds.add(id);
       const r = resolveRedundancy(
