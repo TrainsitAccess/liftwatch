@@ -2,7 +2,7 @@
   "id": "mta-nyct",
   "name": "NYC Subway",
   "label": "NYC Subway (New York)",
-  "generatedAt": "2026-07-05T19:39:24.624Z",
+  "generatedAt": "2026-07-05T20:25:50.937Z",
   "currentlyBroken": [
     {
       "station": "42St/Port Authority-Bus Terminal",
@@ -12,109 +12,124 @@
       "soleAccess": false
     },
     {
-      "station": "161 St-Yankee Stadium",
-      "unit": "B/D mezzanine to 4 train",
-      "days": 606,
-      "planned": true,
-      "soleAccess": true
-    },
-    {
-      "station": "161 St-Yankee Stadium",
+      "station": "161 St-Yankee Stadium (4)",
       "unit": "Mezzanine to Manhattan-bound 4",
       "days": 606,
       "planned": true,
-      "soleAccess": true
+      "soleAccess": true,
+      "note": "This elevator is likely being replaced."
+    },
+    {
+      "station": "161 St-Yankee Stadium (4)",
+      "unit": "B/D mezzanine to 4 train",
+      "days": 606,
+      "planned": true,
+      "soleAccess": true,
+      "note": "This elevator is likely being replaced."
     },
     {
       "station": "Jamaica-179 St",
       "unit": "Mezzanine to Manhattan-bound platform",
       "days": 225,
       "planned": true,
-      "soleAccess": true
+      "soleAccess": true,
+      "note": "This elevator is likely being replaced."
     },
     {
       "station": "Jamaica-179 St",
       "unit": "Street to mezzanine",
       "days": 225,
       "planned": true,
-      "soleAccess": true
+      "soleAccess": true,
+      "note": "This elevator is likely being replaced."
     },
     {
       "station": "Jamaica-179 St",
       "unit": "Mezzanine to terminal",
       "days": 225,
       "planned": true,
-      "soleAccess": true
-    },
-    {
-      "station": "Crown Hts-Utica Av",
-      "unit": "Mezzanine to platforms",
-      "days": 215,
-      "planned": true,
-      "soleAccess": true
+      "soleAccess": true,
+      "note": "This elevator is likely being replaced."
     },
     {
       "station": "Crown Hts-Utica Av",
       "unit": "Street to mezzanine",
       "days": 215,
       "planned": true,
-      "soleAccess": true
+      "soleAccess": true,
+      "note": "This elevator is likely being replaced."
+    },
+    {
+      "station": "Crown Hts-Utica Av",
+      "unit": "Mezzanine to platforms",
+      "days": 215,
+      "planned": true,
+      "soleAccess": true,
+      "note": "This elevator is likely being replaced."
     },
     {
       "station": "Prospect Park",
       "unit": "Street to Manhattan-bound platform",
       "days": 214,
       "planned": true,
-      "soleAccess": true
+      "soleAccess": true,
+      "note": "This elevator is likely being replaced."
     },
     {
       "station": "Prospect Park",
       "unit": "Street to Brooklyn-bound platform",
       "days": 214,
       "planned": true,
-      "soleAccess": true
+      "soleAccess": true,
+      "note": "This elevator is likely being replaced."
     },
     {
       "station": "Coney Island-Stillwell Av",
       "unit": "N platform to D overpass",
       "days": 208,
       "planned": true,
-      "soleAccess": true
+      "soleAccess": true,
+      "note": "This elevator is likely being replaced."
     },
     {
       "station": "72 St",
       "unit": "Street to downtown platform",
       "days": 199,
       "planned": true,
-      "soleAccess": true
+      "soleAccess": true,
+      "note": "This elevator is likely being replaced."
     },
     {
       "station": "72 St",
       "unit": "Street to uptown platform",
       "days": 199,
       "planned": true,
-      "soleAccess": true
+      "soleAccess": true,
+      "note": "This elevator is likely being replaced."
     },
     {
       "station": "Flushing-Main St",
       "unit": "East of Main St & Roosevelt Ave to Manhattan-bound platform.",
       "days": 152,
       "planned": true,
-      "soleAccess": true
+      "soleAccess": true,
+      "note": "This elevator is likely being replaced."
     },
     {
       "station": "Atlantic Av-Barclays Ctr",
       "unit": "Mezzanine to B/Q platform",
       "days": 92,
       "planned": true,
-      "soleAccess": true
+      "soleAccess": true,
+      "note": "This elevator is likely being replaced."
     },
     {
       "station": "Atlantic Av-Barclays Ctr",
       "unit": "Mezzanine to Manhattan-bound 2/3",
       "days": 92,
       "planned": true,
-      "soleAccess": false
+      "soleAccess": false,
+      "note": "This elevator is likely being replaced."
     },
     {
       "station": "51 St",
@@ -131,14 +146,14 @@
       "soleAccess": false
     },
     {
-      "station": "161 St-Yankee Stadium",
+      "station": "161 St-Yankee Stadium (B/D)",
       "unit": "Mezzanine to Bronx-bound B/D",
       "days": 6,
       "planned": false,
       "soleAccess": true
     },
     {
-      "station": "161 St-Yankee Stadium",
+      "station": "161 St-Yankee Stadium (B/D)",
       "unit": "Mezzanine to Manhattan-bound B/D",
       "days": 5,
       "planned": false,
@@ -236,6 +251,13 @@
       "soleAccess": true
     },
     {
+      "station": "Kings Hwy",
+      "unit": "Street to Manhattan-bound platform",
+      "days": 0,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
       "station": "14 St-Union Sq",
       "unit": "Mezzanine to L platform",
       "days": 0,
@@ -245,44 +267,44 @@
   ],
   "accessibilityBlackouts": [
     {
-      "name": "161 St-Yankee Stadium",
-      "hours": 14549.65684
+      "name": "161 St-Yankee Stadium (4)",
+      "hours": 14550.430815833333
     },
     {
       "name": "Jamaica-179 St",
-      "hours": 5414.990173333334
+      "hours": 5415.764149166666
     },
     {
       "name": "Crown Hts-Utica Av",
-      "hours": 5176.423506666667
+      "hours": 5177.1974825
     },
     {
       "name": "Prospect Park",
-      "hours": 5151.523506666666
+      "hours": 5152.2974825
     },
     {
       "name": "Coney Island-Stillwell Av",
-      "hours": 5007.50684
+      "hours": 5008.280815833334
     },
     {
       "name": "72 St",
-      "hours": 4791.90684
+      "hours": 4792.680815833333
     },
     {
       "name": "Flushing-Main St",
-      "hours": 3663.1901733333334
+      "hours": 3663.9641491666666
     },
     {
       "name": "Atlantic Av-Barclays Ctr",
-      "hours": 2216.15684
+      "hours": 2216.9308158333333
     },
     {
       "name": "51 St",
-      "hours": 1689.8901733333332
+      "hours": 1690.6641491666667
     },
     {
-      "name": "3 Av-149 St",
-      "hours": 96.07350666666666
+      "name": "161 St-Yankee Stadium (B/D)",
+      "hours": 150.48081583333334
     }
   ],
   "stepFreeStreak": [
@@ -307,6 +329,11 @@
       "blackedOutNow": false
     },
     {
+      "name": "181 St",
+      "days": 1,
+      "blackedOutNow": false
+    },
+    {
       "name": "Forest Hills-71 Av",
       "days": 1,
       "blackedOutNow": false
@@ -327,12 +354,7 @@
       "blackedOutNow": false
     },
     {
-      "name": "Lexington Av/63 St",
-      "days": 1,
-      "blackedOutNow": false
-    },
-    {
-      "name": "Livonia Av",
+      "name": "231 St",
       "days": 1,
       "blackedOutNow": false
     }
@@ -374,18 +396,18 @@
       "count": 1
     },
     {
-      "unit": "Street to Bronx-bound platform",
-      "station": "Gun Hill Rd",
+      "unit": "Mezzanine to Bronx-bound B/D",
+      "station": "161 St-Yankee Stadium (B/D)",
       "count": 1
     },
     {
-      "unit": "63 St & Lexington Av mezzanine to platforms for service in both directions.",
-      "station": "Lexington Av/63 St",
+      "unit": "Mezzanine to Manhattan-bound B/D",
+      "station": "161 St-Yankee Stadium (B/D)",
       "count": 1
     },
     {
-      "unit": "Street to Manhattan-bound platform",
-      "station": "Marcy Av",
+      "unit": "Mezzanine to Manhattan-bound 4",
+      "station": "161 St-Yankee Stadium (4)",
       "count": 1
     }
   ],
@@ -433,20 +455,20 @@
       "downNow": false
     },
     {
-      "unit": "Mezzanine to downtown 1",
-      "station": "34 St-Penn Station",
-      "days": 1,
-      "downNow": false
-    },
-    {
-      "unit": "Mezzanine to Queens-bound platform",
-      "station": "Forest Hills-71 Av",
+      "unit": "14 St and 4th Av (NE corner) to mezzanine for L/N/Q/R/W in both directions.",
+      "station": "14 St-Union Sq",
       "days": 1,
       "downNow": false
     },
     {
       "unit": "Street to mezzanine",
-      "station": "Forest Hills-71 Av",
+      "station": "161 St-Yankee Stadium",
+      "days": 1,
+      "downNow": false
+    },
+    {
+      "unit": "Mezzanine to overpass",
+      "station": "181 St",
       "days": 1,
       "downNow": false
     }
@@ -465,15 +487,19 @@
       "count": 5
     },
     {
+      "name": "161 St-Yankee Stadium",
+      "count": 5
+    },
+    {
+      "name": "42St/Port Authority-Bus Terminal",
+      "count": 5
+    },
+    {
       "name": "Brooklyn Bridge-City Hall",
       "count": 5
     },
     {
       "name": "61 St-Woodside",
-      "count": 5
-    },
-    {
-      "name": "42St/Port Authority-Bus Terminal",
       "count": 5
     },
     {
@@ -507,10 +533,6 @@
     {
       "name": "57 St-7 Av",
       "count": 4
-    },
-    {
-      "name": "21 St-Queensbridge",
-      "count": 3
     }
   ]
 }

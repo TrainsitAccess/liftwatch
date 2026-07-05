@@ -2,7 +2,7 @@
   "id": "mbta-boston",
   "name": "MBTA",
   "label": "MBTA (Boston)",
-  "generatedAt": "2026-07-05T19:39:24.624Z",
+  "generatedAt": "2026-07-05T20:25:50.937Z",
   "currentlyBroken": [
     {
       "station": "Winchester Center",
@@ -61,23 +61,23 @@
     },
     {
       "name": "Winchester Center",
-      "hours": 2470.360728888889
+      "hours": 2471.134704722222
     },
     {
       "name": "Framingham",
-      "hours": 340.99517333333336
+      "hours": 341.7691491666667
     },
     {
       "name": "Natick Center",
-      "hours": 101.28878444444445
+      "hours": 102.06276027777778
     },
     {
       "name": "Porter",
-      "hours": 49.53989555555555
+      "hours": 50.31387138888889
     },
     {
       "name": "South Station",
-      "hours": 25.539895555555557
+      "hours": 26.313871388888888
     },
     {
       "name": "Green Street",
@@ -170,6 +170,16 @@
       "count": 1
     },
     {
+      "unit": "Porter Elevator 985 (Lobby to Somerville Avenue)",
+      "station": "Porter",
+      "count": 1
+    },
+    {
+      "unit": "Downtown Crossing Elevator 999 (Oak Grove platform to Alewife platform)",
+      "station": "Downtown Crossing",
+      "count": 1
+    },
+    {
       "unit": "Green Street Elevator 844 (Platform to paid lobby)",
       "station": "Green Street",
       "count": 1
@@ -187,16 +197,6 @@
     {
       "unit": "Natick Center Elevator 750 (Track 1 to street)",
       "station": "Natick Center",
-      "count": 1
-    },
-    {
-      "unit": "Natick Center Elevator 751 (Track 2 to street)",
-      "station": "Natick Center",
-      "count": 1
-    },
-    {
-      "unit": "South Station Elevator 901 (Ashmont/Braintree platform to Silver Line drop-off platform and lobby)",
-      "station": "South Station",
       "count": 1
     }
   ],
@@ -288,11 +288,11 @@
       "count": 6
     },
     {
-      "name": "Downtown Crossing",
+      "name": "Haymarket",
       "count": 6
     },
     {
-      "name": "Haymarket",
+      "name": "Downtown Crossing",
       "count": 6
     },
     {

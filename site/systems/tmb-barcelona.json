@@ -2,7 +2,7 @@
   "id": "tmb-barcelona",
   "name": "TMB Metro",
   "label": "Barcelona (TMB Metro)",
-  "generatedAt": "2026-07-05T19:39:24.624Z",
+  "generatedAt": "2026-07-05T20:25:50.937Z",
   "currentlyBroken": [
     {
       "station": "Florida",
@@ -15,12 +15,27 @@
   "accessibilityBlackouts": [
     {
       "name": "Florida",
-      "hours": 121.87350666666667
+      "hours": 122.6474825
     }
   ],
   "stepFreeStreak": [
     {
       "name": "Lesseps",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Santa Coloma",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Selva de Mar",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Singuerlín",
       "days": 0,
       "blackedOutNow": false
     },
@@ -53,21 +68,6 @@
       "name": "Maria Cristina",
       "days": 0,
       "blackedOutNow": false
-    },
-    {
-      "name": "Rocafort",
-      "days": 0,
-      "blackedOutNow": false
-    },
-    {
-      "name": "Roquetes",
-      "days": 0,
-      "blackedOutNow": false
-    },
-    {
-      "name": "Santa Coloma",
-      "days": 0,
-      "blackedOutNow": false
     }
   ],
   "mostBrokenUnits": [
@@ -81,6 +81,24 @@
     {
       "unit": "Plaça Lesseps",
       "station": "Lesseps",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "Plaça de la Vila",
+      "station": "Santa Coloma",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "Provençals",
+      "station": "Selva de Mar",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "Passatge de Salvatella",
+      "station": "Singuerlín",
       "days": 0,
       "downNow": false
     },
@@ -117,24 +135,6 @@
     {
       "unit": "Ronda Guinardó - costat Muntanya",
       "station": "Maragall",
-      "days": 0,
-      "downNow": false
-    },
-    {
-      "unit": "Ramon Albó",
-      "station": "Maragall",
-      "days": 0,
-      "downNow": false
-    },
-    {
-      "unit": "Gran Via Carles III",
-      "station": "Maria Cristina",
-      "days": 0,
-      "downNow": false
-    },
-    {
-      "unit": "Rocafort / Diputació",
-      "station": "Rocafort",
       "days": 0,
       "downNow": false
     }

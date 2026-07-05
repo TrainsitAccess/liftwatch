@@ -1,6 +1,15 @@
 import "dotenv/config";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { getSystem } from "../catalog/systems.js";
+import { stationModelsFor } from "../catalog/station-models.js";
+import {
+  allElevators,
+  chainDisplayName,
+  chainDownIntervals,
+  mergeIntervals,
+  totalDurationMs,
+  type Interval,
+} from "../lib/accessibility.js";
 import { getSupabase } from "../lib/supabase.js";
 
 // Snapshot the archive into site/data.json for the static site. Server-side
@@ -206,7 +215,64 @@ function mergedDowntimeMs(evts: typeof allEvents): number {
 
 function buildSystemDetail(systemId: string) {
   const systemEvents = eventsBySystem.get(systemId) ?? [];
-  const systemUnits = (unitsBySystem.get(systemId) ?? []).filter((u) => u.is_active);
+  // NOT filtered to is_active — a unit mid capital-replacement (e.g. MTA's
+  // EL132/EL133 at 161 St-Yankee Stadium) can be marked is_active: false in
+  // the feed while still having a real, ongoing outage. Excluding it here
+  // silently dropped it from every board below except "Currently Broken
+  // Elevators" (which reads events directly, not through this list).
+  const systemUnits = unitsBySystem.get(systemId) ?? [];
+
+  // --- Curated multi-chain stations (see station-models.ts) ---
+  // A physical station can have more than one INDEPENDENT access chain
+  // (161 St-Yankee Stadium: the 4 and the B/D each depend on their own,
+  // non-redundant elevators — fixing one tells you nothing about the
+  // other). Modeled stations are tracked per-CHAIN below instead of as one
+  // flat whole-station count; un-modeled stations keep the simple
+  // per-unit is_redundant approach unchanged.
+  const models = stationModelsFor(systemId); // bare stationExternalId -> chains
+  const modeledStationIds = new Set([...models.keys()].map((bare) => `${systemId}:${bare}`));
+
+  const eventsByElevatorExtId = new Map<string, typeof allEvents>();
+  for (const e of systemEvents) {
+    const extId = unitById.get(e.unit_id as string)?.external_id as string | undefined;
+    if (!extId) continue;
+    const list = eventsByElevatorExtId.get(extId) ?? [];
+    list.push(e);
+    eventsByElevatorExtId.set(extId, list);
+  }
+  function elevatorDownIntervals(externalId: string): Interval[] {
+    const evts = eventsByElevatorExtId.get(externalId) ?? [];
+    return mergeIntervals(
+      evts.map((e) => ({
+        start: Date.parse((e.source_started_at as string | null) ?? (e.started_at as string)),
+        end: e.ended_at ? Date.parse(e.ended_at as string) : now,
+      })),
+    );
+  }
+
+  // Elevator -> chain-qualified display suffix (e.g. " (4)"), only when it
+  // belongs to exactly ONE chain at its station. A shared elevator across
+  // multiple chains (161 St's EL131, the street-to-mezzanine prerequisite
+  // for both the 4 and the B/D) keeps the bare station name instead, since
+  // it doesn't specifically belong to one line.
+  const chainSuffixByElevator = new Map<string, string>();
+  for (const chains of models.values()) {
+    const memberCount = new Map<string, number>();
+    for (const model of chains) {
+      for (const el of allElevators(model)) memberCount.set(el.externalId, (memberCount.get(el.externalId) ?? 0) + 1);
+    }
+    for (const model of chains) {
+      if (!model.chainLabel) continue;
+      for (const el of allElevators(model)) {
+        if (memberCount.get(el.externalId) === 1) chainSuffixByElevator.set(el.externalId, model.chainLabel);
+      }
+    }
+  }
+  function displayStationName(sid: string | null | undefined, externalId: string | undefined): string {
+    const base = (sid && stationName.get(sid)) ?? "Unknown";
+    const suffix = externalId ? chainSuffixByElevator.get(externalId) : undefined;
+    return suffix ? `${base}${suffix}` : base;
+  }
 
   // Currently broken elevators (live snapshot) — every open outage right
   // now, not an all-time ranking. Unlike the other boards, this isn't
@@ -219,75 +285,109 @@ function buildSystemDetail(systemId: string) {
       const since = (e.source_started_at as string | null) ?? (e.started_at as string);
       const sid = (e.station_id as string | null) ?? (unit?.station_id as string | null);
       return {
-        station: (sid && stationName.get(sid)) ?? "Unknown",
+        station: displayStationName(sid, unit?.external_id as string | undefined),
         unit: (unit?.description as string) || (unit?.external_id as string) || "?",
         days: daysSince(since),
         planned: e.is_planned as boolean,
         soleAccess: unit?.is_redundant === false,
+        // MTA (so far) marks a unit is_active: false while it's mid
+        // capital-replacement rather than just "broken" — flag that
+        // distinction so a 600+ day outage doesn't read as neglect.
+        note: unit?.is_active === false ? "This elevator is likely being replaced." : undefined,
       };
     })
     .sort((a, b) => b.days - a.days);
 
-  // Blackout events — only outages on non-redundant (sole step-free access)
-  // units count; a redundant unit's outage never severs the station's
-  // step-free access on its own. Shared by both boards below.
+  // Accessibility blackouts (shame) — ranked by TOTAL TIME a station (or
+  // curated chain) was actually inaccessible (overlapping blackouts merged,
+  // not summed), not by how many separate outages caused it.
+  const blackoutEntries: { name: string; hours: number }[] = [];
+  // Longest step-free streak (honor) — days since the last blackout ended,
+  // 0 if currently blacked out.
+  const streakEntries: { name: string; days: number; blackedOutNow: boolean }[] = [];
+
+  for (const [bare, chains] of models) {
+    const dbStationId = `${systemId}:${bare}`;
+    const stName = stationName.get(dbStationId) ?? bare;
+    for (const model of chains) {
+      const downIntervalsByElevator = new Map<string, Interval[]>();
+      for (const el of allElevators(model)) downIntervalsByElevator.set(el.externalId, elevatorDownIntervals(el.externalId));
+      const chainIntervals = chainDownIntervals(model, downIntervalsByElevator);
+      const label = chainDisplayName(stName, model);
+
+      const hours = totalDurationMs(chainIntervals) / 3_600_000;
+      if (hours > 0) blackoutEntries.push({ name: label, hours });
+
+      const blackedOutNow = chainIntervals.some((iv) => iv.end === now);
+      const latestChainEnd = chainIntervals.reduce((max, iv) => Math.max(max, iv.end), -Infinity);
+      const chainFirstSeen = allElevators(model)
+        .map((el) => unitById.get(`${systemId}:${el.externalId}`)?.first_seen as string | undefined)
+        .filter((v): v is string => !!v)
+        .reduce<string | undefined>((min, v) => (!min || v < min ? v : min), undefined);
+      const since = blackedOutNow
+        ? now
+        : latestChainEnd > -Infinity
+          ? latestChainEnd
+          : (chainFirstSeen ? Date.parse(chainFirstSeen) : now);
+      streakEntries.push({ name: label, days: blackedOutNow ? 0 : Math.max(0, Math.floor((now - since) / 86_400_000)), blackedOutNow });
+    }
+  }
+
+  // Un-modeled stations: the simple flat approach, unchanged — only outages
+  // on non-redundant (sole step-free access) units count as a "blackout";
+  // a redundant unit's outage never severs access on its own. Stations with
+  // a curated chain above are excluded here to avoid double-counting them.
   const blackoutEventsByStation = new Map<string, typeof allEvents>();
   for (const e of systemEvents) {
     const unit = unitById.get(e.unit_id as string);
     if (unit?.is_redundant !== false) continue;
     const sid = (e.station_id as string | null) ?? (unit.station_id as string | null);
-    if (!sid) continue;
+    if (!sid || modeledStationIds.has(sid)) continue;
     const list = blackoutEventsByStation.get(sid) ?? [];
     list.push(e);
     blackoutEventsByStation.set(sid, list);
   }
-
-  // Accessibility blackouts (shame) — ranked by TOTAL TIME a station was
-  // actually inaccessible (overlapping blackouts merged, not summed), not
-  // by how many separate outages caused it. Redundancy-aware: an outage on
-  // a redundant elevator never counts, since it didn't cut off access.
-  const accessibilityBlackouts = [...blackoutEventsByStation.entries()]
-    .map(([sid, evts]) => ({ name: stationName.get(sid) ?? "Unknown", hours: mergedDowntimeMs(evts) / 3_600_000 }))
-    .filter((s) => s.hours > 0)
-    .sort((a, b) => b.hours - a.hours)
-    .slice(0, 10);
+  for (const [sid, evts] of blackoutEventsByStation) {
+    const hours = mergedDowntimeMs(evts) / 3_600_000;
+    if (hours > 0) blackoutEntries.push({ name: stationName.get(sid) ?? "Unknown", hours });
+  }
 
   const firstSeenByStation = new Map<string, string>();
   for (const u of systemUnits) {
     const sid = u.station_id as string | null;
-    if (!sid) continue;
+    if (!sid || modeledStationIds.has(sid)) continue;
     const fs = u.first_seen as string;
     const cur = firstSeenByStation.get(sid);
     if (!cur || fs < cur) firstSeenByStation.set(sid, fs);
   }
-  const stepFreeStreak = [...firstSeenByStation.keys()]
-    .map((sid) => {
-      const blackouts = blackoutEventsByStation.get(sid) ?? [];
-      const blackedOutNow = blackouts.some((e) => e.ended_at == null);
-      const since = blackedOutNow ? null : (latestEnd(blackouts) ?? firstSeenByStation.get(sid)!);
-      return {
-        name: stationName.get(sid) ?? "Unknown",
-        days: blackedOutNow ? 0 : daysSince(since!),
-        blackedOutNow,
-      };
-    })
-    .sort((a, b) => b.days - a.days)
-    .slice(0, 10);
+  for (const sid of firstSeenByStation.keys()) {
+    const blackouts = blackoutEventsByStation.get(sid) ?? [];
+    const blackedOutNow = blackouts.some((e) => e.ended_at == null);
+    const since = blackedOutNow ? null : (latestEnd(blackouts) ?? firstSeenByStation.get(sid)!);
+    streakEntries.push({
+      name: stationName.get(sid) ?? "Unknown",
+      days: blackedOutNow ? 0 : daysSince(since!),
+      blackedOutNow,
+    });
+  }
 
-  // Most broken units (shame) — active units only, all-time outage count.
+  const accessibilityBlackouts = blackoutEntries.sort((a, b) => b.hours - a.hours).slice(0, 10);
+  const stepFreeStreak = streakEntries.sort((a, b) => b.days - a.days).slice(0, 10);
+
+  // Most broken units (shame) — all-time outage count.
   const unitOutageCount = new Map<string, number>();
   for (const e of systemEvents) unitOutageCount.set(e.unit_id as string, (unitOutageCount.get(e.unit_id as string) ?? 0) + 1);
   const mostBrokenUnits = systemUnits
     .map((u) => ({
       unit: (u.description as string) || (u.external_id as string),
-      station: stationName.get(u.station_id as string) ?? "Unknown",
+      station: displayStationName(u.station_id as string | null, u.external_id as string | undefined),
       count: unitOutageCount.get(u.id as string) ?? 0,
     }))
     .filter((u) => u.count > 0)
     .sort((a, b) => b.count - a.count)
     .slice(0, 10);
 
-  // Uptime streak (honor) — active units only.
+  // Uptime streak (honor).
   const eventsByUnit = new Map<string, typeof allEvents>();
   for (const e of systemEvents) {
     const list = eventsByUnit.get(e.unit_id as string) ?? [];
@@ -301,7 +401,7 @@ function buildSystemDetail(systemId: string) {
       const since = downNow ? null : (latestEnd(unitEvents) ?? (u.first_seen as string));
       return {
         unit: (u.description as string) || (u.external_id as string),
-        station: stationName.get(u.station_id as string) ?? "Unknown",
+        station: displayStationName(u.station_id as string | null, u.external_id as string | undefined),
         days: downNow ? 0 : daysSince(since!),
         downNow,
       };

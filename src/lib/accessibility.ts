@@ -26,6 +26,15 @@ export interface AccessSegment {
 export interface StationModel {
   systemId: string;
   stationExternalId: string;
+  // A physical station can have multiple INDEPENDENT access chains — e.g. a
+  // subway interchange where different elevators gate different lines, and
+  // one line's status tells you nothing about the other's (161 St-Yankee
+  // Stadium: the 4 and the B/D each depend on their own, non-redundant
+  // elevators). Give each chain its own StationModel sharing the same
+  // stationExternalId, with a distinct chainLabel appended to the display
+  // name (e.g. " (4)", " (B/D)") — see stationModelsFor. Omit for the common
+  // case of one unified chain per station (every current BART model).
+  chainLabel?: string;
   segments: AccessSegment[];
   note?: string;
 }
@@ -94,4 +103,92 @@ export function stationAccessibilityState(model: StationModel, downIds: Set<stri
   const modelIds = new Set(allElevators(model).map((e) => e.externalId));
   if ([...downIds].some((id) => !modelIds.has(id))) return "at_risk";
   return stationAccessible(model, downIds) ? "accessible" : "inaccessible";
+}
+
+// --- Time-series accessibility: how long has a chain actually been down? ---
+//
+// The functions above answer a POINT-IN-TIME question ("is it accessible
+// right now, given this set of down ids"). Ranking a chain by total time
+// inaccessible (or its current streak) needs the same "every segment up"
+// logic applied across its whole outage HISTORY, not just one instant.
+//
+// segmentUp says a segment is up if ANY of its elevators works — so a
+// segment is DOWN only during the intersection of all its elevators' own
+// downtime (they're redundant to each other). A chain is down whenever ANY
+// segment is down — the union across segments. For the common case of one
+// elevator per segment (every current MTA model), intersection of a single
+// list is just that list, so this reduces to exactly what you'd expect.
+
+export interface Interval {
+  start: number; // epoch ms
+  end: number; // epoch ms
+}
+
+/** Sorts and merges overlapping/adjacent intervals into disjoint ones. */
+export function mergeIntervals(intervals: Interval[]): Interval[] {
+  const sorted = [...intervals].sort((a, b) => a.start - b.start);
+  const merged: Interval[] = [];
+  for (const iv of sorted) {
+    const last = merged[merged.length - 1];
+    if (last && iv.start <= last.end) {
+      last.end = Math.max(last.end, iv.end);
+    } else {
+      merged.push({ ...iv });
+    }
+  }
+  return merged;
+}
+
+function intersectPair(a: Interval[], b: Interval[]): Interval[] {
+  const out: Interval[] = [];
+  let i = 0;
+  let j = 0;
+  while (i < a.length && j < b.length) {
+    const start = Math.max(a[i]!.start, b[j]!.start);
+    const end = Math.min(a[i]!.end, b[j]!.end);
+    if (start < end) out.push({ start, end });
+    if (a[i]!.end < b[j]!.end) i++;
+    else j++;
+  }
+  return out;
+}
+
+/** Every interval-list must overlap for a moment to appear in the result. */
+export function intersectAll(lists: Interval[][]): Interval[] {
+  if (lists.length === 0) return [];
+  let result = lists[0]!;
+  for (let i = 1; i < lists.length; i++) {
+    result = intersectPair(result, lists[i]!);
+    if (result.length === 0) return [];
+  }
+  return result;
+}
+
+export function totalDurationMs(intervals: Interval[]): number {
+  return intervals.reduce((sum, iv) => sum + (iv.end - iv.start), 0);
+}
+
+/**
+ * The chain's down-intervals over its whole history: down whenever any
+ * segment is down, where a segment is down only when ALL its elevators are
+ * simultaneously down (a stepFreeAlternative segment is never down at all).
+ * `downIntervalsByElevator` supplies each elevator's own (already-merged)
+ * down-intervals, keyed by externalId; an elevator with no entry is treated
+ * as never down (e.g. it's outside this feed's data).
+ */
+export function chainDownIntervals(
+  model: StationModel,
+  downIntervalsByElevator: Map<string, Interval[]>,
+): Interval[] {
+  const perSegment = model.segments.map((seg) => {
+    if (seg.stepFreeAlternative) return [] as Interval[];
+    const lists = seg.elevators.map((e) => downIntervalsByElevator.get(e.externalId) ?? []);
+    return intersectAll(lists);
+  });
+  return mergeIntervals(perSegment.flat());
+}
+
+/** Display name for a chain: the station name plus its chainLabel, if any. */
+export function chainDisplayName(stationName: string, model: StationModel): string {
+  return model.chainLabel ? `${stationName}${model.chainLabel}` : stationName;
 }

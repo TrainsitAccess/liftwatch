@@ -2,7 +2,7 @@
   "id": "bart-bay-area",
   "name": "BART",
   "label": "BART (San Francisco)",
-  "generatedAt": "2026-07-05T19:39:24.624Z",
+  "generatedAt": "2026-07-05T20:25:50.937Z",
   "currentlyBroken": [
     {
       "station": "Richmond",
@@ -21,16 +21,8 @@
   ],
   "accessibilityBlackouts": [
     {
-      "name": "Richmond",
-      "hours": 40.740948055555556
-    },
-    {
       "name": "Millbrae",
-      "hours": 40.740948055555556
-    },
-    {
-      "name": "12th St. Oakland City Center",
-      "hours": 5.163831388888889
+      "hours": 41.51492388888889
     },
     {
       "name": "Coliseum",
@@ -38,6 +30,41 @@
     }
   ],
   "stepFreeStreak": [
+    {
+      "name": "Ashby",
+      "days": 1,
+      "blackedOutNow": false
+    },
+    {
+      "name": "12th St. Oakland City Center",
+      "days": 1,
+      "blackedOutNow": false
+    },
+    {
+      "name": "19th St. Oakland",
+      "days": 1,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Richmond",
+      "days": 1,
+      "blackedOutNow": false
+    },
+    {
+      "name": "San Francisco International Airport",
+      "days": 1,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Warm Springs/South Fremont",
+      "days": 1,
+      "blackedOutNow": false
+    },
+    {
+      "name": "West Dublin/Pleasanton",
+      "days": 1,
+      "blackedOutNow": false
+    },
     {
       "name": "Milpitas",
       "days": 1,
@@ -49,42 +76,7 @@
       "blackedOutNow": false
     },
     {
-      "name": "Warm Springs/South Fremont",
-      "days": 1,
-      "blackedOutNow": false
-    },
-    {
-      "name": "19th St. Oakland",
-      "days": 1,
-      "blackedOutNow": false
-    },
-    {
-      "name": "Ashby",
-      "days": 1,
-      "blackedOutNow": false
-    },
-    {
       "name": "Balboa Park",
-      "days": 1,
-      "blackedOutNow": false
-    },
-    {
-      "name": "Downtown Berkeley",
-      "days": 1,
-      "blackedOutNow": false
-    },
-    {
-      "name": "Dublin/Pleasanton",
-      "days": 1,
-      "blackedOutNow": false
-    },
-    {
-      "name": "Rockridge",
-      "days": 1,
-      "blackedOutNow": false
-    },
-    {
-      "name": "San Bruno",
       "days": 1,
       "blackedOutNow": false
     }

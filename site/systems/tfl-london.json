@@ -2,7 +2,7 @@
   "id": "tfl-london",
   "name": "TfL",
   "label": "TfL (London)",
-  "generatedAt": "2026-07-05T19:39:24.624Z",
+  "generatedAt": "2026-07-05T20:25:50.937Z",
   "currentlyBroken": [
     {
       "station": "Wembley Park",
@@ -47,8 +47,43 @@
       "soleAccess": true
     },
     {
-      "station": "East India",
-      "unit": "Lift 3",
+      "station": "Edmonton Green",
+      "unit": "Lift 2",
+      "days": 0,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "Hackney Central",
+      "unit": "Lift 1",
+      "days": 0,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "Royal Victoria",
+      "unit": "Lift 2",
+      "days": 0,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "King's Cross St Pancras",
+      "unit": "Lift B",
+      "days": 0,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "Finchley Central",
+      "unit": "Lift 2",
+      "days": 0,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "Liverpool Street",
+      "unit": "Lift 1",
       "days": 0,
       "planned": false,
       "soleAccess": true
@@ -61,8 +96,8 @@
       "soleAccess": true
     },
     {
-      "station": "Finchley Central",
-      "unit": "Lift 2",
+      "station": "East India",
+      "unit": "Lift 3",
       "days": 0,
       "planned": false,
       "soleAccess": true
@@ -89,36 +124,8 @@
       "soleAccess": true
     },
     {
-      "station": "Hackney Central",
-      "unit": "Lift 1",
-      "days": 0,
-      "planned": false,
-      "soleAccess": true
-    },
-    {
-      "station": "Edmonton Green",
-      "unit": "Lift 2",
-      "days": 0,
-      "planned": false,
-      "soleAccess": true
-    },
-    {
-      "station": "Royal Victoria",
-      "unit": "Lift 2",
-      "days": 0,
-      "planned": false,
-      "soleAccess": true
-    },
-    {
-      "station": "Liverpool Street",
-      "unit": "Lift 1",
-      "days": 0,
-      "planned": false,
-      "soleAccess": true
-    },
-    {
-      "station": "King's Cross St Pancras",
-      "unit": "Lift B",
+      "station": "Highbury & Islington",
+      "unit": "Lift 3",
       "days": 0,
       "planned": false,
       "soleAccess": true
@@ -134,63 +141,48 @@
   "accessibilityBlackouts": [
     {
       "name": "Wembley Park",
-      "hours": 18.95075888888889
+      "hours": 19.724734722222223
     },
     {
       "name": "Hounslow East",
-      "hours": 18.95075888888889
+      "hours": 19.724734722222223
     },
     {
       "name": "Hackney Wick",
-      "hours": 18.95075888888889
+      "hours": 19.724734722222223
     },
     {
       "name": "Willesden Junction",
-      "hours": 18.95075888888889
+      "hours": 19.724734722222223
     },
     {
       "name": "Upminster",
-      "hours": 18.95075888888889
+      "hours": 19.724734722222223
     },
     {
       "name": "King's Cross St Pancras",
-      "hours": 18.95075888888889
+      "hours": 19.724734722222223
     },
     {
-      "name": "East India",
-      "hours": 18.95075888888889
+      "name": "Edmonton Green",
+      "hours": 19.724734722222223
     },
     {
-      "name": "Imperial Wharf",
-      "hours": 18.95075888888889
+      "name": "Hackney Central",
+      "hours": 19.724734722222223
     },
     {
       "name": "Finchley Central",
-      "hours": 18.95075888888889
+      "hours": 19.724734722222223
     },
     {
-      "name": "Wembley Central",
-      "hours": 18.95075888888889
+      "name": "Liverpool Street",
+      "hours": 19.724734722222223
     }
   ],
   "stepFreeStreak": [
     {
       "name": "Reading",
-      "days": 0,
-      "blackedOutNow": false
-    },
-    {
-      "name": "Bromley South",
-      "days": 0,
-      "blackedOutNow": false
-    },
-    {
-      "name": "Caledonian Road & Barnsbury",
-      "days": 0,
-      "blackedOutNow": false
-    },
-    {
-      "name": "Camden Road",
       "days": 0,
       "blackedOutNow": false
     },
@@ -206,6 +198,21 @@
     },
     {
       "name": "Deptford",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Bromley South",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Caledonian Road & Barnsbury",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Camden Road",
       "days": 0,
       "blackedOutNow": false
     },
@@ -242,6 +249,16 @@
       "count": 1
     },
     {
+      "unit": "Lift 2",
+      "station": "Royal Victoria",
+      "count": 1
+    },
+    {
+      "unit": "Lift 2",
+      "station": "Finchley Central",
+      "count": 1
+    },
+    {
       "unit": "Lift B",
       "station": "King's Cross St Pancras",
       "count": 1
@@ -265,46 +282,12 @@
       "unit": "Lift 6",
       "station": "Blackfriars",
       "count": 1
-    },
-    {
-      "unit": "Lift LU 2",
-      "station": "Canary Wharf",
-      "count": 1
-    },
-    {
-      "unit": "Lift 2",
-      "station": "Gospel Oak",
-      "count": 1
     }
   ],
   "uptimeStreak": [
     {
       "unit": "Lift 4",
       "station": "Reading",
-      "days": 0,
-      "downNow": false
-    },
-    {
-      "unit": "Lift 1",
-      "station": "Bromley South",
-      "days": 0,
-      "downNow": false
-    },
-    {
-      "unit": "Lift 2",
-      "station": "Caledonian Road & Barnsbury",
-      "days": 0,
-      "downNow": false
-    },
-    {
-      "unit": "Lift 1",
-      "station": "Camden Road",
-      "days": 0,
-      "downNow": false
-    },
-    {
-      "unit": "Lift 2",
-      "station": "Camden Road",
       "days": 0,
       "downNow": false
     },
@@ -337,6 +320,30 @@
       "station": "Deptford",
       "days": 0,
       "downNow": false
+    },
+    {
+      "unit": "Lift 1",
+      "station": "Bromley South",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "Lift 2",
+      "station": "Caledonian Road & Barnsbury",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "Lift 1",
+      "station": "Camden Road",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "Lift 2",
+      "station": "Camden Road",
+      "days": 0,
+      "downNow": false
     }
   ],
   "singlePointsOfFailure": [
@@ -353,7 +360,7 @@
       "count": 9
     },
     {
-      "name": "Bank",
+      "name": "Bond Street",
       "count": 6
     },
     {
@@ -365,15 +372,11 @@
       "count": 6
     },
     {
+      "name": "Bank",
+      "count": 6
+    },
+    {
       "name": "Paddington",
-      "count": 6
-    },
-    {
-      "name": "Farringdon",
-      "count": 6
-    },
-    {
-      "name": "Bond Street",
       "count": 6
     },
     {
@@ -382,6 +385,10 @@
     },
     {
       "name": "Vauxhall",
+      "count": 6
+    },
+    {
+      "name": "Farringdon",
       "count": 6
     },
     {
@@ -397,7 +404,7 @@
       "count": 5
     },
     {
-      "name": "Finsbury Park",
+      "name": "Wembley Park",
       "count": 5
     }
   ]

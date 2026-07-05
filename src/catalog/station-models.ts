@@ -155,10 +155,87 @@ export const STATION_MODELS: StationModel[] = [
       },
     ],
   },
+  {
+    systemId: "mta-nyct",
+    stationExternalId: "604",
+    chainLabel: " (4)",
+    note:
+      "EL132/EL133 gate the 4 platform by direction and are NOT redundant with " +
+      "each other — each is essential for its own direction (confirmed directly: " +
+      "EL132 = Bronx-bound, EL133 = Manhattan-bound; MTA's own feed text for " +
+      'EL132, "B/D mezzanine to 4 train," does not state the direction). EL131 ' +
+      "(street-mezzanine) is a shared prerequisite with this station's (B/D) " +
+      "chain — if it fails, both chains go down together. EL132/EL133 are " +
+      "currently mid capital-replacement (expected summer 2026) and marked " +
+      "is_active: false in MTA's feed despite having a real, ongoing outage.",
+    segments: [
+      {
+        id: "street-mezzanine",
+        label: "Street to mezzanine",
+        elevators: [{ externalId: "EL131", label: "Street to mezzanine", matchHints: ["street to mezzanine"] }],
+      },
+      {
+        id: "mezzanine-4-bronx",
+        label: "Mezzanine to Bronx-bound 4",
+        elevators: [
+          {
+            externalId: "EL132",
+            label: 'Mezzanine to Bronx-bound 4 (feed text: "B/D mezzanine to 4 train")',
+            matchHints: ["bronx-bound 4"],
+          },
+        ],
+      },
+      {
+        id: "mezzanine-4-manhattan",
+        label: "Mezzanine to Manhattan-bound 4",
+        elevators: [
+          { externalId: "EL133", label: "Mezzanine to Manhattan-bound 4", matchHints: ["manhattan-bound 4"] },
+        ],
+      },
+    ],
+  },
+  {
+    systemId: "mta-nyct",
+    stationExternalId: "604",
+    chainLabel: " (B/D)",
+    note:
+      "EL134/EL135 gate the B/D platform by direction and are NOT redundant " +
+      "with each other (confirmed directly: EL134 = Manhattan-bound, EL135 = " +
+      "Bronx-bound). EL131 (street-mezzanine) is a shared prerequisite with " +
+      "this station's (4) chain — if it fails, both chains go down together.",
+    segments: [
+      {
+        id: "street-mezzanine",
+        label: "Street to mezzanine",
+        elevators: [{ externalId: "EL131", label: "Street to mezzanine", matchHints: ["street to mezzanine"] }],
+      },
+      {
+        id: "mezzanine-bd-manhattan",
+        label: "Mezzanine to Manhattan-bound B/D",
+        elevators: [
+          { externalId: "EL134", label: "Mezzanine to Manhattan-bound B/D", matchHints: ["manhattan-bound b/d"] },
+        ],
+      },
+      {
+        id: "mezzanine-bd-bronx",
+        label: "Mezzanine to Bronx-bound B/D",
+        elevators: [
+          { externalId: "EL135", label: "Mezzanine to Bronx-bound B/D", matchHints: ["bronx-bound b/d"] },
+        ],
+      },
+    ],
+  },
 ];
 
-export function stationModelsFor(systemId: string): Map<string, StationModel> {
-  return new Map(
-    STATION_MODELS.filter((m) => m.systemId === systemId).map((m) => [m.stationExternalId, m]),
-  );
+// A physical station can have more than one entry (multiple independent
+// access chains sharing a stationExternalId — see StationModel.chainLabel),
+// so this returns an ARRAY of models per station, not a single one.
+export function stationModelsFor(systemId: string): Map<string, StationModel[]> {
+  const map = new Map<string, StationModel[]>();
+  for (const m of STATION_MODELS.filter((m) => m.systemId === systemId)) {
+    const list = map.get(m.stationExternalId) ?? [];
+    list.push(m);
+    map.set(m.stationExternalId, list);
+  }
+  return map;
 }

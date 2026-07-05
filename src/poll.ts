@@ -4,7 +4,7 @@ import { getAdapter, knownSystemIds } from "./adapters/registry.js";
 import { getSystem } from "./catalog/systems.js";
 import { overridesFor } from "./catalog/redundancy-overrides.js";
 import { stationModelsFor } from "./catalog/station-models.js";
-import { findElevator, stationAccessibilityState } from "./lib/accessibility.js";
+import { allElevators, chainDisplayName, findElevator, stationAccessibilityState } from "./lib/accessibility.js";
 import { getSupabase } from "./lib/supabase.js";
 import { ingest } from "./ingest.js";
 
@@ -59,28 +59,46 @@ function summarize(
     if (arr) arr.push(o);
     else byStation.set(key, [o]);
   }
+  // A station can have multiple independent chains sharing its abbr (see
+  // StationModel.chainLabel) — each is scored separately, and outages get
+  // filtered to just the ids that chain actually knows about first. Passing
+  // a chain a downId that belongs only to a SIBLING chain would otherwise
+  // misreport it as "at_risk" (stationAccessibilityState treats any unknown
+  // id conservatively), even though that outage is irrelevant to this chain.
   const modeled = [...byStation].filter(([abbr]) => models.has(abbr));
   if (modeled.length) {
     console.log(`\n  accessibility — curated stations affected:`);
     for (const [abbr, outs] of modeled) {
-      const model = models.get(abbr)!;
-      const downIds = new Set(outs.map((o) => o.unitExternalId));
-      const state = stationAccessibilityState(model, downIds);
-      const badge = state === "accessible" ? "ACCESSIBLE  " : state === "inaccessible" ? "INACCESSIBLE" : "AT RISK     ";
-      console.log(`    ${badge}  ${outs[0]!.stationName}`);
-      for (const o of outs) {
-        const what = o.attributed
-          ? `${findElevator(model, o.unitExternalId)?.label ?? o.unitExternalId}${o.segmentId ? `  [${o.segmentId}]` : ""}`
-          : o.segmentId
-            ? `elevator within ${o.segmentId} — ambiguous (conservative)`
-            : "unspecified elevator — could not attribute (conservative)";
-        console.log(`        - ${what}`);
+      for (const model of models.get(abbr)!) {
+        const modelIds = new Set(allElevators(model).map((e) => e.externalId));
+        const relevantOuts = outs.filter((o) => modelIds.has(o.unitExternalId));
+        if (relevantOuts.length === 0) continue;
+        const downIds = new Set(relevantOuts.map((o) => o.unitExternalId));
+        const state = stationAccessibilityState(model, downIds);
+        const badge = state === "accessible" ? "ACCESSIBLE  " : state === "inaccessible" ? "INACCESSIBLE" : "AT RISK     ";
+        console.log(`    ${badge}  ${chainDisplayName(relevantOuts[0]!.stationName, model)}`);
+        for (const o of relevantOuts) {
+          // `attributed` is a BART-style flag (was this station-level advisory
+          // text successfully matched to one elevator?) — it's meaningless for
+          // a system like MTA that already reports the exact elevator id
+          // natively, with no guessing involved. Check the id directly instead
+          // of relying on a flag only some adapters set.
+          const known = findElevator(model, o.unitExternalId);
+          const what = known
+            ? `${known.label}${o.segmentId ? `  [${o.segmentId}]` : ""}`
+            : o.segmentId
+              ? `elevator within ${o.segmentId} — ambiguous (conservative)`
+              : "unspecified elevator — could not attribute (conservative)";
+          console.log(`        - ${what}`);
+        }
       }
     }
   }
 
   if (models.size) {
-    console.log(`\n  ${models.size} stations modeled per-elevator · redundancy baseline: ${baseline}`);
+    const totalChains = [...models.values()].reduce((n, arr) => n + arr.length, 0);
+    const chainNote = totalChains > models.size ? ` (${totalChains} chains)` : "";
+    console.log(`\n  ${models.size} stations modeled per-elevator${chainNote} · redundancy baseline: ${baseline}`);
   }
 }
 

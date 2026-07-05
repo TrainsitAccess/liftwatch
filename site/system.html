@@ -66,6 +66,7 @@
   <div id="currently-broken-board"></div>
   <p class="empty" id="currently-broken-empty" hidden>None right now — full step-free access system-wide.</p>
   <p class="legend"><span class="red">▮</span> SOLE STEP-FREE ACCESS — STATION IS CURRENTLY INACCESSIBLE</p>
+  <div id="currently-broken-notes"></div>
 </section>
 
 <section class="board" aria-hidden="true">
@@ -189,17 +190,21 @@ if (!id) {
       cells.push(...makeRow(cb, [
         { str: o.soleAccess ? "▮ " : "  ", cls: "red" },
         { str: pad(o.unit, 17), cls: "" },
-        { str: " " + pad(o.station, 15), cls: "dim" },
+        { str: " " + pad(o.station, 38), cls: "dim" },
         { str: rpad(o.days + "D", 5), cls: o.days > 180 ? "red" : "amber" },
       ]));
     });
+    const notedOutages = data.currentlyBroken.filter(o => o.note);
+    document.getElementById("currently-broken-notes").innerHTML = notedOutages.length
+      ? notedOutages.map(o => `<p class="legend">* ${o.unit} (${o.station}): ${o.note}</p>`).join("")
+      : "";
 
     showEmpty("blackouts-empty", data.accessibilityBlackouts.length === 0);
     const bo = document.getElementById("blackouts-board");
     data.accessibilityBlackouts.forEach((s, i) => {
       cells.push(...makeRow(bo, [
         { str: rpad(i + 1, 2) + " ", cls: "dim" },
-        { str: pad(s.name, 26), cls: "" },
+        { str: pad(s.name, 38), cls: "" },
         { str: rpad(formatHours(s.hours), 8), cls: "red" },
       ]));
     });
@@ -209,7 +214,7 @@ if (!id) {
     data.stepFreeStreak.forEach((s, i) => {
       cells.push(...makeRow(ss, [
         { str: rpad(i + 1, 2) + " ", cls: "dim" },
-        { str: pad(s.name, 26), cls: "" },
+        { str: pad(s.name, 38), cls: "" },
         { str: rpad(s.days + "D", 6), cls: s.blackedOutNow ? "red" : "amber" },
       ]));
     });
@@ -220,7 +225,7 @@ if (!id) {
       cells.push(...makeRow(bu, [
         { str: rpad(i + 1, 2) + " ", cls: "dim" },
         { str: pad(u.unit, 17), cls: "" },
-        { str: " " + pad(u.station, 15), cls: "dim" },
+        { str: " " + pad(u.station, 38), cls: "dim" },
         { str: rpad(u.count, 5), cls: "amber" },
       ]));
     });
@@ -231,7 +236,7 @@ if (!id) {
       cells.push(...makeRow(su, [
         { str: rpad(i + 1, 2) + " ", cls: "dim" },
         { str: pad(u.unit, 17), cls: "" },
-        { str: " " + pad(u.station, 15), cls: "dim" },
+        { str: " " + pad(u.station, 38), cls: "dim" },
         { str: rpad(u.days + "D", 5), cls: u.downNow ? "red" : "amber" },
       ]));
     });

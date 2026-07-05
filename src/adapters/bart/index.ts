@@ -87,31 +87,40 @@ export function createBartAdapter(config: BartConfig = BART_CONFIG): Adapter {
       const models = stationModelsFor(config.systemId);
 
       // Modeled stations expand into per-elevator units (with segment + derived
-      // redundancy); un-modeled stations stay a single station-level unit.
+      // redundancy); un-modeled stations stay a single station-level unit. A
+      // station can have MULTIPLE independent chains (StationModel.chainLabel)
+      // — loop all of them, deduping any elevator shared across chains (e.g. a
+      // common entrance) so it's emitted once. No BART station uses multiple
+      // chains today, but this keeps the adapter correct if one ever does.
       const units: NormalizedUnit[] = [];
       for (const s of stations) {
         const abbr = s.abbr.toUpperCase();
         const lat = num(s.gtfs_latitude);
         const lon = num(s.gtfs_longitude);
-        const model = models.get(abbr);
-        if (model) {
-          for (const seg of model.segments) {
-            for (const e of seg.elevators) {
-              units.push({
-                externalId: e.externalId,
-                unitType: "elevator",
-                stationExternalId: abbr,
-                stationName: s.name,
-                borough: s.city,
-                description: e.label,
-                segment: seg.id,
-                isAda: true,
-                isRedundant: elevatorRedundant(model, e.externalId),
-                redundancySource: "curated",
-                isActive: true,
-                latitude: lat,
-                longitude: lon,
-              });
+        const stationModels = models.get(abbr) ?? [];
+        if (stationModels.length > 0) {
+          const seenElevatorIds = new Set<string>();
+          for (const model of stationModels) {
+            for (const seg of model.segments) {
+              for (const e of seg.elevators) {
+                if (seenElevatorIds.has(e.externalId)) continue;
+                seenElevatorIds.add(e.externalId);
+                units.push({
+                  externalId: e.externalId,
+                  unitType: "elevator",
+                  stationExternalId: abbr,
+                  stationName: s.name,
+                  borough: s.city,
+                  description: e.label,
+                  segment: seg.id,
+                  isAda: true,
+                  isRedundant: elevatorRedundant(model, e.externalId),
+                  redundancySource: "curated",
+                  isActive: true,
+                  latitude: lat,
+                  longitude: lon,
+                });
+              }
             }
           }
         } else {
@@ -141,7 +150,10 @@ export function createBartAdapter(config: BartConfig = BART_CONFIG): Adapter {
 
       const outages: NormalizedOutage[] = affected.map(({ abbr, desc }) => {
         const stationName = stationByAbbr.get(abbr)?.name ?? abbr;
-        const model = models.get(abbr);
+        // BART's advisory is one free-text sentence per station, not per chain,
+        // so multi-chain attribution isn't meaningful here (no BART station
+        // has more than one chain today) — attribute against the first model.
+        const model = models.get(abbr)?.[0];
         const base = {
           unitType: "elevator" as const,
           stationExternalId: abbr,
