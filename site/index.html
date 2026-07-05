@@ -27,7 +27,7 @@
   h1 .lift { color: var(--amber); }
   .tag { color: var(--dim); font-size: 12px; letter-spacing: 0.08em; margin-top: 6px; }
   .board {
-    width: min(1024px, 100%); background: var(--board);
+    width: fit-content; max-width: 100%; min-width: min(760px, 100%); background: var(--board);
     border: 1px solid var(--hairline); border-radius: 10px;
     padding: 16px 16px 12px; margin-bottom: 26px; overflow-x: auto;
   }
