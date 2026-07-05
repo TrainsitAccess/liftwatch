@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-07-04T19:45:29.497Z",
+  "generatedAt": "2026-07-05T00:58:05.510Z",
   "totals": {
-    "systems": 4,
-    "activeUnits": 1032,
+    "systems": 6,
+    "activeUnits": 1298,
     "staticUnitsInTotal": 320,
-    "down": 51
+    "down": 91
   },
   "systems": [
     {
@@ -15,23 +15,9 @@
       "inventoryComplete": true,
       "fleetSource": "live",
       "activeUnits": 408,
-      "down": 36,
-      "downUnplanned": 18,
-      "pctDown": 8.8,
-      "staticFleetAsOf": null,
-      "staticFleetSource": null
-    },
-    {
-      "id": "bart-bay-area",
-      "name": "BART",
-      "city": "San Francisco",
-      "dataQuality": "best_effort",
-      "inventoryComplete": true,
-      "fleetSource": "live",
-      "activeUnits": 67,
-      "down": 2,
-      "downUnplanned": 2,
-      "pctDown": 3,
+      "down": 37,
+      "downUnplanned": 19,
+      "pctDown": 9.1,
       "staticFleetAsOf": null,
       "staticFleetSource": null
     },
@@ -42,10 +28,38 @@
       "dataQuality": "good",
       "inventoryComplete": true,
       "fleetSource": "live",
-      "activeUnits": 237,
-      "down": 7,
+      "activeUnits": 156,
+      "down": 10,
       "downUnplanned": 5,
-      "pctDown": 3,
+      "pctDown": 6.4,
+      "staticFleetAsOf": null,
+      "staticFleetSource": null
+    },
+    {
+      "id": "tfl-london",
+      "name": "TfL",
+      "city": "London",
+      "dataQuality": "good",
+      "inventoryComplete": true,
+      "fleetSource": "live",
+      "activeUnits": 354,
+      "down": 21,
+      "downUnplanned": 21,
+      "pctDown": 5.9,
+      "staticFleetAsOf": null,
+      "staticFleetSource": null
+    },
+    {
+      "id": "bart-bay-area",
+      "name": "BART",
+      "city": "San Francisco",
+      "dataQuality": "best_effort",
+      "inventoryComplete": true,
+      "fleetSource": "live",
+      "activeUnits": 60,
+      "down": 3,
+      "downUnplanned": 3,
+      "pctDown": 5,
       "staticFleetAsOf": null,
       "staticFleetSource": null
     },
@@ -58,10 +72,24 @@
       "fleetSource": "static",
       "activeUnits": 320,
       "down": 6,
-      "downUnplanned": 3,
+      "downUnplanned": 4,
       "pctDown": 1.9,
       "staticFleetAsOf": "2026-07-04",
       "staticFleetSource": "https://www.wmata.com/ride/elevators-escalators.html"
+    },
+    {
+      "id": "cta-chicago",
+      "name": "CTA",
+      "city": "Chicago",
+      "dataQuality": "fair",
+      "inventoryComplete": false,
+      "fleetSource": "none",
+      "activeUnits": null,
+      "down": 14,
+      "downUnplanned": 12,
+      "pctDown": null,
+      "staticFleetAsOf": null,
+      "staticFleetSource": null
     }
   ],
   "longestOutages": [
@@ -76,7 +104,7 @@
     {
       "system": "NYC Subway",
       "station": "161 St-Yankee Stadium",
-      "unit": "EL133",
+      "unit": "EL132",
       "soleAccess": true,
       "planned": true,
       "days": 605
@@ -84,10 +112,18 @@
     {
       "system": "NYC Subway",
       "station": "161 St-Yankee Stadium",
-      "unit": "EL132",
+      "unit": "EL133",
       "soleAccess": true,
       "planned": true,
       "days": 605
+    },
+    {
+      "system": "NYC Subway",
+      "station": "Jamaica-179 St",
+      "unit": "EL431",
+      "soleAccess": true,
+      "planned": true,
+      "days": 224
     },
     {
       "system": "NYC Subway",
@@ -107,11 +143,11 @@
     },
     {
       "system": "NYC Subway",
-      "station": "Jamaica-179 St",
-      "unit": "EL431",
+      "station": "Crown Hts-Utica Av",
+      "unit": "EL322",
       "soleAccess": true,
       "planned": true,
-      "days": 224
+      "days": 214
     },
     {
       "system": "NYC Subway",
@@ -123,16 +159,8 @@
     },
     {
       "system": "NYC Subway",
-      "station": "Crown Hts-Utica Av",
-      "unit": "EL322",
-      "soleAccess": true,
-      "planned": true,
-      "days": 214
-    },
-    {
-      "system": "NYC Subway",
       "station": "Prospect Park",
-      "unit": "EL383",
+      "unit": "EL382",
       "soleAccess": true,
       "planned": true,
       "days": 213
@@ -140,7 +168,7 @@
     {
       "system": "NYC Subway",
       "station": "Prospect Park",
-      "unit": "EL382",
+      "unit": "EL383",
       "soleAccess": true,
       "planned": true,
       "days": 213
