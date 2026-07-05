@@ -156,6 +156,27 @@ export const SYSTEMS: SystemCatalogEntry[] = [
       source: "https://www.transitchicago.com/elevatorescalatorupgrades/",
     },
   },
+  {
+    id: "tmb-barcelona",
+    name: "Transports Metropolitans de Barcelona",
+    shortName: "TMB Metro",
+    city: "Barcelona",
+    metroArea: "Barcelona",
+    country: "Spain",
+    countryCode: "ES",
+    continent: "Europe",
+    timezone: "Europe/Madrid",
+    adapter: "tmb",
+    // Real per-elevator inventory (151 elevators, 123 stations — built by
+    // scripts/tmb-import.mjs from TMB's documented "transit" API) combined
+    // with a live outage feed that is NOT in developer.tmb.cat's docs at all
+    // — found by inspecting network traffic from TMB's own station pages
+    // (see src/adapters/tmb/index.ts). Covers conventional lines (L1-L5,
+    // L11) only, per TMB's own announcement; L9/L10/FM aren't wired to the
+    // elevator-status system yet. No redundancyBaseline yet (no verified
+    // per-direction topology signal, unlike TfL) — falls to assumed.
+    dataQuality: "good",
+  },
 ];
 
 export function getSystem(id: string): SystemCatalogEntry | undefined {

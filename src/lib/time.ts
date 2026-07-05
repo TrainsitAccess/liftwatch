@@ -34,3 +34,12 @@ export function nowUtcIso(): string {
   // UTC-now is always a valid instant, so toISO() never returns null here.
   return DateTime.utc().toISO() as string;
 }
+
+// TMB-style timestamps: epoch milliseconds, already an absolute instant (no
+// timezone ambiguity to resolve, unlike every wall-clock format above).
+export function msToUtcIso(value: number | null | undefined): string | undefined {
+  if (value === null || value === undefined || !Number.isFinite(value)) return undefined;
+  const dt = DateTime.fromMillis(value, { zone: "utc" });
+  if (!dt.isValid) return undefined;
+  return dt.toISO() ?? undefined;
+}

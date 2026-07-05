@@ -9,9 +9,10 @@ Monitors public-transit **elevator** outages worldwide, archives them over time,
 and ranks systems/stations/elevators on split-flap leaderboards. The archive (an
 event history nobody else keeps) is the whole point — every metric derives from it.
 
-Status: **live in production.** Six systems archiving (MTA, BART, MBTA, WMATA,
-TfL — first non-North-America system, CTA), polled every 10 min by a GitHub
-Actions cron (`.github/workflows/poll.yml`), backed up weekly to a private repo
+Status: **live in production.** Seven systems archiving (MTA, BART, MBTA, WMATA,
+TfL — first non-North-America system, CTA, TMB Barcelona — first
+non-English-speaking system), polled every 10 min by a GitHub Actions cron
+(`.github/workflows/poll.yml`), backed up weekly to a private repo
 (`backup.yml`), with a keepalive workflow so the poller/backup crons never
 auto-disable. A preview split-flap site reads the archive (`site/`).
 Repo: github.com/TrainsitAccess/liftwatch (public).
@@ -27,9 +28,10 @@ $env:Path = "C:\Program Files\nodejs;$env:Path"
 ```bash
 npm install
 npm run poll:dry         # MTA, fetch + normalize, no DB
-npm run poll:bart:dry    # BART, MBTA, WMATA, TfL have :dry variants too
+npm run poll:bart:dry    # BART, MBTA, WMATA, TfL, CTA, TMB have :dry variants too
 npm run demo:access      # prove the chain-aware accessibility model (25 checks)
 npm run check:tfl        # prove TfL's topology-derived redundancy (10 checks)
+npm run check:tmb        # prove TMB's elevator catalog integrity (7 checks)
 npm run typecheck        # tsc --noEmit — run after edits
 npm run db:status        # row counts + latest poll_runs, once Supabase is set up
 npm run site:data && npm run site:serve  # rebuild + preview the split-flap site
@@ -37,8 +39,9 @@ npm run site:data && npm run site:serve  # rebuild + preview the split-flap site
 ```
 
 No `SUPABASE_*` env → always dry-run (fetch + normalize, no writes). Credentials
-(Supabase, MBTA_API_KEY, WMATA_API_KEY) live in gitignored `.env` locally and as
-GitHub Actions secrets in CI — never in chat, never committed.
+(Supabase, MBTA_API_KEY, WMATA_API_KEY, TMB_APP_ID/TMB_APP_KEY) live in
+gitignored `.env` locally and as GitHub Actions secrets in CI — never in chat,
+never committed.
 
 ## Architecture
 
@@ -96,9 +99,9 @@ parking lot). A station is accessible only if **every** segment is up.
   survives rebuilds, re-asserted every poll.
 - **Timezones**: feeds report local wall-clock; parse to UTC (`src/lib/time.ts`,
   Luxon). Store UTC everywhere.
-- Six systems, deliberately different fidelity: **MTA**, **MBTA**, **TfL** =
-  per-elevator with full inventory (`data_quality: good`); **WMATA** =
-  per-elevator ids but the feed only lists broken units (`fair`,
+- Seven systems, deliberately different fidelity: **MTA**, **MBTA**, **TfL**,
+  **TMB** = per-elevator with full inventory (`data_quality: good`);
+  **WMATA** = per-elevator ids but the feed only lists broken units (`fair`,
   `inventoryComplete: false`, no single_elevator inference, units discovered
   as they break; station list IS complete via `NormalizedRead.stations`).
   **CTA** = same `inventoryComplete: false` tier as WMATA, but with **no
@@ -116,12 +119,20 @@ parking lot). A station is accessible only if **every** segment is up.
   source: "pathways"`, `src/catalog/tfl-data/*.json` built by
   `scripts/tfl-import.mjs` from user-provided TfL open-data exports — no
   confirmed live URL for the topology itself, only the disruptions feed is
-  polled live). Timestamps: MBTA = ISO w/ offset (no tz parsing); WMATA = ISO
-  w/o offset = ET wall-clock (`parseIsoLocalToUtcIso`); MTA/BART = US date
-  format wall-clock (`parseZonedToUtcIso`); TfL's live feed has no timestamp
-  at all (free text only) — we rely on our own polling to timestamp events,
-  same as BART. CTA = ISO w/o offset = CT wall-clock (`parseIsoLocalToUtcIso`,
-  same helper as WMATA).
+  polled live). **TMB** (Barcelona, first non-English-speaking system) has a
+  real per-elevator inventory (151 elevators, `src/catalog/tmb-data/units.json`
+  built by `scripts/tmb-import.mjs` from documented, live "transit" API
+  endpoints — see SPEC.md) but its live outage feed is **completely
+  undocumented**, found by inspecting real network traffic on TMB's own
+  website rather than from any published API docs — a materially different
+  risk profile than every other system here. No redundancy modeling yet
+  (falls to `assumed`). Timestamps: MBTA = ISO w/ offset (no tz parsing);
+  WMATA = ISO w/o offset = ET wall-clock (`parseIsoLocalToUtcIso`); MTA/BART =
+  US date format wall-clock (`parseZonedToUtcIso`); TfL's live feed has no
+  timestamp at all (free text only) — we rely on our own polling to
+  timestamp events, same as BART. CTA = ISO w/o offset = CT wall-clock
+  (`parseIsoLocalToUtcIso`, same helper as WMATA). TMB = epoch milliseconds
+  (`msToUtcIso`, no timezone ambiguity to resolve).
 
 ## Gotchas / deferred
 
@@ -156,3 +167,16 @@ parking lot). A station is accessible only if **every** segment is up.
   Classify against `Headline` + `ShortDescription` only. CTA has no
   per-elevator id at all (station-level, like BART) and no station-list
   feed wired yet (deferred — CTA's GTFS `stops.txt` could supply one).
+- **TMB's live outage feed is undocumented** — `api.tmb.cat/v1/alerts/metro/
+  channels/WEB` appears nowhere in developer.tmb.cat's published docs; it was
+  found by inspecting real network traffic on a TMB station page. It could
+  change or disappear without notice. Same `cause_code` trap as CTA's
+  `FullDescription` (all 10/10 sampled alerts say `"CONSTRUCTION"` regardless
+  of cause) — classify against the English publication text instead. Covers
+  conventional lines only (L1-L5, L11); L9/L10/FM automatic lines aren't
+  wired to TMB's own elevator-status system yet. Redundancy not modeled
+  (no verified per-direction topology signal yet, unlike TfL) — falls to
+  `assumed`. Deferred: verifying real per-direction topology before
+  attempting `pathways`-tier redundancy; a live re-fetch URL for the whole
+  network inventory in one call, if one is ever found, to replace the manual
+  `scripts/tmb-import.mjs` re-run.

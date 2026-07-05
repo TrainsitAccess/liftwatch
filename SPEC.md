@@ -464,3 +464,82 @@ and the live disruptions endpoint.
   a complete station list (name + coords) via `NormalizedRead.stations`,
   matching WMATA's pattern — skipped for this MVP pass to keep the adapter
   small; stations are only known when currently alerting.
+
+### TMB feeds (in use) — real inventory, live outage feed found via network inspection
+
+TMB (Barcelona)'s first non-North-America, non-UK system. `data_quality:
+'good'`, `inventoryComplete: true` (default) — closer to TfL's tier than
+CTA's. Facts below verified live 2026-07-05.
+
+- **The live outage feed is completely undocumented.** `developer.tmb.cat`'s
+  published "transit" API (Línies, Recorreguts, Parades, Estacions,
+  Mobiliari, Accessos, Correspondències, Intercanviadors, Horaris) has *no*
+  incidents/status endpoint anywhere, and the full GTFS static feed (with
+  real `pathways.txt` + `wheelchair_boarding`) has no realtime component
+  either — both exhaustively checked before concluding this. The actual live
+  signal, `GET https://api.tmb.cat/v1/alerts/metro/channels/WEB`, was found
+  by inspecting real browser network traffic on a TMB station page
+  (`tmb.cat/en/barcelona/metro/-/lineametro/L2/estacion/210`) — it's the
+  exact endpoint powering TMB's own website's green/yellow/red elevator
+  traffic-light widget. It authenticates with the same `app_id`/`app_key`
+  issued for the documented transit API (confirmed live). Being
+  undocumented, it could change or disappear without notice — a materially
+  different risk than every other system's adapter here, which are all built
+  on officially published APIs.
+- **Scope limitation (per TMB's own announcement)**: this elevator-status
+  system currently covers conventional lines only (L1-L5, L11) — the
+  automatic lines (L9, L10, FM funicular) aren't wired to it yet, so no
+  outage will ever appear for them regardless of real elevator state.
+- **Effect-code taxonomy** (live-verified, 10 active alerts sampled
+  2026-07-05): `categories.effect_code` values seen: `PP8` = "Ascensors fora
+  de servei" (elevators out of service — the only code ingested), `PP9` =
+  "Escales mecàniques fora de servei" (escalators, out of scope, same
+  elevators-only convention as every system here), `PP1` = partial service,
+  `PP2` = closed connection/transfer, `PP7` = closed access. **Do not trust
+  `categories.cause_code` for planned/unplanned classification** — all 10/10
+  sampled alerts carry `cause_code: "CONSTRUCTION"` regardless of apparent
+  cause, the same shape of trap as CTA's `FullDescription` boilerplate.
+  Classify against the English publication text instead
+  (`/maintenance|planned|scheduled|upgrade|improvement|refurbishment
+  |renovation/i`), same approach as CTA/TfL.
+- **Timestamps**: `disruption_dates[].begin_date`/`end_date` are epoch
+  milliseconds — an absolute instant, no wall-clock/timezone parsing needed
+  (new helper `msToUtcIso`, `src/lib/time.ts`).
+- **Matching an alert to a specific elevator**: each `entities[]` entry
+  carries `entrance_code` (matches the catalog's `CODI_ACCES`, the
+  entrance-level code — reliably unique across the whole network, verified:
+  the same `CODI_ACCES` for one physical entrance appears identically across
+  every line/funicular listing that shares it, e.g. Paral·lel's "Nou de la
+  Rambla" access under L2, L3, and the Montjuïc funicular all show
+  `CODI_ACCES 21001`). When `entrance_code` is the literal string `"ALL"`
+  (a station-wide effect) or matches nothing in the catalog snapshot, falls
+  back to every known elevator at that station by name — same conservative
+  attribution tier as BART's station-level fallback (`attributed: false`),
+  never guessing a single unit.
+- **Inventory — real per-elevator, built from the documented API, not
+  reverse-engineered**: `scripts/tmb-import.mjs` calls
+  `GET /v1/transit/estacions` (live-verified: omitting a station id returns
+  all 140 station groups network-wide, not just one) then, for each,
+  `GET /v1/transit/estacions/{codi_grup_estacio}/accessos/fisics`
+  (live-verified: omitting the trailing `/{codi_acces}` segment returns
+  every physical access at that station, not just one) — ~140 calls total,
+  filtered to `ID_TIPUS_ACCES === 3` ("Ascensor"; 1 = stairs, 4 = ramp).
+  Result: 151 elevators across 123 stations (2026-07-05 snapshot). No
+  confirmed live URL returns the whole network in one call, so — same
+  pattern as TfL — this is a versioned snapshot (`src/catalog/tmb-data/
+  units.json`) refreshed by re-running the import script by hand; only the
+  alerts endpoint is polled live.
+- **Redundancy is NOT modeled** — no verified per-direction topology signal
+  exists yet (unlike TfL's exact `FromAreas`/`ToAreas` match). One real
+  counter-example already on file to avoid the TfL trap later: Església
+  Major's "Mossèn Camil Rossell" access has **3** physical elevator units
+  sharing one entrance code — confirmed via both the Accessos and Accessos
+  Físics endpoints independently — but per the TfL lesson, "N units at one
+  access" is not by itself evidence they're parallel/redundant paths rather
+  than sequential legs. Locked into the regression check
+  (`npm run check:tmb`, `src/checks/tmb-check.ts`) as a count assertion only,
+  not a redundancy claim.
+- **Deferred**: verifying real per-direction redundancy topology before
+  attempting `redundancy_source: "pathways"`-tier modeling; a live re-fetch
+  URL for the whole-network inventory, if one is ever found, would let the
+  static snapshot self-refresh instead of manual re-import.
