@@ -109,6 +109,23 @@ export const SYSTEMS: SystemCatalogEntry[] = [
       source: "https://www.wmata.com/ride/elevators-escalators.html",
     },
   },
+  {
+    id: "tfl-london",
+    name: "Transport for London",
+    shortName: "TfL",
+    city: "London",
+    metroArea: "Greater London",
+    country: "United Kingdom",
+    countryCode: "GB",
+    continent: "Europe",
+    timezone: "Europe/London",
+    adapter: "tfl",
+    // Real per-lift inventory (569 lifts) with real, verified redundancy
+    // derived from TfL's own published route topology (src/catalog/tfl-data,
+    // built by scripts/tfl-import.mjs) — no redundancyBaseline needed, every
+    // unit already carries an explicit value via redundancySource "pathways".
+    dataQuality: "good",
+  },
 ];
 
 export function getSystem(id: string): SystemCatalogEntry | undefined {

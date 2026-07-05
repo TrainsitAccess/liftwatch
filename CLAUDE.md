@@ -9,9 +9,12 @@ Monitors public-transit **elevator** outages worldwide, archives them over time,
 and ranks systems/stations/elevators on split-flap leaderboards. The archive (an
 event history nobody else keeps) is the whole point — every metric derives from it.
 
-Status: **Phase 0 complete**. Two adapters working (MTA, BART), full redundancy +
-accessibility model, event-derivation ingest. Everything runs **dry-run only** until
-a Supabase project exists.
+Status: **live in production.** Five systems archiving (MTA, BART, MBTA, WMATA,
+TfL — first non-North-America system), polled every 10 min by a GitHub Actions
+cron (`.github/workflows/poll.yml`), backed up weekly to a private repo
+(`backup.yml`), with a keepalive workflow so the poller/backup crons never
+auto-disable. A preview split-flap site reads the archive (`site/`).
+Repo: github.com/TrainsitAccess/liftwatch (public).
 
 ## Running it
 
@@ -24,13 +27,18 @@ $env:Path = "C:\Program Files\nodejs;$env:Path"
 ```bash
 npm install
 npm run poll:dry         # MTA, fetch + normalize, no DB
-npm run poll:bart:dry    # BART, same
-npm run demo:access      # prove the chain-aware accessibility model
+npm run poll:bart:dry    # BART, MBTA, WMATA, TfL have :dry variants too
+npm run demo:access      # prove the chain-aware accessibility model (25 checks)
+npm run check:tfl        # prove TfL's topology-derived redundancy (10 checks)
 npm run typecheck        # tsc --noEmit — run after edits
-# With SUPABASE_URL + SUPABASE_SERVICE_KEY in .env, drop `:dry` to archive.
+npm run db:status        # row counts + latest poll_runs, once Supabase is set up
+npm run site:data && npm run site:serve  # rebuild + preview the split-flap site
+# With SUPABASE_URL + SUPABASE_SERVICE_KEY in .env, drop `:dry` to archive for real.
 ```
 
-No `SUPABASE_*` env → always dry-run (fetch + normalize, no writes).
+No `SUPABASE_*` env → always dry-run (fetch + normalize, no writes). Credentials
+(Supabase, MBTA_API_KEY, WMATA_API_KEY) live in gitignored `.env` locally and as
+GitHub Actions secrets in CI — never in chat, never committed.
 
 ## Architecture
 
@@ -88,7 +96,7 @@ parking lot). A station is accessible only if **every** segment is up.
   survives rebuilds, re-asserted every poll.
 - **Timezones**: feeds report local wall-clock; parse to UTC (`src/lib/time.ts`,
   Luxon). Store UTC everywhere.
-- Four systems, deliberately different fidelity: **MTA** and **MBTA** =
+- Five systems, deliberately different fidelity: **MTA**, **MBTA**, **TfL** =
   per-elevator with full inventory (`data_quality: good`); **WMATA** =
   per-elevator ids but the feed only lists broken units (`fair`,
   `inventoryComplete: false`, no single_elevator inference, units discovered
@@ -100,9 +108,16 @@ parking lot). A station is accessible only if **every** segment is up.
   marked with a trailing `*` + source/date, since it's static, not live. This
   mechanism is general (`fleetSource: live|static|none`), reusable by any
   future discovered-inventory system. **BART** = station-level advisory
-  (`best_effort`). Timestamps: MBTA = ISO w/ offset (no tz parsing); WMATA =
-  ISO w/o offset = ET wall-clock (`parseIsoLocalToUtcIso`); MTA/BART = US
-  date format wall-clock (`parseZonedToUtcIso`).
+  (`best_effort`). **TfL** (London, first non-North-America system) has a
+  real per-lift inventory + real topology-derived redundancy (`redundancy_
+  source: "pathways"`, `src/catalog/tfl-data/*.json` built by
+  `scripts/tfl-import.mjs` from user-provided TfL open-data exports — no
+  confirmed live URL for the topology itself, only the disruptions feed is
+  polled live). Timestamps: MBTA = ISO w/ offset (no tz parsing); WMATA = ISO
+  w/o offset = ET wall-clock (`parseIsoLocalToUtcIso`); MTA/BART = US date
+  format wall-clock (`parseZonedToUtcIso`); TfL's live feed has no timestamp
+  at all (free text only) — we rely on our own polling to timestamp events,
+  same as BART.
 
 ## Gotchas / deferred
 
@@ -121,3 +136,12 @@ parking lot). A station is accessible only if **every** segment is up.
   touching accessibility/attribution/station models.
 - MTA per-segment modeling not done (MTA's explicit `redundant` flag suffices for
   now).
+- **TfL redundancy is NOT "2+ lifts at a station"** — verified counter-examples
+  (Kingsbury, King's Cross) show adjacent lift numbers routinely serve disjoint
+  legs with zero redundancy. The only valid signal is an exact
+  `(StationUniqueId, FromAreas, ToAreas)` match — see `check:tfl` for the
+  locked-in regression cases before touching `tfl-import.mjs`. `LiftUniqueId`
+  must be used verbatim (never reconstruct from station+number — ~5% of real
+  ids break that pattern). Deferred: `RampRoutes.csv`/`SameLevelPaths.csv`
+  (non-lift step-free bypass paths, a stronger redundancy signal than
+  lift-to-lift matching); re-running `tfl-import.mjs` when TfL republishes.

@@ -250,8 +250,9 @@ Hybrid, per decision:
 
 ## 8. Data sources (launch targets — quality first)
 
-MTA (NYC) ✓ · BART (SF) ✓ · MBTA (Boston) ✓ · WMATA (DC) ✓ · TfL (London) ·
-Deutsche Bahn FaSta (Germany) · Wiener Linien (Vienna) · BVG/VBB (Berlin).
+MTA (NYC) ✓ · BART (SF) ✓ · MBTA (Boston) ✓ · WMATA (DC) ✓ · TfL (London) ✓ —
+first non-North-America system · Deutsche Bahn FaSta (Germany) ·
+Wiener Linien (Vienna) · BVG/VBB (Berlin).
 
 ### MTA feeds (in use)
 
@@ -360,3 +361,63 @@ tier; free Default Tier = 10 calls/sec, 50k/day). `data_quality: 'fair'`,
     system row records `live` / `static` / `none` for this purpose. This is
     the general mechanism — any future discovered-inventory system reuses the
     same field.
+
+### TfL feeds (in use) — real per-lift inventory, real topology-derived redundancy
+
+The richest system yet: a genuine per-lift inventory (569 lifts, 201/509
+stations) with a stable id (`LiftUniqueId`) that exactly matches the live
+disruption feed — no crosswalk problem, unlike WMATA/BART. `data_quality:
+'good'`, `inventoryComplete: true` (default). Facts below verified live
+2026-07-04 against user-provided TfL open-data exports (GTFS + detailed CSV)
+and the live disruptions endpoint.
+
+- **Live**: `GET https://api.tfl.gov.uk/Disruptions/Lifts/v2` — **no API key
+  needed**. Returns `[{ stationUniqueId, disruptedLiftUniqueIds: string[],
+  message }]`. No structured cause or start-date field — only free text, so
+  (like BART) we rely on our own polling to timestamp events
+  (`sourceStartedAt` stays undefined). Planned vs. unplanned: message text
+  matched against `/planned|upgrade|engineering work|modernisation
+  |modernization|refurbishment/i`; the common "faulty lift" / staffing-outage
+  phrasing (the large majority of live entries) defaults to unplanned.
+- **Static topology** (no confirmed live URL — downloaded manually from TfL's
+  open data pages, so treated as a periodically-refreshed snapshot, same
+  pattern as BART's hand-curated station models): TfL publishes both a GTFS
+  export (stops/pathways/levels) and a richer "detailed CSV" set (Stations,
+  Lifts, StationPoints, Platforms, …). The detailed CSVs are the adapter's
+  primary source — `Lifts.csv` models a multi-level lift as **one row** with
+  `IntermediateAreas`, whereas GTFS `pathways.txt` splits it across multiple
+  rows (one per level-pair) requiring fragile `pathway_id` parsing. Lifts.csv
+  is also where `LiftUniqueId` is confirmed unique (569/569) and confirmed
+  identical to the live feed's ids.
+- **Redundancy — real, not inferred, but not naive**: `scripts/tfl-import.mjs`
+  groups `Lifts.csv` rows by `(StationUniqueId, FromAreas, ToAreas)`; a group
+  with 2+ lifts is genuinely redundant. **"2+ lifts at a station" alone is
+  wrong** — verified counter-examples: Kingsbury's two lifts share an origin
+  but serve *different* platforms (not redundant; losing both is a full
+  outage); King's Cross's Lift-A/Lift-B serve different legs of one journey
+  (not redundant). Genuine redundancy is real and sometimes multi-way: South
+  Quay DLR has 3 lifts on an identical route. This computation is
+  `redundancy_source: "pathways"` — the first system where that precedence
+  tier is real derived-from-topology data rather than aspirational. Locked
+  in as a regression check: `npm run check:tfl`
+  (`src/checks/tfl-redundancy-check.ts`) asserts all 4 verified cases against
+  the bundled catalog.
+- **Ingestion architecture**: `src/catalog/tfl-data/{stations,lifts}.json`
+  (git-tracked, built by the import script — re-run by hand when TfL
+  republishes topology) supply the full inventory + redundancy; the adapter's
+  `fetch()` loads this bundled snapshot and makes one live HTTP call for
+  current outages. Station coordinates are a centroid of `StationPoints.csv`
+  rows (no direct station-level lat/lon is published anywhere).
+- **Known real-data quirks handled**: `LiftUniqueId` must be used verbatim
+  (~5% of ids don't follow the `{Station}-Lift-{N}` pattern — e.g. a space
+  instead of a hyphen; `LiftId` values repeat across different lifts at the
+  same station, so it's display-only, never a key). `FriendlyName` needs
+  trimming (stray whitespace in real rows). Boolean-ish CSV columns mix
+  `TRUE`/`True`/`FALSE`/`False` casing.
+- **Deferred**: `RampRoutes.csv`/`SameLevelPaths.csv` (non-lift step-free
+  paths — would extend `accessibility.ts` to detect "a ramp bypasses this
+  broken lift entirely," a strictly stronger redundancy signal than lift-to-
+  lift matching); `Toilets.csv`/`Platforms.csv`/`PlatformServices.csv`
+  (out of scope, elevators-only); a live re-fetch URL for topology, if one is
+  ever found, would let the static snapshot self-refresh instead of manual
+  re-import.

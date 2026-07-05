@@ -60,3 +60,10 @@ jobs:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
           WMATA_API_KEY: ${{ secrets.WMATA_API_KEY }}
+
+      - name: Poll TfL (London)
+        if: ${{ !cancelled() }}
+        run: npm run poll -- tfl-london # no API key needed — Disruptions/Lifts/v2 is unauthenticated
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
