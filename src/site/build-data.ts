@@ -48,17 +48,19 @@ const [systemsData, unitsData, stationsData, eventsData] = await Promise.all([
     (from, to) =>
       db
         .from("units")
-        .select("id, system_id, station_id, external_id, description, is_active, is_redundant")
+        .select("id, system_id, station_id, external_id, description, is_active, is_redundant, first_seen")
         .range(from, to),
     "units",
   ),
   fetchAll((from, to) => db.from("stations").select("id, name").range(from, to), "stations"),
+  // ALL-time events, not just currently-open ones — the homepage only needs
+  // open events, but the per-system detail pages (most/least broken, uptime
+  // streaks) need full history. Fetch once, derive both from the same set.
   fetchAll(
     (from, to) =>
       db
         .from("outage_events")
-        .select("unit_id, system_id, station_id, is_planned, reason, started_at, source_started_at, attributed")
-        .is("ended_at", null)
+        .select("unit_id, system_id, station_id, is_planned, reason, started_at, ended_at, source_started_at, attributed")
         .range(from, to),
     "outage_events",
   ),
@@ -67,12 +69,15 @@ const [systemsData, unitsData, stationsData, eventsData] = await Promise.all([
 const systems = { data: systemsData };
 const units = { data: unitsData };
 const stations = { data: stationsData };
-const events = { data: eventsData };
+const allEvents = eventsData;
+const events = { data: allEvents.filter((e) => e.ended_at == null) };
 
 const stationName = new Map((stations.data ?? []).map((s) => [s.id as string, s.name as string]));
 const unitById = new Map((units.data ?? []).map((u) => [u.id as string, u]));
 
 const now = Date.now();
+const daysSince = (iso: string): number => Math.max(0, Math.floor((now - Date.parse(iso)) / 86_400_000));
+
 const openBySystem = new Map<string, number>();
 const unplannedBySystem = new Map<string, number>();
 for (const e of events.data ?? []) {
@@ -146,6 +151,144 @@ const outageRows = (events.data ?? [])
   .sort((a, b) => b.days - a.days)
   .slice(0, 10);
 
+// --- Per-system detail pages (site/systems/{id}.json): most/least broken
+// stations & units, single points of failure. Needs the FULL event history
+// (allEvents), not just the currently-open ones the homepage summary uses.
+const eventsBySystem = new Map<string, typeof allEvents>();
+for (const e of allEvents) {
+  const list = eventsBySystem.get(e.system_id as string) ?? [];
+  list.push(e);
+  eventsBySystem.set(e.system_id as string, list);
+}
+const unitsBySystem = new Map<string, NonNullable<typeof units.data>>();
+for (const u of units.data ?? []) {
+  const list = unitsBySystem.get(u.system_id as string) ?? [];
+  list.push(u);
+  unitsBySystem.set(u.system_id as string, list);
+}
+const latestEnd = (evts: typeof allEvents): string | null =>
+  evts.reduce<string | null>((max, e) => {
+    const ended = e.ended_at as string | null;
+    return ended && (!max || ended > max) ? ended : max;
+  }, null);
+
+function buildSystemDetail(systemId: string) {
+  const systemEvents = eventsBySystem.get(systemId) ?? [];
+  const systemUnits = (unitsBySystem.get(systemId) ?? []).filter((u) => u.is_active);
+
+  // Most broken stations (shame) — every outage, any unit, all-time.
+  const stationOutageCount = new Map<string, number>();
+  for (const e of systemEvents) {
+    const sid = (e.station_id as string | null) ?? unitById.get(e.unit_id as string)?.station_id;
+    if (!sid) continue;
+    stationOutageCount.set(sid, (stationOutageCount.get(sid) ?? 0) + 1);
+  }
+  const mostBrokenStations = [...stationOutageCount.entries()]
+    .map(([sid, count]) => ({ name: stationName.get(sid) ?? "Unknown", count }))
+    .sort((a, b) => b.count - a.count)
+    .slice(0, 10);
+
+  // Step-free streak (honor) — only events on non-redundant (sole step-free
+  // access) units count as a "blackout" here; a redundant unit's outage
+  // never severs the station's step-free access on its own.
+  const blackoutEventsByStation = new Map<string, typeof allEvents>();
+  for (const e of systemEvents) {
+    const unit = unitById.get(e.unit_id as string);
+    if (unit?.is_redundant !== false) continue;
+    const sid = (e.station_id as string | null) ?? (unit.station_id as string | null);
+    if (!sid) continue;
+    const list = blackoutEventsByStation.get(sid) ?? [];
+    list.push(e);
+    blackoutEventsByStation.set(sid, list);
+  }
+  const firstSeenByStation = new Map<string, string>();
+  for (const u of systemUnits) {
+    const sid = u.station_id as string | null;
+    if (!sid) continue;
+    const fs = u.first_seen as string;
+    const cur = firstSeenByStation.get(sid);
+    if (!cur || fs < cur) firstSeenByStation.set(sid, fs);
+  }
+  const stepFreeStreak = [...firstSeenByStation.keys()]
+    .map((sid) => {
+      const blackouts = blackoutEventsByStation.get(sid) ?? [];
+      const blackedOutNow = blackouts.some((e) => e.ended_at == null);
+      const since = blackedOutNow ? null : (latestEnd(blackouts) ?? firstSeenByStation.get(sid)!);
+      return {
+        name: stationName.get(sid) ?? "Unknown",
+        days: blackedOutNow ? 0 : daysSince(since!),
+        blackedOutNow,
+      };
+    })
+    .sort((a, b) => b.days - a.days)
+    .slice(0, 10);
+
+  // Most broken units (shame) — active units only, all-time outage count.
+  const unitOutageCount = new Map<string, number>();
+  for (const e of systemEvents) unitOutageCount.set(e.unit_id as string, (unitOutageCount.get(e.unit_id as string) ?? 0) + 1);
+  const mostBrokenUnits = systemUnits
+    .map((u) => ({
+      unit: (u.description as string) || (u.external_id as string),
+      station: stationName.get(u.station_id as string) ?? "Unknown",
+      count: unitOutageCount.get(u.id as string) ?? 0,
+    }))
+    .filter((u) => u.count > 0)
+    .sort((a, b) => b.count - a.count)
+    .slice(0, 10);
+
+  // Uptime streak (honor) — active units only.
+  const eventsByUnit = new Map<string, typeof allEvents>();
+  for (const e of systemEvents) {
+    const list = eventsByUnit.get(e.unit_id as string) ?? [];
+    list.push(e);
+    eventsByUnit.set(e.unit_id as string, list);
+  }
+  const uptimeStreak = systemUnits
+    .map((u) => {
+      const unitEvents = eventsByUnit.get(u.id as string) ?? [];
+      const downNow = unitEvents.some((e) => e.ended_at == null);
+      const since = downNow ? null : (latestEnd(unitEvents) ?? (u.first_seen as string));
+      return {
+        unit: (u.description as string) || (u.external_id as string),
+        station: stationName.get(u.station_id as string) ?? "Unknown",
+        days: downNow ? 0 : daysSince(since!),
+        downNow,
+      };
+    })
+    .sort((a, b) => b.days - a.days)
+    .slice(0, 10);
+
+  // Single points of failure (structural) — no event history needed at all,
+  // computable from the equipment feed alone (see SPEC.md's accessibility
+  // leaderboard section).
+  const spofCountByStation = new Map<string, number>();
+  for (const u of systemUnits) {
+    if (u.is_redundant !== false) continue;
+    const sid = u.station_id as string | null;
+    if (!sid) continue;
+    spofCountByStation.set(sid, (spofCountByStation.get(sid) ?? 0) + 1);
+  }
+  const singlePointsOfFailure = [...spofCountByStation.entries()]
+    .map(([sid, count]) => ({ name: stationName.get(sid) ?? "Unknown", count }))
+    .sort((a, b) => b.count - a.count)
+    .slice(0, 15);
+
+  return { mostBrokenStations, stepFreeStreak, mostBrokenUnits, uptimeStreak, singlePointsOfFailure };
+}
+
+mkdirSync("site/systems", { recursive: true });
+for (const s of systemRows) {
+  const detail = buildSystemDetail(s.id as string);
+  writeFileSync(
+    `site/systems/${s.id}.json`,
+    JSON.stringify(
+      { id: s.id, name: s.name, label: s.label, generatedAt: new Date(now).toISOString(), ...detail },
+      null,
+      2,
+    ),
+  );
+}
+
 // The aggregate "N of M monitored" figure is the site's most prominent
 // number — it must carry the same live-vs-static disclosure as every
 // per-system row, so a static reference blended into "M" is never silently
@@ -174,3 +317,4 @@ writeFileSync("site/data.json", JSON.stringify(data, null, 2));
 console.log(
   `site/data.json written — ${data.totals.down}/${data.totals.activeUnits} down across ${data.totals.systems} systems, ${outageRows.length} longest-outage rows.`,
 );
+console.log(`site/systems/*.json written — ${systemRows.length} per-system detail pages.`);

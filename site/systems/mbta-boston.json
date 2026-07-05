@@ -1,0 +1,276 @@
+{
+  "id": "mbta-boston",
+  "name": "MBTA",
+  "label": "MBTA (Boston)",
+  "generatedAt": "2026-07-05T06:31:23.397Z",
+  "mostBrokenStations": [
+    {
+      "name": "Natick Center",
+      "count": 2
+    },
+    {
+      "name": "Arlington",
+      "count": 2
+    },
+    {
+      "name": "Porter",
+      "count": 1
+    },
+    {
+      "name": "Winchester Center",
+      "count": 1
+    },
+    {
+      "name": "Framingham",
+      "count": 1
+    },
+    {
+      "name": "Green Street",
+      "count": 1
+    },
+    {
+      "name": "South Station",
+      "count": 1
+    },
+    {
+      "name": "Wood Island",
+      "count": 1
+    },
+    {
+      "name": "Chinatown",
+      "count": 1
+    },
+    {
+      "name": "Revere Beach",
+      "count": 1
+    }
+  ],
+  "stepFreeStreak": [
+    {
+      "name": "Worcester",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Lechmere",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Gilman Square",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Magoun Square",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "State",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Park Street",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Quincy Adams",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Wellington",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Kendall/MIT",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Beachmont",
+      "days": 0,
+      "blackedOutNow": false
+    }
+  ],
+  "mostBrokenUnits": [
+    {
+      "unit": "Arlington Elevator 964 (Lobby to Boylston Street)",
+      "station": "Arlington",
+      "count": 2
+    },
+    {
+      "unit": "Wood Island Elevator 889 (Bowdoin platform to pedestrian bridge)",
+      "station": "Wood Island",
+      "count": 1
+    },
+    {
+      "unit": "Winchester Center Elevator 749 (Track 1 (outbound platform) to Main St)",
+      "station": "Winchester Center",
+      "count": 1
+    },
+    {
+      "unit": "Green Street Elevator 844 (Platform to paid lobby)",
+      "station": "Green Street",
+      "count": 1
+    },
+    {
+      "unit": "Chinatown Elevator 876 (Oak Grove platform to Washington St, Essex St)",
+      "station": "Chinatown",
+      "count": 1
+    },
+    {
+      "unit": "Natick Center Elevator 750 (Track 1 to street)",
+      "station": "Natick Center",
+      "count": 1
+    },
+    {
+      "unit": "Natick Center Elevator 751 (Track 2 to street)",
+      "station": "Natick Center",
+      "count": 1
+    },
+    {
+      "unit": "Quincy Adams Elevator 807 (Lobby to parking garage)",
+      "station": "Quincy Adams",
+      "count": 1
+    },
+    {
+      "unit": "Revere Beach Elevator 884 (Bowdoin platform to lobby)",
+      "station": "Revere Beach",
+      "count": 1
+    },
+    {
+      "unit": "South Station Elevator 901 (Ashmont/Braintree platform to Silver Line drop-off platform and lobby)",
+      "station": "South Station",
+      "count": 1
+    }
+  ],
+  "uptimeStreak": [
+    {
+      "unit": "Worcester Elevator 782 (Parking lot to pedestrian bridge )",
+      "station": "Worcester",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "Lechmere Elevator 763 (Platform to North First Street lobby)",
+      "station": "Lechmere",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "Lechmere Elevator 764 (Platform to O'Brien Highway lobby)",
+      "station": "Lechmere",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "Gilman Square Elevator 765 (Platform to Medford Street lobby)",
+      "station": "Gilman Square",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "Magoun Square Elevator 767 (Platform to lobby)",
+      "station": "Magoun Square",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "Worcester Elevator 781 (Platform to pedestrian bridge)",
+      "station": "Worcester",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "State Elevator 802 (Oak Grove platform to Forest Hills, Wonderland platforms)",
+      "station": "State",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "State Elevator 803 (Forest Hills platform to Washington Street, Milk Street)",
+      "station": "State",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "Park Street Elevator 804 (Government Center & North lobby to Tremont Street, Winter Street)",
+      "station": "Park Street",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "Quincy Adams Elevator 805 (Lobby to platform)",
+      "station": "Quincy Adams",
+      "days": 0,
+      "downNow": false
+    }
+  ],
+  "singlePointsOfFailure": [
+    {
+      "name": "South Station",
+      "count": 9
+    },
+    {
+      "name": "Wonderland",
+      "count": 7
+    },
+    {
+      "name": "Park Street",
+      "count": 6
+    },
+    {
+      "name": "Downtown Crossing",
+      "count": 6
+    },
+    {
+      "name": "North Quincy",
+      "count": 6
+    },
+    {
+      "name": "Haymarket",
+      "count": 6
+    },
+    {
+      "name": "North Station",
+      "count": 6
+    },
+    {
+      "name": "Aquarium",
+      "count": 6
+    },
+    {
+      "name": "State",
+      "count": 5
+    },
+    {
+      "name": "Ruggles",
+      "count": 5
+    },
+    {
+      "name": "Porter",
+      "count": 5
+    },
+    {
+      "name": "Worcester",
+      "count": 4
+    },
+    {
+      "name": "Quincy Adams",
+      "count": 4
+    },
+    {
+      "name": "Kendall/MIT",
+      "count": 4
+    },
+    {
+      "name": "Oak Grove",
+      "count": 4
+    }
+  ]
+}

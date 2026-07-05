@@ -1,0 +1,208 @@
+{
+  "id": "wmata-dc",
+  "name": "DC Metro",
+  "label": "DC Metro (Washington)",
+  "generatedAt": "2026-07-05T06:31:23.397Z",
+  "mostBrokenStations": [
+    {
+      "name": "Rockville",
+      "count": 1
+    },
+    {
+      "name": "Glenmont",
+      "count": 1
+    },
+    {
+      "name": "Huntington",
+      "count": 1
+    },
+    {
+      "name": "Mt Vernon Sq 7th St-Convention Center",
+      "count": 1
+    },
+    {
+      "name": "Columbia Heights",
+      "count": 1
+    },
+    {
+      "name": "Downtown Largo",
+      "count": 1
+    },
+    {
+      "name": "Metro Center",
+      "count": 1
+    },
+    {
+      "name": "Waterfront",
+      "count": 1
+    }
+  ],
+  "stepFreeStreak": [
+    {
+      "name": "Waterfront",
+      "days": 0,
+      "blackedOutNow": true
+    },
+    {
+      "name": "Metro Center",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Rockville",
+      "days": 0,
+      "blackedOutNow": true
+    },
+    {
+      "name": "Glenmont",
+      "days": 0,
+      "blackedOutNow": true
+    },
+    {
+      "name": "Huntington",
+      "days": 0,
+      "blackedOutNow": true
+    },
+    {
+      "name": "Mt Vernon Sq 7th St-Convention Center",
+      "days": 0,
+      "blackedOutNow": true
+    },
+    {
+      "name": "Columbia Heights",
+      "days": 0,
+      "blackedOutNow": true
+    },
+    {
+      "name": "Downtown Largo",
+      "days": 0,
+      "blackedOutNow": false
+    }
+  ],
+  "mostBrokenUnits": [
+    {
+      "unit": "Elevator between street and mezzanine, north side of M Street, S.W.",
+      "station": "Waterfront",
+      "count": 1
+    },
+    {
+      "unit": "Elevator between street and mezzanine",
+      "station": "Metro Center",
+      "count": 1
+    },
+    {
+      "unit": "Elevator between pedestrian bridge and mezzanine",
+      "station": "Rockville",
+      "count": 1
+    },
+    {
+      "unit": "Garage elevator",
+      "station": "Glenmont",
+      "count": 1
+    },
+    {
+      "unit": "Garage #2 elevator",
+      "station": "Huntington",
+      "count": 1
+    },
+    {
+      "unit": "Elevator between mezzanine and platform",
+      "station": "Mt Vernon Sq 7th St-Convention Center",
+      "count": 1
+    },
+    {
+      "unit": "Elevator between mezzanine and platform",
+      "station": "Columbia Heights",
+      "count": 1
+    },
+    {
+      "unit": "Elevator between street and mezzanine",
+      "station": "Downtown Largo",
+      "count": 1
+    }
+  ],
+  "uptimeStreak": [
+    {
+      "unit": "Elevator between street and mezzanine, north side of M Street, S.W.",
+      "station": "Waterfront",
+      "days": 0,
+      "downNow": true
+    },
+    {
+      "unit": "Elevator between street and mezzanine",
+      "station": "Metro Center",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "Elevator between pedestrian bridge and mezzanine",
+      "station": "Rockville",
+      "days": 0,
+      "downNow": true
+    },
+    {
+      "unit": "Garage elevator",
+      "station": "Glenmont",
+      "days": 0,
+      "downNow": true
+    },
+    {
+      "unit": "Garage #2 elevator",
+      "station": "Huntington",
+      "days": 0,
+      "downNow": true
+    },
+    {
+      "unit": "Elevator between mezzanine and platform",
+      "station": "Mt Vernon Sq 7th St-Convention Center",
+      "days": 0,
+      "downNow": true
+    },
+    {
+      "unit": "Elevator between mezzanine and platform",
+      "station": "Columbia Heights",
+      "days": 0,
+      "downNow": true
+    },
+    {
+      "unit": "Elevator between street and mezzanine",
+      "station": "Downtown Largo",
+      "days": 0,
+      "downNow": false
+    }
+  ],
+  "singlePointsOfFailure": [
+    {
+      "name": "Waterfront",
+      "count": 1
+    },
+    {
+      "name": "Metro Center",
+      "count": 1
+    },
+    {
+      "name": "Rockville",
+      "count": 1
+    },
+    {
+      "name": "Glenmont",
+      "count": 1
+    },
+    {
+      "name": "Huntington",
+      "count": 1
+    },
+    {
+      "name": "Mt Vernon Sq 7th St-Convention Center",
+      "count": 1
+    },
+    {
+      "name": "Columbia Heights",
+      "count": 1
+    },
+    {
+      "name": "Downtown Largo",
+      "count": 1
+    }
+  ]
+}

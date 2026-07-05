@@ -1,0 +1,276 @@
+{
+  "id": "tfl-london",
+  "name": "TfL",
+  "label": "TfL (London)",
+  "generatedAt": "2026-07-05T06:31:23.397Z",
+  "mostBrokenStations": [
+    {
+      "name": "King's Cross St Pancras",
+      "count": 2
+    },
+    {
+      "name": "Edmonton Green",
+      "count": 2
+    },
+    {
+      "name": "Wembley Park",
+      "count": 1
+    },
+    {
+      "name": "Hounslow East",
+      "count": 1
+    },
+    {
+      "name": "Hackney Wick",
+      "count": 1
+    },
+    {
+      "name": "Willesden Junction",
+      "count": 1
+    },
+    {
+      "name": "Upminster",
+      "count": 1
+    },
+    {
+      "name": "Blackfriars",
+      "count": 1
+    },
+    {
+      "name": "Mill Hill East",
+      "count": 1
+    },
+    {
+      "name": "Hackney Central",
+      "count": 1
+    }
+  ],
+  "stepFreeStreak": [
+    {
+      "name": "Reading",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Bromley-by-Bow",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Bermondsey",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Bond Street",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Euston Square",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Fulham Broadway",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Finchley Central",
+      "days": 0,
+      "blackedOutNow": true
+    },
+    {
+      "name": "Golders Green",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Green Park",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Brent Cross West Station",
+      "days": 0,
+      "blackedOutNow": false
+    }
+  ],
+  "mostBrokenUnits": [
+    {
+      "unit": "Lift 2",
+      "station": "Finchley Central",
+      "count": 1
+    },
+    {
+      "unit": "Lift 1",
+      "station": "Hounslow East",
+      "count": 1
+    },
+    {
+      "unit": "Lift 1",
+      "station": "Mill Hill East",
+      "count": 1
+    },
+    {
+      "unit": "Lift 5",
+      "station": "Wembley Park",
+      "count": 1
+    },
+    {
+      "unit": "Lift LU 2",
+      "station": "Canary Wharf",
+      "count": 1
+    },
+    {
+      "unit": "Lift 4",
+      "station": "Harrow & Wealdstone",
+      "count": 1
+    },
+    {
+      "unit": "Lift 1",
+      "station": "Imperial Wharf",
+      "count": 1
+    },
+    {
+      "unit": "Lift 2",
+      "station": "Gospel Oak",
+      "count": 1
+    },
+    {
+      "unit": "Lift 1",
+      "station": "Hackney Central",
+      "count": 1
+    },
+    {
+      "unit": "Lift 1",
+      "station": "Hackney Wick",
+      "count": 1
+    }
+  ],
+  "uptimeStreak": [
+    {
+      "unit": "Lift 4",
+      "station": "Reading",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "Lift 2",
+      "station": "Bromley-by-Bow",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "Lift 1",
+      "station": "Bermondsey",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "Lift C",
+      "station": "Bond Street",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "Lift D",
+      "station": "Bond Street",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "Lift A",
+      "station": "Bond Street",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "Lift E",
+      "station": "Bond Street",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "Lift 2",
+      "station": "Euston Square",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "Lift 1",
+      "station": "Fulham Broadway",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "Lift 1",
+      "station": "Finchley Central",
+      "days": 0,
+      "downNow": false
+    }
+  ],
+  "singlePointsOfFailure": [
+    {
+      "name": "King's Cross St Pancras",
+      "count": 13
+    },
+    {
+      "name": "Stratford",
+      "count": 11
+    },
+    {
+      "name": "Tottenham Court Road",
+      "count": 9
+    },
+    {
+      "name": "Bond Street",
+      "count": 6
+    },
+    {
+      "name": "Bank",
+      "count": 6
+    },
+    {
+      "name": "Blackfriars",
+      "count": 6
+    },
+    {
+      "name": "Canary Wharf",
+      "count": 6
+    },
+    {
+      "name": "Victoria",
+      "count": 6
+    },
+    {
+      "name": "Farringdon",
+      "count": 6
+    },
+    {
+      "name": "Paddington",
+      "count": 6
+    },
+    {
+      "name": "Vauxhall",
+      "count": 6
+    },
+    {
+      "name": "Whitechapel",
+      "count": 6
+    },
+    {
+      "name": "Reading",
+      "count": 5
+    },
+    {
+      "name": "Brent Cross West Station",
+      "count": 5
+    },
+    {
+      "name": "Wembley Park",
+      "count": 5
+    }
+  ]
+}

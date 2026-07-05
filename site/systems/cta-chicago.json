@@ -1,0 +1,272 @@
+{
+  "id": "cta-chicago",
+  "name": "CTA",
+  "label": "CTA (Chicago)",
+  "generatedAt": "2026-07-05T06:31:23.397Z",
+  "mostBrokenStations": [
+    {
+      "name": "Wilson",
+      "count": 1
+    },
+    {
+      "name": "47th",
+      "count": 1
+    },
+    {
+      "name": "63rd",
+      "count": 1
+    },
+    {
+      "name": "Lake",
+      "count": 1
+    },
+    {
+      "name": "Western",
+      "count": 1
+    },
+    {
+      "name": "King Drive",
+      "count": 1
+    },
+    {
+      "name": "Loyola",
+      "count": 1
+    },
+    {
+      "name": "Howard",
+      "count": 1
+    },
+    {
+      "name": "47th",
+      "count": 1
+    },
+    {
+      "name": "Conservatory-Central Park Drive",
+      "count": 1
+    }
+  ],
+  "stepFreeStreak": [
+    {
+      "name": "Ashland",
+      "days": 0,
+      "blackedOutNow": true
+    },
+    {
+      "name": "Washington/Wells",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Conservatory-Central Park Drive",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Lake",
+      "days": 0,
+      "blackedOutNow": true
+    },
+    {
+      "name": "Western",
+      "days": 0,
+      "blackedOutNow": true
+    },
+    {
+      "name": "King Drive",
+      "days": 0,
+      "blackedOutNow": true
+    },
+    {
+      "name": "Loyola",
+      "days": 0,
+      "blackedOutNow": true
+    },
+    {
+      "name": "Howard",
+      "days": 0,
+      "blackedOutNow": true
+    },
+    {
+      "name": "Wilson",
+      "days": 0,
+      "blackedOutNow": true
+    },
+    {
+      "name": "47th",
+      "days": 0,
+      "blackedOutNow": true
+    }
+  ],
+  "mostBrokenUnits": [
+    {
+      "unit": "40170",
+      "station": "Ashland",
+      "count": 1
+    },
+    {
+      "unit": "40730",
+      "station": "Washington/Wells",
+      "count": 1
+    },
+    {
+      "unit": "41670",
+      "station": "Conservatory-Central Park Drive",
+      "count": 1
+    },
+    {
+      "unit": "41660",
+      "station": "Lake",
+      "count": 1
+    },
+    {
+      "unit": "41480",
+      "station": "Western",
+      "count": 1
+    },
+    {
+      "unit": "41140",
+      "station": "King Drive",
+      "count": 1
+    },
+    {
+      "unit": "41300",
+      "station": "Loyola",
+      "count": 1
+    },
+    {
+      "unit": "40900",
+      "station": "Howard",
+      "count": 1
+    },
+    {
+      "unit": "40540",
+      "station": "Wilson",
+      "count": 1
+    },
+    {
+      "unit": "41080",
+      "station": "47th",
+      "count": 1
+    }
+  ],
+  "uptimeStreak": [
+    {
+      "unit": "40170",
+      "station": "Ashland",
+      "days": 0,
+      "downNow": true
+    },
+    {
+      "unit": "40730",
+      "station": "Washington/Wells",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "41670",
+      "station": "Conservatory-Central Park Drive",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "41660",
+      "station": "Lake",
+      "days": 0,
+      "downNow": true
+    },
+    {
+      "unit": "41480",
+      "station": "Western",
+      "days": 0,
+      "downNow": true
+    },
+    {
+      "unit": "41140",
+      "station": "King Drive",
+      "days": 0,
+      "downNow": true
+    },
+    {
+      "unit": "41300",
+      "station": "Loyola",
+      "days": 0,
+      "downNow": true
+    },
+    {
+      "unit": "40900",
+      "station": "Howard",
+      "days": 0,
+      "downNow": true
+    },
+    {
+      "unit": "40540",
+      "station": "Wilson",
+      "days": 0,
+      "downNow": true
+    },
+    {
+      "unit": "41080",
+      "station": "47th",
+      "days": 0,
+      "downNow": true
+    }
+  ],
+  "singlePointsOfFailure": [
+    {
+      "name": "Ashland",
+      "count": 1
+    },
+    {
+      "name": "Washington/Wells",
+      "count": 1
+    },
+    {
+      "name": "Conservatory-Central Park Drive",
+      "count": 1
+    },
+    {
+      "name": "Lake",
+      "count": 1
+    },
+    {
+      "name": "Western",
+      "count": 1
+    },
+    {
+      "name": "King Drive",
+      "count": 1
+    },
+    {
+      "name": "Loyola",
+      "count": 1
+    },
+    {
+      "name": "Howard",
+      "count": 1
+    },
+    {
+      "name": "Wilson",
+      "count": 1
+    },
+    {
+      "name": "47th",
+      "count": 1
+    },
+    {
+      "name": "63rd",
+      "count": 1
+    },
+    {
+      "name": "47th",
+      "count": 1
+    },
+    {
+      "name": "35th-Bronzeville-IIT",
+      "count": 1
+    },
+    {
+      "name": "California",
+      "count": 1
+    }
+  ]
+}

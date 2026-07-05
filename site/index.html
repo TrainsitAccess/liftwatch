@@ -35,6 +35,9 @@
   .board-head .t { color: var(--amber); font-size: 13px; letter-spacing: 0.14em; }
   .board-head .s { color: var(--dim); font-size: 11px; letter-spacing: 0.08em; }
   .row { display: flex; margin: 3px 0; width: max-content; }
+  a.row { text-decoration: none; color: inherit; cursor: pointer; border-radius: 5px; }
+  a.row:hover .cell, a.row:focus-visible .cell { background: #1c1c17; }
+  a.row:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
   .cell {
     width: 21px; height: 29px; margin: 1px; border-radius: 3px;
     background: var(--cell); color: var(--text);
@@ -86,9 +89,10 @@
 const CH = " ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.%/-▮!*";
 const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-function makeRow(container, segs) {
-  const row = document.createElement("div");
+function makeRow(container, segs, href) {
+  const row = document.createElement(href ? "a" : "div");
   row.className = "row";
+  if (href) row.href = href;
   const cells = [];
   for (const seg of segs) {
     for (const chr of seg.str) {
@@ -138,7 +142,7 @@ fetch("./data.json").then(r => r.json()).then(data => {
       { str: pad(s.boardLabel, 15), cls: "" },
       { str: " " + rpad(fleet, 8) + " ", cls: "dim" },
       { str: rpad(pct, 7), cls: s.pctDown == null ? "dim" : "amber" },
-    ]));
+    ], `./system.html?id=${encodeURIComponent(s.id)}`));
   });
 
   const staticFleetSystems = data.systems.filter(s => s.fleetSource === "static");
@@ -175,7 +179,7 @@ fetch("./data.json").then(r => r.json()).then(data => {
   const sr = document.getElementById("sr-data");
   sr.innerHTML =
     "<h2>Systems by share of elevators out of service</h2><ol>" +
-    data.systems.map(s => `<li>${s.label}: ${s.pctDown == null
+    data.systems.map(s => `<li><a href="./system.html?id=${encodeURIComponent(s.id)}">${s.label}</a>: ${s.pctDown == null
       ? `${s.down} elevators out (fleet size unknown — this agency only reports broken units)`
       : `${s.down} of ${s.activeUnits} elevators out (${s.pctDown}%)${s.fleetSource === "static" ? ` — uses ${s.name}'s published fleet total as of ${s.staticFleetAsOf}, not a live feed` : ""}`}</li>`).join("") +
     "</ol><h2>Longest current outages</h2><ol>" +

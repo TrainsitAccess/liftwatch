@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LiftWatch — system detail</title>
+<meta name="description" content="Per-system elevator reliability: most and least broken stations and units, single points of failure.">
+<style>
+  :root {
+    --bg: #17170f;
+    --board: #121210;
+    --cell: #080807;
+    --text: #efe9db;
+    --amber: #e8b64c;
+    --red: #e05c4a;
+    --dim: #6f6f66;
+    --hairline: #2a2a26;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; background: var(--bg); color: var(--text);
+    font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    display: flex; flex-direction: column; align-items: center; padding: 40px 16px 64px;
+  }
+  header { width: min(760px, 100%); margin-bottom: 28px; }
+  .back { color: var(--dim); font-size: 12px; letter-spacing: 0.06em; text-decoration: none; display: inline-block; margin-bottom: 14px; }
+  .back:hover, .back:focus-visible { color: var(--amber); }
+  h1 { font-size: 22px; font-weight: 500; letter-spacing: 0.1em; margin: 0; }
+  .tag { color: var(--dim); font-size: 12px; letter-spacing: 0.08em; margin-top: 6px; }
+  .board {
+    width: min(760px, 100%); background: var(--board);
+    border: 1px solid var(--hairline); border-radius: 10px;
+    padding: 16px 16px 12px; margin-bottom: 26px; overflow-x: auto;
+  }
+  .board-head { display: flex; justify-content: space-between; align-items: baseline; margin: 0 2px 12px; }
+  .board-head .t { color: var(--amber); font-size: 13px; letter-spacing: 0.14em; }
+  .board-head .s { color: var(--dim); font-size: 11px; letter-spacing: 0.08em; }
+  .row { display: flex; margin: 3px 0; width: max-content; }
+  .cell {
+    width: 21px; height: 29px; margin: 1px; border-radius: 3px;
+    background: var(--cell); color: var(--text);
+    font-size: 16px; font-weight: 500; line-height: 29px; text-align: center;
+    position: relative; overflow: hidden; flex: 0 0 auto;
+  }
+  .cell::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: rgba(0,0,0,.65); }
+  .cell.amber { color: var(--amber); }
+  .cell.red { color: var(--red); }
+  .cell.dim { color: var(--dim); font-size: 12px; }
+  .empty { color: var(--dim); font-size: 12px; letter-spacing: 0.04em; padding: 4px 2px 8px; }
+  .legend { color: var(--dim); font-size: 11px; letter-spacing: 0.06em; margin: 10px 2px 0; }
+  .legend .red { color: var(--red); }
+  footer { width: min(760px, 100%); color: var(--dim); font-size: 12px; line-height: 1.7; }
+  footer a { color: var(--amber); }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+</style>
+</head>
+<body>
+<header>
+  <a class="back" href="./index.html">&larr; ALL SYSTEMS</a>
+  <h1 id="sys-title">Loading…</h1>
+  <p class="tag" id="sys-tag"></p>
+</header>
+
+<section class="board" aria-hidden="true">
+  <div class="board-head"><span class="t">MOST BROKEN STATIONS</span><span class="s">OUTAGES · ALL-TIME</span></div>
+  <div id="broken-stations-board"></div>
+  <p class="empty" id="broken-stations-empty" hidden>Not enough data yet.</p>
+</section>
+
+<section class="board" aria-hidden="true">
+  <div class="board-head"><span class="t">LONGEST STEP-FREE STREAK</span><span class="s">DAYS SINCE LAST BLACKOUT</span></div>
+  <div id="streak-stations-board"></div>
+  <p class="empty" id="streak-stations-empty" hidden>Not enough data yet.</p>
+  <p class="legend"><span class="red">0D</span> = currently blacked out (sole step-free access is down)</p>
+</section>
+
+<section class="board" aria-hidden="true">
+  <div class="board-head"><span class="t">MOST BROKEN UNITS</span><span class="s">OUTAGES · ALL-TIME</span></div>
+  <div id="broken-units-board"></div>
+  <p class="empty" id="broken-units-empty" hidden>Not enough data yet.</p>
+</section>
+
+<section class="board" aria-hidden="true">
+  <div class="board-head"><span class="t">LONGEST UPTIME STREAK</span><span class="s">DAYS SINCE LAST OUTAGE</span></div>
+  <div id="streak-units-board"></div>
+  <p class="empty" id="streak-units-empty" hidden>Not enough data yet.</p>
+  <p class="legend"><span class="red">0D</span> = currently out of service</p>
+</section>
+
+<section class="board" aria-hidden="true">
+  <div class="board-head"><span class="t">SINGLE POINTS OF FAILURE</span><span class="s">NON-REDUNDANT ELEVATORS</span></div>
+  <div id="spof-board"></div>
+  <p class="empty" id="spof-empty" hidden>None known — every modeled station has a step-free backup.</p>
+  <p class="legend">Stations where losing this elevator alone cuts step-free access entirely — structural, doesn't need outage history</p>
+</section>
+
+<div id="sr-data" class="sr-only" role="region" aria-label="System detail data"></div>
+
+<footer>
+  <p id="updated">Loading live data…</p>
+  <p>All-time counts include every outage since LiftWatch started monitoring this system —
+     not just what's happening right now. Newly added elevators/stations are ranked fairly
+     alongside long-monitored ones, not hidden.</p>
+</footer>
+
+<script>
+const CH = " ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.%/-▮!*";
+const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function makeRow(container, segs) {
+  const row = document.createElement("div");
+  row.className = "row";
+  const cells = [];
+  for (const seg of segs) {
+    for (const chr of seg.str) {
+      const c = document.createElement("div");
+      c.className = "cell" + (seg.cls ? " " + seg.cls : "");
+      c.textContent = " ";
+      row.appendChild(c);
+      cells.push({ el: c, target: chr.toUpperCase() });
+    }
+  }
+  container.appendChild(row);
+  return cells;
+}
+
+function riffle(allCells) {
+  allCells.forEach(({ el, target }, i) => {
+    if (REDUCED) { el.textContent = target; return; }
+    const tIdx = Math.max(0, CH.indexOf(target));
+    let cur = 0, remaining = (tIdx % CH.length) + 8;
+    const tick = () => {
+      cur = (cur + 1) % CH.length;
+      el.textContent = CH[cur];
+      if (--remaining > 0) setTimeout(tick, 26);
+      else el.textContent = target;
+    };
+    setTimeout(tick, i * 6);
+  });
+}
+
+const pad = (s, n) => String(s).slice(0, n).padEnd(n, " ");
+const rpad = (s, n) => String(s).slice(0, n).padStart(n, " ");
+
+function showEmpty(id, isEmpty) {
+  document.getElementById(id).hidden = !isEmpty;
+}
+
+const id = new URLSearchParams(location.search).get("id");
+if (!id) {
+  document.getElementById("sys-title").textContent = "No system specified";
+  document.getElementById("updated").textContent = "Missing ?id= in the URL — go back and click a system.";
+} else {
+  fetch(`./systems/${encodeURIComponent(id)}.json`).then(r => {
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    return r.json();
+  }).then(data => {
+    const cells = [];
+    document.title = `${data.label} — LiftWatch`;
+    document.getElementById("sys-title").textContent = data.label;
+    document.getElementById("sys-tag").textContent = "PER-SYSTEM ELEVATOR RELIABILITY";
+
+    showEmpty("broken-stations-empty", data.mostBrokenStations.length === 0);
+    const bs = document.getElementById("broken-stations-board");
+    data.mostBrokenStations.forEach((s, i) => {
+      cells.push(...makeRow(bs, [
+        { str: rpad(i + 1, 2) + " ", cls: "dim" },
+        { str: pad(s.name, 26), cls: "" },
+        { str: rpad(s.count, 6), cls: "amber" },
+      ]));
+    });
+
+    showEmpty("streak-stations-empty", data.stepFreeStreak.length === 0);
+    const ss = document.getElementById("streak-stations-board");
+    data.stepFreeStreak.forEach((s, i) => {
+      cells.push(...makeRow(ss, [
+        { str: rpad(i + 1, 2) + " ", cls: "dim" },
+        { str: pad(s.name, 26), cls: "" },
+        { str: rpad(s.days + "D", 6), cls: s.blackedOutNow ? "red" : "amber" },
+      ]));
+    });
+
+    showEmpty("broken-units-empty", data.mostBrokenUnits.length === 0);
+    const bu = document.getElementById("broken-units-board");
+    data.mostBrokenUnits.forEach((u, i) => {
+      cells.push(...makeRow(bu, [
+        { str: rpad(i + 1, 2) + " ", cls: "dim" },
+        { str: pad(u.unit, 17), cls: "" },
+        { str: " " + pad(u.station, 15), cls: "dim" },
+        { str: rpad(u.count, 5), cls: "amber" },
+      ]));
+    });
+
+    showEmpty("streak-units-empty", data.uptimeStreak.length === 0);
+    const su = document.getElementById("streak-units-board");
+    data.uptimeStreak.forEach((u, i) => {
+      cells.push(...makeRow(su, [
+        { str: rpad(i + 1, 2) + " ", cls: "dim" },
+        { str: pad(u.unit, 17), cls: "" },
+        { str: " " + pad(u.station, 15), cls: "dim" },
+        { str: rpad(u.days + "D", 5), cls: u.downNow ? "red" : "amber" },
+      ]));
+    });
+
+    showEmpty("spof-empty", data.singlePointsOfFailure.length === 0);
+    const sp = document.getElementById("spof-board");
+    data.singlePointsOfFailure.forEach((s, i) => {
+      cells.push(...makeRow(sp, [
+        { str: rpad(i + 1, 2) + " ", cls: "dim" },
+        { str: pad(s.name, 26), cls: "" },
+        { str: rpad(s.count, 6), cls: "red" },
+      ]));
+    });
+
+    riffle(cells);
+
+    const t = new Date(data.generatedAt);
+    document.getElementById("updated").textContent = `Snapshot: ${t.toLocaleString()}.`;
+
+    const sr = document.getElementById("sr-data");
+    const list = (title, items, fmt) =>
+      `<h2>${title}</h2>${items.length ? `<ol>${items.map(fmt).join("")}</ol>` : "<p>Not enough data yet.</p>"}`;
+    sr.innerHTML =
+      list("Most broken stations", data.mostBrokenStations, s => `<li>${s.name}: ${s.count} outages all-time</li>`) +
+      list("Longest step-free streak", data.stepFreeStreak, s => `<li>${s.name}: ${s.blackedOutNow ? "currently blacked out" : `${s.days} days since last blackout`}</li>`) +
+      list("Most broken units", data.mostBrokenUnits, u => `<li>${u.unit} (${u.station}): ${u.count} outages all-time</li>`) +
+      list("Longest uptime streak", data.uptimeStreak, u => `<li>${u.unit} (${u.station}): ${u.downNow ? "currently out of service" : `${u.days} days since last outage`}</li>`) +
+      list("Single points of failure", data.singlePointsOfFailure, s => `<li>${s.name}: ${s.count} non-redundant elevator${s.count === 1 ? "" : "s"}</li>`);
+  }).catch(err => {
+    document.getElementById("sys-title").textContent = "Could not load this system";
+    document.getElementById("updated").textContent = `${err.message} — run: npm run site:data`;
+  });
+}
+</script>
+</body>
+</html>

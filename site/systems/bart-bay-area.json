@@ -1,0 +1,222 @@
+{
+  "id": "bart-bay-area",
+  "name": "BART",
+  "label": "BART (San Francisco)",
+  "generatedAt": "2026-07-05T06:31:23.397Z",
+  "mostBrokenStations": [
+    {
+      "name": "12th St. Oakland City Center",
+      "count": 2
+    },
+    {
+      "name": "Millbrae",
+      "count": 1
+    },
+    {
+      "name": "Richmond",
+      "count": 1
+    },
+    {
+      "name": "Coliseum",
+      "count": 1
+    }
+  ],
+  "stepFreeStreak": [
+    {
+      "name": "19th St. Oakland",
+      "days": 1,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Antioch",
+      "days": 1,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Ashby",
+      "days": 1,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Montgomery St.",
+      "days": 1,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Union City",
+      "days": 1,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Walnut Creek",
+      "days": 1,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Warm Springs/South Fremont",
+      "days": 1,
+      "blackedOutNow": false
+    },
+    {
+      "name": "West Dublin/Pleasanton",
+      "days": 1,
+      "blackedOutNow": false
+    },
+    {
+      "name": "West Oakland",
+      "days": 1,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Balboa Park",
+      "days": 1,
+      "blackedOutNow": false
+    }
+  ],
+  "mostBrokenUnits": [
+    {
+      "unit": "Station - Convention Center (unspecified elevator — conservative)",
+      "station": "12th St. Oakland City Center",
+      "count": 2
+    },
+    {
+      "unit": "Station elevator access (BART reports at station level)",
+      "station": "Millbrae",
+      "count": 1
+    },
+    {
+      "unit": "Station elevator access (BART reports at station level)",
+      "station": "Coliseum",
+      "count": 1
+    },
+    {
+      "unit": "Station (unspecified elevator — conservative)",
+      "station": "Richmond",
+      "count": 1
+    }
+  ],
+  "uptimeStreak": [
+    {
+      "unit": "Platform Elevator 1",
+      "station": "19th St. Oakland",
+      "days": 1,
+      "downNow": false
+    },
+    {
+      "unit": "Platform Elevator 2",
+      "station": "19th St. Oakland",
+      "days": 1,
+      "downNow": false
+    },
+    {
+      "unit": "Station elevator access (BART reports at station level)",
+      "station": "Antioch",
+      "days": 1,
+      "downNow": false
+    },
+    {
+      "unit": "Adeline Street East street elevator",
+      "station": "Ashby",
+      "days": 1,
+      "downNow": false
+    },
+    {
+      "unit": "Station elevator access (BART reports at station level)",
+      "station": "Montgomery St.",
+      "days": 1,
+      "downNow": false
+    },
+    {
+      "unit": "Station elevator access (BART reports at station level)",
+      "station": "Union City",
+      "days": 1,
+      "downNow": false
+    },
+    {
+      "unit": "Station elevator access (BART reports at station level)",
+      "station": "Walnut Creek",
+      "days": 1,
+      "downNow": false
+    },
+    {
+      "unit": "Street elevator 1",
+      "station": "Warm Springs/South Fremont",
+      "days": 1,
+      "downNow": false
+    },
+    {
+      "unit": "Street elevator 2",
+      "station": "Warm Springs/South Fremont",
+      "days": 1,
+      "downNow": false
+    },
+    {
+      "unit": "Street elevator 2",
+      "station": "West Dublin/Pleasanton",
+      "days": 1,
+      "downNow": false
+    }
+  ],
+  "singlePointsOfFailure": [
+    {
+      "name": "Richmond",
+      "count": 2
+    },
+    {
+      "name": "12th St. Oakland City Center",
+      "count": 2
+    },
+    {
+      "name": "Antioch",
+      "count": 1
+    },
+    {
+      "name": "Montgomery St.",
+      "count": 1
+    },
+    {
+      "name": "Union City",
+      "count": 1
+    },
+    {
+      "name": "Walnut Creek",
+      "count": 1
+    },
+    {
+      "name": "West Oakland",
+      "count": 1
+    },
+    {
+      "name": "Balboa Park",
+      "count": 1
+    },
+    {
+      "name": "Downtown Berkeley",
+      "count": 1
+    },
+    {
+      "name": "Dublin/Pleasanton",
+      "count": 1
+    },
+    {
+      "name": "El Cerrito del Norte",
+      "count": 1
+    },
+    {
+      "name": "Embarcadero",
+      "count": 1
+    },
+    {
+      "name": "Fremont",
+      "count": 1
+    },
+    {
+      "name": "Fruitvale",
+      "count": 1
+    },
+    {
+      "name": "Glen Park",
+      "count": 1
+    }
+  ]
+}
