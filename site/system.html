@@ -87,13 +87,6 @@
   <p class="legend"><span class="red">0D</span> = currently out of service</p>
 </section>
 
-<section class="board" aria-hidden="true">
-  <div class="board-head"><span class="t">SINGLE POINTS OF FAILURE</span><span class="s">NON-REDUNDANT ELEVATORS</span></div>
-  <div id="spof-board"></div>
-  <p class="empty" id="spof-empty" hidden>None known — every modeled station has a step-free backup.</p>
-  <p class="legend">Stations where losing this elevator alone cuts step-free access entirely — structural, doesn't need outage history</p>
-</section>
-
 <div id="sr-data" class="sr-only" role="region" aria-label="System detail data"></div>
 
 <footer>
@@ -202,16 +195,6 @@ if (!id) {
       ]));
     });
 
-    showEmpty("spof-empty", data.singlePointsOfFailure.length === 0);
-    const sp = document.getElementById("spof-board");
-    data.singlePointsOfFailure.forEach((s, i) => {
-      cells.push(...makeRow(sp, [
-        { str: rpad(i + 1, 2) + " ", cls: "dim" },
-        { str: pad(s.name, 26), cls: "" },
-        { str: rpad(s.count, 6), cls: "red" },
-      ]));
-    });
-
     riffle(cells);
 
     const t = new Date(data.generatedAt);
@@ -224,8 +207,7 @@ if (!id) {
       list("Most broken stations", data.mostBrokenStations, s => `<li>${s.name}: ${s.count} outages all-time</li>`) +
       list("Longest step-free streak", data.stepFreeStreak, s => `<li>${s.name}: ${s.blackedOutNow ? "currently blacked out" : `${s.days} days since last blackout`}</li>`) +
       list("Most broken units", data.mostBrokenUnits, u => `<li>${u.unit} (${u.station}): ${u.count} outages all-time</li>`) +
-      list("Longest uptime streak", data.uptimeStreak, u => `<li>${u.unit} (${u.station}): ${u.downNow ? "currently out of service" : `${u.days} days since last outage`}</li>`) +
-      list("Single points of failure", data.singlePointsOfFailure, s => `<li>${s.name}: ${s.count} non-redundant elevator${s.count === 1 ? "" : "s"}</li>`);
+      list("Longest uptime streak", data.uptimeStreak, u => `<li>${u.unit} (${u.station}): ${u.downNow ? "currently out of service" : `${u.days} days since last outage`}</li>`);
   }).catch(err => {
     document.getElementById("sys-title").textContent = "Could not load this system";
     document.getElementById("updated").textContent = `${err.message} — run: npm run site:data`;
