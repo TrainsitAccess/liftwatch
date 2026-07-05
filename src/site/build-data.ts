@@ -110,6 +110,9 @@ const systemRows = (systems.data ?? [])
       id: s.id,
       name: s.short_name as string,
       city: s.city as string,
+      // Long-form label for the leaderboard/screen-reader text — defaults to
+      // "{shortName} ({city})", overridable per catalog entry (see systems.ts).
+      label: catalogEntry?.displayLabel ?? `${s.short_name} (${s.city})`,
       dataQuality: s.data_quality as string,
       inventoryComplete,
       fleetSource,

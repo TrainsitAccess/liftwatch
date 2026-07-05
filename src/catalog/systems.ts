@@ -13,6 +13,13 @@ export interface SystemCatalogEntry {
   continent: string;
   timezone: string; // IANA
   adapter: string;
+  // Overrides the site's long-form label (e.g. leaderboard/screen-reader
+  // text), which otherwise defaults to "{shortName} ({city})". Use when
+  // leading with the city reads better than the operator's own brand — e.g.
+  // "TMB" isn't a widely recognized name the way "BART" or "TfL" are.
+  // shortName itself is untouched (it still drives the fixed-width
+  // split-flap board cell, which has no room for a compound label).
+  displayLabel?: string;
   dataQuality: "good" | "fair" | "best_effort";
   // "confirmed-none": redundancy is fully curated, so a station with no model is a
   // confirmed non-redundant station (not merely 'assumed'). Defaults to "assumed".
@@ -167,6 +174,9 @@ export const SYSTEMS: SystemCatalogEntry[] = [
     continent: "Europe",
     timezone: "Europe/Madrid",
     adapter: "tmb",
+    // "TMB" isn't a widely recognized brand outside Catalonia, unlike BART/
+    // TfL/CTA — lead with the city instead of the default "{shortName} ({city})".
+    displayLabel: "Barcelona (TMB Metro)",
     // Real per-elevator inventory (151 elevators, 123 stations — built by
     // scripts/tmb-import.mjs from TMB's documented "transit" API) combined
     // with a live outage feed that is NOT in developer.tmb.cat's docs at all

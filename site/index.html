@@ -175,7 +175,7 @@ fetch("./data.json").then(r => r.json()).then(data => {
   const sr = document.getElementById("sr-data");
   sr.innerHTML =
     "<h2>Systems by share of elevators out of service</h2><ol>" +
-    data.systems.map(s => `<li>${s.name} (${s.city}): ${s.pctDown == null
+    data.systems.map(s => `<li>${s.label}: ${s.pctDown == null
       ? `${s.down} elevators out (fleet size unknown — this agency only reports broken units)`
       : `${s.down} of ${s.activeUnits} elevators out (${s.pctDown}%)${s.fleetSource === "static" ? ` — uses ${s.name}'s published fleet total as of ${s.staticFleetAsOf}, not a live feed` : ""}`}</li>`).join("") +
     "</ol><h2>Longest current outages</h2><ol>" +
