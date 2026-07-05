@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-07-05T01:03:19.738Z",
+  "generatedAt": "2026-07-05T06:16:06.953Z",
   "totals": {
-    "systems": 6,
-    "activeUnits": 1471,
+    "systems": 7,
+    "activeUnits": 1925,
     "staticUnitsInTotal": 493,
-    "down": 91
+    "down": 88
   },
   "systems": [
     {
@@ -15,9 +15,9 @@
       "inventoryComplete": true,
       "fleetSource": "live",
       "activeUnits": 408,
-      "down": 37,
-      "downUnplanned": 19,
-      "pctDown": 9.1,
+      "down": 40,
+      "downUnplanned": 22,
+      "pctDown": 9.8,
       "staticFleetAsOf": null,
       "staticFleetSource": null
     },
@@ -29,25 +29,11 @@
       "inventoryComplete": false,
       "fleetSource": "static",
       "activeUnits": 173,
-      "down": 14,
-      "downUnplanned": 12,
-      "pctDown": 8.1,
+      "down": 12,
+      "downUnplanned": 10,
+      "pctDown": 6.9,
       "staticFleetAsOf": "2026-07-05",
       "staticFleetSource": "https://www.transitchicago.com/elevatorescalatorupgrades/"
-    },
-    {
-      "id": "mbta-boston",
-      "name": "MBTA",
-      "city": "Boston",
-      "dataQuality": "good",
-      "inventoryComplete": true,
-      "fleetSource": "live",
-      "activeUnits": 156,
-      "down": 10,
-      "downUnplanned": 5,
-      "pctDown": 6.4,
-      "staticFleetAsOf": null,
-      "staticFleetSource": null
     },
     {
       "id": "tfl-london",
@@ -56,10 +42,10 @@
       "dataQuality": "good",
       "inventoryComplete": true,
       "fleetSource": "live",
-      "activeUnits": 354,
-      "down": 21,
-      "downUnplanned": 21,
-      "pctDown": 5.9,
+      "activeUnits": 569,
+      "down": 20,
+      "downUnplanned": 20,
+      "pctDown": 3.5,
       "staticFleetAsOf": null,
       "staticFleetSource": null
     },
@@ -70,10 +56,24 @@
       "dataQuality": "best_effort",
       "inventoryComplete": true,
       "fleetSource": "live",
-      "activeUnits": 60,
-      "down": 3,
-      "downUnplanned": 3,
-      "pctDown": 5,
+      "activeUnits": 67,
+      "down": 2,
+      "downUnplanned": 2,
+      "pctDown": 3,
+      "staticFleetAsOf": null,
+      "staticFleetSource": null
+    },
+    {
+      "id": "mbta-boston",
+      "name": "MBTA",
+      "city": "Boston",
+      "dataQuality": "good",
+      "inventoryComplete": true,
+      "fleetSource": "live",
+      "activeUnits": 237,
+      "down": 7,
+      "downUnplanned": 5,
+      "pctDown": 3,
       "staticFleetAsOf": null,
       "staticFleetSource": null
     },
@@ -90,6 +90,20 @@
       "pctDown": 1.9,
       "staticFleetAsOf": "2026-07-04",
       "staticFleetSource": "https://www.wmata.com/ride/elevators-escalators.html"
+    },
+    {
+      "id": "tmb-barcelona",
+      "name": "TMB Metro",
+      "city": "Barcelona",
+      "dataQuality": "good",
+      "inventoryComplete": true,
+      "fleetSource": "live",
+      "activeUnits": 151,
+      "down": 1,
+      "downUnplanned": 0,
+      "pctDown": 0.7,
+      "staticFleetAsOf": null,
+      "staticFleetSource": null
     }
   ],
   "longestOutages": [
@@ -120,18 +134,18 @@
     {
       "system": "NYC Subway",
       "station": "Jamaica-179 St",
-      "unit": "EL431",
+      "unit": "EL432",
       "soleAccess": true,
       "planned": true,
-      "days": 224
+      "days": 225
     },
     {
       "system": "NYC Subway",
       "station": "Jamaica-179 St",
-      "unit": "EL432",
+      "unit": "EL431",
       "soleAccess": true,
       "planned": true,
-      "days": 224
+      "days": 225
     },
     {
       "system": "NYC Subway",
@@ -139,7 +153,15 @@
       "unit": "EL433",
       "soleAccess": true,
       "planned": true,
-      "days": 224
+      "days": 225
+    },
+    {
+      "system": "NYC Subway",
+      "station": "Crown Hts-Utica Av",
+      "unit": "EL323",
+      "soleAccess": true,
+      "planned": true,
+      "days": 215
     },
     {
       "system": "NYC Subway",
@@ -147,12 +169,12 @@
       "unit": "EL322",
       "soleAccess": true,
       "planned": true,
-      "days": 214
+      "days": 215
     },
     {
       "system": "NYC Subway",
-      "station": "Crown Hts-Utica Av",
-      "unit": "EL323",
+      "station": "Prospect Park",
+      "unit": "EL383",
       "soleAccess": true,
       "planned": true,
       "days": 214
@@ -163,15 +185,7 @@
       "unit": "EL382",
       "soleAccess": true,
       "planned": true,
-      "days": 213
-    },
-    {
-      "system": "NYC Subway",
-      "station": "Prospect Park",
-      "unit": "EL383",
-      "soleAccess": true,
-      "planned": true,
-      "days": 213
+      "days": 214
     }
   ]
 }

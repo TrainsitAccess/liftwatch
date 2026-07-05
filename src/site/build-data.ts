@@ -12,18 +12,62 @@ if (!db) {
   process.exit(1);
 }
 
-const [systems, units, stations, events] = await Promise.all([
-  db.from("systems").select("id, short_name, city, metro_area, data_quality"),
-  db.from("units").select("id, system_id, station_id, external_id, description, is_active, is_redundant"),
-  db.from("stations").select("id, name"),
-  db
-    .from("outage_events")
-    .select("unit_id, system_id, station_id, is_planned, reason, started_at, source_started_at, attributed")
-    .is("ended_at", null),
-]);
-for (const [label, r] of Object.entries({ systems, units, stations, events })) {
-  if (r.error) throw new Error(`${label}: ${r.error.message}`);
+// PostgREST caps a single response at 1000 rows by default — a plain
+// `.select()` silently TRUNCATES past that (no error), which stayed
+// invisible while the archive was small. `units` and `stations` (both
+// unbounded, growing with every system + poll) crossed 1000 rows the day
+// TMB was added, live-verified: the truncated result dropped TMB's units
+// entirely (inserted last) and left 11 stations unnamed. Page through with
+// `.range()` until a page returns fewer rows than requested — applied to
+// every table read here, not just the ones over 1000 today, since
+// `outage_events` (currently open outages) will cross it too as more
+// systems are added. Each call site builds its own query in a factory so
+// filters (e.g. `outage_events`'s `.is("ended_at", null)`) just work,
+// without fighting Supabase's chained query-builder generics.
+const PAGE_SIZE = 1000;
+async function fetchAll<T>(
+  query: (from: number, to: number) => PromiseLike<{ data: T[] | null; error: { message: string } | null }>,
+  label: string,
+): Promise<T[]> {
+  const rows: T[] = [];
+  for (let from = 0; ; from += PAGE_SIZE) {
+    const { data, error } = await query(from, from + PAGE_SIZE - 1);
+    if (error) throw new Error(`${label}: ${error.message}`);
+    rows.push(...(data ?? []));
+    if (!data || data.length < PAGE_SIZE) break;
+  }
+  return rows;
 }
+
+const [systemsData, unitsData, stationsData, eventsData] = await Promise.all([
+  fetchAll(
+    (from, to) => db.from("systems").select("id, short_name, city, metro_area, data_quality").range(from, to),
+    "systems",
+  ),
+  fetchAll(
+    (from, to) =>
+      db
+        .from("units")
+        .select("id, system_id, station_id, external_id, description, is_active, is_redundant")
+        .range(from, to),
+    "units",
+  ),
+  fetchAll((from, to) => db.from("stations").select("id, name").range(from, to), "stations"),
+  fetchAll(
+    (from, to) =>
+      db
+        .from("outage_events")
+        .select("unit_id, system_id, station_id, is_planned, reason, started_at, source_started_at, attributed")
+        .is("ended_at", null)
+        .range(from, to),
+    "outage_events",
+  ),
+]);
+
+const systems = { data: systemsData };
+const units = { data: unitsData };
+const stations = { data: stationsData };
+const events = { data: eventsData };
 
 const stationName = new Map((stations.data ?? []).map((s) => [s.id as string, s.name as string]));
 const unitById = new Map((units.data ?? []).map((u) => [u.id as string, u]));
