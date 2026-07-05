@@ -135,7 +135,7 @@ fetch("./data.json").then(r => r.json()).then(data => {
     const pct = s.pctDown == null ? "-" : s.pctDown.toFixed(1) + "%" + (isStatic ? "*" : "");
     cells.push(...makeRow(sys, [
       { str: rpad(i + 1, 2) + " ", cls: "dim" },
-      { str: pad(s.boardLabel, 13), cls: "" },
+      { str: pad(s.boardLabel, 15), cls: "" },
       { str: " " + rpad(fleet, 8) + " ", cls: "dim" },
       { str: rpad(pct, 7), cls: s.pctDown == null ? "dim" : "amber" },
     ]));

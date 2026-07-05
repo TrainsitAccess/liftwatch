@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-05T06:22:12.684Z",
+  "generatedAt": "2026-07-05T06:24:02.124Z",
   "totals": {
     "systems": 7,
     "activeUnits": 1925,
@@ -108,7 +108,7 @@
       "name": "TMB Metro",
       "city": "Barcelona",
       "label": "Barcelona (TMB Metro)",
-      "boardLabel": "Barcelona",
+      "boardLabel": "Barcelona (TMB)",
       "dataQuality": "good",
       "inventoryComplete": true,
       "fleetSource": "live",

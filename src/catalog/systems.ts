@@ -181,9 +181,9 @@ export const SYSTEMS: SystemCatalogEntry[] = [
     // "TMB" isn't a widely recognized brand outside Catalonia, unlike BART/
     // TfL/CTA — lead with the city instead of the default "{shortName} ({city})".
     displayLabel: "Barcelona (TMB Metro)",
-    // Board's 13-char column can't fit "Barcelona (TMB Metro)" — just the
-    // city name reads better there than the full "TMB Metro" shortName.
-    boardLabel: "Barcelona",
+    // Board's name column can't fit the full "Barcelona (TMB Metro)" — this
+    // shorter form fits the (now-widened, 15-char) column exactly.
+    boardLabel: "Barcelona (TMB)",
     // Real per-elevator inventory (151 elevators, 123 stations — built by
     // scripts/tmb-import.mjs from TMB's documented "transit" API) combined
     // with a live outage feed that is NOT in developer.tmb.cat's docs at all
