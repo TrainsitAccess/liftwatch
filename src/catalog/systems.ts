@@ -143,6 +143,18 @@ export const SYSTEMS: SystemCatalogEntry[] = [
     // break, same mechanism as WMATA.
     dataQuality: "fair",
     inventoryComplete: false,
+    // 173 reported directly (2026-07-05), more precise than CTA's own public
+    // page, which independently corroborates with "more than 170 elevators"
+    // (https://www.transitchicago.com/elevatorescalatorupgrades/) — that page
+    // is used as the source URL (a real link for the site's "*" footnote to
+    // point to) since it's the closest citable public backing; the exact 173
+    // figure itself is a direct report, not literally printed there. CTA
+    // states it is actively installing more, so this will drift upward.
+    staticFleetReference: {
+      totalUnits: 173,
+      asOfDate: "2026-07-05",
+      source: "https://www.transitchicago.com/elevatorescalatorupgrades/",
+    },
   },
 ];
 

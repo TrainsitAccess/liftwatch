@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-07-05T00:58:05.510Z",
+  "generatedAt": "2026-07-05T01:03:19.738Z",
   "totals": {
     "systems": 6,
-    "activeUnits": 1298,
-    "staticUnitsInTotal": 320,
+    "activeUnits": 1471,
+    "staticUnitsInTotal": 493,
     "down": 91
   },
   "systems": [
@@ -20,6 +20,20 @@
       "pctDown": 9.1,
       "staticFleetAsOf": null,
       "staticFleetSource": null
+    },
+    {
+      "id": "cta-chicago",
+      "name": "CTA",
+      "city": "Chicago",
+      "dataQuality": "fair",
+      "inventoryComplete": false,
+      "fleetSource": "static",
+      "activeUnits": 173,
+      "down": 14,
+      "downUnplanned": 12,
+      "pctDown": 8.1,
+      "staticFleetAsOf": "2026-07-05",
+      "staticFleetSource": "https://www.transitchicago.com/elevatorescalatorupgrades/"
     },
     {
       "id": "mbta-boston",
@@ -76,20 +90,6 @@
       "pctDown": 1.9,
       "staticFleetAsOf": "2026-07-04",
       "staticFleetSource": "https://www.wmata.com/ride/elevators-escalators.html"
-    },
-    {
-      "id": "cta-chicago",
-      "name": "CTA",
-      "city": "Chicago",
-      "dataQuality": "fair",
-      "inventoryComplete": false,
-      "fleetSource": "none",
-      "activeUnits": null,
-      "down": 14,
-      "downUnplanned": 12,
-      "pctDown": null,
-      "staticFleetAsOf": null,
-      "staticFleetSource": null
     }
   ],
   "longestOutages": [
