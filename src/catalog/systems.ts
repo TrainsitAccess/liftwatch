@@ -17,9 +17,13 @@ export interface SystemCatalogEntry {
   // text), which otherwise defaults to "{shortName} ({city})". Use when
   // leading with the city reads better than the operator's own brand — e.g.
   // "TMB" isn't a widely recognized name the way "BART" or "TfL" are.
-  // shortName itself is untouched (it still drives the fixed-width
-  // split-flap board cell, which has no room for a compound label).
   displayLabel?: string;
+  // Overrides the split-flap board's fixed-width (13-char) name column,
+  // which otherwise defaults to shortName. The board can't fit a compound
+  // label like displayLabel (e.g. "Barcelona (TMB Metro)" is 21 chars, would
+  // get cut off mid-word) — use this for a short, board-only substitute
+  // (e.g. just the city name) when shortName alone isn't the clearest label.
+  boardLabel?: string;
   dataQuality: "good" | "fair" | "best_effort";
   // "confirmed-none": redundancy is fully curated, so a station with no model is a
   // confirmed non-redundant station (not merely 'assumed'). Defaults to "assumed".
@@ -177,6 +181,9 @@ export const SYSTEMS: SystemCatalogEntry[] = [
     // "TMB" isn't a widely recognized brand outside Catalonia, unlike BART/
     // TfL/CTA — lead with the city instead of the default "{shortName} ({city})".
     displayLabel: "Barcelona (TMB Metro)",
+    // Board's 13-char column can't fit "Barcelona (TMB Metro)" — just the
+    // city name reads better there than the full "TMB Metro" shortName.
+    boardLabel: "Barcelona",
     // Real per-elevator inventory (151 elevators, 123 stations — built by
     // scripts/tmb-import.mjs from TMB's documented "transit" API) combined
     // with a live outage feed that is NOT in developer.tmb.cat's docs at all

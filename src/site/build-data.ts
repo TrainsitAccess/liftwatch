@@ -113,6 +113,9 @@ const systemRows = (systems.data ?? [])
       // Long-form label for the leaderboard/screen-reader text — defaults to
       // "{shortName} ({city})", overridable per catalog entry (see systems.ts).
       label: catalogEntry?.displayLabel ?? `${s.short_name} (${s.city})`,
+      // Short label for the split-flap board's fixed 13-char column —
+      // defaults to shortName, overridable when that alone isn't clearest.
+      boardLabel: catalogEntry?.boardLabel ?? (s.short_name as string),
       dataQuality: s.data_quality as string,
       inventoryComplete,
       fleetSource,
