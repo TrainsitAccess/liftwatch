@@ -2,18 +2,258 @@
   "id": "mta-nyct",
   "name": "NYC Subway",
   "label": "NYC Subway (New York)",
-  "generatedAt": "2026-07-05T06:31:23.397Z",
+  "generatedAt": "2026-07-05T19:12:41.693Z",
+  "currentlyBroken": [
+    {
+      "station": "42St/Port Authority-Bus Terminal",
+      "unit": "Landing to mezzanine",
+      "days": 615,
+      "planned": false,
+      "soleAccess": false
+    },
+    {
+      "station": "161 St-Yankee Stadium",
+      "unit": "B/D mezzanine to 4 train",
+      "days": 606,
+      "planned": true,
+      "soleAccess": true
+    },
+    {
+      "station": "161 St-Yankee Stadium",
+      "unit": "Mezzanine to Manhattan-bound 4",
+      "days": 606,
+      "planned": true,
+      "soleAccess": true
+    },
+    {
+      "station": "Jamaica-179 St",
+      "unit": "Mezzanine to Manhattan-bound platform",
+      "days": 225,
+      "planned": true,
+      "soleAccess": true
+    },
+    {
+      "station": "Jamaica-179 St",
+      "unit": "Street to mezzanine",
+      "days": 225,
+      "planned": true,
+      "soleAccess": true
+    },
+    {
+      "station": "Jamaica-179 St",
+      "unit": "Mezzanine to terminal",
+      "days": 225,
+      "planned": true,
+      "soleAccess": true
+    },
+    {
+      "station": "Crown Hts-Utica Av",
+      "unit": "Mezzanine to platforms",
+      "days": 215,
+      "planned": true,
+      "soleAccess": true
+    },
+    {
+      "station": "Crown Hts-Utica Av",
+      "unit": "Street to mezzanine",
+      "days": 215,
+      "planned": true,
+      "soleAccess": true
+    },
+    {
+      "station": "Prospect Park",
+      "unit": "Street to Manhattan-bound platform",
+      "days": 214,
+      "planned": true,
+      "soleAccess": true
+    },
+    {
+      "station": "Prospect Park",
+      "unit": "Street to Brooklyn-bound platform",
+      "days": 214,
+      "planned": true,
+      "soleAccess": true
+    },
+    {
+      "station": "Coney Island-Stillwell Av",
+      "unit": "N platform to D overpass",
+      "days": 208,
+      "planned": true,
+      "soleAccess": true
+    },
+    {
+      "station": "72 St",
+      "unit": "Street to downtown platform",
+      "days": 199,
+      "planned": true,
+      "soleAccess": true
+    },
+    {
+      "station": "72 St",
+      "unit": "Street to uptown platform",
+      "days": 199,
+      "planned": true,
+      "soleAccess": true
+    },
+    {
+      "station": "Flushing-Main St",
+      "unit": "East of Main St & Roosevelt Ave to Manhattan-bound platform.",
+      "days": 152,
+      "planned": true,
+      "soleAccess": true
+    },
+    {
+      "station": "Atlantic Av-Barclays Ctr",
+      "unit": "Mezzanine to B/Q platform",
+      "days": 92,
+      "planned": true,
+      "soleAccess": true
+    },
+    {
+      "station": "Atlantic Av-Barclays Ctr",
+      "unit": "Mezzanine to Manhattan-bound 2/3",
+      "days": 92,
+      "planned": true,
+      "soleAccess": false
+    },
+    {
+      "station": "51 St",
+      "unit": "Downtown 6 platform to underpass to E/F service in both directions.",
+      "days": 70,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "Cortlandt St",
+      "unit": "Street to downtown R/W",
+      "days": 11,
+      "planned": false,
+      "soleAccess": false
+    },
+    {
+      "station": "161 St-Yankee Stadium",
+      "unit": "Mezzanine to Bronx-bound B/D",
+      "days": 6,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "161 St-Yankee Stadium",
+      "unit": "Mezzanine to Manhattan-bound B/D",
+      "days": 5,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "3 Av-149 St",
+      "unit": "Street to Manhattan-bound platform",
+      "days": 3,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "3 Av-149 St",
+      "unit": "Street to Bronx-bound platform",
+      "days": 3,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "181 St",
+      "unit": "Upper to lower mezzanine",
+      "days": 3,
+      "planned": false,
+      "soleAccess": false
+    },
+    {
+      "station": "170 St",
+      "unit": "Street to mezzanine",
+      "days": 2,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "Kingsbridge Rd",
+      "unit": "Mezzanine to Bronx-bound platform",
+      "days": 2,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "181 St",
+      "unit": "Upper to lower mezzanine",
+      "days": 1,
+      "planned": false,
+      "soleAccess": false
+    },
+    {
+      "station": "175 St",
+      "unit": "Mezzanine to platform",
+      "days": 0,
+      "planned": true,
+      "soleAccess": true
+    },
+    {
+      "station": "175 St",
+      "unit": "Street to mezzanine",
+      "days": 0,
+      "planned": true,
+      "soleAccess": true
+    },
+    {
+      "station": "14 St",
+      "unit": "Street to mezzanine",
+      "days": 0,
+      "planned": true,
+      "soleAccess": true
+    },
+    {
+      "station": "125 St",
+      "unit": "Mezzanine to Uptown platform",
+      "days": 0,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "125 St",
+      "unit": "Mezzanine to downtown platform",
+      "days": 0,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "Court Sq",
+      "unit": "Flushing-bound 7 platform to mezzanine to EFG transfer.",
+      "days": 0,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "Lorimer St",
+      "unit": "Mezzanine to Queens-bound platform.",
+      "days": 0,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "14 St-Union Sq",
+      "unit": "Mezzanine to L platform",
+      "days": 0,
+      "planned": false,
+      "soleAccess": true
+    }
+  ],
   "mostBrokenStations": [
     {
       "name": "161 St-Yankee Stadium",
       "count": 4
     },
     {
-      "name": "Jamaica-179 St",
+      "name": "Atlantic Av-Barclays Ctr",
       "count": 3
     },
     {
-      "name": "Atlantic Av-Barclays Ctr",
+      "name": "181 St",
       "count": 3
     },
     {
@@ -21,15 +261,15 @@
       "count": 3
     },
     {
-      "name": "Crown Hts-Utica Av",
-      "count": 2
+      "name": "Jamaica-179 St",
+      "count": 3
     },
     {
       "name": "Prospect Park",
       "count": 2
     },
     {
-      "name": "175 St",
+      "name": "Coney Island-Stillwell Av",
       "count": 2
     },
     {
@@ -37,22 +277,22 @@
       "count": 2
     },
     {
-      "name": "Court Sq",
+      "name": "51 St",
       "count": 2
     },
     {
-      "name": "Lorimer St",
+      "name": "3 Av-149 St",
       "count": 2
     }
   ],
   "stepFreeStreak": [
     {
-      "name": "14 St-Union Sq",
+      "name": "14 St",
       "days": 1,
       "blackedOutNow": false
     },
     {
-      "name": "181 St",
+      "name": "21 St-Queensbridge",
       "days": 1,
       "blackedOutNow": false
     },
@@ -62,50 +302,50 @@
       "blackedOutNow": false
     },
     {
-      "name": "231 St",
+      "name": "34 St-Herald Sq",
       "days": 1,
       "blackedOutNow": false
     },
     {
-      "name": "34 St-Penn Station",
+      "name": "Forest Hills-71 Av",
       "days": 1,
       "blackedOutNow": false
     },
     {
-      "name": "42 St-Bryant Pk",
+      "name": "Franklin Av",
       "days": 1,
       "blackedOutNow": false
     },
     {
-      "name": "14 St",
+      "name": "Fulton St",
       "days": 1,
       "blackedOutNow": false
     },
     {
-      "name": "181 St",
+      "name": "Howard Beach-JFK Airport",
       "days": 1,
       "blackedOutNow": false
     },
     {
-      "name": "1 Av",
+      "name": "Lexington Av/63 St",
       "days": 1,
       "blackedOutNow": false
     },
     {
-      "name": "137 St-City College",
+      "name": "Livonia Av",
       "days": 1,
       "blackedOutNow": false
     }
   ],
   "mostBrokenUnits": [
     {
-      "unit": "Street to mezzanine",
-      "station": "125 St",
+      "unit": "Mezzanine to downtown platform. ",
+      "station": "68 St-Hunter College",
       "count": 2
     },
     {
-      "unit": "Mezzanine to downtown platform. ",
-      "station": "68 St-Hunter College",
+      "unit": "Street to mezzanine",
+      "station": "125 St",
       "count": 2
     },
     {
@@ -129,54 +369,42 @@
       "count": 2
     },
     {
-      "unit": "Mezzanine to Bronx-bound B/D",
-      "station": "161 St-Yankee Stadium",
+      "unit": "Mezzanine to L platform",
+      "station": "14 St-Union Sq",
       "count": 1
     },
     {
-      "unit": "Mezzanine to Manhattan-bound B/D",
-      "station": "161 St-Yankee Stadium",
+      "unit": "Street to Bronx-bound platform",
+      "station": "Gun Hill Rd",
       "count": 1
     },
     {
-      "unit": "Street to mezzanine",
-      "station": "170 St",
+      "unit": "63 St & Lexington Av mezzanine to platforms for service in both directions.",
+      "station": "Lexington Av/63 St",
       "count": 1
     },
     {
-      "unit": "Street to mezzanine",
-      "station": "175 St",
+      "unit": "Street to Manhattan-bound platform",
+      "station": "Marcy Av",
       "count": 1
     }
   ],
   "uptimeStreak": [
     {
+      "unit": "Street-to-mezzanine.",
+      "station": "14 St",
+      "days": 1,
+      "downNow": false
+    },
+    {
+      "unit": "Mezzanine level (front) to Southbound N/Q/R/W Train Platform level (Rear)",
+      "station": "14 St-Union Sq",
+      "days": 1,
+      "downNow": false
+    },
+    {
       "unit": "Mezzanine to uptown N/Q/R/W",
       "station": "14 St-Union Sq",
-      "days": 1,
-      "downNow": false
-    },
-    {
-      "unit": "Mezzanine to L platform",
-      "station": "14 St-Union Sq",
-      "days": 1,
-      "downNow": false
-    },
-    {
-      "unit": "14 St and 4th Av (NE corner) to mezzanine for L/N/Q/R/W in both directions.",
-      "station": "14 St-Union Sq",
-      "days": 1,
-      "downNow": false
-    },
-    {
-      "unit": "Street to mezzanine",
-      "station": "161 St-Yankee Stadium",
-      "days": 1,
-      "downNow": false
-    },
-    {
-      "unit": "Mezzanine to overpass",
-      "station": "181 St",
       "days": 1,
       "downNow": false
     },
@@ -194,19 +422,31 @@
     },
     {
       "unit": "Street to mezzanine",
-      "station": "Grand Central-42 St",
+      "station": "34 St-Herald Sq",
       "days": 1,
       "downNow": false
     },
     {
-      "unit": "Street to uptown platform",
-      "station": "23 St",
+      "unit": "Mezzanine to uptown 1",
+      "station": "34 St-Penn Station",
       "days": 1,
       "downNow": false
     },
     {
-      "unit": "Street to Bronx-bound platform",
-      "station": "231 St",
+      "unit": "Mezzanine to downtown 1",
+      "station": "34 St-Penn Station",
+      "days": 1,
+      "downNow": false
+    },
+    {
+      "unit": "Mezzanine to Queens-bound platform",
+      "station": "Forest Hills-71 Av",
+      "days": 1,
+      "downNow": false
+    },
+    {
+      "unit": "Street to mezzanine",
+      "station": "Forest Hills-71 Av",
       "days": 1,
       "downNow": false
     }
@@ -221,10 +461,6 @@
       "count": 6
     },
     {
-      "name": "61 St-Woodside",
-      "count": 5
-    },
-    {
       "name": "34 St-Herald Sq",
       "count": 5
     },
@@ -233,11 +469,7 @@
       "count": 5
     },
     {
-      "name": "Court Sq",
-      "count": 5
-    },
-    {
-      "name": "Jay St-Metro Tech",
+      "name": "61 St-Woodside",
       "count": 5
     },
     {
@@ -245,7 +477,19 @@
       "count": 5
     },
     {
+      "name": "Jay St-Metro Tech",
+      "count": 5
+    },
+    {
+      "name": "Court Sq",
+      "count": 5
+    },
+    {
       "name": "14 St-Union Sq",
+      "count": 4
+    },
+    {
+      "name": "62 St",
       "count": 4
     },
     {
@@ -257,7 +501,7 @@
       "count": 4
     },
     {
-      "name": "62 St",
+      "name": "74 St-Broadway",
       "count": 4
     },
     {
@@ -265,11 +509,7 @@
       "count": 4
     },
     {
-      "name": "74 St-Broadway",
-      "count": 4
-    },
-    {
-      "name": "161 St-Yankee Stadium",
+      "name": "21 St-Queensbridge",
       "count": 3
     }
   ]

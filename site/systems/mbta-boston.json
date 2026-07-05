@@ -2,7 +2,58 @@
   "id": "mbta-boston",
   "name": "MBTA",
   "label": "MBTA (Boston)",
-  "generatedAt": "2026-07-05T06:31:23.397Z",
+  "generatedAt": "2026-07-05T19:12:41.693Z",
+  "currentlyBroken": [
+    {
+      "station": "Winchester Center",
+      "unit": "Winchester Center Elevator 749 (Track 1 (outbound platform) to Main St)",
+      "days": 102,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "Framingham",
+      "unit": "Framingham Elevator 51 (Waverly Street to pedestrian bridge)",
+      "days": 14,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "Natick Center",
+      "unit": "Natick Center Elevator 750 (Track 1 to street)",
+      "days": 4,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "Natick Center",
+      "unit": "Natick Center Elevator 751 (Track 2 to street)",
+      "days": 3,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "Porter",
+      "unit": "Porter Elevator 985 (Lobby to Somerville Avenue)",
+      "days": 2,
+      "planned": true,
+      "soleAccess": true
+    },
+    {
+      "station": "South Station",
+      "unit": "South Station Elevator 901 (Ashmont/Braintree platform to Silver Line drop-off platform and lobby)",
+      "days": 1,
+      "planned": true,
+      "soleAccess": true
+    },
+    {
+      "station": "Downtown Crossing",
+      "unit": "Downtown Crossing Elevator 999 (Oak Grove platform to Alewife platform)",
+      "days": 0,
+      "planned": true,
+      "soleAccess": true
+    }
+  ],
   "mostBrokenStations": [
     {
       "name": "Natick Center",
@@ -17,6 +68,10 @@
       "count": 1
     },
     {
+      "name": "Green Street",
+      "count": 1
+    },
+    {
       "name": "Winchester Center",
       "count": 1
     },
@@ -25,11 +80,11 @@
       "count": 1
     },
     {
-      "name": "Green Street",
+      "name": "South Station",
       "count": 1
     },
     {
-      "name": "South Station",
+      "name": "Downtown Crossing",
       "count": 1
     },
     {
@@ -39,61 +94,57 @@
     {
       "name": "Chinatown",
       "count": 1
-    },
-    {
-      "name": "Revere Beach",
-      "count": 1
     }
   ],
   "stepFreeStreak": [
     {
       "name": "Worcester",
-      "days": 0,
+      "days": 1,
       "blackedOutNow": false
     },
     {
-      "name": "Lechmere",
-      "days": 0,
+      "name": "Quincy Center",
+      "days": 1,
+      "blackedOutNow": false
+    },
+    {
+      "name": "North Quincy",
+      "days": 1,
+      "blackedOutNow": false
+    },
+    {
+      "name": "North Station",
+      "days": 1,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Aquarium",
+      "days": 1,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Prudential",
+      "days": 1,
       "blackedOutNow": false
     },
     {
       "name": "Gilman Square",
-      "days": 0,
+      "days": 1,
       "blackedOutNow": false
     },
     {
-      "name": "Magoun Square",
-      "days": 0,
-      "blackedOutNow": false
-    },
-    {
-      "name": "State",
-      "days": 0,
+      "name": "Courthouse",
+      "days": 1,
       "blackedOutNow": false
     },
     {
       "name": "Park Street",
-      "days": 0,
+      "days": 1,
       "blackedOutNow": false
     },
     {
-      "name": "Quincy Adams",
-      "days": 0,
-      "blackedOutNow": false
-    },
-    {
-      "name": "Wellington",
-      "days": 0,
-      "blackedOutNow": false
-    },
-    {
-      "name": "Kendall/MIT",
-      "days": 0,
-      "blackedOutNow": false
-    },
-    {
-      "name": "Beachmont",
-      "days": 0,
+      "name": "Ruggles",
+      "days": 1,
       "blackedOutNow": false
     }
   ],
@@ -104,13 +155,18 @@
       "count": 2
     },
     {
-      "unit": "Wood Island Elevator 889 (Bowdoin platform to pedestrian bridge)",
-      "station": "Wood Island",
+      "unit": "Quincy Adams Elevator 807 (Lobby to parking garage)",
+      "station": "Quincy Adams",
       "count": 1
     },
     {
       "unit": "Winchester Center Elevator 749 (Track 1 (outbound platform) to Main St)",
       "station": "Winchester Center",
+      "count": 1
+    },
+    {
+      "unit": "Wood Island Elevator 889 (Bowdoin platform to pedestrian bridge)",
+      "station": "Wood Island",
       "count": 1
     },
     {
@@ -124,6 +180,11 @@
       "count": 1
     },
     {
+      "unit": "Revere Beach Elevator 884 (Bowdoin platform to lobby)",
+      "station": "Revere Beach",
+      "count": 1
+    },
+    {
       "unit": "Natick Center Elevator 750 (Track 1 to street)",
       "station": "Natick Center",
       "count": 1
@@ -131,16 +192,6 @@
     {
       "unit": "Natick Center Elevator 751 (Track 2 to street)",
       "station": "Natick Center",
-      "count": 1
-    },
-    {
-      "unit": "Quincy Adams Elevator 807 (Lobby to parking garage)",
-      "station": "Quincy Adams",
-      "count": 1
-    },
-    {
-      "unit": "Revere Beach Elevator 884 (Bowdoin platform to lobby)",
-      "station": "Revere Beach",
       "count": 1
     },
     {
@@ -153,61 +204,61 @@
     {
       "unit": "Worcester Elevator 782 (Parking lot to pedestrian bridge )",
       "station": "Worcester",
-      "days": 0,
+      "days": 1,
       "downNow": false
     },
     {
-      "unit": "Lechmere Elevator 763 (Platform to North First Street lobby)",
-      "station": "Lechmere",
-      "days": 0,
+      "unit": "Quincy Center Elevator 896 (Commuter Rail platform to lobby)",
+      "station": "Quincy Center",
+      "days": 1,
       "downNow": false
     },
     {
-      "unit": "Lechmere Elevator 764 (Platform to O'Brien Highway lobby)",
-      "station": "Lechmere",
-      "days": 0,
+      "unit": "North Quincy Elevator 897 (Hancock Street parking to northern lobby)",
+      "station": "North Quincy",
+      "days": 1,
       "downNow": false
     },
     {
-      "unit": "Gilman Square Elevator 765 (Platform to Medford Street lobby)",
-      "station": "Gilman Square",
-      "days": 0,
+      "unit": "North Station Elevator 910 (Lobby to Forest Hills, Copley & West platform)",
+      "station": "North Station",
+      "days": 1,
       "downNow": false
     },
     {
-      "unit": "Magoun Square Elevator 767 (Platform to lobby)",
-      "station": "Magoun Square",
-      "days": 0,
+      "unit": "Aquarium Elevator 915 (State Street lobby to street)",
+      "station": "Aquarium",
+      "days": 1,
       "downNow": false
     },
     {
-      "unit": "Worcester Elevator 781 (Platform to pedestrian bridge)",
-      "station": "Worcester",
-      "days": 0,
+      "unit": "Prudential Elevator 917 (Lobby to Huntington Avenue)",
+      "station": "Prudential",
+      "days": 1,
       "downNow": false
     },
     {
-      "unit": "State Elevator 802 (Oak Grove platform to Forest Hills, Wonderland platforms)",
-      "station": "State",
-      "days": 0,
+      "unit": "South Station Elevator 918 (Ashmont/Braintree platform to Airport/Design Center/Chelsea platform and lobby)",
+      "station": "South Station",
+      "days": 1,
       "downNow": false
     },
     {
-      "unit": "State Elevator 803 (Forest Hills platform to Washington Street, Milk Street)",
-      "station": "State",
-      "days": 0,
+      "unit": "South Station Elevator 919 (Alewife platform to Airport/Design Center/Chelsea platform)",
+      "station": "South Station",
+      "days": 1,
       "downNow": false
     },
     {
-      "unit": "Park Street Elevator 804 (Government Center & North lobby to Tremont Street, Winter Street)",
-      "station": "Park Street",
-      "days": 0,
+      "unit": "Prudential Elevator 920 (Heath Street platform to lobby)",
+      "station": "Prudential",
+      "days": 1,
       "downNow": false
     },
     {
-      "unit": "Quincy Adams Elevator 805 (Lobby to platform)",
-      "station": "Quincy Adams",
-      "days": 0,
+      "unit": "Chinatown Elevator 922 (Forest Hills platform to Boylston St, Washington St)",
+      "station": "Chinatown",
+      "days": 1,
       "downNow": false
     }
   ],
@@ -221,19 +272,7 @@
       "count": 7
     },
     {
-      "name": "Park Street",
-      "count": 6
-    },
-    {
-      "name": "Downtown Crossing",
-      "count": 6
-    },
-    {
       "name": "North Quincy",
-      "count": 6
-    },
-    {
-      "name": "Haymarket",
       "count": 6
     },
     {
@@ -245,11 +284,23 @@
       "count": 6
     },
     {
-      "name": "State",
-      "count": 5
+      "name": "Park Street",
+      "count": 6
+    },
+    {
+      "name": "Downtown Crossing",
+      "count": 6
+    },
+    {
+      "name": "Haymarket",
+      "count": 6
     },
     {
       "name": "Ruggles",
+      "count": 5
+    },
+    {
+      "name": "State",
       "count": 5
     },
     {
@@ -265,11 +316,11 @@
       "count": 4
     },
     {
-      "name": "Kendall/MIT",
+      "name": "Courthouse",
       "count": 4
     },
     {
-      "name": "Oak Grove",
+      "name": "Kendall/MIT",
       "count": 4
     }
   ]

@@ -176,6 +176,26 @@ function buildSystemDetail(systemId: string) {
   const systemEvents = eventsBySystem.get(systemId) ?? [];
   const systemUnits = (unitsBySystem.get(systemId) ?? []).filter((u) => u.is_active);
 
+  // Currently broken elevators (live snapshot) — every open outage right
+  // now, not an all-time ranking. Unlike the other boards, this isn't
+  // capped to a top-10; it's meant to answer "what's broken right now?"
+  // for someone checking this specific system.
+  const currentlyBroken = systemEvents
+    .filter((e) => e.ended_at == null)
+    .map((e) => {
+      const unit = unitById.get(e.unit_id as string);
+      const since = (e.source_started_at as string | null) ?? (e.started_at as string);
+      const sid = (e.station_id as string | null) ?? (unit?.station_id as string | null);
+      return {
+        station: (sid && stationName.get(sid)) ?? "Unknown",
+        unit: (unit?.description as string) || (unit?.external_id as string) || "?",
+        days: daysSince(since),
+        planned: e.is_planned as boolean,
+        soleAccess: unit?.is_redundant === false,
+      };
+    })
+    .sort((a, b) => b.days - a.days);
+
   // Most broken stations (shame) — every outage, any unit, all-time.
   const stationOutageCount = new Map<string, number>();
   for (const e of systemEvents) {
@@ -273,7 +293,7 @@ function buildSystemDetail(systemId: string) {
     .sort((a, b) => b.count - a.count)
     .slice(0, 15);
 
-  return { mostBrokenStations, stepFreeStreak, mostBrokenUnits, uptimeStreak, singlePointsOfFailure };
+  return { currentlyBroken, mostBrokenStations, stepFreeStreak, mostBrokenUnits, uptimeStreak, singlePointsOfFailure };
 }
 
 mkdirSync("site/systems", { recursive: true });

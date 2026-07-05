@@ -2,7 +2,16 @@
   "id": "tmb-barcelona",
   "name": "TMB Metro",
   "label": "Barcelona (TMB Metro)",
-  "generatedAt": "2026-07-05T06:31:23.397Z",
+  "generatedAt": "2026-07-05T19:12:41.693Z",
+  "currentlyBroken": [
+    {
+      "station": "Florida",
+      "unit": "Avinguda Masnou",
+      "days": 5,
+      "planned": true,
+      "soleAccess": true
+    }
+  ],
   "mostBrokenStations": [
     {
       "name": "Florida",
@@ -11,17 +20,27 @@
   ],
   "stepFreeStreak": [
     {
-      "name": "Poble Sec",
+      "name": "Lesseps",
       "days": 0,
       "blackedOutNow": false
     },
     {
-      "name": "Rambla Just Oliveras",
+      "name": "Liceu",
       "days": 0,
       "blackedOutNow": false
     },
     {
-      "name": "Poblenou",
+      "name": "Llacuna",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Llefià",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Llucmajor",
       "days": 0,
       "blackedOutNow": false
     },
@@ -41,22 +60,12 @@
       "blackedOutNow": false
     },
     {
-      "name": "Zona Universitària",
+      "name": "Roquetes",
       "days": 0,
       "blackedOutNow": false
     },
     {
-      "name": "Collblanc",
-      "days": 0,
-      "blackedOutNow": false
-    },
-    {
-      "name": "Can Tries | Gornal",
-      "days": 0,
-      "blackedOutNow": false
-    },
-    {
-      "name": "Europa | Fira",
+      "name": "Santa Coloma",
       "days": 0,
       "blackedOutNow": false
     }
@@ -70,20 +79,38 @@
   ],
   "uptimeStreak": [
     {
-      "unit": "Manso",
-      "station": "Poble Sec",
+      "unit": "Plaça Lesseps",
+      "station": "Lesseps",
       "days": 0,
       "downNow": false
     },
     {
-      "unit": "Renfe",
-      "station": "Rambla Just Oliveras",
+      "unit": "La Rambla / Teatre Liceu",
+      "station": "Liceu",
       "days": 0,
       "downNow": false
     },
     {
-      "unit": "Pujades / Bilbao",
-      "station": "Poblenou",
+      "unit": "La Rambla / Teatre Liceu",
+      "station": "Liceu",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "Pujades / Ciutat de Granada",
+      "station": "Llacuna",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "Avinguda d'Amèrica (mercat)",
+      "station": "Llefià",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "Passeig Verdum / Llucmajor",
+      "station": "Llucmajor",
       "days": 0,
       "downNow": false
     },
@@ -110,24 +137,6 @@
       "station": "Rocafort",
       "days": 0,
       "downNow": false
-    },
-    {
-      "unit": "Dr. Marañón",
-      "station": "Zona Universitària",
-      "days": 0,
-      "downNow": false
-    },
-    {
-      "unit": "Av. Sant Ramon",
-      "station": "Collblanc",
-      "days": 0,
-      "downNow": false
-    },
-    {
-      "unit": "Can Tries - Narcís de Monturiol",
-      "station": "Can Tries | Gornal",
-      "days": 0,
-      "downNow": false
     }
   ],
   "singlePointsOfFailure": [
@@ -136,51 +145,23 @@
       "count": 4
     },
     {
+      "name": "Passeig de Gràcia",
+      "count": 3
+    },
+    {
       "name": "Església Major",
       "count": 3
     },
     {
-      "name": "Passeig de Gràcia",
-      "count": 3
+      "name": "Liceu",
+      "count": 2
     },
     {
       "name": "Maragall",
       "count": 2
     },
     {
-      "name": "Europa | Fira",
-      "count": 2
-    },
-    {
-      "name": "Vall d'Hebron",
-      "count": 2
-    },
-    {
-      "name": "Foneria",
-      "count": 2
-    },
-    {
-      "name": "Foc",
-      "count": 2
-    },
-    {
-      "name": "Jaume I",
-      "count": 2
-    },
-    {
-      "name": "Espanya",
-      "count": 2
-    },
-    {
-      "name": "Sants Estació",
-      "count": 2
-    },
-    {
-      "name": "Clot",
-      "count": 2
-    },
-    {
-      "name": "Liceu",
+      "name": "Roquetes",
       "count": 2
     },
     {
@@ -188,7 +169,35 @@
       "count": 2
     },
     {
-      "name": "Vilapicina",
+      "name": "Clot",
+      "count": 2
+    },
+    {
+      "name": "Drassanes",
+      "count": 2
+    },
+    {
+      "name": "Badalona Pompeu Fabra",
+      "count": 2
+    },
+    {
+      "name": "Catalunya",
+      "count": 2
+    },
+    {
+      "name": "Diagonal",
+      "count": 2
+    },
+    {
+      "name": "El Carmel",
+      "count": 2
+    },
+    {
+      "name": "Gorg",
+      "count": 2
+    },
+    {
+      "name": "Espanya",
       "count": 2
     }
   ]

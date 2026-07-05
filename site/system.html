@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LiftWatch — system detail</title>
-<meta name="description" content="Per-system elevator reliability: most and least broken stations and units, single points of failure.">
+<meta name="description" content="Per-system elevator reliability: what's currently broken, plus most and least broken stations and units.">
 <style>
   :root {
     --bg: #17170f;
@@ -22,13 +22,13 @@
     font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     display: flex; flex-direction: column; align-items: center; padding: 40px 16px 64px;
   }
-  header { width: min(760px, 100%); margin-bottom: 28px; }
+  header { width: min(1024px, 100%); margin-bottom: 28px; }
   .back { color: var(--dim); font-size: 12px; letter-spacing: 0.06em; text-decoration: none; display: inline-block; margin-bottom: 14px; }
   .back:hover, .back:focus-visible { color: var(--amber); }
   h1 { font-size: 22px; font-weight: 500; letter-spacing: 0.1em; margin: 0; }
   .tag { color: var(--dim); font-size: 12px; letter-spacing: 0.08em; margin-top: 6px; }
   .board {
-    width: min(760px, 100%); background: var(--board);
+    width: min(1024px, 100%); background: var(--board);
     border: 1px solid var(--hairline); border-radius: 10px;
     padding: 16px 16px 12px; margin-bottom: 26px; overflow-x: auto;
   }
@@ -49,7 +49,7 @@
   .empty { color: var(--dim); font-size: 12px; letter-spacing: 0.04em; padding: 4px 2px 8px; }
   .legend { color: var(--dim); font-size: 11px; letter-spacing: 0.06em; margin: 10px 2px 0; }
   .legend .red { color: var(--red); }
-  footer { width: min(760px, 100%); color: var(--dim); font-size: 12px; line-height: 1.7; }
+  footer { width: min(1024px, 100%); color: var(--dim); font-size: 12px; line-height: 1.7; }
   footer a { color: var(--amber); }
   .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 </style>
@@ -60,6 +60,13 @@
   <h1 id="sys-title">Loading…</h1>
   <p class="tag" id="sys-tag"></p>
 </header>
+
+<section class="board" aria-hidden="true">
+  <div class="board-head"><span class="t">CURRENTLY BROKEN ELEVATORS</span><span class="s">DAYS OUT OF SERVICE</span></div>
+  <div id="currently-broken-board"></div>
+  <p class="empty" id="currently-broken-empty" hidden>None right now — full step-free access system-wide.</p>
+  <p class="legend"><span class="red">▮</span> SOLE STEP-FREE ACCESS — STATION IS CURRENTLY INACCESSIBLE</p>
+</section>
 
 <section class="board" aria-hidden="true">
   <div class="board-head"><span class="t">MOST BROKEN STATIONS</span><span class="s">OUTAGES · ALL-TIME</span></div>
@@ -153,6 +160,17 @@ if (!id) {
     document.getElementById("sys-title").textContent = data.label;
     document.getElementById("sys-tag").textContent = "PER-SYSTEM ELEVATOR RELIABILITY";
 
+    showEmpty("currently-broken-empty", data.currentlyBroken.length === 0);
+    const cb = document.getElementById("currently-broken-board");
+    data.currentlyBroken.forEach(o => {
+      cells.push(...makeRow(cb, [
+        { str: o.soleAccess ? "▮ " : "  ", cls: "red" },
+        { str: pad(o.unit, 17), cls: "" },
+        { str: " " + pad(o.station, 15), cls: "dim" },
+        { str: rpad(o.days + "D", 5), cls: o.days > 180 ? "red" : "amber" },
+      ]));
+    });
+
     showEmpty("broken-stations-empty", data.mostBrokenStations.length === 0);
     const bs = document.getElementById("broken-stations-board");
     data.mostBrokenStations.forEach((s, i) => {
@@ -201,9 +219,10 @@ if (!id) {
     document.getElementById("updated").textContent = `Snapshot: ${t.toLocaleString()}.`;
 
     const sr = document.getElementById("sr-data");
-    const list = (title, items, fmt) =>
-      `<h2>${title}</h2>${items.length ? `<ol>${items.map(fmt).join("")}</ol>` : "<p>Not enough data yet.</p>"}`;
+    const list = (title, items, fmt, emptyMsg = "Not enough data yet.") =>
+      `<h2>${title}</h2>${items.length ? `<ol>${items.map(fmt).join("")}</ol>` : `<p>${emptyMsg}</p>`}`;
     sr.innerHTML =
+      list("Currently broken elevators", data.currentlyBroken, o => `<li>${o.unit} (${o.station}): out ${o.days} days${o.soleAccess ? " — sole step-free access, station currently inaccessible" : ""}</li>`, "None right now — full step-free access system-wide.") +
       list("Most broken stations", data.mostBrokenStations, s => `<li>${s.name}: ${s.count} outages all-time</li>`) +
       list("Longest step-free streak", data.stepFreeStreak, s => `<li>${s.name}: ${s.blackedOutNow ? "currently blacked out" : `${s.days} days since last blackout`}</li>`) +
       list("Most broken units", data.mostBrokenUnits, u => `<li>${u.unit} (${u.station}): ${u.count} outages all-time</li>`) +

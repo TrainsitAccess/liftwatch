@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-07-05T06:31:23.397Z",
+  "generatedAt": "2026-07-05T19:12:41.693Z",
   "totals": {
     "systems": 7,
     "activeUnits": 1925,
     "staticUnitsInTotal": 493,
-    "down": 88
+    "down": 84
   },
   "systems": [
     {
@@ -17,9 +17,9 @@
       "inventoryComplete": true,
       "fleetSource": "live",
       "activeUnits": 408,
-      "down": 40,
-      "downUnplanned": 22,
-      "pctDown": 9.8,
+      "down": 34,
+      "downUnplanned": 16,
+      "pctDown": 8.3,
       "staticFleetAsOf": null,
       "staticFleetSource": null
     },
@@ -49,11 +49,27 @@
       "inventoryComplete": true,
       "fleetSource": "live",
       "activeUnits": 569,
-      "down": 20,
-      "downUnplanned": 20,
-      "pctDown": 3.5,
+      "down": 18,
+      "downUnplanned": 18,
+      "pctDown": 3.2,
       "staticFleetAsOf": null,
       "staticFleetSource": null
+    },
+    {
+      "id": "wmata-dc",
+      "name": "DC Metro",
+      "city": "Washington",
+      "label": "DC Metro (Washington)",
+      "boardLabel": "DC Metro",
+      "dataQuality": "fair",
+      "inventoryComplete": false,
+      "fleetSource": "static",
+      "activeUnits": 320,
+      "down": 10,
+      "downUnplanned": 8,
+      "pctDown": 3.1,
+      "staticFleetAsOf": "2026-07-04",
+      "staticFleetSource": "https://www.wmata.com/ride/elevators-escalators.html"
     },
     {
       "id": "bart-bay-area",
@@ -82,26 +98,10 @@
       "fleetSource": "live",
       "activeUnits": 237,
       "down": 7,
-      "downUnplanned": 5,
+      "downUnplanned": 4,
       "pctDown": 3,
       "staticFleetAsOf": null,
       "staticFleetSource": null
-    },
-    {
-      "id": "wmata-dc",
-      "name": "DC Metro",
-      "city": "Washington",
-      "label": "DC Metro (Washington)",
-      "boardLabel": "DC Metro",
-      "dataQuality": "fair",
-      "inventoryComplete": false,
-      "fleetSource": "static",
-      "activeUnits": 320,
-      "down": 6,
-      "downUnplanned": 4,
-      "pctDown": 1.9,
-      "staticFleetAsOf": "2026-07-04",
-      "staticFleetSource": "https://www.wmata.com/ride/elevators-escalators.html"
     },
     {
       "id": "tmb-barcelona",
@@ -127,7 +127,7 @@
       "unit": "EL290X",
       "soleAccess": false,
       "planned": false,
-      "days": 614
+      "days": 615
     },
     {
       "system": "NYC Subway",
@@ -135,7 +135,7 @@
       "unit": "EL132",
       "soleAccess": true,
       "planned": true,
-      "days": 605
+      "days": 606
     },
     {
       "system": "NYC Subway",
@@ -143,7 +143,7 @@
       "unit": "EL133",
       "soleAccess": true,
       "planned": true,
-      "days": 605
+      "days": 606
     },
     {
       "system": "NYC Subway",
@@ -188,7 +188,7 @@
     {
       "system": "NYC Subway",
       "station": "Prospect Park",
-      "unit": "EL383",
+      "unit": "EL382",
       "soleAccess": true,
       "planned": true,
       "days": 214
@@ -196,7 +196,7 @@
     {
       "system": "NYC Subway",
       "station": "Prospect Park",
-      "unit": "EL382",
+      "unit": "EL383",
       "soleAccess": true,
       "planned": true,
       "days": 214

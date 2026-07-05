@@ -2,12 +2,94 @@
   "id": "cta-chicago",
   "name": "CTA",
   "label": "CTA (Chicago)",
-  "generatedAt": "2026-07-05T06:31:23.397Z",
-  "mostBrokenStations": [
+  "generatedAt": "2026-07-05T19:12:41.693Z",
+  "currentlyBroken": [
     {
-      "name": "Wilson",
-      "count": 1
+      "station": "Western",
+      "unit": "41480",
+      "days": 54,
+      "planned": true,
+      "soleAccess": true
     },
+    {
+      "station": "Lake",
+      "unit": "41660",
+      "days": 44,
+      "planned": true,
+      "soleAccess": true
+    },
+    {
+      "station": "King Drive",
+      "unit": "41140",
+      "days": 22,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "Loyola",
+      "unit": "41300",
+      "days": 8,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "Howard",
+      "unit": "40900",
+      "days": 6,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "Wilson",
+      "unit": "40540",
+      "days": 5,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "47th",
+      "unit": "41080",
+      "days": 4,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "63rd",
+      "unit": "40910",
+      "days": 2,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "47th",
+      "unit": "41230",
+      "days": 1,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "35th-Bronzeville-IIT",
+      "unit": "41120",
+      "days": 1,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "California",
+      "unit": "41360",
+      "days": 1,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "Ashland",
+      "unit": "40170",
+      "days": 1,
+      "planned": false,
+      "soleAccess": true
+    }
+  ],
+  "mostBrokenStations": [
     {
       "name": "47th",
       "count": 1
@@ -17,11 +99,11 @@
       "count": 1
     },
     {
-      "name": "Lake",
+      "name": "Wilson",
       "count": 1
     },
     {
-      "name": "Western",
+      "name": "Lake",
       "count": 1
     },
     {
@@ -37,15 +119,24 @@
       "count": 1
     },
     {
-      "name": "47th",
+      "name": "Western",
       "count": 1
     },
     {
       "name": "Conservatory-Central Park Drive",
       "count": 1
+    },
+    {
+      "name": "69th",
+      "count": 1
     }
   ],
   "stepFreeStreak": [
+    {
+      "name": "Pulaski",
+      "days": 0,
+      "blackedOutNow": false
+    },
     {
       "name": "Ashland",
       "days": 0,
@@ -62,6 +153,11 @@
       "blackedOutNow": false
     },
     {
+      "name": "69th",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
       "name": "Lake",
       "days": 0,
       "blackedOutNow": true
@@ -83,22 +179,17 @@
     },
     {
       "name": "Howard",
-      "days": 0,
-      "blackedOutNow": true
-    },
-    {
-      "name": "Wilson",
-      "days": 0,
-      "blackedOutNow": true
-    },
-    {
-      "name": "47th",
       "days": 0,
       "blackedOutNow": true
     }
   ],
   "mostBrokenUnits": [
     {
+      "unit": "40030",
+      "station": "Pulaski",
+      "count": 1
+    },
+    {
       "unit": "40170",
       "station": "Ashland",
       "count": 1
@@ -111,6 +202,11 @@
     {
       "unit": "41670",
       "station": "Conservatory-Central Park Drive",
+      "count": 1
+    },
+    {
+      "unit": "40990",
+      "station": "69th",
       "count": 1
     },
     {
@@ -136,21 +232,17 @@
     {
       "unit": "40900",
       "station": "Howard",
-      "count": 1
-    },
-    {
-      "unit": "40540",
-      "station": "Wilson",
-      "count": 1
-    },
-    {
-      "unit": "41080",
-      "station": "47th",
       "count": 1
     }
   ],
   "uptimeStreak": [
     {
+      "unit": "40030",
+      "station": "Pulaski",
+      "days": 0,
+      "downNow": false
+    },
+    {
       "unit": "40170",
       "station": "Ashland",
       "days": 0,
@@ -165,6 +257,12 @@
     {
       "unit": "41670",
       "station": "Conservatory-Central Park Drive",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "40990",
+      "station": "69th",
       "days": 0,
       "downNow": false
     },
@@ -197,21 +295,13 @@
       "station": "Howard",
       "days": 0,
       "downNow": true
-    },
-    {
-      "unit": "40540",
-      "station": "Wilson",
-      "days": 0,
-      "downNow": true
-    },
-    {
-      "unit": "41080",
-      "station": "47th",
-      "days": 0,
-      "downNow": true
     }
   ],
   "singlePointsOfFailure": [
+    {
+      "name": "Pulaski",
+      "count": 1
+    },
     {
       "name": "Ashland",
       "count": 1
@@ -222,6 +312,10 @@
     },
     {
       "name": "Conservatory-Central Park Drive",
+      "count": 1
+    },
+    {
+      "name": "69th",
       "count": 1
     },
     {
@@ -262,10 +356,6 @@
     },
     {
       "name": "35th-Bronzeville-IIT",
-      "count": 1
-    },
-    {
-      "name": "California",
       "count": 1
     }
   ]
