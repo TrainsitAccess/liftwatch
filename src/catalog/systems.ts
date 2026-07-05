@@ -126,6 +126,24 @@ export const SYSTEMS: SystemCatalogEntry[] = [
     // unit already carries an explicit value via redundancySource "pathways".
     dataQuality: "good",
   },
+  {
+    id: "cta-chicago",
+    name: "Chicago Transit Authority",
+    shortName: "CTA",
+    city: "Chicago",
+    metroArea: "Chicago",
+    country: "United States",
+    countryCode: "US",
+    continent: "North America",
+    timezone: "America/Chicago",
+    adapter: "cta",
+    // Alerts API only reports elevators CURRENTLY broken — no full inventory
+    // feed (GTFS is standard 10-table, no pathways/levels), and no per-unit
+    // id at all (station-level only, like BART). Units discovered as they
+    // break, same mechanism as WMATA.
+    dataQuality: "fair",
+    inventoryComplete: false,
+  },
 ];
 
 export function getSystem(id: string): SystemCatalogEntry | undefined {

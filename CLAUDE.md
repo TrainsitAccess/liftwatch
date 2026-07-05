@@ -9,9 +9,9 @@ Monitors public-transit **elevator** outages worldwide, archives them over time,
 and ranks systems/stations/elevators on split-flap leaderboards. The archive (an
 event history nobody else keeps) is the whole point — every metric derives from it.
 
-Status: **live in production.** Five systems archiving (MTA, BART, MBTA, WMATA,
-TfL — first non-North-America system), polled every 10 min by a GitHub Actions
-cron (`.github/workflows/poll.yml`), backed up weekly to a private repo
+Status: **live in production.** Six systems archiving (MTA, BART, MBTA, WMATA,
+TfL — first non-North-America system, CTA), polled every 10 min by a GitHub
+Actions cron (`.github/workflows/poll.yml`), backed up weekly to a private repo
 (`backup.yml`), with a keepalive workflow so the poller/backup crons never
 auto-disable. A preview split-flap site reads the archive (`site/`).
 Repo: github.com/TrainsitAccess/liftwatch (public).
@@ -96,11 +96,14 @@ parking lot). A station is accessible only if **every** segment is up.
   survives rebuilds, re-asserted every poll.
 - **Timezones**: feeds report local wall-clock; parse to UTC (`src/lib/time.ts`,
   Luxon). Store UTC everywhere.
-- Five systems, deliberately different fidelity: **MTA**, **MBTA**, **TfL** =
+- Six systems, deliberately different fidelity: **MTA**, **MBTA**, **TfL** =
   per-elevator with full inventory (`data_quality: good`); **WMATA** =
   per-elevator ids but the feed only lists broken units (`fair`,
   `inventoryComplete: false`, no single_elevator inference, units discovered
   as they break; station list IS complete via `NormalizedRead.stations`).
+  **CTA** = same `inventoryComplete: false` tier as WMATA, but with **no
+  per-elevator id at all** — station-level only (like BART), no
+  `NormalizedRead.stations` (station list not fetched in this MVP pass).
   WMATA has no live fleet total anywhere (exhaustively verified), so its %
   ranking uses `staticFleetReference` — WMATA's own published "320 elevators"
   figure — as the denominator. It **does** rank (currently ~1.9%\*), but every
@@ -117,7 +120,8 @@ parking lot). A station is accessible only if **every** segment is up.
   w/o offset = ET wall-clock (`parseIsoLocalToUtcIso`); MTA/BART = US date
   format wall-clock (`parseZonedToUtcIso`); TfL's live feed has no timestamp
   at all (free text only) — we rely on our own polling to timestamp events,
-  same as BART.
+  same as BART. CTA = ISO w/o offset = CT wall-clock (`parseIsoLocalToUtcIso`,
+  same helper as WMATA).
 
 ## Gotchas / deferred
 
@@ -145,3 +149,10 @@ parking lot). A station is accessible only if **every** segment is up.
   ids break that pattern). Deferred: `RampRoutes.csv`/`SameLevelPaths.csv`
   (non-lift step-free bypass paths, a stronger redundancy signal than
   lift-to-lift matching); re-running `tfl-import.mjs` when TfL republishes.
+- **CTA text-classification trap**: never classify planned-vs-unplanned
+  against `FullDescription` — it carries a boilerplate "...repair and
+  upgrade elevators" footer link on nearly every alert regardless of cause
+  (live-verified false positive: 9 of 13 real outages misflagged as planned).
+  Classify against `Headline` + `ShortDescription` only. CTA has no
+  per-elevator id at all (station-level, like BART) and no station-list
+  feed wired yet (deferred — CTA's GTFS `stops.txt` could supply one).

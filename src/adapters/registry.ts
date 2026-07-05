@@ -4,6 +4,7 @@ import { createBartAdapter, BART_CONFIG } from "./bart/index.js";
 import { createMbtaAdapter, MBTA_CONFIG } from "./mbta/index.js";
 import { createWmataAdapter, WMATA_CONFIG } from "./wmata/index.js";
 import { createTflAdapter, TFL_CONFIG } from "./tfl/index.js";
+import { createCtaAdapter, CTA_CONFIG } from "./cta/index.js";
 
 // Binds a systemId to a constructed adapter. As generic adapters (GTFS-RT, REST,
 // SIRI) land, most systems will be built from catalog config here instead of a
@@ -14,6 +15,7 @@ const BUILDERS: Record<string, () => Adapter> = {
   "mbta-boston": () => createMbtaAdapter(MBTA_CONFIG),
   "wmata-dc": () => createWmataAdapter(WMATA_CONFIG),
   "tfl-london": () => createTflAdapter(TFL_CONFIG),
+  "cta-chicago": () => createCtaAdapter(CTA_CONFIG),
 };
 
 export function getAdapter(systemId: string): Adapter {

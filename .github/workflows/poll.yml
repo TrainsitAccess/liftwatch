@@ -67,3 +67,10 @@ jobs:
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+
+      - name: Poll CTA (Chicago)
+        if: ${{ !cancelled() }}
+        run: npm run poll -- cta-chicago # no API key needed — Customer Alerts API is unauthenticated
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}

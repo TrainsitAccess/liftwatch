@@ -251,8 +251,8 @@ Hybrid, per decision:
 ## 8. Data sources (launch targets — quality first)
 
 MTA (NYC) ✓ · BART (SF) ✓ · MBTA (Boston) ✓ · WMATA (DC) ✓ · TfL (London) ✓ —
-first non-North-America system · Deutsche Bahn FaSta (Germany) ·
-Wiener Linien (Vienna) · BVG/VBB (Berlin).
+first non-North-America system · CTA (Chicago) ✓ · Deutsche Bahn FaSta
+(Germany) · Wiener Linien (Vienna) · BVG/VBB (Berlin).
 
 ### MTA feeds (in use)
 
@@ -421,3 +421,46 @@ and the live disruptions endpoint.
   (out of scope, elevators-only); a live re-fetch URL for topology, if one is
   ever found, would let the static snapshot self-refresh instead of manual
   re-import.
+
+### CTA feeds (in use) — station-level, discovered inventory
+
+`http://lapi.transitchicago.com/api/1.0/alerts.aspx` (Customer Alerts API),
+`outputType=JSON`, **no API key needed** (Terms of Use only).
+`data_quality: 'fair'`, `inventoryComplete: false`. Facts below verified live
+2026-07-05.
+
+- Filter to `Impact === "Elevator Status"` — an exact, exclusive value (10
+  possible `Impact` values total; no fuzzy matching needed, unlike WMATA).
+- **No per-elevator id at all** — only a station-level identifier
+  (`ImpactedService.Service` where `ServiceType === "T"`; `ServiceId` matches
+  CTA's GTFS parent-station id, `4xxxx` range). So each "unit" is a whole
+  station's elevator access, same modeling tier as BART's un-modeled
+  stations — a station with two simultaneous elevator alerts would collide
+  onto one unit (not observed live; documented limitation, not fixed).
+- **No full inventory feed** — CTA's GTFS is a standard 10-table schedule
+  feed (agency.txt, stops.txt, routes.txt, trips.txt, stop_times.txt,
+  calendar.txt, calendar_dates.txt, shapes.txt, frequencies.txt,
+  transfers.txt) with no pathways/levels extension (checked, unlike TfL). No
+  redundancy signal exists; falls to the same `assumed` /
+  `inventoryComplete: false` precedence as WMATA.
+- `EventStart`/`EventEnd` are ISO-8601 **without an offset** —
+  America/Chicago wall-clock (verified: response `TimeStamp` vs. real UTC
+  clock at fetch time showed exactly a 5-hour CDT offset) —
+  `parseIsoLocalToUtcIso`, reused directly from WMATA.
+- One call returns both current and future-scheduled alerts (`activeonly`
+  defaults false); bucketed into `outages`/`upcoming` by comparing
+  `EventStart` to now, same pattern as MTA/MBTA.
+- **Planned vs. unplanned — classify against `Headline` + `ShortDescription`
+  ONLY, never `FullDescription`.** Live-verified false-positive trap:
+  `FullDescription` carries a boilerplate "...repair and upgrade elevators"
+  footer link on nearly every alert regardless of cause — matching against
+  it flagged 9 of 13 real outages as planned when only 2 genuinely were
+  (Lake, Western — both say "upgrade" directly in `ShortDescription`).
+- One `Alert` can have multiple `ImpactedService.Service` entries (one
+  station `T` + several route `R` entries, e.g. Howard serves Red/Purple/
+  Yellow) — verified this is **one alert object**, not duplicates; extract
+  the single `T`-type entry, ignore the `R`-type route entries.
+- **Deferred**: CTA's GTFS `stops.txt` (`location_type=1` rows) could supply
+  a complete station list (name + coords) via `NormalizedRead.stations`,
+  matching WMATA's pattern — skipped for this MVP pass to keep the adapter
+  small; stations are only known when currently alerting.
