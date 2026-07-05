@@ -69,9 +69,10 @@
 </section>
 
 <section class="board" aria-hidden="true">
-  <div class="board-head"><span class="t">MOST BROKEN STATIONS</span><span class="s">OUTAGES · ALL-TIME</span></div>
-  <div id="broken-stations-board"></div>
-  <p class="empty" id="broken-stations-empty" hidden>Not enough data yet.</p>
+  <div class="board-head"><span class="t">ACCESSIBILITY BLACKOUTS</span><span class="s">TIME INACCESSIBLE · ALL-TIME</span></div>
+  <div id="blackouts-board"></div>
+  <p class="empty" id="blackouts-empty" hidden>Not enough data yet.</p>
+  <p class="legend">Total time each station lost step-free access (outages on non-redundant elevators only; overlapping outages aren't double-counted)</p>
 </section>
 
 <section class="board" aria-hidden="true">
@@ -142,6 +143,28 @@ function riffle(allCells) {
 const pad = (s, n) => String(s).slice(0, n).padEnd(n, " ");
 const rpad = (s, n) => String(s).slice(0, n).padStart(n, " ");
 
+// Escalates the unit as the duration grows, always showing at most the two
+// largest applicable units (e.g. "1Y 8MO", not "1Y 8MO 1D 6H") — matches how
+// a rider would actually describe it rather than a raw decimal hour count.
+// Months are treated as 30 days, years as 365, for display purposes only.
+function formatHours(hours) {
+  if (hours < 1) return `${Math.max(1, Math.round(hours * 60))}MIN`;
+  const h = Math.round(hours);
+  if (h < 24) return `${h}H`;
+  const totalDays = Math.floor(h / 24);
+  const remH = h % 24;
+  if (totalDays < 30) return remH > 0 ? `${totalDays}D ${remH}H` : `${totalDays}D`;
+  const years = Math.floor(totalDays / 365);
+  const daysAfterYears = totalDays % 365;
+  if (years > 0) {
+    const months = Math.floor(daysAfterYears / 30);
+    return months > 0 ? `${years}Y ${months}MO` : `${years}Y`;
+  }
+  const months = Math.floor(totalDays / 30);
+  const days = totalDays % 30;
+  return days > 0 ? `${months}MO ${days}D` : `${months}MO`;
+}
+
 function showEmpty(id, isEmpty) {
   document.getElementById(id).hidden = !isEmpty;
 }
@@ -171,13 +194,13 @@ if (!id) {
       ]));
     });
 
-    showEmpty("broken-stations-empty", data.mostBrokenStations.length === 0);
-    const bs = document.getElementById("broken-stations-board");
-    data.mostBrokenStations.forEach((s, i) => {
-      cells.push(...makeRow(bs, [
+    showEmpty("blackouts-empty", data.accessibilityBlackouts.length === 0);
+    const bo = document.getElementById("blackouts-board");
+    data.accessibilityBlackouts.forEach((s, i) => {
+      cells.push(...makeRow(bo, [
         { str: rpad(i + 1, 2) + " ", cls: "dim" },
         { str: pad(s.name, 26), cls: "" },
-        { str: rpad(s.count, 6), cls: "amber" },
+        { str: rpad(formatHours(s.hours), 8), cls: "red" },
       ]));
     });
 
@@ -223,7 +246,7 @@ if (!id) {
       `<h2>${title}</h2>${items.length ? `<ol>${items.map(fmt).join("")}</ol>` : `<p>${emptyMsg}</p>`}`;
     sr.innerHTML =
       list("Currently broken elevators", data.currentlyBroken, o => `<li>${o.unit} (${o.station}): out ${o.days} days${o.soleAccess ? " — sole step-free access, station currently inaccessible" : ""}</li>`, "None right now — full step-free access system-wide.") +
-      list("Most broken stations", data.mostBrokenStations, s => `<li>${s.name}: ${s.count} outages all-time</li>`) +
+      list("Accessibility blackouts", data.accessibilityBlackouts, s => `<li>${s.name}: ${formatHours(s.hours)} inaccessible all-time</li>`) +
       list("Longest step-free streak", data.stepFreeStreak, s => `<li>${s.name}: ${s.blackedOutNow ? "currently blacked out" : `${s.days} days since last blackout`}</li>`) +
       list("Most broken units", data.mostBrokenUnits, u => `<li>${u.unit} (${u.station}): ${u.count} outages all-time</li>`) +
       list("Longest uptime streak", data.uptimeStreak, u => `<li>${u.unit} (${u.station}): ${u.downNow ? "currently out of service" : `${u.days} days since last outage`}</li>`);

@@ -2,7 +2,7 @@
   "id": "bart-bay-area",
   "name": "BART",
   "label": "BART (San Francisco)",
-  "generatedAt": "2026-07-05T19:23:50.165Z",
+  "generatedAt": "2026-07-05T19:39:24.624Z",
   "currentlyBroken": [
     {
       "station": "Richmond",
@@ -19,22 +19,22 @@
       "soleAccess": true
     }
   ],
-  "mostBrokenStations": [
-    {
-      "name": "12th St. Oakland City Center",
-      "count": 2
-    },
+  "accessibilityBlackouts": [
     {
       "name": "Richmond",
-      "count": 1
+      "hours": 40.740948055555556
     },
     {
       "name": "Millbrae",
-      "count": 1
+      "hours": 40.740948055555556
+    },
+    {
+      "name": "12th St. Oakland City Center",
+      "hours": 5.163831388888889
     },
     {
       "name": "Coliseum",
-      "count": 1
+      "hours": 1.123981111111111
     }
   ],
   "stepFreeStreak": [

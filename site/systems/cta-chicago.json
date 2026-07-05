@@ -2,7 +2,7 @@
   "id": "cta-chicago",
   "name": "CTA",
   "label": "CTA (Chicago)",
-  "generatedAt": "2026-07-05T19:23:50.165Z",
+  "generatedAt": "2026-07-05T19:39:24.624Z",
   "currentlyBroken": [
     {
       "station": "Western",
@@ -89,46 +89,46 @@
       "soleAccess": true
     }
   ],
-  "mostBrokenStations": [
+  "accessibilityBlackouts": [
     {
-      "name": "47th",
-      "count": 1
-    },
-    {
-      "name": "63rd",
-      "count": 1
-    },
-    {
-      "name": "Wilson",
-      "count": 1
+      "name": "Western",
+      "hours": 1298.65684
     },
     {
       "name": "Lake",
-      "count": 1
+      "hours": 1061.65684
     },
     {
       "name": "King Drive",
-      "count": 1
+      "hours": 537.50684
     },
     {
       "name": "Loyola",
-      "count": 1
+      "hours": 205.90684
     },
     {
       "name": "Howard",
-      "count": 1
+      "hours": 149.17350666666667
     },
     {
-      "name": "Western",
-      "count": 1
+      "name": "Wilson",
+      "hours": 126.22350666666667
     },
     {
-      "name": "Conservatory-Central Park Drive",
-      "count": 1
+      "name": "47th",
+      "hours": 98.15684
     },
     {
-      "name": "69th",
-      "count": 1
+      "name": "63rd",
+      "hours": 50.49017333333333
+    },
+    {
+      "name": "47th",
+      "hours": 47.30684
+    },
+    {
+      "name": "35th-Bronzeville-IIT",
+      "hours": 45.973506666666665
     }
   ],
   "stepFreeStreak": [

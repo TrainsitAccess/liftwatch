@@ -2,7 +2,7 @@
   "id": "tfl-london",
   "name": "TfL",
   "label": "TfL (London)",
-  "generatedAt": "2026-07-05T19:23:50.165Z",
+  "generatedAt": "2026-07-05T19:39:24.624Z",
   "currentlyBroken": [
     {
       "station": "Wembley Park",
@@ -131,46 +131,46 @@
       "soleAccess": true
     }
   ],
-  "mostBrokenStations": [
-    {
-      "name": "King's Cross St Pancras",
-      "count": 2
-    },
-    {
-      "name": "Edmonton Green",
-      "count": 2
-    },
+  "accessibilityBlackouts": [
     {
       "name": "Wembley Park",
-      "count": 1
+      "hours": 18.95075888888889
     },
     {
       "name": "Hounslow East",
-      "count": 1
+      "hours": 18.95075888888889
     },
     {
       "name": "Hackney Wick",
-      "count": 1
+      "hours": 18.95075888888889
     },
     {
       "name": "Willesden Junction",
-      "count": 1
+      "hours": 18.95075888888889
     },
     {
       "name": "Upminster",
-      "count": 1
+      "hours": 18.95075888888889
     },
     {
-      "name": "Blackfriars",
-      "count": 1
-    },
-    {
-      "name": "Mill Hill East",
-      "count": 1
+      "name": "King's Cross St Pancras",
+      "hours": 18.95075888888889
     },
     {
       "name": "East India",
-      "count": 1
+      "hours": 18.95075888888889
+    },
+    {
+      "name": "Imperial Wharf",
+      "hours": 18.95075888888889
+    },
+    {
+      "name": "Finchley Central",
+      "hours": 18.95075888888889
+    },
+    {
+      "name": "Wembley Central",
+      "hours": 18.95075888888889
     }
   ],
   "stepFreeStreak": [

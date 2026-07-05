@@ -2,7 +2,7 @@
   "id": "mta-nyct",
   "name": "NYC Subway",
   "label": "NYC Subway (New York)",
-  "generatedAt": "2026-07-05T19:23:50.165Z",
+  "generatedAt": "2026-07-05T19:39:24.624Z",
   "currentlyBroken": [
     {
       "station": "42St/Port Authority-Bus Terminal",
@@ -147,7 +147,7 @@
     {
       "station": "3 Av-149 St",
       "unit": "Street to Manhattan-bound platform",
-      "days": 3,
+      "days": 4,
       "planned": false,
       "soleAccess": true
     },
@@ -243,46 +243,46 @@
       "soleAccess": true
     }
   ],
-  "mostBrokenStations": [
+  "accessibilityBlackouts": [
     {
       "name": "161 St-Yankee Stadium",
-      "count": 4
-    },
-    {
-      "name": "Atlantic Av-Barclays Ctr",
-      "count": 3
-    },
-    {
-      "name": "181 St",
-      "count": 3
-    },
-    {
-      "name": "Greenpoint Av",
-      "count": 3
+      "hours": 14549.65684
     },
     {
       "name": "Jamaica-179 St",
-      "count": 3
+      "hours": 5414.990173333334
+    },
+    {
+      "name": "Crown Hts-Utica Av",
+      "hours": 5176.423506666667
     },
     {
       "name": "Prospect Park",
-      "count": 2
+      "hours": 5151.523506666666
     },
     {
       "name": "Coney Island-Stillwell Av",
-      "count": 2
+      "hours": 5007.50684
     },
     {
       "name": "72 St",
-      "count": 2
+      "hours": 4791.90684
+    },
+    {
+      "name": "Flushing-Main St",
+      "hours": 3663.1901733333334
+    },
+    {
+      "name": "Atlantic Av-Barclays Ctr",
+      "hours": 2216.15684
     },
     {
       "name": "51 St",
-      "count": 2
+      "hours": 1689.8901733333332
     },
     {
       "name": "3 Av-149 St",
-      "count": 2
+      "hours": 96.07350666666666
     }
   ],
   "stepFreeStreak": [

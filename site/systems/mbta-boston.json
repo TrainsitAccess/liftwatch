@@ -2,7 +2,7 @@
   "id": "mbta-boston",
   "name": "MBTA",
   "label": "MBTA (Boston)",
-  "generatedAt": "2026-07-05T19:23:50.165Z",
+  "generatedAt": "2026-07-05T19:39:24.624Z",
   "currentlyBroken": [
     {
       "station": "Winchester Center",
@@ -54,46 +54,46 @@
       "soleAccess": true
     }
   ],
-  "mostBrokenStations": [
+  "accessibilityBlackouts": [
     {
-      "name": "Natick Center",
-      "count": 2
-    },
-    {
-      "name": "Arlington",
-      "count": 2
-    },
-    {
-      "name": "Porter",
-      "count": 1
-    },
-    {
-      "name": "Green Street",
-      "count": 1
+      "name": "Quincy Adams",
+      "hours": 495336.2698861111
     },
     {
       "name": "Winchester Center",
-      "count": 1
+      "hours": 2470.360728888889
     },
     {
       "name": "Framingham",
-      "count": 1
+      "hours": 340.99517333333336
+    },
+    {
+      "name": "Natick Center",
+      "hours": 101.28878444444445
+    },
+    {
+      "name": "Porter",
+      "hours": 49.53989555555555
     },
     {
       "name": "South Station",
-      "count": 1
+      "hours": 25.539895555555557
     },
     {
-      "name": "Downtown Crossing",
-      "count": 1
+      "name": "Green Street",
+      "hours": 25.197573055555555
     },
     {
-      "name": "Wood Island",
-      "count": 1
+      "name": "Revere Beach",
+      "hours": 8.766253055555556
+    },
+    {
+      "name": "Arlington",
+      "hours": 8.147889166666667
     },
     {
       "name": "Chinatown",
-      "count": 1
+      "hours": 4.664030833333333
     }
   ],
   "stepFreeStreak": [

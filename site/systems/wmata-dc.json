@@ -2,7 +2,7 @@
   "id": "wmata-dc",
   "name": "DC Metro",
   "label": "DC Metro (Washington)",
-  "generatedAt": "2026-07-05T19:23:50.165Z",
+  "generatedAt": "2026-07-05T19:39:24.624Z",
   "currentlyBroken": [
     {
       "station": "Glenmont",
@@ -75,46 +75,46 @@
       "soleAccess": true
     }
   ],
-  "mostBrokenStations": [
+  "accessibilityBlackouts": [
     {
       "name": "Glenmont",
-      "count": 3
+      "hours": 2956.1901733333334
     },
     {
       "name": "Rockville",
-      "count": 1
-    },
-    {
-      "name": "Huntington",
-      "count": 1
-    },
-    {
-      "name": "Mt Vernon Sq 7th St-Convention Center",
-      "count": 1
+      "hours": 1814.9901733333334
     },
     {
       "name": "Columbia Heights",
-      "count": 1
+      "hours": 667.40684
     },
     {
-      "name": "Downtown Largo",
-      "count": 1
+      "name": "Huntington",
+      "hours": 122.65684
+    },
+    {
+      "name": "Mt Vernon Sq 7th St-Convention Center",
+      "hours": 33.07350666666667
     },
     {
       "name": "Metro Center",
-      "count": 1
+      "hours": 5.015001111111111
+    },
+    {
+      "name": "Downtown Largo",
+      "hours": 4.801081388888889
     },
     {
       "name": "Bethesda",
-      "count": 1
+      "hours": 4.790173333333334
     },
     {
       "name": "Gallery Pl-Chinatown",
-      "count": 1
+      "hours": 4.50684
     },
     {
       "name": "L'Enfant Plaza",
-      "count": 1
+      "hours": 3.6401733333333333
     }
   ],
   "stepFreeStreak": [

@@ -2,7 +2,7 @@
   "id": "tmb-barcelona",
   "name": "TMB Metro",
   "label": "Barcelona (TMB Metro)",
-  "generatedAt": "2026-07-05T19:23:50.165Z",
+  "generatedAt": "2026-07-05T19:39:24.624Z",
   "currentlyBroken": [
     {
       "station": "Florida",
@@ -12,10 +12,10 @@
       "soleAccess": true
     }
   ],
-  "mostBrokenStations": [
+  "accessibilityBlackouts": [
     {
       "name": "Florida",
-      "count": 1
+      "hours": 121.87350666666667
     }
   ],
   "stepFreeStreak": [

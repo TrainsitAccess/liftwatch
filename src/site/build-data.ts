@@ -172,6 +172,38 @@ const latestEnd = (evts: typeof allEvents): string | null =>
     return ended && (!max || ended > max) ? ended : max;
   }, null);
 
+// Total wall-clock time a station was actually inaccessible, given its
+// blackout events (outages on non-redundant units). Merges overlapping
+// windows rather than summing durations independently — a station with two
+// non-redundant elevators both down for the same 3 days was inaccessible
+// for 3 days, not 6. An open event (ended_at null) counts through to now.
+function mergedDowntimeMs(evts: typeof allEvents): number {
+  const intervals = evts
+    .map((e) => ({
+      // Prefer the feed-reported start (may predate us) over when we first
+      // observed it — same precedence as every other duration calc in this
+      // file. Without this, any outage older than LiftWatch's own monitoring
+      // collapses to "since we started watching," not its true start.
+      start: Date.parse(((e.source_started_at as string | null) ?? (e.started_at as string))),
+      end: e.ended_at ? Date.parse(e.ended_at as string) : now,
+    }))
+    .sort((a, b) => a.start - b.start);
+  let total = 0;
+  let curStart = -Infinity;
+  let curEnd = -Infinity;
+  for (const { start, end } of intervals) {
+    if (start > curEnd) {
+      if (curEnd > curStart) total += curEnd - curStart;
+      curStart = start;
+      curEnd = end;
+    } else {
+      curEnd = Math.max(curEnd, end);
+    }
+  }
+  if (curEnd > curStart) total += curEnd - curStart;
+  return total;
+}
+
 function buildSystemDetail(systemId: string) {
   const systemEvents = eventsBySystem.get(systemId) ?? [];
   const systemUnits = (unitsBySystem.get(systemId) ?? []).filter((u) => u.is_active);
@@ -196,21 +228,9 @@ function buildSystemDetail(systemId: string) {
     })
     .sort((a, b) => b.days - a.days);
 
-  // Most broken stations (shame) — every outage, any unit, all-time.
-  const stationOutageCount = new Map<string, number>();
-  for (const e of systemEvents) {
-    const sid = (e.station_id as string | null) ?? unitById.get(e.unit_id as string)?.station_id;
-    if (!sid) continue;
-    stationOutageCount.set(sid, (stationOutageCount.get(sid) ?? 0) + 1);
-  }
-  const mostBrokenStations = [...stationOutageCount.entries()]
-    .map(([sid, count]) => ({ name: stationName.get(sid) ?? "Unknown", count }))
-    .sort((a, b) => b.count - a.count)
-    .slice(0, 10);
-
-  // Step-free streak (honor) — only events on non-redundant (sole step-free
-  // access) units count as a "blackout" here; a redundant unit's outage
-  // never severs the station's step-free access on its own.
+  // Blackout events — only outages on non-redundant (sole step-free access)
+  // units count; a redundant unit's outage never severs the station's
+  // step-free access on its own. Shared by both boards below.
   const blackoutEventsByStation = new Map<string, typeof allEvents>();
   for (const e of systemEvents) {
     const unit = unitById.get(e.unit_id as string);
@@ -221,6 +241,17 @@ function buildSystemDetail(systemId: string) {
     list.push(e);
     blackoutEventsByStation.set(sid, list);
   }
+
+  // Accessibility blackouts (shame) — ranked by TOTAL TIME a station was
+  // actually inaccessible (overlapping blackouts merged, not summed), not
+  // by how many separate outages caused it. Redundancy-aware: an outage on
+  // a redundant elevator never counts, since it didn't cut off access.
+  const accessibilityBlackouts = [...blackoutEventsByStation.entries()]
+    .map(([sid, evts]) => ({ name: stationName.get(sid) ?? "Unknown", hours: mergedDowntimeMs(evts) / 3_600_000 }))
+    .filter((s) => s.hours > 0)
+    .sort((a, b) => b.hours - a.hours)
+    .slice(0, 10);
+
   const firstSeenByStation = new Map<string, string>();
   for (const u of systemUnits) {
     const sid = u.station_id as string | null;
@@ -293,7 +324,7 @@ function buildSystemDetail(systemId: string) {
     .sort((a, b) => b.count - a.count)
     .slice(0, 15);
 
-  return { currentlyBroken, mostBrokenStations, stepFreeStreak, mostBrokenUnits, uptimeStreak, singlePointsOfFailure };
+  return { currentlyBroken, accessibilityBlackouts, stepFreeStreak, mostBrokenUnits, uptimeStreak, singlePointsOfFailure };
 }
 
 mkdirSync("site/systems", { recursive: true });
