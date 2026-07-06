@@ -2,12 +2,12 @@
   "id": "mbta-boston",
   "name": "MBTA",
   "label": "MBTA (Boston)",
-  "generatedAt": "2026-07-05T20:25:50.937Z",
+  "generatedAt": "2026-07-06T01:49:26.130Z",
   "currentlyBroken": [
     {
       "station": "Winchester Center",
       "unit": "Winchester Center Elevator 749 (Track 1 (outbound platform) to Main St)",
-      "days": 102,
+      "days": 103,
       "planned": false,
       "soleAccess": true
     },
@@ -61,23 +61,23 @@
     },
     {
       "name": "Winchester Center",
-      "hours": 2471.134704722222
+      "hours": 2476.527813888889
     },
     {
       "name": "Framingham",
-      "hours": 341.7691491666667
+      "hours": 347.16225833333334
     },
     {
       "name": "Natick Center",
-      "hours": 102.06276027777778
+      "hours": 107.45586944444445
     },
     {
       "name": "Porter",
-      "hours": 50.31387138888889
+      "hours": 55.70698055555555
     },
     {
       "name": "South Station",
-      "hours": 26.313871388888888
+      "hours": 31.706980555555557
     },
     {
       "name": "Green Street",
@@ -88,12 +88,12 @@
       "hours": 8.766253055555556
     },
     {
-      "name": "Arlington",
-      "hours": 8.147889166666667
+      "name": "Downtown Crossing",
+      "hours": 8.640591666666667
     },
     {
-      "name": "Chinatown",
-      "hours": 4.664030833333333
+      "name": "Arlington",
+      "hours": 8.147889166666667
     }
   ],
   "stepFreeStreak": [
@@ -133,17 +133,17 @@
       "blackedOutNow": false
     },
     {
+      "name": "Quincy Adams",
+      "days": 1,
+      "blackedOutNow": false
+    },
+    {
       "name": "Courthouse",
       "days": 1,
       "blackedOutNow": false
     },
     {
       "name": "Park Street",
-      "days": 1,
-      "blackedOutNow": false
-    },
-    {
-      "name": "Ruggles",
       "days": 1,
       "blackedOutNow": false
     }
@@ -160,23 +160,8 @@
       "count": 1
     },
     {
-      "unit": "Winchester Center Elevator 749 (Track 1 (outbound platform) to Main St)",
-      "station": "Winchester Center",
-      "count": 1
-    },
-    {
       "unit": "Wood Island Elevator 889 (Bowdoin platform to pedestrian bridge)",
       "station": "Wood Island",
-      "count": 1
-    },
-    {
-      "unit": "Porter Elevator 985 (Lobby to Somerville Avenue)",
-      "station": "Porter",
-      "count": 1
-    },
-    {
-      "unit": "Downtown Crossing Elevator 999 (Oak Grove platform to Alewife platform)",
-      "station": "Downtown Crossing",
       "count": 1
     },
     {
@@ -190,13 +175,28 @@
       "count": 1
     },
     {
+      "unit": "Winchester Center Elevator 749 (Track 1 (outbound platform) to Main St)",
+      "station": "Winchester Center",
+      "count": 1
+    },
+    {
       "unit": "Revere Beach Elevator 884 (Bowdoin platform to lobby)",
       "station": "Revere Beach",
       "count": 1
     },
     {
-      "unit": "Natick Center Elevator 750 (Track 1 to street)",
-      "station": "Natick Center",
+      "unit": "South Station Elevator 901 (Ashmont/Braintree platform to Silver Line drop-off platform and lobby)",
+      "station": "South Station",
+      "count": 1
+    },
+    {
+      "unit": "Downtown Crossing Elevator 999 (Oak Grove platform to Alewife platform)",
+      "station": "Downtown Crossing",
+      "count": 1
+    },
+    {
+      "unit": "Porter Elevator 985 (Lobby to Somerville Avenue)",
+      "station": "Porter",
       "count": 1
     }
   ],
@@ -288,11 +288,11 @@
       "count": 6
     },
     {
-      "name": "Haymarket",
+      "name": "Downtown Crossing",
       "count": 6
     },
     {
-      "name": "Downtown Crossing",
+      "name": "Haymarket",
       "count": 6
     },
     {

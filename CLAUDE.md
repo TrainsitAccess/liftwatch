@@ -32,6 +32,8 @@ npm run poll:bart:dry    # BART, MBTA, WMATA, TfL, CTA, TMB have :dry variants t
 npm run demo:access      # prove the chain-aware accessibility model (25 checks)
 npm run check:tfl        # prove TfL's topology-derived redundancy (10 checks)
 npm run check:tmb        # prove TMB's elevator catalog integrity (7 checks)
+npm run check:mta        # prove MTA's multi-chain models vs feed flags (offline)
+npm run mta:chains       # regenerate MTA multi-chain models from the live feed
 npm run typecheck        # tsc --noEmit — run after edits
 npm run db:status        # row counts + latest poll_runs, once Supabase is set up
 npm run site:data && npm run site:serve  # rebuild + preview the split-flap site
@@ -89,6 +91,32 @@ parking lot). A station is accessible only if **every** segment is up.
 - **Contradiction flags** (`redundancy_flags`): a real signal that disagrees with a
   curated value never overwrites it — it opens a flag for human recheck. The
   `assumed` default never raises a flag.
+- **Multi-chain stations** (`StationModel.chainLabel`): one physical station can
+  gate several INDEPENDENT lines through different elevators (161 St: the 4 and
+  the B/D each have their own; one being down says nothing about the other). Each
+  such line is a separate `StationModel` sharing the `stationExternalId`, so the
+  Accessibility Blackouts board reads "161 St-Yankee Stadium (4)" vs "(B/D)". A
+  physical station MTA fragments across several complex-ids (Penn = 164+318,
+  Fulton/Oculus = 628+624) merges under one canonical id via
+  `coveredStationExternalIds` (build-data counts each covered id once).
+- **MTA multi-chain models are GENERATED, not hand-typed.** `npm run mta:chains`
+  (`scripts/mta-chains.mjs`) derives one chain per platform line-group from the
+  live `nyct_ene_equipments` feed: drops non-ADA elevators (re-running picks up
+  any newly-accessible ones automatically), treats a line-spanning elevator as a
+  shared prerequisite, and groups redundant elevators by description. Output →
+  `src/catalog/mta-data/station-chains.json`, loaded by `station-models.ts`. The
+  ENGINE + SELF-CHECK are system-agnostic (operate on the normalized elevator
+  shape + `StationModel`); only the raw-feed mapper and the hand-verified config
+  are MTA-specific. **Self-check** (in the generator and offline via
+  `check:mta`): every elevator's model-DERIVED redundancy must match MTA's own
+  DECLARED `redundant` flag (aggregated across all its chains) — mismatches fail
+  the build unless listed in `REDUNDANCY_EXCEPTIONS` with a human reason (MTA's
+  flag is sometimes wrong, e.g. 14 St-6 Av EL609/EL610; or reflects cross-station
+  redundancy a per-station model can't see, e.g. Grand Central's Shuttle EL607X).
+  Six tangled interchanges are hand-authored OVERRIDES in the script, verified
+  station-by-station with a human; the rest are inferred. Deferred: MTA commuter
+  rail (LIRR + Metro-North) — touches Woodside/Atlantic/Grand Central/Penn, to be
+  added as one pass.
 
 ## Conventions
 

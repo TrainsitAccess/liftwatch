@@ -2,7 +2,7 @@
   "id": "wmata-dc",
   "name": "DC Metro",
   "label": "DC Metro (Washington)",
-  "generatedAt": "2026-07-05T20:25:50.937Z",
+  "generatedAt": "2026-07-06T01:49:26.130Z",
   "currentlyBroken": [
     {
       "station": "Glenmont",
@@ -21,7 +21,7 @@
     {
       "station": "Columbia Heights",
       "unit": "Elevator between mezzanine and platform",
-      "days": 27,
+      "days": 28,
       "planned": false,
       "soleAccess": true
     },
@@ -40,6 +40,20 @@
       "soleAccess": true
     },
     {
+      "station": "L'Enfant Plaza",
+      "unit": "Elevator between street and mezzanine",
+      "days": 0,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "Potomac Ave",
+      "unit": "Elevator between mezzanine and platform",
+      "days": 0,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
       "station": "Bethesda",
       "unit": "Elevator between street and mezzanine, corner of Wisconsin Ave. and Montgomery Lane",
       "days": 0,
@@ -52,57 +66,40 @@
       "days": 0,
       "planned": false,
       "soleAccess": true
-    },
-    {
-      "station": "Glenmont",
-      "unit": "Elevator between street and mezzanine, east side of station at bus bay/Kiss & Ride",
-      "days": 0,
-      "planned": false,
-      "soleAccess": true
-    },
-    {
-      "station": "Glenmont",
-      "unit": "Elevator between mezzanine and platform",
-      "days": 0,
-      "planned": false,
-      "soleAccess": true
-    },
-    {
-      "station": "L'Enfant Plaza",
-      "unit": "Elevator between street and mezzanine",
-      "days": 0,
-      "planned": false,
-      "soleAccess": true
     }
   ],
   "accessibilityBlackouts": [
     {
       "name": "Glenmont",
-      "hours": 2956.9641491666666
+      "hours": 2962.3572583333334
     },
     {
       "name": "Rockville",
-      "hours": 1815.7641491666666
+      "hours": 1821.1572583333334
     },
     {
       "name": "Columbia Heights",
-      "hours": 668.1808158333333
+      "hours": 673.573925
     },
     {
       "name": "Huntington",
-      "hours": 123.43081583333333
+      "hours": 128.823925
     },
     {
       "name": "Mt Vernon Sq 7th St-Convention Center",
-      "hours": 33.8474825
+      "hours": 39.24059166666667
     },
     {
       "name": "Bethesda",
-      "hours": 5.564149166666667
+      "hours": 10.957258333333334
     },
     {
       "name": "Gallery Pl-Chinatown",
-      "hours": 5.2808158333333335
+      "hours": 10.673925
+    },
+    {
+      "name": "L'Enfant Plaza",
+      "hours": 9.518890277777778
     },
     {
       "name": "Metro Center",
@@ -111,13 +108,14 @@
     {
       "name": "Downtown Largo",
       "hours": 4.801081388888889
-    },
-    {
-      "name": "L'Enfant Plaza",
-      "hours": 4.414149166666666
     }
   ],
   "stepFreeStreak": [
+    {
+      "name": "Downtown Largo",
+      "days": 1,
+      "blackedOutNow": false
+    },
     {
       "name": "Bethesda",
       "days": 0,
@@ -144,14 +142,9 @@
       "blackedOutNow": true
     },
     {
-      "name": "Metro Center",
+      "name": "Potomac Ave",
       "days": 0,
-      "blackedOutNow": false
-    },
-    {
-      "name": "Downtown Largo",
-      "days": 0,
-      "blackedOutNow": false
+      "blackedOutNow": true
     },
     {
       "name": "Rockville",
@@ -159,17 +152,22 @@
       "blackedOutNow": true
     },
     {
-      "name": "Huntington",
+      "name": "Metro Center",
       "days": 0,
-      "blackedOutNow": true
+      "blackedOutNow": false
     },
     {
-      "name": "Mt Vernon Sq 7th St-Convention Center",
+      "name": "Huntington",
       "days": 0,
       "blackedOutNow": true
     }
   ],
   "mostBrokenUnits": [
+    {
+      "unit": "Elevator between street and mezzanine",
+      "station": "L'Enfant Plaza",
+      "count": 2
+    },
     {
       "unit": "Elevator between street and mezzanine, corner of Wisconsin Ave. and Montgomery Lane",
       "station": "Bethesda",
@@ -196,18 +194,8 @@
       "count": 1
     },
     {
-      "unit": "Elevator between street and mezzanine",
-      "station": "L'Enfant Plaza",
-      "count": 1
-    },
-    {
-      "unit": "Elevator between street and mezzanine",
-      "station": "Metro Center",
-      "count": 1
-    },
-    {
-      "unit": "Elevator between street and mezzanine",
-      "station": "Downtown Largo",
+      "unit": "Elevator between mezzanine and platform",
+      "station": "Potomac Ave",
       "count": 1
     },
     {
@@ -219,9 +207,20 @@
       "unit": "Garage elevator",
       "station": "Glenmont",
       "count": 1
+    },
+    {
+      "unit": "Elevator between street and mezzanine",
+      "station": "Metro Center",
+      "count": 1
     }
   ],
   "uptimeStreak": [
+    {
+      "unit": "Elevator between street and mezzanine",
+      "station": "Downtown Largo",
+      "days": 1,
+      "downNow": false
+    },
     {
       "unit": "Elevator between street and mezzanine, corner of Wisconsin Ave. and Montgomery Lane",
       "station": "Bethesda",
@@ -244,13 +243,13 @@
       "unit": "Elevator between street and mezzanine, east side of station at bus bay/Kiss & Ride",
       "station": "Glenmont",
       "days": 0,
-      "downNow": true
+      "downNow": false
     },
     {
       "unit": "Elevator between mezzanine and platform",
       "station": "Glenmont",
       "days": 0,
-      "downNow": true
+      "downNow": false
     },
     {
       "unit": "Elevator between street and mezzanine",
@@ -259,16 +258,10 @@
       "downNow": true
     },
     {
-      "unit": "Elevator between street and mezzanine",
-      "station": "Metro Center",
+      "unit": "Elevator between mezzanine and platform",
+      "station": "Potomac Ave",
       "days": 0,
-      "downNow": false
-    },
-    {
-      "unit": "Elevator between street and mezzanine",
-      "station": "Downtown Largo",
-      "days": 0,
-      "downNow": false
+      "downNow": true
     },
     {
       "unit": "Elevator between pedestrian bridge and mezzanine",
@@ -305,15 +298,15 @@
       "count": 1
     },
     {
-      "name": "Metro Center",
-      "count": 1
-    },
-    {
-      "name": "Downtown Largo",
+      "name": "Potomac Ave",
       "count": 1
     },
     {
       "name": "Rockville",
+      "count": 1
+    },
+    {
+      "name": "Metro Center",
       "count": 1
     },
     {
@@ -326,6 +319,14 @@
     },
     {
       "name": "Columbia Heights",
+      "count": 1
+    },
+    {
+      "name": "Downtown Largo",
+      "count": 1
+    },
+    {
+      "name": "Ballston-MU",
       "count": 1
     }
   ]

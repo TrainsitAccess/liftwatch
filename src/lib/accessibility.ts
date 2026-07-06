@@ -35,8 +35,22 @@ export interface StationModel {
   // name (e.g. " (4)", " (B/D)") — see stationModelsFor. Omit for the common
   // case of one unified chain per station (every current BART model).
   chainLabel?: string;
+  // Some physical stations are fragmented across MULTIPLE feed-level ids (e.g.
+  // MTA reports 34 St-Penn as complex "164" for the 8th Av lines and "318" for
+  // the 7th Av lines, though a step-free concourse joins them; the Fulton St /
+  // Oculus megacomplex spans "628" and "624"). When several such ids are one
+  // real station, the model lives under a single canonical stationExternalId
+  // and lists every id it subsumes here so downstream (build-data, poll) counts
+  // each covered id exactly once instead of double-counting a flat fallback.
+  // Defaults to [stationExternalId] when omitted. System-agnostic.
+  coveredStationExternalIds?: string[];
   segments: AccessSegment[];
   note?: string;
+}
+
+/** Every feed station id this model accounts for (canonical + any merged-in). */
+export function coveredStationIds(model: StationModel): string[] {
+  return model.coveredStationExternalIds ?? [model.stationExternalId];
 }
 
 /** A segment is up if it has a non-elevator alternative or any working elevator. */

@@ -26,6 +26,8 @@
     "demo:access": "tsx src/checks/accessibility-demo.ts",
     "check:tfl": "tsx src/checks/tfl-redundancy-check.ts",
     "check:tmb": "tsx src/checks/tmb-check.ts",
+    "check:mta": "tsx src/checks/mta-chains-check.ts",
+    "mta:chains": "node scripts/mta-chains.mjs",
     "db:status": "tsx src/checks/db-status.ts",
     "site:data": "tsx src/site/build-data.ts",
     "site:serve": "node scripts/serve.mjs",

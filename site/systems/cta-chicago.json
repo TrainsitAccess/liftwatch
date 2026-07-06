@@ -2,7 +2,7 @@
   "id": "cta-chicago",
   "name": "CTA",
   "label": "CTA (Chicago)",
-  "generatedAt": "2026-07-05T20:25:50.937Z",
+  "generatedAt": "2026-07-06T01:49:26.130Z",
   "currentlyBroken": [
     {
       "station": "Western",
@@ -28,6 +28,13 @@
     {
       "station": "Loyola",
       "unit": "41300",
+      "days": 8,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "Clark/Lake",
+      "unit": "40380",
       "days": 8,
       "planned": false,
       "soleAccess": true
@@ -70,7 +77,7 @@
     {
       "station": "35th-Bronzeville-IIT",
       "unit": "41120",
-      "days": 1,
+      "days": 2,
       "planned": false,
       "soleAccess": true
     },
@@ -87,48 +94,55 @@
       "days": 1,
       "planned": false,
       "soleAccess": true
+    },
+    {
+      "station": "Addison",
+      "unit": "41440",
+      "days": 0,
+      "planned": false,
+      "soleAccess": true
     }
   ],
   "accessibilityBlackouts": [
     {
       "name": "Western",
-      "hours": 1299.4308158333333
+      "hours": 1304.823925
     },
     {
       "name": "Lake",
-      "hours": 1062.4308158333333
+      "hours": 1067.823925
     },
     {
       "name": "King Drive",
-      "hours": 538.2808158333333
+      "hours": 543.673925
     },
     {
       "name": "Loyola",
-      "hours": 206.68081583333333
+      "hours": 212.073925
+    },
+    {
+      "name": "Clark/Lake",
+      "hours": 199.473925
     },
     {
       "name": "Howard",
-      "hours": 149.9474825
+      "hours": 155.34059166666665
     },
     {
       "name": "Wilson",
-      "hours": 126.9974825
+      "hours": 132.39059166666667
     },
     {
       "name": "47th",
-      "hours": 98.93081583333333
+      "hours": 104.323925
     },
     {
       "name": "63rd",
-      "hours": 51.26414916666667
+      "hours": 56.65725833333333
     },
     {
       "name": "47th",
-      "hours": 48.08081583333333
-    },
-    {
-      "name": "35th-Bronzeville-IIT",
-      "hours": 46.7474825
+      "hours": 53.473925
     }
   ],
   "stepFreeStreak": [
@@ -158,6 +172,16 @@
       "blackedOutNow": false
     },
     {
+      "name": "Addison",
+      "days": 0,
+      "blackedOutNow": true
+    },
+    {
+      "name": "Clark/Lake",
+      "days": 0,
+      "blackedOutNow": true
+    },
+    {
       "name": "Lake",
       "days": 0,
       "blackedOutNow": true
@@ -169,16 +193,6 @@
     },
     {
       "name": "King Drive",
-      "days": 0,
-      "blackedOutNow": true
-    },
-    {
-      "name": "Loyola",
-      "days": 0,
-      "blackedOutNow": true
-    },
-    {
-      "name": "Howard",
       "days": 0,
       "blackedOutNow": true
     }
@@ -210,6 +224,16 @@
       "count": 1
     },
     {
+      "unit": "41440",
+      "station": "Addison",
+      "count": 1
+    },
+    {
+      "unit": "40380",
+      "station": "Clark/Lake",
+      "count": 1
+    },
+    {
       "unit": "41660",
       "station": "Lake",
       "count": 1
@@ -222,16 +246,6 @@
     {
       "unit": "41140",
       "station": "King Drive",
-      "count": 1
-    },
-    {
-      "unit": "41300",
-      "station": "Loyola",
-      "count": 1
-    },
-    {
-      "unit": "40900",
-      "station": "Howard",
       "count": 1
     }
   ],
@@ -267,6 +281,18 @@
       "downNow": false
     },
     {
+      "unit": "41440",
+      "station": "Addison",
+      "days": 0,
+      "downNow": true
+    },
+    {
+      "unit": "40380",
+      "station": "Clark/Lake",
+      "days": 0,
+      "downNow": true
+    },
+    {
       "unit": "41660",
       "station": "Lake",
       "days": 0,
@@ -281,18 +307,6 @@
     {
       "unit": "41140",
       "station": "King Drive",
-      "days": 0,
-      "downNow": true
-    },
-    {
-      "unit": "41300",
-      "station": "Loyola",
-      "days": 0,
-      "downNow": true
-    },
-    {
-      "unit": "40900",
-      "station": "Howard",
       "days": 0,
       "downNow": true
     }
@@ -316,6 +330,14 @@
     },
     {
       "name": "69th",
+      "count": 1
+    },
+    {
+      "name": "Addison",
+      "count": 1
+    },
+    {
+      "name": "Clark/Lake",
       "count": 1
     },
     {
@@ -348,14 +370,6 @@
     },
     {
       "name": "63rd",
-      "count": 1
-    },
-    {
-      "name": "47th",
-      "count": 1
-    },
-    {
-      "name": "35th-Bronzeville-IIT",
       "count": 1
     }
   ]

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-05T20:25:50.937Z",
+  "generatedAt": "2026-07-06T01:49:26.130Z",
   "totals": {
     "systems": 7,
     "activeUnits": 1925,
@@ -17,9 +17,9 @@
       "inventoryComplete": true,
       "fleetSource": "live",
       "activeUnits": 408,
-      "down": 35,
-      "downUnplanned": 17,
-      "pctDown": 8.6,
+      "down": 34,
+      "downUnplanned": 16,
+      "pctDown": 8.3,
       "staticFleetAsOf": null,
       "staticFleetSource": null
     },
@@ -33,9 +33,9 @@
       "inventoryComplete": false,
       "fleetSource": "static",
       "activeUnits": 173,
-      "down": 12,
-      "downUnplanned": 10,
-      "pctDown": 6.9,
+      "down": 14,
+      "downUnplanned": 12,
+      "pctDown": 8.1,
       "staticFleetAsOf": "2026-07-05",
       "staticFleetSource": "https://www.transitchicago.com/elevatorescalatorupgrades/"
     },
@@ -56,20 +56,20 @@
       "staticFleetSource": null
     },
     {
-      "id": "wmata-dc",
-      "name": "DC Metro",
-      "city": "Washington",
-      "label": "DC Metro (Washington)",
-      "boardLabel": "DC Metro",
-      "dataQuality": "fair",
-      "inventoryComplete": false,
-      "fleetSource": "static",
-      "activeUnits": 320,
-      "down": 10,
-      "downUnplanned": 8,
-      "pctDown": 3.1,
-      "staticFleetAsOf": "2026-07-04",
-      "staticFleetSource": "https://www.wmata.com/ride/elevators-escalators.html"
+      "id": "mbta-boston",
+      "name": "MBTA",
+      "city": "Boston",
+      "label": "MBTA (Boston)",
+      "boardLabel": "MBTA",
+      "dataQuality": "good",
+      "inventoryComplete": true,
+      "fleetSource": "live",
+      "activeUnits": 237,
+      "down": 7,
+      "downUnplanned": 4,
+      "pctDown": 3,
+      "staticFleetAsOf": null,
+      "staticFleetSource": null
     },
     {
       "id": "bart-bay-area",
@@ -88,20 +88,20 @@
       "staticFleetSource": null
     },
     {
-      "id": "mbta-boston",
-      "name": "MBTA",
-      "city": "Boston",
-      "label": "MBTA (Boston)",
-      "boardLabel": "MBTA",
-      "dataQuality": "good",
-      "inventoryComplete": true,
-      "fleetSource": "live",
-      "activeUnits": 237,
-      "down": 7,
-      "downUnplanned": 4,
-      "pctDown": 3,
-      "staticFleetAsOf": null,
-      "staticFleetSource": null
+      "id": "wmata-dc",
+      "name": "DC Metro",
+      "city": "Washington",
+      "label": "DC Metro (Washington)",
+      "boardLabel": "DC Metro",
+      "dataQuality": "fair",
+      "inventoryComplete": false,
+      "fleetSource": "static",
+      "activeUnits": 320,
+      "down": 9,
+      "downUnplanned": 7,
+      "pctDown": 2.8,
+      "staticFleetAsOf": "2026-07-04",
+      "staticFleetSource": "https://www.wmata.com/ride/elevators-escalators.html"
     },
     {
       "id": "tmb-barcelona",
@@ -132,7 +132,7 @@
     {
       "system": "NYC Subway",
       "station": "161 St-Yankee Stadium",
-      "unit": "EL133",
+      "unit": "EL132",
       "soleAccess": true,
       "planned": true,
       "days": 606
@@ -140,7 +140,7 @@
     {
       "system": "NYC Subway",
       "station": "161 St-Yankee Stadium",
-      "unit": "EL132",
+      "unit": "EL133",
       "soleAccess": true,
       "planned": true,
       "days": 606
@@ -188,7 +188,7 @@
     {
       "system": "NYC Subway",
       "station": "Prospect Park",
-      "unit": "EL382",
+      "unit": "EL383",
       "soleAccess": true,
       "planned": true,
       "days": 214
@@ -196,7 +196,7 @@
     {
       "system": "NYC Subway",
       "station": "Prospect Park",
-      "unit": "EL383",
+      "unit": "EL382",
       "soleAccess": true,
       "planned": true,
       "days": 214

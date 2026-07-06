@@ -6,6 +6,7 @@ import {
   allElevators,
   chainDisplayName,
   chainDownIntervals,
+  coveredStationIds,
   mergeIntervals,
   totalDurationMs,
   type Interval,
@@ -230,7 +231,12 @@ function buildSystemDetail(systemId: string) {
   // flat whole-station count; un-modeled stations keep the simple
   // per-unit is_redundant approach unchanged.
   const models = stationModelsFor(systemId); // bare stationExternalId -> chains
-  const modeledStationIds = new Set([...models.keys()].map((bare) => `${systemId}:${bare}`));
+  // Include every feed id a model covers (a merged station like Penn 164+318 or
+  // Fulton 628+624 lists both under coveredStationExternalIds) so the flat
+  // per-station fallback skips ALL of them, never double-counting an alias.
+  const modeledStationIds = new Set(
+    [...models.values()].flat().flatMap((m) => coveredStationIds(m)).map((bare) => `${systemId}:${bare}`),
+  );
 
   const eventsByElevatorExtId = new Map<string, typeof allEvents>();
   for (const e of systemEvents) {
@@ -268,8 +274,19 @@ function buildSystemDetail(systemId: string) {
       }
     }
   }
+  // A merged station's covered feed ids (Fulton's "624" = physically Cortlandt
+  // St) should all display under the canonical station's name, so a broken
+  // elevator on the Cortlandt side reads "Fulton St (R/W)" — matching the
+  // blackout board — not "Cortlandt St (R/W)".
+  const canonicalNameBySid = new Map<string, string>();
+  for (const chains of models.values()) {
+    for (const model of chains) {
+      const canonical = stationName.get(`${systemId}:${model.stationExternalId}`);
+      if (canonical) for (const covered of coveredStationIds(model)) canonicalNameBySid.set(`${systemId}:${covered}`, canonical);
+    }
+  }
   function displayStationName(sid: string | null | undefined, externalId: string | undefined): string {
-    const base = (sid && stationName.get(sid)) ?? "Unknown";
+    const base = (sid && (canonicalNameBySid.get(sid) ?? stationName.get(sid))) ?? "Unknown";
     const suffix = externalId ? chainSuffixByElevator.get(externalId) : undefined;
     return suffix ? `${base}${suffix}` : base;
   }

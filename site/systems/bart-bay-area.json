@@ -2,18 +2,18 @@
   "id": "bart-bay-area",
   "name": "BART",
   "label": "BART (San Francisco)",
-  "generatedAt": "2026-07-05T20:25:50.937Z",
+  "generatedAt": "2026-07-06T01:49:26.130Z",
   "currentlyBroken": [
     {
-      "station": "Richmond",
-      "unit": "Station (unspecified elevator — conservative)",
+      "station": "Millbrae",
+      "unit": "Station elevator access (BART reports at station level)",
       "days": 1,
       "planned": false,
       "soleAccess": true
     },
     {
-      "station": "Millbrae",
-      "unit": "Station elevator access (BART reports at station level)",
+      "station": "Richmond",
+      "unit": "Station (unspecified elevator — conservative)",
       "days": 1,
       "planned": false,
       "soleAccess": true
@@ -22,7 +22,7 @@
   "accessibilityBlackouts": [
     {
       "name": "Millbrae",
-      "hours": 41.51492388888889
+      "hours": 46.908033055555556
     },
     {
       "name": "Coliseum",
@@ -215,15 +215,15 @@
       "count": 1
     },
     {
+      "name": "16th St. Mission",
+      "count": 1
+    },
+    {
       "name": "West Oakland",
       "count": 1
     },
     {
       "name": "Powell St.",
-      "count": 1
-    },
-    {
-      "name": "Bay Fair",
       "count": 1
     }
   ]

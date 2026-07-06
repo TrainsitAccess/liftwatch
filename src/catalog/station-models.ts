@@ -1,4 +1,13 @@
+import { readFileSync } from "node:fs";
 import type { StationModel } from "../lib/accessibility.js";
+
+// MTA multi-chain models, generated from the live elevator inventory by
+// scripts/mta-chains.mjs (self-checked against MTA's own ADA + redundant flags).
+const mtaChains: StationModel[] = (
+  JSON.parse(readFileSync(new URL("./mta-data/station-chains.json", import.meta.url), "utf8")) as {
+    models: StationModel[];
+  }
+).models;
 
 // Curated per-station accessibility structure — the source of truth for stations
 // whose feed doesn't expose per-elevator data (BART). Each station's step-free
@@ -155,76 +164,11 @@ export const STATION_MODELS: StationModel[] = [
       },
     ],
   },
-  {
-    systemId: "mta-nyct",
-    stationExternalId: "604",
-    chainLabel: " (4)",
-    note:
-      "EL132/EL133 gate the 4 platform by direction and are NOT redundant with " +
-      "each other — each is essential for its own direction (confirmed directly: " +
-      "EL132 = Bronx-bound, EL133 = Manhattan-bound; MTA's own feed text for " +
-      'EL132, "B/D mezzanine to 4 train," does not state the direction). EL131 ' +
-      "(street-mezzanine) is a shared prerequisite with this station's (B/D) " +
-      "chain — if it fails, both chains go down together. EL132/EL133 are " +
-      "currently mid capital-replacement (expected summer 2026) and marked " +
-      "is_active: false in MTA's feed despite having a real, ongoing outage.",
-    segments: [
-      {
-        id: "street-mezzanine",
-        label: "Street to mezzanine",
-        elevators: [{ externalId: "EL131", label: "Street to mezzanine", matchHints: ["street to mezzanine"] }],
-      },
-      {
-        id: "mezzanine-4-bronx",
-        label: "Mezzanine to Bronx-bound 4",
-        elevators: [
-          {
-            externalId: "EL132",
-            label: 'Mezzanine to Bronx-bound 4 (feed text: "B/D mezzanine to 4 train")',
-            matchHints: ["bronx-bound 4"],
-          },
-        ],
-      },
-      {
-        id: "mezzanine-4-manhattan",
-        label: "Mezzanine to Manhattan-bound 4",
-        elevators: [
-          { externalId: "EL133", label: "Mezzanine to Manhattan-bound 4", matchHints: ["manhattan-bound 4"] },
-        ],
-      },
-    ],
-  },
-  {
-    systemId: "mta-nyct",
-    stationExternalId: "604",
-    chainLabel: " (B/D)",
-    note:
-      "EL134/EL135 gate the B/D platform by direction and are NOT redundant " +
-      "with each other (confirmed directly: EL134 = Manhattan-bound, EL135 = " +
-      "Bronx-bound). EL131 (street-mezzanine) is a shared prerequisite with " +
-      "this station's (4) chain — if it fails, both chains go down together.",
-    segments: [
-      {
-        id: "street-mezzanine",
-        label: "Street to mezzanine",
-        elevators: [{ externalId: "EL131", label: "Street to mezzanine", matchHints: ["street to mezzanine"] }],
-      },
-      {
-        id: "mezzanine-bd-manhattan",
-        label: "Mezzanine to Manhattan-bound B/D",
-        elevators: [
-          { externalId: "EL134", label: "Mezzanine to Manhattan-bound B/D", matchHints: ["manhattan-bound b/d"] },
-        ],
-      },
-      {
-        id: "mezzanine-bd-bronx",
-        label: "Mezzanine to Bronx-bound B/D",
-        elevators: [
-          { externalId: "EL135", label: "Mezzanine to Bronx-bound B/D", matchHints: ["bronx-bound b/d"] },
-        ],
-      },
-    ],
-  },
+  // MTA's multi-chain stations are generated from the live elevator inventory
+  // by scripts/mta-chains.mjs (verified station-by-station with a human; see
+  // src/catalog/mta-data/station-chains.json and CLAUDE.md). Regenerate with
+  // `npm run mta:chains` — do not hand-edit the JSON.
+  ...mtaChains,
 ];
 
 // A physical station can have more than one entry (multiple independent
