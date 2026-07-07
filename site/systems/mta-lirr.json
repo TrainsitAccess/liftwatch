@@ -1,0 +1,260 @@
+{
+  "id": "mta-lirr",
+  "name": "LIRR",
+  "label": "LIRR (New York)",
+  "generatedAt": "2026-07-07T03:59:22.854Z",
+  "currentlyBroken": [
+    {
+      "station": "Grand Central",
+      "unit": "EL21: Between LIRR Concourse and Metro-North Tracks 102-114 at 45th Street",
+      "days": 0,
+      "planned": false,
+      "soleAccess": false
+    },
+    {
+      "station": "Jamaica (Tks 4/5)",
+      "unit": "Between eastern overpass and Tracks 4 & 5",
+      "days": 0,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "Queens Village",
+      "unit": "Between Platform B and street level (east end of platform)",
+      "days": 0,
+      "planned": false,
+      "soleAccess": false
+    },
+    {
+      "station": "Mineola (Track 2)",
+      "unit": "Between eastern overpass, Track 2, and kiss-and-ride (south side)",
+      "days": 0,
+      "planned": false,
+      "soleAccess": false
+    },
+    {
+      "station": "Laurelton",
+      "unit": "Between Tracks 1 & 2 and street level (middle of platform)",
+      "days": 0,
+      "planned": false,
+      "soleAccess": true
+    }
+  ],
+  "accessibilityBlackouts": [
+    {
+      "name": "Jamaica (Tks 4/5)",
+      "hours": 0.011678333333333334
+    },
+    {
+      "name": "Queens Village",
+      "hours": 0.011678333333333334
+    },
+    {
+      "name": "Laurelton",
+      "hours": 0.011678333333333334
+    }
+  ],
+  "stepFreeStreak": [
+    {
+      "name": "Atlantic Terminal",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Hicksville (Platform A)",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Hicksville (Platform B)",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Mineola (Track 2)",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Mineola (Track 3)",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Penn Station (Tks 13/14)",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Penn Station (Tks 15/16)",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Penn Station (Tk 17)",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Penn Station (Tks 18/19)",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Penn Station (Tks 20/21)",
+      "days": 0,
+      "blackedOutNow": false
+    }
+  ],
+  "mostBrokenUnits": [
+    {
+      "unit": "Between Tracks 1 & 2 and street level (middle of platform)",
+      "station": "Laurelton",
+      "count": 1
+    },
+    {
+      "unit": "EL21: Between LIRR Concourse and Metro-North Tracks 102-114 at 45th Street",
+      "station": "Grand Central",
+      "count": 1
+    },
+    {
+      "unit": "Between eastern overpass and Tracks 4 & 5",
+      "station": "Jamaica (Tks 4/5)",
+      "count": 1
+    },
+    {
+      "unit": "Between eastern overpass, Track 2, and kiss-and-ride (south side)",
+      "station": "Mineola (Track 2)",
+      "count": 1
+    },
+    {
+      "unit": "Between Platform B and street level (east end of platform)",
+      "station": "Queens Village",
+      "count": 1
+    }
+  ],
+  "uptimeStreak": [
+    {
+      "unit": "EL13: Between 47th Street and LIRR Concourse",
+      "station": "Grand Central",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "EL06: Between Tracks 203/204, Mezzanine, and Tracks 303/304",
+      "station": "Grand Central (Tks 203/204·303/304)",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "EL12: Between 44th Street and LIRR Concourse",
+      "station": "Grand Central",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "EL01 - Between LIRR Concourse and Mezzanine for access to all tracks",
+      "station": "Grand Central",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "EL02 - Between LIRR Concourse and Mezzanine for access to all tracks",
+      "station": "Grand Central",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "Between Tracks 1 & 2 and street level (east side of 192 St)",
+      "station": "Auburndale",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "Unit B1, between Tracks 2 & 3 (Platform B) and street level (east side of station building)",
+      "station": "Hicksville (Platform B)",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "Unit A1, between Tracks 1 & 2 (Platform A) and street level (east side of station building)",
+      "station": "Hicksville (Platform A)",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "Unit A2, between Tracks 1 & 2 (Platform A) and street level (west side of station building)",
+      "station": "Hicksville (Platform A)",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "Northwest corner of North Parking Garage",
+      "station": "Westbury",
+      "days": 0,
+      "downNow": false
+    }
+  ],
+  "singlePointsOfFailure": [
+    {
+      "name": "Jamaica",
+      "count": 7
+    },
+    {
+      "name": "Penn Station",
+      "count": 6
+    },
+    {
+      "name": "Woodside",
+      "count": 3
+    },
+    {
+      "name": "Auburndale",
+      "count": 1
+    },
+    {
+      "name": "Laurelton",
+      "count": 1
+    },
+    {
+      "name": "Amityville",
+      "count": 1
+    },
+    {
+      "name": "Bellmore",
+      "count": 1
+    },
+    {
+      "name": "Baldwin",
+      "count": 1
+    },
+    {
+      "name": "Copiague",
+      "count": 1
+    },
+    {
+      "name": "Freeport",
+      "count": 1
+    },
+    {
+      "name": "Lindenhurst",
+      "count": 1
+    },
+    {
+      "name": "Massapequa Park",
+      "count": 1
+    },
+    {
+      "name": "Massapequa",
+      "count": 1
+    },
+    {
+      "name": "Merrick",
+      "count": 1
+    },
+    {
+      "name": "Rosedale",
+      "count": 1
+    }
+  ]
+}

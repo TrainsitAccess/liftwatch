@@ -2,7 +2,7 @@
   "id": "cta-chicago",
   "name": "CTA",
   "label": "CTA (Chicago)",
-  "generatedAt": "2026-07-06T23:20:08.876Z",
+  "generatedAt": "2026-07-07T03:59:22.854Z",
   "currentlyBroken": [
     {
       "station": "Western",
@@ -70,7 +70,7 @@
     {
       "station": "Addison",
       "unit": "41440",
-      "days": 0,
+      "days": 1,
       "planned": false,
       "soleAccess": false
     },
@@ -82,22 +82,8 @@
       "soleAccess": false
     },
     {
-      "station": "Polk",
-      "unit": "41030",
-      "days": 0,
-      "planned": false,
-      "soleAccess": false
-    },
-    {
       "station": "Grand",
       "unit": "40330",
-      "days": 0,
-      "planned": false,
-      "soleAccess": false
-    },
-    {
-      "station": "Cermak-McCormick Place",
-      "unit": "41690",
       "days": 0,
       "planned": false,
       "soleAccess": false
@@ -106,15 +92,15 @@
   "accessibilityBlackouts": [
     {
       "name": "Western",
-      "hours": 1326.3357988888888
+      "hours": 1330.9896816666667
     },
     {
       "name": "Lake",
-      "hours": 1089.3357988888888
+      "hours": 1093.9896816666667
     },
     {
       "name": "King Drive",
-      "hours": 565.1857988888889
+      "hours": 569.8396816666667
     },
     {
       "name": "Loyola",
@@ -122,27 +108,27 @@
     },
     {
       "name": "Clark/Lake",
-      "hours": 220.9857988888889
+      "hours": 225.63968166666666
     },
     {
       "name": "Howard",
-      "hours": 176.85246555555557
+      "hours": 181.50634833333334
     },
     {
       "name": "Wilson",
-      "hours": 153.90246555555555
+      "hours": 158.55634833333335
     },
     {
       "name": "47th",
-      "hours": 125.83579888888889
+      "hours": 130.48968166666666
     },
     {
       "name": "63rd",
-      "hours": 78.16913222222222
+      "hours": 82.823015
     },
     {
       "name": "35th-Bronzeville-IIT",
-      "hours": 73.65246555555555
+      "hours": 78.30634833333333
     }
   ],
   "stepFreeStreak": [
@@ -167,19 +153,24 @@
       "blackedOutNow": false
     },
     {
+      "name": "Forest Park",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
       "name": "Ashland",
       "days": 0,
       "blackedOutNow": false
     },
     {
-      "name": "Polk",
+      "name": "Grand",
       "days": 0,
       "blackedOutNow": true
     },
     {
-      "name": "Grand",
+      "name": "Polk",
       "days": 0,
-      "blackedOutNow": true
+      "blackedOutNow": false
     },
     {
       "name": "Cicero",
@@ -189,12 +180,7 @@
     {
       "name": "Cermak-McCormick Place",
       "days": 0,
-      "blackedOutNow": true
-    },
-    {
-      "name": "Addison",
-      "days": 0,
-      "blackedOutNow": true
+      "blackedOutNow": false
     }
   ],
   "mostBrokenUnits": [
@@ -204,18 +190,23 @@
       "count": 1
     },
     {
+      "unit": "40390",
+      "station": "Forest Park",
+      "count": 1
+    },
+    {
       "unit": "40170",
       "station": "Ashland",
       "count": 1
     },
     {
-      "unit": "41030",
-      "station": "Polk",
+      "unit": "40330",
+      "station": "Grand",
       "count": 1
     },
     {
-      "unit": "40330",
-      "station": "Grand",
+      "unit": "41030",
+      "station": "Polk",
       "count": 1
     },
     {
@@ -241,11 +232,6 @@
     {
       "unit": "41690",
       "station": "Cermak-McCormick Place",
-      "count": 1
-    },
-    {
-      "unit": "41440",
-      "station": "Addison",
       "count": 1
     }
   ],
@@ -275,22 +261,28 @@
       "downNow": false
     },
     {
+      "unit": "40390",
+      "station": "Forest Park",
+      "days": 0,
+      "downNow": false
+    },
+    {
       "unit": "40170",
       "station": "Ashland",
       "days": 0,
       "downNow": false
     },
     {
-      "unit": "41030",
-      "station": "Polk",
-      "days": 0,
-      "downNow": true
-    },
-    {
       "unit": "40330",
       "station": "Grand",
       "days": 0,
       "downNow": true
+    },
+    {
+      "unit": "41030",
+      "station": "Polk",
+      "days": 0,
+      "downNow": false
     },
     {
       "unit": "40480",
@@ -302,13 +294,7 @@
       "unit": "41690",
       "station": "Cermak-McCormick Place",
       "days": 0,
-      "downNow": true
-    },
-    {
-      "unit": "41440",
-      "station": "Addison",
-      "days": 0,
-      "downNow": true
+      "downNow": false
     }
   ],
   "singlePointsOfFailure": []

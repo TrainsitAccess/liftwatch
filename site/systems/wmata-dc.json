@@ -2,7 +2,7 @@
   "id": "wmata-dc",
   "name": "DC Metro",
   "label": "DC Metro (Washington)",
-  "generatedAt": "2026-07-06T23:20:08.876Z",
+  "generatedAt": "2026-07-07T03:59:22.854Z",
   "currentlyBroken": [
     {
       "station": "Glenmont",
@@ -21,7 +21,7 @@
     {
       "station": "Columbia Heights",
       "unit": "Elevator between mezzanine and platform",
-      "days": 28,
+      "days": 29,
       "planned": false,
       "soleAccess": false
     },
@@ -54,37 +54,51 @@
       "soleAccess": false
     },
     {
+      "station": "Congress Heights",
+      "unit": "Elevator between mezzanine and platform",
+      "days": 0,
+      "planned": false,
+      "soleAccess": false
+    },
+    {
       "station": "Federal Triangle",
       "unit": "Elevator between street and mezzanine",
       "days": 0,
       "planned": true,
+      "soleAccess": false
+    },
+    {
+      "station": "Archives-Navy Memorial-Penn Quarter",
+      "unit": "Elevator between street entrance and mezzanine, on 7th Street, just north of Pennsylvania Ave",
+      "days": 0,
+      "planned": false,
       "soleAccess": false
     }
   ],
   "accessibilityBlackouts": [
     {
       "name": "Glenmont",
-      "hours": 2983.869132222222
+      "hours": 2988.523015
     },
     {
       "name": "Rockville",
-      "hours": 1842.6691322222223
+      "hours": 1847.323015
     },
     {
       "name": "Columbia Heights",
-      "hours": 695.0857988888889
+      "hours": 699.7396816666667
     },
     {
       "name": "Huntington",
-      "hours": 150.3357988888889
+      "hours": 154.98968166666666
     },
     {
       "name": "Mt Vernon Sq 7th St-Convention Center",
-      "hours": 60.75246555555555
+      "hours": 65.40634833333333
     },
     {
       "name": "L'Enfant Plaza",
-      "hours": 31.030764166666668
+      "hours": 35.684646944444445
     },
     {
       "name": "Gallery Pl-Chinatown",
@@ -100,7 +114,7 @@
     },
     {
       "name": "North Bethesda",
-      "hours": 8.68579888888889
+      "hours": 13.339681666666667
     }
   ],
   "stepFreeStreak": [
@@ -150,9 +164,9 @@
       "blackedOutNow": false
     },
     {
-      "name": "Capitol South",
+      "name": "North Bethesda",
       "days": 0,
-      "blackedOutNow": false
+      "blackedOutNow": true
     }
   ],
   "mostBrokenUnits": [

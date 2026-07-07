@@ -2,103 +2,103 @@
   "id": "tfl-london",
   "name": "TfL",
   "label": "TfL (London)",
-  "generatedAt": "2026-07-06T23:20:08.876Z",
+  "generatedAt": "2026-07-07T03:59:22.854Z",
   "currentlyBroken": [
     {
-      "station": "Hackney Wick",
-      "unit": "Lift 1",
-      "days": 1,
-      "planned": false,
-      "soleAccess": true
-    },
-    {
-      "station": "Willesden Junction",
-      "unit": "Lift 1",
-      "days": 1,
+      "station": "King's Cross St Pancras",
+      "unit": "Lift A",
+      "days": 2,
       "planned": false,
       "soleAccess": true
     },
     {
       "station": "Upminster",
       "unit": "Lift 3",
-      "days": 1,
+      "days": 2,
       "planned": false,
       "soleAccess": true
     },
     {
-      "station": "King's Cross St Pancras",
-      "unit": "Lift A",
-      "days": 1,
-      "planned": false,
-      "soleAccess": true
-    },
-    {
-      "station": "Wembley Central",
-      "unit": "Lift 3",
-      "days": 1,
-      "planned": false,
-      "soleAccess": true
-    },
-    {
-      "station": "King's Cross St Pancras",
-      "unit": "Lift B",
-      "days": 1,
-      "planned": false,
-      "soleAccess": true
-    },
-    {
-      "station": "Gospel Oak",
-      "unit": "Lift 2",
-      "days": 1,
-      "planned": false,
-      "soleAccess": true
-    },
-    {
-      "station": "Hackney Central",
+      "station": "Hackney Wick",
       "unit": "Lift 1",
-      "days": 1,
+      "days": 2,
       "planned": false,
       "soleAccess": true
     },
     {
-      "station": "Liverpool Street",
+      "station": "Willesden Junction",
       "unit": "Lift 1",
-      "days": 1,
-      "planned": false,
-      "soleAccess": true
-    },
-    {
-      "station": "East India",
-      "unit": "Lift 3",
-      "days": 1,
+      "days": 2,
       "planned": false,
       "soleAccess": true
     },
     {
       "station": "Finchley Central",
       "unit": "Lift 2",
-      "days": 1,
+      "days": 2,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "King's Cross St Pancras",
+      "unit": "Lift B",
+      "days": 2,
       "planned": false,
       "soleAccess": true
     },
     {
       "station": "Moorgate",
       "unit": "Lift C",
-      "days": 1,
+      "days": 2,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "Liverpool Street",
+      "unit": "Lift 1",
+      "days": 2,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "Hackney Central",
+      "unit": "Lift 1",
+      "days": 2,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "East India",
+      "unit": "Lift 3",
+      "days": 2,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "Gospel Oak",
+      "unit": "Lift 2",
+      "days": 2,
       "planned": false,
       "soleAccess": true
     },
     {
       "station": "Imperial Wharf",
       "unit": "Lift 1",
-      "days": 1,
+      "days": 2,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "Wembley Central",
+      "unit": "Lift 3",
+      "days": 2,
       "planned": false,
       "soleAccess": true
     },
     {
       "station": "Wembley Park",
       "unit": "Lift 5",
-      "days": 1,
+      "days": 2,
       "planned": false,
       "soleAccess": true
     },
@@ -106,13 +106,6 @@
       "station": "Canary Wharf",
       "unit": "Lift LU 2",
       "days": 1,
-      "planned": false,
-      "soleAccess": true
-    },
-    {
-      "station": "Hounslow West",
-      "unit": "Lift 1",
-      "days": 0,
       "planned": false,
       "soleAccess": true
     },
@@ -138,13 +131,6 @@
       "soleAccess": true
     },
     {
-      "station": "West Ham",
-      "unit": "Lift 4",
-      "days": 0,
-      "planned": false,
-      "soleAccess": true
-    },
-    {
       "station": "West Brompton",
       "unit": "Lift 4",
       "days": 0,
@@ -159,8 +145,8 @@
       "soleAccess": true
     },
     {
-      "station": "Imperial Wharf",
-      "unit": "Lift 2",
+      "station": "West Ham",
+      "unit": "Lift 4",
       "days": 0,
       "planned": false,
       "soleAccess": true
@@ -168,95 +154,95 @@
   ],
   "accessibilityBlackouts": [
     {
-      "name": "Hackney Wick",
-      "hours": 46.62971777777778
-    },
-    {
-      "name": "Willesden Junction",
-      "hours": 46.62971777777778
+      "name": "King's Cross St Pancras",
+      "hours": 51.28360055555556
     },
     {
       "name": "Upminster",
-      "hours": 46.62971777777778
+      "hours": 51.28360055555556
     },
     {
-      "name": "King's Cross St Pancras",
-      "hours": 46.62971777777778
+      "name": "Hackney Wick",
+      "hours": 51.28360055555556
     },
     {
-      "name": "Wembley Central",
-      "hours": 46.62971777777778
-    },
-    {
-      "name": "Gospel Oak",
-      "hours": 46.62971777777778
-    },
-    {
-      "name": "Hackney Central",
-      "hours": 46.62971777777778
-    },
-    {
-      "name": "Liverpool Street",
-      "hours": 46.62971777777778
-    },
-    {
-      "name": "East India",
-      "hours": 46.62971777777778
+      "name": "Willesden Junction",
+      "hours": 51.28360055555556
     },
     {
       "name": "Finchley Central",
-      "hours": 46.62971777777778
+      "hours": 51.28360055555556
+    },
+    {
+      "name": "Moorgate",
+      "hours": 51.28360055555556
+    },
+    {
+      "name": "Liverpool Street",
+      "hours": 51.28360055555556
+    },
+    {
+      "name": "Hackney Central",
+      "hours": 51.28360055555556
+    },
+    {
+      "name": "East India",
+      "hours": 51.28360055555556
+    },
+    {
+      "name": "Gospel Oak",
+      "hours": 51.28360055555556
     }
   ],
   "stepFreeStreak": [
     {
       "name": "Reading",
-      "days": 1,
-      "blackedOutNow": false
-    },
-    {
-      "name": "Dartford",
-      "days": 1,
-      "blackedOutNow": false
-    },
-    {
-      "name": "Deptford",
-      "days": 1,
-      "blackedOutNow": false
-    },
-    {
-      "name": "Bromley South",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Caledonian Road & Barnsbury",
-      "days": 1,
+      "days": 2,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Dartford",
+      "days": 2,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Bromley South",
+      "days": 2,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Deptford",
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Elstree & Borehamwood",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Haggerston",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Hanwell",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Mitcham Eastfields",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Forest Hill",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     }
   ],
@@ -273,12 +259,12 @@
     },
     {
       "unit": "Lift 2",
-      "station": "Denmark Hill",
+      "station": "Camden Road",
       "count": 1
     },
     {
       "unit": "Lift 2",
-      "station": "Camden Road",
+      "station": "Denmark Hill",
       "count": 1
     },
     {
@@ -316,61 +302,61 @@
     {
       "unit": "Lift 4",
       "station": "Reading",
-      "days": 1,
-      "downNow": false
-    },
-    {
-      "unit": "Lift 3",
-      "station": "Dartford",
-      "days": 1,
-      "downNow": false
-    },
-    {
-      "unit": "Lift 1",
-      "station": "Denmark Hill",
-      "days": 1,
-      "downNow": false
-    },
-    {
-      "unit": "Lift 3",
-      "station": "Denmark Hill",
-      "days": 1,
-      "downNow": false
-    },
-    {
-      "unit": "Lift 1",
-      "station": "Deptford",
-      "days": 1,
-      "downNow": false
-    },
-    {
-      "unit": "Lift 1",
-      "station": "Bromley South",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Lift 2",
       "station": "Caledonian Road & Barnsbury",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Lift 1",
       "station": "Camden Road",
-      "days": 1,
+      "days": 2,
+      "downNow": false
+    },
+    {
+      "unit": "Lift 3",
+      "station": "Dartford",
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Lift 1",
-      "station": "Edmonton Green",
-      "days": 1,
+      "station": "Denmark Hill",
+      "days": 2,
+      "downNow": false
+    },
+    {
+      "unit": "Lift 3",
+      "station": "Denmark Hill",
+      "days": 2,
+      "downNow": false
+    },
+    {
+      "unit": "Lift 1",
+      "station": "Bromley South",
+      "days": 2,
+      "downNow": false
+    },
+    {
+      "unit": "Lift 1",
+      "station": "Deptford",
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Lift 1",
       "station": "Elstree & Borehamwood",
-      "days": 1,
+      "days": 2,
+      "downNow": false
+    },
+    {
+      "unit": "Lift 2",
+      "station": "Elstree & Borehamwood",
+      "days": 2,
       "downNow": false
     }
   ],
@@ -396,15 +382,15 @@
       "count": 6
     },
     {
-      "name": "Paddington",
-      "count": 6
-    },
-    {
       "name": "Bank",
       "count": 6
     },
     {
       "name": "Blackfriars",
+      "count": 6
+    },
+    {
+      "name": "Paddington",
       "count": 6
     },
     {

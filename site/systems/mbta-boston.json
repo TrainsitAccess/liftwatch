@@ -2,7 +2,7 @@
   "id": "mbta-boston",
   "name": "MBTA",
   "label": "MBTA (Boston)",
-  "generatedAt": "2026-07-06T23:20:08.876Z",
+  "generatedAt": "2026-07-07T03:59:22.854Z",
   "currentlyBroken": [
     {
       "station": "Winchester Center",
@@ -66,6 +66,13 @@
       "days": 0,
       "planned": true,
       "soleAccess": false
+    },
+    {
+      "station": "Back Bay",
+      "unit": "Back Bay Elevator 855 (Commuter Rail tracks 1 and 3 to lobby)",
+      "days": 0,
+      "planned": true,
+      "soleAccess": false
     }
   ],
   "accessibilityBlackouts": [
@@ -75,15 +82,15 @@
     },
     {
       "name": "Winchester Center",
-      "hours": 2498.039687777778
+      "hours": 2502.6935705555557
     },
     {
       "name": "Framingham",
-      "hours": 368.6741322222222
+      "hours": 373.328015
     },
     {
       "name": "Natick Center",
-      "hours": 128.96774333333335
+      "hours": 133.6216261111111
     },
     {
       "name": "Porter",
@@ -91,11 +98,11 @@
     },
     {
       "name": "South Station",
-      "hours": 53.218854444444446
+      "hours": 57.87273722222222
     },
     {
       "name": "Downtown Crossing",
-      "hours": 30.152465555555555
+      "hours": 34.80634833333333
     },
     {
       "name": "Green Street",
@@ -103,11 +110,11 @@
     },
     {
       "name": "Aquarium",
-      "hours": 12.110243333333333
+      "hours": 16.76412611111111
     },
     {
-      "name": "Arlington",
-      "hours": 11.852781666666667
+      "name": "Worcester",
+      "hours": 12.661903888888888
     }
   ],
   "stepFreeStreak": [
@@ -137,6 +144,11 @@
       "blackedOutNow": false
     },
     {
+      "name": "Quincy Adams",
+      "days": 2,
+      "blackedOutNow": false
+    },
+    {
       "name": "Courthouse",
       "days": 2,
       "blackedOutNow": false
@@ -153,11 +165,6 @@
     },
     {
       "name": "Lechmere",
-      "days": 2,
-      "blackedOutNow": false
-    },
-    {
-      "name": "Magoun Square",
       "days": 2,
       "blackedOutNow": false
     }
@@ -184,6 +191,11 @@
       "count": 1
     },
     {
+      "unit": "Back Bay Elevator 855 (Commuter Rail tracks 1 and 3 to lobby)",
+      "station": "Back Bay",
+      "count": 1
+    },
+    {
       "unit": "Wood Island Elevator 889 (Bowdoin platform to pedestrian bridge)",
       "station": "Wood Island",
       "count": 1
@@ -206,11 +218,6 @@
     {
       "unit": "Downtown Crossing Elevator 999 (Oak Grove platform to Alewife platform)",
       "station": "Downtown Crossing",
-      "count": 1
-    },
-    {
-      "unit": "Winchester Center Elevator 749 (Track 1 (outbound platform) to Main St)",
-      "station": "Winchester Center",
       "count": 1
     }
   ],
@@ -302,11 +309,11 @@
       "count": 1
     },
     {
-      "name": "Green Street",
+      "name": "Wellington",
       "count": 1
     },
     {
-      "name": "Wellington",
+      "name": "Green Street",
       "count": 1
     },
     {

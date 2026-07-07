@@ -1,0 +1,272 @@
+{
+  "id": "mta-mnr",
+  "name": "Metro-North",
+  "label": "Metro-North (New York)",
+  "generatedAt": "2026-07-07T03:59:22.854Z",
+  "currentlyBroken": [
+    {
+      "station": "Grand Central (North End: Tks 34/35/116)",
+      "unit": "NE-4:  At the 45th street Cross Passage to Tk 116 platform and Tks 34 & 35 platform.",
+      "days": 1200,
+      "planned": true,
+      "soleAccess": true
+    },
+    {
+      "station": "Grand Central",
+      "unit": "At the 47th street Cross Passage in the Northwest Passage.",
+      "days": 87,
+      "planned": false,
+      "soleAccess": false
+    },
+    {
+      "station": "New Rochelle (New Haven-bound)",
+      "unit": "Elevator from the street to the Stamford/New Haven-bound platform (Track 4).",
+      "days": 41,
+      "planned": true,
+      "soleAccess": true
+    },
+    {
+      "station": "Grand Central",
+      "unit": "At the 45th street Cross Passage in the Northeast Passage.",
+      "days": 3,
+      "planned": false,
+      "soleAccess": false
+    },
+    {
+      "station": "Grand Central (Terminal)",
+      "unit": "Vanderbilt Avenue next to Michael Jordan's Restaurant - ADA ACCESS TO TERMINAL (Hall A).",
+      "days": 2,
+      "planned": false,
+      "soleAccess": false
+    },
+    {
+      "station": "Larchmont",
+      "unit": "Elevator from the parking lot to the Stamford/New Haven-bound platform (Track 4) to the overpass",
+      "days": 0,
+      "planned": false,
+      "soleAccess": false
+    },
+    {
+      "station": "Stamford (Track 5)",
+      "unit": "Elevator 10 - East pedestrian bridge to/from Track 5 & South State Street",
+      "days": 0,
+      "planned": false,
+      "soleAccess": false
+    }
+  ],
+  "accessibilityBlackouts": [
+    {
+      "name": "Grand Central (North End: Tks 34/35/116)",
+      "hours": 28814.069959444445
+    },
+    {
+      "name": "New Rochelle (New Haven-bound)",
+      "hours": 1000.7919038888889
+    },
+    {
+      "name": "Larchmont",
+      "hours": 5.216626111111111
+    }
+  ],
+  "stepFreeStreak": [
+    {
+      "name": "Harlem-125 St (Tks 1/3)",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Harlem-125 St (Tks 2/4)",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "New Rochelle (New York-bound)",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "New Rochelle (New Haven-bound)",
+      "days": 0,
+      "blackedOutNow": true
+    },
+    {
+      "name": "White Plains",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Yankees-E 153 St (Tks 1/2)",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Yankees-E 153 St (Tks 4/6)",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Stamford (Track 5)",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Stamford (Track 4)",
+      "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Stamford (Track 3)",
+      "days": 0,
+      "blackedOutNow": false
+    }
+  ],
+  "mostBrokenUnits": [
+    {
+      "unit": "At the 47th street Cross Passage in the Northwest Passage.",
+      "station": "Grand Central",
+      "count": 1
+    },
+    {
+      "unit": "NE-4:  At the 45th street Cross Passage to Tk 116 platform and Tks 34 & 35 platform.",
+      "station": "Grand Central (North End: Tks 34/35/116)",
+      "count": 1
+    },
+    {
+      "unit": "At the 45th street Cross Passage in the Northeast Passage.",
+      "station": "Grand Central",
+      "count": 1
+    },
+    {
+      "unit": "Vanderbilt Avenue next to Michael Jordan's Restaurant - ADA ACCESS TO TERMINAL (Hall A).",
+      "station": "Grand Central (Terminal)",
+      "count": 1
+    },
+    {
+      "unit": "Elevator from the parking lot to the Stamford/New Haven-bound platform (Track 4) to the overpass",
+      "station": "Larchmont",
+      "count": 1
+    },
+    {
+      "unit": "Elevator from the street to the Stamford/New Haven-bound platform (Track 4).",
+      "station": "New Rochelle (New Haven-bound)",
+      "count": 1
+    },
+    {
+      "unit": "Elevator 10 - East pedestrian bridge to/from Track 5 & South State Street",
+      "station": "Stamford (Track 5)",
+      "count": 1
+    }
+  ],
+  "uptimeStreak": [
+    {
+      "unit": "At 47th Street & Madison Avenue in the 47th street Cross Passage.",
+      "station": "Grand Central",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "At the 47th street Cross Passage in the Northwest Passage.",
+      "station": "Grand Central",
+      "days": 0,
+      "downNow": true
+    },
+    {
+      "unit": "At the 47th street Cross Passage in the Northeast Passage.",
+      "station": "Grand Central",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "NE-4:  At the 45th street Cross Passage to Tk 116 platform and Tks 34 & 35 platform.",
+      "station": "Grand Central (North End: Tks 34/35/116)",
+      "days": 0,
+      "downNow": true
+    },
+    {
+      "unit": "Elevator from the overpass to the island platform (Tracks 2 & 1).",
+      "station": "Goldens Bridge",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "Elevator from the west-side parking lot to the overpass.",
+      "station": "Goldens Bridge",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "At the 45th street Cross Passage in the Northwest Passage.",
+      "station": "Grand Central",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "At the 45th street Cross Passage in the Northeast Passage.",
+      "station": "Grand Central",
+      "days": 0,
+      "downNow": true
+    },
+    {
+      "unit": "Kitty Kelly Elevator located near the Kitty Kelly Ramp by East 42nd Street and Vanderbilt Entrance",
+      "station": "Grand Central (Terminal)",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "Kitty Kelly Elevator located near the Kitty Kelly Ramp by East 42nd Street and Vanderbilt Entrance",
+      "station": "Grand Central (Terminal)",
+      "days": 0,
+      "downNow": false
+    }
+  ],
+  "singlePointsOfFailure": [
+    {
+      "name": "Yankees-E 153 St",
+      "count": 3
+    },
+    {
+      "name": "Harlem-125 St",
+      "count": 2
+    },
+    {
+      "name": "New Rochelle",
+      "count": 2
+    },
+    {
+      "name": "Stamford",
+      "count": 2
+    },
+    {
+      "name": "Grand Central",
+      "count": 1
+    },
+    {
+      "name": "Beacon",
+      "count": 1
+    },
+    {
+      "name": "Morris Heights",
+      "count": 1
+    },
+    {
+      "name": "University Heights",
+      "count": 1
+    },
+    {
+      "name": "Pleasantville",
+      "count": 1
+    },
+    {
+      "name": "White Plains",
+      "count": 1
+    },
+    {
+      "name": "Port Chester",
+      "count": 1
+    },
+    {
+      "name": "Merritt 7",
+      "count": 1
+    }
+  ]
+}
