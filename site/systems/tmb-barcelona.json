@@ -2,12 +2,12 @@
   "id": "tmb-barcelona",
   "name": "TMB Metro",
   "label": "Barcelona (TMB Metro)",
-  "generatedAt": "2026-07-06T01:49:26.130Z",
+  "generatedAt": "2026-07-06T23:20:08.876Z",
   "currentlyBroken": [
     {
       "station": "Florida",
       "unit": "Avinguda Masnou",
-      "days": 5,
+      "days": 6,
       "planned": true,
       "soleAccess": true
     }
@@ -15,58 +15,58 @@
   "accessibilityBlackouts": [
     {
       "name": "Florida",
-      "hours": 128.04059166666667
+      "hours": 149.55246555555556
     }
   ],
   "stepFreeStreak": [
     {
       "name": "Lesseps",
-      "days": 0,
+      "days": 1,
       "blackedOutNow": false
     },
     {
       "name": "Santa Coloma",
-      "days": 0,
+      "days": 1,
       "blackedOutNow": false
     },
     {
       "name": "Selva de Mar",
-      "days": 0,
+      "days": 1,
       "blackedOutNow": false
     },
     {
       "name": "Singuerlín",
-      "days": 0,
+      "days": 1,
       "blackedOutNow": false
     },
     {
       "name": "Liceu",
-      "days": 0,
+      "days": 1,
       "blackedOutNow": false
     },
     {
       "name": "Llacuna",
-      "days": 0,
+      "days": 1,
       "blackedOutNow": false
     },
     {
       "name": "Llefià",
-      "days": 0,
+      "days": 1,
       "blackedOutNow": false
     },
     {
       "name": "Llucmajor",
-      "days": 0,
+      "days": 1,
       "blackedOutNow": false
     },
     {
       "name": "Maragall",
-      "days": 0,
+      "days": 1,
       "blackedOutNow": false
     },
     {
       "name": "Maria Cristina",
-      "days": 0,
+      "days": 1,
       "blackedOutNow": false
     }
   ],
@@ -81,124 +81,124 @@
     {
       "unit": "Plaça Lesseps",
       "station": "Lesseps",
-      "days": 0,
+      "days": 1,
       "downNow": false
     },
     {
       "unit": "Plaça de la Vila",
       "station": "Santa Coloma",
-      "days": 0,
+      "days": 1,
       "downNow": false
     },
     {
       "unit": "Provençals",
       "station": "Selva de Mar",
-      "days": 0,
+      "days": 1,
       "downNow": false
     },
     {
       "unit": "Passatge de Salvatella",
       "station": "Singuerlín",
-      "days": 0,
+      "days": 1,
       "downNow": false
     },
     {
       "unit": "La Rambla / Teatre Liceu",
       "station": "Liceu",
-      "days": 0,
+      "days": 1,
       "downNow": false
     },
     {
       "unit": "La Rambla / Teatre Liceu",
       "station": "Liceu",
-      "days": 0,
+      "days": 1,
       "downNow": false
     },
     {
       "unit": "Pujades / Ciutat de Granada",
       "station": "Llacuna",
-      "days": 0,
+      "days": 1,
       "downNow": false
     },
     {
       "unit": "Avinguda d'Amèrica (mercat)",
       "station": "Llefià",
-      "days": 0,
+      "days": 1,
       "downNow": false
     },
     {
       "unit": "Passeig Verdum / Llucmajor",
       "station": "Llucmajor",
-      "days": 0,
+      "days": 1,
       "downNow": false
     },
     {
       "unit": "Ronda Guinardó - costat Muntanya",
       "station": "Maragall",
-      "days": 0,
+      "days": 1,
       "downNow": false
     }
   ],
   "singlePointsOfFailure": [
     {
-      "name": "La Sagrera",
-      "count": 4
+      "name": "Lesseps",
+      "count": 1
     },
     {
-      "name": "Passeig de Gràcia",
-      "count": 3
+      "name": "Santa Coloma",
+      "count": 1
     },
     {
-      "name": "Església Major",
-      "count": 3
+      "name": "Selva de Mar",
+      "count": 1
     },
     {
-      "name": "Liceu",
-      "count": 2
+      "name": "Singuerlín",
+      "count": 1
     },
     {
-      "name": "Maragall",
-      "count": 2
+      "name": "Llacuna",
+      "count": 1
     },
     {
-      "name": "Roquetes",
-      "count": 2
+      "name": "Llefià",
+      "count": 1
     },
     {
-      "name": "Sagrada Família",
-      "count": 2
+      "name": "Llucmajor",
+      "count": 1
     },
     {
-      "name": "Clot",
-      "count": 2
+      "name": "Maria Cristina",
+      "count": 1
     },
     {
-      "name": "Drassanes",
-      "count": 2
+      "name": "Rocafort",
+      "count": 1
     },
     {
-      "name": "Badalona Pompeu Fabra",
-      "count": 2
+      "name": "Sant Andreu",
+      "count": 1
     },
     {
-      "name": "Catalunya",
-      "count": 2
+      "name": "Camp de l'Arpa",
+      "count": 1
     },
     {
-      "name": "Diagonal",
-      "count": 2
+      "name": "Tarragona",
+      "count": 1
     },
     {
-      "name": "El Carmel",
-      "count": 2
+      "name": "Tetuan",
+      "count": 1
     },
     {
-      "name": "Gorg",
-      "count": 2
+      "name": "Sant Antoni",
+      "count": 1
     },
     {
-      "name": "Espanya",
-      "count": 2
+      "name": "Sant Ildefons",
+      "count": 1
     }
   ]
 }

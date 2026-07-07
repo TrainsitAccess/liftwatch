@@ -131,19 +131,41 @@ export function createTmbAdapter(config: TmbConfig = TMB_CONFIG): Adapter {
 
         for (const e of a.entities) {
           const entranceCode = e.entrance_code;
+          const stationUnits = byStationName.get(e.station_name.trim().toUpperCase()) ?? [];
           let matched: TmbCatalogUnit[] = [];
           let attributed = true;
 
-          if (entranceCode && entranceCode !== "ALL") {
-            matched = byCodiAcces.get(entranceCode) ?? [];
-          }
-          if (matched.length === 0) {
-            // Station-wide effect ("ALL") or an entrance code our catalog
-            // snapshot doesn't recognize — fall back to every known elevator
-            // at that station by name, same conservative attribution tier as
-            // BART's station-level fallback (never guess a single unit).
-            matched = byStationName.get(e.station_name.trim().toUpperCase()) ?? [];
+          if (!entranceCode || entranceCode === "ALL") {
+            // Station-wide effect: the FEED itself says every elevator at the
+            // station is affected — expanding to all its real units repeats
+            // the agency's own claim, not a guess of ours. attributed=false
+            // because it's still a station-level statement, not per-unit.
+            matched = stationUnits;
             attributed = false;
+          } else {
+            matched = byCodiAcces.get(entranceCode) ?? [];
+            if (matched.length === 0 && stationUnits.length > 0) {
+              // Entrance code our catalog snapshot doesn't recognize (drift
+              // since the last tmb-import run). The outage is real but WHICH
+              // elevator(s) it hits is unknown — emit ONE synthetic unit at
+              // the station rather than blaming every elevator there: a
+              // wrong guess corrupts per-elevator stats (same never-guess
+              // rule as BART's -UNSPECIFIED units).
+              const outage: NormalizedOutage = {
+                unitExternalId: `TMB-${e.station_code}-${entranceCode}`,
+                unitType: "elevator",
+                stationExternalId: stationUnits[0]!.stationGroupId,
+                stationName: stationUnits[0]!.stationName,
+                isPlanned,
+                isUpcoming,
+                reason: `${reason ?? "Elevator out of service"} (entrance ${entranceCode} not in catalog snapshot — unattributed, conservative)`,
+                sourceStartedAt: startIso,
+                estimatedReturn: endIso,
+                attributed: false,
+              };
+              (isUpcoming ? upcoming : outages).push(outage);
+              continue;
+            }
           }
 
           if (matched.length === 0) {

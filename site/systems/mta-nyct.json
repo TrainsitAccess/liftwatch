@@ -2,43 +2,27 @@
   "id": "mta-nyct",
   "name": "NYC Subway",
   "label": "NYC Subway (New York)",
-  "generatedAt": "2026-07-06T01:49:26.130Z",
+  "generatedAt": "2026-07-06T23:20:08.876Z",
   "currentlyBroken": [
     {
       "station": "42St/Port Authority-Bus Terminal (A/C/E)",
       "unit": "Landing to mezzanine",
-      "days": 615,
+      "days": 616,
       "planned": false,
       "soleAccess": false
     },
     {
       "station": "161 St-Yankee Stadium (4)",
-      "unit": "B/D mezzanine to 4 train",
-      "days": 606,
+      "unit": "Mezzanine to Manhattan-bound 4",
+      "days": 607,
       "planned": true,
       "soleAccess": true,
       "note": "This elevator is likely being replaced."
     },
     {
       "station": "161 St-Yankee Stadium (4)",
-      "unit": "Mezzanine to Manhattan-bound 4",
-      "days": 606,
-      "planned": true,
-      "soleAccess": true,
-      "note": "This elevator is likely being replaced."
-    },
-    {
-      "station": "Jamaica-179 St",
-      "unit": "Mezzanine to Manhattan-bound platform",
-      "days": 225,
-      "planned": true,
-      "soleAccess": true,
-      "note": "This elevator is likely being replaced."
-    },
-    {
-      "station": "Jamaica-179 St",
-      "unit": "Street to mezzanine",
-      "days": 225,
+      "unit": "B/D mezzanine to 4 train",
+      "days": 607,
       "planned": true,
       "soleAccess": true,
       "note": "This elevator is likely being replaced."
@@ -46,7 +30,23 @@
     {
       "station": "Jamaica-179 St",
       "unit": "Mezzanine to terminal",
-      "days": 225,
+      "days": 226,
+      "planned": true,
+      "soleAccess": true,
+      "note": "This elevator is likely being replaced."
+    },
+    {
+      "station": "Jamaica-179 St",
+      "unit": "Mezzanine to Manhattan-bound platform",
+      "days": 226,
+      "planned": true,
+      "soleAccess": true,
+      "note": "This elevator is likely being replaced."
+    },
+    {
+      "station": "Jamaica-179 St",
+      "unit": "Street to mezzanine",
+      "days": 226,
       "planned": true,
       "soleAccess": true,
       "note": "This elevator is likely being replaced."
@@ -54,7 +54,7 @@
     {
       "station": "Crown Hts-Utica Av",
       "unit": "Street to mezzanine",
-      "days": 215,
+      "days": 216,
       "planned": true,
       "soleAccess": true,
       "note": "This elevator is likely being replaced."
@@ -62,7 +62,7 @@
     {
       "station": "Crown Hts-Utica Av",
       "unit": "Mezzanine to platforms",
-      "days": 215,
+      "days": 216,
       "planned": true,
       "soleAccess": true,
       "note": "This elevator is likely being replaced."
@@ -70,7 +70,7 @@
     {
       "station": "Prospect Park",
       "unit": "Street to Brooklyn-bound platform",
-      "days": 214,
+      "days": 215,
       "planned": true,
       "soleAccess": true,
       "note": "This elevator is likely being replaced."
@@ -78,7 +78,7 @@
     {
       "station": "Prospect Park",
       "unit": "Street to Manhattan-bound platform",
-      "days": 214,
+      "days": 215,
       "planned": true,
       "soleAccess": true,
       "note": "This elevator is likely being replaced."
@@ -86,15 +86,7 @@
     {
       "station": "Coney Island-Stillwell Av",
       "unit": "N platform to D overpass",
-      "days": 208,
-      "planned": true,
-      "soleAccess": true,
-      "note": "This elevator is likely being replaced."
-    },
-    {
-      "station": "72 St",
-      "unit": "Street to uptown platform",
-      "days": 199,
+      "days": 209,
       "planned": true,
       "soleAccess": true,
       "note": "This elevator is likely being replaced."
@@ -102,7 +94,15 @@
     {
       "station": "72 St",
       "unit": "Street to downtown platform",
-      "days": 199,
+      "days": 200,
+      "planned": true,
+      "soleAccess": true,
+      "note": "This elevator is likely being replaced."
+    },
+    {
+      "station": "72 St",
+      "unit": "Street to uptown platform",
+      "days": 200,
       "planned": true,
       "soleAccess": true,
       "note": "This elevator is likely being replaced."
@@ -110,7 +110,15 @@
     {
       "station": "Flushing-Main St",
       "unit": "East of Main St & Roosevelt Ave to Manhattan-bound platform.",
-      "days": 152,
+      "days": 153,
+      "planned": true,
+      "soleAccess": true,
+      "note": "This elevator is likely being replaced."
+    },
+    {
+      "station": "Atlantic Av-Barclays Ctr (B/Q)",
+      "unit": "Mezzanine to B/Q platform",
+      "days": 93,
       "planned": true,
       "soleAccess": true,
       "note": "This elevator is likely being replaced."
@@ -118,114 +126,64 @@
     {
       "station": "Atlantic Av-Barclays Ctr (B/Q)",
       "unit": "Mezzanine to Manhattan-bound 2/3",
-      "days": 92,
+      "days": 93,
       "planned": true,
       "soleAccess": false,
       "note": "This elevator is likely being replaced."
     },
     {
-      "station": "Atlantic Av-Barclays Ctr (B/Q)",
-      "unit": "Mezzanine to B/Q platform",
-      "days": 92,
-      "planned": true,
-      "soleAccess": true,
-      "note": "This elevator is likely being replaced."
-    },
-    {
       "station": "51 St (6)",
       "unit": "Downtown 6 platform to underpass to E/F service in both directions.",
-      "days": 70,
+      "days": 71,
       "planned": false,
       "soleAccess": true
     },
     {
       "station": "Fulton St (R/W)",
       "unit": "Street to downtown R/W",
-      "days": 11,
+      "days": 12,
       "planned": false,
       "soleAccess": false
     },
     {
       "station": "161 St-Yankee Stadium (B/D)",
-      "unit": "Mezzanine to Bronx-bound B/D",
-      "days": 6,
+      "unit": "Mezzanine to Manhattan-bound B/D",
+      "days": 7,
       "planned": false,
       "soleAccess": true
     },
     {
       "station": "161 St-Yankee Stadium (B/D)",
-      "unit": "Mezzanine to Manhattan-bound B/D",
-      "days": 6,
-      "planned": false,
-      "soleAccess": true
-    },
-    {
-      "station": "3 Av-149 St",
-      "unit": "Street to Manhattan-bound platform",
-      "days": 4,
+      "unit": "Mezzanine to Bronx-bound B/D",
+      "days": 7,
       "planned": false,
       "soleAccess": true
     },
     {
       "station": "3 Av-149 St",
       "unit": "Street to Bronx-bound platform",
-      "days": 4,
+      "days": 5,
       "planned": false,
       "soleAccess": true
     },
     {
-      "station": "181 St",
-      "unit": "Upper to lower mezzanine",
-      "days": 3,
-      "planned": false,
-      "soleAccess": false
-    },
-    {
-      "station": "170 St",
-      "unit": "Street to mezzanine",
-      "days": 3,
+      "station": "3 Av-149 St",
+      "unit": "Street to Manhattan-bound platform",
+      "days": 5,
       "planned": false,
       "soleAccess": true
     },
     {
       "station": "Kingsbridge Rd",
       "unit": "Mezzanine to Bronx-bound platform",
-      "days": 2,
+      "days": 3,
       "planned": false,
       "soleAccess": true
     },
     {
       "station": "Lorimer St (G)",
       "unit": "Mezzanine to Queens-bound platform.",
-      "days": 1,
-      "planned": false,
-      "soleAccess": true
-    },
-    {
-      "station": "168 St",
-      "unit": "Mezzanine to 1 train overpass",
-      "days": 0,
-      "planned": false,
-      "soleAccess": false
-    },
-    {
-      "station": "175 St",
-      "unit": "Mezzanine to platform",
-      "days": 0,
-      "planned": true,
-      "soleAccess": true
-    },
-    {
-      "station": "14 St",
-      "unit": "Street to mezzanine",
-      "days": 0,
-      "planned": true,
-      "soleAccess": true
-    },
-    {
-      "station": "125 St",
-      "unit": "Mezzanine to Uptown platform",
-      "days": 0,
+      "days": 2,
       "planned": false,
       "soleAccess": true
     },
@@ -237,118 +195,279 @@
       "soleAccess": true
     },
     {
-      "station": "175 St",
-      "unit": "Street to mezzanine",
+      "station": "125 St",
+      "unit": "Mezzanine to Uptown platform",
       "days": 0,
-      "planned": true,
+      "planned": false,
       "soleAccess": true
     },
     {
-      "station": "181 St",
-      "unit": "Upper to lower mezzanine",
+      "station": "Euclid Av",
+      "unit": "Mezzanine to Manhattan-bound platform",
+      "days": 0,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "Church Av",
+      "unit": "Street (18 St between Church Av & Caton Av) to Brighton & Coney-bound platform. ",
+      "days": 0,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "Euclid Av",
+      "unit": "Mezzanine to Queens-bound platform",
+      "days": 0,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "Euclid Av",
+      "unit": "Street to mezzanine",
+      "days": 0,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "161 St-Yankee Stadium",
+      "unit": "Street to mezzanine",
+      "days": 0,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "34 St-Penn Station (A/C/E)",
+      "unit": "Street to uptown C/E",
       "days": 0,
       "planned": false,
       "soleAccess": false
     },
     {
-      "station": "14 St-Union Sq (L)",
-      "unit": "Mezzanine to L platform",
+      "station": "34 St-Penn Station (A/C/E)",
+      "unit": "Uptown C/E to mezzanine",
       "days": 0,
       "planned": false,
       "soleAccess": true
+    },
+    {
+      "station": "34 St-Penn Station (A/C/E)",
+      "unit": "Mezzanine to A platform",
+      "days": 0,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "34 St-Penn Station (A/C/E)",
+      "unit": "Mezzanine to downtown C/E",
+      "days": 0,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "Sheepshead Bay",
+      "unit": "Street (south side of Sheepshead Bay Rd at 15 St) to Manhattan-bound platform.",
+      "days": 0,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "Sheepshead Bay",
+      "unit": "South side of Sheepshead Bay Rd at 15 St to Brighton & Stillwell-bound platform.",
+      "days": 0,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "Rockaway Blvd",
+      "unit": "Street (NW corner of Liberty Av and Cross Bay Blvd) to Manhattan-bound A",
+      "days": 0,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "Rockaway Blvd",
+      "unit": "Mezzanine to Lefferts/Far Rockaway-bound platform",
+      "days": 0,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "Church Av",
+      "unit": "Street (18 St between Church Av & Caton Av) to Manhattan-bound platform.",
+      "days": 0,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "Astoria Blvd",
+      "unit": "Street to mezzanine",
+      "days": 0,
+      "planned": false,
+      "soleAccess": false
+    },
+    {
+      "station": "137 St-City College",
+      "unit": "Street (NE corner of Broadway and W 137 St) to uptown 1 platform.",
+      "days": 0,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "42 St-Bryant Pk",
+      "unit": "Street to mezzanine",
+      "days": 0,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "Bay Ridge-95 St",
+      "unit": "Street to Unpaid Mezzanine",
+      "days": 0,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "Grand St",
+      "unit": "Street to 8 Av-bound platform",
+      "days": 0,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "Grand St",
+      "unit": "Street to Canarsie-bound platform",
+      "days": 0,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "Bay Ridge-95 St",
+      "unit": "Paid Mezzanine to Platform",
+      "days": 0,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "181 St",
+      "unit": "Mezzanine to platform",
+      "days": 0,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "181 St",
+      "unit": "Mezzanine to platform",
+      "days": 0,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "Dyckman St",
+      "unit": "street to uptown",
+      "days": 0,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "Lexington Av/63 St",
+      "unit": "63 St & Lexington Av (NW corner) to mezzanine for service in both directions.",
+      "days": 0,
+      "planned": false,
+      "soleAccess": false
     }
   ],
   "accessibilityBlackouts": [
     {
       "name": "161 St-Yankee Stadium (4)",
-      "hours": 14555.823925
+      "hours": 14382.671597777779
     },
     {
       "name": "Jamaica-179 St",
-      "hours": 5421.157258333334
+      "hours": 5442.669132222222
     },
     {
       "name": "Crown Hts-Utica Av",
-      "hours": 5182.590591666667
+      "hours": 5204.102465555556
     },
     {
       "name": "Prospect Park",
-      "hours": 5157.6905916666665
+      "hours": 5179.202465555555
     },
     {
       "name": "Coney Island-Stillwell Av",
-      "hours": 5013.673925
+      "hours": 5035.185798888889
     },
     {
       "name": "72 St",
-      "hours": 4798.073925
+      "hours": 4819.585798888889
     },
     {
       "name": "Flushing-Main St",
-      "hours": 3669.3572583333334
+      "hours": 3690.869132222222
     },
     {
       "name": "Atlantic Av-Barclays Ctr (B/Q)",
-      "hours": 2222.323925
+      "hours": 2243.835798888889
     },
     {
       "name": "51 St (6)",
-      "hours": 1696.0572583333333
+      "hours": 1717.5691322222222
     },
     {
-      "name": "161 St-Yankee Stadium (B/D)",
-      "hours": 155.873925
+      "name": "3 Av-149 St",
+      "hours": 123.75246555555556
     }
   ],
   "stepFreeStreak": [
     {
       "name": "14 St-Union Sq (N/Q/R/W)",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "34 St-Herald Sq (N/Q/R/W)",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "34 St-Herald Sq (B/D/F/M)",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "62 St (D)",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "62 St (N)",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Jay St-Metro Tech (A/C/F)",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Jay St-Metro Tech (R)",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Lorimer St (L)",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Myrtle-Wyckoff Avs (M)",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Myrtle-Wyckoff Avs (L)",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     }
   ],
@@ -361,6 +480,16 @@
     {
       "unit": "Street to mezzanine",
       "station": "125 St",
+      "count": 2
+    },
+    {
+      "unit": "Street to downtown platform",
+      "station": "135 St",
+      "count": 2
+    },
+    {
+      "unit": "Street to mezzanine",
+      "station": "Astoria Blvd",
       "count": 2
     },
     {
@@ -392,77 +521,67 @@
       "unit": "Mezzanine to L platform",
       "station": "14 St-Union Sq (L)",
       "count": 1
-    },
-    {
-      "unit": "Mezzanine to Queens-bound platform",
-      "station": "Greenpoint Av",
-      "count": 1
-    },
-    {
-      "unit": "Street to mezzanine",
-      "station": "Greenpoint Av",
-      "count": 1
     }
   ],
   "uptimeStreak": [
     {
       "unit": "Street-to-mezzanine.",
       "station": "14 St (1/2/3)",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Mezzanine level (front) to Southbound N/Q/R/W Train Platform level (Rear)",
       "station": "14 St-Union Sq (N/Q/R/W)",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Mezzanine to uptown N/Q/R/W",
       "station": "14 St-Union Sq (N/Q/R/W)",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Street to mezzanine",
       "station": "191 St",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "21 St & 41 Av (NE corner) to mezzanine for service in both directions.",
       "station": "21 St-Queensbridge",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Street to downtown platform",
       "station": "23 St",
-      "days": 1,
-      "downNow": false
-    },
-    {
-      "unit": "Street to mezzanine",
-      "station": "34 St-Herald Sq",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Mezzanine to uptown 1",
       "station": "34 St-Penn Station (1)",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
-      "unit": "Mezzanine to downtown 1",
-      "station": "34 St-Penn Station (1)",
-      "days": 1,
+      "unit": "14 St and 4th Av (NE corner) to mezzanine for L/N/Q/R/W in both directions.",
+      "station": "14 St-Union Sq",
+      "days": 2,
       "downNow": false
     },
     {
-      "unit": "Street to uptown platform",
-      "station": "66 St-Lincoln Center",
-      "days": 1,
+      "unit": "Mezzanine to overpass",
+      "station": "181 St",
+      "days": 2,
+      "downNow": false
+    },
+    {
+      "unit": "Mezzanine to overpass",
+      "station": "181 St",
+      "days": 2,
       "downNow": false
     }
   ],
@@ -476,11 +595,11 @@
       "count": 6
     },
     {
-      "name": "34 St-Herald Sq",
+      "name": "161 St-Yankee Stadium",
       "count": 5
     },
     {
-      "name": "161 St-Yankee Stadium",
+      "name": "34 St-Herald Sq",
       "count": 5
     },
     {
@@ -508,6 +627,10 @@
       "count": 4
     },
     {
+      "name": "74 St-Broadway",
+      "count": 4
+    },
+    {
       "name": "51 St",
       "count": 4
     },
@@ -517,10 +640,6 @@
     },
     {
       "name": "62 St",
-      "count": 4
-    },
-    {
-      "name": "74 St-Broadway",
       "count": 4
     },
     {

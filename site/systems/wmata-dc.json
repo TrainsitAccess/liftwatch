@@ -2,132 +2,130 @@
   "id": "wmata-dc",
   "name": "DC Metro",
   "label": "DC Metro (Washington)",
-  "generatedAt": "2026-07-06T01:49:26.130Z",
+  "generatedAt": "2026-07-06T23:20:08.876Z",
   "currentlyBroken": [
     {
       "station": "Glenmont",
       "unit": "Garage elevator",
-      "days": 123,
+      "days": 124,
       "planned": true,
-      "soleAccess": true
+      "soleAccess": false
     },
     {
       "station": "Rockville",
       "unit": "Elevator between pedestrian bridge and mezzanine",
-      "days": 75,
+      "days": 76,
       "planned": true,
-      "soleAccess": true
+      "soleAccess": false
     },
     {
       "station": "Columbia Heights",
       "unit": "Elevator between mezzanine and platform",
       "days": 28,
       "planned": false,
-      "soleAccess": true
+      "soleAccess": false
     },
     {
       "station": "Huntington",
       "unit": "Garage #2 elevator",
-      "days": 5,
+      "days": 6,
       "planned": false,
-      "soleAccess": true
+      "soleAccess": false
     },
     {
       "station": "Mt Vernon Sq 7th St-Convention Center",
       "unit": "Elevator between mezzanine and platform",
-      "days": 1,
+      "days": 2,
       "planned": false,
-      "soleAccess": true
+      "soleAccess": false
     },
     {
       "station": "L'Enfant Plaza",
       "unit": "Elevator between street and mezzanine",
-      "days": 0,
+      "days": 1,
       "planned": false,
-      "soleAccess": true
+      "soleAccess": false
     },
     {
-      "station": "Potomac Ave",
-      "unit": "Elevator between mezzanine and platform",
+      "station": "North Bethesda",
+      "unit": "Garage elevator",
       "days": 0,
       "planned": false,
-      "soleAccess": true
+      "soleAccess": false
     },
     {
-      "station": "Bethesda",
-      "unit": "Elevator between street and mezzanine, corner of Wisconsin Ave. and Montgomery Lane",
+      "station": "Federal Triangle",
+      "unit": "Elevator between street and mezzanine",
       "days": 0,
-      "planned": false,
-      "soleAccess": true
-    },
-    {
-      "station": "Gallery Pl-Chinatown",
-      "unit": "Elevator between platform for Green/Yellow lines and platform to Shady Grove",
-      "days": 0,
-      "planned": false,
-      "soleAccess": true
+      "planned": true,
+      "soleAccess": false
     }
   ],
   "accessibilityBlackouts": [
     {
       "name": "Glenmont",
-      "hours": 2962.3572583333334
+      "hours": 2983.869132222222
     },
     {
       "name": "Rockville",
-      "hours": 1821.1572583333334
+      "hours": 1842.6691322222223
     },
     {
       "name": "Columbia Heights",
-      "hours": 673.573925
+      "hours": 695.0857988888889
     },
     {
       "name": "Huntington",
-      "hours": 128.823925
+      "hours": 150.3357988888889
     },
     {
       "name": "Mt Vernon Sq 7th St-Convention Center",
-      "hours": 39.24059166666667
-    },
-    {
-      "name": "Bethesda",
-      "hours": 10.957258333333334
-    },
-    {
-      "name": "Gallery Pl-Chinatown",
-      "hours": 10.673925
+      "hours": 60.75246555555555
     },
     {
       "name": "L'Enfant Plaza",
-      "hours": 9.518890277777778
+      "hours": 31.030764166666668
     },
     {
-      "name": "Metro Center",
-      "hours": 5.015001111111111
+      "name": "Gallery Pl-Chinatown",
+      "hours": 26.313884444444444
     },
     {
-      "name": "Downtown Largo",
-      "hours": 4.801081388888889
+      "name": "Bethesda",
+      "hours": 20.1387775
+    },
+    {
+      "name": "Potomac Ave",
+      "hours": 15.223001388888889
+    },
+    {
+      "name": "North Bethesda",
+      "hours": 8.68579888888889
     }
   ],
   "stepFreeStreak": [
     {
       "name": "Downtown Largo",
+      "days": 2,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Waterfront",
+      "days": 1,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Metro Center",
       "days": 1,
       "blackedOutNow": false
     },
     {
       "name": "Bethesda",
       "days": 0,
-      "blackedOutNow": true
+      "blackedOutNow": false
     },
     {
       "name": "Gallery Pl-Chinatown",
-      "days": 0,
-      "blackedOutNow": true
-    },
-    {
-      "name": "Waterfront",
       "days": 0,
       "blackedOutNow": false
     },
@@ -144,28 +142,33 @@
     {
       "name": "Potomac Ave",
       "days": 0,
-      "blackedOutNow": true
+      "blackedOutNow": false
     },
     {
-      "name": "Rockville",
-      "days": 0,
-      "blackedOutNow": true
-    },
-    {
-      "name": "Metro Center",
+      "name": "Medical Center",
       "days": 0,
       "blackedOutNow": false
     },
     {
-      "name": "Huntington",
+      "name": "Capitol South",
       "days": 0,
-      "blackedOutNow": true
+      "blackedOutNow": false
     }
   ],
   "mostBrokenUnits": [
     {
       "unit": "Elevator between street and mezzanine",
       "station": "L'Enfant Plaza",
+      "count": 2
+    },
+    {
+      "unit": "Elevator between street and mezzanine",
+      "station": "Federal Triangle",
+      "count": 2
+    },
+    {
+      "unit": "Elevator between street and mezzanine to Vienna",
+      "station": "Ballston-MU",
       "count": 2
     },
     {
@@ -199,18 +202,8 @@
       "count": 1
     },
     {
-      "unit": "Elevator between pedestrian bridge and mezzanine",
-      "station": "Rockville",
-      "count": 1
-    },
-    {
-      "unit": "Garage elevator",
-      "station": "Glenmont",
-      "count": 1
-    },
-    {
       "unit": "Elevator between street and mezzanine",
-      "station": "Metro Center",
+      "station": "Medical Center",
       "count": 1
     }
   ],
@@ -218,6 +211,30 @@
     {
       "unit": "Elevator between street and mezzanine",
       "station": "Downtown Largo",
+      "days": 2,
+      "downNow": false
+    },
+    {
+      "unit": "Elevator between street and mezzanine, north side of M Street, S.W.",
+      "station": "Waterfront",
+      "days": 1,
+      "downNow": false
+    },
+    {
+      "unit": "Elevator between street and mezzanine, east side of station at bus bay/Kiss & Ride",
+      "station": "Glenmont",
+      "days": 1,
+      "downNow": false
+    },
+    {
+      "unit": "Elevator between mezzanine and platform",
+      "station": "Glenmont",
+      "days": 1,
+      "downNow": false
+    },
+    {
+      "unit": "Elevator between street and mezzanine",
+      "station": "Metro Center",
       "days": 1,
       "downNow": false
     },
@@ -225,29 +242,11 @@
       "unit": "Elevator between street and mezzanine, corner of Wisconsin Ave. and Montgomery Lane",
       "station": "Bethesda",
       "days": 0,
-      "downNow": true
+      "downNow": false
     },
     {
       "unit": "Elevator between platform for Green/Yellow lines and platform to Shady Grove",
       "station": "Gallery Pl-Chinatown",
-      "days": 0,
-      "downNow": true
-    },
-    {
-      "unit": "Elevator between street and mezzanine, north side of M Street, S.W.",
-      "station": "Waterfront",
-      "days": 0,
-      "downNow": false
-    },
-    {
-      "unit": "Elevator between street and mezzanine, east side of station at bus bay/Kiss & Ride",
-      "station": "Glenmont",
-      "days": 0,
-      "downNow": false
-    },
-    {
-      "unit": "Elevator between mezzanine and platform",
-      "station": "Glenmont",
       "days": 0,
       "downNow": false
     },
@@ -261,73 +260,14 @@
       "unit": "Elevator between mezzanine and platform",
       "station": "Potomac Ave",
       "days": 0,
-      "downNow": true
+      "downNow": false
     },
     {
-      "unit": "Elevator between pedestrian bridge and mezzanine",
-      "station": "Rockville",
+      "unit": "Elevator between street and mezzanine",
+      "station": "Medical Center",
       "days": 0,
-      "downNow": true
-    },
-    {
-      "unit": "Garage elevator",
-      "station": "Glenmont",
-      "days": 0,
-      "downNow": true
+      "downNow": false
     }
   ],
-  "singlePointsOfFailure": [
-    {
-      "name": "Glenmont",
-      "count": 3
-    },
-    {
-      "name": "Bethesda",
-      "count": 1
-    },
-    {
-      "name": "Gallery Pl-Chinatown",
-      "count": 1
-    },
-    {
-      "name": "Waterfront",
-      "count": 1
-    },
-    {
-      "name": "L'Enfant Plaza",
-      "count": 1
-    },
-    {
-      "name": "Potomac Ave",
-      "count": 1
-    },
-    {
-      "name": "Rockville",
-      "count": 1
-    },
-    {
-      "name": "Metro Center",
-      "count": 1
-    },
-    {
-      "name": "Huntington",
-      "count": 1
-    },
-    {
-      "name": "Mt Vernon Sq 7th St-Convention Center",
-      "count": 1
-    },
-    {
-      "name": "Columbia Heights",
-      "count": 1
-    },
-    {
-      "name": "Downtown Largo",
-      "count": 1
-    },
-    {
-      "name": "Ballston-MU",
-      "count": 1
-    }
-  ]
+  "singlePointsOfFailure": []
 }

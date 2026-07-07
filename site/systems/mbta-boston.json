@@ -2,56 +2,70 @@
   "id": "mbta-boston",
   "name": "MBTA",
   "label": "MBTA (Boston)",
-  "generatedAt": "2026-07-06T01:49:26.130Z",
+  "generatedAt": "2026-07-06T23:20:08.876Z",
   "currentlyBroken": [
     {
       "station": "Winchester Center",
       "unit": "Winchester Center Elevator 749 (Track 1 (outbound platform) to Main St)",
-      "days": 103,
+      "days": 104,
       "planned": false,
-      "soleAccess": true
+      "soleAccess": false
     },
     {
       "station": "Framingham",
       "unit": "Framingham Elevator 51 (Waverly Street to pedestrian bridge)",
-      "days": 14,
+      "days": 15,
       "planned": false,
-      "soleAccess": true
+      "soleAccess": false
     },
     {
       "station": "Natick Center",
       "unit": "Natick Center Elevator 750 (Track 1 to street)",
-      "days": 4,
+      "days": 5,
       "planned": false,
-      "soleAccess": true
+      "soleAccess": false
     },
     {
       "station": "Natick Center",
       "unit": "Natick Center Elevator 751 (Track 2 to street)",
-      "days": 3,
+      "days": 4,
       "planned": false,
-      "soleAccess": true
-    },
-    {
-      "station": "Porter",
-      "unit": "Porter Elevator 985 (Lobby to Somerville Avenue)",
-      "days": 2,
-      "planned": true,
-      "soleAccess": true
+      "soleAccess": false
     },
     {
       "station": "South Station",
       "unit": "South Station Elevator 901 (Ashmont/Braintree platform to Silver Line drop-off platform and lobby)",
-      "days": 1,
+      "days": 2,
       "planned": true,
-      "soleAccess": true
+      "soleAccess": false
     },
     {
       "station": "Downtown Crossing",
       "unit": "Downtown Crossing Elevator 999 (Oak Grove platform to Alewife platform)",
+      "days": 1,
+      "planned": true,
+      "soleAccess": false
+    },
+    {
+      "station": "Aquarium",
+      "unit": "Aquarium Elevator 914 (Bowdoin platform to State Street lobby)",
       "days": 0,
       "planned": true,
-      "soleAccess": true
+      "soleAccess": false
+    },
+    {
+      "station": "Worcester",
+      "unit": "Worcester Elevator 782 (Parking lot to pedestrian bridge )",
+      "days": 0,
+      "planned": false,
+      "soleAccess": false
+    },
+    {
+      "station": "Wonderland",
+      "unit": "Wonderland Elevator 711 (Ocean Avenue to pedestrian plaza)",
+      "days": 0,
+      "planned": true,
+      "soleAccess": false
     }
   ],
   "accessibilityBlackouts": [
@@ -61,90 +75,90 @@
     },
     {
       "name": "Winchester Center",
-      "hours": 2476.527813888889
+      "hours": 2498.039687777778
     },
     {
       "name": "Framingham",
-      "hours": 347.16225833333334
+      "hours": 368.6741322222222
     },
     {
       "name": "Natick Center",
-      "hours": 107.45586944444445
+      "hours": 128.96774333333335
     },
     {
       "name": "Porter",
-      "hours": 55.70698055555555
+      "hours": 68.43822583333333
     },
     {
       "name": "South Station",
-      "hours": 31.706980555555557
+      "hours": 53.218854444444446
+    },
+    {
+      "name": "Downtown Crossing",
+      "hours": 30.152465555555555
     },
     {
       "name": "Green Street",
       "hours": 25.197573055555555
     },
     {
-      "name": "Revere Beach",
-      "hours": 8.766253055555556
-    },
-    {
-      "name": "Downtown Crossing",
-      "hours": 8.640591666666667
+      "name": "Aquarium",
+      "hours": 12.110243333333333
     },
     {
       "name": "Arlington",
-      "hours": 8.147889166666667
+      "hours": 11.852781666666667
     }
   ],
   "stepFreeStreak": [
     {
-      "name": "Worcester",
-      "days": 1,
-      "blackedOutNow": false
-    },
-    {
       "name": "Quincy Center",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "North Quincy",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "North Station",
-      "days": 1,
-      "blackedOutNow": false
-    },
-    {
-      "name": "Aquarium",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Prudential",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Gilman Square",
-      "days": 1,
-      "blackedOutNow": false
-    },
-    {
-      "name": "Quincy Adams",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Courthouse",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Park Street",
-      "days": 1,
+      "days": 2,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Ruggles",
+      "days": 2,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Lechmere",
+      "days": 2,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Magoun Square",
+      "days": 2,
       "blackedOutNow": false
     }
   ],
@@ -155,8 +169,18 @@
       "count": 2
     },
     {
+      "unit": "Worcester Elevator 782 (Parking lot to pedestrian bridge )",
+      "station": "Worcester",
+      "count": 1
+    },
+    {
       "unit": "Quincy Adams Elevator 807 (Lobby to parking garage)",
       "station": "Quincy Adams",
+      "count": 1
+    },
+    {
+      "unit": "Aquarium Elevator 914 (Bowdoin platform to State Street lobby)",
+      "station": "Aquarium",
       "count": 1
     },
     {
@@ -170,23 +194,13 @@
       "count": 1
     },
     {
+      "unit": "Arlington Elevator 963 (Park Street & North platform to lobby)",
+      "station": "Arlington",
+      "count": 1
+    },
+    {
       "unit": "Chinatown Elevator 876 (Oak Grove platform to Washington St, Essex St)",
       "station": "Chinatown",
-      "count": 1
-    },
-    {
-      "unit": "Winchester Center Elevator 749 (Track 1 (outbound platform) to Main St)",
-      "station": "Winchester Center",
-      "count": 1
-    },
-    {
-      "unit": "Revere Beach Elevator 884 (Bowdoin platform to lobby)",
-      "station": "Revere Beach",
-      "count": 1
-    },
-    {
-      "unit": "South Station Elevator 901 (Ashmont/Braintree platform to Silver Line drop-off platform and lobby)",
-      "station": "South Station",
       "count": 1
     },
     {
@@ -195,133 +209,129 @@
       "count": 1
     },
     {
-      "unit": "Porter Elevator 985 (Lobby to Somerville Avenue)",
-      "station": "Porter",
+      "unit": "Winchester Center Elevator 749 (Track 1 (outbound platform) to Main St)",
+      "station": "Winchester Center",
       "count": 1
     }
   ],
   "uptimeStreak": [
     {
-      "unit": "Worcester Elevator 782 (Parking lot to pedestrian bridge )",
-      "station": "Worcester",
-      "days": 1,
-      "downNow": false
-    },
-    {
       "unit": "Quincy Center Elevator 896 (Commuter Rail platform to lobby)",
       "station": "Quincy Center",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "North Quincy Elevator 897 (Hancock Street parking to northern lobby)",
       "station": "North Quincy",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "North Station Elevator 910 (Lobby to Forest Hills, Copley & West platform)",
       "station": "North Station",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Aquarium Elevator 915 (State Street lobby to street)",
       "station": "Aquarium",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Prudential Elevator 917 (Lobby to Huntington Avenue)",
       "station": "Prudential",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "South Station Elevator 918 (Ashmont/Braintree platform to Airport/Design Center/Chelsea platform and lobby)",
       "station": "South Station",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "South Station Elevator 919 (Alewife platform to Airport/Design Center/Chelsea platform)",
       "station": "South Station",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Prudential Elevator 920 (Heath Street platform to lobby)",
       "station": "Prudential",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Chinatown Elevator 922 (Forest Hills platform to Boylston St, Washington St)",
       "station": "Chinatown",
-      "days": 1,
+      "days": 2,
+      "downNow": false
+    },
+    {
+      "unit": "Aquarium Elevator 925 (Atlantic Avenue lobby to Long Wharf)",
+      "station": "Aquarium",
+      "days": 2,
       "downNow": false
     }
   ],
   "singlePointsOfFailure": [
     {
-      "name": "South Station",
-      "count": 9
+      "name": "Chinatown",
+      "count": 1
     },
     {
-      "name": "Wonderland",
-      "count": 7
-    },
-    {
-      "name": "North Quincy",
-      "count": 6
-    },
-    {
-      "name": "North Station",
-      "count": 6
-    },
-    {
-      "name": "Aquarium",
-      "count": 6
-    },
-    {
-      "name": "Park Street",
-      "count": 6
-    },
-    {
-      "name": "Downtown Crossing",
-      "count": 6
-    },
-    {
-      "name": "Haymarket",
-      "count": 6
-    },
-    {
-      "name": "Ruggles",
-      "count": 5
-    },
-    {
-      "name": "State",
-      "count": 5
-    },
-    {
-      "name": "Porter",
-      "count": 5
-    },
-    {
-      "name": "Worcester",
-      "count": 4
-    },
-    {
-      "name": "Quincy Adams",
-      "count": 4
-    },
-    {
-      "name": "Courthouse",
-      "count": 4
+      "name": "Union Square",
+      "count": 1
     },
     {
       "name": "Kendall/MIT",
-      "count": 4
+      "count": 1
+    },
+    {
+      "name": "Massachusetts Avenue",
+      "count": 1
+    },
+    {
+      "name": "Ball Square",
+      "count": 1
+    },
+    {
+      "name": "Providence",
+      "count": 1
+    },
+    {
+      "name": "Green Street",
+      "count": 1
+    },
+    {
+      "name": "Wellington",
+      "count": 1
+    },
+    {
+      "name": "Stony Brook",
+      "count": 1
+    },
+    {
+      "name": "Jackson Square",
+      "count": 1
+    },
+    {
+      "name": "Roxbury Crossing",
+      "count": 1
+    },
+    {
+      "name": "Shawmut",
+      "count": 1
+    },
+    {
+      "name": "Sullivan Square",
+      "count": 1
+    },
+    {
+      "name": "Community College",
+      "count": 1
     }
   ]
 }

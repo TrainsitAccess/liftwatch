@@ -2,27 +2,31 @@
   "id": "bart-bay-area",
   "name": "BART",
   "label": "BART (San Francisco)",
-  "generatedAt": "2026-07-06T01:49:26.130Z",
+  "generatedAt": "2026-07-06T23:20:08.876Z",
   "currentlyBroken": [
     {
       "station": "Millbrae",
       "unit": "Station elevator access (BART reports at station level)",
-      "days": 1,
+      "days": 2,
       "planned": false,
       "soleAccess": true
     },
     {
       "station": "Richmond",
       "unit": "Station (unspecified elevator — conservative)",
-      "days": 1,
+      "days": 2,
       "planned": false,
-      "soleAccess": true
+      "soleAccess": false
     }
   ],
   "accessibilityBlackouts": [
     {
       "name": "Millbrae",
-      "hours": 46.908033055555556
+      "hours": 68.41990694444445
+    },
+    {
+      "name": "Hayward",
+      "hours": 2.9084322222222223
     },
     {
       "name": "Coliseum",
@@ -32,52 +36,52 @@
   "stepFreeStreak": [
     {
       "name": "Ashby",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "12th St. Oakland City Center",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "19th St. Oakland",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Richmond",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "San Francisco International Airport",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Warm Springs/South Fremont",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "West Dublin/Pleasanton",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Milpitas",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Montgomery St.",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Balboa Park",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     }
   ],
@@ -85,11 +89,16 @@
     {
       "unit": "Station - Convention Center (unspecified elevator — conservative)",
       "station": "12th St. Oakland City Center",
-      "count": 2
+      "count": 3
     },
     {
       "unit": "Station elevator access (BART reports at station level)",
       "station": "Millbrae",
+      "count": 1
+    },
+    {
+      "unit": "Station elevator access (BART reports at station level)",
+      "station": "Hayward",
       "count": 1
     },
     {
@@ -107,73 +116,65 @@
     {
       "unit": "Station elevator access (BART reports at station level)",
       "station": "Milpitas",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Station elevator access (BART reports at station level)",
       "station": "Montgomery St.",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Street elevator 1",
       "station": "Warm Springs/South Fremont",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Street elevator 2",
       "station": "Warm Springs/South Fremont",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Platform Elevator 1",
       "station": "19th St. Oakland",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Platform Elevator 1",
       "station": "Ashby",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Platform Elevator 2",
       "station": "Ashby",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Station elevator access (BART reports at station level)",
       "station": "Balboa Park",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Station elevator access (BART reports at station level)",
       "station": "Downtown Berkeley",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Station elevator access (BART reports at station level)",
       "station": "Dublin/Pleasanton",
-      "days": 1,
+      "days": 2,
       "downNow": false
     }
   ],
   "singlePointsOfFailure": [
-    {
-      "name": "Richmond",
-      "count": 2
-    },
-    {
-      "name": "12th St. Oakland City Center",
-      "count": 2
-    },
     {
       "name": "Millbrae",
       "count": 1
@@ -199,6 +200,10 @@
       "count": 1
     },
     {
+      "name": "Richmond",
+      "count": 1
+    },
+    {
       "name": "Rockridge",
       "count": 1
     },
@@ -212,6 +217,10 @@
     },
     {
       "name": "Oakland International Airport",
+      "count": 1
+    },
+    {
+      "name": "12th St. Oakland City Center",
       "count": 1
     },
     {

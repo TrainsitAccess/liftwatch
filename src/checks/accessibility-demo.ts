@@ -1,4 +1,4 @@
-import { STATION_MODELS } from "../catalog/station-models.js";
+import { stationModelsFor } from "../catalog/station-models.js";
 import {
   attributeOutage,
   isSingleFaultTolerant,
@@ -18,11 +18,19 @@ function check(label: string, actual: unknown, expected: unknown): void {
   console.log(`    ${ok ? "PASS" : "FAIL"}  ${label}${detail}`);
 }
 
-const models = new Map(STATION_MODELS.map((m) => [m.stationExternalId, m]));
+// stationModelsFor returns chains as ARRAYS (a station can have several
+// independent chains sharing its id — every MTA multi-chain station does).
+// A flat Map keyed by stationExternalId would silently keep only the LAST
+// chain per station; this demo exercises single-chain BART stations, so
+// demand exactly one chain and fail loudly on misuse.
+const models = stationModelsFor("bart-bay-area");
 const m = (abbr: string): StationModel => {
-  const model = models.get(abbr);
-  if (!model) throw new Error(`No station model for ${abbr}`);
-  return model;
+  const chains = models.get(abbr);
+  if (!chains?.length) throw new Error(`No station model for ${abbr}`);
+  if (chains.length > 1) {
+    throw new Error(`${abbr} has ${chains.length} chains — pick one explicitly instead of using m()`);
+  }
+  return chains[0]!;
 };
 const accessible = (model: StationModel, down: string[]) => stationAccessible(model, new Set(down));
 

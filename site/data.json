@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-07-06T01:49:26.130Z",
+  "generatedAt": "2026-07-06T23:20:08.876Z",
   "totals": {
     "systems": 7,
     "activeUnits": 1925,
     "staticUnitsInTotal": 493,
-    "down": 86
+    "down": 108
   },
   "systems": [
     {
@@ -17,9 +17,9 @@
       "inventoryComplete": true,
       "fleetSource": "live",
       "activeUnits": 408,
-      "down": 34,
-      "downUnplanned": 16,
-      "pctDown": 8.3,
+      "down": 51,
+      "downUnplanned": 36,
+      "pctDown": 12.5,
       "staticFleetAsOf": null,
       "staticFleetSource": null
     },
@@ -49,9 +49,9 @@
       "inventoryComplete": true,
       "fleetSource": "live",
       "activeUnits": 569,
-      "down": 19,
-      "downUnplanned": 19,
-      "pctDown": 3.3,
+      "down": 23,
+      "downUnplanned": 21,
+      "pctDown": 4,
       "staticFleetAsOf": null,
       "staticFleetSource": null
     },
@@ -65,9 +65,9 @@
       "inventoryComplete": true,
       "fleetSource": "live",
       "activeUnits": 237,
-      "down": 7,
-      "downUnplanned": 4,
-      "pctDown": 3,
+      "down": 9,
+      "downUnplanned": 5,
+      "pctDown": 3.8,
       "staticFleetAsOf": null,
       "staticFleetSource": null
     },
@@ -97,9 +97,9 @@
       "inventoryComplete": false,
       "fleetSource": "static",
       "activeUnits": 320,
-      "down": 9,
-      "downUnplanned": 7,
-      "pctDown": 2.8,
+      "down": 8,
+      "downUnplanned": 5,
+      "pctDown": 2.5,
       "staticFleetAsOf": "2026-07-04",
       "staticFleetSource": "https://www.wmata.com/ride/elevators-escalators.html"
     },
@@ -127,15 +127,7 @@
       "unit": "EL290X",
       "soleAccess": false,
       "planned": false,
-      "days": 615
-    },
-    {
-      "system": "NYC Subway",
-      "station": "161 St-Yankee Stadium",
-      "unit": "EL132",
-      "soleAccess": true,
-      "planned": true,
-      "days": 606
+      "days": 616
     },
     {
       "system": "NYC Subway",
@@ -143,23 +135,15 @@
       "unit": "EL133",
       "soleAccess": true,
       "planned": true,
-      "days": 606
+      "days": 607
     },
     {
       "system": "NYC Subway",
-      "station": "Jamaica-179 St",
-      "unit": "EL432",
+      "station": "161 St-Yankee Stadium",
+      "unit": "EL132",
       "soleAccess": true,
       "planned": true,
-      "days": 225
-    },
-    {
-      "system": "NYC Subway",
-      "station": "Jamaica-179 St",
-      "unit": "EL431",
-      "soleAccess": true,
-      "planned": true,
-      "days": 225
+      "days": 607
     },
     {
       "system": "NYC Subway",
@@ -167,7 +151,23 @@
       "unit": "EL433",
       "soleAccess": true,
       "planned": true,
-      "days": 225
+      "days": 226
+    },
+    {
+      "system": "NYC Subway",
+      "station": "Jamaica-179 St",
+      "unit": "EL432",
+      "soleAccess": true,
+      "planned": true,
+      "days": 226
+    },
+    {
+      "system": "NYC Subway",
+      "station": "Jamaica-179 St",
+      "unit": "EL431",
+      "soleAccess": true,
+      "planned": true,
+      "days": 226
     },
     {
       "system": "NYC Subway",
@@ -175,7 +175,7 @@
       "unit": "EL322",
       "soleAccess": true,
       "planned": true,
-      "days": 215
+      "days": 216
     },
     {
       "system": "NYC Subway",
@@ -183,7 +183,7 @@
       "unit": "EL323",
       "soleAccess": true,
       "planned": true,
-      "days": 215
+      "days": 216
     },
     {
       "system": "NYC Subway",
@@ -191,7 +191,7 @@
       "unit": "EL383",
       "soleAccess": true,
       "planned": true,
-      "days": 214
+      "days": 215
     },
     {
       "system": "NYC Subway",
@@ -199,7 +199,7 @@
       "unit": "EL382",
       "soleAccess": true,
       "planned": true,
-      "days": 214
+      "days": 215
     }
   ]
 }

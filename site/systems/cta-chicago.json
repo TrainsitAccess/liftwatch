@@ -2,197 +2,197 @@
   "id": "cta-chicago",
   "name": "CTA",
   "label": "CTA (Chicago)",
-  "generatedAt": "2026-07-06T01:49:26.130Z",
+  "generatedAt": "2026-07-06T23:20:08.876Z",
   "currentlyBroken": [
     {
       "station": "Western",
       "unit": "41480",
-      "days": 54,
+      "days": 55,
       "planned": true,
-      "soleAccess": true
+      "soleAccess": false
     },
     {
       "station": "Lake",
       "unit": "41660",
-      "days": 44,
+      "days": 45,
       "planned": true,
-      "soleAccess": true
+      "soleAccess": false
     },
     {
       "station": "King Drive",
       "unit": "41140",
-      "days": 22,
+      "days": 23,
       "planned": false,
-      "soleAccess": true
-    },
-    {
-      "station": "Loyola",
-      "unit": "41300",
-      "days": 8,
-      "planned": false,
-      "soleAccess": true
+      "soleAccess": false
     },
     {
       "station": "Clark/Lake",
       "unit": "40380",
-      "days": 8,
+      "days": 9,
       "planned": false,
-      "soleAccess": true
+      "soleAccess": false
     },
     {
       "station": "Howard",
       "unit": "40900",
-      "days": 6,
+      "days": 7,
       "planned": false,
-      "soleAccess": true
+      "soleAccess": false
     },
     {
       "station": "Wilson",
       "unit": "40540",
-      "days": 5,
+      "days": 6,
       "planned": false,
-      "soleAccess": true
+      "soleAccess": false
     },
     {
       "station": "47th",
       "unit": "41080",
-      "days": 4,
+      "days": 5,
       "planned": false,
-      "soleAccess": true
+      "soleAccess": false
     },
     {
       "station": "63rd",
       "unit": "40910",
-      "days": 2,
+      "days": 3,
       "planned": false,
-      "soleAccess": true
-    },
-    {
-      "station": "47th",
-      "unit": "41230",
-      "days": 2,
-      "planned": false,
-      "soleAccess": true
+      "soleAccess": false
     },
     {
       "station": "35th-Bronzeville-IIT",
       "unit": "41120",
-      "days": 2,
+      "days": 3,
       "planned": false,
-      "soleAccess": true
-    },
-    {
-      "station": "California",
-      "unit": "41360",
-      "days": 1,
-      "planned": false,
-      "soleAccess": true
-    },
-    {
-      "station": "Ashland",
-      "unit": "40170",
-      "days": 1,
-      "planned": false,
-      "soleAccess": true
+      "soleAccess": false
     },
     {
       "station": "Addison",
       "unit": "41440",
       "days": 0,
       "planned": false,
-      "soleAccess": true
+      "soleAccess": false
+    },
+    {
+      "station": "Cottage Grove",
+      "unit": "40720",
+      "days": 0,
+      "planned": false,
+      "soleAccess": false
+    },
+    {
+      "station": "Polk",
+      "unit": "41030",
+      "days": 0,
+      "planned": false,
+      "soleAccess": false
+    },
+    {
+      "station": "Grand",
+      "unit": "40330",
+      "days": 0,
+      "planned": false,
+      "soleAccess": false
+    },
+    {
+      "station": "Cermak-McCormick Place",
+      "unit": "41690",
+      "days": 0,
+      "planned": false,
+      "soleAccess": false
     }
   ],
   "accessibilityBlackouts": [
     {
       "name": "Western",
-      "hours": 1304.823925
+      "hours": 1326.3357988888888
     },
     {
       "name": "Lake",
-      "hours": 1067.823925
+      "hours": 1089.3357988888888
     },
     {
       "name": "King Drive",
-      "hours": 543.673925
+      "hours": 565.1857988888889
     },
     {
       "name": "Loyola",
-      "hours": 212.073925
+      "hours": 227.71588805555555
     },
     {
       "name": "Clark/Lake",
-      "hours": 199.473925
+      "hours": 220.9857988888889
     },
     {
       "name": "Howard",
-      "hours": 155.34059166666665
+      "hours": 176.85246555555557
     },
     {
       "name": "Wilson",
-      "hours": 132.39059166666667
+      "hours": 153.90246555555555
     },
     {
       "name": "47th",
-      "hours": 104.323925
+      "hours": 125.83579888888889
     },
     {
       "name": "63rd",
-      "hours": 56.65725833333333
+      "hours": 78.16913222222222
     },
     {
-      "name": "47th",
-      "hours": 53.473925
+      "name": "35th-Bronzeville-IIT",
+      "hours": 73.65246555555555
     }
   ],
   "stepFreeStreak": [
     {
       "name": "Pulaski",
-      "days": 0,
+      "days": 1,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Washington/Wells",
+      "days": 1,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Conservatory-Central Park Drive",
+      "days": 1,
+      "blackedOutNow": false
+    },
+    {
+      "name": "69th",
+      "days": 1,
       "blackedOutNow": false
     },
     {
       "name": "Ashland",
       "days": 0,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Polk",
+      "days": 0,
       "blackedOutNow": true
     },
     {
-      "name": "Washington/Wells",
+      "name": "Grand",
+      "days": 0,
+      "blackedOutNow": true
+    },
+    {
+      "name": "Cicero",
       "days": 0,
       "blackedOutNow": false
     },
     {
-      "name": "Conservatory-Central Park Drive",
+      "name": "Cermak-McCormick Place",
       "days": 0,
-      "blackedOutNow": false
-    },
-    {
-      "name": "69th",
-      "days": 0,
-      "blackedOutNow": false
+      "blackedOutNow": true
     },
     {
       "name": "Addison",
-      "days": 0,
-      "blackedOutNow": true
-    },
-    {
-      "name": "Clark/Lake",
-      "days": 0,
-      "blackedOutNow": true
-    },
-    {
-      "name": "Lake",
-      "days": 0,
-      "blackedOutNow": true
-    },
-    {
-      "name": "Western",
-      "days": 0,
-      "blackedOutNow": true
-    },
-    {
-      "name": "King Drive",
       "days": 0,
       "blackedOutNow": true
     }
@@ -209,6 +209,16 @@
       "count": 1
     },
     {
+      "unit": "41030",
+      "station": "Polk",
+      "count": 1
+    },
+    {
+      "unit": "40330",
+      "station": "Grand",
+      "count": 1
+    },
+    {
       "unit": "40730",
       "station": "Washington/Wells",
       "count": 1
@@ -224,28 +234,18 @@
       "count": 1
     },
     {
+      "unit": "40480",
+      "station": "Cicero",
+      "count": 1
+    },
+    {
+      "unit": "41690",
+      "station": "Cermak-McCormick Place",
+      "count": 1
+    },
+    {
       "unit": "41440",
       "station": "Addison",
-      "count": 1
-    },
-    {
-      "unit": "40380",
-      "station": "Clark/Lake",
-      "count": 1
-    },
-    {
-      "unit": "41660",
-      "station": "Lake",
-      "count": 1
-    },
-    {
-      "unit": "41480",
-      "station": "Western",
-      "count": 1
-    },
-    {
-      "unit": "41140",
-      "station": "King Drive",
       "count": 1
     }
   ],
@@ -253,124 +253,63 @@
     {
       "unit": "40030",
       "station": "Pulaski",
-      "days": 0,
+      "days": 1,
+      "downNow": false
+    },
+    {
+      "unit": "40730",
+      "station": "Washington/Wells",
+      "days": 1,
+      "downNow": false
+    },
+    {
+      "unit": "41670",
+      "station": "Conservatory-Central Park Drive",
+      "days": 1,
+      "downNow": false
+    },
+    {
+      "unit": "40990",
+      "station": "69th",
+      "days": 1,
       "downNow": false
     },
     {
       "unit": "40170",
       "station": "Ashland",
       "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "41030",
+      "station": "Polk",
+      "days": 0,
       "downNow": true
     },
     {
-      "unit": "40730",
-      "station": "Washington/Wells",
+      "unit": "40330",
+      "station": "Grand",
+      "days": 0,
+      "downNow": true
+    },
+    {
+      "unit": "40480",
+      "station": "Cicero",
       "days": 0,
       "downNow": false
     },
     {
-      "unit": "41670",
-      "station": "Conservatory-Central Park Drive",
+      "unit": "41690",
+      "station": "Cermak-McCormick Place",
       "days": 0,
-      "downNow": false
-    },
-    {
-      "unit": "40990",
-      "station": "69th",
-      "days": 0,
-      "downNow": false
+      "downNow": true
     },
     {
       "unit": "41440",
       "station": "Addison",
       "days": 0,
       "downNow": true
-    },
-    {
-      "unit": "40380",
-      "station": "Clark/Lake",
-      "days": 0,
-      "downNow": true
-    },
-    {
-      "unit": "41660",
-      "station": "Lake",
-      "days": 0,
-      "downNow": true
-    },
-    {
-      "unit": "41480",
-      "station": "Western",
-      "days": 0,
-      "downNow": true
-    },
-    {
-      "unit": "41140",
-      "station": "King Drive",
-      "days": 0,
-      "downNow": true
     }
   ],
-  "singlePointsOfFailure": [
-    {
-      "name": "Pulaski",
-      "count": 1
-    },
-    {
-      "name": "Ashland",
-      "count": 1
-    },
-    {
-      "name": "Washington/Wells",
-      "count": 1
-    },
-    {
-      "name": "Conservatory-Central Park Drive",
-      "count": 1
-    },
-    {
-      "name": "69th",
-      "count": 1
-    },
-    {
-      "name": "Addison",
-      "count": 1
-    },
-    {
-      "name": "Clark/Lake",
-      "count": 1
-    },
-    {
-      "name": "Lake",
-      "count": 1
-    },
-    {
-      "name": "Western",
-      "count": 1
-    },
-    {
-      "name": "King Drive",
-      "count": 1
-    },
-    {
-      "name": "Loyola",
-      "count": 1
-    },
-    {
-      "name": "Howard",
-      "count": 1
-    },
-    {
-      "name": "Wilson",
-      "count": 1
-    },
-    {
-      "name": "47th",
-      "count": 1
-    },
-    {
-      "name": "63rd",
-      "count": 1
-    }
-  ]
+  "singlePointsOfFailure": []
 }

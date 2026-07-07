@@ -58,7 +58,7 @@ const [systemsData, unitsData, stationsData, eventsData] = await Promise.all([
     (from, to) =>
       db
         .from("units")
-        .select("id, system_id, station_id, external_id, description, is_active, is_redundant, first_seen")
+        .select("id, system_id, station_id, external_id, description, is_active, is_redundant, redundancy_source, first_seen")
         .range(from, to),
     "units",
   ),
@@ -84,6 +84,19 @@ const events = { data: allEvents.filter((e) => e.ended_at == null) };
 
 const stationName = new Map((stations.data ?? []).map((s) => [s.id as string, s.name as string]));
 const unitById = new Map((units.data ?? []).map((u) => [u.id as string, u]));
+
+// The red "SOLE STEP-FREE ACCESS — station currently inaccessible" marker is
+// a factual claim, so it requires a REAL non-redundancy signal (curated /
+// explicit / pathways / single_elevator). The 'assumed' policy default also
+// stores is_redundant=false, but that is a conservative unknown, not a
+// confirmed fact — marking every outage on a no-redundancy-signal system
+// (TMB, WMATA, CTA, un-curated LIRR/MNR stations) as a station blackout
+// over-claims. Blackout/streak boards keep the conservative history-based
+// logic (their legends describe it as derived); only the per-unit markers
+// and the structural single-points-of-failure board demand confirmation.
+type UnitRow = NonNullable<typeof units.data>[number];
+const confirmedSoleAccess = (u: UnitRow | undefined): boolean =>
+  u?.is_redundant === false && u?.redundancy_source !== "assumed";
 
 const now = Date.now();
 const daysSince = (iso: string): number => Math.max(0, Math.floor((now - Date.parse(iso)) / 86_400_000));
@@ -153,7 +166,7 @@ const outageRows = (events.data ?? [])
       system: (systems.data ?? []).find((s) => s.id === e.system_id)?.short_name ?? e.system_id,
       station: stationName.get((e.station_id ?? unit?.station_id) as string) ?? "Unknown",
       unit: (unit?.external_id as string) ?? "?",
-      soleAccess: unit?.is_redundant === false,
+      soleAccess: confirmedSoleAccess(unit),
       planned: e.is_planned as boolean,
       days,
     };
@@ -306,7 +319,7 @@ function buildSystemDetail(systemId: string) {
         unit: (unit?.description as string) || (unit?.external_id as string) || "?",
         days: daysSince(since),
         planned: e.is_planned as boolean,
-        soleAccess: unit?.is_redundant === false,
+        soleAccess: confirmedSoleAccess(unit),
         // MTA (so far) marks a unit is_active: false while it's mid
         // capital-replacement rather than just "broken" — flag that
         // distinction so a 600+ day outage doesn't read as neglect.
@@ -428,10 +441,13 @@ function buildSystemDetail(systemId: string) {
 
   // Single points of failure (structural) — no event history needed at all,
   // computable from the equipment feed alone (see SPEC.md's accessibility
-  // leaderboard section).
+  // leaderboard section). "Structural" is a confirmed-fact claim, so
+  // 'assumed' units don't qualify (see confirmedSoleAccess above) — a
+  // system with no redundancy signal shows an empty board, not every
+  // elevator it owns.
   const spofCountByStation = new Map<string, number>();
   for (const u of systemUnits) {
-    if (u.is_redundant !== false) continue;
+    if (!confirmedSoleAccess(u)) continue;
     const sid = u.station_id as string | null;
     if (!sid) continue;
     spofCountByStation.set(sid, (spofCountByStation.get(sid) ?? 0) + 1);
