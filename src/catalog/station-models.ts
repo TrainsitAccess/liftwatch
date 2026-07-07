@@ -1,5 +1,6 @@
 import { readFileSync } from "node:fs";
 import type { StationModel } from "../lib/accessibility.js";
+import { MTA_RAIL_STATION_MODELS } from "./mta-rail-models.js";
 
 // MTA multi-chain models, generated from the live elevator inventory by
 // scripts/mta-chains.mjs (self-checked against MTA's own ADA + redundant flags).
@@ -169,6 +170,9 @@ export const STATION_MODELS: StationModel[] = [
   // src/catalog/mta-data/station-chains.json and CLAUDE.md). Regenerate with
   // `npm run mta:chains` — do not hand-edit the JSON.
   ...mtaChains,
+  // LIRR + Metro-North curated models (hand-built from eestatus location
+  // text, walked through station-by-station with a human 2026-07-06).
+  ...MTA_RAIL_STATION_MODELS,
 ];
 
 // A physical station can have more than one entry (multiple independent

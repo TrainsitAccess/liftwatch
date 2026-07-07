@@ -168,6 +168,48 @@ export const SYSTEMS: SystemCatalogEntry[] = [
     },
   },
   {
+    id: "mta-lirr",
+    name: "MTA Long Island Rail Road",
+    shortName: "LIRR",
+    city: "New York",
+    metroArea: "New York City",
+    country: "United States",
+    countryCode: "US",
+    continent: "North America",
+    timezone: "America/New_York",
+    adapter: "mta-rail",
+    // Real per-unit inventory + live status in ONE undocumented feed
+    // (backend-unified.mylirr.org/eestatus — the backend of MTA's own
+    // status page, found by network inspection; same risk tier as TMB's
+    // alerts feed). Shares the feed with mta-mnr; the adapter filters by
+    // railroad. Working units are listed too, so the inventory is complete
+    // (default inventoryComplete: true) — unlike WMATA/CTA. No redundancy
+    // signal in the feed; curated station models cover the major stations,
+    // the rest fall to assumed. Penn's NYK-861 is physically the subway's
+    // EL34X — tracked in both systems deliberately (see adapter header).
+    dataQuality: "good",
+  },
+  {
+    id: "mta-mnr",
+    name: "MTA Metro-North Railroad",
+    shortName: "Metro-North",
+    city: "New York",
+    metroArea: "New York City",
+    country: "United States",
+    countryCode: "US",
+    continent: "North America",
+    // Reaches Connecticut, but the whole railroad runs on Eastern time —
+    // and its feed timestamps are epoch seconds anyway (no tz parsing).
+    timezone: "America/New_York",
+    adapter: "mta-rail",
+    // Same shared undocumented feed as mta-lirr (see that entry). MNR units
+    // carry epoch lastUpdated timestamps -> real backdated outage starts
+    // (GCT NE-4 has been out since 2023), and a distinct "long term outage"
+    // status that maps to planned work (validated vs the announced New
+    // Rochelle closure).
+    dataQuality: "good",
+  },
+  {
     id: "tmb-barcelona",
     name: "Transports Metropolitans de Barcelona",
     shortName: "TMB Metro",

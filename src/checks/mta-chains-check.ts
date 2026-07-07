@@ -66,9 +66,16 @@ console.log("\n  Verified structural facts (locked from the human walk-through):
 const labelsFor = (station: string) => (byStation.get(station) ?? []).map((m) => m.chainLabel?.trim()).sort();
 const hasChain = (station: string, label: string) => (byStation.get(station) ?? []).some((m) => m.chainLabel?.trim() === label);
 
-ok(byStation.size === 17, `17 multi-chain MTA stations modeled (got ${byStation.size})`);
+ok(byStation.size === 19, `19 multi-chain MTA stations modeled (got ${byStation.size})`);
 ok(hasChain("604", "(4)") && hasChain("604", "(B/D)"), "161 St-Yankee Stadium splits into (4) + (B/D)");
-ok(JSON.stringify(labelsFor("617")) === JSON.stringify(["(2/3)", "(4/5)", "(B/Q)", "(D/N/R)"]), "Atlantic Av = (2/3)+(4/5)+(B/Q)+(D/N/R)");
+ok(JSON.stringify(labelsFor("617")) === JSON.stringify(["(2/3)", "(4/5)", "(B/Q)", "(D/N/R)", "(LIRR)"]), "Atlantic Av = (2/3)+(4/5)+(B/Q)+(D/N/R)+(LIRR)");
+
+// LIRR interchange chains (2026-07-06 walk-through): subway-side street
+// access to the railroad, built only from subway-feed elevators — the
+// railroad side lives in the mta-lirr system's own curated models.
+ok(hasChain("164", "(LIRR)"), "Penn has a subway-side (LIRR) chain (EL34X ≡ LIRR's NYK-861)");
+ok(hasChain("279", "(LIRR)") && hasChain("279", "(E/J/Z)"), "Sutphin Blvd-Archer Av models (E/J/Z) + (LIRR) — the fifth railroad interchange");
+ok(hasChain("456", "(LIRR)") && hasChain("456", "(7)"), "61 St-Woodside models (7) + (LIRR); non-ADA EL418X/EL419X stay out of chains");
 
 // Merges: Penn 164 covers 318, Fulton 628 covers 624.
 const penn = (byStation.get("164") ?? [])[0];

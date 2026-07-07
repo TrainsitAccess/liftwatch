@@ -511,11 +511,16 @@ CTA's. Facts below verified live 2026-07-05.
   the same `CODI_ACCES` for one physical entrance appears identically across
   every line/funicular listing that shares it, e.g. Paral·lel's "Nou de la
   Rambla" access under L2, L3, and the Montjuïc funicular all show
-  `CODI_ACCES 21001`). When `entrance_code` is the literal string `"ALL"`
-  (a station-wide effect) or matches nothing in the catalog snapshot, falls
-  back to every known elevator at that station by name — same conservative
-  attribution tier as BART's station-level fallback (`attributed: false`),
-  never guessing a single unit.
+  `CODI_ACCES 21001`). Two distinct fallbacks (split 2026-07-06 — they were
+  one, which corrupted per-elevator stats in the drift case): when
+  `entrance_code` is the literal string `"ALL"` (or missing), the FEED
+  itself declares a station-wide effect, so the outage expands to every
+  known elevator at that station (`attributed: false` — the agency's own
+  claim, not a guess); when `entrance_code` is present but matches nothing
+  in the catalog snapshot (drift since the last import), the outage is
+  recorded on ONE synthetic unit (`TMB-{station}-{entrance}`) instead of
+  blaming every elevator at the station — the same never-guess rule as
+  BART's `-UNSPECIFIED` units.
 - **Inventory — real per-elevator, built from the documented API, not
   reverse-engineered**: `scripts/tmb-import.mjs` calls
   `GET /v1/transit/estacions` (live-verified: omitting a station id returns
@@ -543,3 +548,89 @@ CTA's. Facts below verified live 2026-07-05.
   attempting `redundancy_source: "pathways"`-tier modeling; a live re-fetch
   URL for the whole-network inventory, if one is ever found, would let the
   static snapshot self-refresh instead of manual re-import.
+
+### MTA commuter railroad feeds (in use) — LIRR + Metro-North, one shared undocumented pair
+
+Systems 8 and 9 (`mta-lirr`, `mta-mnr`) share ONE feed pair at
+`backend-unified.mylirr.org` — the backend of MTA's own public
+elevator-escalator-status page and the unified TrainTime app. One adapter
+(`src/adapters/mta-rail`) serves both systems, each instance filtering by
+railroad. Facts below verified live 2026-07-06.
+
+- **Both endpoints are UNDOCUMENTED** (same risk tier and discovery method
+  as TMB's alerts feed): found by inspecting the network traffic of
+  `mta.info/elevator-escalator-status` itself. `GET /eestatus` returns, per
+  station code, every elevator AND escalator with per-unit
+  `{location, unitId, status, lastUpdated}` — inventory and live status in
+  one call (working units listed too, so `inventoryComplete: true`, unlike
+  WMATA/CTA). `GET /infrastructure?language=en` returns all 242 stations
+  (code, name, coords, branch, `railroad: LIRR|MNR|BOTH`, accessibility
+  tier, gtfs_stop_id). No auth; the API family versions via
+  `Accept-Version: 3.0` (other routes 301 without it — these two answer
+  regardless, but the adapter sends it anyway). Could change without
+  notice.
+- **Dead ends checked first** (don't re-walk): the `nyct_ene*` feeds are
+  subway-only (their `nonNYCT=Y` records are subway-station elevators that
+  secondarily serve the railroads); `lirr%2F.../mnr%2F...` S3 keys don't
+  exist (`NoSuchKey`); Socrata 9hjt-526f / ax67-8386 are monthly
+  availability aggregates by branch; the railroads' static GTFS zips have
+  no `pathways.txt`; the camsys GTFS-RT alert feeds carry elevator outages
+  only as occasional long-planned prose notices.
+- **Two upstream sources are merged in `/eestatus`, distinguishable per
+  unit**: LIRR units use `"Working"/"Not Working"` (capitalized) with
+  `lastUpdated: null` — our own polling timestamps their outages (BART/TfL
+  precedent). MNR units use lowercase `"working"/"not working"/"long term
+  outage"` with `lastUpdated` = epoch SECONDS of the last status change —
+  used as `sourceStartedAt`, validated against New Rochelle 206E, whose
+  `lastUpdated` exactly matches the announced start of its planned rebuild
+  (and GCT's NE-4 backdates a real outage to 2023-03-24). Status matching
+  must be case-insensitive; `"long term outage"` maps to `isPlanned` (it is
+  how MNR marks announced long-term work).
+- **`unitId` is only unique per station — and collides across unit types**
+  (Jamaica has an elevator AND an escalator both numbered 761; MNR ids can
+  embed spaces, e.g. Stamford's `"1 STM"`). External ids are
+  station-qualified verbatim: `{stationCode}-{unitId}`.
+- **Grand Central is three records**: `GCT` = Grand Central Madison (LIRR,
+  incl. EL21, the connector down to MNR track level), `0NY` = Grand Central
+  Terminal (MNR), `_GC` = the app's combined entry (`railroad: "BOTH"`, no
+  units) — excluded from both systems.
+- **Shared physical elevator at Penn**: LIRR's `NYK-861` ("Unit P34, 34 St
+  & 7 Av to LIRR concourse") is the subway feed's `EL34X` (`nonNYCT=Y`).
+  Tracked in BOTH systems deliberately — each system's accessibility truth
+  stays self-contained; the one-unit overlap in the homepage aggregate is
+  accepted and documented.
+- **Stations with no eestatus entry have no elevators** (ramp/level-boarding
+  stations — 117 of the 198 FULL/PARTIAL-accessible stations). Absence
+  means "no elevators", not "missing data"; the complete station layer
+  still comes from `/infrastructure` via `NormalizedRead.stations` (branch
+  rides in the borough slot).
+- **Redundancy**: no signal in the feed. Thirteen major stations are
+  hand-modeled in `src/catalog/mta-rail-models.ts` (walked through
+  station-by-station with a human 2026-07-06 — the walk-through corrected
+  three feed-text misreadings at Stamford alone; its notes outrank the raw
+  location strings). The adapter applies model-derived redundancy as
+  `curated`, aggregated across every chain a unit appears in; un-modeled
+  units fall to `assumed`. Commuter-rail chains are PER-TRACK
+  ("Stamford (Track 3)") the way subway chains are per-line. Stamford uses
+  a paired-segment (CNF) encoding to express "direct elevator OR
+  multi-elevator detour"; ramps appear as `stepFreeAlternative` legs
+  (Stamford Tracks 4/5, Grand Central Terminal's Oyster Bar / Kitty Kelly
+  ramps).
+- **Subway interchanges**: the five railroad interchanges (Penn, Grand
+  Central, Atlantic, Woodside, Sutphin Blvd–Jamaica) get subway-side
+  "(LIRR)" chains built ONLY from subway-feed elevators (chains are
+  single-system); the railroad side of each interchange is modeled in the
+  railroad system. Grand Central deliberately gets NO subway-side railroad
+  chain — EL606X is one of many entrances to terminals with their own
+  tracked elevators, so a single-elevator chain would overclaim.
+- **Regression coverage**: `npm run check:rail`
+  (`src/checks/mta-rail-check.ts`) exercises the pure mapper offline
+  against a fixture distilled from the live feeds — dual status casings,
+  id collisions/spaces, epoch-vs-null timestamps, railroad filtering, the
+  `_GC` exclusion, and the curated-redundancy wiring (incl. the Stamford
+  walk-through outcomes).
+- **Deferred**: enriching planned/unplanned + human-readable periods from
+  the camsys alert feeds; modeling the remaining North End Access units at
+  Grand Central (NE-1/2/3/5/6 — passage topology unverified); Yankees-E
+  153 St's PE4 overpass elevator (level relationship to the mezzanine
+  unverified, conservatively omitted from chains).

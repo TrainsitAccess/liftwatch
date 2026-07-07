@@ -1246,6 +1246,36 @@
     },
     {
       "systemId": "mta-nyct",
+      "stationExternalId": "164",
+      "chainLabel": " (LIRR)",
+      "coveredStationExternalIds": [
+        "164",
+        "318"
+      ],
+      "note": "Subway-side street access to the LIRR concourse. EL34X is physically the same elevator as the LIRR feed's NYK-861 (Unit P34) — the LIRR platform elevators themselves are tracked in the mta-lirr system.",
+      "segments": [
+        {
+          "id": "concourse",
+          "label": "Street to Penn concourse (8th & 7th Av entrances)",
+          "elevators": [
+            {
+              "externalId": "EL34X",
+              "label": "street to concourse"
+            },
+            {
+              "externalId": "EL618",
+              "label": "street to concourse"
+            },
+            {
+              "externalId": "EL225",
+              "label": "Street to uptown C/E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "mta-nyct",
       "stationExternalId": "628",
       "chainLabel": " (R/W)",
       "coveredStationExternalIds": [
@@ -1625,6 +1655,142 @@
           ]
         }
       ]
+    },
+    {
+      "systemId": "mta-nyct",
+      "stationExternalId": "617",
+      "chainLabel": " (LIRR)",
+      "note": "Subway-side street access to the LIRR's Atlantic Terminal concourse (EL300X/EL737X both serve '…& LIRR' per the feed). The terminal's own elevators (a redundant pair) are tracked in the mta-lirr system.",
+      "segments": [
+        {
+          "id": "access",
+          "label": "Street to LIRR concourse",
+          "elevators": [
+            {
+              "externalId": "EL300X",
+              "label": "Street to Manhattan-bound 2/3 & LIRR"
+            },
+            {
+              "externalId": "EL737X",
+              "label": "Street to Manhattan-bound 2/3 & LIRR"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "mta-nyct",
+      "stationExternalId": "279",
+      "chainLabel": " (E/J/Z)",
+      "segments": [
+        {
+          "id": "street",
+          "label": "Street to mezzanine",
+          "elevators": [
+            {
+              "externalId": "EL448X",
+              "label": "Street to mezzanine"
+            },
+            {
+              "externalId": "EL449X",
+              "label": "Street to mezzanine"
+            },
+            {
+              "externalId": "EL450X",
+              "label": "Street to mezzanine"
+            }
+          ]
+        },
+        {
+          "id": "platforms",
+          "label": "Mezzanine to E/J/Z platforms (both directions)",
+          "elevators": [
+            {
+              "externalId": "EL411",
+              "label": "Mezzanine to platforms for E/J/Z in both directions."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "mta-nyct",
+      "stationExternalId": "279",
+      "chainLabel": " (LIRR)",
+      "segments": [
+        {
+          "id": "street",
+          "label": "Street to mezzanine (LIRR Jamaica hub)",
+          "elevators": [
+            {
+              "externalId": "EL448X",
+              "label": "Street to mezzanine"
+            },
+            {
+              "externalId": "EL449X",
+              "label": "Street to mezzanine"
+            },
+            {
+              "externalId": "EL450X",
+              "label": "Street to mezzanine"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "mta-nyct",
+      "stationExternalId": "456",
+      "chainLabel": " (7)",
+      "segments": [
+        {
+          "id": "street",
+          "label": "Street to mezzanine",
+          "elevators": [
+            {
+              "externalId": "EL415X",
+              "label": "Roosevelt Av & 61 St (NE corner) to mezzanine for LIRR & 7 in both directions."
+            }
+          ]
+        },
+        {
+          "id": "manhattan",
+          "label": "Mezzanine to Manhattan-bound 7",
+          "elevators": [
+            {
+              "externalId": "EL416X",
+              "label": "Mezzanine to Manhattan-bound platform."
+            }
+          ]
+        },
+        {
+          "id": "flushing",
+          "label": "Mezzanine to Flushing-bound 7",
+          "elevators": [
+            {
+              "externalId": "EL417X",
+              "label": "Mezzanine to Flushing-bound platform."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "mta-nyct",
+      "stationExternalId": "456",
+      "chainLabel": " (LIRR)",
+      "segments": [
+        {
+          "id": "street",
+          "label": "Street to mezzanine (LIRR transfer)",
+          "elevators": [
+            {
+              "externalId": "EL415X",
+              "label": "Roosevelt Av & 61 St (NE corner) to mezzanine for LIRR & 7 in both directions."
+            }
+          ]
+        }
+      ]
     }
   ],
   "elevatorFlags": {
@@ -1793,6 +1959,18 @@
       "ada": true
     },
     "EL609": {
+      "redundant": false,
+      "ada": true
+    },
+    "EL415X": {
+      "redundant": false,
+      "ada": true
+    },
+    "EL416X": {
+      "redundant": false,
+      "ada": true
+    },
+    "EL417X": {
       "redundant": false,
       "ada": true
     },
@@ -2050,6 +2228,22 @@
     },
     "EL738": {
       "redundant": false,
+      "ada": true
+    },
+    "EL411": {
+      "redundant": false,
+      "ada": true
+    },
+    "EL448X": {
+      "redundant": true,
+      "ada": true
+    },
+    "EL449X": {
+      "redundant": true,
+      "ada": true
+    },
+    "EL450X": {
+      "redundant": true,
       "ada": true
     },
     "EL229": {

@@ -11,10 +11,18 @@
 // generic StationModel — reusable by any system. Only mapEquipment() (raw feed ->
 // that shape) and the hand-verified config below are MTA-specific.
 //
-// The clean stations are inferred automatically. Six interchanges whose real
+// The clean stations are inferred automatically. Nine interchanges whose real
 // topology the feed can't express (verified with a human, station by station)
 // are hand-authored OVERRIDES, plus two physical stations MTA fragments across
 // two complex-ids each (Penn 164+318, Fulton/Oculus 628+624) that MERGE here.
+//
+// "(LIRR)" chains (2026-07-06): subway stations that gate access to the Long
+// Island Rail Road get a chain built ONLY from subway-feed elevators — the
+// railroad's own platform elevators live in the separate mta-lirr system
+// (backend-unified.mylirr.org/eestatus), whose curated models cover the
+// railroad side of the same interchanges (src/catalog/mta-rail-models.ts).
+// Penn's EL34X is physically the LIRR feed's NYK-861 ("P34") — tracked in
+// both systems deliberately.
 //
 // SELF-CHECK: for every elevator, compare model-DERIVED redundancy against MTA's
 // own `redundant` flag (aggregated across all of the elevator's chains — an
@@ -153,6 +161,9 @@ const OVERRIDES = [
         ["street", "Street to Penn concourse", ["EL34X", "EL618"]],
         ["platform", "Concourse to 2/3 platform", ["EL215"]],
       ]},
+      { label: " (LIRR)", note: "Subway-side street access to the LIRR concourse. EL34X is physically the same elevator as the LIRR feed's NYK-861 (Unit P34) — the LIRR platform elevators themselves are tracked in the mta-lirr system.", segments: [
+        ["concourse", "Street to Penn concourse (8th & 7th Av entrances)", ["EL34X", "EL618", "EL225"]],
+      ]},
     ],
   },
   {
@@ -210,6 +221,44 @@ const OVERRIDES = [
       { label: " (B/Q)", segments: [
         ["access", "Mezzanine access to B/Q", ["EL306", "EL304"]],
         ["platform", "Mezzanine to B/Q platform", ["EL307"]],
+      ]},
+      { label: " (LIRR)", note: "Subway-side street access to the LIRR's Atlantic Terminal concourse (EL300X/EL737X both serve '…& LIRR' per the feed). The terminal's own elevators (a redundant pair) are tracked in the mta-lirr system.", segments: [
+        ["access", "Street to LIRR concourse", ["EL300X", "EL737X"]],
+      ]},
+    ],
+  },
+  {
+    // Sutphin Blvd-Archer Av <-> LIRR Jamaica: the fifth railroad
+    // interchange. The three street elevators are a redundant trio into the
+    // shared mezzanine (the Jamaica hub); EL411 alone gates both E/J/Z
+    // platforms. LIRR Jamaica's own overpass + platform elevators are
+    // tracked in the mta-lirr system (its 521 reaches this subway too).
+    canonicalId: "279", name: "Sutphin Blvd-Archer Av-JFK Airport", covers: ["279"],
+    chains: [
+      { label: " (E/J/Z)", segments: [
+        ["street", "Street to mezzanine", ["EL448X", "EL449X", "EL450X"]],
+        ["platforms", "Mezzanine to E/J/Z platforms (both directions)", ["EL411"]],
+      ]},
+      { label: " (LIRR)", segments: [
+        ["street", "Street to mezzanine (LIRR Jamaica hub)", ["EL448X", "EL449X", "EL450X"]],
+      ]},
+    ],
+  },
+  {
+    // 61 St-Woodside <-> LIRR Woodside: EL415X is the single ADA street
+    // elevator to the shared mezzanine for both the 7 and the LIRR (the
+    // mezzanine-to-LIRR elevators EL418X/EL419X are non-ADA and stay out of
+    // chains by policy; LIRR's own Woodside platform elevators — including
+    // its street-capable 449 — are tracked in the mta-lirr system).
+    canonicalId: "456", name: "61 St-Woodside", covers: ["456"],
+    chains: [
+      { label: " (7)", segments: [
+        ["street", "Street to mezzanine", ["EL415X"]],
+        ["manhattan", "Mezzanine to Manhattan-bound 7", ["EL416X"]],
+        ["flushing", "Mezzanine to Flushing-bound 7", ["EL417X"]],
+      ]},
+      { label: " (LIRR)", segments: [
+        ["street", "Street to mezzanine (LIRR transfer)", ["EL415X"]],
       ]},
     ],
   },

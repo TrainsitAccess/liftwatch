@@ -9,9 +9,10 @@ Monitors public-transit **elevator** outages worldwide, archives them over time,
 and ranks systems/stations/elevators on split-flap leaderboards. The archive (an
 event history nobody else keeps) is the whole point — every metric derives from it.
 
-Status: **live in production.** Seven systems archiving (MTA, BART, MBTA, WMATA,
-TfL — first non-North-America system, CTA, TMB Barcelona — first
-non-English-speaking system), polled every 10 min by a GitHub Actions cron
+Status: **live in production.** Nine systems archiving (MTA subway, BART, MBTA,
+WMATA, TfL — first non-North-America system, CTA, TMB Barcelona — first
+non-English-speaking system, LIRR + Metro-North — first commuter railroads,
+sharing one adapter), polled every 10 min by a GitHub Actions cron
 (`.github/workflows/poll.yml`), backed up weekly to a private repo
 (`backup.yml`), with a keepalive workflow so the poller/backup crons never
 auto-disable. A preview split-flap site reads the archive (`site/`).
@@ -28,11 +29,12 @@ $env:Path = "C:\Program Files\nodejs;$env:Path"
 ```bash
 npm install
 npm run poll:dry         # MTA, fetch + normalize, no DB
-npm run poll:bart:dry    # BART, MBTA, WMATA, TfL, CTA, TMB have :dry variants too
+npm run poll:bart:dry    # BART, MBTA, WMATA, TfL, CTA, TMB, LIRR, MNR have :dry variants too
 npm run demo:access      # prove the chain-aware accessibility model (25 checks)
 npm run check:tfl        # prove TfL's topology-derived redundancy (10 checks)
 npm run check:tmb        # prove TMB's elevator catalog integrity (7 checks)
 npm run check:mta        # prove MTA's multi-chain models vs feed flags (offline)
+npm run check:rail       # prove the LIRR/MNR mapper + curated models (offline fixture)
 npm run mta:chains       # regenerate MTA multi-chain models from the live feed
 npm run typecheck        # tsc --noEmit — run after edits
 npm run db:status        # row counts + latest poll_runs, once Supabase is set up
@@ -113,10 +115,27 @@ parking lot). A station is accessible only if **every** segment is up.
   the build unless listed in `REDUNDANCY_EXCEPTIONS` with a human reason (MTA's
   flag is sometimes wrong, e.g. 14 St-6 Av EL609/EL610; or reflects cross-station
   redundancy a per-station model can't see, e.g. Grand Central's Shuttle EL607X).
-  Six tangled interchanges are hand-authored OVERRIDES in the script, verified
-  station-by-station with a human; the rest are inferred. Deferred: MTA commuter
-  rail (LIRR + Metro-North) — touches Woodside/Atlantic/Grand Central/Penn, to be
-  added as one pass.
+  Nine tangled interchanges are hand-authored OVERRIDES in the script, verified
+  station-by-station with a human; the rest are inferred.
+- **Commuter rail (LIRR + Metro-North) is DONE, both directions** (2026-07-06):
+  (a) they are their own leaderboard systems (`mta-lirr`, `mta-mnr` — one
+  shared adapter, `src/adapters/mta-rail`, filtering one undocumented feed
+  pair by railroad; see SPEC.md's railroad section for the feed dossier), and
+  (b) the five subway interchanges that touch them (Penn, Grand Central,
+  Atlantic, Woodside, Sutphin Blvd–Jamaica) carry subway-side "(LIRR)" chains
+  built only from subway-feed elevators. Thirteen railroad stations have
+  hand-curated models (`src/catalog/mta-rail-models.ts`, human walk-through
+  2026-07-06 — its notes outrank the feed's location strings; Stamford uses a
+  paired-segment CNF encoding for "direct elevator OR multi-elevator detour",
+  ramps are `stepFreeAlternative` legs). Penn's EL34X ≡ LIRR's NYK-861 (one
+  physical elevator, tracked in both systems deliberately). Grand Central
+  gets NO subway-side railroad chain (would overclaim — the terminals have
+  their own tracked elevators).
+- **"Sole access" markers require a real signal** (2026-07-06): the site only
+  shows the ▮ / "station currently inaccessible" marker (and the structural
+  SPOF board) for units whose `redundancy_source` is NOT `assumed` — the
+  assumed policy default is a conservative unknown, not a confirmed fact.
+  Blackout/streak boards keep the conservative history-based logic.
 
 ## Conventions
 
@@ -127,8 +146,13 @@ parking lot). A station is accessible only if **every** segment is up.
   survives rebuilds, re-asserted every poll.
 - **Timezones**: feeds report local wall-clock; parse to UTC (`src/lib/time.ts`,
   Luxon). Store UTC everywhere.
-- Seven systems, deliberately different fidelity: **MTA**, **MBTA**, **TfL**,
-  **TMB** = per-elevator with full inventory (`data_quality: good`);
+- Nine systems, deliberately different fidelity: **MTA**, **MBTA**, **TfL**,
+  **TMB**, **LIRR**, **Metro-North** = per-elevator with full inventory
+  (`data_quality: good`; LIRR/MNR share one adapter + one UNDOCUMENTED feed
+  pair — backend-unified.mylirr.org, found by network-inspecting MTA's own
+  status page, same risk tier as TMB; LIRR sub-feed has no timestamps → our
+  polling timestamps outages; MNR sub-feed has epoch lastUpdated →
+  sourceStartedAt, and "long term outage" → planned);
   **WMATA** = per-elevator ids but the feed only lists broken units (`fair`,
   `inventoryComplete: false`, no single_elevator inference, units discovered
   as they break; station list IS complete via `NormalizedRead.stations`).
@@ -160,7 +184,11 @@ parking lot). A station is accessible only if **every** segment is up.
   timestamp at all (free text only) — we rely on our own polling to
   timestamp events, same as BART. CTA = ISO w/o offset = CT wall-clock
   (`parseIsoLocalToUtcIso`, same helper as WMATA). TMB = epoch milliseconds
-  (`msToUtcIso`, no timezone ambiguity to resolve).
+  (`msToUtcIso`, no timezone ambiguity to resolve). LIRR = none (own
+  polling); MNR = epoch seconds (`msToUtcIso(lastUpdated * 1000)`).
+- **LIRR/MNR unit ids are station-qualified** (`JAM-761`, `2SM-1 STM`):
+  the feed's `unitId` is only unique per station and collides across unit
+  types (Jamaica has an elevator AND an escalator both numbered 761).
 
 ## Gotchas / deferred
 

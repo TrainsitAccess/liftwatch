@@ -6,6 +6,7 @@ import { createWmataAdapter, WMATA_CONFIG } from "./wmata/index.js";
 import { createTflAdapter, TFL_CONFIG } from "./tfl/index.js";
 import { createCtaAdapter, CTA_CONFIG } from "./cta/index.js";
 import { createTmbAdapter, TMB_CONFIG } from "./tmb/index.js";
+import { createMtaRailAdapter, LIRR_CONFIG, MNR_CONFIG } from "./mta-rail/index.js";
 
 // Binds a systemId to a constructed adapter. As generic adapters (GTFS-RT, REST,
 // SIRI) land, most systems will be built from catalog config here instead of a
@@ -18,6 +19,10 @@ const BUILDERS: Record<string, () => Adapter> = {
   "tfl-london": () => createTflAdapter(TFL_CONFIG),
   "cta-chicago": () => createCtaAdapter(CTA_CONFIG),
   "tmb-barcelona": () => createTmbAdapter(TMB_CONFIG),
+  // One adapter, two systems: LIRR and Metro-North share one feed pair,
+  // each instance filtering by railroad (see src/adapters/mta-rail).
+  "mta-lirr": () => createMtaRailAdapter(LIRR_CONFIG),
+  "mta-mnr": () => createMtaRailAdapter(MNR_CONFIG),
 };
 
 export function getAdapter(systemId: string): Adapter {
