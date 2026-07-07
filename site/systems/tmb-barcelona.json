@@ -2,7 +2,7 @@
   "id": "tmb-barcelona",
   "name": "TMB Metro",
   "label": "Barcelona (TMB Metro)",
-  "generatedAt": "2026-07-07T03:59:22.854Z",
+  "generatedAt": "2026-07-07T08:59:52.655Z",
   "currentlyBroken": [
     {
       "station": "Florida",
@@ -15,58 +15,58 @@
   "accessibilityBlackouts": [
     {
       "name": "Florida",
-      "hours": 154.20634833333332
+      "hours": 159.2146263888889
     }
   ],
   "stepFreeStreak": [
     {
       "name": "Lesseps",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Santa Coloma",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Selva de Mar",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Singuerlín",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Liceu",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Llacuna",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Llefià",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Llucmajor",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Maragall",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Maria Cristina",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     }
   ],
@@ -81,61 +81,61 @@
     {
       "unit": "Plaça Lesseps",
       "station": "Lesseps",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Plaça de la Vila",
       "station": "Santa Coloma",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Provençals",
       "station": "Selva de Mar",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Passatge de Salvatella",
       "station": "Singuerlín",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "La Rambla / Teatre Liceu",
       "station": "Liceu",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "La Rambla / Teatre Liceu",
       "station": "Liceu",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Pujades / Ciutat de Granada",
       "station": "Llacuna",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Avinguda d'Amèrica (mercat)",
       "station": "Llefià",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Passeig Verdum / Llucmajor",
       "station": "Llucmajor",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Ronda Guinardó - costat Muntanya",
       "station": "Maragall",
-      "days": 1,
+      "days": 2,
       "downNow": false
     }
   ],
@@ -185,19 +185,19 @@
       "count": 1
     },
     {
-      "name": "Tarragona",
-      "count": 1
-    },
-    {
-      "name": "Tetuan",
-      "count": 1
-    },
-    {
       "name": "Sant Antoni",
       "count": 1
     },
     {
       "name": "Sant Ildefons",
+      "count": 1
+    },
+    {
+      "name": "Sant Martí",
+      "count": 1
+    },
+    {
+      "name": "Sant Pau | Dos de Maig",
       "count": 1
     }
   ]

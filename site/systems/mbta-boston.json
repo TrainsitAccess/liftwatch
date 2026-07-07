@@ -2,7 +2,7 @@
   "id": "mbta-boston",
   "name": "MBTA",
   "label": "MBTA (Boston)",
-  "generatedAt": "2026-07-07T03:59:22.854Z",
+  "generatedAt": "2026-07-07T08:59:52.655Z",
   "currentlyBroken": [
     {
       "station": "Winchester Center",
@@ -47,13 +47,6 @@
       "soleAccess": false
     },
     {
-      "station": "Aquarium",
-      "unit": "Aquarium Elevator 914 (Bowdoin platform to State Street lobby)",
-      "days": 0,
-      "planned": true,
-      "soleAccess": false
-    },
-    {
       "station": "Worcester",
       "unit": "Worcester Elevator 782 (Parking lot to pedestrian bridge )",
       "days": 0,
@@ -63,6 +56,13 @@
     {
       "station": "Wonderland",
       "unit": "Wonderland Elevator 711 (Ocean Avenue to pedestrian plaza)",
+      "days": 0,
+      "planned": true,
+      "soleAccess": false
+    },
+    {
+      "station": "Back Bay",
+      "unit": "Back Bay Elevator 853 (Orange Line platform to lobby)",
       "days": 0,
       "planned": true,
       "soleAccess": false
@@ -82,15 +82,15 @@
     },
     {
       "name": "Winchester Center",
-      "hours": 2502.6935705555557
+      "hours": 2507.701848611111
     },
     {
       "name": "Framingham",
-      "hours": 373.328015
+      "hours": 378.33629305555553
     },
     {
       "name": "Natick Center",
-      "hours": 133.6216261111111
+      "hours": 138.62990416666668
     },
     {
       "name": "Porter",
@@ -98,11 +98,11 @@
     },
     {
       "name": "South Station",
-      "hours": 57.87273722222222
+      "hours": 62.88101527777778
     },
     {
       "name": "Downtown Crossing",
-      "hours": 34.80634833333333
+      "hours": 39.81462638888889
     },
     {
       "name": "Green Street",
@@ -110,62 +110,62 @@
     },
     {
       "name": "Aquarium",
-      "hours": 16.76412611111111
+      "hours": 21.70884138888889
     },
     {
       "name": "Worcester",
-      "hours": 12.661903888888888
+      "hours": 17.670181944444444
     }
   ],
   "stepFreeStreak": [
     {
       "name": "Quincy Center",
-      "days": 2,
+      "days": 3,
       "blackedOutNow": false
     },
     {
       "name": "North Quincy",
-      "days": 2,
+      "days": 3,
       "blackedOutNow": false
     },
     {
       "name": "North Station",
-      "days": 2,
+      "days": 3,
       "blackedOutNow": false
     },
     {
       "name": "Prudential",
-      "days": 2,
+      "days": 3,
       "blackedOutNow": false
     },
     {
       "name": "Gilman Square",
-      "days": 2,
-      "blackedOutNow": false
-    },
-    {
-      "name": "Quincy Adams",
-      "days": 2,
+      "days": 3,
       "blackedOutNow": false
     },
     {
       "name": "Courthouse",
-      "days": 2,
+      "days": 3,
       "blackedOutNow": false
     },
     {
       "name": "Park Street",
-      "days": 2,
+      "days": 3,
       "blackedOutNow": false
     },
     {
       "name": "Ruggles",
-      "days": 2,
+      "days": 3,
       "blackedOutNow": false
     },
     {
       "name": "Lechmere",
-      "days": 2,
+      "days": 3,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Magoun Square",
+      "days": 3,
       "blackedOutNow": false
     }
   ],
@@ -188,6 +188,11 @@
     {
       "unit": "Aquarium Elevator 914 (Bowdoin platform to State Street lobby)",
       "station": "Aquarium",
+      "count": 1
+    },
+    {
+      "unit": "Back Bay Elevator 853 (Orange Line platform to lobby)",
+      "station": "Back Bay",
       "count": 1
     },
     {
@@ -214,72 +219,67 @@
       "unit": "Chinatown Elevator 876 (Oak Grove platform to Washington St, Essex St)",
       "station": "Chinatown",
       "count": 1
-    },
-    {
-      "unit": "Downtown Crossing Elevator 999 (Oak Grove platform to Alewife platform)",
-      "station": "Downtown Crossing",
-      "count": 1
     }
   ],
   "uptimeStreak": [
     {
       "unit": "Quincy Center Elevator 896 (Commuter Rail platform to lobby)",
       "station": "Quincy Center",
-      "days": 2,
+      "days": 3,
       "downNow": false
     },
     {
       "unit": "North Quincy Elevator 897 (Hancock Street parking to northern lobby)",
       "station": "North Quincy",
-      "days": 2,
+      "days": 3,
       "downNow": false
     },
     {
       "unit": "North Station Elevator 910 (Lobby to Forest Hills, Copley & West platform)",
       "station": "North Station",
-      "days": 2,
+      "days": 3,
       "downNow": false
     },
     {
       "unit": "Aquarium Elevator 915 (State Street lobby to street)",
       "station": "Aquarium",
-      "days": 2,
+      "days": 3,
       "downNow": false
     },
     {
       "unit": "Prudential Elevator 917 (Lobby to Huntington Avenue)",
       "station": "Prudential",
-      "days": 2,
+      "days": 3,
       "downNow": false
     },
     {
       "unit": "South Station Elevator 918 (Ashmont/Braintree platform to Airport/Design Center/Chelsea platform and lobby)",
       "station": "South Station",
-      "days": 2,
+      "days": 3,
       "downNow": false
     },
     {
       "unit": "South Station Elevator 919 (Alewife platform to Airport/Design Center/Chelsea platform)",
       "station": "South Station",
-      "days": 2,
+      "days": 3,
       "downNow": false
     },
     {
       "unit": "Prudential Elevator 920 (Heath Street platform to lobby)",
       "station": "Prudential",
-      "days": 2,
+      "days": 3,
       "downNow": false
     },
     {
       "unit": "Chinatown Elevator 922 (Forest Hills platform to Boylston St, Washington St)",
       "station": "Chinatown",
-      "days": 2,
+      "days": 3,
       "downNow": false
     },
     {
       "unit": "Aquarium Elevator 925 (Atlantic Avenue lobby to Long Wharf)",
       "station": "Aquarium",
-      "days": 2,
+      "days": 3,
       "downNow": false
     }
   ],

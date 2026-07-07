@@ -2,22 +2,8 @@
   "id": "tfl-london",
   "name": "TfL",
   "label": "TfL (London)",
-  "generatedAt": "2026-07-07T03:59:22.854Z",
+  "generatedAt": "2026-07-07T08:59:52.655Z",
   "currentlyBroken": [
-    {
-      "station": "King's Cross St Pancras",
-      "unit": "Lift A",
-      "days": 2,
-      "planned": false,
-      "soleAccess": true
-    },
-    {
-      "station": "Upminster",
-      "unit": "Lift 3",
-      "days": 2,
-      "planned": false,
-      "soleAccess": true
-    },
     {
       "station": "Hackney Wick",
       "unit": "Lift 1",
@@ -33,15 +19,8 @@
       "soleAccess": true
     },
     {
-      "station": "Finchley Central",
-      "unit": "Lift 2",
-      "days": 2,
-      "planned": false,
-      "soleAccess": true
-    },
-    {
       "station": "King's Cross St Pancras",
-      "unit": "Lift B",
+      "unit": "Lift A",
       "days": 2,
       "planned": false,
       "soleAccess": true
@@ -68,7 +47,7 @@
       "soleAccess": true
     },
     {
-      "station": "East India",
+      "station": "Wembley Central",
       "unit": "Lift 3",
       "days": 2,
       "planned": false,
@@ -89,8 +68,22 @@
       "soleAccess": true
     },
     {
-      "station": "Wembley Central",
+      "station": "East India",
       "unit": "Lift 3",
+      "days": 2,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "Finchley Central",
+      "unit": "Lift 2",
+      "days": 2,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "King's Cross St Pancras",
+      "unit": "Lift B",
       "days": 2,
       "planned": false,
       "soleAccess": true
@@ -105,7 +98,7 @@
     {
       "station": "Canary Wharf",
       "unit": "Lift LU 2",
-      "days": 1,
+      "days": 2,
       "planned": false,
       "soleAccess": true
     },
@@ -117,21 +110,28 @@
       "soleAccess": true
     },
     {
-      "station": "Brixton",
-      "unit": "Lift 2",
+      "station": "Green Park",
+      "unit": "Lift 6",
       "days": 0,
-      "planned": true,
-      "soleAccess": true
+      "planned": false,
+      "soleAccess": false
     },
     {
-      "station": "Brixton",
-      "unit": "Lift 1",
+      "station": "Green Park",
+      "unit": "Lift 5",
       "days": 0,
-      "planned": true,
-      "soleAccess": true
+      "planned": false,
+      "soleAccess": false
     },
     {
       "station": "West Brompton",
+      "unit": "Lift 4",
+      "days": 0,
+      "planned": false,
+      "soleAccess": true
+    },
+    {
+      "station": "West Ham",
       "unit": "Lift 4",
       "days": 0,
       "planned": false,
@@ -145,8 +145,8 @@
       "soleAccess": true
     },
     {
-      "station": "West Ham",
-      "unit": "Lift 4",
+      "station": "Wembley Park",
+      "unit": "Lift 1",
       "days": 0,
       "planned": false,
       "soleAccess": true
@@ -154,44 +154,44 @@
   ],
   "accessibilityBlackouts": [
     {
-      "name": "King's Cross St Pancras",
-      "hours": 51.28360055555556
-    },
-    {
-      "name": "Upminster",
-      "hours": 51.28360055555556
-    },
-    {
       "name": "Hackney Wick",
-      "hours": 51.28360055555556
+      "hours": 56.29187861111111
     },
     {
       "name": "Willesden Junction",
-      "hours": 51.28360055555556
+      "hours": 56.29187861111111
     },
     {
-      "name": "Finchley Central",
-      "hours": 51.28360055555556
+      "name": "King's Cross St Pancras",
+      "hours": 56.29187861111111
     },
     {
       "name": "Moorgate",
-      "hours": 51.28360055555556
+      "hours": 56.29187861111111
     },
     {
       "name": "Liverpool Street",
-      "hours": 51.28360055555556
+      "hours": 56.29187861111111
     },
     {
       "name": "Hackney Central",
-      "hours": 51.28360055555556
+      "hours": 56.29187861111111
     },
     {
-      "name": "East India",
-      "hours": 51.28360055555556
+      "name": "Wembley Central",
+      "hours": 56.29187861111111
     },
     {
       "name": "Gospel Oak",
-      "hours": 51.28360055555556
+      "hours": 56.29187861111111
+    },
+    {
+      "name": "Imperial Wharf",
+      "hours": 56.29187861111111
+    },
+    {
+      "name": "East India",
+      "hours": 56.29187861111111
     }
   ],
   "stepFreeStreak": [
@@ -382,11 +382,11 @@
       "count": 6
     },
     {
-      "name": "Bank",
+      "name": "Blackfriars",
       "count": 6
     },
     {
-      "name": "Blackfriars",
+      "name": "Bank",
       "count": 6
     },
     {

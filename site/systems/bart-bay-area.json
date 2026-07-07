@@ -2,27 +2,27 @@
   "id": "bart-bay-area",
   "name": "BART",
   "label": "BART (San Francisco)",
-  "generatedAt": "2026-07-07T03:59:22.854Z",
+  "generatedAt": "2026-07-07T08:59:52.655Z",
   "currentlyBroken": [
-    {
-      "station": "Richmond",
-      "unit": "Station (unspecified elevator — conservative)",
-      "days": 3,
-      "planned": false,
-      "soleAccess": false
-    },
     {
       "station": "Millbrae",
       "unit": "Station elevator access (BART reports at station level)",
       "days": 3,
       "planned": false,
       "soleAccess": true
+    },
+    {
+      "station": "Richmond",
+      "unit": "Station (unspecified elevator — conservative)",
+      "days": 3,
+      "planned": false,
+      "soleAccess": false
     }
   ],
   "accessibilityBlackouts": [
     {
       "name": "Millbrae",
-      "hours": 73.07378972222222
+      "hours": 78.08206777777778
     },
     {
       "name": "Hayward",

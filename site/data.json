@@ -1,28 +1,12 @@
 {
-  "generatedAt": "2026-07-07T03:59:22.854Z",
+  "generatedAt": "2026-07-07T08:59:52.655Z",
   "totals": {
     "systems": 9,
     "activeUnits": 2179,
     "staticUnitsInTotal": 493,
-    "down": 128
+    "down": 91
   },
   "systems": [
-    {
-      "id": "mta-nyct",
-      "name": "NYC Subway",
-      "city": "New York",
-      "label": "NYC Subway (New York)",
-      "boardLabel": "NYC Subway",
-      "dataQuality": "good",
-      "inventoryComplete": true,
-      "fleetSource": "live",
-      "activeUnits": 408,
-      "down": 60,
-      "downUnplanned": 45,
-      "pctDown": 14.7,
-      "staticFleetAsOf": null,
-      "staticFleetSource": null
-    },
     {
       "id": "cta-chicago",
       "name": "CTA",
@@ -38,6 +22,22 @@
       "pctDown": 6.9,
       "staticFleetAsOf": "2026-07-05",
       "staticFleetSource": "https://www.transitchicago.com/elevatorescalatorupgrades/"
+    },
+    {
+      "id": "mta-nyct",
+      "name": "NYC Subway",
+      "city": "New York",
+      "label": "NYC Subway (New York)",
+      "boardLabel": "NYC Subway",
+      "dataQuality": "good",
+      "inventoryComplete": true,
+      "fleetSource": "live",
+      "activeUnits": 408,
+      "down": 25,
+      "downUnplanned": 10,
+      "pctDown": 6.1,
+      "staticFleetAsOf": null,
+      "staticFleetSource": null
     },
     {
       "id": "mta-lirr",
@@ -98,26 +98,10 @@
       "fleetSource": "live",
       "activeUnits": 569,
       "down": 21,
-      "downUnplanned": 19,
+      "downUnplanned": 21,
       "pctDown": 3.7,
       "staticFleetAsOf": null,
       "staticFleetSource": null
-    },
-    {
-      "id": "wmata-dc",
-      "name": "DC Metro",
-      "city": "Washington",
-      "label": "DC Metro (Washington)",
-      "boardLabel": "DC Metro",
-      "dataQuality": "fair",
-      "inventoryComplete": false,
-      "fleetSource": "static",
-      "activeUnits": 320,
-      "down": 10,
-      "downUnplanned": 7,
-      "pctDown": 3.1,
-      "staticFleetAsOf": "2026-07-04",
-      "staticFleetSource": "https://www.wmata.com/ride/elevators-escalators.html"
     },
     {
       "id": "bart-bay-area",
@@ -134,6 +118,22 @@
       "pctDown": 3,
       "staticFleetAsOf": null,
       "staticFleetSource": null
+    },
+    {
+      "id": "wmata-dc",
+      "name": "DC Metro",
+      "city": "Washington",
+      "label": "DC Metro (Washington)",
+      "boardLabel": "DC Metro",
+      "dataQuality": "fair",
+      "inventoryComplete": false,
+      "fleetSource": "static",
+      "activeUnits": 320,
+      "down": 8,
+      "downUnplanned": 5,
+      "pctDown": 2.5,
+      "staticFleetAsOf": "2026-07-04",
+      "staticFleetSource": "https://www.wmata.com/ride/elevators-escalators.html"
     },
     {
       "id": "tmb-barcelona",
@@ -188,10 +188,10 @@
     {
       "system": "NYC Subway",
       "station": "Jamaica-179 St",
-      "unit": "EL433",
+      "unit": "EL432",
       "soleAccess": true,
       "planned": true,
-      "days": 226
+      "days": 227
     },
     {
       "system": "NYC Subway",
@@ -199,23 +199,15 @@
       "unit": "EL431",
       "soleAccess": true,
       "planned": true,
-      "days": 226
+      "days": 227
     },
     {
       "system": "NYC Subway",
       "station": "Jamaica-179 St",
-      "unit": "EL432",
+      "unit": "EL433",
       "soleAccess": true,
       "planned": true,
-      "days": 226
-    },
-    {
-      "system": "NYC Subway",
-      "station": "Crown Hts-Utica Av",
-      "unit": "EL323",
-      "soleAccess": true,
-      "planned": true,
-      "days": 217
+      "days": 227
     },
     {
       "system": "NYC Subway",
@@ -227,11 +219,19 @@
     },
     {
       "system": "NYC Subway",
+      "station": "Crown Hts-Utica Av",
+      "unit": "EL323",
+      "soleAccess": true,
+      "planned": true,
+      "days": 217
+    },
+    {
+      "system": "NYC Subway",
       "station": "Prospect Park",
       "unit": "EL383",
       "soleAccess": true,
       "planned": true,
-      "days": 215
+      "days": 216
     }
   ]
 }

@@ -2,7 +2,7 @@
   "id": "wmata-dc",
   "name": "DC Metro",
   "label": "DC Metro (Washington)",
-  "generatedAt": "2026-07-07T03:59:22.854Z",
+  "generatedAt": "2026-07-07T08:59:52.655Z",
   "currentlyBroken": [
     {
       "station": "Glenmont",
@@ -14,7 +14,7 @@
     {
       "station": "Rockville",
       "unit": "Elevator between pedestrian bridge and mezzanine",
-      "days": 76,
+      "days": 77,
       "planned": true,
       "soleAccess": false
     },
@@ -54,51 +54,37 @@
       "soleAccess": false
     },
     {
-      "station": "Congress Heights",
-      "unit": "Elevator between mezzanine and platform",
-      "days": 0,
-      "planned": false,
-      "soleAccess": false
-    },
-    {
       "station": "Federal Triangle",
       "unit": "Elevator between street and mezzanine",
       "days": 0,
       "planned": true,
-      "soleAccess": false
-    },
-    {
-      "station": "Archives-Navy Memorial-Penn Quarter",
-      "unit": "Elevator between street entrance and mezzanine, on 7th Street, just north of Pennsylvania Ave",
-      "days": 0,
-      "planned": false,
       "soleAccess": false
     }
   ],
   "accessibilityBlackouts": [
     {
       "name": "Glenmont",
-      "hours": 2988.523015
+      "hours": 2993.5312930555556
     },
     {
       "name": "Rockville",
-      "hours": 1847.323015
+      "hours": 1852.3312930555555
     },
     {
       "name": "Columbia Heights",
-      "hours": 699.7396816666667
+      "hours": 704.7479597222223
     },
     {
       "name": "Huntington",
-      "hours": 154.98968166666666
+      "hours": 159.99795972222222
     },
     {
       "name": "Mt Vernon Sq 7th St-Convention Center",
-      "hours": 65.40634833333333
+      "hours": 70.41462638888889
     },
     {
       "name": "L'Enfant Plaza",
-      "hours": 35.684646944444445
+      "hours": 40.692925
     },
     {
       "name": "Gallery Pl-Chinatown",
@@ -109,28 +95,28 @@
       "hours": 20.1387775
     },
     {
-      "name": "Potomac Ave",
-      "hours": 15.223001388888889
+      "name": "North Bethesda",
+      "hours": 18.34795972222222
     },
     {
-      "name": "North Bethesda",
-      "hours": 13.339681666666667
+      "name": "Federal Triangle",
+      "hours": 17.5951775
     }
   ],
   "stepFreeStreak": [
     {
-      "name": "Downtown Largo",
+      "name": "Waterfront",
       "days": 2,
       "blackedOutNow": false
     },
     {
-      "name": "Waterfront",
-      "days": 1,
+      "name": "Metro Center",
+      "days": 2,
       "blackedOutNow": false
     },
     {
-      "name": "Metro Center",
-      "days": 1,
+      "name": "Downtown Largo",
+      "days": 2,
       "blackedOutNow": false
     },
     {
@@ -164,9 +150,9 @@
       "blackedOutNow": false
     },
     {
-      "name": "North Bethesda",
+      "name": "Capitol South",
       "days": 0,
-      "blackedOutNow": true
+      "blackedOutNow": false
     }
   ],
   "mostBrokenUnits": [
@@ -223,15 +209,21 @@
   ],
   "uptimeStreak": [
     {
-      "unit": "Elevator between street and mezzanine",
-      "station": "Downtown Largo",
+      "unit": "Elevator between street and mezzanine, north side of M Street, S.W.",
+      "station": "Waterfront",
       "days": 2,
       "downNow": false
     },
     {
-      "unit": "Elevator between street and mezzanine, north side of M Street, S.W.",
-      "station": "Waterfront",
-      "days": 1,
+      "unit": "Elevator between street and mezzanine",
+      "station": "Metro Center",
+      "days": 2,
+      "downNow": false
+    },
+    {
+      "unit": "Elevator between street and mezzanine",
+      "station": "Downtown Largo",
+      "days": 2,
       "downNow": false
     },
     {
@@ -243,12 +235,6 @@
     {
       "unit": "Elevator between mezzanine and platform",
       "station": "Glenmont",
-      "days": 1,
-      "downNow": false
-    },
-    {
-      "unit": "Elevator between street and mezzanine",
-      "station": "Metro Center",
       "days": 1,
       "downNow": false
     },
