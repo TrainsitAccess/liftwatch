@@ -189,6 +189,17 @@ parking lot). A station is accessible only if **every** segment is up.
 - **LIRR/MNR unit ids are station-qualified** (`JAM-761`, `2SM-1 STM`):
   the feed's `unitId` is only unique per station and collides across unit
   types (Jamaica has an elevator AND an escalator both numbered 761).
+- **LIRR/MNR planned/reason/return come from camsys alert enrichment**
+  (`.../camsys%2F{lirr,mnr}-alerts.json`): the eestatus feed has none of
+  these, so a currently-active alert mentioning an elevator is matched (by
+  railroad-scoped `stop_id` crosswalk + `agency_id` guard) to at most ONE
+  out-of-service elevator at the station — unique track intersection, else
+  the sole out-of-service one; 0 or ≥2 candidates ⇒ never guess. Additive
+  only (upgrades to planned, attaches reason + return; never downgrades).
+  Best-effort fetch — a failure degrades to no enrichment. The **subway
+  does NOT use this** — `nyct_ene` already has structured
+  `ismaintenanceoutage`/`reason`/`estimatedreturntoservice` per exact
+  equipment id, so fuzzy station-level matching would only add risk.
 
 ## Gotchas / deferred
 

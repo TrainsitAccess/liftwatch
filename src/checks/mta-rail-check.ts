@@ -1,14 +1,22 @@
 import { normalizeRail, LIRR_CONFIG, MNR_CONFIG } from "../adapters/mta-rail/index.js";
-import type { RailEeStatusResponse, RailInfrastructureResponse } from "../adapters/mta-rail/raw.js";
+import type {
+  CamsysAlertsResponse,
+  RailEeStatusResponse,
+  RailInfrastructureResponse,
+} from "../adapters/mta-rail/raw.js";
 
 // Offline asserting regression for the shared LIRR/Metro-North adapter
 // (src/adapters/mta-rail). Exercises the pure feed->NormalizedRead mapper
 // against a fixture distilled from the LIVE feeds (2026-07-06), locking in
 // every verified quirk: two status casings, per-station-only unitId
 // uniqueness (incl. elevator-vs-escalator collisions), MNR epoch timestamps
-// vs LIRR nulls, "long term outage" -> planned, railroad filtering, and the
-// "BOTH" combined Grand Central entry belonging to neither system.
+// vs LIRR nulls, "long term outage" -> planned, railroad filtering, the
+// "BOTH" combined Grand Central entry belonging to neither system, and the
+// camsys alert enrichment (unique-match attribution, never-guess ambiguity,
+// never-downgrade, cross-railroad stop-id collision guard).
 // Run: npm run check:rail   (no network)
+
+const NO_ALERTS: CamsysAlertsResponse = { entity: [] };
 
 const FIXED_AT = "2026-07-06T00:00:00.000Z";
 
@@ -79,8 +87,8 @@ const ok = (cond: boolean, msg: string): void => {
   console.log(`    ${cond ? "PASS" : "FAIL"}  ${msg}`);
 };
 
-const lirr = normalizeRail(eestatus, infrastructure, LIRR_CONFIG, FIXED_AT);
-const mnr = normalizeRail(eestatus, infrastructure, MNR_CONFIG, FIXED_AT);
+const lirr = normalizeRail(eestatus, infrastructure, NO_ALERTS, LIRR_CONFIG, FIXED_AT);
+const mnr = normalizeRail(eestatus, infrastructure, NO_ALERTS, MNR_CONFIG, FIXED_AT);
 
 console.log("\n  Railroad filtering (one shared feed, two systems):");
 ok(lirr.units.every((u) => ["JAM", "GCT"].includes(u.stationExternalId)), "LIRR units come only from LIRR stations");
@@ -127,6 +135,114 @@ const jam = lirr.stations!.find((s) => s.externalId === "JAM");
 ok(jam?.name === "Jamaica" && jam?.borough === "City Terminal Zone", "name + branch (in the borough slot) come from infrastructure");
 ok(jam?.gtfsStopId === "102", "numeric gtfs_stop_id is stringified");
 ok(lirr.units.every((u) => u.isAda && u.isActive && u.unitType === "elevator"), "units are elevator-type, accessible-path, active");
+
+// ---------------------------------------------------------------------------
+// camsys alert enrichment — a separate, purpose-built fixture (own eestatus +
+// infrastructure + alerts) so each attribution rule is exercised in isolation.
+// ---------------------------------------------------------------------------
+console.log("\n  camsys alert enrichment (unique-match, never-guess, never-downgrade):");
+
+const NOW_S = 1783000000; // sits inside the "active" windows below
+const NOW_MS = NOW_S * 1000;
+
+const enrichInfra: RailInfrastructureResponse = {
+  stations: [
+    { code: "2NR", name: "New Rochelle", railroad: "MNR", gtfs_stop_id: 108 },
+    { code: "MTZ", name: "Multi-Track", railroad: "MNR", gtfs_stop_id: 200 },
+    { code: "GEN", name: "Generic", railroad: "MNR", gtfs_stop_id: 300 },
+    { code: "FUT", name: "Future Work", railroad: "MNR", gtfs_stop_id: 400 },
+    // LIRR station sharing gtfs_stop_id 108 with MNR's New Rochelle — the
+    // real cross-railroad collision this guards against.
+    { code: "LIX", name: "LIRR Collision", railroad: "LIRR", gtfs_stop_id: 108 },
+  ],
+};
+
+const enrichEe: RailEeStatusResponse = {
+  "2NR": {
+    elevators: [
+      { location: "Elevator from the street to the Stamford/New Haven-bound platform (Track 4).", unitId: "206E", status: "long term outage", lastUpdated: 1782000000 },
+      { location: "Elevator from the New York-bound platform (Track 3) to the overpass.", unitId: "206W", status: "working", lastUpdated: 1782000001 },
+    ],
+  },
+  // Two out-of-service elevators BOTH serving Track 4 -> ambiguous; plus a
+  // Track 7 breakdown that must never match a Track 4 alert.
+  MTZ: {
+    elevators: [
+      { location: "Elevator A to the Track 4 platform.", unitId: "A", status: "not working", lastUpdated: null },
+      { location: "Elevator B to the Tracks 4 & 6 platform.", unitId: "B", status: "not working", lastUpdated: null },
+      { location: "Elevator C to the Track 7 platform.", unitId: "C", status: "not working", lastUpdated: null },
+    ],
+  },
+  // One out-of-service elevator, one working — a no-track (generic) alert.
+  GEN: {
+    elevators: [
+      { location: "Main street elevator.", unitId: "1", status: "not working", lastUpdated: null },
+      { location: "Platform elevator.", unitId: "2", status: "working", lastUpdated: null },
+    ],
+  },
+  FUT: { elevators: [{ location: "Elevator to the Track 2 platform.", unitId: "1", status: "not working", lastUpdated: null }] },
+  LIX: { elevators: [{ location: "Elevator to the Track 4 platform.", unitId: "1", status: "not working", lastUpdated: null }] },
+};
+
+const win = (s: number, e: number) => [{ start: s, end: e }];
+const en = (text: string) => ({ translation: [{ text, language: "en" }] });
+const enrichAlerts: CamsysAlertsResponse = {
+  entity: [
+    // New Rochelle: planned upgrade naming Tracks 2 & 4; only 206E (Track 4) is out.
+    { id: "lmm:planned_work:1", alert: {
+      active_period: win(NOW_S - 100_000, NOW_S + 100_000),
+      informed_entity: [{ agency_id: "MNR", stop_id: "108" }],
+      header_text: en("The elevator leading to the tracks 2 and 4 platform at New Rochelle is closed for upgrade work."),
+      description_text: en("Use the stairs; consider Larchmont station."),
+    } },
+    // Multi-Track: names Track 4, but TWO out-of-service elevators serve it -> skip.
+    { id: "lmm:planned_work:2", alert: {
+      active_period: win(NOW_S - 1000, NOW_S + 1000),
+      informed_entity: [{ agency_id: "MNR", stop_id: "200" }],
+      header_text: en("The elevator to the track 4 platform is closed for scheduled replacement."),
+    } },
+    // Generic: no track named, one out-of-service elevator at the station -> attribute.
+    { id: "lmm:planned_work:3", alert: {
+      active_period: win(NOW_S - 1000, NOW_S + 1000),
+      informed_entity: [{ agency_id: "MNR", stop_id: "300" }],
+      header_text: en("An elevator at this station is out of service for planned maintenance."),
+    } },
+    // Future window: must NOT apply even though the elevator is out now.
+    { id: "lmm:planned_work:4", alert: {
+      active_period: win(NOW_S + 50_000, NOW_S + 100_000),
+      informed_entity: [{ agency_id: "MNR", stop_id: "400" }],
+      header_text: en("The elevator to the track 2 platform will be closed for upgrade work."),
+    } },
+  ],
+};
+
+const mnrE = normalizeRail(enrichEe, enrichInfra, enrichAlerts, MNR_CONFIG, FIXED_AT, NOW_MS);
+const lirrE = normalizeRail(enrichEe, enrichInfra, enrichAlerts, LIRR_CONFIG, FIXED_AT, NOW_MS);
+const eout = (r: typeof mnrE, id: string) => r.outages.find((o) => o.unitExternalId === id);
+
+const nrE = eout(mnrE, "2NR-206E");
+ok(nrE?.reason === "The elevator leading to the tracks 2 and 4 platform at New Rochelle is closed for upgrade work.", "unique track match attaches the alert's human-readable reason");
+ok(nrE?.isPlanned === true, "matched planned alert keeps/sets isPlanned");
+ok(nrE?.estimatedReturn === new Date((NOW_S + 100_000) * 1000).toISOString(), `alert active_period end becomes estimatedReturn (got ${nrE?.estimatedReturn})`);
+ok(!mnrE.outages.some((o) => o.unitExternalId === "2NR-206W"), "the working New Rochelle elevator is never enriched (not out of service)");
+
+const mtzA = eout(mnrE, "MTZ-A");
+const mtzB = eout(mnrE, "MTZ-B");
+const mtzC = eout(mnrE, "MTZ-C");
+ok(mtzA?.isPlanned === false && mtzA?.reason === "not working", "two out-of-service elevators share the alert's track -> ambiguous -> A untouched");
+ok(mtzB?.isPlanned === false && mtzB?.reason === "not working", "  ...and B untouched (never guess between candidates)");
+ok(mtzC?.isPlanned === false && mtzC?.reason === "not working", "the Track 7 breakdown never matches a Track 4 alert");
+
+const gen1 = eout(mnrE, "GEN-1");
+ok(gen1?.isPlanned === true && /planned maintenance/.test(gen1?.reason ?? ""), "no-track alert attributes to the sole out-of-service elevator at the station");
+
+const futE = eout(mnrE, "FUT-1");
+ok(futE?.isPlanned === false && futE?.reason === "not working", "an alert whose active window is in the future is not applied");
+
+// Cross-railroad guard: the MNR New Rochelle alert (stop_id 108, agency MNR)
+// must NOT enrich the LIRR station that happens to share gtfs_stop_id 108.
+const lix = eout(lirrE, "LIX-1");
+ok(lix?.isPlanned === false && lix?.reason === "not working", "gtfs_stop_id collision: an MNR-agency alert never enriches a same-numbered LIRR station");
 
 console.log(`\n  ${failures === 0 ? "all checks passed" : `${failures} check(s) FAILED`}\n`);
 if (failures > 0) process.exitCode = 1;

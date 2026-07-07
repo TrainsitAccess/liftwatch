@@ -623,14 +623,47 @@ railroad. Facts below verified live 2026-07-06.
   railroad system. Grand Central deliberately gets NO subway-side railroad
   chain — EL606X is one of many entrances to terminals with their own
   tracked elevators, so a single-elevator chain would overclaim.
+- **camsys alert enrichment** (the eestatus feed has no planned flag, reason,
+  or return estimate — only a status string, so these are borrowed from the
+  camsys service-alert feeds `.../camsys%2F{lirr,mnr}-alerts.json`). A
+  currently-active alert that mentions an elevator and resolves (via its
+  `stop_id`) to a station on this railroad may **upgrade** an out-of-service
+  elevator's outage to planned and attach a human-readable reason + scheduled
+  return. Attribution is strictly conservative — the alert names a station and
+  describes the elevator only by track in free text, never a unit id, so:
+  - it only ever touches **currently out-of-service** elevators, and only
+    ever *upgrades* to planned (never downgrades — a false "planned" would
+    hide a real outage from the unplanned-ranked boards);
+  - it attributes to **exactly one** out-of-service elevator (unique track
+    intersection, or the sole out-of-service elevator when the alert names no
+    track) — 0 or ≥2 candidates ⇒ ambiguous ⇒ skip, the same never-guess rule
+    as BART / `attributeOutage`. **A track served by multiple elevators
+    cannot be pinned** — that's the ambiguous case, by design;
+  - the `stop_id` crosswalk is **railroad-scoped** (gtfs_stop_id collides
+    across LIRR/MNR — 64 cross-railroad collisions), with a second guard on
+    the alert's `agency_id` (`"LI"` for the LIRR, `"MNR"`);
+  - the alerts fetch is best-effort: a failure degrades to no enrichment,
+    never fails the poll (the eestatus outages are complete on their own).
+  Residual limitation documented in code: if the alert's true target is
+  currently *working* while a different track-sharing elevator is out for an
+  unrelated reason, the unique-match could attribute to the wrong one — rare
+  (an active closure usually means the target is out) and only at a station
+  with a live planned-elevator alert.
+- **Not applicable to the subway**: the NYCT `nyct_ene` outage feed already
+  carries, per exact equipment id, a structured `ismaintenanceoutage` flag +
+  `reason` + `estimatedreturntoservice` (verified: 35/35 current outages have
+  all three) — strictly better than deriving them from station-level prose.
+  Running this fuzzy enrichment on the subway would add nothing and reintroduce
+  the over-attribution risk it's built to avoid.
 - **Regression coverage**: `npm run check:rail`
   (`src/checks/mta-rail-check.ts`) exercises the pure mapper offline
   against a fixture distilled from the live feeds — dual status casings,
   id collisions/spaces, epoch-vs-null timestamps, railroad filtering, the
-  `_GC` exclusion, and the curated-redundancy wiring (incl. the Stamford
-  walk-through outcomes).
-- **Deferred**: enriching planned/unplanned + human-readable periods from
-  the camsys alert feeds; modeling the remaining North End Access units at
+  `_GC` exclusion, the curated-redundancy wiring (incl. the Stamford
+  walk-through outcomes), and all ten camsys-enrichment rules (unique-match
+  attribution, ambiguity skip, no-track fallback, future-window rejection,
+  never-downgrade, cross-railroad collision guard).
+- **Deferred**: modeling the remaining North End Access units at
   Grand Central (NE-1/2/3/5/6 — passage topology unverified); Yankees-E
   153 St's PE4 overpass elevator (level relationship to the mezzanine
   unverified, conservatively omitted from chains).
