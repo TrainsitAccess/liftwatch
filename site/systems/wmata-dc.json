@@ -3,13 +3,13 @@
   "name": "DC Metro",
   "label": "DC Metro (Washington)",
   "timezone": "America/New_York",
-  "generatedAt": "2026-07-07T09:19:37.076Z",
+  "generatedAt": "2026-07-07T18:08:14.947Z",
   "currentlyBroken": [
     {
       "station": "Glenmont",
       "unitId": "B11X05",
       "unit": "Garage elevator",
-      "days": 124,
+      "days": 125,
       "since": "2026-03-04T15:28:00+00:00",
       "planned": true,
       "reason": "Modernization",
@@ -54,7 +54,7 @@
       "station": "Huntington",
       "unitId": "C15S03",
       "unit": "Garage #2 elevator",
-      "days": 6,
+      "days": 7,
       "since": "2026-06-30T17:00:00+00:00",
       "planned": false,
       "reason": "Inspection Repair",
@@ -69,7 +69,7 @@
       "station": "Mt Vernon Sq 7th St-Convention Center",
       "unitId": "E01X04",
       "unit": "Elevator between mezzanine and platform",
-      "days": 2,
+      "days": 3,
       "since": "2026-07-04T10:35:00+00:00",
       "planned": false,
       "reason": "Minor Repair",
@@ -99,7 +99,7 @@
       "station": "North Bethesda",
       "unitId": "A12X03",
       "unit": "Garage elevator",
-      "days": 0,
+      "days": 1,
       "since": "2026-07-06T14:39:00+00:00",
       "planned": false,
       "reason": "Minor Repair",
@@ -111,14 +111,29 @@
       "chainNotes": []
     },
     {
-      "station": "Federal Triangle",
-      "unitId": "D01X01",
+      "station": "Mt Vernon Sq 7th St-Convention Center",
+      "unitId": "E01X02",
       "unit": "Elevator between street and mezzanine",
       "days": 0,
-      "since": "2026-07-06T20:47:00+00:00",
-      "planned": true,
-      "reason": "Safety Inspection",
-      "estimatedReturn": "2026-07-09T03:59:59+00:00",
+      "since": "2026-07-07T11:10:00+00:00",
+      "planned": false,
+      "reason": "Power Outage",
+      "estimatedReturn": "2026-07-10T03:59:59+00:00",
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
+    },
+    {
+      "station": "Mt Vernon Sq 7th St-Convention Center",
+      "unitId": "E01X01",
+      "unit": "Elevator between street and mezzanine",
+      "days": 0,
+      "since": "2026-07-07T11:10:00+00:00",
+      "planned": false,
+      "reason": "Power Outage",
+      "estimatedReturn": "2026-07-10T03:59:59+00:00",
       "soleAccess": false,
       "severs": [],
       "backups": [],
@@ -126,6 +141,10 @@
       "chainNotes": []
     }
   ],
+  "offline": {
+    "current": 0,
+    "log": []
+  },
   "stationAccess": {
     "rows": [],
     "chainsModeled": 0
@@ -134,43 +153,43 @@
   "accessibilityBlackouts": [
     {
       "name": "Glenmont",
-      "hours": 2993.860298888889
+      "hours": 3002.670818611111
     },
     {
       "name": "Rockville",
-      "hours": 1852.660298888889
+      "hours": 1861.470818611111
     },
     {
       "name": "Columbia Heights",
-      "hours": 705.0769655555556
+      "hours": 713.8874852777777
     },
     {
       "name": "Huntington",
-      "hours": 160.32696555555555
+      "hours": 169.13748527777778
     },
     {
       "name": "Mt Vernon Sq 7th St-Convention Center",
-      "hours": 70.74363222222222
+      "hours": 79.55415194444444
     },
     {
       "name": "L'Enfant Plaza",
-      "hours": 41.021930833333336
+      "hours": 49.83245055555555
+    },
+    {
+      "name": "North Bethesda",
+      "hours": 27.48748527777778
     },
     {
       "name": "Gallery Pl-Chinatown",
       "hours": 26.313884444444444
     },
     {
+      "name": "Federal Triangle",
+      "hours": 25.57060027777778
+    },
+    {
       "name": "Bethesda",
       "hours": 20.1387775
-    },
-    {
-      "name": "North Bethesda",
-      "hours": 18.676965555555554
-    },
-    {
-      "name": "Federal Triangle",
-      "hours": 17.924183333333332
     }
   ],
   "stepFreeStreak": [
@@ -191,38 +210,38 @@
     },
     {
       "name": "Bethesda",
-      "days": 0,
+      "days": 1,
       "blackedOutNow": false
     },
     {
       "name": "Gallery Pl-Chinatown",
-      "days": 0,
+      "days": 1,
       "blackedOutNow": false
+    },
+    {
+      "name": "Potomac Ave",
+      "days": 1,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Medical Center",
+      "days": 1,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Ballston-MU",
+      "days": 1,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Mt Vernon Sq 7th St-Convention Center",
+      "days": 0,
+      "blackedOutNow": true
     },
     {
       "name": "Glenmont",
       "days": 0,
       "blackedOutNow": true
-    },
-    {
-      "name": "L'Enfant Plaza",
-      "days": 0,
-      "blackedOutNow": true
-    },
-    {
-      "name": "Potomac Ave",
-      "days": 0,
-      "blackedOutNow": false
-    },
-    {
-      "name": "Medical Center",
-      "days": 0,
-      "blackedOutNow": false
-    },
-    {
-      "name": "Capitol South",
-      "days": 0,
-      "blackedOutNow": false
     }
   ],
   "mostBrokenUnits": [
@@ -240,6 +259,16 @@
       "unit": "Elevator between street and mezzanine to Vienna",
       "station": "Ballston-MU",
       "count": 2
+    },
+    {
+      "unit": "Elevator between street and mezzanine",
+      "station": "Mt Vernon Sq 7th St-Convention Center",
+      "count": 1
+    },
+    {
+      "unit": "Elevator between street and mezzanine",
+      "station": "Mt Vernon Sq 7th St-Convention Center",
+      "count": 1
     },
     {
       "unit": "Elevator between street and mezzanine, corner of Wisconsin Ave. and Montgomery Lane",
@@ -264,16 +293,6 @@
     {
       "unit": "Elevator between mezzanine and platform",
       "station": "Glenmont",
-      "count": 1
-    },
-    {
-      "unit": "Elevator between mezzanine and platform",
-      "station": "Potomac Ave",
-      "count": 1
-    },
-    {
-      "unit": "Elevator between street and mezzanine",
-      "station": "Medical Center",
       "count": 1
     }
   ],
@@ -297,6 +316,18 @@
       "downNow": false
     },
     {
+      "unit": "Elevator between street and mezzanine, corner of Wisconsin Ave. and Montgomery Lane",
+      "station": "Bethesda",
+      "days": 1,
+      "downNow": false
+    },
+    {
+      "unit": "Elevator between platform for Green/Yellow lines and platform to Shady Grove",
+      "station": "Gallery Pl-Chinatown",
+      "days": 1,
+      "downNow": false
+    },
+    {
       "unit": "Elevator between street and mezzanine, east side of station at bus bay/Kiss & Ride",
       "station": "Glenmont",
       "days": 1,
@@ -309,33 +340,21 @@
       "downNow": false
     },
     {
-      "unit": "Elevator between street and mezzanine, corner of Wisconsin Ave. and Montgomery Lane",
-      "station": "Bethesda",
-      "days": 0,
-      "downNow": false
-    },
-    {
-      "unit": "Elevator between platform for Green/Yellow lines and platform to Shady Grove",
-      "station": "Gallery Pl-Chinatown",
-      "days": 0,
-      "downNow": false
-    },
-    {
-      "unit": "Elevator between street and mezzanine",
-      "station": "L'Enfant Plaza",
-      "days": 0,
-      "downNow": true
-    },
-    {
       "unit": "Elevator between mezzanine and platform",
       "station": "Potomac Ave",
-      "days": 0,
+      "days": 1,
       "downNow": false
     },
     {
       "unit": "Elevator between street and mezzanine",
       "station": "Medical Center",
-      "days": 0,
+      "days": 1,
+      "downNow": false
+    },
+    {
+      "unit": "Elevator between street and mezzanine to Vienna",
+      "station": "Ballston-MU",
+      "days": 1,
       "downNow": false
     }
   ],

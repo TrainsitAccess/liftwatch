@@ -201,6 +201,14 @@ parking lot). A station is accessible only if **every** segment is up.
   `ismaintenanceoutage`/`reason`/`estimatedreturntoservice` per exact
   equipment id, so fuzzy station-level matching would only add risk.
 
+- **Offline tracking** (2026-07-07): a tracked unit missing from an
+  inventory-complete feed past ~2 polls opens an `offline_events` row (status
+  UNKNOWN — "you can't know before you go"); closes on reappearance. Site
+  shows an OFFLINE column, a per-system offline board + restored log, and
+  UNKNOWN on the access board. Requires the `offline_events` table (a later
+  schema addition — apply `db/schema.sql` in the Supabase SQL editor); ingest
+  and build-data warn + skip until it exists.
+
 ## Gotchas / deferred
 
 - **BART is station-level**: the `cmd=elev` advisory names a station, usually not

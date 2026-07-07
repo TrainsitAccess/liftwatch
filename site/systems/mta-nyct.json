@@ -3,17 +3,17 @@
   "name": "NYC Subway",
   "label": "NYC Subway (New York)",
   "timezone": "America/New_York",
-  "generatedAt": "2026-07-07T09:19:37.076Z",
+  "generatedAt": "2026-07-07T18:08:14.947Z",
   "currentlyBroken": [
     {
       "station": "42St/Port Authority-Bus Terminal (A/C/E)",
       "unitId": "EL290X",
       "unit": "Landing to mezzanine",
-      "days": 616,
+      "days": 617,
       "since": "2024-10-28T10:26:00+00:00",
       "planned": false,
       "reason": "Repair",
-      "estimatedReturn": "2026-07-08T11:00:00+00:00",
+      "estimatedReturn": "2026-07-09T11:00:00+00:00",
       "soleAccess": false,
       "severs": [],
       "backups": [
@@ -25,9 +25,9 @@
     },
     {
       "station": "161 St-Yankee Stadium (4)",
-      "unitId": "EL132",
-      "unit": "B/D mezzanine to 4 train",
-      "days": 607,
+      "unitId": "EL133",
+      "unit": "Mezzanine to Manhattan-bound 4",
+      "days": 608,
       "since": "2024-11-06T14:00:00+00:00",
       "planned": true,
       "reason": "Capital Replacement",
@@ -45,9 +45,9 @@
     },
     {
       "station": "161 St-Yankee Stadium (4)",
-      "unitId": "EL133",
-      "unit": "Mezzanine to Manhattan-bound 4",
-      "days": 607,
+      "unitId": "EL132",
+      "unit": "B/D mezzanine to 4 train",
+      "days": 608,
       "since": "2024-11-06T14:00:00+00:00",
       "planned": true,
       "reason": "Capital Replacement",
@@ -65,8 +65,8 @@
     },
     {
       "station": "Jamaica-179 St",
-      "unitId": "EL432",
-      "unit": "Mezzanine to Manhattan-bound platform",
+      "unitId": "EL431",
+      "unit": "Street to mezzanine",
       "days": 227,
       "since": "2025-11-22T04:40:00+00:00",
       "planned": true,
@@ -81,8 +81,8 @@
     },
     {
       "station": "Jamaica-179 St",
-      "unitId": "EL431",
-      "unit": "Street to mezzanine",
+      "unitId": "EL432",
+      "unit": "Mezzanine to Manhattan-bound platform",
       "days": 227,
       "since": "2025-11-22T04:40:00+00:00",
       "planned": true,
@@ -113,10 +113,10 @@
     },
     {
       "station": "Crown Hts-Utica Av",
-      "unitId": "EL322",
-      "unit": "Street to mezzanine",
+      "unitId": "EL323",
+      "unit": "Mezzanine to platforms",
       "days": 217,
-      "since": "2025-12-02T03:50:00+00:00",
+      "since": "2025-12-02T03:14:00+00:00",
       "planned": true,
       "reason": "Capital Replacement",
       "estimatedReturn": "2026-09-01T03:59:00+00:00",
@@ -129,10 +129,10 @@
     },
     {
       "station": "Crown Hts-Utica Av",
-      "unitId": "EL323",
-      "unit": "Mezzanine to platforms",
+      "unitId": "EL322",
+      "unit": "Street to mezzanine",
       "days": 217,
-      "since": "2025-12-02T03:14:00+00:00",
+      "since": "2025-12-02T03:50:00+00:00",
       "planned": true,
       "reason": "Capital Replacement",
       "estimatedReturn": "2026-09-01T03:59:00+00:00",
@@ -193,10 +193,10 @@
     },
     {
       "station": "72 St",
-      "unitId": "EL239",
-      "unit": "Street to uptown platform",
+      "unitId": "EL240",
+      "unit": "Street to downtown platform",
       "days": 201,
-      "since": "2025-12-18T07:00:00+00:00",
+      "since": "2025-12-18T03:45:00+00:00",
       "planned": true,
       "reason": "Capital Replacement",
       "estimatedReturn": "2026-08-01T03:59:00+00:00",
@@ -209,10 +209,10 @@
     },
     {
       "station": "72 St",
-      "unitId": "EL240",
-      "unit": "Street to downtown platform",
+      "unitId": "EL239",
+      "unit": "Street to uptown platform",
       "days": 201,
-      "since": "2025-12-18T03:45:00+00:00",
+      "since": "2025-12-18T07:00:00+00:00",
       "planned": true,
       "reason": "Capital Replacement",
       "estimatedReturn": "2026-08-01T03:59:00+00:00",
@@ -241,9 +241,27 @@
     },
     {
       "station": "Atlantic Av-Barclays Ctr (B/Q)",
+      "unitId": "EL307",
+      "unit": "Mezzanine to B/Q platform",
+      "days": 94,
+      "since": "2026-04-04T11:30:00+00:00",
+      "planned": true,
+      "reason": "Capital Replacement",
+      "estimatedReturn": "2026-10-01T03:59:00+00:00",
+      "soleAccess": true,
+      "severs": [
+        "Atlantic Av-Barclays Ctr (B/Q)"
+      ],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": [],
+      "note": "This elevator is likely being replaced."
+    },
+    {
+      "station": "Atlantic Av-Barclays Ctr (B/Q)",
       "unitId": "EL306",
       "unit": "Mezzanine to Manhattan-bound 2/3",
-      "days": 93,
+      "days": 94,
       "since": "2026-04-04T12:30:00+00:00",
       "planned": true,
       "reason": "Capital Replacement",
@@ -260,28 +278,10 @@
       "note": "This elevator is likely being replaced."
     },
     {
-      "station": "Atlantic Av-Barclays Ctr (B/Q)",
-      "unitId": "EL307",
-      "unit": "Mezzanine to B/Q platform",
-      "days": 93,
-      "since": "2026-04-04T11:30:00+00:00",
-      "planned": true,
-      "reason": "Capital Replacement",
-      "estimatedReturn": "2026-10-01T03:59:00+00:00",
-      "soleAccess": true,
-      "severs": [
-        "Atlantic Av-Barclays Ctr (B/Q)"
-      ],
-      "backups": [],
-      "rampAlternative": false,
-      "chainNotes": [],
-      "note": "This elevator is likely being replaced."
-    },
-    {
       "station": "51 St (6)",
       "unitId": "EL202",
       "unit": "Downtown 6 platform to underpass to E/F service in both directions.",
-      "days": 71,
+      "days": 72,
       "since": "2026-04-26T09:46:00+00:00",
       "planned": false,
       "reason": "Repair",
@@ -302,7 +302,7 @@
       "since": "2026-06-24T18:15:00+00:00",
       "planned": false,
       "reason": "Repair",
-      "estimatedReturn": "2026-07-08T19:00:00+00:00",
+      "estimatedReturn": "2026-07-09T19:00:00+00:00",
       "soleAccess": false,
       "severs": [],
       "backups": [
@@ -317,10 +317,10 @@
     },
     {
       "station": "161 St-Yankee Stadium (B/D)",
-      "unitId": "EL134",
-      "unit": "Mezzanine to Manhattan-bound B/D",
-      "days": 7,
-      "since": "2026-06-29T20:36:00+00:00",
+      "unitId": "EL135",
+      "unit": "Mezzanine to Bronx-bound B/D",
+      "days": 8,
+      "since": "2026-06-29T13:57:00+00:00",
       "planned": false,
       "reason": "Con Edison Power Issue",
       "estimatedReturn": "2026-07-14T03:00:00+00:00",
@@ -336,10 +336,10 @@
     },
     {
       "station": "161 St-Yankee Stadium (B/D)",
-      "unitId": "EL135",
-      "unit": "Mezzanine to Bronx-bound B/D",
+      "unitId": "EL134",
+      "unit": "Mezzanine to Manhattan-bound B/D",
       "days": 7,
-      "since": "2026-06-29T13:57:00+00:00",
+      "since": "2026-06-29T20:36:00+00:00",
       "planned": false,
       "reason": "Con Edison Power Issue",
       "estimatedReturn": "2026-07-14T03:00:00+00:00",
@@ -387,26 +387,11 @@
       "station": "42 St-Bryant Pk",
       "unitId": "EL295X",
       "unit": "Street to mezzanine",
-      "days": 0,
+      "days": 1,
       "since": "2026-07-06T14:47:00+00:00",
       "planned": false,
       "reason": "Repair",
-      "estimatedReturn": "2026-07-08T15:00:00+00:00",
-      "soleAccess": true,
-      "severs": [],
-      "backups": [],
-      "rampAlternative": false,
-      "chainNotes": []
-    },
-    {
-      "station": "Queensboro Plaza",
-      "unitId": "EL479",
-      "unit": "Mezzanine to upper and lower platforms",
-      "days": 0,
-      "since": "2026-07-07T07:45:00+00:00",
-      "planned": false,
-      "reason": "Under Investigation",
-      "estimatedReturn": "2026-07-07T16:00:00+00:00",
+      "estimatedReturn": "2026-07-09T15:00:00+00:00",
       "soleAccess": true,
       "severs": [],
       "backups": [],
@@ -427,27 +412,72 @@
       "backups": [],
       "rampAlternative": false,
       "chainNotes": []
+    },
+    {
+      "station": "21 St-Queensbridge",
+      "unitId": "EL405",
+      "unit": "21 St & 41 Av (NE corner) to mezzanine for service in both directions.",
+      "days": 0,
+      "since": "2026-07-07T15:52:00+00:00",
+      "planned": false,
+      "reason": "Repair",
+      "estimatedReturn": "2026-07-08T00:00:00+00:00",
+      "soleAccess": true,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
+    },
+    {
+      "station": "181 St",
+      "unitId": "EL117",
+      "unit": "Upper to lower mezzanine",
+      "days": 0,
+      "since": "2026-07-07T16:33:00+00:00",
+      "planned": false,
+      "reason": "Under Investigation",
+      "estimatedReturn": "2026-07-08T01:00:00+00:00",
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     }
   ],
+  "offline": {
+    "current": 0,
+    "log": []
+  },
   "stationAccess": {
     "rows": [
       {
         "name": "161 St-Yankee Stadium (4)",
         "state": "no_access",
         "downUnits": [
-          "EL132",
-          "EL133"
+          "EL133",
+          "EL132"
         ],
+        "offlineUnits": [],
         "note": "EL132/EL133 gate the 4 platform by direction and are NOT redundant with each other (EL132 = Bronx-bound, EL133 = Manhattan-bound; verified directly — the feed's text for EL132, 'B/D mezzanine to 4 train', omits the direction). EL131 (street to mezzanine) is a shared prerequisite with the (B/D) chain. EL132/EL133 are mid capital-replacement (expected summer 2026), marked inactive in MTA's feed despite the real ongoing outage."
       },
       {
         "name": "161 St-Yankee Stadium (B/D)",
         "state": "no_access",
         "downUnits": [
-          "EL134",
-          "EL135"
+          "EL135",
+          "EL134"
         ],
+        "offlineUnits": [],
         "note": "EL134/EL135 gate the B/D platform by direction and are NOT redundant with each other (EL134 = Manhattan-bound, EL135 = Bronx-bound). EL131 (street to mezzanine) is a shared prerequisite with the (4) chain — if it fails, both chains go down together."
+      },
+      {
+        "name": "21 St-Queensbridge",
+        "state": "no_access",
+        "downUnits": [
+          "EL405"
+        ],
+        "offlineUnits": [],
+        "note": null
       },
       {
         "name": "3 Av-149 St",
@@ -455,6 +485,7 @@
         "downUnits": [
           "EL130"
         ],
+        "offlineUnits": [],
         "note": null
       },
       {
@@ -463,6 +494,7 @@
         "downUnits": [
           "EL129"
         ],
+        "offlineUnits": [],
         "note": null
       },
       {
@@ -471,6 +503,7 @@
         "downUnits": [
           "EL295X"
         ],
+        "offlineUnits": [],
         "note": null
       },
       {
@@ -479,14 +512,7 @@
         "downUnits": [
           "EL202"
         ],
-        "note": null
-      },
-      {
-        "name": "72 St",
-        "state": "no_access",
-        "downUnits": [
-          "EL239"
-        ],
+        "offlineUnits": [],
         "note": null
       },
       {
@@ -495,15 +521,26 @@
         "downUnits": [
           "EL240"
         ],
+        "offlineUnits": [],
+        "note": null
+      },
+      {
+        "name": "72 St",
+        "state": "no_access",
+        "downUnits": [
+          "EL239"
+        ],
+        "offlineUnits": [],
         "note": null
       },
       {
         "name": "Atlantic Av-Barclays Ctr (B/Q)",
         "state": "no_access",
         "downUnits": [
-          "EL306",
-          "EL307"
+          "EL307",
+          "EL306"
         ],
+        "offlineUnits": [],
         "note": null
       },
       {
@@ -512,14 +549,7 @@
         "downUnits": [
           "EL701"
         ],
-        "note": null
-      },
-      {
-        "name": "Crown Hts-Utica Av",
-        "state": "no_access",
-        "downUnits": [
-          "EL322"
-        ],
+        "offlineUnits": [],
         "note": null
       },
       {
@@ -528,6 +558,16 @@
         "downUnits": [
           "EL323"
         ],
+        "offlineUnits": [],
+        "note": null
+      },
+      {
+        "name": "Crown Hts-Utica Av",
+        "state": "no_access",
+        "downUnits": [
+          "EL322"
+        ],
+        "offlineUnits": [],
         "note": null
       },
       {
@@ -536,14 +576,7 @@
         "downUnits": [
           "EL414"
         ],
-        "note": null
-      },
-      {
-        "name": "Jamaica-179 St",
-        "state": "no_access",
-        "downUnits": [
-          "EL432"
-        ],
+        "offlineUnits": [],
         "note": null
       },
       {
@@ -552,6 +585,16 @@
         "downUnits": [
           "EL431"
         ],
+        "offlineUnits": [],
+        "note": null
+      },
+      {
+        "name": "Jamaica-179 St",
+        "state": "no_access",
+        "downUnits": [
+          "EL432"
+        ],
+        "offlineUnits": [],
         "note": null
       },
       {
@@ -560,6 +603,7 @@
         "downUnits": [
           "EL433"
         ],
+        "offlineUnits": [],
         "note": null
       },
       {
@@ -568,6 +612,7 @@
         "downUnits": [
           "EL383"
         ],
+        "offlineUnits": [],
         "note": null
       },
       {
@@ -576,14 +621,7 @@
         "downUnits": [
           "EL382"
         ],
-        "note": null
-      },
-      {
-        "name": "Queensboro Plaza",
-        "state": "no_access",
-        "downUnits": [
-          "EL479"
-        ],
+        "offlineUnits": [],
         "note": null
       },
       {
@@ -592,6 +630,7 @@
         "downUnits": [
           "EL290X"
         ],
+        "offlineUnits": [],
         "note": null
       },
       {
@@ -600,6 +639,7 @@
         "downUnits": [
           "EL18X"
         ],
+        "offlineUnits": [],
         "note": null
       }
     ],
@@ -607,17 +647,10 @@
   },
   "scheduledWork": [
     {
-      "unitId": "EL785",
-      "station": "Grand St",
-      "starts": "2026-07-07T02:00:00+00:00",
-      "until": "2026-07-07T10:00:00+00:00",
-      "reason": "Maintenance"
-    },
-    {
-      "unitId": "EL786",
-      "station": "Grand St",
-      "starts": "2026-07-07T02:00:00+00:00",
-      "until": "2026-07-07T10:00:00+00:00",
+      "unitId": "EL517",
+      "station": "181 St",
+      "starts": "2026-07-08T02:00:00+00:00",
+      "until": "2026-07-08T10:00:00+00:00",
       "reason": "Maintenance"
     },
     {
@@ -628,8 +661,15 @@
       "reason": "Maintenance"
     },
     {
-      "unitId": "EL517",
-      "station": "181 St",
+      "unitId": "EL786",
+      "station": "Grand St",
+      "starts": "2026-07-08T02:00:00+00:00",
+      "until": "2026-07-08T10:00:00+00:00",
+      "reason": "Maintenance"
+    },
+    {
+      "unitId": "EL785",
+      "station": "Grand St",
       "starts": "2026-07-08T02:00:00+00:00",
       "until": "2026-07-08T10:00:00+00:00",
       "reason": "Maintenance"
@@ -855,43 +895,43 @@
   "accessibilityBlackouts": [
     {
       "name": "161 St-Yankee Stadium (4)",
-      "hours": 14587.326965555556
+      "hours": 14596.137485277777
     },
     {
       "name": "Jamaica-179 St",
-      "hours": 5452.660298888889
+      "hours": 5461.470818611111
     },
     {
       "name": "Crown Hts-Utica Av",
-      "hours": 5214.093632222222
+      "hours": 5222.9041519444445
     },
     {
       "name": "Prospect Park",
-      "hours": 5189.193632222222
+      "hours": 5198.004151944445
     },
     {
       "name": "Coney Island-Stillwell Av",
-      "hours": 5045.176965555555
+      "hours": 5053.9874852777775
     },
     {
       "name": "72 St",
-      "hours": 4829.576965555556
+      "hours": 4838.387485277778
     },
     {
       "name": "Flushing-Main St",
-      "hours": 3700.860298888889
+      "hours": 3709.670818611111
     },
     {
       "name": "Atlantic Av-Barclays Ctr (B/Q)",
-      "hours": 2253.8269655555555
+      "hours": 2262.6374852777776
     },
     {
       "name": "51 St (6)",
-      "hours": 1727.5602988888888
+      "hours": 1736.3708186111112
     },
     {
       "name": "161 St-Yankee Stadium (B/D)",
-      "hours": 187.37696555555556
+      "hours": 196.18748527777777
     }
   ],
   "stepFreeStreak": [
@@ -948,6 +988,21 @@
   ],
   "mostBrokenUnits": [
     {
+      "unit": "Upper to lower mezzanine",
+      "station": "181 St",
+      "count": 3
+    },
+    {
+      "unit": "63 St & Lexington Av mezzanine to platforms for service in both directions.",
+      "station": "Lexington Av/63 St",
+      "count": 2
+    },
+    {
+      "unit": "Upper to lower mezzanine",
+      "station": "181 St",
+      "count": 2
+    },
+    {
       "unit": "Street to mezzanine",
       "station": "125 St",
       "count": 2
@@ -958,13 +1013,8 @@
       "count": 2
     },
     {
-      "unit": "Upper to lower mezzanine",
-      "station": "181 St",
-      "count": 2
-    },
-    {
-      "unit": "Upper to lower mezzanine",
-      "station": "181 St",
+      "unit": "Mezzanine to 1 train overpass",
+      "station": "168 St",
       "count": 2
     },
     {
@@ -986,76 +1036,66 @@
       "unit": "Street to mezzanine",
       "station": "Astoria Blvd",
       "count": 2
-    },
-    {
-      "unit": "Lower mezzanine to Brooklyn-bound platform",
-      "station": "Bowling Green",
-      "count": 2
-    },
-    {
-      "unit": "Flushing-bound 7 platform to mezzanine to EFG transfer.",
-      "station": "Court Sq",
-      "count": 2
     }
   ],
   "uptimeStreak": [
     {
-      "unit": "Street to uptown platform",
-      "station": "23 St",
+      "unit": "Mezzanine level (front) to Southbound N/Q/R/W Train Platform level (Rear)",
+      "station": "14 St-Union Sq (N/Q/R/W)",
       "days": 3,
       "downNow": false
     },
     {
-      "unit": "Mezzanine to overpass",
-      "station": "181 St",
+      "unit": "Mezzanine to uptown N/Q/R/W",
+      "station": "14 St-Union Sq (N/Q/R/W)",
       "days": 3,
       "downNow": false
     },
     {
-      "unit": "Mezzanine to uptown A/C",
-      "station": "168 St",
+      "unit": "14 St and 4th Av (NE corner) to mezzanine for L/N/Q/R/W in both directions.",
+      "station": "14 St-Union Sq",
+      "days": 3,
+      "downNow": false
+    },
+    {
+      "unit": "Mezzanine to LIRR to Penn Station.",
+      "station": "61 St-Woodside",
       "days": 3,
       "downNow": false
     },
     {
       "unit": "Street to mezzanine",
-      "station": "42 St-Bryant Pk",
+      "station": "Bedford Pk Blvd",
       "days": 3,
       "downNow": false
     },
     {
-      "unit": "Mezzanine to Brooklyn-bound J/Z",
-      "station": "Brooklyn Bridge-City Hall (J/Z)",
-      "days": 3,
-      "downNow": false
-    },
-    {
-      "unit": "Mezzanine to Brooklyn-bound platform",
-      "station": "DeKalb Av",
+      "unit": "Mezzanine to Manhattan-bound 4/5 platform.",
+      "station": "Borough Hall",
       "days": 3,
       "downNow": false
     },
     {
       "unit": "Mezzanine to Manhattan-bound platform",
-      "station": "DeKalb Av",
+      "station": "Howard Beach-JFK Airport",
+      "days": 3,
+      "downNow": false
+    },
+    {
+      "unit": "Street to platform for southbound service",
+      "station": "Hoyt St",
       "days": 3,
       "downNow": false
     },
     {
       "unit": "Street to mezzanine",
-      "station": "DeKalb Av",
+      "station": "Hoyt-Schermerhorn",
       "days": 3,
       "downNow": false
     },
     {
-      "unit": "street to uptown",
-      "station": "Dyckman St",
-      "days": 3,
-      "downNow": false
-    },
-    {
-      "unit": "Mezzanine to Queens-bound platform",
-      "station": "Flushing Av",
+      "unit": "Mezzanine to Manhattan-bound platform",
+      "station": "Hunts Point Av",
       "days": 3,
       "downNow": false
     }
@@ -1070,15 +1110,7 @@
       "count": 6
     },
     {
-      "name": "Brooklyn Bridge-City Hall",
-      "count": 5
-    },
-    {
       "name": "161 St-Yankee Stadium",
-      "count": 5
-    },
-    {
-      "name": "34 St-Herald Sq",
       "count": 5
     },
     {
@@ -1086,11 +1118,11 @@
       "count": 5
     },
     {
-      "name": "Court Sq",
+      "name": "Jay St-Metro Tech",
       "count": 5
     },
     {
-      "name": "Jay St-Metro Tech",
+      "name": "34 St-Herald Sq",
       "count": 5
     },
     {
@@ -1098,11 +1130,23 @@
       "count": 5
     },
     {
-      "name": "14 St",
-      "count": 4
+      "name": "Brooklyn Bridge-City Hall",
+      "count": 5
+    },
+    {
+      "name": "Court Sq",
+      "count": 5
     },
     {
       "name": "14 St-Union Sq",
+      "count": 4
+    },
+    {
+      "name": "74 St-Broadway",
+      "count": 4
+    },
+    {
+      "name": "Atlantic Av-Barclays Ctr",
       "count": 4
     },
     {
@@ -1110,15 +1154,11 @@
       "count": 4
     },
     {
-      "name": "57 St-7 Av",
-      "count": 4
-    },
-    {
       "name": "62 St",
       "count": 4
     },
     {
-      "name": "Atlantic Av-Barclays Ctr",
+      "name": "14 St",
       "count": 4
     }
   ]

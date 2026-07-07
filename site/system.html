@@ -86,12 +86,19 @@
   .chip.green { background: #0e2b1a; color: var(--green); border: 1px solid #1c4d30; }
   .chip.amberc { background: #2b220f; color: var(--amber); border: 1px solid #4a3a17; }
 
+  /* Continuous right-to-left marquee: text + an aria-hidden duplicate slide
+     left by exactly one copy-width for a seamless wrap. Pauses on hover/
+     focus; off (ellipsis) under reduced motion. */
   td.info { max-width: 340px; }
-  .scroll-cell { overflow: hidden; max-width: 340px; }
+  .scroll-cell { overflow: hidden; max-width: 340px; white-space: nowrap; }
   .scroll-cell > span { display: inline-block; white-space: nowrap; }
-  .scroll-cell.overflowing > span { animation: shuttle var(--scroll-secs, 9s) ease-in-out infinite alternate; }
+  .scroll-cell.overflowing > span {
+    padding-right: 56px;
+    animation: marquee var(--scroll-secs, 12s) linear infinite;
+  }
+  .scroll-cell:not(.overflowing) .dup { display: none; }
   .scroll-cell.overflowing:hover > span, tr:has(:focus-visible) .scroll-cell > span { animation-play-state: paused; }
-  @keyframes shuttle { from { transform: translateX(0); } to { transform: translateX(calc(-1 * var(--scroll-delta, 0px))); } }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(calc(-1 * var(--scroll-delta, 0px))); } }
 
   button.expand {
     background: none; border: 1px solid var(--hairline); color: var(--dim);
@@ -186,6 +193,30 @@
     <p class="legend"><span class="red">NO ACCESS</span> = a station access route is severed while this elevator is out · <span class="green">BACKUP</span> = another working elevator or ramp covers the same route</p>
   </section>
 
+  <section class="board" aria-labelledby="offline-h">
+    <div class="board-head">
+      <h2 id="offline-h">Offline <span class="t-sub">status unavailable — you can't know before you go</span></h2>
+      <span class="side board-note" id="offline-summary"></span>
+    </div>
+    <div class="tablewrap">
+      <table class="led narrow">
+        <caption class="sr-only">Elevators whose status can no longer be confirmed (they vanished from the agency's feed), plus recently restored ones</caption>
+        <thead>
+          <tr>
+            <th scope="col">unit</th>
+            <th scope="col">station</th>
+            <th scope="col">status</th>
+            <th scope="col">last reported</th>
+            <th class="num" scope="col">dark for</th>
+          </tr>
+        </thead>
+        <tbody id="offline-body"></tbody>
+      </table>
+    </div>
+    <p class="empty" id="offline-empty" hidden>No offline elevators — every tracked unit is reporting.</p>
+    <p class="legend">An <span class="red">OFFLINE</span> elevator has vanished from the agency's feed: not reported broken, not reported working — unknowable, which is as bad as broken for planning a trip. Spells are logged like outages; <span class="green">RESTORED</span> rows show recent spells that ended.</p>
+  </section>
+
   <section class="board" aria-labelledby="access-h">
     <div class="board-head">
       <h2 id="access-h">Station access <span class="t-sub">live status of modeled routes</span></h2>
@@ -207,7 +238,7 @@
       </table>
     </div>
     <p class="empty" id="access-empty" hidden></p>
-    <p class="legend"><span class="red">NO ACCESS</span> = no step-free path for that route right now · <span class="green">REDUCED</span> = an elevator is down but a backup elevator or ramp still covers the route. Routes are hand-verified access chains; stations without a model appear here only when a confirmed sole-access elevator is down.</p>
+    <p class="legend"><span class="red">NO ACCESS</span> = no step-free path for that route right now · <span class="green">REDUCED</span> = an elevator is down but a backup elevator or ramp still covers the route · <span style="color:var(--amber)">UNKNOWN</span> = an elevator on this route is offline, so the route can't be verified before you go. Routes are hand-verified access chains; stations without a model appear only when a confirmed sole-access elevator is down or offline.</p>
   </section>
 
   <section class="board" aria-labelledby="sched-h">
@@ -354,16 +385,26 @@ function formatHours(hours) {
   return days > 0 ? `${months}MO ${days}D` : `${months}MO`;
 }
 
+// Information cells whose text overflows become right-to-left marquees — an
+// aria-hidden duplicate trails the text and the pair slides left by exactly
+// one copy-width (incl. the gap padding), so the wrap is seamless. Under
+// reduced motion nothing scrolls (CSS ellipsis).
 function markOverflows(root) {
   for (const cell of root.querySelectorAll(".scroll-cell")) {
-    const span = cell.querySelector("span");
+    const span = cell.querySelector("span:not(.dup)");
     if (!span) continue;
-    const delta = span.scrollWidth - cell.clientWidth;
-    cell.classList.toggle("overflowing", delta > 8);
-    if (delta > 8) {
-      cell.style.setProperty("--scroll-delta", delta + "px");
-      cell.style.setProperty("--scroll-secs", Math.max(6, Math.round(delta / 18)) + "s");
+    const overflows = span.scrollWidth - cell.clientWidth > 8;
+    cell.classList.toggle("overflowing", overflows && !REDUCED);
+    if (!overflows || REDUCED) continue;
+    if (!cell.querySelector(".dup")) {
+      const dup = span.cloneNode(true);
+      dup.classList.add("dup");
+      dup.setAttribute("aria-hidden", "true");
+      cell.appendChild(dup);
     }
+    const copyWidth = span.offsetWidth; // measured with .overflowing applied — includes the gap
+    cell.style.setProperty("--scroll-delta", copyWidth + "px");
+    cell.style.setProperty("--scroll-secs", Math.max(6, Math.round(copyWidth / 50)) + "s");
   }
 }
 
@@ -465,6 +506,23 @@ if (!id) {
       attachExpand(tr, dtr);
     }
 
+    // --- Offline (status unavailable) + recent restored log ---
+    const off = data.offline ?? { current: 0, log: [] };
+    showEmpty("offline-empty", off.log.length === 0);
+    document.getElementById("offline-summary").textContent =
+      off.current > 0 ? `${off.current} currently offline` : "";
+    const ob = document.getElementById("offline-body");
+    for (const o of off.log) {
+      const isOff = o.restored === null;
+      simpleRow(ob, [
+        `<td>${esc(o.unitId)}</td>`,
+        `<td class="white">${esc(o.station)}</td>`,
+        `<td>${isOff ? '<span class="chip red">OFFLINE</span>' : `<span class="chip green">RESTORED</span> <span class="dim">${esc(fmtWhen(o.restored) || "")}</span>`}</td>`,
+        `<td class="dim">${esc(fmtWhen(o.since) || "—")}</td>`,
+        `<td class="num${isOff ? " red" : ""}">${isOff ? `${o.days}D` : (o.durationHours >= 48 ? Math.round(o.durationHours / 24) + "D" : o.durationHours + "H")}</td>`,
+      ]);
+    }
+
     // --- Station access (live) ---
     const acc = data.stationAccess ?? { rows: [], chainsModeled: 0 };
     const accBody = document.getElementById("access-body");
@@ -478,13 +536,16 @@ if (!id) {
         : "No hand-verified access models for this system yet.";
     }
     for (const r of acc.rows) {
-      const chip = r.state === "no_access" ? '<span class="chip red">NO ACCESS</span>' : '<span class="chip green">REDUCED</span>';
+      const chip = r.state === "no_access" ? '<span class="chip red">NO ACCESS</span>'
+        : r.state === "unknown" ? '<span class="chip amberc">UNKNOWN</span>'
+        : '<span class="chip green">REDUCED</span>';
+      const affected = [...r.downUnits, ...(r.offlineUnits ?? []).map((u) => u + " (OFFLINE)")].join(", ");
       const tr = document.createElement("tr");
       tr.className = "row";
       tr.innerHTML =
         `<td>${chip}</td>` +
         `<td class="white">${esc(r.name)}</td>` +
-        `<td class="dim">${esc(r.downUnits.join(", "))}</td>` +
+        `<td class="dim">${esc(affected)}</td>` +
         `<td class="info"><div class="scroll-cell"><span>${esc(r.note || "—")}</span></div></td>` +
         `<td>${r.note ? `<button class="expand" aria-expanded="false" aria-label="Route notes for ${esc(r.name)}">▸</button>` : ""}</td>`;
       accBody.appendChild(tr);
@@ -576,6 +637,7 @@ if (!id) {
     const messages = [
       `${data.currentlyBroken.length} ELEVATORS OUT OF SERVICE · ${unplanned} UNPLANNED`,
     ];
+    if ((data.offline?.current ?? 0) > 0) messages.push(`${data.offline.current} ELEVATOR${data.offline.current === 1 ? "" : "S"} OFFLINE — STATUS UNKNOWN`);
     if (noAccess) messages.push(`${noAccess} ACCESS ROUTE${noAccess === 1 ? "" : "S"} CURRENTLY SEVERED`);
     if (data.scheduledWork.length) messages.push(`${data.scheduledWork.length} SCHEDULED CLOSURES POSTED`);
     if (data.accessibilityBlackouts[0]) messages.push(`WORST ALL-TIME BLACKOUT: ${data.accessibilityBlackouts[0].name} — ${formatHours(data.accessibilityBlackouts[0].hours)} INACCESSIBLE`);

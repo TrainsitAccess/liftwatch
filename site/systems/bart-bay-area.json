@@ -3,7 +3,7 @@
   "name": "BART",
   "label": "BART (San Francisco)",
   "timezone": "America/Los_Angeles",
-  "generatedAt": "2026-07-07T09:19:37.076Z",
+  "generatedAt": "2026-07-07T18:08:14.947Z",
   "currentlyBroken": [
     {
       "station": "Millbrae",
@@ -23,11 +23,11 @@
     {
       "station": "Richmond",
       "unitId": "RICH-UNSPECIFIED",
-      "unit": "Station (unspecified elevator — conservative)",
+      "unit": "StationStation (unspecified elevator — conservative)",
       "days": 3,
       "since": "2026-07-04T02:54:57.211+00:00",
       "planned": false,
-      "reason": "Station (unspecified elevator — conservative)",
+      "reason": "StationStation (unspecified elevator — conservative)",
       "estimatedReturn": null,
       "soleAccess": false,
       "severs": [],
@@ -36,6 +36,10 @@
       "chainNotes": []
     }
   ],
+  "offline": {
+    "current": 0,
+    "log": []
+  },
   "stationAccess": {
     "rows": [
       {
@@ -44,6 +48,7 @@
         "downUnits": [
           "MLBR"
         ],
+        "offlineUnits": [],
         "note": null
       }
     ],
@@ -53,7 +58,7 @@
   "accessibilityBlackouts": [
     {
       "name": "Millbrae",
-      "hours": 78.4110736111111
+      "hours": 87.22159333333333
     },
     {
       "name": "Hayward",
@@ -101,17 +106,17 @@
       "blackedOutNow": false
     },
     {
-      "name": "Milpitas",
+      "name": "Lafayette",
       "days": 3,
       "blackedOutNow": false
     },
     {
-      "name": "Montgomery St.",
+      "name": "Union City",
       "days": 3,
       "blackedOutNow": false
     },
     {
-      "name": "Balboa Park",
+      "name": "El Cerrito del Norte",
       "days": 3,
       "blackedOutNow": false
     }
@@ -120,7 +125,7 @@
     {
       "unit": "Station - Convention Center (unspecified elevator — conservative)",
       "station": "12th St. Oakland City Center",
-      "count": 3
+      "count": 4
     },
     {
       "unit": "Station elevator access (BART reports at station level)",
@@ -138,7 +143,7 @@
       "count": 1
     },
     {
-      "unit": "Station (unspecified elevator — conservative)",
+      "unit": "StationStation (unspecified elevator — conservative)",
       "station": "Richmond",
       "count": 1
     }
@@ -146,13 +151,13 @@
   "uptimeStreak": [
     {
       "unit": "Station elevator access (BART reports at station level)",
-      "station": "Milpitas",
+      "station": "Lafayette",
       "days": 3,
       "downNow": false
     },
     {
       "unit": "Station elevator access (BART reports at station level)",
-      "station": "Montgomery St.",
+      "station": "Union City",
       "days": 3,
       "downNow": false
     },
@@ -163,8 +168,38 @@
       "downNow": false
     },
     {
-      "unit": "Street elevator 2",
-      "station": "Warm Springs/South Fremont",
+      "unit": "Adeline Street East street elevator",
+      "station": "Ashby",
+      "days": 3,
+      "downNow": false
+    },
+    {
+      "unit": "Station elevator access (BART reports at station level)",
+      "station": "El Cerrito del Norte",
+      "days": 3,
+      "downNow": false
+    },
+    {
+      "unit": "Station elevator access (BART reports at station level)",
+      "station": "Embarcadero",
+      "days": 3,
+      "downNow": false
+    },
+    {
+      "unit": "Platform elevator",
+      "station": "Richmond",
+      "days": 3,
+      "downNow": false
+    },
+    {
+      "unit": "Platform Elevator 2",
+      "station": "West Dublin/Pleasanton",
+      "days": 3,
+      "downNow": false
+    },
+    {
+      "unit": "Station elevator access (BART reports at station level)",
+      "station": "West Oakland",
       "days": 3,
       "downNow": false
     },
@@ -173,49 +208,31 @@
       "station": "19th St. Oakland",
       "days": 3,
       "downNow": false
-    },
-    {
-      "unit": "Platform Elevator 1",
-      "station": "Ashby",
-      "days": 3,
-      "downNow": false
-    },
-    {
-      "unit": "Platform Elevator 2",
-      "station": "Ashby",
-      "days": 3,
-      "downNow": false
-    },
-    {
-      "unit": "Station elevator access (BART reports at station level)",
-      "station": "Balboa Park",
-      "days": 3,
-      "downNow": false
-    },
-    {
-      "unit": "Station elevator access (BART reports at station level)",
-      "station": "Downtown Berkeley",
-      "days": 3,
-      "downNow": false
-    },
-    {
-      "unit": "Station elevator access (BART reports at station level)",
-      "station": "Dublin/Pleasanton",
-      "days": 3,
-      "downNow": false
     }
   ],
   "singlePointsOfFailure": [
     {
-      "name": "Millbrae",
+      "name": "Lafayette",
       "count": 1
     },
     {
-      "name": "Milpitas",
+      "name": "Union City",
       "count": 1
     },
     {
-      "name": "Montgomery St.",
+      "name": "El Cerrito del Norte",
+      "count": 1
+    },
+    {
+      "name": "Embarcadero",
+      "count": 1
+    },
+    {
+      "name": "Richmond",
+      "count": 1
+    },
+    {
+      "name": "West Oakland",
       "count": 1
     },
     {
@@ -231,26 +248,6 @@
       "count": 1
     },
     {
-      "name": "Richmond",
-      "count": 1
-    },
-    {
-      "name": "Rockridge",
-      "count": 1
-    },
-    {
-      "name": "San Bruno",
-      "count": 1
-    },
-    {
-      "name": "MacArthur",
-      "count": 1
-    },
-    {
-      "name": "Oakland International Airport",
-      "count": 1
-    },
-    {
       "name": "12th St. Oakland City Center",
       "count": 1
     },
@@ -259,11 +256,19 @@
       "count": 1
     },
     {
-      "name": "West Oakland",
+      "name": "MacArthur",
       "count": 1
     },
     {
-      "name": "Powell St.",
+      "name": "Millbrae",
+      "count": 1
+    },
+    {
+      "name": "Milpitas",
+      "count": 1
+    },
+    {
+      "name": "Montgomery St.",
       "count": 1
     }
   ]

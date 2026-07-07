@@ -3,13 +3,13 @@
   "name": "TMB Metro",
   "label": "Barcelona (TMB Metro)",
   "timezone": "Europe/Madrid",
-  "generatedAt": "2026-07-07T09:19:37.076Z",
+  "generatedAt": "2026-07-07T18:08:14.947Z",
   "currentlyBroken": [
     {
       "station": "Florida",
       "unitId": "724",
       "unit": "Avinguda Masnou",
-      "days": 6,
+      "days": 7,
       "since": "2026-06-30T17:47:00+00:00",
       "planned": true,
       "reason": "Until approximately July 10th, the elevator connecting the lobby to the platform for trains heading toward Fondo at Florida Station will be out of service due to maintenance work.",
@@ -21,6 +21,10 @@
       "chainNotes": []
     }
   ],
+  "offline": {
+    "current": 0,
+    "log": []
+  },
   "stationAccess": {
     "rows": [
       {
@@ -29,6 +33,7 @@
         "downUnits": [
           "724"
         ],
+        "offlineUnits": [],
         "note": null
       }
     ],
@@ -38,57 +43,57 @@
   "accessibilityBlackouts": [
     {
       "name": "Florida",
-      "hours": 159.54363222222221
+      "hours": 168.35415194444445
     }
   ],
   "stepFreeStreak": [
     {
-      "name": "Lesseps",
+      "name": "Mercabarna",
       "days": 2,
       "blackedOutNow": false
     },
     {
-      "name": "Santa Coloma",
+      "name": "Parc Logístic",
       "days": 2,
       "blackedOutNow": false
     },
     {
-      "name": "Selva de Mar",
+      "name": "Fira",
       "days": 2,
       "blackedOutNow": false
     },
     {
-      "name": "Singuerlín",
+      "name": "Europa | Fira",
       "days": 2,
       "blackedOutNow": false
     },
     {
-      "name": "Liceu",
+      "name": "Can Tries | Gornal",
       "days": 2,
       "blackedOutNow": false
     },
     {
-      "name": "Llacuna",
+      "name": "Foc",
       "days": 2,
       "blackedOutNow": false
     },
     {
-      "name": "Llefià",
+      "name": "Foneria",
       "days": 2,
       "blackedOutNow": false
     },
     {
-      "name": "Llucmajor",
+      "name": "Besòs Mar",
       "days": 2,
       "blackedOutNow": false
     },
     {
-      "name": "Maragall",
+      "name": "Canyelles",
       "days": 2,
       "blackedOutNow": false
     },
     {
-      "name": "Maria Cristina",
+      "name": "Bellvitge",
       "days": 2,
       "blackedOutNow": false
     }
@@ -102,125 +107,125 @@
   ],
   "uptimeStreak": [
     {
-      "unit": "Plaça Lesseps",
-      "station": "Lesseps",
+      "unit": "Carrer K / Carrer Transversal 6",
+      "station": "Mercabarna",
       "days": 2,
       "downNow": false
     },
     {
-      "unit": "Plaça de la Vila",
-      "station": "Santa Coloma",
+      "unit": "Av. Parc Logístic / C. Número Un",
+      "station": "Parc Logístic",
       "days": 2,
       "downNow": false
     },
     {
-      "unit": "Provençals",
-      "station": "Selva de Mar",
+      "unit": "Botànica + Accés NORD | EST",
+      "station": "Fira",
       "days": 2,
       "downNow": false
     },
     {
-      "unit": "Passatge de Salvatella",
-      "station": "Singuerlín",
+      "unit": "Fira Gran Via",
+      "station": "Europa | Fira",
       "days": 2,
       "downNow": false
     },
     {
-      "unit": "La Rambla / Teatre Liceu",
-      "station": "Liceu",
+      "unit": "Can Tries - Narcís de Monturiol",
+      "station": "Can Tries | Gornal",
       "days": 2,
       "downNow": false
     },
     {
-      "unit": "La Rambla / Teatre Liceu",
-      "station": "Liceu",
+      "unit": "Fira Gran Via (Pavellons 6·7·8)",
+      "station": "Foc",
       "days": 2,
       "downNow": false
     },
     {
-      "unit": "Pujades / Ciutat de Granada",
-      "station": "Llacuna",
+      "unit": "Foc (costat Montjuïc)",
+      "station": "Foc",
       "days": 2,
       "downNow": false
     },
     {
-      "unit": "Avinguda d'Amèrica (mercat)",
-      "station": "Llefià",
+      "unit": "Jardins dels Drets Humans",
+      "station": "Foneria",
       "days": 2,
       "downNow": false
     },
     {
-      "unit": "Passeig Verdum / Llucmajor",
-      "station": "Llucmajor",
+      "unit": "Mercat de la Marina",
+      "station": "Foneria",
       "days": 2,
       "downNow": false
     },
     {
-      "unit": "Ronda Guinardó - costat Muntanya",
-      "station": "Maragall",
+      "unit": "Jaume Fabre",
+      "station": "Besòs Mar",
       "days": 2,
       "downNow": false
     }
   ],
   "singlePointsOfFailure": [
     {
-      "name": "Lesseps",
+      "name": "Mercabarna",
       "count": 1
     },
     {
-      "name": "Santa Coloma",
+      "name": "Parc Logístic",
       "count": 1
     },
     {
-      "name": "Selva de Mar",
+      "name": "Fira",
       "count": 1
     },
     {
-      "name": "Singuerlín",
+      "name": "Can Tries | Gornal",
       "count": 1
     },
     {
-      "name": "Llacuna",
+      "name": "Besòs Mar",
       "count": 1
     },
     {
-      "name": "Llefià",
+      "name": "Canyelles",
       "count": 1
     },
     {
-      "name": "Llucmajor",
+      "name": "Bellvitge",
       "count": 1
     },
     {
-      "name": "Maria Cristina",
+      "name": "Besòs",
       "count": 1
     },
     {
-      "name": "Rocafort",
+      "name": "Collblanc",
       "count": 1
     },
     {
-      "name": "Sant Andreu",
+      "name": "Fabra i Puig",
       "count": 1
     },
     {
-      "name": "Camp de l'Arpa",
+      "name": "Fondo",
       "count": 1
     },
     {
-      "name": "Sant Antoni",
+      "name": "Hospital de Bellvitge",
       "count": 1
     },
     {
-      "name": "Sant Ildefons",
+      "name": "Hostafrancs",
       "count": 1
     },
     {
-      "name": "Sant Martí",
+      "name": "Joanic",
       "count": 1
     },
     {
-      "name": "Sant Pau | Dos de Maig",
+      "name": "La Pau",
       "count": 1
     }
   ]

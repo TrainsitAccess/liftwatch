@@ -16,6 +16,7 @@ const TABLES: { name: string; order: string[] }[] = [
   { name: "stations", order: ["id"] },
   { name: "units", order: ["id"] },
   { name: "outage_events", order: ["id"] },
+  { name: "offline_events", order: ["id"] },
   { name: "upcoming_outages", order: ["id"] },
   { name: "poll_runs", order: ["id"] },
   { name: "redundancy_flags", order: ["id"] },

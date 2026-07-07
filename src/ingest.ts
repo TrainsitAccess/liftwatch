@@ -11,6 +11,8 @@ export interface IngestResult {
   eventsClosed: number;
   flagsRaised: number;
   upcomingStored: number;
+  offlineOpened: number;
+  offlineClosed: number;
 }
 
 const unitId = (systemId: string, ext: string) => `${systemId}:${ext}`;
@@ -196,7 +198,7 @@ export async function ingest(
     // 3. Redundancy: read stored state so precedence + curated protection apply.
     const existingUnits = await db
       .from("units")
-      .select("id, is_redundant, redundancy_source")
+      .select("id, station_id, is_redundant, redundancy_source, is_active, last_seen")
       .eq("system_id", system.id);
     fail("select existing units", existingUnits.error);
     const storedRedundancy = new Map<string, { value: boolean | null; source: RedundancySource }>(
@@ -296,6 +298,73 @@ export async function ingest(
         (await db.from("units").upsert([...orphanUnits.values()], { onConflict: "id" })).error,
       );
       for (const id of orphanUnits.keys()) knownUnitIds.add(id);
+    }
+
+    // 4.5 Offline tracking: a tracked unit ABSENT from this read has UNKNOWN
+    // status — not broken, not working, unreportable ("you can't know before
+    // you go"). Same open/close event treatment as outages, in
+    // offline_events. Only meaningful for inventory-complete systems (WMATA/
+    // CTA feeds list broken units only — absence is normal there). Opened
+    // only once the unit has been unseen past a debounce window (feeds
+    // flicker; one missed poll must not log an offline spell), using the
+    // PRE-UPSERT last_seen. Closed the moment the unit reappears. Degrades
+    // gracefully (warn + skip) until the offline_events table exists in the
+    // database — apply the addition in db/schema.sql.
+    let offlineOpened = 0;
+    let offlineClosed = 0;
+    if (system.inventoryComplete !== false) {
+      const OFFLINE_DEBOUNCE_MS = 25 * 60 * 1000; // ~2 missed polls at the 10-min cadence
+      try {
+        const openOffline = await db
+          .from("offline_events")
+          .select("id, unit_id")
+          .eq("system_id", system.id)
+          .is("ended_at", null);
+        fail("select open offline events", openOffline.error);
+        const openOfflineByUnit = new Map<string, number>(
+          (openOffline.data ?? []).map((r) => [r.unit_id as string, r.id as number]),
+        );
+
+        for (const [uId, offId] of openOfflineByUnit) {
+          if (!knownUnitIds.has(uId)) continue; // still missing
+          fail(
+            "close offline event",
+            (await db.from("offline_events").update({ ended_at: now }).eq("id", offId)).error,
+          );
+          offlineClosed++;
+        }
+
+        const nowMs = Date.parse(now);
+        const missingRows = (existingUnits.data ?? [])
+          .filter(
+            (r) =>
+              !knownUnitIds.has(r.id as string) &&
+              !openOfflineByUnit.has(r.id as string) &&
+              r.is_active !== false && // feed-declared inactive is decommission/replacement, not silence
+              typeof r.last_seen === "string" &&
+              nowMs - Date.parse(r.last_seen as string) > OFFLINE_DEBOUNCE_MS,
+          )
+          .map((r) => ({
+            unit_id: r.id as string,
+            system_id: system.id,
+            station_id: (r.station_id as string | null) ?? null,
+            // The unit's status became unknowable when we last saw it, not
+            // when the debounce finally tripped.
+            started_at: r.last_seen as string,
+          }));
+        if (missingRows.length) {
+          fail("open offline events", (await db.from("offline_events").insert(missingRows)).error);
+          offlineOpened = missingRows.length;
+        }
+      } catch (err) {
+        if (/offline_events/.test(String(err))) {
+          console.warn(
+            `  ⚠ ${system.id}: offline_events table missing — offline tracking skipped (apply the addition in db/schema.sql)`,
+          );
+        } else {
+          throw err;
+        }
+      }
     }
 
     // 5. Redundancy contradiction flags (one open flag per unit).
@@ -422,6 +491,8 @@ export async function ingest(
       eventsClosed,
       flagsRaised,
       upcomingStored: read.upcoming.length,
+      offlineOpened,
+      offlineClosed,
     };
 
     fail(

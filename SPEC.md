@@ -52,6 +52,20 @@ geographic lineage so any leaderboard can filter by continent / country / metro.
 - `outage_events` — **the archive.** One row per outage occurrence.
   `started_at` = when *we* observed it out; `source_started_at` = feed-reported
   start (may predate our monitoring). `ended_at` null = ongoing. `is_planned` flag.
+- `offline_events` — the OTHER archive (added 2026-07-07): a tracked unit that
+  VANISHES from an inventory-complete system's feed is neither broken nor
+  working — its status is unknowable, which is as bad as broken for planning a
+  trip ("you can't know before you go"). Same open/close treatment as outages:
+  opened once a unit has been unseen past a debounce window (~2 missed polls,
+  using pre-upsert `last_seen` as the spell's start), closed when it reappears.
+  Feed-declared-inactive units are exempt (that's decommission/replacement, not
+  silence), as are discovered-inventory systems (WMATA/CTA — absence is normal).
+  Site: an OFFLINE column on the systems board, a per-system "status
+  unavailable" board with the recent restored log, UNKNOWN state on the station
+  access board when a route's elevator is offline, and offline units can't earn
+  uptime streaks. Ingest and build-data degrade gracefully (warn + skip) until
+  the table exists — the schema addition is applied by hand in the Supabase SQL
+  editor.
 - `daily_rollups` — precomputed per-unit daily downtime for fast uptime %/trends.
 - `poll_runs` — per-poll health record for adapter monitoring at scale.
 - `upcoming_outages` — scheduled future work; a snapshot wiped and replaced each

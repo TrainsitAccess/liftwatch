@@ -134,6 +134,11 @@ async function main(): Promise<void> {
   console.log(
     `\n  archived → opened ${result.eventsOpened}, closed ${result.eventsClosed}, ${result.outagesOpen} currently open, ${result.upcomingStored} upcoming stored.`,
   );
+  if (result.offlineOpened || result.offlineClosed) {
+    console.log(
+      `  offline tracking → ${result.offlineOpened} unit(s) went dark (status unknown), ${result.offlineClosed} back in the feed.`,
+    );
+  }
   if (result.flagsRaised) {
     console.log(`  ⚠ ${result.flagsRaised} redundancy flag(s) raised for review.`);
   }

@@ -3,24 +3,26 @@
   "name": "LIRR",
   "label": "LIRR (New York)",
   "timezone": "America/New_York",
-  "generatedAt": "2026-07-07T09:19:37.076Z",
+  "generatedAt": "2026-07-07T18:08:14.947Z",
   "currentlyBroken": [
     {
-      "station": "Jamaica (Tks 4/5)",
-      "unitId": "JAM-342",
-      "unit": "Between eastern overpass and Tracks 4 & 5",
+      "station": "Mineola (Track 3)",
+      "unitId": "MIN-1018",
+      "unit": "Between eastern overpass, Track 3, and street (north side)",
       "days": 0,
-      "since": "2026-07-07T03:58:40.812+00:00",
+      "since": "2026-07-07T16:58:35.151+00:00",
       "planned": false,
       "reason": "Not Working",
       "estimatedReturn": null,
-      "soleAccess": true,
-      "severs": [
-        "Jamaica (Tks 4/5)"
+      "soleAccess": false,
+      "severs": [],
+      "backups": [
+        "Western overpass — Intermodal Center & Track 3"
       ],
-      "backups": [],
       "rampAlternative": false,
-      "chainNotes": []
+      "chainNotes": [
+        "Mineola Track 3 is reachable via the eastern overpass elevator (north-side street) or the western overpass elevator (Intermodal Center) — two independent routes."
+      ]
     },
     {
       "station": "Grand Central",
@@ -36,82 +38,22 @@
       "backups": [],
       "rampAlternative": false,
       "chainNotes": []
-    },
-    {
-      "station": "Queens Village",
-      "unitId": "QVG-642",
-      "unit": "Between Platform B and street level (east end of platform)",
-      "days": 0,
-      "since": "2026-07-07T03:58:40.812+00:00",
-      "planned": false,
-      "reason": "Not Working",
-      "estimatedReturn": null,
-      "soleAccess": false,
-      "severs": [],
-      "backups": [],
-      "rampAlternative": false,
-      "chainNotes": []
-    },
-    {
-      "station": "Mineola (Track 2)",
-      "unitId": "MIN-1017",
-      "unit": "Between eastern overpass, Track 2, and kiss-and-ride (south side)",
-      "days": 0,
-      "since": "2026-07-07T03:58:40.812+00:00",
-      "planned": false,
-      "reason": "Not Working",
-      "estimatedReturn": null,
-      "soleAccess": false,
-      "severs": [],
-      "backups": [
-        "Western overpass — Intermodal Center & Track 2"
-      ],
-      "rampAlternative": false,
-      "chainNotes": [
-        "Mineola Track 2 is reachable via the eastern overpass elevator (kiss-and-ride side) or the western overpass elevator (Intermodal Center) — two independent routes."
-      ]
-    },
-    {
-      "station": "Laurelton",
-      "unitId": "LTN-1124",
-      "unit": "Between Tracks 1 & 2 and street level (middle of platform)",
-      "days": 0,
-      "since": "2026-07-07T03:58:40.812+00:00",
-      "planned": false,
-      "reason": "Not Working",
-      "estimatedReturn": null,
-      "soleAccess": true,
-      "severs": [],
-      "backups": [],
-      "rampAlternative": false,
-      "chainNotes": []
     }
   ],
+  "offline": {
+    "current": 0,
+    "log": []
+  },
   "stationAccess": {
     "rows": [
       {
-        "name": "Jamaica (Tks 4/5)",
-        "state": "no_access",
-        "downUnits": [
-          "JAM-342"
-        ],
-        "note": null
-      },
-      {
-        "name": "Laurelton",
-        "state": "no_access",
-        "downUnits": [
-          "LTN-1124"
-        ],
-        "note": null
-      },
-      {
-        "name": "Mineola (Track 2)",
+        "name": "Mineola (Track 3)",
         "state": "reduced",
         "downUnits": [
-          "MIN-1017"
+          "MIN-1018"
         ],
-        "note": "Mineola Track 2 is reachable via the eastern overpass elevator (kiss-and-ride side) or the western overpass elevator (Intermodal Center) — two independent routes."
+        "offlineUnits": [],
+        "note": "Mineola Track 3 is reachable via the eastern overpass elevator (north-side street) or the western overpass elevator (Intermodal Center) — two independent routes."
       }
     ],
     "chainsModeled": 21
@@ -120,15 +62,15 @@
   "accessibilityBlackouts": [
     {
       "name": "Jamaica (Tks 4/5)",
-      "hours": 5.348962222222222
+      "hours": 12.9984275
     },
     {
       "name": "Queens Village",
-      "hours": 5.348962222222222
+      "hours": 10.565690555555555
     },
     {
       "name": "Laurelton",
-      "hours": 5.348962222222222
+      "hours": 10.565690555555555
     }
   ],
   "stepFreeStreak": [
@@ -185,18 +127,23 @@
   ],
   "mostBrokenUnits": [
     {
-      "unit": "Between eastern overpass and Tracks 4 & 5",
-      "station": "Jamaica (Tks 4/5)",
-      "count": 1
-    },
-    {
       "unit": "Between Platform B and street level (east end of platform)",
       "station": "Queens Village",
       "count": 1
     },
     {
+      "unit": "Between eastern overpass and Tracks 4 & 5",
+      "station": "Jamaica (Tks 4/5)",
+      "count": 1
+    },
+    {
       "unit": "Between eastern overpass, Track 2, and kiss-and-ride (south side)",
       "station": "Mineola (Track 2)",
+      "count": 1
+    },
+    {
+      "unit": "Between eastern overpass, Track 3, and street (north side)",
+      "station": "Mineola (Track 3)",
       "count": 1
     },
     {
@@ -211,24 +158,6 @@
     }
   ],
   "uptimeStreak": [
-    {
-      "unit": "Between eastern overpass and Tracks 2 & 3",
-      "station": "Jamaica (Tks 2/3)",
-      "days": 0,
-      "downNow": false
-    },
-    {
-      "unit": "Between eastern overpass and Tracks 4 & 5",
-      "station": "Jamaica (Tks 4/5)",
-      "days": 0,
-      "downNow": true
-    },
-    {
-      "unit": "Between eastern overpass and Tracks 6 & 7",
-      "station": "Jamaica (Tks 6/7)",
-      "days": 0,
-      "downNow": false
-    },
     {
       "unit": "Between mezzanine, Track 4 (Platform A), and street level",
       "station": "Woodside",
@@ -248,12 +177,6 @@
       "downNow": false
     },
     {
-      "unit": "Between Platform A and street level (north side of Atlantic Av)",
-      "station": "Nostrand Av",
-      "days": 0,
-      "downNow": false
-    },
-    {
       "unit": "Between overpass and Tracks 1 & 2  (Platform B)",
       "station": "Ronkonkoma",
       "days": 0,
@@ -268,6 +191,30 @@
     {
       "unit": "Between Tracks 1 & 2 and street level (middle of platform)",
       "station": "St. Albans",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "Between Tracks 1 & 2 and street level (east end of platform)",
+      "station": "Rosedale",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "Between Tracks 1 & 2 and street level (east side of station building)",
+      "station": "Valley Stream",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "Between Tracks A1 & A2 and street level (east side of station building) - Babylon trains",
+      "station": "Lynbrook",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "Between Tracks B1 & B2 and street level (east side of station building) - Long Beach trains",
+      "station": "Lynbrook",
       "days": 0,
       "downNow": false
     }
@@ -302,10 +249,6 @@
       "count": 1
     },
     {
-      "name": "Baldwin",
-      "count": 1
-    },
-    {
       "name": "Freeport",
       "count": 1
     },
@@ -323,6 +266,10 @@
     },
     {
       "name": "Seaford",
+      "count": 1
+    },
+    {
+      "name": "Baldwin",
       "count": 1
     },
     {

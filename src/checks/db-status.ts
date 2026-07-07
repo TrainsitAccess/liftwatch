@@ -14,6 +14,7 @@ const tables = [
   "stations",
   "units",
   "outage_events",
+  "offline_events",
   "upcoming_outages",
   "poll_runs",
   "redundancy_flags",

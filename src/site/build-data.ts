@@ -94,6 +94,29 @@ const stations = { data: stationsData };
 const allEvents = eventsData;
 const events = { data: allEvents.filter((e) => e.ended_at == null) };
 
+// Offline events — units whose status became UNKNOWN (vanished from an
+// inventory-complete feed; see ingest 4.5). The table is a later schema
+// addition applied by hand, so degrade to empty until it exists.
+type OfflineRow = { unit_id: string; system_id: string; station_id: string | null; started_at: string; ended_at: string | null };
+let offlineData: OfflineRow[] = [];
+try {
+  offlineData = await fetchAll<OfflineRow>(
+    (from, to) =>
+      db.from("offline_events").select("unit_id, system_id, station_id, started_at, ended_at").range(from, to),
+    "offline_events",
+  );
+} catch (err) {
+  if (/offline_events/.test(String(err))) {
+    console.warn("offline_events table missing — offline boards empty (apply the db/schema.sql addition)");
+  } else {
+    throw err;
+  }
+}
+const openOfflineBySystem = new Map<string, number>();
+for (const o of offlineData) {
+  if (o.ended_at == null) openOfflineBySystem.set(o.system_id, (openOfflineBySystem.get(o.system_id) ?? 0) + 1);
+}
+
 const stationName = new Map((stations.data ?? []).map((s) => [s.id as string, s.name as string]));
 const unitById = new Map((units.data ?? []).map((u) => [u.id as string, u]));
 
@@ -164,6 +187,7 @@ const systemRows = (systems.data ?? [])
       down,
       downUnplanned,
       downPlanned: down - downUnplanned,
+      offline: openOfflineBySystem.get(s.id) ?? 0,
       pctDown: fleetTotal ? Math.round((down / fleetTotal) * 1000) / 10 : null,
       pctUnplanned: fleetTotal ? Math.round((downUnplanned / fleetTotal) * 1000) / 10 : null,
       staticFleetAsOf: staticFleet?.asOfDate ?? null,
@@ -287,6 +311,17 @@ function buildSystemDetail(systemId: string) {
     if (ext) openExtIds.add(ext);
   }
 
+  // Offline units in this system: currently unknowable (open offline event)
+  // plus the recent log. An offline unit is neither up nor down — the access
+  // board shows UNKNOWN, and it can't earn an uptime streak while unwatched.
+  const systemOffline = offlineData.filter((o) => o.system_id === systemId);
+  const offlineOpenUnitIds = new Set(systemOffline.filter((o) => o.ended_at == null).map((o) => o.unit_id));
+  const offlineExtIds = new Set<string>();
+  for (const uId of offlineOpenUnitIds) {
+    const ext = unitById.get(uId)?.external_id as string | undefined;
+    if (ext) offlineExtIds.add(ext);
+  }
+
   // For one currently-broken elevator: what its outage means, computed from
   // the curated chains — which access routes it SEVERS right now (given
   // everything else that's down), which still-working elevators BACK IT UP
@@ -406,13 +441,32 @@ function buildSystemDetail(systemId: string) {
     })
     .sort((a, b) => b.days - a.days);
 
+  // --- Offline board: currently unknowable units first, then the recent
+  // restored log (an offline spell is archived like an outage).
+  const offlineLog = systemOffline
+    .sort((a, b) => (b.ended_at ?? "~").localeCompare(a.ended_at ?? "~") || b.started_at.localeCompare(a.started_at))
+    .slice(0, 25)
+    .map((o) => {
+      const unit = unitById.get(o.unit_id);
+      return {
+        unitId: (unit?.external_id as string) ?? "?",
+        unit: (unit?.description as string) || (unit?.external_id as string) || "?",
+        station: displayStationName((o.station_id ?? (unit?.station_id as string | null)) as string | null, unit?.external_id as string | undefined),
+        since: o.started_at,
+        days: daysSince(o.started_at),
+        restored: o.ended_at,
+        durationHours: o.ended_at ? Math.round((Date.parse(o.ended_at) - Date.parse(o.started_at)) / 3_600_000) : null,
+      };
+    })
+    .sort((a, b) => (a.restored === null && b.restored === null ? b.since.localeCompare(a.since) : a.restored === null ? -1 : b.restored === null ? 1 : b.restored.localeCompare(a.restored)));
+
   // --- Station access board (live) ---
   // Modeled chains with a relevant outage right now: still accessible via a
   // backup ("REDUCED") or actually severed ("NO ACCESS"). Un-modeled
   // stations join only via a confirmed sole-access unit being down (the
   // same source-gated rule as the ▮ marker). Chains with nothing down are
   // summarized by count, not listed.
-  const stationAccess: { name: string; state: "reduced" | "no_access"; downUnits: string[]; note: string | null }[] = [];
+  const stationAccess: { name: string; state: "reduced" | "no_access" | "unknown"; downUnits: string[]; offlineUnits: string[]; note: string | null }[] = [];
   let chainsTotal = 0;
   for (const [bare, chains] of models) {
     const stName = stationName.get(`${systemId}:${bare}`) ?? bare;
@@ -420,11 +474,21 @@ function buildSystemDetail(systemId: string) {
       chainsTotal++;
       const ids = new Set(allElevators(model).map((el) => el.externalId));
       const down = [...openExtIds].filter((id) => ids.has(id));
-      if (!down.length) continue;
+      const offline = [...offlineExtIds].filter((id) => ids.has(id));
+      if (!down.length && !offline.length) continue;
+      // Severed beats everything; otherwise an offline member makes the
+      // route UNKNOWN — an offline elevator is neither up nor down, so the
+      // route's real state can't be verified before you go.
+      const state: "reduced" | "no_access" | "unknown" = down.length
+        ? stationAccessible(model, new Set(down))
+          ? offline.length ? "unknown" : "reduced"
+          : "no_access"
+        : "unknown";
       stationAccess.push({
         name: chainDisplayName(stName, model),
-        state: stationAccessible(model, new Set(down)) ? "reduced" : "no_access",
+        state,
         downUnits: down,
+        offlineUnits: offline,
         note: model.note ?? null,
       });
     }
@@ -439,10 +503,27 @@ function buildSystemDetail(systemId: string) {
       name: stationName.get(sid) ?? "Unknown",
       state: "no_access",
       downUnits: [unit?.external_id as string],
+      offlineUnits: [],
       note: null,
     });
   }
-  stationAccess.sort((a, b) => (a.state === b.state ? a.name.localeCompare(b.name) : a.state === "no_access" ? -1 : 1));
+  // Un-modeled stations where a confirmed SOLE-ACCESS unit is offline: the
+  // station's accessibility itself is unknowable right now.
+  for (const uId of offlineOpenUnitIds) {
+    const unit = unitById.get(uId);
+    const sid = unit?.station_id as string | null;
+    if (!sid || modeledStationIds.has(sid)) continue;
+    if (!confirmedSoleAccess(unit)) continue;
+    stationAccess.push({
+      name: stationName.get(sid) ?? "Unknown",
+      state: "unknown",
+      downUnits: [],
+      offlineUnits: [unit?.external_id as string],
+      note: null,
+    });
+  }
+  const stateRank = { no_access: 0, unknown: 1, reduced: 2 };
+  stationAccess.sort((a, b) => stateRank[a.state] - stateRank[b.state] || a.name.localeCompare(b.name));
 
   // --- Scheduled work board (from the upcoming_outages snapshot) ---
   const scheduledWork = upcomingData
@@ -554,6 +635,8 @@ function buildSystemDetail(systemId: string) {
     eventsByUnit.set(e.unit_id as string, list);
   }
   const uptimeStreak = systemUnits
+    // An offline unit can't earn an honor streak — nobody can verify it's up.
+    .filter((u) => !offlineOpenUnitIds.has(u.id as string))
     .map((u) => {
       const unitEvents = eventsByUnit.get(u.id as string) ?? [];
       const downNow = unitEvents.some((e) => e.ended_at == null);
@@ -588,6 +671,7 @@ function buildSystemDetail(systemId: string) {
 
   return {
     currentlyBroken,
+    offline: { current: offlineLog.filter((o) => o.restored === null).length, log: offlineLog },
     stationAccess: { rows: stationAccess, chainsModeled: chainsTotal },
     scheduledWork,
     accessibilityBlackouts,
@@ -638,6 +722,7 @@ const data = {
     staticUnitsInTotal,
     down: systemRows.reduce((n, s) => n + s.down, 0),
     downUnplanned: systemRows.reduce((n, s) => n + s.downUnplanned, 0),
+    offline: systemRows.reduce((n, s) => n + s.offline, 0),
   },
   systems: systemRows,
   longestOutages: outageRows,

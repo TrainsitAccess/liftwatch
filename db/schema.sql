@@ -96,6 +96,30 @@ create index if not exists outage_events_system on outage_events (system_id);
 create index if not exists outage_events_unit_time on outage_events (unit_id, started_at);
 
 -- ---------------------------------------------------------------------------
+-- offline_events: units whose STATUS BECAME UNKNOWN — a tracked unit that
+-- vanishes from an inventory-complete system's feed. Not broken, not working:
+-- unreportable. As inconvenient as an outage for a rider planning a trip
+-- ("you can't know before you go"), so it gets the same open/close event
+-- treatment as outages. Opened only after the unit has been missing past a
+-- debounce window (feeds flicker); closed when the unit reappears. Systems
+-- whose feeds only list broken units (WMATA, CTA) are exempt — absence is
+-- normal there, not a signal.
+-- ---------------------------------------------------------------------------
+create table if not exists offline_events (
+  id          bigint generated always as identity primary key,
+  unit_id     text not null references units(id),
+  system_id   text not null,             -- denormalized for fast group-by
+  station_id  text,
+  started_at  timestamptz not null,      -- when WE stopped being able to see it
+  ended_at    timestamptz,               -- null => still offline/unknown
+  created_at  timestamptz not null default now()
+);
+-- at most one open offline event per unit
+create unique index if not exists one_open_offline_per_unit
+  on offline_events (unit_id) where ended_at is null;
+create index if not exists offline_events_system on offline_events (system_id);
+
+-- ---------------------------------------------------------------------------
 -- daily_rollups: precomputed per-unit daily downtime (fast uptime % / trends)
 -- ---------------------------------------------------------------------------
 create table if not exists daily_rollups (
@@ -175,6 +199,7 @@ alter table systems           enable row level security;
 alter table stations          enable row level security;
 alter table units             enable row level security;
 alter table outage_events     enable row level security;
+alter table offline_events    enable row level security;
 alter table daily_rollups     enable row level security;
 alter table poll_runs         enable row level security;
 alter table redundancy_flags  enable row level security;

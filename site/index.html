@@ -87,16 +87,20 @@
   .chip.sched { background: #2b220f; color: var(--amber-dim); border: 1px solid #4a3a17; }
   .chip.green { background: #0e2b1a; color: var(--green); border: 1px solid #1c4d30; }
 
-  /* Scrolling information cell (RFI-style): full text is in the DOM once; the
-     animation is purely visual, pauses on hover/focus, off under reduced motion. */
+  /* Scrolling information cell (RFI-style): a continuous right-to-left
+     marquee. The text plus an aria-hidden duplicate slide left by exactly one
+     copy-width, so the loop wraps seamlessly. Purely visual — screen readers
+     see the text once; pauses on hover/focus, off under reduced motion. */
   td.info { max-width: 320px; }
-  .scroll-cell { overflow: hidden; max-width: 320px; }
+  .scroll-cell { overflow: hidden; max-width: 320px; white-space: nowrap; }
   .scroll-cell > span { display: inline-block; white-space: nowrap; }
   .scroll-cell.overflowing > span {
-    animation: shuttle var(--scroll-secs, 9s) ease-in-out infinite alternate;
+    padding-right: 56px;
+    animation: marquee var(--scroll-secs, 12s) linear infinite;
   }
+  .scroll-cell:not(.overflowing) .dup { display: none; }
   .scroll-cell.overflowing:hover > span, tr:has(:focus-visible) .scroll-cell > span { animation-play-state: paused; }
-  @keyframes shuttle { from { transform: translateX(0); } to { transform: translateX(calc(-1 * var(--scroll-delta, 0px))); } }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(calc(-1 * var(--scroll-delta, 0px))); } }
 
   /* Expand/collapse */
   button.expand {
@@ -176,6 +180,7 @@
             <th scope="col">system</th>
             <th class="num" scope="col">out</th>
             <th class="num" scope="col">scheduled</th>
+            <th class="num" scope="col">offline</th>
             <th class="num" scope="col">fleet</th>
             <th class="num" scope="col">% out</th>
           </tr>
@@ -183,7 +188,7 @@
         <tbody id="systems-body"></tbody>
       </table>
     </div>
-    <p class="legend">OUT = elevators down right now from unplanned breakdowns · SCHEDULED = down for planned/maintenance work · % OUT = unplanned share of the active fleet</p>
+    <p class="legend">OUT = elevators down right now from unplanned breakdowns · SCHEDULED = down for planned/maintenance work · <span class="red">OFFLINE</span> = tracked elevators whose status can't be confirmed (vanished from the agency's feed — you can't know before you go) · % OUT = unplanned share of the active fleet</p>
     <p class="legend" id="static-fleet-note"></p>
   </section>
 
@@ -244,18 +249,26 @@ const fmtWhen = (iso, tz) => {
 };
 const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-// After rows render: mark information cells whose text overflows so the
-// shuttle animation (visual only — full text is always in the DOM) engages.
+// After rows render: information cells whose text overflows become
+// right-to-left marquees — an aria-hidden duplicate trails the text and the
+// pair slides left by exactly one copy-width (incl. the gap padding), so the
+// wrap is seamless. Under reduced motion nothing scrolls (CSS ellipsis).
 function markOverflows(root) {
   for (const cell of root.querySelectorAll(".scroll-cell")) {
-    const span = cell.querySelector("span");
+    const span = cell.querySelector("span:not(.dup)");
     if (!span) continue;
-    const delta = span.scrollWidth - cell.clientWidth;
-    cell.classList.toggle("overflowing", delta > 8);
-    if (delta > 8) {
-      cell.style.setProperty("--scroll-delta", delta + "px");
-      cell.style.setProperty("--scroll-secs", Math.max(6, Math.round(delta / 18)) + "s");
+    const overflows = span.scrollWidth - cell.clientWidth > 8;
+    cell.classList.toggle("overflowing", overflows && !REDUCED);
+    if (!overflows || REDUCED) continue;
+    if (!cell.querySelector(".dup")) {
+      const dup = span.cloneNode(true);
+      dup.classList.add("dup");
+      dup.setAttribute("aria-hidden", "true");
+      cell.appendChild(dup);
     }
+    const copyWidth = span.offsetWidth; // measured with .overflowing applied — includes the gap
+    cell.style.setProperty("--scroll-delta", copyWidth + "px");
+    cell.style.setProperty("--scroll-secs", Math.max(6, Math.round(copyWidth / 50)) + "s");
   }
 }
 
@@ -294,6 +307,7 @@ fetch("./data.json").then((r) => r.json()).then((data) => {
       `<td class="white"><a href="./system.html?id=${encodeURIComponent(s.id)}">${esc(s.boardLabel)}</a></td>` +
       `<td class="num${s.downUnplanned > 0 ? "" : " green"}">${s.downUnplanned}</td>` +
       `<td class="num dim">${s.downPlanned}</td>` +
+      `<td class="num${(s.offline ?? 0) > 0 ? " red" : " dim"}">${s.offline ?? 0}</td>` +
       `<td class="num dim">${fleet}</td>` +
       `<td class="num${s.pctUnplanned == null ? " dim" : ""}">${pct}</td>`;
     tr.classList.add("clickable");
@@ -359,6 +373,9 @@ fetch("./data.json").then((r) => r.json()).then((data) => {
   const messages = [
     `${data.totals.downUnplanned} UNPLANNED ELEVATOR OUTAGES RIGHT NOW · ${data.totals.down} TOTAL OUT OF ${data.totals.activeUnits}${mark} MONITORED ACROSS ${data.totals.systems} SYSTEMS`,
   ];
+  if (data.totals.offline > 0) {
+    messages.push(`${data.totals.offline} ELEVATOR${data.totals.offline === 1 ? "" : "S"} OFFLINE — STATUS UNKNOWN, CHECK BEFORE YOU GO`);
+  }
   if (data.systems[0]?.pctUnplanned != null) {
     messages.push(`MOST BREAKDOWNS: ${data.systems[0].boardLabel} — ${data.systems[0].pctUnplanned.toFixed(1)}% OF FLEET OUT UNPLANNED`);
   }
