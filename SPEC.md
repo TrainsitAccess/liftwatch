@@ -1,7 +1,7 @@
 # LiftWatch — Specification
 
 Monitor public-transit elevator reliability worldwide, archive it over time, and
-rank systems, stations, and individual elevators on split-flap leaderboards.
+rank systems, stations, and individual elevators on departure-board-style leaderboards.
 
 Status: **Phase 0** (foundation). This document is the source of truth for design
 decisions; code is built against it.
@@ -34,7 +34,7 @@ schema reserves `unit_type` for it, but we do not ingest or display escalators.
 | Scope | Elevators only; `unit_type` reserved so escalators are a future config flip |
 | Planned outages | Tracked separately; leaderboards rank on **unplanned** by default, with a toggle |
 | Catalog | Solo-maintained, but structured as clean per-system files |
-| Frontend | Hybrid: split-flap (Solari) leaderboards, editorial methodology pages |
+| Frontend | Hybrid: digital departure-display boards (amber LED aesthetic), editorial methodology pages |
 | Alerts (later) | ntfy station subscriptions (reused from prior project) |
 
 ---
@@ -222,11 +222,25 @@ Rules baked into the metrics:
 
 ## 6. Design
 
-Hybrid, per decision:
-- **Split-flap / Solari boards** for live + leaderboard views. Riffle on first load
-  and on *actual* rank changes (flip only changed tiles). Respect
-  `prefers-reduced-motion` (snap, no riffle) and keep a screen-reader-readable
-  ranking underneath.
+Hybrid, per decision (REVISED 2026-07-07 — the split-flap aesthetic was
+retired for a **digital train-departure display**, RFI/LED style, chosen
+against a reference photo):
+- **Departure boards** for live + leaderboard views: amber LED rows on black
+  strips, white sans-serif column headers, legibility-first (crisp mono type,
+  no heavy pixel-grid effects). Outages read as departures: unit | station |
+  status (reason) | time out | estimated return | information. The
+  information column shuttle-scrolls when it overflows (paused on
+  hover/focus); every row expands to a detail strip with the full reason,
+  agency-local timestamps, access impact (severed routes / working backups /
+  ramp coverage) and the curated route notes. A bottom strip carries a live
+  clock + rotating ticker. Systems rank by **unplanned** share; scheduled
+  work has its own column and its own board. New live boards: station access
+  (NO ACCESS / REDUCED per modeled route) and scheduled work. All times are
+  shown in the system's own IANA timezone (station time, not viewer time).
+  Respect `prefers-reduced-motion` (no shuttle/ticker/blink; ellipsis +
+  static text). Accessibility is the markup itself — real `<table>`s with
+  captions and scoped headers, `aria-expanded` row toggles, skip link,
+  focus-visible styles; the old duplicated `#sr-data` layer is gone.
 - **Editorial** treatment for methodology and story pages.
 - Deliberately not the generic-AI look: real type hierarchy, monospace numerals,
   one restrained status ramp, dense tables over airy cards.

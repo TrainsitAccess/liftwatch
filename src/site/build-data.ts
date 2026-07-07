@@ -8,8 +8,10 @@ import {
   chainDownIntervals,
   coveredStationIds,
   mergeIntervals,
+  stationAccessible,
   totalDurationMs,
   type Interval,
+  type StationModel,
 } from "../lib/accessibility.js";
 import { getSupabase } from "../lib/supabase.js";
 
@@ -49,7 +51,7 @@ async function fetchAll<T>(
   return rows;
 }
 
-const [systemsData, unitsData, stationsData, eventsData] = await Promise.all([
+const [systemsData, unitsData, stationsData, eventsData, upcomingData] = await Promise.all([
   fetchAll(
     (from, to) => db.from("systems").select("id, short_name, city, metro_area, data_quality").range(from, to),
     "systems",
@@ -70,9 +72,19 @@ const [systemsData, unitsData, stationsData, eventsData] = await Promise.all([
     (from, to) =>
       db
         .from("outage_events")
-        .select("unit_id, system_id, station_id, is_planned, reason, started_at, ended_at, source_started_at, attributed")
+        .select("unit_id, system_id, station_id, is_planned, reason, started_at, ended_at, source_started_at, estimated_return, attributed")
         .range(from, to),
     "outage_events",
+  ),
+  // Scheduled future work (snapshot table, wiped per poll) — feeds the new
+  // "scheduled work" departure board.
+  fetchAll(
+    (from, to) =>
+      db
+        .from("upcoming_outages")
+        .select("system_id, station_id, unit_external_id, reason, is_planned, source_started_at, estimated_return")
+        .range(from, to),
+    "upcoming_outages",
   ),
 ]);
 
@@ -134,28 +146,34 @@ const systemRows = (systems.data ?? [])
         : "none";
     const fleetTotal = inventoryComplete ? active : (staticFleet?.totalUnits ?? null);
 
+    const downUnplanned = unplannedBySystem.get(s.id) ?? 0;
     return {
       id: s.id,
       name: s.short_name as string,
       city: s.city as string,
-      // Long-form label for the leaderboard/screen-reader text — defaults to
-      // "{shortName} ({city})", overridable per catalog entry (see systems.ts).
+      // Long-form label — defaults to "{shortName} ({city})", overridable
+      // per catalog entry (see systems.ts).
       label: catalogEntry?.displayLabel ?? `${s.short_name} (${s.city})`,
-      // Short label for the split-flap board's fixed 13-char column —
-      // defaults to shortName, overridable when that alone isn't clearest.
+      // Short label for the board's name column — defaults to shortName,
+      // overridable when that alone isn't clearest.
       boardLabel: catalogEntry?.boardLabel ?? (s.short_name as string),
       dataQuality: s.data_quality as string,
       inventoryComplete,
       fleetSource,
       activeUnits: fleetTotal,
       down,
-      downUnplanned: unplannedBySystem.get(s.id) ?? 0,
+      downUnplanned,
+      downPlanned: down - downUnplanned,
       pctDown: fleetTotal ? Math.round((down / fleetTotal) * 1000) / 10 : null,
+      pctUnplanned: fleetTotal ? Math.round((downUnplanned / fleetTotal) * 1000) / 10 : null,
       staticFleetAsOf: staticFleet?.asOfDate ?? null,
       staticFleetSource: staticFleet?.source ?? null,
     };
   })
-  .sort((a, b) => (b.pctDown ?? -1) - (a.pctDown ?? -1));
+  // Ranked by the UNPLANNED share (the spec's intent — breakdowns, not
+  // scheduled maintenance, are the shame metric; planned work shows in its
+  // own column). Null denominators sort last, as before.
+  .sort((a, b) => (b.pctUnplanned ?? -1) - (a.pctUnplanned ?? -1));
 
 const outageRows = (events.data ?? [])
   .map((e) => {
@@ -164,10 +182,18 @@ const outageRows = (events.data ?? [])
     const days = Math.max(0, Math.floor((now - Date.parse(since as string)) / 86_400_000));
     return {
       system: (systems.data ?? []).find((s) => s.id === e.system_id)?.short_name ?? e.system_id,
+      systemId: e.system_id as string,
       station: stationName.get((e.station_id ?? unit?.station_id) as string) ?? "Unknown",
       unit: (unit?.external_id as string) ?? "?",
+      unitDesc: (unit?.description as string | null) ?? null,
       soleAccess: confirmedSoleAccess(unit),
       planned: e.is_planned as boolean,
+      reason: (e.reason as string | null) ?? null,
+      estimatedReturn: (e.estimated_return as string | null) ?? null,
+      since: since as string,
+      // Agency-local IANA zone: a departure board shows station time, not
+      // the viewer's.
+      tz: getSystem(e.system_id as string)?.timezone ?? null,
       days,
     };
   })
@@ -250,6 +276,45 @@ function buildSystemDetail(systemId: string) {
   const modeledStationIds = new Set(
     [...models.values()].flat().flatMap((m) => coveredStationIds(m)).map((bare) => `${systemId}:${bare}`),
   );
+  const chainsList: StationModel[] = [...models.values()].flat();
+
+  // External ids of every unit currently out in this system — drives the
+  // live chain evaluations below (backup routes, station access board).
+  const openExtIds = new Set<string>();
+  for (const e of systemEvents) {
+    if (e.ended_at != null) continue;
+    const ext = unitById.get(e.unit_id as string)?.external_id as string | undefined;
+    if (ext) openExtIds.add(ext);
+  }
+
+  // For one currently-broken elevator: what its outage means, computed from
+  // the curated chains — which access routes it SEVERS right now (given
+  // everything else that's down), which still-working elevators BACK IT UP
+  // on its own segments, whether a non-elevator step-free path covers it,
+  // plus the chains' rider-facing notes (detours, garage-only elevators…).
+  function accessImpactFor(extId: string) {
+    const memberChains = chainsList.filter((m) => allElevators(m).some((el) => el.externalId === extId));
+    if (!memberChains.length) return null;
+    const severs: string[] = [];
+    const backups = new Set<string>();
+    let rampAlternative = false;
+    const notes = new Set<string>();
+    for (const m of memberChains) {
+      const ids = new Set(allElevators(m).map((el) => el.externalId));
+      const down = new Set([...openExtIds].filter((id) => ids.has(id)));
+      const stName = stationName.get(`${systemId}:${m.stationExternalId}`) ?? m.stationExternalId;
+      if (!stationAccessible(m, down)) severs.push(chainDisplayName(stName, m));
+      for (const seg of m.segments) {
+        if (!seg.elevators.some((el) => el.externalId === extId)) continue;
+        if (seg.stepFreeAlternative) rampAlternative = true;
+        for (const el of seg.elevators) {
+          if (el.externalId !== extId && !openExtIds.has(el.externalId)) backups.add(el.label);
+        }
+      }
+      if (m.note) notes.add(m.note);
+    }
+    return { severs, backups: [...backups], rampAlternative, notes: [...notes] };
+  }
 
   const eventsByElevatorExtId = new Map<string, typeof allEvents>();
   for (const e of systemEvents) {
@@ -312,14 +377,27 @@ function buildSystemDetail(systemId: string) {
     .filter((e) => e.ended_at == null)
     .map((e) => {
       const unit = unitById.get(e.unit_id as string);
+      const ext = unit?.external_id as string | undefined;
       const since = (e.source_started_at as string | null) ?? (e.started_at as string);
       const sid = (e.station_id as string | null) ?? (unit?.station_id as string | null);
+      const impact = ext ? accessImpactFor(ext) : null;
       return {
-        station: displayStationName(sid, unit?.external_id as string | undefined),
-        unit: (unit?.description as string) || (unit?.external_id as string) || "?",
+        station: displayStationName(sid, ext),
+        unitId: ext ?? "?",
+        unit: (unit?.description as string) || ext || "?",
         days: daysSince(since),
+        since,
         planned: e.is_planned as boolean,
+        reason: (e.reason as string | null) ?? null,
+        estimatedReturn: (e.estimated_return as string | null) ?? null,
         soleAccess: confirmedSoleAccess(unit),
+        // Live chain impact (curated stations only): routes severed right
+        // now, working backups on this elevator's own segments, ramp
+        // coverage, and the chains' rider-facing notes.
+        severs: impact?.severs ?? [],
+        backups: impact?.backups ?? [],
+        rampAlternative: impact?.rampAlternative ?? false,
+        chainNotes: impact?.notes ?? [],
         // MTA (so far) marks a unit is_active: false while it's mid
         // capital-replacement rather than just "broken" — flag that
         // distinction so a 600+ day outage doesn't read as neglect.
@@ -327,6 +405,57 @@ function buildSystemDetail(systemId: string) {
       };
     })
     .sort((a, b) => b.days - a.days);
+
+  // --- Station access board (live) ---
+  // Modeled chains with a relevant outage right now: still accessible via a
+  // backup ("REDUCED") or actually severed ("NO ACCESS"). Un-modeled
+  // stations join only via a confirmed sole-access unit being down (the
+  // same source-gated rule as the ▮ marker). Chains with nothing down are
+  // summarized by count, not listed.
+  const stationAccess: { name: string; state: "reduced" | "no_access"; downUnits: string[]; note: string | null }[] = [];
+  let chainsTotal = 0;
+  for (const [bare, chains] of models) {
+    const stName = stationName.get(`${systemId}:${bare}`) ?? bare;
+    for (const model of chains) {
+      chainsTotal++;
+      const ids = new Set(allElevators(model).map((el) => el.externalId));
+      const down = [...openExtIds].filter((id) => ids.has(id));
+      if (!down.length) continue;
+      stationAccess.push({
+        name: chainDisplayName(stName, model),
+        state: stationAccessible(model, new Set(down)) ? "reduced" : "no_access",
+        downUnits: down,
+        note: model.note ?? null,
+      });
+    }
+  }
+  for (const e of systemEvents) {
+    if (e.ended_at != null) continue;
+    const unit = unitById.get(e.unit_id as string);
+    const sid = (e.station_id as string | null) ?? (unit?.station_id as string | null);
+    if (!sid || modeledStationIds.has(sid)) continue;
+    if (!confirmedSoleAccess(unit)) continue;
+    stationAccess.push({
+      name: stationName.get(sid) ?? "Unknown",
+      state: "no_access",
+      downUnits: [unit?.external_id as string],
+      note: null,
+    });
+  }
+  stationAccess.sort((a, b) => (a.state === b.state ? a.name.localeCompare(b.name) : a.state === "no_access" ? -1 : 1));
+
+  // --- Scheduled work board (from the upcoming_outages snapshot) ---
+  const scheduledWork = upcomingData
+    .filter((u) => u.system_id === systemId)
+    .map((u) => ({
+      unitId: (u.unit_external_id as string) ?? "?",
+      station: stationName.get(u.station_id as string) ?? "—",
+      starts: (u.source_started_at as string | null) ?? null,
+      until: (u.estimated_return as string | null) ?? null,
+      reason: (u.reason as string | null) ?? null,
+    }))
+    .sort((a, b) => (a.starts ?? "9999").localeCompare(b.starts ?? "9999"))
+    .slice(0, 40);
 
   // Accessibility blackouts (shame) — ranked by TOTAL TIME a station (or
   // curated chain) was actually inaccessible (overlapping blackouts merged,
@@ -457,7 +586,16 @@ function buildSystemDetail(systemId: string) {
     .sort((a, b) => b.count - a.count)
     .slice(0, 15);
 
-  return { currentlyBroken, accessibilityBlackouts, stepFreeStreak, mostBrokenUnits, uptimeStreak, singlePointsOfFailure };
+  return {
+    currentlyBroken,
+    stationAccess: { rows: stationAccess, chainsModeled: chainsTotal },
+    scheduledWork,
+    accessibilityBlackouts,
+    stepFreeStreak,
+    mostBrokenUnits,
+    uptimeStreak,
+    singlePointsOfFailure,
+  };
 }
 
 mkdirSync("site/systems", { recursive: true });
@@ -466,7 +604,15 @@ for (const s of systemRows) {
   writeFileSync(
     `site/systems/${s.id}.json`,
     JSON.stringify(
-      { id: s.id, name: s.name, label: s.label, generatedAt: new Date(now).toISOString(), ...detail },
+      {
+        id: s.id,
+        name: s.name,
+        label: s.label,
+        // Agency-local IANA zone — the board renders times in station time.
+        timezone: getSystem(s.id as string)?.timezone ?? null,
+        generatedAt: new Date(now).toISOString(),
+        ...detail,
+      },
       null,
       2,
     ),
@@ -491,6 +637,7 @@ const data = {
     // the aggregate sentence whenever this is nonzero.
     staticUnitsInTotal,
     down: systemRows.reduce((n, s) => n + s.down, 0),
+    downUnplanned: systemRows.reduce((n, s) => n + s.downUnplanned, 0),
   },
   systems: systemRows,
   longestOutages: outageRows,

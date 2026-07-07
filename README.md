@@ -1,7 +1,7 @@
 # LiftWatch
 
 Monitor public-transit **elevator** reliability worldwide, archive it over time,
-and rank systems, stations, and individual elevators on split-flap leaderboards.
+and rank systems, stations, and individual elevators on departure-board-style leaderboards.
 
 See [SPEC.md](SPEC.md) for the full design and roadmap.
 

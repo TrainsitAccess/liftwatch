@@ -2,27 +2,58 @@
   "id": "bart-bay-area",
   "name": "BART",
   "label": "BART (San Francisco)",
-  "generatedAt": "2026-07-07T08:59:52.655Z",
+  "timezone": "America/Los_Angeles",
+  "generatedAt": "2026-07-07T09:19:37.076Z",
   "currentlyBroken": [
     {
       "station": "Millbrae",
+      "unitId": "MLBR",
       "unit": "Station elevator access (BART reports at station level)",
       "days": 3,
+      "since": "2026-07-04T02:54:57.211+00:00",
       "planned": false,
-      "soleAccess": true
+      "reason": "Station - SF/East Bay/SFO Airport",
+      "estimatedReturn": null,
+      "soleAccess": true,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "Richmond",
+      "unitId": "RICH-UNSPECIFIED",
       "unit": "Station (unspecified elevator — conservative)",
       "days": 3,
+      "since": "2026-07-04T02:54:57.211+00:00",
       "planned": false,
-      "soleAccess": false
+      "reason": "Station (unspecified elevator — conservative)",
+      "estimatedReturn": null,
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     }
   ],
+  "stationAccess": {
+    "rows": [
+      {
+        "name": "Millbrae",
+        "state": "no_access",
+        "downUnits": [
+          "MLBR"
+        ],
+        "note": null
+      }
+    ],
+    "chainsModeled": 7
+  },
+  "scheduledWork": [],
   "accessibilityBlackouts": [
     {
       "name": "Millbrae",
-      "hours": 78.08206777777778
+      "hours": 78.4110736111111
     },
     {
       "name": "Hayward",

@@ -2,70 +2,185 @@
   "id": "mta-mnr",
   "name": "Metro-North",
   "label": "Metro-North (New York)",
-  "generatedAt": "2026-07-07T08:59:52.655Z",
+  "timezone": "America/New_York",
+  "generatedAt": "2026-07-07T09:19:37.076Z",
   "currentlyBroken": [
     {
       "station": "Grand Central (North End: Tks 34/35/116)",
+      "unitId": "0NY-NE-4",
       "unit": "NE-4:  At the 45th street Cross Passage to Tk 116 platform and Tks 34 & 35 platform.",
       "days": 1200,
+      "since": "2023-03-24T13:55:11+00:00",
       "planned": true,
-      "soleAccess": true
+      "reason": "long term outage",
+      "estimatedReturn": null,
+      "soleAccess": true,
+      "severs": [
+        "Grand Central (North End: Tks 34/35/116)"
+      ],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": [
+        "Grand Central's 45th St cross passage: NE-4 is the sole elevator to the Track 116 and Tracks 34 & 35 platforms from this passage. It has been out of service since March 2023 (long-term outage). The other North End units (NE-1/2/3/5/6) are tracked but not yet modeled — passage topology unverified."
+      ]
     },
     {
       "station": "Grand Central",
+      "unitId": "0NY-NE-2",
       "unit": "At the 47th street Cross Passage in the Northwest Passage.",
       "days": 87,
+      "since": "2026-04-10T13:21:09+00:00",
       "planned": false,
-      "soleAccess": false
+      "reason": "not working",
+      "estimatedReturn": null,
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "New Rochelle (New Haven-bound)",
+      "unitId": "2NR-206E",
       "unit": "Elevator from the street to the Stamford/New Haven-bound platform (Track 4).",
       "days": 41,
+      "since": "2026-05-26T11:11:52+00:00",
       "planned": true,
-      "soleAccess": true
+      "reason": "The elevator leading to the tracks 2 and 4 platform at New Rochelle is closed for upgrade work.",
+      "estimatedReturn": "2026-07-18T03:59:00+00:00",
+      "soleAccess": true,
+      "severs": [
+        "New Rochelle (New Haven-bound)"
+      ],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "Grand Central",
+      "unitId": "0NY-NE-6",
       "unit": "At the 45th street Cross Passage in the Northeast Passage.",
       "days": 3,
+      "since": "2026-07-03T13:24:09+00:00",
       "planned": false,
-      "soleAccess": false
+      "reason": "not working",
+      "estimatedReturn": null,
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "Grand Central (Terminal)",
+      "unitId": "0NY-T-8",
       "unit": "Vanderbilt Avenue next to Michael Jordan's Restaurant - ADA ACCESS TO TERMINAL (Hall A).",
       "days": 2,
+      "since": "2026-07-04T21:29:07+00:00",
       "planned": false,
-      "soleAccess": false
+      "reason": "not working",
+      "estimatedReturn": null,
+      "soleAccess": false,
+      "severs": [],
+      "backups": [
+        "Vanderbilt Av (A Hall)",
+        "Oyster Bar ramp / Shuttle Passageway",
+        "Track 11/13",
+        "Upper level, Northeast Passageway (B Hall)",
+        "Kitty Kelly ramp, E 42nd St & Vanderbilt",
+        "Wheelchair lift at Vanderbilt Av (A Hall)"
+      ],
+      "rampAlternative": true,
+      "chainNotes": [
+        "Grand Central Terminal proper is step-free via the Oyster Bar and Kitty Kelly ramps — no elevator outage can sever main-terminal access. Elevators listed here are conveniences within the ramp-served areas."
+      ]
     },
     {
       "station": "Larchmont",
+      "unitId": "2LA-208E",
       "unit": "Elevator from the parking lot to the Stamford/New Haven-bound platform (Track 4) to the overpass",
       "days": 0,
+      "since": "2026-07-06T22:46:23+00:00",
       "planned": false,
-      "soleAccess": false
+      "reason": "not working",
+      "estimatedReturn": null,
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "Stamford (Track 5)",
+      "unitId": "2SM-2265",
       "unit": "Elevator 10 - East pedestrian bridge to/from Track 5 & South State Street",
       "days": 0,
+      "since": "2026-07-06T22:47:55+00:00",
       "planned": false,
-      "soleAccess": false
+      "reason": "not working",
+      "estimatedReturn": null,
+      "soleAccess": false,
+      "severs": [],
+      "backups": [
+        "Elevator 01 — concourse, Track 5 & South State St",
+        "Elevator 02 — concourse to Tracks 3/5 island"
+      ],
+      "rampAlternative": true,
+      "chainNotes": [
+        "Stamford Track 5 has a RAMP from South State Street — always step-free, elevators (01, 10, 02-via-island) are conveniences. The Track 5 landings do NOT reach Track 3's island. Access also possible through garage. Exact route unknown."
+      ]
     }
   ],
+  "stationAccess": {
+    "rows": [
+      {
+        "name": "Grand Central (North End: Tks 34/35/116)",
+        "state": "no_access",
+        "downUnits": [
+          "0NY-NE-4"
+        ],
+        "note": "Grand Central's 45th St cross passage: NE-4 is the sole elevator to the Track 116 and Tracks 34 & 35 platforms from this passage. It has been out of service since March 2023 (long-term outage). The other North End units (NE-1/2/3/5/6) are tracked but not yet modeled — passage topology unverified."
+      },
+      {
+        "name": "New Rochelle (New Haven-bound)",
+        "state": "no_access",
+        "downUnits": [
+          "2NR-206E"
+        ],
+        "note": null
+      },
+      {
+        "name": "Grand Central (Terminal)",
+        "state": "reduced",
+        "downUnits": [
+          "0NY-T-8"
+        ],
+        "note": "Grand Central Terminal proper is step-free via the Oyster Bar and Kitty Kelly ramps — no elevator outage can sever main-terminal access. Elevators listed here are conveniences within the ramp-served areas."
+      },
+      {
+        "name": "Stamford (Track 5)",
+        "state": "reduced",
+        "downUnits": [
+          "2SM-2265"
+        ],
+        "note": "Stamford Track 5 has a RAMP from South State Street — always step-free, elevators (01, 10, 02-via-island) are conveniences. The Track 5 landings do NOT reach Track 3's island. Access also possible through garage. Exact route unknown."
+      }
+    ],
+    "chainsModeled": 13
+  },
+  "scheduledWork": [],
   "accessibilityBlackouts": [
     {
       "name": "Grand Central (North End: Tks 34/35/116)",
-      "hours": 28819.0782375
+      "hours": 28819.407243333335
     },
     {
       "name": "New Rochelle (New Haven-bound)",
-      "hours": 1005.8001819444445
+      "hours": 1006.1291877777778
     },
     {
       "name": "Larchmont",
-      "hours": 10.224904166666667
+      "hours": 10.55391
     }
   ],
   "stepFreeStreak": [

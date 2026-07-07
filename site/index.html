@@ -3,191 +3,387 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>LiftWatch — transit elevator outages</title>
-<meta name="description" content="Tracking public-transit elevator outages, forever. Split-flap leaderboards for the most and least broken systems, stations, and elevators.">
+<title>LiftWatch — transit elevator service board</title>
+<meta name="description" content="Live departure-board view of public-transit elevator outages: what's broken, why, when it's expected back, and what it means for step-free access.">
 <style>
   :root {
-    --bg: #17170f;
-    --board: #121210;
-    --cell: #080807;
-    --text: #efe9db;
-    --amber: #e8b64c;
-    --red: #e05c4a;
-    --dim: #6f6f66;
-    --hairline: #2a2a26;
+    --bg: #050506;
+    --panel: #0b0b0d;
+    --strip: #141418;
+    --strip-hover: #1b1b21;
+    --detail: #101014;
+    --hairline: #26262c;
+    --amber: #ffb843;
+    --amber-dim: #a97e2f;
+    --white: #f2f2ee;
+    --dim: #9c9c94;
+    --red: #ff5747;
+    --green: #43d97e;
+    --focus: #ffd27a;
   }
   * { box-sizing: border-box; }
+  html { background: var(--bg); }
   body {
-    margin: 0; min-height: 100vh; background: var(--bg); color: var(--text);
-    font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    display: flex; flex-direction: column; align-items: center; padding: 40px 16px 64px;
+    margin: 0; min-height: 100vh; background: var(--bg); color: var(--white);
+    font-family: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+    display: flex; flex-direction: column; align-items: center; padding: 34px 16px 56px;
   }
-  header { width: min(1024px, 100%); margin-bottom: 28px; }
-  h1 { font-size: 26px; font-weight: 500; letter-spacing: 0.22em; margin: 0; }
-  h1 .lift { color: var(--amber); }
-  .tag { color: var(--dim); font-size: 12px; letter-spacing: 0.08em; margin-top: 6px; }
-  .board {
-    width: fit-content; max-width: 100%; min-width: min(760px, 100%); background: var(--board);
-    border: 1px solid var(--hairline); border-radius: 10px;
-    padding: 16px 16px 12px; margin-bottom: 26px; overflow-x: auto;
+  a { color: var(--amber); }
+  :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 3px; }
+  .skip {
+    position: absolute; left: -9999px; top: 0; background: var(--amber); color: #000;
+    padding: 8px 14px; font-weight: 700; z-index: 10; border-radius: 0 0 6px 0;
   }
-  .board-head { display: flex; justify-content: space-between; align-items: baseline; margin: 0 2px 12px; }
-  .board-head .t { color: var(--amber); font-size: 13px; letter-spacing: 0.14em; }
-  .board-head .s { color: var(--dim); font-size: 11px; letter-spacing: 0.08em; }
-  .row { display: flex; margin: 3px 0; width: max-content; }
-  a.row { text-decoration: none; color: inherit; cursor: pointer; border-radius: 5px; }
-  a.row:hover .cell, a.row:focus-visible .cell { background: #1c1c17; }
-  a.row:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
-  .cell {
-    width: 21px; height: 29px; margin: 1px; border-radius: 3px;
-    background: var(--cell); color: var(--text);
-    font-size: 16px; font-weight: 500; line-height: 29px; text-align: center;
-    position: relative; overflow: hidden; flex: 0 0 auto;
-  }
-  .cell::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: rgba(0,0,0,.65); }
-  .cell.amber { color: var(--amber); }
-  .cell.red { color: var(--red); }
-  .cell.dim { color: var(--dim); font-size: 12px; }
-  .legend { color: var(--dim); font-size: 11px; letter-spacing: 0.06em; margin: 10px 2px 0; }
-  .legend .red { color: var(--red); }
-  .legend a { color: var(--amber); }
-  .legend:empty { display: none; }
-  footer { width: min(1024px, 100%); color: var(--dim); font-size: 12px; line-height: 1.7; }
-  footer a { color: var(--amber); }
+  .skip:focus { left: 0; }
   .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  header.masthead, main, .substrip, .asof, footer { width: min(1120px, 100%); }
+  header.masthead { margin-bottom: 22px; }
+  h1 { margin: 0; font-size: 30px; letter-spacing: .01em; }
+  h1 .brand { font-weight: 800; color: var(--white); }
+  h1 .brand-sub { font-weight: 300; color: var(--dim); margin-left: 10px; font-size: 24px; }
+  .tag { color: var(--dim); font-size: 13px; margin: 6px 0 0; }
+
+  /* Board module: dark panel, white sans headers, amber LED rows */
+  section.board {
+    background: var(--panel); border: 1px solid var(--hairline); border-radius: 10px;
+    padding: 18px 18px 12px; margin-bottom: 22px;
+  }
+  .board-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 10px; }
+  .board-head h2 { margin: 0; font-size: 19px; font-weight: 800; letter-spacing: .01em; }
+  .board-head h2 .t-sub { font-weight: 300; color: var(--dim); font-size: 15px; margin-left: 8px; }
+  .board-head .side { color: var(--dim); font-size: 12px; }
+
+  .tablewrap { overflow-x: auto; }
+  table.led { width: 100%; border-collapse: separate; border-spacing: 0 5px; min-width: 700px; }
+  table.led thead th {
+    text-align: left; font-size: 12px; font-weight: 700; color: var(--white);
+    text-transform: lowercase; letter-spacing: .04em; padding: 2px 10px 6px;
+    border-bottom: 1px solid var(--hairline); white-space: nowrap;
+  }
+  table.led thead th.num, table.led td.num { text-align: right; }
+  table.led tbody tr.row td {
+    background: var(--strip); padding: 9px 10px;
+    font-family: ui-monospace, "IBM Plex Mono", SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 15px; font-weight: 600; letter-spacing: .05em; color: var(--amber);
+    text-transform: uppercase; white-space: nowrap; vertical-align: middle;
+  }
+  table.led tbody tr.row td:first-child { border-radius: 5px 0 0 5px; }
+  table.led tbody tr.row td:last-child { border-radius: 0 5px 5px 0; }
+  table.led tbody tr.row.clickable { cursor: pointer; }
+  table.led tbody tr.row.clickable:hover td, table.led tbody tr.row:has(:focus-visible) td { background: var(--strip-hover); }
+  td .dim, .led .dim { color: var(--dim); font-weight: 500; }
+  td.white, .led .white-cell { color: var(--white); }
+  td.red, .led .red-text { color: var(--red); }
+  td.green { color: var(--green); }
+  tr.row td a { color: inherit; text-decoration: none; }
+  tr.row td a:hover { text-decoration: underline; }
+
+  .chip {
+    display: inline-block; font-family: inherit; font-size: 11px; font-weight: 700;
+    padding: 1px 7px 2px; border-radius: 3px; letter-spacing: .06em; vertical-align: 1px;
+  }
+  .chip.red { background: #3a1210; color: var(--red); border: 1px solid #5c1d19; }
+  .chip.sched { background: #2b220f; color: var(--amber-dim); border: 1px solid #4a3a17; }
+  .chip.green { background: #0e2b1a; color: var(--green); border: 1px solid #1c4d30; }
+
+  /* Scrolling information cell (RFI-style): full text is in the DOM once; the
+     animation is purely visual, pauses on hover/focus, off under reduced motion. */
+  td.info { max-width: 320px; }
+  .scroll-cell { overflow: hidden; max-width: 320px; }
+  .scroll-cell > span { display: inline-block; white-space: nowrap; }
+  .scroll-cell.overflowing > span {
+    animation: shuttle var(--scroll-secs, 9s) ease-in-out infinite alternate;
+  }
+  .scroll-cell.overflowing:hover > span, tr:has(:focus-visible) .scroll-cell > span { animation-play-state: paused; }
+  @keyframes shuttle { from { transform: translateX(0); } to { transform: translateX(calc(-1 * var(--scroll-delta, 0px))); } }
+
+  /* Expand/collapse */
+  button.expand {
+    background: none; border: 1px solid var(--hairline); color: var(--dim);
+    font: inherit; font-size: 12px; line-height: 1; padding: 4px 7px; border-radius: 4px; cursor: pointer;
+  }
+  button.expand[aria-expanded="true"] { color: var(--amber); border-color: var(--amber-dim); }
+  tr.detail-row > td {
+    background: var(--detail); border-radius: 5px; padding: 12px 14px 13px;
+    border-left: 3px solid var(--amber-dim);
+  }
+  .detail { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 10px 26px; }
+  .detail .field { min-width: 0; }
+  .detail .k { color: var(--dim); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 3px; font-family: inherit; }
+  .detail .v { color: var(--white); font-size: 13.5px; line-height: 1.5; }
+  .detail .v.amber { color: var(--amber); font-family: ui-monospace, Menlo, Consolas, monospace; }
+  .detail .v.red { color: var(--red); }
+  .detail .v.green { color: var(--green); }
+  .detail .wide { grid-column: 1 / -1; }
+
+  .legend { color: var(--dim); font-size: 12px; line-height: 1.6; margin: 10px 2px 2px; }
+  .legend .red { color: var(--red); }
+  .legend:empty { display: none; }
+  .empty { color: var(--dim); font-size: 13px; padding: 6px 2px 8px; }
+
+  /* Bottom strip: clock + ticker, like the reference board's base row */
+  .substrip {
+    display: flex; align-items: stretch; gap: 14px; background: var(--panel);
+    border: 1px solid var(--hairline); border-radius: 10px; padding: 12px 16px; margin-bottom: 8px;
+  }
+  .clock {
+    font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 40px; font-weight: 700;
+    color: var(--amber); letter-spacing: .04em; display: flex; align-items: center;
+    text-shadow: 0 0 14px rgba(255, 184, 67, .25);
+  }
+  .clock .colon { animation: blink 1.2s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: .15; } }
+  .ticker {
+    flex: 1; display: flex; align-items: center; overflow: hidden;
+    font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 15px; font-weight: 600;
+    letter-spacing: .06em; color: var(--amber); text-transform: uppercase; min-width: 0;
+  }
+  .ticker span { white-space: nowrap; transition: opacity .5s; }
+  .asof { color: var(--dim); font-size: 12px; margin: 0 0 22px; padding: 0 4px; }
+
+  footer { color: var(--dim); font-size: 12.5px; line-height: 1.7; }
+  footer p { margin: 6px 0; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-cell.overflowing > span { animation: none; }
+    .scroll-cell { text-overflow: ellipsis; }
+    .scroll-cell > span { max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
+    .clock .colon { animation: none; }
+    .ticker span { transition: none; }
+  }
 </style>
 </head>
 <body>
-<header>
-  <h1><span class="lift">LIFT</span>WATCH</h1>
-  <p class="tag">TRACKING TRANSIT ELEVATOR OUTAGES</p>
+<a class="skip" href="#main">Skip to boards</a>
+<header class="masthead">
+  <h1><span class="brand">LiftWatch</span><span class="brand-sub">Elevator Service Board</span></h1>
+  <p class="tag">Tracking public-transit elevator outages, permanently. An outage strands wheelchair users, strollers, and anyone who can't take the stairs.</p>
 </header>
 
-<section class="board" aria-hidden="true">
-  <div class="board-head"><span class="t">OUT OF SERVICE</span><span class="s" id="sys-sub">SHARE OF FLEET DOWN</span></div>
-  <div id="systems-board"></div>
-  <p class="legend">DOWN / FLEET · % OF ACTIVE ELEVATORS OUT RIGHT NOW</p>
-  <p class="legend" id="static-fleet-note"></p>
-</section>
+<main id="main">
+  <section class="board" aria-labelledby="sys-h">
+    <div class="board-head">
+      <h2 id="sys-h">Systems <span class="t-sub">ranked by unplanned outages</span></h2>
+      <span class="side">tap a system for its full board</span>
+    </div>
+    <div class="tablewrap">
+      <table class="led">
+        <caption class="sr-only">Transit systems ranked by share of active elevators out of service from unplanned breakdowns</caption>
+        <thead>
+          <tr>
+            <th class="num" scope="col">#</th>
+            <th scope="col">system</th>
+            <th class="num" scope="col">out</th>
+            <th class="num" scope="col">scheduled</th>
+            <th class="num" scope="col">fleet</th>
+            <th class="num" scope="col">% out</th>
+          </tr>
+        </thead>
+        <tbody id="systems-body"></tbody>
+      </table>
+    </div>
+    <p class="legend">OUT = elevators down right now from unplanned breakdowns · SCHEDULED = down for planned/maintenance work · % OUT = unplanned share of the active fleet</p>
+    <p class="legend" id="static-fleet-note"></p>
+  </section>
 
-<section class="board" aria-hidden="true">
-  <div class="board-head"><span class="t">LONGEST CURRENT OUTAGES</span><span class="s">DAYS OUT OF SERVICE</span></div>
-  <div id="outages-board"></div>
-  <p class="legend"><span class="red">▮</span> SOLE STEP-FREE ACCESS — STATION LOSES ACCESSIBILITY WHILE THIS ELEVATOR IS OUT</p>
-</section>
+  <section class="board" aria-labelledby="out-h">
+    <div class="board-head">
+      <h2 id="out-h">Longest current outages <span class="t-sub">network-wide</span></h2>
+      <span class="side">select a row for details</span>
+    </div>
+    <div class="tablewrap">
+      <table class="led">
+        <caption class="sr-only">The ten longest-running elevator outages across all monitored systems, with status and expected return</caption>
+        <thead>
+          <tr>
+            <th scope="col">unit</th>
+            <th scope="col">station</th>
+            <th scope="col">system</th>
+            <th scope="col">status</th>
+            <th class="num" scope="col">out</th>
+            <th scope="col">est. return</th>
+            <th scope="col">information</th>
+            <th scope="col"><span class="sr-only">details</span></th>
+          </tr>
+        </thead>
+        <tbody id="outages-body"></tbody>
+      </table>
+    </div>
+    <p class="legend"><span class="red">NO STEP-FREE</span> = this elevator is the station's only confirmed step-free access — the station is inaccessible while it's out · times shown in each system's local time</p>
+  </section>
+</main>
 
-<div id="sr-data" class="sr-only" role="region" aria-label="Leaderboard data"></div>
+<div class="substrip">
+  <div class="clock" aria-hidden="true"><span id="clock-hh">--</span><span class="colon">:</span><span id="clock-mm">--</span></div>
+  <div class="ticker" aria-hidden="true"><span id="ticker-text"></span></div>
+</div>
+<p class="asof" id="asof">Loading live data…</p>
 
 <footer>
-  <p id="updated">Loading live data…</p>
-  <p>An elevator outage strands wheelchair users, strollers, and anyone who can't take the stairs.
-     Agencies overwrite this data constantly — LiftWatch archives it permanently.
-     Early preview, more systems coming. Counts include planned maintenance.</p>
+  <p>Agencies overwrite this data constantly — LiftWatch archives it permanently. Systems are ranked by <strong>unplanned</strong> breakdowns; scheduled maintenance is tracked separately and never hidden.</p>
+  <p>Early preview, more systems coming. Fleet figures marked * use an agency-published total rather than a live feed.</p>
 </footer>
 
 <script>
-const CH = " ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.%/-▮!*";
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const p2 = (n) => String(n).padStart(2, "0");
+// Agency-local time (IANA zone from the data) — a departure board shows
+// station time, not the viewer's. Falls back to viewer-local if absent.
+const fmtWhen = (iso, tz) => {
+  if (!iso) return null;
+  const d = new Date(iso);
+  if (isNaN(d)) return null;
+  try {
+    const parts = new Intl.DateTimeFormat("en-US", {
+      timeZone: tz || undefined, month: "short", day: "2-digit", hour: "2-digit", minute: "2-digit", hour12: false, hourCycle: "h23",
+    }).formatToParts(d);
+    const g = (t) => parts.find((p) => p.type === t)?.value ?? "";
+    return `${g("month").toUpperCase()} ${g("day")} ${g("hour")}:${g("minute")}`;
+  } catch { return null; }
+};
 const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-function makeRow(container, segs, href) {
-  const row = document.createElement(href ? "a" : "div");
-  row.className = "row";
-  if (href) row.href = href;
-  const cells = [];
-  for (const seg of segs) {
-    for (const chr of seg.str) {
-      const c = document.createElement("div");
-      c.className = "cell" + (seg.cls ? " " + seg.cls : "");
-      c.textContent = " ";
-      row.appendChild(c);
-      cells.push({ el: c, target: chr.toUpperCase() });
+// After rows render: mark information cells whose text overflows so the
+// shuttle animation (visual only — full text is always in the DOM) engages.
+function markOverflows(root) {
+  for (const cell of root.querySelectorAll(".scroll-cell")) {
+    const span = cell.querySelector("span");
+    if (!span) continue;
+    const delta = span.scrollWidth - cell.clientWidth;
+    cell.classList.toggle("overflowing", delta > 8);
+    if (delta > 8) {
+      cell.style.setProperty("--scroll-delta", delta + "px");
+      cell.style.setProperty("--scroll-secs", Math.max(6, Math.round(delta / 18)) + "s");
     }
   }
-  container.appendChild(row);
-  return cells;
 }
 
-function riffle(allCells) {
-  allCells.forEach(({ el, target }, i) => {
-    if (REDUCED) { el.textContent = target; return; }
-    const tIdx = Math.max(0, CH.indexOf(target));
-    let cur = 0, remaining = (tIdx % CH.length) + 8;
-    const tick = () => {
-      cur = (cur + 1) % CH.length;
-      el.textContent = CH[cur];
-      if (--remaining > 0) setTimeout(tick, 26);
-      else el.textContent = target;
-    };
-    setTimeout(tick, i * 6);
-  });
+// Expandable row: the toggle button controls the sibling detail row.
+let detailSeq = 0;
+function attachExpand(row, detailRow) {
+  const btn = row.querySelector("button.expand");
+  const id = "detail-" + (++detailSeq);
+  detailRow.id = id;
+  btn.setAttribute("aria-controls", id);
+  const toggle = () => {
+    const open = btn.getAttribute("aria-expanded") === "true";
+    btn.setAttribute("aria-expanded", String(!open));
+    detailRow.hidden = open;
+    btn.textContent = open ? "▸" : "▾";
+  };
+  btn.addEventListener("click", (e) => { e.stopPropagation(); toggle(); });
+  row.classList.add("clickable");
+  row.addEventListener("click", (e) => { if (!e.target.closest("a, button")) toggle(); });
 }
 
-const pad = (s, n) => String(s).slice(0, n).padEnd(n, " ");
-const rpad = (s, n) => String(s).slice(0, n).padStart(n, " ");
+const field = (k, v, cls = "") => v ? `<div class="field"><div class="k">${esc(k)}</div><div class="v ${cls}">${v}</div></div>` : "";
 
-fetch("./data.json").then(r => r.json()).then(data => {
-  const cells = [];
-
-  const sys = document.getElementById("systems-board");
+fetch("./data.json").then((r) => r.json()).then((data) => {
+  // --- Systems board ---
+  const sysBody = document.getElementById("systems-body");
   data.systems.forEach((s, i) => {
-    // Static-denominator fleet counts AND percentages (agency-published
-    // total, not a live feed) both carry a trailing "*" so neither is
-    // mistaken for a live-fleet figure — the marking must be on every cell
-    // derived from the static reference, not just the percentage.
     const isStatic = s.fleetSource === "static";
-    const fleet = s.activeUnits == null ? s.down + "/-" : s.down + "/" + s.activeUnits + (isStatic ? "*" : "");
-    const pct = s.pctDown == null ? "-" : s.pctDown.toFixed(1) + "%" + (isStatic ? "*" : "");
-    cells.push(...makeRow(sys, [
-      { str: rpad(i + 1, 2) + " ", cls: "dim" },
-      { str: pad(s.boardLabel, 15), cls: "" },
-      { str: " " + rpad(fleet, 8) + " ", cls: "dim" },
-      { str: rpad(pct, 7), cls: s.pctDown == null ? "dim" : "amber" },
-    ], `./system.html?id=${encodeURIComponent(s.id)}`));
+    const star = isStatic ? "*" : "";
+    const fleet = s.activeUnits == null ? "—" : s.activeUnits + star;
+    const pct = s.pctUnplanned == null ? "—" : s.pctUnplanned.toFixed(1) + "%" + star;
+    const tr = document.createElement("tr");
+    tr.className = "row";
+    tr.innerHTML =
+      `<td class="num dim">${i + 1}</td>` +
+      `<td class="white"><a href="./system.html?id=${encodeURIComponent(s.id)}">${esc(s.boardLabel)}</a></td>` +
+      `<td class="num${s.downUnplanned > 0 ? "" : " green"}">${s.downUnplanned}</td>` +
+      `<td class="num dim">${s.downPlanned}</td>` +
+      `<td class="num dim">${fleet}</td>` +
+      `<td class="num${s.pctUnplanned == null ? " dim" : ""}">${pct}</td>`;
+    tr.classList.add("clickable");
+    tr.addEventListener("click", (e) => { if (!e.target.closest("a")) location.href = `./system.html?id=${encodeURIComponent(s.id)}`; });
+    sysBody.appendChild(tr);
   });
 
-  const staticFleetSystems = data.systems.filter(s => s.fleetSource === "static");
+  const staticFleetSystems = data.systems.filter((s) => s.fleetSource === "static");
   if (staticFleetSystems.length) {
-    const note = document.getElementById("static-fleet-note");
-    note.innerHTML = staticFleetSystems.map(s =>
-      `* ${s.name}'s % uses a fleet total published by the agency (not a live feed) — <a href="${s.staticFleetSource}" target="_blank" rel="noopener">source</a>, as of ${s.staticFleetAsOf}`
+    document.getElementById("static-fleet-note").innerHTML = staticFleetSystems.map((s) =>
+      `* ${esc(s.name)}'s fleet total is published by the agency (not a live feed) — <a href="${esc(s.staticFleetSource)}" target="_blank" rel="noopener">source</a>, as of ${esc(s.staticFleetAsOf)}`
     ).join("<br>");
   }
 
-  const out = document.getElementById("outages-board");
-  data.longestOutages.forEach(o => {
-    cells.push(...makeRow(out, [
-      { str: o.soleAccess ? "▮ " : "  ", cls: "red" },
-      { str: pad(o.station, 17), cls: "" },
-      { str: " " + pad(o.unit, 7), cls: "dim" },
-      { str: rpad(o.days + "D", 5), cls: o.days > 180 ? "red" : "amber" },
-    ]));
-  });
+  // --- Longest current outages ---
+  const outBody = document.getElementById("outages-body");
+  for (const o of data.longestOutages) {
+    const status = o.reason || "OUT OF SERVICE";
+    const ret = fmtWhen(o.estimatedReturn, o.tz) || "—";
+    const infoBits = [];
+    if (o.soleAccess) infoBits.push("NO STEP-FREE ACCESS AT THIS STATION WHILE OUT");
+    if (o.planned) infoBits.push("SCHEDULED WORK");
+    if (o.unitDesc) infoBits.push(o.unitDesc);
+    const info = infoBits.join(" · ") || "—";
 
-  riffle(cells);
+    const tr = document.createElement("tr");
+    tr.className = "row";
+    tr.innerHTML =
+      `<td>${esc(o.unit)}</td>` +
+      `<td class="white">${esc(o.station)}</td>` +
+      `<td class="dim">${esc(o.system)}</td>` +
+      `<td${o.planned ? ' class="dim"' : ""}>${esc(status)}</td>` +
+      `<td class="num${o.days > 180 ? " red" : ""}">${o.days}D</td>` +
+      `<td class="dim">${esc(ret)}</td>` +
+      `<td class="info"><div class="scroll-cell"><span>${o.soleAccess ? '<span class="chip red">NO STEP-FREE</span> ' : ""}${o.planned ? '<span class="chip sched">PLANNED</span> ' : ""}${esc(info)}</span></div></td>` +
+      `<td><button class="expand" aria-expanded="false" aria-label="Details for ${esc(o.unit)} at ${esc(o.station)}">▸</button></td>`;
 
+    const dtr = document.createElement("tr");
+    dtr.className = "detail-row";
+    dtr.hidden = true;
+    dtr.innerHTML = `<td colspan="8"><div class="detail">` +
+      field("Status", esc(status) + (o.planned ? ' <span class="chip sched">PLANNED</span>' : "") + (o.soleAccess ? ' <span class="chip red">NO STEP-FREE</span>' : ""), "amber") +
+      field("Out since", esc(fmtWhen(o.since, o.tz) || "—") + ` · ${o.days} days`, "amber") +
+      field("Estimated return", esc(ret), "amber") +
+      field("Elevator", esc(o.unitDesc || o.unit)) +
+      field("System board", `<a href="./system.html?id=${encodeURIComponent(o.systemId)}">${esc(o.system)} — full board</a>`) +
+      `</div></td>`;
+
+    outBody.appendChild(tr);
+    outBody.appendChild(dtr);
+    attachExpand(tr, dtr);
+  }
+
+  markOverflows(document);
+  addEventListener("resize", () => markOverflows(document));
+
+  // --- Bottom strip: clock + ticker + data freshness ---
   const t = new Date(data.generatedAt);
-  // The aggregate total can include static (non-live) fleet references
-  // blended in with live counts — mark it with the same "*" convention as
-  // the per-system rows rather than presenting a blended figure as fully live.
-  const totalMark = data.totals.staticUnitsInTotal > 0 ? "*" : "";
-  document.getElementById("updated").textContent =
-    `Snapshot: ${t.toLocaleString()} · ${data.totals.down} of ${data.totals.activeUnits}${totalMark} monitored elevators out of service across ${data.totals.systems} systems.`
-    + (data.totals.staticUnitsInTotal > 0
-      ? ` * ${data.totals.staticUnitsInTotal} of this total is a static agency-published figure, not a live count — see leaderboard note above.`
-      : "");
+  const mark = data.totals.staticUnitsInTotal > 0 ? "*" : "";
+  document.getElementById("asof").textContent =
+    `Data as of ${t.toLocaleString()} · refreshed every 10 minutes · ${data.totals.down} of ${data.totals.activeUnits}${mark} monitored elevators out of service (${data.totals.downUnplanned} unplanned) across ${data.totals.systems} systems.`;
 
-  const sr = document.getElementById("sr-data");
-  sr.innerHTML =
-    "<h2>Systems by share of elevators out of service</h2><ol>" +
-    data.systems.map(s => `<li><a href="./system.html?id=${encodeURIComponent(s.id)}">${s.label}</a>: ${s.pctDown == null
-      ? `${s.down} elevators out (fleet size unknown — this agency only reports broken units)`
-      : `${s.down} of ${s.activeUnits} elevators out (${s.pctDown}%)${s.fleetSource === "static" ? ` — uses ${s.name}'s published fleet total as of ${s.staticFleetAsOf}, not a live feed` : ""}`}</li>`).join("") +
-    "</ol><h2>Longest current outages</h2><ol>" +
-    data.longestOutages.map(o => `<li>${o.station} (${o.system}), unit ${o.unit}: out ${o.days} days${o.soleAccess ? " — sole step-free access, station currently inaccessible" : ""}</li>`).join("") +
-    "</ol>";
-}).catch(err => {
-  document.getElementById("updated").textContent = "Could not load data.json — run: npm run site:data";
+  const messages = [
+    `${data.totals.downUnplanned} UNPLANNED ELEVATOR OUTAGES RIGHT NOW · ${data.totals.down} TOTAL OUT OF ${data.totals.activeUnits}${mark} MONITORED ACROSS ${data.totals.systems} SYSTEMS`,
+  ];
+  if (data.systems[0]?.pctUnplanned != null) {
+    messages.push(`MOST BREAKDOWNS: ${data.systems[0].boardLabel} — ${data.systems[0].pctUnplanned.toFixed(1)}% OF FLEET OUT UNPLANNED`);
+  }
+  const worst = data.longestOutages[0];
+  if (worst) messages.push(`LONGEST OUTAGE: ${worst.unit} AT ${worst.station} (${worst.system}) — OUT ${worst.days} DAYS`);
+  const tickerEl = document.getElementById("ticker-text");
+  let mi = 0;
+  tickerEl.textContent = messages[0];
+  if (!REDUCED && messages.length > 1) {
+    setInterval(() => {
+      tickerEl.style.opacity = 0;
+      setTimeout(() => { mi = (mi + 1) % messages.length; tickerEl.textContent = messages[mi]; tickerEl.style.opacity = 1; }, 500);
+    }, 9000);
+  }
+}).catch(() => {
+  document.getElementById("asof").textContent = "Could not load data.json — run: npm run site:data";
 });
+
+function tickClock() {
+  const d = new Date();
+  document.getElementById("clock-hh").textContent = p2(d.getHours());
+  document.getElementById("clock-mm").textContent = p2(d.getMinutes());
+}
+tickClock();
+setInterval(tickClock, 1000);
 </script>
 </body>
 </html>

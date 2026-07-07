@@ -2,20 +2,43 @@
   "id": "tmb-barcelona",
   "name": "TMB Metro",
   "label": "Barcelona (TMB Metro)",
-  "generatedAt": "2026-07-07T08:59:52.655Z",
+  "timezone": "Europe/Madrid",
+  "generatedAt": "2026-07-07T09:19:37.076Z",
   "currentlyBroken": [
     {
       "station": "Florida",
+      "unitId": "724",
       "unit": "Avinguda Masnou",
       "days": 6,
+      "since": "2026-06-30T17:47:00+00:00",
       "planned": true,
-      "soleAccess": true
+      "reason": "Until approximately July 10th, the elevator connecting the lobby to the platform for trains heading toward Fondo at Florida Station will be out of service due to maintenance work.",
+      "estimatedReturn": "2026-07-10T13:48:00+00:00",
+      "soleAccess": true,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     }
   ],
+  "stationAccess": {
+    "rows": [
+      {
+        "name": "Florida",
+        "state": "no_access",
+        "downUnits": [
+          "724"
+        ],
+        "note": null
+      }
+    ],
+    "chainsModeled": 0
+  },
+  "scheduledWork": [],
   "accessibilityBlackouts": [
     {
       "name": "Florida",
-      "hours": 159.2146263888889
+      "hours": 159.54363222222221
     }
   ],
   "stepFreeStreak": [

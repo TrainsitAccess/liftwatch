@@ -2,89 +2,159 @@
   "id": "wmata-dc",
   "name": "DC Metro",
   "label": "DC Metro (Washington)",
-  "generatedAt": "2026-07-07T08:59:52.655Z",
+  "timezone": "America/New_York",
+  "generatedAt": "2026-07-07T09:19:37.076Z",
   "currentlyBroken": [
     {
       "station": "Glenmont",
+      "unitId": "B11X05",
       "unit": "Garage elevator",
       "days": 124,
+      "since": "2026-03-04T15:28:00+00:00",
       "planned": true,
-      "soleAccess": false
+      "reason": "Modernization",
+      "estimatedReturn": "2026-07-23T03:59:59+00:00",
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "Rockville",
+      "unitId": "A14X01",
       "unit": "Elevator between pedestrian bridge and mezzanine",
       "days": 77,
+      "since": "2026-04-21T04:40:00+00:00",
       "planned": true,
-      "soleAccess": false
+      "reason": "Modernization",
+      "estimatedReturn": "2026-07-11T03:59:59+00:00",
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "Columbia Heights",
+      "unitId": "E04X02",
       "unit": "Elevator between mezzanine and platform",
       "days": 29,
+      "since": "2026-06-08T00:15:00+00:00",
       "planned": false,
-      "soleAccess": false
+      "reason": "Minor Repair",
+      "estimatedReturn": "2026-07-07T03:59:59+00:00",
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "Huntington",
+      "unitId": "C15S03",
       "unit": "Garage #2 elevator",
       "days": 6,
+      "since": "2026-06-30T17:00:00+00:00",
       "planned": false,
-      "soleAccess": false
+      "reason": "Inspection Repair",
+      "estimatedReturn": "2026-07-21T03:59:59+00:00",
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "Mt Vernon Sq 7th St-Convention Center",
+      "unitId": "E01X04",
       "unit": "Elevator between mezzanine and platform",
       "days": 2,
+      "since": "2026-07-04T10:35:00+00:00",
       "planned": false,
-      "soleAccess": false
+      "reason": "Minor Repair",
+      "estimatedReturn": "2026-07-07T03:59:59+00:00",
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "L'Enfant Plaza",
+      "unitId": "F03N01",
       "unit": "Elevator between street and mezzanine",
       "days": 1,
+      "since": "2026-07-05T22:02:00+00:00",
       "planned": false,
-      "soleAccess": false
+      "reason": "Other",
+      "estimatedReturn": "2026-07-08T03:59:59+00:00",
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "North Bethesda",
+      "unitId": "A12X03",
       "unit": "Garage elevator",
       "days": 0,
+      "since": "2026-07-06T14:39:00+00:00",
       "planned": false,
-      "soleAccess": false
+      "reason": "Minor Repair",
+      "estimatedReturn": "2026-07-09T03:59:59+00:00",
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "Federal Triangle",
+      "unitId": "D01X01",
       "unit": "Elevator between street and mezzanine",
       "days": 0,
+      "since": "2026-07-06T20:47:00+00:00",
       "planned": true,
-      "soleAccess": false
+      "reason": "Safety Inspection",
+      "estimatedReturn": "2026-07-09T03:59:59+00:00",
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     }
   ],
+  "stationAccess": {
+    "rows": [],
+    "chainsModeled": 0
+  },
+  "scheduledWork": [],
   "accessibilityBlackouts": [
     {
       "name": "Glenmont",
-      "hours": 2993.5312930555556
+      "hours": 2993.860298888889
     },
     {
       "name": "Rockville",
-      "hours": 1852.3312930555555
+      "hours": 1852.660298888889
     },
     {
       "name": "Columbia Heights",
-      "hours": 704.7479597222223
+      "hours": 705.0769655555556
     },
     {
       "name": "Huntington",
-      "hours": 159.99795972222222
+      "hours": 160.32696555555555
     },
     {
       "name": "Mt Vernon Sq 7th St-Convention Center",
-      "hours": 70.41462638888889
+      "hours": 70.74363222222222
     },
     {
       "name": "L'Enfant Plaza",
-      "hours": 40.692925
+      "hours": 41.021930833333336
     },
     {
       "name": "Gallery Pl-Chinatown",
@@ -96,11 +166,11 @@
     },
     {
       "name": "North Bethesda",
-      "hours": 18.34795972222222
+      "hours": 18.676965555555554
     },
     {
       "name": "Federal Triangle",
-      "hours": 17.5951775
+      "hours": 17.924183333333332
     }
   ],
   "stepFreeStreak": [

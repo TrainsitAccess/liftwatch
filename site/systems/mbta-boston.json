@@ -2,77 +2,206 @@
   "id": "mbta-boston",
   "name": "MBTA",
   "label": "MBTA (Boston)",
-  "generatedAt": "2026-07-07T08:59:52.655Z",
+  "timezone": "America/New_York",
+  "generatedAt": "2026-07-07T09:19:37.076Z",
   "currentlyBroken": [
     {
       "station": "Winchester Center",
+      "unitId": "749",
       "unit": "Winchester Center Elevator 749 (Track 1 (outbound platform) to Main St)",
       "days": 104,
+      "since": "2026-03-24T21:17:46+00:00",
       "planned": false,
-      "soleAccess": false
+      "reason": "Winchester Center Elevator 749 (Track 1 (outbound platform) to Main St) unavailable",
+      "estimatedReturn": null,
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "Framingham",
+      "unitId": "51",
       "unit": "Framingham Elevator 51 (Waverly Street to pedestrian bridge)",
       "days": 15,
+      "since": "2026-06-21T14:39:42+00:00",
       "planned": false,
-      "soleAccess": false
+      "reason": "The elevators at Framingham Station are out of service from Waverly to the pedestrian bridge, until further notice. Passengers who need assistance should go to the intersection of Rts 135/126 to cross the tracks safely.",
+      "estimatedReturn": null,
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "Natick Center",
+      "unitId": "750",
       "unit": "Natick Center Elevator 750 (Track 1 to street)",
       "days": 5,
+      "since": "2026-07-01T14:22:05+00:00",
       "planned": false,
-      "soleAccess": false
+      "reason": "Natick Center Elevator 750 (Track 1 to street) is unavailable.",
+      "estimatedReturn": null,
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "Natick Center",
+      "unitId": "751",
       "unit": "Natick Center Elevator 751 (Track 2 to street)",
       "days": 4,
+      "since": "2026-07-02T19:01:38+00:00",
       "planned": false,
-      "soleAccess": false
+      "reason": "Natick Center Elevator 751 (Track 2 to street) is unavailable.",
+      "estimatedReturn": null,
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "South Station",
+      "unitId": "901",
       "unit": "South Station Elevator 901 (Ashmont/Braintree platform to Silver Line drop-off platform and lobby)",
       "days": 2,
+      "since": "2026-07-04T18:07:01+00:00",
       "planned": true,
-      "soleAccess": false
+      "reason": "South Station Elevator 901 (Ashmont/Braintree platform to Silver Line drop-off platform and lobby) is unavailable due to maintenance.",
+      "estimatedReturn": null,
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "Downtown Crossing",
+      "unitId": "999",
       "unit": "Downtown Crossing Elevator 999 (Oak Grove platform to Alewife platform)",
       "days": 1,
+      "since": "2026-07-05T17:11:00+00:00",
       "planned": true,
-      "soleAccess": false
+      "reason": "Downtown Crossing Elevator 999 (Oak Grove platform to Alewife platform) is unavailable due to maintenance.",
+      "estimatedReturn": null,
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "Worcester",
+      "unitId": "782",
       "unit": "Worcester Elevator 782 (Parking lot to pedestrian bridge )",
       "days": 0,
+      "since": "2026-07-06T15:19:40+00:00",
       "planned": false,
-      "soleAccess": false
+      "reason": "Worcester Elevator 782 (Parking lot to pedestrian bridge ) is unavailable. Please use elevator in main building at 2 Washington Sq.",
+      "estimatedReturn": null,
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "Wonderland",
+      "unitId": "711",
       "unit": "Wonderland Elevator 711 (Ocean Avenue to pedestrian plaza)",
       "days": 0,
+      "since": "2026-07-06T17:12:01+00:00",
       "planned": true,
-      "soleAccess": false
+      "reason": "Wonderland Elevator 711 (Ocean Avenue to pedestrian plaza) is unavailable due to maintenance.",
+      "estimatedReturn": null,
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "Back Bay",
+      "unitId": "853",
       "unit": "Back Bay Elevator 853 (Orange Line platform to lobby)",
       "days": 0,
+      "since": "2026-07-07T07:57:01+00:00",
       "planned": true,
-      "soleAccess": false
+      "reason": "Back Bay Elevator 853 (Orange Line platform to lobby) is unavailable due to maintenance.",
+      "estimatedReturn": null,
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "Back Bay",
+      "unitId": "855",
       "unit": "Back Bay Elevator 855 (Commuter Rail tracks 1 and 3 to lobby)",
       "days": 0,
+      "since": "2026-07-07T03:07:01+00:00",
       "planned": true,
-      "soleAccess": false
+      "reason": "Back Bay Elevator 855 (Commuter Rail tracks 1 and 3 to lobby) is unavailable due to maintenance.",
+      "estimatedReturn": null,
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
+    }
+  ],
+  "stationAccess": {
+    "rows": [],
+    "chainsModeled": 0
+  },
+  "scheduledWork": [
+    {
+      "unitId": "891",
+      "station": "Downtown Crossing",
+      "starts": "2026-07-13T07:00:00+00:00",
+      "until": "2026-09-22T07:00:00+00:00",
+      "reason": "Beginning Monday, July 13, Downtown Crossing Elevator 891 (Oak Grove platform to Franklin Street) will be closed for maintenance through Monday, September 21."
+    },
+    {
+      "unitId": "870",
+      "station": "Downtown Crossing",
+      "starts": "2026-07-13T07:00:00+00:00",
+      "until": "2026-09-22T07:00:00+00:00",
+      "reason": "Beginning Monday, July 13, Downtown Crossing Elevator 870 (Ashmont/Braintree platform to Summer Street Concourse) will be closed for maintenance through Monday, September 21."
+    },
+    {
+      "unitId": "812",
+      "station": "Park Street",
+      "starts": "2026-07-13T07:00:00+00:00",
+      "until": "2026-09-22T07:00:00+00:00",
+      "reason": "Beginning Monday, July 13, Park Street Elevator 812 (Green Line underpass to Government Center & North platform) will be closed for maintenance through Monday, September 21."
+    },
+    {
+      "unitId": "823",
+      "station": "Park Street",
+      "starts": "2026-07-13T07:00:00+00:00",
+      "until": "2026-09-22T07:00:00+00:00",
+      "reason": "Beginning Monday, July 13, Park Street Elevator 823 (Green Line underpass to Copley & West platform) will be closed for maintenance through Monday, September 21."
+    },
+    {
+      "unitId": "918",
+      "station": "South Station",
+      "starts": "2026-07-13T07:00:00+00:00",
+      "until": "2026-07-18T07:00:00+00:00",
+      "reason": "South Station Elevator 918 (Ashmont/Braintree platform to Airport/Design Center/Chelsea platform and lobby) will be unavailable from Mon, Jul 13 through Fri, Jul 17 due to maintenance."
+    },
+    {
+      "unitId": "869",
+      "station": "Downtown Crossing",
+      "starts": "2026-07-13T07:00:00+00:00",
+      "until": "2026-07-18T07:00:00+00:00",
+      "reason": "Downtown Crossing Elevator 869 (Alewife platform to Summer Street Concourse) will be unavailable from Mon, Jul 13 through Fri, Jul 17 due to maintenance."
     }
   ],
   "accessibilityBlackouts": [
@@ -82,15 +211,15 @@
     },
     {
       "name": "Winchester Center",
-      "hours": 2507.701848611111
+      "hours": 2508.0308544444442
     },
     {
       "name": "Framingham",
-      "hours": 378.33629305555553
+      "hours": 378.6652988888889
     },
     {
       "name": "Natick Center",
-      "hours": 138.62990416666668
+      "hours": 138.95891
     },
     {
       "name": "Porter",
@@ -98,11 +227,11 @@
     },
     {
       "name": "South Station",
-      "hours": 62.88101527777778
+      "hours": 63.21002111111111
     },
     {
       "name": "Downtown Crossing",
-      "hours": 39.81462638888889
+      "hours": 40.14363222222222
     },
     {
       "name": "Green Street",
@@ -114,7 +243,7 @@
     },
     {
       "name": "Worcester",
-      "hours": 17.670181944444444
+      "hours": 17.999187777777777
     }
   ],
   "stepFreeStreak": [

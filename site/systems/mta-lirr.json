@@ -2,56 +2,133 @@
   "id": "mta-lirr",
   "name": "LIRR",
   "label": "LIRR (New York)",
-  "generatedAt": "2026-07-07T08:59:52.655Z",
+  "timezone": "America/New_York",
+  "generatedAt": "2026-07-07T09:19:37.076Z",
   "currentlyBroken": [
     {
       "station": "Jamaica (Tks 4/5)",
+      "unitId": "JAM-342",
       "unit": "Between eastern overpass and Tracks 4 & 5",
       "days": 0,
+      "since": "2026-07-07T03:58:40.812+00:00",
       "planned": false,
-      "soleAccess": true
+      "reason": "Not Working",
+      "estimatedReturn": null,
+      "soleAccess": true,
+      "severs": [
+        "Jamaica (Tks 4/5)"
+      ],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "Grand Central",
+      "unitId": "GCT-945",
       "unit": "EL21: Between LIRR Concourse and Metro-North Tracks 102-114 at 45th Street",
       "days": 0,
+      "since": "2026-07-07T03:58:40.812+00:00",
       "planned": false,
-      "soleAccess": false
+      "reason": "Not Working",
+      "estimatedReturn": null,
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "Queens Village",
+      "unitId": "QVG-642",
       "unit": "Between Platform B and street level (east end of platform)",
       "days": 0,
+      "since": "2026-07-07T03:58:40.812+00:00",
       "planned": false,
-      "soleAccess": false
+      "reason": "Not Working",
+      "estimatedReturn": null,
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "Mineola (Track 2)",
+      "unitId": "MIN-1017",
       "unit": "Between eastern overpass, Track 2, and kiss-and-ride (south side)",
       "days": 0,
+      "since": "2026-07-07T03:58:40.812+00:00",
       "planned": false,
-      "soleAccess": false
+      "reason": "Not Working",
+      "estimatedReturn": null,
+      "soleAccess": false,
+      "severs": [],
+      "backups": [
+        "Western overpass — Intermodal Center & Track 2"
+      ],
+      "rampAlternative": false,
+      "chainNotes": [
+        "Mineola Track 2 is reachable via the eastern overpass elevator (kiss-and-ride side) or the western overpass elevator (Intermodal Center) — two independent routes."
+      ]
     },
     {
       "station": "Laurelton",
+      "unitId": "LTN-1124",
       "unit": "Between Tracks 1 & 2 and street level (middle of platform)",
       "days": 0,
+      "since": "2026-07-07T03:58:40.812+00:00",
       "planned": false,
-      "soleAccess": true
+      "reason": "Not Working",
+      "estimatedReturn": null,
+      "soleAccess": true,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     }
   ],
+  "stationAccess": {
+    "rows": [
+      {
+        "name": "Jamaica (Tks 4/5)",
+        "state": "no_access",
+        "downUnits": [
+          "JAM-342"
+        ],
+        "note": null
+      },
+      {
+        "name": "Laurelton",
+        "state": "no_access",
+        "downUnits": [
+          "LTN-1124"
+        ],
+        "note": null
+      },
+      {
+        "name": "Mineola (Track 2)",
+        "state": "reduced",
+        "downUnits": [
+          "MIN-1017"
+        ],
+        "note": "Mineola Track 2 is reachable via the eastern overpass elevator (kiss-and-ride side) or the western overpass elevator (Intermodal Center) — two independent routes."
+      }
+    ],
+    "chainsModeled": 21
+  },
+  "scheduledWork": [],
   "accessibilityBlackouts": [
     {
       "name": "Jamaica (Tks 4/5)",
-      "hours": 5.019956388888889
+      "hours": 5.348962222222222
     },
     {
       "name": "Queens Village",
-      "hours": 5.019956388888889
+      "hours": 5.348962222222222
     },
     {
       "name": "Laurelton",
-      "hours": 5.019956388888889
+      "hours": 5.348962222222222
     }
   ],
   "stepFreeStreak": [

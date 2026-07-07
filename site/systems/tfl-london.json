@@ -2,196 +2,523 @@
   "id": "tfl-london",
   "name": "TfL",
   "label": "TfL (London)",
-  "generatedAt": "2026-07-07T08:59:52.655Z",
+  "timezone": "Europe/London",
+  "generatedAt": "2026-07-07T09:19:37.076Z",
   "currentlyBroken": [
     {
       "station": "Hackney Wick",
+      "unitId": "910GHACKNYW-Lift-1",
       "unit": "Lift 1",
       "days": 2,
+      "since": "2026-07-05T00:42:21.892+00:00",
       "planned": false,
-      "soleAccess": true
+      "reason": "Hackney Wick: No Step Free Access - The lift to the westbound platform is out of service due to a fault. For step free access, use the ramp on Hepscott Road. Call us on 0343 222 1234 if you need help planning your journey.",
+      "estimatedReturn": null,
+      "soleAccess": true,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "Willesden Junction",
+      "unitId": "HUBWIJ-Lift-1",
       "unit": "Lift 1",
       "days": 2,
+      "since": "2026-07-05T00:42:21.892+00:00",
       "planned": false,
-      "soleAccess": true
+      "reason": "Willesden Junction: No Step Free Access - Step free access is not available to the Bakerloo line and the Lioness line due to a faulty lift. Call us on 0343 222 1234 if you need more information.",
+      "estimatedReturn": null,
+      "soleAccess": true,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "King's Cross St Pancras",
+      "unitId": "HUBKGX-Lift-A",
       "unit": "Lift A",
       "days": 2,
+      "since": "2026-07-05T00:42:21.892+00:00",
       "planned": false,
-      "soleAccess": true
+      "reason": "ST PANCRAS INTERNATIONAL STATION: From Monday 15 June until mid September, there will be no step-free access lift available between the ticket hall and THAMESLINK platforms A & B. Please use London Underground connections via Farringdon for step-free access to THAMESLINK, or EAST MIDLANDS RAILWAY services for Luton Airport Parkway and Bedford.",
+      "estimatedReturn": null,
+      "soleAccess": true,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "Moorgate",
+      "unitId": "HUBZMG-Lift-5",
       "unit": "Lift C",
       "days": 2,
+      "since": "2026-07-05T00:42:21.892+00:00",
       "planned": false,
-      "soleAccess": true
+      "reason": "Moorgate: No Step Free Access - Step free access is not available to the Northern line due to a faulty lift. Call 0343 222 1234 if you need help planning your journey.",
+      "estimatedReturn": null,
+      "soleAccess": true,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "Liverpool Street",
+      "unitId": "HUBLST-Lift-1",
       "unit": "Lift 1",
       "days": 2,
+      "since": "2026-07-05T00:42:21.892+00:00",
       "planned": false,
-      "soleAccess": true
+      "reason": "Liverpool Street: No Step Free Access - No step free access between the National Rail concourse and the eastbound Circle, Hamm & City and Metropolitan lines due to a faulty lift. Use the Elizabeth line entrance on Broadgate for step free access.",
+      "estimatedReturn": null,
+      "soleAccess": true,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "Hackney Central",
+      "unitId": "910GHACKNYC-Lift-1",
       "unit": "Lift 1",
       "days": 2,
+      "since": "2026-07-05T00:42:21.892+00:00",
       "planned": false,
-      "soleAccess": true
+      "reason": "Hackney Central: No Step Free Access - Step free access is not available to the westbound platform due to a faulty lift. Call us on 0343 222 1234 if you need help planning your journey.",
+      "estimatedReturn": null,
+      "soleAccess": true,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "Wembley Central",
+      "unitId": "HUBWMB-Lift-3",
       "unit": "Lift 3",
       "days": 2,
+      "since": "2026-07-05T00:42:21.892+00:00",
       "planned": false,
-      "soleAccess": true
+      "reason": "Wembley Central: No Step Free Access - Step free access is not available to the northbound Southern / London Northwestern platform due to a faulty lift. Call us on 0343 222 1234 if you need help planning your journey.",
+      "estimatedReturn": null,
+      "soleAccess": true,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "Gospel Oak",
+      "unitId": "910GGOSPLOK-Lift-2",
       "unit": "Lift 2",
       "days": 2,
+      "since": "2026-07-05T00:42:21.892+00:00",
       "planned": false,
-      "soleAccess": true
+      "reason": "Gospel Oak: No Step Free Access - Step free access is not available to the Suffragette line and for eastbound Mildmay line trains due to a faulty lift. Call us on 0343 222 1234 if you need help planning your journey.",
+      "estimatedReturn": null,
+      "soleAccess": true,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "Imperial Wharf",
+      "unitId": "HUBIMP-Lift-1",
       "unit": "Lift 1",
       "days": 2,
+      "since": "2026-07-05T00:42:21.892+00:00",
       "planned": false,
-      "soleAccess": true
+      "reason": "Imperial Wharf: No Step Free Access - Step free access is not available for trains towards Clapham Junction due to a faulty lift. Call us on 0343 222 1234 if you need help planning your journey.",
+      "estimatedReturn": null,
+      "soleAccess": true,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "East India",
+      "unitId": "940GZZDLEIN-Lift-3",
       "unit": "Lift 3",
       "days": 2,
+      "since": "2026-07-05T00:42:21.892+00:00",
       "planned": false,
-      "soleAccess": true
+      "reason": "East India: No Step Free Access - Step free access is not available to/from Nutmeg Lane due to a faulty lift. For step free access, use the entrance on Blackwall Way. Call us on 0343 222 1234 if you need help planning your journey.",
+      "estimatedReturn": null,
+      "soleAccess": true,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "Finchley Central",
+      "unitId": "940GZZLUFYC-Lift-2",
       "unit": "Lift 2",
       "days": 2,
+      "since": "2026-07-05T00:42:21.892+00:00",
       "planned": false,
-      "soleAccess": true
+      "reason": "Finchley Central: No Step Free Access - Step free access is not available to the northbound platform due to a faulty lift. Call us on 0343 222 1234 if you need help planning your journey.",
+      "estimatedReturn": null,
+      "soleAccess": true,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "King's Cross St Pancras",
+      "unitId": "HUBKGX-Lift-B",
       "unit": "Lift B",
       "days": 2,
+      "since": "2026-07-05T00:42:21.892+00:00",
       "planned": false,
-      "soleAccess": true
+      "reason": "ST PANCRAS INTERNATIONAL STATION: From Monday 15 June until mid September, there will be no step-free access lift available between the ticket hall and THAMESLINK platforms A & B. Please use London Underground connections via Farringdon for step-free access to THAMESLINK, or EAST MIDLANDS RAILWAY services for Luton Airport Parkway and Bedford.",
+      "estimatedReturn": null,
+      "soleAccess": true,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "Wembley Park",
+      "unitId": "940GZZLUWYP-Lift-5",
       "unit": "Lift 5",
       "days": 2,
+      "since": "2026-07-05T00:42:21.892+00:00",
       "planned": false,
-      "soleAccess": true
+      "reason": "WEMBLEY PARK STATION: From Monday 10 March until Autumn 2026, no lift service between the street (Wembley Way / car park) and ticket hall. Step-free access is still available by using the entrance/exit on Bridge Road which is level between street and ticket hall. Lifts remain available to all platforms.",
+      "estimatedReturn": null,
+      "soleAccess": true,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "Canary Wharf",
+      "unitId": "HUBCAW-Lift-LU 2",
       "unit": "Lift LU 2",
       "days": 2,
+      "since": "2026-07-05T04:34:56.767+00:00",
       "planned": false,
-      "soleAccess": true
+      "reason": "Canary Wharf: No Step Free Access - Step free access is not available to the Jubilee line due to a faulty lift. Call us on 0343 222 1234 if you need help planning your journey.",
+      "estimatedReturn": null,
+      "soleAccess": true,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "Westminster",
+      "unitId": "HUBWSM-Lift-5",
       "unit": "Lift 5",
       "days": 0,
+      "since": "2026-07-06T14:33:25.991+00:00",
       "planned": false,
-      "soleAccess": true
+      "reason": "Westminster: No Step Free Acess - Step free access is not available to the Jubilee line due to a faulty lift. Call us on 0343 222 1234 if you need help planning your journey.",
+      "estimatedReturn": null,
+      "soleAccess": true,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "Green Park",
+      "unitId": "940GZZLUGPK-Lift-6",
       "unit": "Lift 6",
       "days": 0,
+      "since": "2026-07-07T05:42:40.293+00:00",
       "planned": false,
-      "soleAccess": false
+      "reason": "Green Park Station: No Step Free Access - Step free access is not available between the street and the ticket hall / Victoria line due to a faulty lift. Step free interchange between the Piccadilly and Jubilee lines is still available.",
+      "estimatedReturn": null,
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "Green Park",
+      "unitId": "940GZZLUGPK-Lift-5",
       "unit": "Lift 5",
       "days": 0,
+      "since": "2026-07-07T05:42:40.293+00:00",
       "planned": false,
-      "soleAccess": false
+      "reason": "Green Park Station: No Step Free Access - Step free access is not available between the street and the ticket hall / Victoria line due to a faulty lift. Step free interchange between the Piccadilly and Jubilee lines is still available.",
+      "estimatedReturn": null,
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "West Brompton",
+      "unitId": "HUBWBP-Lift-4",
       "unit": "Lift 4",
       "days": 0,
+      "since": "2026-07-06T17:27:52.735+00:00",
       "planned": false,
-      "soleAccess": true
+      "reason": "West Brompton: No Step Free Access - Step free access is not available to the northbound Mildmay line / Southern platform due to a faulty lift. Call us on 0343 222 1234 if you need help planning your journey.",
+      "estimatedReturn": null,
+      "soleAccess": true,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "West Ham",
+      "unitId": "HUBWEH-Lift-4",
       "unit": "Lift 4",
       "days": 0,
+      "since": "2026-07-06T11:00:22.122+00:00",
       "planned": false,
-      "soleAccess": true
+      "reason": "West Ham: No Step Free Access- Step free access is not available to the District and Hammersmith & City lines due to a faulty lift. Call us on 0343 222 1234 if you need help planning your journey.",
+      "estimatedReturn": null,
+      "soleAccess": true,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "Denmark Hill",
+      "unitId": "910GDENMRKH-Lift-2",
       "unit": "Lift 2",
       "days": 0,
+      "since": "2026-07-06T17:27:52.735+00:00",
       "planned": false,
-      "soleAccess": true
+      "reason": "Denmark Hill: No Step Free Access - Step free access is not available to the northbound platform due to a faulty lift. Call us on 0343 222 1234 if you need help planning your journey.",
+      "estimatedReturn": null,
+      "soleAccess": true,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "Wembley Park",
+      "unitId": "940GZZLUWYP-Lift-1",
       "unit": "Lift 1",
       "days": 0,
+      "since": "2026-07-07T08:56:06.683+00:00",
       "planned": false,
-      "soleAccess": true
+      "reason": "Wembley Park: No Step Free Access - Step free access is not available to platform 1 (northbound 'fast' Metropolitan line). Use platform 2 for northbound 'local' Metropolitan line trains. Call 0343 222 1234 if you need help planning your journey.",
+      "estimatedReturn": null,
+      "soleAccess": true,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     }
   ],
+  "stationAccess": {
+    "rows": [
+      {
+        "name": "Canary Wharf",
+        "state": "no_access",
+        "downUnits": [
+          "HUBCAW-Lift-LU 2"
+        ],
+        "note": null
+      },
+      {
+        "name": "Denmark Hill",
+        "state": "no_access",
+        "downUnits": [
+          "910GDENMRKH-Lift-2"
+        ],
+        "note": null
+      },
+      {
+        "name": "East India",
+        "state": "no_access",
+        "downUnits": [
+          "940GZZDLEIN-Lift-3"
+        ],
+        "note": null
+      },
+      {
+        "name": "Finchley Central",
+        "state": "no_access",
+        "downUnits": [
+          "940GZZLUFYC-Lift-2"
+        ],
+        "note": null
+      },
+      {
+        "name": "Gospel Oak",
+        "state": "no_access",
+        "downUnits": [
+          "910GGOSPLOK-Lift-2"
+        ],
+        "note": null
+      },
+      {
+        "name": "Hackney Central",
+        "state": "no_access",
+        "downUnits": [
+          "910GHACKNYC-Lift-1"
+        ],
+        "note": null
+      },
+      {
+        "name": "Hackney Wick",
+        "state": "no_access",
+        "downUnits": [
+          "910GHACKNYW-Lift-1"
+        ],
+        "note": null
+      },
+      {
+        "name": "Imperial Wharf",
+        "state": "no_access",
+        "downUnits": [
+          "HUBIMP-Lift-1"
+        ],
+        "note": null
+      },
+      {
+        "name": "King's Cross St Pancras",
+        "state": "no_access",
+        "downUnits": [
+          "HUBKGX-Lift-A"
+        ],
+        "note": null
+      },
+      {
+        "name": "King's Cross St Pancras",
+        "state": "no_access",
+        "downUnits": [
+          "HUBKGX-Lift-B"
+        ],
+        "note": null
+      },
+      {
+        "name": "Liverpool Street",
+        "state": "no_access",
+        "downUnits": [
+          "HUBLST-Lift-1"
+        ],
+        "note": null
+      },
+      {
+        "name": "Moorgate",
+        "state": "no_access",
+        "downUnits": [
+          "HUBZMG-Lift-5"
+        ],
+        "note": null
+      },
+      {
+        "name": "Wembley Central",
+        "state": "no_access",
+        "downUnits": [
+          "HUBWMB-Lift-3"
+        ],
+        "note": null
+      },
+      {
+        "name": "Wembley Park",
+        "state": "no_access",
+        "downUnits": [
+          "940GZZLUWYP-Lift-1"
+        ],
+        "note": null
+      },
+      {
+        "name": "Wembley Park",
+        "state": "no_access",
+        "downUnits": [
+          "940GZZLUWYP-Lift-5"
+        ],
+        "note": null
+      },
+      {
+        "name": "West Brompton",
+        "state": "no_access",
+        "downUnits": [
+          "HUBWBP-Lift-4"
+        ],
+        "note": null
+      },
+      {
+        "name": "West Ham",
+        "state": "no_access",
+        "downUnits": [
+          "HUBWEH-Lift-4"
+        ],
+        "note": null
+      },
+      {
+        "name": "Westminster",
+        "state": "no_access",
+        "downUnits": [
+          "HUBWSM-Lift-5"
+        ],
+        "note": null
+      },
+      {
+        "name": "Willesden Junction",
+        "state": "no_access",
+        "downUnits": [
+          "HUBWIJ-Lift-1"
+        ],
+        "note": null
+      }
+    ],
+    "chainsModeled": 0
+  },
+  "scheduledWork": [],
   "accessibilityBlackouts": [
     {
       "name": "Hackney Wick",
-      "hours": 56.29187861111111
+      "hours": 56.62088444444444
     },
     {
       "name": "Willesden Junction",
-      "hours": 56.29187861111111
+      "hours": 56.62088444444444
     },
     {
       "name": "King's Cross St Pancras",
-      "hours": 56.29187861111111
+      "hours": 56.62088444444444
     },
     {
       "name": "Moorgate",
-      "hours": 56.29187861111111
+      "hours": 56.62088444444444
     },
     {
       "name": "Liverpool Street",
-      "hours": 56.29187861111111
+      "hours": 56.62088444444444
     },
     {
       "name": "Hackney Central",
-      "hours": 56.29187861111111
+      "hours": 56.62088444444444
     },
     {
       "name": "Wembley Central",
-      "hours": 56.29187861111111
+      "hours": 56.62088444444444
     },
     {
       "name": "Gospel Oak",
-      "hours": 56.29187861111111
+      "hours": 56.62088444444444
     },
     {
       "name": "Imperial Wharf",
-      "hours": 56.29187861111111
+      "hours": 56.62088444444444
     },
     {
       "name": "East India",
-      "hours": 56.29187861111111
+      "hours": 56.62088444444444
     }
   ],
   "stepFreeStreak": [

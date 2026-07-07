@@ -6,7 +6,7 @@ decisions**; this file is the operational summary + conventions + gotchas.
 ## What this is
 
 Monitors public-transit **elevator** outages worldwide, archives them over time,
-and ranks systems/stations/elevators on split-flap leaderboards. The archive (an
+and ranks systems/stations/elevators on departure-board-style leaderboards. The archive (an
 event history nobody else keeps) is the whole point — every metric derives from it.
 
 Status: **live in production.** Nine systems archiving (MTA subway, BART, MBTA,
@@ -15,7 +15,7 @@ non-English-speaking system, LIRR + Metro-North — first commuter railroads,
 sharing one adapter), polled every 10 min by a GitHub Actions cron
 (`.github/workflows/poll.yml`), backed up weekly to a private repo
 (`backup.yml`), with a keepalive workflow so the poller/backup crons never
-auto-disable. A preview split-flap site reads the archive (`site/`).
+auto-disable. A preview site styled as a digital train-departure display reads the archive (`site/`) — amber LED boards with reasons, expected returns, live station-access status, scheduled work, and expandable route notes; times shown agency-local; semantic tables (the accessible layer is the markup itself, no separate #sr-data).
 Repo: github.com/TrainsitAccess/liftwatch (public).
 
 ## Running it
@@ -38,7 +38,7 @@ npm run check:rail       # prove the LIRR/MNR mapper + curated models (offline f
 npm run mta:chains       # regenerate MTA multi-chain models from the live feed
 npm run typecheck        # tsc --noEmit — run after edits
 npm run db:status        # row counts + latest poll_runs, once Supabase is set up
-npm run site:data && npm run site:serve  # rebuild + preview the split-flap site
+npm run site:data && npm run site:serve  # rebuild + preview the departure-board site
 # With SUPABASE_URL + SUPABASE_SERVICE_KEY in .env, drop `:dry` to archive for real.
 ```
 
