@@ -22,9 +22,14 @@ export const MTA_NYCT_CONFIG: MtaConfig = {
 
 const isYes = (v: string | undefined): boolean => (v ?? "").trim().toUpperCase() === "Y";
 
-// "Planned" = agency-flagged maintenance, or a reason that reads as scheduled work
-// (planned / capital / scheduled). Everything else counts as unplanned.
-const PLANNED_REASON = /planned|capital|scheduled/i;
+// "Planned" = agency-flagged maintenance, or a reason that reads as scheduled
+// work. The reason vocabulary is the REAL signal: live-verified 2026-07-07,
+// `ismaintenanceoutage` is "N" on every record in both feeds — including rows
+// literally labeled "Maintenance" — so the flag is vestigial (kept in the OR
+// in case MTA revives it). Observed reason values: Maintenance, Inspection,
+// Capital Replacement, Planned Work (planned) vs Repair, Under Investigation,
+// Con Edison Power Issue (unplanned).
+const PLANNED_REASON = /planned|capital|scheduled|maintenance|inspection/i;
 const isPlanned = (raw: MtaOutageRaw): boolean =>
   isYes(raw.ismaintenanceoutage) || PLANNED_REASON.test(raw.reason ?? "");
 
@@ -87,8 +92,24 @@ export function createMtaAdapter(config: MtaConfig = MTA_NYCT_CONFIG): Adapter {
 
       const stationIdByEquipment = new Map(units.map((u) => [u.externalId, u.stationExternalId]));
 
+      // The "current" feed MIXES IN future scheduled outages, flagged
+      // isupcomingoutage=Y (live-verified 2026-07-07: 27 genuinely-current
+      // rows + 35 future maintenance/inspection windows up to two weeks out,
+      // every one duplicated verbatim in the upcoming feed — so dropping
+      // them here loses nothing). Ingesting them as current opened phantom
+      // outage events for elevators that were working fine. One nuance: MTA
+      // lags flipping the flag when a window actually starts, so a Y row
+      // whose outagedate has already PASSED is treated as current — matching
+      // MTA's own status page during an active overnight window.
+      const now = Date.now();
+      const isFutureScheduled = (o: MtaOutageRaw): boolean => {
+        if (!isYes(o.isupcomingoutage)) return false;
+        const start = parseZonedToUtcIso(o.outagedate, config.timezone);
+        return start === undefined || Date.parse(start) > now;
+      };
+
       const currentOutages = currentRaw
-        .filter((o) => o.equipmenttype === "EL")
+        .filter((o) => o.equipmenttype === "EL" && !isFutureScheduled(o))
         .map((o) => mapOutage(o, false, stationIdByEquipment));
 
       const upcoming = upcomingRaw

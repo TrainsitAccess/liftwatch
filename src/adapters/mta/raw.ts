@@ -12,8 +12,15 @@ export interface MtaOutageRaw {
   ADA: string; // "Y" | "N"
   outagedate: string; // "MM/DD/YYYY hh:mm:ss AM"
   estimatedreturntoservice: string;
-  reason: string; // "Repair" | "Planned Work" | "Capital Replacement" | ...
+  reason: string; // "Repair" | "Planned Work" | "Capital Replacement" | "Maintenance" | "Inspection" | ...
+  // CAUTION: the CURRENT feed (nyct_ene.json) mixes in future scheduled
+  // outages flagged "Y" here (live-verified 2026-07-07: they duplicate the
+  // upcoming feed verbatim, with outagedates up to ~2 weeks out) — the
+  // adapter must filter them or they ingest as phantom open outages.
   isupcomingoutage: string; // "Y" | "N"
+  // Vestigial: "N" on every record in both feeds (2026-07-07), even rows
+  // whose reason is literally "Maintenance" — planned classification rests
+  // on the reason vocabulary instead.
   ismaintenanceoutage: string; // "Y" | "N"
 }
 
