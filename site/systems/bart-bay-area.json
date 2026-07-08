@@ -3,22 +3,26 @@
   "name": "BART",
   "label": "BART (San Francisco)",
   "timezone": "America/Los_Angeles",
-  "generatedAt": "2026-07-08T19:50:53.162Z",
+  "generatedAt": "2026-07-08T23:22:21.679Z",
   "currentlyBroken": [
     {
       "station": "Richmond",
-      "unitId": "RICH-UNSPECIFIED",
-      "unit": "Station (unspecified elevator — conservative)",
+      "unitId": "RICH-PLAT",
+      "unit": "Platform elevator",
       "days": 4,
       "since": "2026-07-04T02:54:57.211+00:00",
       "planned": false,
       "reason": "Station (unspecified elevator — conservative)",
       "estimatedReturn": null,
-      "soleAccess": false,
-      "severs": [],
+      "soleAccess": true,
+      "severs": [
+        "Richmond"
+      ],
       "backups": [],
       "rampAlternative": false,
-      "chainNotes": []
+      "chainNotes": [
+        "A ramp gives step-free street access without elevators, so both street elevators can be out and the station stays accessible; but the single platform elevator is a single point of failure."
+      ]
     },
     {
       "station": "Milpitas",
@@ -41,11 +45,26 @@
     "log": []
   },
   "stationAccess": {
-    "rows": [],
+    "rows": [
+      {
+        "name": "Richmond",
+        "state": "no_access",
+        "downUnits": [
+          "RICH-PLAT"
+        ],
+        "offlineUnits": [],
+        "note": "A ramp gives step-free street access without elevators, so both street elevators can be out and the station stays accessible; but the single platform elevator is a single point of failure."
+      }
+    ],
     "chainsModeled": 66
   },
   "scheduledWork": [],
-  "accessibilityBlackouts": [],
+  "accessibilityBlackouts": [
+    {
+      "name": "Richmond",
+      "hours": 116.45679666666666
+    }
+  ],
   "stepFreeStreak": [
     {
       "name": "Ashby",
@@ -63,11 +82,6 @@
       "blackedOutNow": false
     },
     {
-      "name": "Richmond",
-      "days": 4,
-      "blackedOutNow": false
-    },
-    {
       "name": "San Francisco International Airport",
       "days": 4,
       "blackedOutNow": false
@@ -76,6 +90,11 @@
       "name": "Warm Springs/South Fremont",
       "days": 4,
       "blackedOutNow": false
+    },
+    {
+      "name": "Richmond",
+      "days": 0,
+      "blackedOutNow": true
     },
     {
       "name": "Warm Springs/South Fremont (pedestrian bridge)",
@@ -105,13 +124,13 @@
       "count": 4
     },
     {
-      "unit": "Station - SF/East Bay (unspecified elevator — conservative)",
-      "station": "Milpitas",
+      "unit": "Platform elevator",
+      "station": "Richmond",
       "count": 1
     },
     {
-      "unit": "Station (unspecified elevator — conservative)",
-      "station": "Richmond",
+      "unit": "Station - SF/East Bay (unspecified elevator — conservative)",
+      "station": "Milpitas",
       "count": 1
     }
   ],
@@ -119,18 +138,6 @@
     {
       "unit": "Adeline Street East street elevator",
       "station": "Ashby",
-      "days": 4,
-      "downNow": false
-    },
-    {
-      "unit": "Street elevator 1",
-      "station": "Warm Springs/South Fremont",
-      "days": 4,
-      "downNow": false
-    },
-    {
-      "unit": "Platform elevator",
-      "station": "Richmond",
       "days": 4,
       "downNow": false
     },
@@ -159,12 +166,6 @@
       "downNow": false
     },
     {
-      "unit": "Street elevator 2",
-      "station": "Warm Springs/South Fremont",
-      "days": 4,
-      "downNow": false
-    },
-    {
       "unit": "Street elevator 1",
       "station": "Richmond",
       "days": 4,
@@ -173,6 +174,24 @@
     {
       "unit": "Street elevator 2",
       "station": "Richmond",
+      "days": 4,
+      "downNow": false
+    },
+    {
+      "unit": "Street elevator 1",
+      "station": "Warm Springs/South Fremont",
+      "days": 4,
+      "downNow": false
+    },
+    {
+      "unit": "Street elevator 2",
+      "station": "Warm Springs/South Fremont",
+      "days": 4,
+      "downNow": false
+    },
+    {
+      "unit": "Platforms 1 & 2 Elevator",
+      "station": "San Francisco International Airport",
       "days": 4,
       "downNow": false
     }
@@ -191,27 +210,7 @@
       "count": 2
     },
     {
-      "name": "16th St. Mission",
-      "count": 2
-    },
-    {
-      "name": "24th St. Mission",
-      "count": 2
-    },
-    {
-      "name": "Antioch",
-      "count": 2
-    },
-    {
-      "name": "Civic Center/UN Plaza",
-      "count": 2
-    },
-    {
       "name": "Downtown Berkeley",
-      "count": 2
-    },
-    {
-      "name": "El Cerrito del Norte",
       "count": 2
     },
     {
@@ -227,7 +226,27 @@
       "count": 2
     },
     {
+      "name": "16th St. Mission",
+      "count": 2
+    },
+    {
+      "name": "24th St. Mission",
+      "count": 2
+    },
+    {
       "name": "Hayward",
+      "count": 2
+    },
+    {
+      "name": "Antioch",
+      "count": 2
+    },
+    {
+      "name": "Civic Center/UN Plaza",
+      "count": 2
+    },
+    {
+      "name": "El Cerrito del Norte",
       "count": 2
     },
     {

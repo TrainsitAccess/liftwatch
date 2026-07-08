@@ -395,6 +395,37 @@ Deferred sources (not parsed):
   per-elevator, dated, prose (states redundancy in English). Brittle to parse;
   largely superseded in spirit by the outage-options page above.
 
+**Open problem: no per-elevator ID exists anywhere in BART's public data**
+(checked 2026-07-08, three official sources: the live `bsa.aspx?cmd=elev`
+advisory's raw JSON — no fields beyond free text; the outage-options page's
+raw HTML — no hidden ids; BART's own "Elevator Dimension Guide" PDF
+(`bart.gov/sites/default/files/docs/AccessibilityBARTElevatorDimensions_0.pdf`)
+— catalogs every elevator by descriptive route ("Concourse/All Platforms"),
+never a number). This means an advisory whose text is just the bare word
+"Station" (common — no station name, no leg, nothing) can NEVER be
+auto-attributed by any text-matching approach, no matter how many match
+patterns are added — there's nothing in the text to match. Confirmed live
+2026-07-08: Richmond's `RICH-UNSPECIFIED` outage (open since 2026-07-04) was
+manually re-attributed to `RICH-PLAT` after Bryce confirmed in person which
+elevator it actually was (outage_events.id=42, unit_id updated directly,
+attributed:true set). **Known side effect of a manual fix like this**: the
+adapter still can't attribute the underlying advisory, so the NEXT poll will
+very likely open a NEW, separate event on `RICH-UNSPECIFIED` for the same
+real-world outage (double-counting it under two units), while the manually
+-fixed event on `RICH-PLAT` will never auto-close on its own (nothing tells
+ingest to close it — the adapter never reports `RICH-PLAT` down specifically).
+**Bryce wants to interrogate this more and look for a more robust solution**
+before this becomes a recurring manual chore — no committed direction yet.
+Candidate angles for a future session: (a) a smarter attribution heuristic
+(risky — goes against this project's consistent never-guess-a-specific-
+elevator rule, and would be wrong at multi-SPOF stations like Richmond
+itself, which has 3 non-redundant elevators, not 1); (b) some kind of
+semi-manual curation queue (SPEC.md's Phase 2 "assumed -> curated" curation
+workflow concept could generalize to "unspecified -> attributed" outage
+review, surfaced for a human instead of auto-applied); (c) a genuinely
+different BART data source not yet found. Don't propose a fix unprompted —
+Bryce asked to hold this as an open question.
+
 ### MBTA feeds (in use) — genuinely per-elevator
 
 JSON:API (`https://api-v3.mbta.com`), `data_quality: 'good'`. Optional
