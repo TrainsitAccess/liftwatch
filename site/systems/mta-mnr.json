@@ -3,7 +3,7 @@
   "name": "Metro-North",
   "label": "Metro-North (New York)",
   "timezone": "America/New_York",
-  "generatedAt": "2026-07-07T18:08:14.947Z",
+  "generatedAt": "2026-07-08T00:14:20.799Z",
   "currentlyBroken": [
     {
       "station": "Grand Central (North End: Tks 34/35/116)",
@@ -75,7 +75,7 @@
       "station": "Grand Central (Terminal)",
       "unitId": "0NY-T-8",
       "unit": "Vanderbilt Avenue next to Michael Jordan's Restaurant - ADA ACCESS TO TERMINAL (Hall A).",
-      "days": 2,
+      "days": 3,
       "since": "2026-07-04T21:29:07+00:00",
       "planned": false,
       "reason": "not working",
@@ -96,24 +96,79 @@
       ]
     },
     {
-      "station": "Stamford (Track 5)",
-      "unitId": "2SM-2265",
-      "unit": "Elevator 10 - East pedestrian bridge to/from Track 5 & South State Street",
+      "station": "Darien",
+      "unitId": "2DA-230W",
+      "unit": "Elevator from the street to the New York-bound platform (Track 3).",
       "days": 0,
-      "since": "2026-07-06T22:47:55+00:00",
+      "since": "2026-07-07T18:08:39+00:00",
       "planned": false,
       "reason": "not working",
       "estimatedReturn": null,
       "soleAccess": false,
       "severs": [],
-      "backups": [
-        "Elevator 01 — concourse, Track 5 & South State St",
-        "Elevator 02 — concourse to Tracks 3/5 island"
-      ],
-      "rampAlternative": true,
-      "chainNotes": [
-        "Stamford Track 5 has a RAMP from South State Street — always step-free, elevators (01, 10, 02-via-island) are conveniences. The Track 5 landings do NOT reach Track 3's island. Access also possible through garage. Exact route unknown."
-      ]
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
+    },
+    {
+      "station": "Darien",
+      "unitId": "2DA-230E",
+      "unit": "Elevator from the street to the New Haven-bound platform (Track 4).",
+      "days": 0,
+      "since": "2026-07-07T18:08:30+00:00",
+      "planned": false,
+      "reason": "not working",
+      "estimatedReturn": null,
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
+    },
+    {
+      "station": "Purdy's",
+      "unitId": "1PY-158B",
+      "unit": "Bridge to Platform and Parking Level",
+      "days": 0,
+      "since": "2026-07-07T18:01:51+00:00",
+      "planned": false,
+      "reason": "not working",
+      "estimatedReturn": null,
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
+    },
+    {
+      "station": "Purdy's",
+      "unitId": "1PY-158P",
+      "unit": "Elevator from the street level to the overpass.",
+      "days": 0,
+      "since": "2026-07-07T18:02:03+00:00",
+      "planned": false,
+      "reason": "not working",
+      "estimatedReturn": null,
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
+    },
+    {
+      "station": "Purdy's",
+      "unitId": "1PY-158I",
+      "unit": "Elevator from the overpass to the island platform (Tracks 2 & 1).",
+      "days": 0,
+      "since": "2026-07-07T18:02:18+00:00",
+      "planned": false,
+      "reason": "not working",
+      "estimatedReturn": null,
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     }
   ],
   "offline": {
@@ -148,15 +203,6 @@
         ],
         "offlineUnits": [],
         "note": "Grand Central Terminal proper is step-free via the Oyster Bar and Kitty Kelly ramps — no elevator outage can sever main-terminal access. Elevators listed here are conveniences within the ramp-served areas."
-      },
-      {
-        "name": "Stamford (Track 5)",
-        "state": "reduced",
-        "downUnits": [
-          "2SM-2265"
-        ],
-        "offlineUnits": [],
-        "note": "Stamford Track 5 has a RAMP from South State Street — always step-free, elevators (01, 10, 02-via-island) are conveniences. The Track 5 landings do NOT reach Track 3's island. Access also possible through garage. Exact route unknown."
       }
     ],
     "chainsModeled": 13
@@ -165,15 +211,23 @@
   "accessibilityBlackouts": [
     {
       "name": "Grand Central (North End: Tks 34/35/116)",
-      "hours": 28828.217763055556
+      "hours": 28834.31938861111
     },
     {
       "name": "New Rochelle (New Haven-bound)",
-      "hours": 1014.9397075
+      "hours": 1021.0413330555556
     },
     {
       "name": "Larchmont",
       "hours": 18.203812777777777
+    },
+    {
+      "name": "Purdy's",
+      "hours": 6.2082775
+    },
+    {
+      "name": "Darien",
+      "hours": 6.0974441666666666
     }
   ],
   "stepFreeStreak": [
@@ -230,8 +284,28 @@
   ],
   "mostBrokenUnits": [
     {
+      "unit": "Elevator from the street to the New Haven-bound platform (Track 4).",
+      "station": "Darien",
+      "count": 1
+    },
+    {
+      "unit": "Elevator from the street to the New York-bound platform (Track 3).",
+      "station": "Darien",
+      "count": 1
+    },
+    {
       "unit": "Elevator from the parking lot to the Stamford/New Haven-bound platform (Track 4) to the overpass",
       "station": "Larchmont",
+      "count": 1
+    },
+    {
+      "unit": "Bridge to Platform and Parking Level",
+      "station": "Purdy's",
+      "count": 1
+    },
+    {
+      "unit": "Elevator from the street level to the overpass.",
+      "station": "Purdy's",
       "count": 1
     },
     {
@@ -258,11 +332,6 @@
       "unit": "Vanderbilt Avenue next to Michael Jordan's Restaurant - ADA ACCESS TO TERMINAL (Hall A).",
       "station": "Grand Central (Terminal)",
       "count": 1
-    },
-    {
-      "unit": "Elevator from the street to the Stamford/New Haven-bound platform (Track 4).",
-      "station": "New Rochelle (New Haven-bound)",
-      "count": 1
     }
   ],
   "uptimeStreak": [
@@ -270,13 +339,13 @@
       "unit": "Elevator from the street to the New Haven-bound platform (Track 4).",
       "station": "Darien",
       "days": 0,
-      "downNow": false
+      "downNow": true
     },
     {
       "unit": "Elevator from the street to the New York-bound platform (Track 3).",
       "station": "Darien",
       "days": 0,
-      "downNow": false
+      "downNow": true
     },
     {
       "unit": "Elevator to the New Haven-bound platform (Tk 4) is located on the west end of platform.",

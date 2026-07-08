@@ -3,7 +3,7 @@
   "name": "LIRR",
   "label": "LIRR (New York)",
   "timezone": "America/New_York",
-  "generatedAt": "2026-07-07T18:08:14.947Z",
+  "generatedAt": "2026-07-08T00:14:20.799Z",
   "currentlyBroken": [
     {
       "station": "Mineola (Track 3)",
@@ -23,6 +23,21 @@
       "chainNotes": [
         "Mineola Track 3 is reachable via the eastern overpass elevator (north-side street) or the western overpass elevator (Intermodal Center) — two independent routes."
       ]
+    },
+    {
+      "station": "Wyandanch",
+      "unitId": "WYD-703",
+      "unit": "Garage Elevator 3",
+      "days": 0,
+      "since": "2026-07-07T19:05:50.507+00:00",
+      "planned": false,
+      "reason": "Not Working",
+      "estimatedReturn": null,
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "Grand Central",
@@ -71,6 +86,10 @@
     {
       "name": "Laurelton",
       "hours": 10.565690555555555
+    },
+    {
+      "name": "Wyandanch",
+      "hours": 5.141747777777778
     }
   ],
   "stepFreeStreak": [
@@ -137,6 +156,11 @@
       "count": 1
     },
     {
+      "unit": "Garage Elevator 3",
+      "station": "Wyandanch",
+      "count": 1
+    },
+    {
       "unit": "Between eastern overpass, Track 2, and kiss-and-ride (south side)",
       "station": "Mineola (Track 2)",
       "count": 1
@@ -158,24 +182,6 @@
     }
   ],
   "uptimeStreak": [
-    {
-      "unit": "Between mezzanine, Track 4 (Platform A), and street level",
-      "station": "Woodside",
-      "days": 0,
-      "downNow": false
-    },
-    {
-      "unit": "Unit 1, between street level and concourse/platform level (adjacent to MTA Police)",
-      "station": "Atlantic Terminal",
-      "days": 0,
-      "downNow": false
-    },
-    {
-      "unit": "Unit 2, between street level and concourse/platform level (adjacent to MTA Police)",
-      "station": "Atlantic Terminal",
-      "days": 0,
-      "downNow": false
-    },
     {
       "unit": "Between overpass and Tracks 1 & 2  (Platform B)",
       "station": "Ronkonkoma",
@@ -217,6 +223,24 @@
       "station": "Lynbrook",
       "days": 0,
       "downNow": false
+    },
+    {
+      "unit": "Between Tracks 1 & 2 and street level (east side of station building)",
+      "station": "Freeport",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "Between Tracks 1 & 2 and street level (east of station building)",
+      "station": "Merrick",
+      "days": 0,
+      "downNow": false
+    },
+    {
+      "unit": "Between Tracks 1 & 2 and street level (west of station building)",
+      "station": "Bellmore",
+      "days": 0,
+      "downNow": false
     }
   ],
   "singlePointsOfFailure": [
@@ -245,10 +269,6 @@
       "count": 1
     },
     {
-      "name": "Rockville Centre",
-      "count": 1
-    },
-    {
       "name": "Freeport",
       "count": 1
     },
@@ -269,15 +289,19 @@
       "count": 1
     },
     {
+      "name": "Rockville Centre",
+      "count": 1
+    },
+    {
+      "name": "Lindenhurst",
+      "count": 1
+    },
+    {
       "name": "Baldwin",
       "count": 1
     },
     {
       "name": "Auburndale",
-      "count": 1
-    },
-    {
-      "name": "Laurelton",
       "count": 1
     }
   ]

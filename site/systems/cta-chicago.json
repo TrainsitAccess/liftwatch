@@ -3,7 +3,7 @@
   "name": "CTA",
   "label": "CTA (Chicago)",
   "timezone": "America/Chicago",
-  "generatedAt": "2026-07-07T18:08:14.947Z",
+  "generatedAt": "2026-07-08T00:14:20.799Z",
   "currentlyBroken": [
     {
       "station": "Western",
@@ -54,7 +54,7 @@
       "station": "Clark/Lake",
       "unitId": "40380",
       "unit": "40380",
-      "days": 9,
+      "days": 10,
       "since": "2026-06-27T18:21:00+00:00",
       "planned": false,
       "reason": "The elevator at 203 N. LaSalle (Brown and Harlem-bound Green Line platform from street and subway concourse) at Clark/Lake is temporarily out-of-service.",
@@ -81,25 +81,10 @@
       "chainNotes": []
     },
     {
-      "station": "63rd",
-      "unitId": "40910",
-      "unit": "40910",
-      "days": 4,
-      "since": "2026-07-03T17:10:00+00:00",
-      "planned": false,
-      "reason": "The elevator at 63rd (Red Line) is temporarily out-of-service. due to an electrical issue.",
-      "estimatedReturn": null,
-      "soleAccess": false,
-      "severs": [],
-      "backups": [],
-      "rampAlternative": false,
-      "chainNotes": []
-    },
-    {
       "station": "35th-Bronzeville-IIT",
       "unitId": "41120",
       "unit": "41120",
-      "days": 3,
+      "days": 4,
       "since": "2026-07-03T21:41:00+00:00",
       "planned": false,
       "reason": "The elevator at 35th-Bronzeville-IIT (Green Line) is temporarily out-of-service due to an electrical issue.",
@@ -141,13 +126,13 @@
       "chainNotes": []
     },
     {
-      "station": "43rd",
-      "unitId": "41270",
-      "unit": "41270",
+      "station": "Pulaski",
+      "unitId": "40030",
+      "unit": "40030",
       "days": 0,
-      "since": "2026-07-07T13:27:00+00:00",
+      "since": "2026-07-07T20:17:00+00:00",
       "planned": false,
-      "reason": "The elevator to/from street, platforms and bridge at 43rd (Green Line) is temporarily out-of-service.",
+      "reason": "The Harlem- bound platform elevator at Pulaski (Green Line) is temporarily out-of-service.",
       "estimatedReturn": null,
       "soleAccess": false,
       "severs": [],
@@ -156,13 +141,13 @@
       "chainNotes": []
     },
     {
-      "station": "87th",
-      "unitId": "41430",
-      "unit": "41430",
+      "station": "Cottage Grove",
+      "unitId": "40720",
+      "unit": "40720",
       "days": 0,
-      "since": "2026-07-07T15:29:00+00:00",
+      "since": "2026-07-07T18:01:00+00:00",
       "planned": false,
-      "reason": "The elevator at 87th (Red Line) is temporarily out-of-service.",
+      "reason": "The elevator to/from street at Cottage Grove (Green Line) is temporarily out-of-service.",
       "estimatedReturn": null,
       "soleAccess": false,
       "severs": [],
@@ -183,19 +168,19 @@
   "accessibilityBlackouts": [
     {
       "name": "Western",
-      "hours": 1345.1374852777778
+      "hours": 1351.2391108333334
     },
     {
       "name": "Lake",
-      "hours": 1108.1374852777778
+      "hours": 1114.2391108333334
     },
     {
       "name": "King Drive",
-      "hours": 583.9874852777778
+      "hours": 590.0891108333333
     },
     {
       "name": "Clark/Lake",
-      "hours": 239.7874852777778
+      "hours": 245.88911083333332
     },
     {
       "name": "Loyola",
@@ -211,23 +196,18 @@
     },
     {
       "name": "47th",
-      "hours": 144.63748527777778
-    },
-    {
-      "name": "63rd",
-      "hours": 96.97081861111111
+      "hours": 150.73911083333334
     },
     {
       "name": "35th-Bronzeville-IIT",
-      "hours": 92.45415194444445
+      "hours": 98.5557775
+    },
+    {
+      "name": "63rd",
+      "hours": 97.95582861111112
     }
   ],
   "stepFreeStreak": [
-    {
-      "name": "Pulaski",
-      "days": 2,
-      "blackedOutNow": false
-    },
     {
       "name": "Washington/Wells",
       "days": 2,
@@ -244,6 +224,26 @@
       "blackedOutNow": false
     },
     {
+      "name": "Cicero",
+      "days": 1,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Cermak-McCormick Place",
+      "days": 1,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Montrose",
+      "days": 1,
+      "blackedOutNow": false
+    },
+    {
+      "name": "47th",
+      "days": 1,
+      "blackedOutNow": false
+    },
+    {
       "name": "Loyola",
       "days": 1,
       "blackedOutNow": false
@@ -256,25 +256,15 @@
     {
       "name": "87th",
       "days": 0,
-      "blackedOutNow": true
-    },
-    {
-      "name": "Forest Park",
-      "days": 0,
       "blackedOutNow": false
-    },
-    {
-      "name": "Polk",
-      "days": 0,
-      "blackedOutNow": true
-    },
-    {
-      "name": "Ashland",
-      "days": 0,
-      "blackedOutNow": true
     }
   ],
   "mostBrokenUnits": [
+    {
+      "unit": "40030",
+      "station": "Pulaski",
+      "count": 2
+    },
     {
       "unit": "41030",
       "station": "Polk",
@@ -286,13 +276,18 @@
       "count": 2
     },
     {
-      "unit": "41430",
-      "station": "87th",
-      "count": 1
+      "unit": "41440",
+      "station": "Addison",
+      "count": 2
     },
     {
-      "unit": "40030",
-      "station": "Pulaski",
+      "unit": "40720",
+      "station": "Cottage Grove",
+      "count": 2
+    },
+    {
+      "unit": "41430",
+      "station": "87th",
       "count": 1
     },
     {
@@ -314,25 +309,9 @@
       "unit": "41670",
       "station": "Conservatory-Central Park Drive",
       "count": 1
-    },
-    {
-      "unit": "41270",
-      "station": "43rd",
-      "count": 1
-    },
-    {
-      "unit": "40990",
-      "station": "69th",
-      "count": 1
     }
   ],
   "uptimeStreak": [
-    {
-      "unit": "40030",
-      "station": "Pulaski",
-      "days": 2,
-      "downNow": false
-    },
     {
       "unit": "40730",
       "station": "Washington/Wells",
@@ -352,6 +331,30 @@
       "downNow": false
     },
     {
+      "unit": "40480",
+      "station": "Cicero",
+      "days": 1,
+      "downNow": false
+    },
+    {
+      "unit": "41690",
+      "station": "Cermak-McCormick Place",
+      "days": 1,
+      "downNow": false
+    },
+    {
+      "unit": "41500",
+      "station": "Montrose",
+      "days": 1,
+      "downNow": false
+    },
+    {
+      "unit": "41230",
+      "station": "47th",
+      "days": 1,
+      "downNow": false
+    },
+    {
       "unit": "41300",
       "station": "Loyola",
       "days": 1,
@@ -367,25 +370,7 @@
       "unit": "41430",
       "station": "87th",
       "days": 0,
-      "downNow": true
-    },
-    {
-      "unit": "40390",
-      "station": "Forest Park",
-      "days": 0,
       "downNow": false
-    },
-    {
-      "unit": "41030",
-      "station": "Polk",
-      "days": 0,
-      "downNow": true
-    },
-    {
-      "unit": "40170",
-      "station": "Ashland",
-      "days": 0,
-      "downNow": true
     }
   ],
   "singlePointsOfFailure": []

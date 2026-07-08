@@ -75,14 +75,17 @@ jobs:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
 
-      - name: Poll TMB (Barcelona)
-        if: ${{ !cancelled() }}
-        run: npm run poll -- tmb-barcelona
-        env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
-          TMB_APP_ID: ${{ secrets.TMB_APP_ID }}
-          TMB_APP_KEY: ${{ secrets.TMB_APP_KEY }}
+      # TMB (Barcelona) is HIDDEN pending a data-quality review of TMB's feeds
+      # (see systems.ts / SPEC.md) — not polled while withheld from the site.
+      # Restore this step and set hidden: false in systems.ts to re-enable.
+      # - name: Poll TMB (Barcelona)
+      #   if: ${{ !cancelled() }}
+      #   run: npm run poll -- tmb-barcelona
+      #   env:
+      #     SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      #     SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+      #     TMB_APP_ID: ${{ secrets.TMB_APP_ID }}
+      #     TMB_APP_KEY: ${{ secrets.TMB_APP_KEY }}
 
       - name: Poll LIRR (New York)
         if: ${{ !cancelled() }}

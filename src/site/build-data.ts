@@ -120,6 +120,12 @@ for (const o of offlineData) {
 const stationName = new Map((stations.data ?? []).map((s) => [s.id as string, s.name as string]));
 const unitById = new Map((units.data ?? []).map((u) => [u.id as string, u]));
 
+// Systems withheld from the public site (SystemCatalogEntry.hidden) — their
+// adapter/catalog/archive stay intact, but they appear nowhere on the site:
+// not the systems board, per-system pages, longest-outages, or aggregate
+// totals. Filtered at the source so every downstream reduction excludes them.
+const isHidden = (systemId: string): boolean => getSystem(systemId)?.hidden === true;
+
 // The red "SOLE STEP-FREE ACCESS — station currently inaccessible" marker is
 // a factual claim, so it requires a REAL non-redundancy signal (curated /
 // explicit / pathways / single_elevator). The 'assumed' policy default also
@@ -144,6 +150,7 @@ for (const e of events.data ?? []) {
 }
 
 const systemRows = (systems.data ?? [])
+  .filter((s) => !isHidden(s.id as string)) // withheld systems never reach the site
   .map((s) => {
     // A system with an incomplete inventory (feed lists broken units only —
     // WMATA) has no LIVE denominator. pctDown/activeUnits are null only when
@@ -200,6 +207,7 @@ const systemRows = (systems.data ?? [])
   .sort((a, b) => (b.pctUnplanned ?? -1) - (a.pctUnplanned ?? -1));
 
 const outageRows = (events.data ?? [])
+  .filter((e) => !isHidden(e.system_id as string))
   .map((e) => {
     const unit = unitById.get(e.unit_id as string);
     const since = e.source_started_at ?? e.started_at;

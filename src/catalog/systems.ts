@@ -25,6 +25,13 @@ export interface SystemCatalogEntry {
   // (e.g. just the city name) when shortName alone isn't the clearest label.
   boardLabel?: string;
   dataQuality: "good" | "fair" | "best_effort";
+  // Withhold this system from the public site (systems board, per-system
+  // pages, aggregate totals, longest-outages, offline counts) WITHOUT
+  // deleting its adapter, catalog, checks, or archived data — a reversible
+  // "keep the work, remove it from view" switch for a system whose feed is
+  // under review. It is not polled (the poll workflow simply omits its step);
+  // flip back to false + re-add the poll step to restore it.
+  hidden?: boolean;
   // "confirmed-none": redundancy is fully curated, so a station with no model is a
   // confirmed non-redundant station (not merely 'assumed'). Defaults to "assumed".
   redundancyBaseline?: "assumed" | "confirmed-none";
@@ -235,6 +242,15 @@ export const SYSTEMS: SystemCatalogEntry[] = [
     // elevator-status system yet. No redundancyBaseline yet (no verified
     // per-direction topology signal, unlike TfL) — falls to assumed.
     dataQuality: "good",
+    // HIDDEN from the public site (2026-07-07): review of TMB's own resources
+    // surfaced serious data-quality concerns with their elevator feeds — the
+    // alerts feed (used here) is undocumented and sparse, and the richer
+    // itransit/metro/ascensors feed we found reports statuses that contradict
+    // reality (274 "KO" vs 1 actually out of service; see SPEC.md + memory).
+    // The adapter, catalog, checks, and archived data are all kept intact for
+    // later; TMB is simply withheld from view and no longer polled. Flip to
+    // false and restore the poll step in .github/workflows/poll.yml to unhide.
+    hidden: true,
   },
 ];
 
