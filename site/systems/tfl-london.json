@@ -3,7 +3,7 @@
   "name": "TfL",
   "label": "TfL (London)",
   "timezone": "Europe/London",
-  "generatedAt": "2026-07-08T18:38:26.572Z",
+  "generatedAt": "2026-07-08T18:51:21.916Z",
   "currentlyBroken": [
     {
       "station": "Willesden Junction (Route 1)",
@@ -23,7 +23,7 @@
       "chainNotes": []
     },
     {
-      "station": "Moorgate (Route 3)",
+      "station": "Moorgate (Route 2)",
       "unitId": "HUBZMG-Lift-5",
       "unit": "Lift C",
       "days": 3,
@@ -33,7 +33,7 @@
       "estimatedReturn": null,
       "soleAccess": true,
       "severs": [
-        "Moorgate (Route 3)"
+        "Moorgate (Route 2)"
       ],
       "backups": [],
       "rampAlternative": false,
@@ -57,7 +57,7 @@
       "chainNotes": []
     },
     {
-      "station": "East India (Route 2)",
+      "station": "East India",
       "unitId": "940GZZDLEIN-Lift-3",
       "unit": "Lift 3",
       "days": 3,
@@ -66,9 +66,7 @@
       "reason": "East India: No Step Free Access - Step free access is not available to/from Nutmeg Lane due to a faulty lift. For step free access, use the entrance on Blackwall Way. Call us on 0343 222 1234 if you need help planning your journey.",
       "estimatedReturn": null,
       "soleAccess": true,
-      "severs": [
-        "East India (Route 2)"
-      ],
+      "severs": [],
       "backups": [],
       "rampAlternative": false,
       "chainNotes": []
@@ -172,7 +170,7 @@
       "chainNotes": []
     },
     {
-      "station": "King's Cross St Pancras (Route 1)",
+      "station": "King's Cross St Pancras",
       "unitId": "HUBKGX-Lift-B",
       "unit": "Lift B",
       "days": 3,
@@ -181,9 +179,7 @@
       "reason": "ST PANCRAS INTERNATIONAL STATION: From Monday 15 June until mid September, there will be no step-free access lift available between the ticket hall and THAMESLINK platforms A & B. Please use London Underground connections via Farringdon for step-free access to THAMESLINK, or EAST MIDLANDS RAILWAY services for Luton Airport Parkway and Bedford.",
       "estimatedReturn": null,
       "soleAccess": true,
-      "severs": [
-        "King's Cross St Pancras (Route 1)"
-      ],
+      "severs": [],
       "backups": [],
       "rampAlternative": false,
       "chainNotes": []
@@ -418,6 +414,15 @@
   "stationAccess": {
     "rows": [
       {
+        "name": "Canary Wharf",
+        "state": "no_access",
+        "downUnits": [
+          "HUBCAW-Lift-LU 2"
+        ],
+        "offlineUnits": [],
+        "note": null
+      },
+      {
         "name": "Denmark Hill",
         "state": "no_access",
         "downUnits": [
@@ -427,7 +432,7 @@
         "note": null
       },
       {
-        "name": "East India (Route 2)",
+        "name": "East India",
         "state": "no_access",
         "downUnits": [
           "940GZZDLEIN-Lift-3"
@@ -509,10 +514,19 @@
         "note": null
       },
       {
-        "name": "King's Cross St Pancras (Route 1)",
+        "name": "King's Cross St Pancras",
         "state": "no_access",
         "downUnits": [
           "HUBKGX-Lift-B"
+        ],
+        "offlineUnits": [],
+        "note": null
+      },
+      {
+        "name": "King's Cross St Pancras",
+        "state": "no_access",
+        "downUnits": [
+          "HUBKGX-Lift-A"
         ],
         "offlineUnits": [],
         "note": null
@@ -527,7 +541,7 @@
         "note": null
       },
       {
-        "name": "Moorgate (Route 3)",
+        "name": "Moorgate (Route 2)",
         "state": "no_access",
         "downUnits": [
           "HUBZMG-Lift-5"
@@ -609,49 +623,49 @@
         "note": null
       }
     ],
-    "chainsModeled": 167
+    "chainsModeled": 151
   },
   "scheduledWork": [],
   "accessibilityBlackouts": [
     {
       "name": "Gospel Oak",
-      "hours": 89.93463333333334
+      "hours": 90.15000666666667
     },
     {
       "name": "Hackney Central",
-      "hours": 89.93463333333334
+      "hours": 90.15000666666667
     },
     {
       "name": "Hackney Wick (Route 1)",
-      "hours": 89.93463333333334
-    },
-    {
-      "name": "King's Cross St Pancras (Route 1)",
-      "hours": 89.93463333333334
-    },
-    {
-      "name": "East India (Route 2)",
-      "hours": 89.93463333333334
+      "hours": 90.15000666666667
     },
     {
       "name": "Finchley Central",
-      "hours": 89.93463333333334
+      "hours": 90.15000666666667
     },
     {
       "name": "Imperial Wharf",
-      "hours": 89.93463333333334
+      "hours": 90.15000666666667
     },
     {
       "name": "Willesden Junction (Route 1)",
-      "hours": 89.93463333333334
+      "hours": 90.15000666666667
     },
     {
-      "name": "Moorgate (Route 3)",
-      "hours": 89.93463333333334
+      "name": "Moorgate (Route 2)",
+      "hours": 90.15000666666667
+    },
+    {
+      "name": "East India",
+      "hours": 90.15000666666667
     },
     {
       "name": "Wembley Central",
-      "hours": 89.93463333333334
+      "hours": 90.15000666666667
+    },
+    {
+      "name": "Wembley Park",
+      "hours": 90.15000666666667
     }
   ],
   "stepFreeStreak": [

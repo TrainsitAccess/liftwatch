@@ -612,23 +612,6 @@
     },
     {
       "systemId": "tfl-london",
-      "stationExternalId": "910GHAYESAH",
-      "chainLabel": " (Route 1)",
-      "segments": [
-        {
-          "id": "seg-1",
-          "label": "Leg 1",
-          "elevators": [
-            {
-              "externalId": "910GHAYESAH-Lift-3",
-              "label": "Lift C"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "systemId": "tfl-london",
       "stationExternalId": "910GHERNEH",
       "segments": [
         {
@@ -913,23 +896,6 @@
     },
     {
       "systemId": "tfl-london",
-      "stationExternalId": "HUBKGX",
-      "chainLabel": " (Route 1)",
-      "segments": [
-        {
-          "id": "seg-1",
-          "label": "Leg 1",
-          "elevators": [
-            {
-              "externalId": "HUBKGX-Lift-B",
-              "label": "Lift B"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "systemId": "tfl-london",
       "stationExternalId": "910GSWLY",
       "segments": [
         {
@@ -949,32 +915,6 @@
             {
               "externalId": "910GSWLY-Lift-2",
               "label": "Lift 2"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "systemId": "tfl-london",
-      "stationExternalId": "910GWEALING",
-      "segments": [
-        {
-          "id": "seg-1",
-          "label": "Leg 1",
-          "elevators": [
-            {
-              "externalId": "910GWEALING-Lift-1",
-              "label": "Lift A"
-            }
-          ]
-        },
-        {
-          "id": "seg-2",
-          "label": "Leg 2",
-          "elevators": [
-            {
-              "externalId": "910GWEALING-Lift-2",
-              "label": "Lift B"
             }
           ]
         }
@@ -1243,50 +1183,6 @@
             {
               "externalId": "940GZZDLDEV-Lift-2",
               "label": "Lift 2"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "systemId": "tfl-london",
-      "stationExternalId": "940GZZDLEIN",
-      "chainLabel": " (Route 1)",
-      "segments": [
-        {
-          "id": "seg-1",
-          "label": "Leg 1",
-          "elevators": [
-            {
-              "externalId": "940GZZDLEIN-Lift-1",
-              "label": "Lift 1"
-            }
-          ]
-        },
-        {
-          "id": "seg-2",
-          "label": "Leg 2",
-          "elevators": [
-            {
-              "externalId": "940GZZDLEIN-Lift-2",
-              "label": "Lift 2"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "systemId": "tfl-london",
-      "stationExternalId": "940GZZDLEIN",
-      "chainLabel": " (Route 2)",
-      "segments": [
-        {
-          "id": "seg-1",
-          "label": "Leg 1",
-          "elevators": [
-            {
-              "externalId": "940GZZDLEIN-Lift-3",
-              "label": "Lift 3"
             }
           ]
         }
@@ -1690,23 +1586,6 @@
           "label": "Leg 1",
           "elevators": [
             {
-              "externalId": "HUBBDS-Lift-3",
-              "label": "Lift D"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "systemId": "tfl-london",
-      "stationExternalId": "HUBBDS",
-      "chainLabel": " (Route 2)",
-      "segments": [
-        {
-          "id": "seg-1",
-          "label": "Leg 1",
-          "elevators": [
-            {
               "externalId": "HUBBDS-Lift-5",
               "label": "Lift E"
             }
@@ -1717,7 +1596,7 @@
     {
       "systemId": "tfl-london",
       "stationExternalId": "HUBBDS",
-      "chainLabel": " (Route 3)",
+      "chainLabel": " (Route 2)",
       "segments": [
         {
           "id": "seg-1",
@@ -2556,61 +2435,6 @@
     },
     {
       "systemId": "tfl-london",
-      "stationExternalId": "HUBCAW",
-      "chainLabel": " (Route 1)",
-      "segments": [
-        {
-          "id": "seg-1",
-          "label": "Leg 1",
-          "elevators": [
-            {
-              "externalId": "HUBCAW-Lift-DLR 1",
-              "label": "Lift DLR 1"
-            },
-            {
-              "externalId": "HUBCAW-Lift-DLR 2",
-              "label": "Lift DLR 2"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "systemId": "tfl-london",
-      "stationExternalId": "HUBCAW",
-      "chainLabel": " (Route 2)",
-      "segments": [
-        {
-          "id": "seg-1",
-          "label": "Leg 1",
-          "elevators": [
-            {
-              "externalId": "HUBCAW-Lift-DLR S2",
-              "label": "Lift DLR S2"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "systemId": "tfl-london",
-      "stationExternalId": "HUBCAW",
-      "chainLabel": " (Route 3)",
-      "segments": [
-        {
-          "id": "seg-1",
-          "label": "Leg 1",
-          "elevators": [
-            {
-              "externalId": "HUBCAW-Lift-DLR S3",
-              "label": "Lift DLR S3"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "systemId": "tfl-london",
       "stationExternalId": "HUBCST",
       "chainLabel": " (Route 1)",
       "segments": [
@@ -2949,51 +2773,6 @@
           "label": "Leg 1",
           "elevators": [
             {
-              "externalId": "HUBPAD-Lift-6",
-              "label": "Lift 6"
-            },
-            {
-              "externalId": "HUBPAD-Lift-7",
-              "label": "Lift 7"
-            }
-          ]
-        },
-        {
-          "id": "seg-2",
-          "label": "Leg 2",
-          "elevators": [
-            {
-              "externalId": "HUBPAD-Lift-8",
-              "label": "Lift 8"
-            },
-            {
-              "externalId": "HUBPAD-Lift-9",
-              "label": "Lift 9"
-            }
-          ]
-        },
-        {
-          "id": "seg-3",
-          "label": "Leg 3",
-          "elevators": [
-            {
-              "externalId": "HUBPAD-Lift-12",
-              "label": "Lift 12"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "systemId": "tfl-london",
-      "stationExternalId": "HUBPAD",
-      "chainLabel": " (Route 4)",
-      "segments": [
-        {
-          "id": "seg-1",
-          "label": "Leg 1",
-          "elevators": [
-            {
               "externalId": "HUBPAD-Lift-Y",
               "label": "Lift Y"
             }
@@ -3012,32 +2791,6 @@
             {
               "externalId": "HUBSDE-Lift-1",
               "label": "Lift 1"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "systemId": "tfl-london",
-      "stationExternalId": "HUBSPB",
-      "segments": [
-        {
-          "id": "seg-1",
-          "label": "Leg 1",
-          "elevators": [
-            {
-              "externalId": "HUBSPB-Lift-1",
-              "label": "Lift 1"
-            }
-          ]
-        },
-        {
-          "id": "seg-2",
-          "label": "Leg 2",
-          "elevators": [
-            {
-              "externalId": "HUBSPB-Lift-2",
-              "label": "Lift 2"
             }
           ]
         }
@@ -3123,33 +2876,6 @@
             {
               "externalId": "HUBTOM-Lift-3",
               "label": "Lift 3"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "systemId": "tfl-london",
-      "stationExternalId": "HUBVIC",
-      "chainLabel": " (Route 1)",
-      "segments": [
-        {
-          "id": "seg-1",
-          "label": "Leg 1",
-          "elevators": [
-            {
-              "externalId": "HUBVIC-Lift-A1B2",
-              "label": "Lift A1B2"
-            }
-          ]
-        },
-        {
-          "id": "seg-2",
-          "label": "Leg 2",
-          "elevators": [
-            {
-              "externalId": "HUBVIC-Lift-D4",
-              "label": "Lift D4"
             }
           ]
         }
@@ -3251,33 +2977,6 @@
     },
     {
       "systemId": "tfl-london",
-      "stationExternalId": "HUBWWA",
-      "chainLabel": " (Route 2)",
-      "segments": [
-        {
-          "id": "seg-1",
-          "label": "Leg 1",
-          "elevators": [
-            {
-              "externalId": "HUBWWA-Lift-2",
-              "label": "Lift C"
-            }
-          ]
-        },
-        {
-          "id": "seg-2",
-          "label": "Leg 2",
-          "elevators": [
-            {
-              "externalId": "HUBWWA-Lift-3",
-              "label": "Lift A"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "systemId": "tfl-london",
       "stationExternalId": "HUBZFD",
       "chainLabel": " (Route 1)",
       "segments": [
@@ -3312,66 +3011,8 @@
     },
     {
       "systemId": "tfl-london",
-      "stationExternalId": "HUBZFD",
-      "chainLabel": " (Route 3)",
-      "segments": [
-        {
-          "id": "seg-1",
-          "label": "Leg 1",
-          "elevators": [
-            {
-              "externalId": "HUBZFD-Lift-3",
-              "label": "Lift C1"
-            },
-            {
-              "externalId": "HUBZFD-Lift-4",
-              "label": "Lift C2"
-            }
-          ]
-        },
-        {
-          "id": "seg-2",
-          "label": "Leg 2",
-          "elevators": [
-            {
-              "externalId": "HUBZFD-Lift-5",
-              "label": "Lift D"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "systemId": "tfl-london",
       "stationExternalId": "HUBZMG",
       "chainLabel": " (Route 1)",
-      "segments": [
-        {
-          "id": "seg-1",
-          "label": "Leg 1",
-          "elevators": [
-            {
-              "externalId": "HUBZMG-Lift-1",
-              "label": "Lift B"
-            }
-          ]
-        },
-        {
-          "id": "seg-2",
-          "label": "Leg 2",
-          "elevators": [
-            {
-              "externalId": "HUBZMG-Lift-4",
-              "label": "Lift A"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "systemId": "tfl-london",
-      "stationExternalId": "HUBZMG",
-      "chainLabel": " (Route 2)",
       "segments": [
         {
           "id": "seg-1",
@@ -3388,7 +3029,7 @@
     {
       "systemId": "tfl-london",
       "stationExternalId": "HUBZMG",
-      "chainLabel": " (Route 3)",
+      "chainLabel": " (Route 2)",
       "segments": [
         {
           "id": "seg-1",
@@ -3490,32 +3131,6 @@
             {
               "externalId": "940GZZLUBBN-Lift-9",
               "label": "Lift G"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "systemId": "tfl-london",
-      "stationExternalId": "910GROMFORD",
-      "segments": [
-        {
-          "id": "seg-1",
-          "label": "Leg 1",
-          "elevators": [
-            {
-              "externalId": "910GROMFORD-Lift-1 ",
-              "label": "Lift A"
-            }
-          ]
-        },
-        {
-          "id": "seg-2",
-          "label": "Leg 2",
-          "elevators": [
-            {
-              "externalId": "910GROMFORD-Lift-2 ",
-              "label": "Lift B"
             }
           ]
         }

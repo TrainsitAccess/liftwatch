@@ -58,6 +58,23 @@ const liftById = new Map(lifts.map((l) => [l.id, l]));
 const groupIdOf = (area) => area.split("|")[0].split("-")[1];
 const areasOf = (field) => field.split("|");
 const tupleKey = (l) => `${l.fromAreas}=>${l.toAreas}`;
+// A multi-level lift ALSO stops at an intermediate landing (Lifts.csv models
+// it as one row, per SPEC.md) — that landing is a real physical node other
+// lifts can share, so it must count for CONNECTIVITY (which lifts merge into
+// one access component) even though tfl-import.mjs's own redundancy grouping
+// (and this script's tupleKey, kept identical on purpose — see analyzeComponent)
+// ignores it. Missed this in the first pass: King's Cross's Lift-A touches
+// "Mezz" as an intermediate stop; Lift-B starts FROM "Mezz" — without this,
+// Lift-B looked like an isolated, safe, sole-access chain when it's actually
+// part of the same branching complex as Lift-A/C/D (all found via a live
+// TfL alert covering Lift-A and Lift-B together, which shouldn't happen for
+// two truly-independent routes — the discrepancy is what surfaced the bug).
+const allNodesOf = (l) => [
+  ...areasOf(l.fromAreas),
+  ...(l.intermediateAreas ? areasOf(l.intermediateAreas) : []),
+  ...(l.intermediateAreas2 ? areasOf(l.intermediateAreas2) : []),
+  ...areasOf(l.toAreas),
+];
 
 // --- Group lifts by (station, leading numeric area-group id) ---
 // The numeric segment right after the station id in FromAreas (e.g. "1001276"
@@ -83,7 +100,7 @@ function connectedComponents(els) {
   };
   const nodeOwner = new Map();
   els.forEach((l, i) => {
-    for (const n of [...areasOf(l.fromAreas), ...areasOf(l.toAreas)]) {
+    for (const n of allNodesOf(l)) {
       if (nodeOwner.has(n)) union(i, nodeOwner.get(n));
       else nodeOwner.set(n, i);
     }
@@ -120,6 +137,14 @@ function analyzeComponent(comp) {
   // and path-ordering ambiguous — exclude conservatively rather than guess.
   if (comp.some((l) => l.fromAreas.includes("|") || l.toAreas.includes("|"))) {
     return { excluded: true, reason: "multi-destination edge in a multi-edge component" };
+  }
+  // Same for a multi-level lift's intermediate landing: the simple 2-node
+  // edge model (this script's path-ordering, and its endpoint/degree checks)
+  // has no way to route THROUGH a 3rd stop, so exclude rather than guess at
+  // an ordering. (A single-edge component's own intermediate stop is fine —
+  // there's nothing to order relative to; only matters once there's 2+ edges.)
+  if (comp.some((l) => l.intermediateAreas || l.intermediateAreas2)) {
+    return { excluded: true, reason: "multi-level lift (intermediate landing) in a multi-edge component" };
   }
 
   const nodeDeg = new Map();

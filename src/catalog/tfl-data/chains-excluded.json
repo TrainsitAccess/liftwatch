@@ -1,6 +1,6 @@
 {
   "note": "Stations/access-components whose lift topology is too ambiguous to auto-model safely: a branching hub node (3+ distinct routes through one shared area), a multi-destination lift within a multi-lift route, or an unclear traversal. Needs a human station-by-station review (walking each through with a person who knows the station, per this project's established practice for MTA's tangled interchanges) before adding to chains.json.",
-  "excludedStationCount": 79,
+  "excludedStationCount": 85,
   "excluded": [
     {
       "station": "Brent Cross West Station",
@@ -95,9 +95,10 @@
       "lifts": [
         "910GHAYESAH-Lift-1",
         "910GHAYESAH-Lift-2",
+        "910GHAYESAH-Lift-3",
         "910GHAYESAH-Lift-4"
       ],
-      "reason": "branching hub node (maxDeg=3)"
+      "reason": "multi-level lift (intermediate landing) in a multi-edge component"
     },
     {
       "station": "Harold Wood",
@@ -117,7 +118,7 @@
         "910GIVER-Lift-3",
         "910GIVER-Lift-4"
       ],
-      "reason": "branching hub node (maxDeg=3)"
+      "reason": "multi-level lift (intermediate landing) in a multi-edge component"
     },
     {
       "station": "Ilford",
@@ -217,10 +218,11 @@
       "stationId": "HUBKGX",
       "lifts": [
         "HUBKGX-Lift-A",
+        "HUBKGX-Lift-B",
         "HUBKGX-Lift-C",
         "HUBKGX-Lift-D"
       ],
-      "reason": "branching hub node (maxDeg=3)"
+      "reason": "multi-level lift (intermediate landing) in a multi-edge component"
     },
     {
       "station": "Seven Kings",
@@ -265,6 +267,15 @@
       "reason": "branching hub node (maxDeg=3)"
     },
     {
+      "station": "West Ealing",
+      "stationId": "910GWEALING",
+      "lifts": [
+        "910GWEALING-Lift-1",
+        "910GWEALING-Lift-2"
+      ],
+      "reason": "multi-level lift (intermediate landing) in a multi-edge component"
+    },
+    {
       "station": "West Hampstead Thameslink",
       "stationId": "910GWHMPSTM",
       "lifts": [
@@ -282,6 +293,16 @@
         "HUBCUS-Lift-2"
       ],
       "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "East India",
+      "stationId": "940GZZDLEIN",
+      "lifts": [
+        "940GZZDLEIN-Lift-1",
+        "940GZZDLEIN-Lift-2",
+        "940GZZDLEIN-Lift-3"
+      ],
+      "reason": "multi-level lift (intermediate landing) in a multi-edge component"
     },
     {
       "station": "King George V",
@@ -338,6 +359,7 @@
       "lifts": [
         "HUBBDS-Lift-1",
         "HUBBDS-Lift-2",
+        "HUBBDS-Lift-3",
         "HUBBDS-Lift-4"
       ],
       "reason": "multi-destination edge in a multi-edge component"
@@ -454,6 +476,17 @@
         "HUBCAN-Lift-4"
       ],
       "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Canary Wharf",
+      "stationId": "HUBCAW",
+      "lifts": [
+        "HUBCAW-Lift-DLR 1",
+        "HUBCAW-Lift-DLR 2",
+        "HUBCAW-Lift-DLR S2",
+        "HUBCAW-Lift-DLR S3"
+      ],
+      "reason": "multi-level lift (intermediate landing) in a multi-edge component"
     },
     {
       "station": "Canary Wharf",
@@ -642,6 +675,18 @@
       "reason": "multi-destination edge in a multi-edge component"
     },
     {
+      "station": "Paddington",
+      "stationId": "HUBPAD",
+      "lifts": [
+        "HUBPAD-Lift-6",
+        "HUBPAD-Lift-7",
+        "HUBPAD-Lift-8",
+        "HUBPAD-Lift-9",
+        "HUBPAD-Lift-12"
+      ],
+      "reason": "multi-level lift (intermediate landing) in a multi-edge component"
+    },
+    {
       "station": "Richmond",
       "stationId": "HUBRMD",
       "lifts": [
@@ -649,6 +694,15 @@
         "HUBRMD-Lift-2"
       ],
       "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Shepherd's Bush",
+      "stationId": "HUBSPB",
+      "lifts": [
+        "HUBSPB-Lift-1",
+        "HUBSPB-Lift-2"
+      ],
+      "reason": "multi-level lift (intermediate landing) in a multi-edge component"
     },
     {
       "station": "Stratford",
@@ -681,6 +735,15 @@
         "HUBUPM-Lift-3"
       ],
       "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Victoria",
+      "stationId": "HUBVIC",
+      "lifts": [
+        "HUBVIC-Lift-A1B2",
+        "HUBVIC-Lift-D4"
+      ],
+      "reason": "multi-level lift (intermediate landing) in a multi-edge component"
     },
     {
       "station": "Victoria",
@@ -776,7 +839,16 @@
         "HUBWSM-Lift-4",
         "HUBWSM-Lift-5"
       ],
-      "reason": "branching hub node (maxDeg=3)"
+      "reason": "multi-level lift (intermediate landing) in a multi-edge component"
+    },
+    {
+      "station": "Woolwich Arsenal",
+      "stationId": "HUBWWA",
+      "lifts": [
+        "HUBWWA-Lift-2",
+        "HUBWWA-Lift-3"
+      ],
+      "reason": "multi-level lift (intermediate landing) in a multi-edge component"
     },
     {
       "station": "Canada Water",
@@ -787,6 +859,16 @@
         "HUBZCW-Lift-4"
       ],
       "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Farringdon",
+      "stationId": "HUBZFD",
+      "lifts": [
+        "HUBZFD-Lift-3",
+        "HUBZFD-Lift-4",
+        "HUBZFD-Lift-5"
+      ],
+      "reason": "multi-level lift (intermediate landing) in a multi-edge component"
     },
     {
       "station": "Farringdon",
@@ -819,6 +901,15 @@
       "reason": "multi-destination edge in a multi-edge component"
     },
     {
+      "station": "Moorgate",
+      "stationId": "HUBZMG",
+      "lifts": [
+        "HUBZMG-Lift-1",
+        "HUBZMG-Lift-4"
+      ],
+      "reason": "multi-level lift (intermediate landing) in a multi-edge component"
+    },
+    {
       "station": "Whitechapel",
       "stationId": "HUBZWL",
       "lifts": [
@@ -842,7 +933,7 @@
         "940GZZBPSUST-Lift-3",
         "940GZZBPSUST-Lift-4"
       ],
-      "reason": "branching hub node (maxDeg=3)"
+      "reason": "multi-level lift (intermediate landing) in a multi-edge component"
     },
     {
       "station": "Abbey Wood",
@@ -852,6 +943,15 @@
         "HUBABW-Lift-5"
       ],
       "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Romford",
+      "stationId": "910GROMFORD",
+      "lifts": [
+        "910GROMFORD-Lift-1 ",
+        "910GROMFORD-Lift-2 "
+      ],
+      "reason": "multi-level lift (intermediate landing) in a multi-edge component"
     },
     {
       "station": "Petts Wood",
