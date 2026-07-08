@@ -192,14 +192,14 @@
     <p class="legend" id="static-fleet-note"></p>
   </section>
 
-  <section class="board" aria-labelledby="out-h">
+  <section class="board" aria-labelledby="unplanned-h">
     <div class="board-head">
-      <h2 id="out-h">Longest current outages <span class="t-sub">network-wide</span></h2>
+      <h2 id="unplanned-h">Longest unplanned outages <span class="t-sub">breakdowns, network-wide</span></h2>
       <span class="side">select a row for details</span>
     </div>
     <div class="tablewrap">
       <table class="led">
-        <caption class="sr-only">The ten longest-running elevator outages across all monitored systems, with status and expected return</caption>
+        <caption class="sr-only">The longest-running unplanned elevator breakdowns across all monitored systems, with status and expected return</caption>
         <thead>
           <tr>
             <th scope="col">unit</th>
@@ -212,10 +212,38 @@
             <th scope="col"><span class="sr-only">details</span></th>
           </tr>
         </thead>
-        <tbody id="outages-body"></tbody>
+        <tbody id="unplanned-body"></tbody>
       </table>
     </div>
+    <p class="empty" id="unplanned-empty" hidden>No unplanned outages right now — every current closure is scheduled work.</p>
     <p class="legend"><span class="red">NO STEP-FREE</span> = this elevator is the station's only confirmed step-free access — the station is inaccessible while it's out · times shown in each system's local time</p>
+  </section>
+
+  <section class="board" aria-labelledby="planned-h">
+    <div class="board-head">
+      <h2 id="planned-h">Longest planned closures <span class="t-sub">scheduled capital &amp; maintenance work</span></h2>
+      <span class="side">select a row for details</span>
+    </div>
+    <div class="tablewrap">
+      <table class="led">
+        <caption class="sr-only">The longest-running planned elevator closures across all monitored systems, with status and expected return</caption>
+        <thead>
+          <tr>
+            <th scope="col">unit</th>
+            <th scope="col">station</th>
+            <th scope="col">system</th>
+            <th scope="col">status</th>
+            <th class="num" scope="col">out</th>
+            <th scope="col">est. return</th>
+            <th scope="col">information</th>
+            <th scope="col"><span class="sr-only">details</span></th>
+          </tr>
+        </thead>
+        <tbody id="planned-body"></tbody>
+      </table>
+    </div>
+    <p class="empty" id="planned-empty" hidden>No planned closures posted right now.</p>
+    <p class="legend">Scheduled capital replacements and maintenance can keep a station's only step-free elevator out for months or years — those show <span class="red">NO STEP-FREE</span> too · times shown in each system's local time</p>
   </section>
 </main>
 
@@ -248,6 +276,21 @@ const fmtWhen = (iso, tz) => {
   } catch { return null; }
 };
 const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// Escalate a whole-day count for legibility, matching the system pages'
+// duration ramp: plain days under a month, months up to a year, then years —
+// so "1201D" reads "3Y 3MO". 0 stays "0D" (a sentinel for "currently out").
+function formatDays(days) {
+  if (days < 30) return `${days}D`;
+  if (days < 365) {
+    const months = Math.floor(days / 30);
+    const d = days % 30;
+    return d > 0 ? `${months}MO ${d}D` : `${months}MO`;
+  }
+  const years = Math.floor(days / 365);
+  const months = Math.floor((days % 365) / 30);
+  return months > 0 ? `${years}Y ${months}MO` : `${years}Y`;
+}
 
 // After rows render: information cells whose text overflows become
 // right-to-left marquees — an aria-hidden duplicate trails the text and the
@@ -322,44 +365,58 @@ fetch("./data.json").then((r) => r.json()).then((data) => {
     ).join("<br>");
   }
 
-  // --- Longest current outages ---
-  const outBody = document.getElementById("outages-body");
-  for (const o of data.longestOutages) {
-    const status = o.reason || "OUT OF SERVICE";
-    const ret = fmtWhen(o.estimatedReturn, o.tz) || "—";
-    const infoBits = [];
-    if (o.soleAccess) infoBits.push("NO STEP-FREE ACCESS AT THIS STATION WHILE OUT");
-    if (o.planned) infoBits.push("SCHEDULED WORK");
-    if (o.unitDesc) infoBits.push(o.unitDesc);
-    const info = infoBits.join(" · ") || "—";
+  // --- Longest outages, split by cause: unplanned breakdowns and planned
+  // closures each get their own board (a chip in the info cell is redundant now
+  // that the board title carries the cause; the PLANNED tag stays in the
+  // expanded detail). ---
+  function renderOutageRows(tbody, list) {
+    for (const o of list) {
+      const status = o.reason || "OUT OF SERVICE";
+      const ret = fmtWhen(o.estimatedReturn, o.tz) || "—";
+      const infoBits = [];
+      if (o.soleAccess) infoBits.push("NO STEP-FREE ACCESS AT THIS STATION WHILE OUT");
+      if (o.unitDesc) infoBits.push(o.unitDesc);
+      const info = infoBits.join(" · ") || "—";
 
-    const tr = document.createElement("tr");
-    tr.className = "row";
-    tr.innerHTML =
-      `<td>${esc(o.unit)}</td>` +
-      `<td class="white">${esc(o.station)}</td>` +
-      `<td class="dim">${esc(o.system)}</td>` +
-      `<td${o.planned ? ' class="dim"' : ""}>${esc(status)}</td>` +
-      `<td class="num${o.days > 180 ? " red" : ""}">${o.days}D</td>` +
-      `<td class="dim">${esc(ret)}</td>` +
-      `<td class="info"><div class="scroll-cell"><span>${o.soleAccess ? '<span class="chip red">NO STEP-FREE</span> ' : ""}${o.planned ? '<span class="chip sched">PLANNED</span> ' : ""}${esc(info)}</span></div></td>` +
-      `<td><button class="expand" aria-expanded="false" aria-label="Details for ${esc(o.unit)} at ${esc(o.station)}">▸</button></td>`;
+      const tr = document.createElement("tr");
+      tr.className = "row";
+      tr.innerHTML =
+        `<td>${esc(o.unit)}</td>` +
+        `<td class="white">${esc(o.station)}</td>` +
+        `<td class="dim">${esc(o.system)}</td>` +
+        `<td${o.planned ? ' class="dim"' : ""}>${esc(status)}</td>` +
+        `<td class="num${o.days > 180 ? " red" : ""}">${formatDays(o.days)}</td>` +
+        `<td class="dim">${esc(ret)}</td>` +
+        `<td class="info"><div class="scroll-cell"><span>${o.soleAccess ? '<span class="chip red">NO STEP-FREE</span> ' : ""}${esc(info)}</span></div></td>` +
+        `<td><button class="expand" aria-expanded="false" aria-label="Details for ${esc(o.unit)} at ${esc(o.station)}">▸</button></td>`;
 
-    const dtr = document.createElement("tr");
-    dtr.className = "detail-row";
-    dtr.hidden = true;
-    dtr.innerHTML = `<td colspan="8"><div class="detail">` +
-      field("Status", esc(status) + (o.planned ? ' <span class="chip sched">PLANNED</span>' : "") + (o.soleAccess ? ' <span class="chip red">NO STEP-FREE</span>' : ""), "amber") +
-      field("Out since", esc(fmtWhen(o.since, o.tz) || "—") + ` · ${o.days} days`, "amber") +
-      field("Estimated return", esc(ret), "amber") +
-      field("Elevator", esc(o.unitDesc || o.unit)) +
-      field("System board", `<a href="./system.html?id=${encodeURIComponent(o.systemId)}">${esc(o.system)} — full board</a>`) +
-      `</div></td>`;
+      const dtr = document.createElement("tr");
+      dtr.className = "detail-row";
+      dtr.hidden = true;
+      dtr.innerHTML = `<td colspan="8"><div class="detail">` +
+        field("Status", esc(status) + (o.planned ? ' <span class="chip sched">PLANNED</span>' : "") + (o.soleAccess ? ' <span class="chip red">NO STEP-FREE</span>' : ""), "amber") +
+        field("Out since", esc(fmtWhen(o.since, o.tz) || "—") + ` · ${o.days} days`, "amber") +
+        field("Estimated return", esc(ret), "amber") +
+        field("Elevator", esc(o.unitDesc || o.unit)) +
+        field("System board", `<a href="./system.html?id=${encodeURIComponent(o.systemId)}">${esc(o.system)} — full board</a>`) +
+        `</div></td>`;
 
-    outBody.appendChild(tr);
-    outBody.appendChild(dtr);
-    attachExpand(tr, dtr);
+      tbody.appendChild(tr);
+      tbody.appendChild(dtr);
+      attachExpand(tr, dtr);
+    }
   }
+
+  // Prefer the builder's pre-split arrays; fall back to splitting the combined
+  // list so an older data.json still renders.
+  const split = (data.longestUnplanned || data.longestPlanned)
+    ? { unplanned: data.longestUnplanned ?? [], planned: data.longestPlanned ?? [] }
+    : { unplanned: (data.longestOutages ?? []).filter((o) => !o.planned),
+        planned: (data.longestOutages ?? []).filter((o) => o.planned) };
+  renderOutageRows(document.getElementById("unplanned-body"), split.unplanned);
+  renderOutageRows(document.getElementById("planned-body"), split.planned);
+  document.getElementById("unplanned-empty").hidden = split.unplanned.length > 0;
+  document.getElementById("planned-empty").hidden = split.planned.length > 0;
 
   markOverflows(document);
   addEventListener("resize", () => markOverflows(document));
@@ -379,8 +436,8 @@ fetch("./data.json").then((r) => r.json()).then((data) => {
   if (data.systems[0]?.pctUnplanned != null) {
     messages.push(`MOST BREAKDOWNS: ${data.systems[0].boardLabel} — ${data.systems[0].pctUnplanned.toFixed(1)}% OF FLEET OUT UNPLANNED`);
   }
-  const worst = data.longestOutages[0];
-  if (worst) messages.push(`LONGEST OUTAGE: ${worst.unit} AT ${worst.station} (${worst.system}) — OUT ${worst.days} DAYS`);
+  const worst = split.unplanned[0] || data.longestOutages?.[0];
+  if (worst) messages.push(`LONGEST ${worst.planned ? "" : "UNPLANNED "}OUTAGE: ${worst.unit} AT ${worst.station} (${worst.system}) — OUT ${worst.days} DAYS`);
   const tickerEl = document.getElementById("ticker-text");
   let mi = 0;
   tickerEl.textContent = messages[0];

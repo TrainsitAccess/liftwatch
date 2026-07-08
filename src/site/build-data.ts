@@ -206,7 +206,7 @@ const systemRows = (systems.data ?? [])
   // own column). Null denominators sort last, as before.
   .sort((a, b) => (b.pctUnplanned ?? -1) - (a.pctUnplanned ?? -1));
 
-const outageRows = (events.data ?? [])
+const allOpenOutages = (events.data ?? [])
   .filter((e) => !isHidden(e.system_id as string))
   .map((e) => {
     const unit = unitById.get(e.unit_id as string);
@@ -229,8 +229,18 @@ const outageRows = (events.data ?? [])
       days,
     };
   })
-  .sort((a, b) => b.days - a.days)
-  .slice(0, 10);
+  .sort((a, b) => b.days - a.days);
+
+// Split the flagship board by cause. Unplanned breakdowns are the spec's shame
+// metric, so they get their own board — a wall of multi-year planned capital
+// replacements (161 St, Jamaica-179 …) was burying the longest genuine
+// breakdown at the bottom. Planned closures still matter (they can strand a
+// station's sole step-free elevator for months or years), so they keep a board
+// of their own rather than being dropped. `longestOutages` (combined top-10) is
+// retained for the ticker and back-compat.
+const longestUnplanned = allOpenOutages.filter((o) => !o.planned).slice(0, 10);
+const longestPlanned = allOpenOutages.filter((o) => o.planned).slice(0, 10);
+const outageRows = allOpenOutages.slice(0, 10);
 
 // --- Per-system detail pages (site/systems/{id}.json): most/least broken
 // stations & units, single points of failure. Needs the FULL event history
@@ -734,6 +744,8 @@ const data = {
   },
   systems: systemRows,
   longestOutages: outageRows,
+  longestUnplanned,
+  longestPlanned,
 };
 
 mkdirSync("site", { recursive: true });
