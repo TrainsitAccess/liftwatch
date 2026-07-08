@@ -425,16 +425,43 @@ silently mis-attribute a future, unrelated Richmond outage. This only patches
 the SYMPTOM (a manual fix getting clobbered); it does not make attribution
 itself automatic — that remains unsolved. **Bryce wants to interrogate this
 more and look for a more robust solution**
-before this becomes a recurring manual chore — no committed direction yet.
-Candidate angles for a future session: (a) a smarter attribution heuristic
-(risky — goes against this project's consistent never-guess-a-specific-
-elevator rule, and would be wrong at multi-SPOF stations like Richmond
-itself, which has 3 non-redundant elevators, not 1); (b) some kind of
-semi-manual curation queue (SPEC.md's Phase 2 "assumed -> curated" curation
-workflow concept could generalize to "unspecified -> attributed" outage
-review, surfaced for a human instead of auto-applied); (c) a genuinely
-different BART data source not yet found. Don't propose a fix unprompted —
-Bryce asked to hold this as an open question.
+before this becomes a recurring manual chore. **Progress made 2026-07-08,
+still not fully solved**: investigating "a more robust solution" (per Bryce's
+ask) surfaced two real, fixable bugs rather than requiring a guess:
+(1) the BART adapter's attribution only ever checked a station's FIRST chain
+(`models.get(abbr)?.[0]`, a stale comment said "no BART station has more than
+one chain today" — true when written, false after this session added 13
+multi-chain per-direction stations) — any advisory for a station's SECOND
+chain was silently never even attempted. Fixed with `attributeOutageAcrossChains()`
+in `accessibility.ts` (system-agnostic: tries every chain, returns a result
+only when exactly ONE matched — two chains matching is exactly as ambiguous
+as zero, same never-guess rule). (2) The curated `matchHints` (borrowed from
+the outage-options page's wording, e.g. "platform 1") don't match BART's LIVE
+advisory text, which uses different — sometimes regional-shorthand — phrasing.
+Redesigned all 24 per-direction elevators' hints using each chain's own
+already-curated destination names (verified disjoint per station first, so no
+hint can ambiguously match two chains at once), and added "convention center"
+to 12th St.'s 11th St. elevator after mining the outage_events archive found
+4 of BART's 11 historical events (36%) used that exact phrase. **Caught a real
+error in this fix by testing against the live feed before shipping**: assumed
+the live feed uses the same terminus names as the detailed page, but
+Milpitas's real live outage read "SF/East Bay" — a regional shorthand the
+initial hints didn't cover (fixed). Only Milpitas and Hayward have a
+CONFIRMED live example validating their hints — the other 8 per-direction
+stations' hints are unverified against real live-feed phrasing, only against
+the outage-options page's own wording, and may need similar correction once
+real examples accumulate (mining the growing archive, same technique as TfL's
+alert-evidence system, is the natural way to find those examples over time).
+This meaningfully reduces — but does not eliminate — the "bare word Station"
+problem: many BART advisories DO carry real direction/destination text this
+now catches; some still don't. **Still open**: what to do when an advisory is
+genuinely just "Station" with zero distinguishing content at all (true for
+single-chain stations, and for any per-direction station whose live phrasing
+isn't yet confirmed) — no committed direction yet on candidate angles (a) a
+smarter guessing heuristic (still rejected — goes against the never-guess
+rule, wrong at multi-SPOF stations); (b) a semi-manual curation queue
+generalizing "assumed -> curated" to "unspecified -> attributed", surfaced for
+a human; (c) a different BART data source, not yet found.
 
 ### MBTA feeds (in use) — genuinely per-elevator
 
