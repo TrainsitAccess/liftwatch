@@ -2,6 +2,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import { REDUNDANCY_PRECEDENCE, type NormalizedRead, type NormalizedUnit, type RedundancySource } from "./types.js";
 import type { SystemCatalogEntry } from "./catalog/systems.js";
 import { overridesFor, type RedundancyOverride } from "./catalog/redundancy-overrides.js";
+import { attributionOverridesFor } from "./catalog/attribution-overrides.js";
 import { nowUtcIso } from "./lib/time.js";
 
 export interface IngestResult {
@@ -411,10 +412,19 @@ export async function ingest(
     fail("select open events", open.error);
     const openByUnit = new Map<string, number>((open.data ?? []).map((r) => [r.unit_id as string, r.id as number]));
 
+    // Manual attribution overrides (src/catalog/attribution-overrides.ts):
+    // redirect an ambiguous/synthetic unit id to a human-confirmed real one
+    // BEFORE any open/refresh/close decision, so a prior manual DB correction
+    // (moving an event's unit_id) survives future polls instead of getting a
+    // duplicate opened under the ambiguous id while the corrected event gets
+    // closed for "no longer being reported out" under its original id.
+    const attributionOverrides = attributionOverridesFor(system.id);
+
     const currentlyOut = new Set<string>();
     let eventsOpened = 0;
     for (const o of read.outages) {
-      const uId = unitId(system.id, o.unitExternalId);
+      const redirectTo = attributionOverrides.get(o.unitExternalId)?.toUnitExternalId;
+      const uId = unitId(system.id, redirectTo ?? o.unitExternalId);
       // Two advisory entries can resolve to the same unit (e.g. two ambiguous
       // outages in one segment). Process each unit once — a second insert would
       // violate the one-open-outage-per-unit index.
