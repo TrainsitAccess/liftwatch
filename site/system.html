@@ -87,7 +87,11 @@
   .chip.red { background: #3a1210; color: var(--red); border: 1px solid #5c1d19; }
   .chip.sched { background: #2b220f; color: var(--amber-dim); border: 1px solid #4a3a17; }
   .chip.green { background: #0e2b1a; color: var(--green); border: 1px solid #1c4d30; }
-  .chip.amberc { background: #2b220f; color: var(--amber); border: 1px solid #4a3a17; }
+  /* Distinct from .chip.sched (PLANNED is dim/mundane — an announced fact);
+     UNKNOWN is a caution state (offline-driven — status can't be confirmed),
+     so it gets a brighter, more saturated background using the site's
+     existing focus-highlight amber rather than sharing PLANNED's dark olive. */
+  .chip.unknown { background: #3d2c05; color: var(--focus); border: 1px solid #6b4a12; }
 
   /* Continuous right-to-left marquee: text + an aria-hidden duplicate slide
      left by exactly one copy-width for a seamless wrap. Pauses on hover/
@@ -288,7 +292,7 @@
       </table>
     </div>
     <p class="empty" id="access-empty" hidden></p>
-    <p class="legend"><span class="red">NO ACCESS</span> = no step-free path for that route right now · <span class="green">REDUCED</span> = an elevator is down but a backup elevator or ramp still covers the route · <span style="color:var(--amber)">UNKNOWN</span> = an elevator on this route is offline, so the route can't be verified before you go. Routes are hand-verified access chains; stations without a model appear only when a confirmed sole-access elevator is down or offline.</p>
+    <p class="legend"><span class="red">NO ACCESS</span> = no step-free path for that route right now · <span class="green">REDUCED</span> = an elevator is down but a backup elevator or ramp still covers the route · <span style="color:var(--focus)">UNKNOWN</span> = an elevator on this route is offline, so the route can't be verified before you go. Routes are hand-verified access chains; stations without a model appear only when a confirmed sole-access elevator is down or offline.</p>
   </section>
 
   <section class="board" aria-labelledby="sched-h">
@@ -620,7 +624,7 @@ if (!id) {
     }
     for (const r of acc.rows) {
       const chip = r.state === "no_access" ? '<span class="chip red">NO ACCESS</span>'
-        : r.state === "unknown" ? '<span class="chip amberc">UNKNOWN</span>'
+        : r.state === "unknown" ? '<span class="chip unknown">UNKNOWN</span>'
         : '<span class="chip green">REDUCED</span>';
       const affected = [...r.downUnits, ...(r.offlineUnits ?? []).map((u) => u + " (OFFLINE)")].join(", ");
       const tr = document.createElement("tr");
