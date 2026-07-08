@@ -408,13 +408,23 @@ patterns are added — there's nothing in the text to match. Confirmed live
 2026-07-08: Richmond's `RICH-UNSPECIFIED` outage (open since 2026-07-04) was
 manually re-attributed to `RICH-PLAT` after Bryce confirmed in person which
 elevator it actually was (outage_events.id=42, unit_id updated directly,
-attributed:true set). **Known side effect of a manual fix like this**: the
-adapter still can't attribute the underlying advisory, so the NEXT poll will
-very likely open a NEW, separate event on `RICH-UNSPECIFIED` for the same
-real-world outage (double-counting it under two units), while the manually
--fixed event on `RICH-PLAT` will never auto-close on its own (nothing tells
-ingest to close it — the adapter never reports `RICH-PLAT` down specifically).
-**Bryce wants to interrogate this more and look for a more robust solution**
+attributed:true set). **Known side effect of a manual fix like this — now
+mitigated (2026-07-08)**: without intervention, the NEXT poll would have
+opened a NEW, separate event on `RICH-UNSPECIFIED` for the same real-world
+outage (double-counting it under two units) while closing the manually-fixed
+`RICH-PLAT` event (the adapter never reports `RICH-PLAT` down specifically,
+so it wouldn't appear in that poll's "currently out" set) — traced exactly in
+`ingest.ts`'s event-derivation logic before it could happen. Fixed with
+`src/catalog/attribution-overrides.ts` (mirrors `redundancy-overrides.ts`'s
+pattern): redirects the ambiguous unit id to the confirmed one BEFORE
+ingest's open/refresh/close decision, so future polls find and refresh the
+SAME event instead of duplicating or closing it. This is explicitly NOT a
+standing guess — the override has no expiry and must be manually removed once
+the outage resolves (poll.ts now warns when it goes quiet), or it could
+silently mis-attribute a future, unrelated Richmond outage. This only patches
+the SYMPTOM (a manual fix getting clobbered); it does not make attribution
+itself automatic — that remains unsolved. **Bryce wants to interrogate this
+more and look for a more robust solution**
 before this becomes a recurring manual chore — no committed direction yet.
 Candidate angles for a future session: (a) a smarter attribution heuristic
 (risky — goes against this project's consistent never-guess-a-specific-
