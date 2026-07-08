@@ -92,6 +92,9 @@
   td.info { max-width: 340px; }
   .scroll-cell { overflow: hidden; max-width: 340px; white-space: nowrap; }
   .scroll-cell > span { display: inline-block; white-space: nowrap; }
+  /* Not long enough to scroll but still wider than the cell → ellipsis, never
+     a silent hard clip. Scrolling cells (.overflowing) are excluded. */
+  .scroll-cell:not(.overflowing) > span { max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
   .scroll-cell.overflowing > span {
     padding-right: 56px;
     animation: marquee var(--scroll-secs, 12s) linear infinite;
@@ -401,15 +404,16 @@ function formatDays(days) {
   return months > 0 ? `${years}Y ${months}MO` : `${years}Y`;
 }
 
-// Information cells whose text overflows become right-to-left marquees — an
+// Information cells with long text become right-to-left marquees — an
 // aria-hidden duplicate trails the text and the pair slides left by exactly
-// one copy-width (incl. the gap padding), so the wrap is seamless. Under
-// reduced motion nothing scrolls (CSS ellipsis).
+// one copy-width (incl. the gap padding), so the wrap is seamless. "Long"
+// means more than seven words — a deterministic rule, unlike pixel overflow
+// which shifts with width/zoom. Under reduced motion nothing scrolls.
 function markOverflows(root) {
   for (const cell of root.querySelectorAll(".scroll-cell")) {
     const span = cell.querySelector("span:not(.dup)");
     if (!span) continue;
-    const overflows = span.scrollWidth - cell.clientWidth > 8;
+    const overflows = (span.textContent || "").trim().split(/\s+/).filter(Boolean).length > 7;
     cell.classList.toggle("overflowing", overflows && !REDUCED);
     if (!overflows || REDUCED) continue;
     if (!cell.querySelector(".dup")) {
@@ -489,7 +493,7 @@ if (!id) {
       tr.innerHTML =
         `<td>${esc(o.unitId)}</td>` +
         `<td class="white">${esc(o.station)}</td>` +
-        `<td${o.planned ? ' class="dim"' : ""}>${esc(status)}</td>` +
+        `<td${o.planned ? ' class="dim"' : ""}><div class="scroll-cell"><span>${esc(status)}</span></div></td>` +
         `<td class="num${o.days > 180 ? " red" : ""}">${formatDays(o.days)}</td>` +
         `<td class="dim">${esc(ret)}</td>` +
         `<td class="info"><div class="scroll-cell"><span>${chips}${esc(infoBits.join(" · ") || "—")}</span></div></td>` +
