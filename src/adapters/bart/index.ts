@@ -1,6 +1,6 @@
 import type { Adapter, NormalizedOutage, NormalizedRead, NormalizedUnit } from "../../types.js";
 import { nowUtcIso } from "../../lib/time.js";
-import { attributeOutage, elevatorRedundant } from "../../lib/accessibility.js";
+import { attributeOutageAcrossChains, elevatorRedundant } from "../../lib/accessibility.js";
 import { stationModelsFor } from "../../catalog/station-models.js";
 import type { BartBsaRaw, BartElevResponse, BartStationRaw, BartStnResponse, BartText } from "./raw.js";
 
@@ -150,10 +150,14 @@ export function createBartAdapter(config: BartConfig = BART_CONFIG): Adapter {
 
       const outages: NormalizedOutage[] = affected.map(({ abbr, desc }) => {
         const stationName = stationByAbbr.get(abbr)?.name ?? abbr;
-        // BART's advisory is one free-text sentence per station, not per chain,
-        // so multi-chain attribution isn't meaningful here (no BART station
-        // has more than one chain today) — attribute against the first model.
-        const model = models.get(abbr)?.[0];
+        // BART's advisory is one free-text sentence per station, not per chain
+        // — a multi-chain station (e.g. per-direction platforms) needs EVERY
+        // chain's hints tried, not just the first. attributeOutageAcrossChains
+        // only returns a result when exactly ONE chain's hints matched at all
+        // — two chains matching (or zero) is exactly as ambiguous as two
+        // elevators within one chain, so it correctly falls through to the
+        // conservative station-level case below rather than guessing.
+        const stationModels = models.get(abbr) ?? [];
         const base = {
           unitType: "elevator" as const,
           stationExternalId: abbr,
@@ -161,8 +165,8 @@ export function createBartAdapter(config: BartConfig = BART_CONFIG): Adapter {
           isPlanned: false, // real-time advisory = unplanned; planned RSS deferred
           isUpcoming: false,
         };
-        if (model) {
-          const attr = attributeOutage(desc, model);
+        if (stationModels.length > 0) {
+          const attr = attributeOutageAcrossChains(desc, stationModels);
           if (attr?.elevatorExternalId) {
             // Uniquely named elevator — full attribution.
             return { ...base, unitExternalId: attr.elevatorExternalId, segmentId: attr.segmentId, attributed: true, reason: desc || "Elevator out of service" };
@@ -172,7 +176,8 @@ export function createBartAdapter(config: BartConfig = BART_CONFIG): Adapter {
             // unit (it would corrupt per-elevator stats).
             return { ...base, unitExternalId: `${abbr}-${attr.segmentId.toUpperCase()}-UNSPECIFIED`, segmentId: attr.segmentId, attributed: false, reason: `${desc || "Elevator out of service"} (elevator within ${attr.segmentId} — ambiguous, conservative)` };
           }
-          // Too vague to attribute at all -> unspecified elevator at station.
+          // Too vague to attribute at all (or matched >1 chain, ambiguous
+          // WHICH one) -> unspecified elevator at station.
           return { ...base, unitExternalId: `${abbr}-UNSPECIFIED`, attributed: false, reason: `${desc || "Elevator out of service"} (unspecified elevator — conservative)` };
         }
         return { ...base, unitExternalId: abbr, attributed: false, reason: desc || "Elevator out of service" };

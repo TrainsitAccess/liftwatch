@@ -65,7 +65,12 @@ export const STATION_MODELS: StationModel[] = [
         label: "Street to concourse",
         elevators: [
           { externalId: "12TH-ST-14TH", label: "14th St street elevator", matchHints: ["14th"] },
-          { externalId: "12TH-ST-11TH", label: "11th St street elevator", matchHints: ["11th"] },
+          // "convention center" added 2026-07-08: mining the outage_events
+          // archive found 4 of BART's 11 historical events (36%) used this
+          // exact phrase for this elevator ("Station - Convention Center"),
+          // matching bart.gov's own "11th Street/Convention Center" naming —
+          // a real, confirmed match, not a guess.
+          { externalId: "12TH-ST-11TH", label: "11th St street elevator", matchHints: ["11th", "convention center"] },
         ],
       },
       {

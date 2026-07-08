@@ -1,6 +1,7 @@
 import { stationModelsFor } from "../catalog/station-models.js";
 import {
   attributeOutage,
+  attributeOutageAcrossChains,
   isSingleFaultTolerant,
   stationAccessible,
   type StationModel,
@@ -114,7 +115,37 @@ check('RICH "street entrance" -> segment only (two candidates)', attributeOutage
 });
 check('12TH "Station" -> unattributed', attributeOutage("Station", m("12TH")), null);
 
-const total = 35;
+console.log("\n  cross-chain attribution (2026-07-08 — a station-level advisory doesn't");
+console.log("  say WHICH independent chain it means, e.g. HAYW's two directions):");
+const haywChains = models.get("HAYW")!;
+check('HAYW "Station - SF/Richmond" (real historical phrasing) -> Richmond-direction elevator', attributeOutageAcrossChains("Station - SF/Richmond", haywChains), {
+  model: mChain("HAYW", " (Richmond/Daly City direction)"),
+  elevatorExternalId: "HAYW-PLAT-2",
+  segmentId: "platform-2",
+});
+check('HAYW "Station - Berryessa" -> Berryessa-direction elevator, unaffected by the other chain', attributeOutageAcrossChains("Station - Berryessa", haywChains), {
+  model: mChain("HAYW", " (Berryessa direction)"),
+  elevatorExternalId: "HAYW-PLAT-1",
+  segmentId: "platform-1",
+});
+check('HAYW "Station" (no direction, both chains) -> unattributed, never guess which chain', attributeOutageAcrossChains("Station", haywChains), null);
+check('12TH "Station - Convention Center" (real historical phrasing) -> 11th St elevator', attributeOutage("Station - Convention Center", m("12TH")), {
+  elevatorExternalId: "12TH-ST-11TH",
+  segmentId: "street-concourse",
+});
+// Synthetic models isolate attributeOutageAcrossChains's own ambiguity rule
+// (matching >1 chain is exactly as ambiguous as 0) from any real station's
+// data, in case a future station's chains ever share hint vocabulary.
+const fakeChainA: StationModel = { systemId: "test", stationExternalId: "FAKE", chainLabel: " (A)", segments: [{ id: "seg", label: "seg", elevators: [{ externalId: "FAKE-A", label: "A", matchHints: ["shared", "onlya"] }] }] };
+const fakeChainB: StationModel = { systemId: "test", stationExternalId: "FAKE", chainLabel: " (B)", segments: [{ id: "seg", label: "seg", elevators: [{ externalId: "FAKE-B", label: "B", matchHints: ["shared", "onlyb"] }] }] };
+check("synthetic: text matching BOTH chains' hints -> unattributed, never guess which chain", attributeOutageAcrossChains("shared", [fakeChainA, fakeChainB]), null);
+check("synthetic: text matching only chain A's unique hint -> chain A", attributeOutageAcrossChains("onlya", [fakeChainA, fakeChainB]), {
+  model: fakeChainA,
+  elevatorExternalId: "FAKE-A",
+  segmentId: "seg",
+});
+
+const total = 41;
 if (failures) {
   console.error(`\n  ${failures} check(s) FAILED\n`);
   process.exitCode = 1;

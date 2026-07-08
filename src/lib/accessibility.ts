@@ -109,6 +109,32 @@ export function attributeOutage(description: string, model: StationModel): Attri
   return { elevatorExternalId: hits.length === 1 ? hits[0]!.externalId : null, segmentId: seg.id };
 }
 
+export interface ChainAttribution extends Attribution {
+  model: StationModel; // which independent chain matched — the caller needs
+  // this because a station-level advisory doesn't say which chain it means,
+  // only attributeOutageAcrossChains's own hint-matching determines it.
+}
+
+// A physical station can have multiple INDEPENDENT chains (see
+// StationModel.chainLabel) — a station-level advisory doesn't say which one
+// it means, so this tries attributeOutage against EVERY chain and only
+// returns a result when EXACTLY ONE chain's hints matched at all. Two chains
+// both matching is exactly as ambiguous as two elevators within one chain
+// matching — never guess which chain, same never-guess rule as
+// attributeOutage itself. Only meaningful when a station's chains have
+// genuinely disjoint matchHints (verified for BART's per-direction stations —
+// each chain's hints are that direction's own destination names, never
+// shared with the opposite direction at the same station); if a future
+// system's chains share hint vocabulary, this correctly degrades to null
+// (ambiguous) rather than guessing.
+export function attributeOutageAcrossChains(description: string, models: StationModel[]): ChainAttribution | null {
+  const matched = models
+    .map((model) => ({ model, attr: attributeOutage(description, model) }))
+    .filter((x): x is { model: StationModel; attr: Attribution } => x.attr !== null);
+  if (matched.length !== 1) return null;
+  return { model: matched[0]!.model, ...matched[0]!.attr };
+}
+
 export type AccessState = "accessible" | "inaccessible" | "at_risk";
 
 // Conservative: an outage we couldn't attribute (a down id not in the model)
