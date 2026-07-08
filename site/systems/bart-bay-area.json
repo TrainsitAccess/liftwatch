@@ -3,7 +3,7 @@
   "name": "BART",
   "label": "BART (San Francisco)",
   "timezone": "America/Los_Angeles",
-  "generatedAt": "2026-07-08T23:22:21.679Z",
+  "generatedAt": "2026-07-08T23:45:29.990Z",
   "currentlyBroken": [
     {
       "station": "Richmond",
@@ -25,19 +25,23 @@
       ]
     },
     {
-      "station": "Milpitas",
-      "unitId": "MLPT-UNSPECIFIED",
-      "unit": "Station - SF/East Bay (unspecified elevator — conservative)",
+      "station": "Milpitas (Millbrae/SFO/Daly City/Richmond direction)",
+      "unitId": "MLPT-PLAT-2",
+      "unit": "Platform 2 elevator (Millbrae/SFO/Daly City/Richmond direction)",
       "days": 0,
       "since": "2026-07-08T19:40:04.999+00:00",
       "planned": false,
-      "reason": "Station - SF/East Bay (unspecified elevator — conservative)",
+      "reason": "Station - SF/East Bay",
       "estimatedReturn": null,
-      "soleAccess": false,
-      "severs": [],
+      "soleAccess": true,
+      "severs": [
+        "Milpitas (Millbrae/SFO/Daly City/Richmond direction)"
+      ],
       "backups": [],
       "rampAlternative": false,
-      "chainNotes": []
+      "chainNotes": [
+        "Platform 2 (Millbrae/SFO/Daly City/Richmond direction) has no in-station backup — BART's own guidance is to use the opposite platform's elevator only after riding to Berryessa/North San Jose and back."
+      ]
     }
   ],
   "offline": {
@@ -46,6 +50,15 @@
   },
   "stationAccess": {
     "rows": [
+      {
+        "name": "Milpitas (Millbrae/SFO/Daly City/Richmond direction)",
+        "state": "no_access",
+        "downUnits": [
+          "MLPT-PLAT-2"
+        ],
+        "offlineUnits": [],
+        "note": "Platform 2 (Millbrae/SFO/Daly City/Richmond direction) has no in-station backup — BART's own guidance is to use the opposite platform's elevator only after riding to Berryessa/North San Jose and back."
+      },
       {
         "name": "Richmond",
         "state": "no_access",
@@ -62,7 +75,11 @@
   "accessibilityBlackouts": [
     {
       "name": "Richmond",
-      "hours": 116.45679666666666
+      "hours": 116.8424386111111
+    },
+    {
+      "name": "Milpitas (Millbrae/SFO/Daly City/Richmond direction)",
+      "hours": 4.090275277777778
     }
   ],
   "stepFreeStreak": [
@@ -122,6 +139,11 @@
       "unit": "Station - Convention Center (unspecified elevator — conservative)",
       "station": "12th St. Oakland City Center",
       "count": 4
+    },
+    {
+      "unit": "Platform 2 elevator (Millbrae/SFO/Daly City/Richmond direction)",
+      "station": "Milpitas (Millbrae/SFO/Daly City/Richmond direction)",
+      "count": 1
     },
     {
       "unit": "Platform elevator",
