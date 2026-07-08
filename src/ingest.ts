@@ -304,15 +304,23 @@ export async function ingest(
     // status — not broken, not working, unreportable ("you can't know before
     // you go"). Same open/close event treatment as outages, in
     // offline_events. Only meaningful for inventory-complete systems (WMATA/
-    // CTA feeds list broken units only — absence is normal there). Opened
-    // only once the unit has been unseen past a debounce window (feeds
-    // flicker; one missed poll must not log an offline spell), using the
-    // PRE-UPSERT last_seen. Closed the moment the unit reappears. Degrades
-    // gracefully (warn + skip) until the offline_events table exists in the
-    // database — apply the addition in db/schema.sql.
+    // CTA feeds list broken units only — absence is normal there) that carry
+    // a REAL per-unit inventory: best_effort systems (BART) expose only
+    // synthetic station-level units, and ingest also mints ephemeral orphan
+    // units from ambiguous advisories (BART's "{ABBR}-UNSPECIFIED", TMB's
+    // "TMB-…") — none of those vanishing means an elevator went dark, so they
+    // must not be tracked. Opened only once a unit has been unseen past a
+    // debounce window (feeds flicker; one missed poll must not log an offline
+    // spell), using the PRE-UPSERT last_seen. Closed the moment the unit
+    // reappears. Degrades gracefully (warn + skip) until the offline_events
+    // table exists in the database — apply the addition in db/schema.sql.
     let offlineOpened = 0;
     let offlineClosed = 0;
-    if (system.inventoryComplete !== false) {
+    // A synthetic/orphan unit id, never a real inventory elevator — its
+    // "disappearance" is just an advisory clearing, not an outage of unknown
+    // status. Matches BART's -UNSPECIFIED units and TMB's TMB-… orphans.
+    const isSyntheticUnitId = (id: string): boolean => /-UNSPECIFIED$/i.test(id) || /:TMB-/.test(id);
+    if (system.inventoryComplete !== false && system.dataQuality !== "best_effort") {
       const OFFLINE_DEBOUNCE_MS = 25 * 60 * 1000; // ~2 missed polls at the 10-min cadence
       try {
         const openOffline = await db
@@ -340,6 +348,7 @@ export async function ingest(
             (r) =>
               !knownUnitIds.has(r.id as string) &&
               !openOfflineByUnit.has(r.id as string) &&
+              !isSyntheticUnitId(r.id as string) && // orphan/advisory units aren't real elevators
               r.is_active !== false && // feed-declared inactive is decommission/replacement, not silence
               typeof r.last_seen === "string" &&
               nowMs - Date.parse(r.last_seen as string) > OFFLINE_DEBOUNCE_MS,
