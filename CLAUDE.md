@@ -9,14 +9,29 @@ Monitors public-transit **elevator** outages worldwide, archives them over time,
 and ranks systems/stations/elevators on departure-board-style leaderboards. The archive (an
 event history nobody else keeps) is the whole point — every metric derives from it.
 
-Status: **live in production.** Nine systems archiving (MTA subway, BART, MBTA,
-WMATA, TfL — first non-North-America system, CTA, TMB Barcelona — first
+Status: **live in production.** Nine systems have adapters (MTA subway, BART,
+MBTA, WMATA, TfL — first non-North-America system, CTA, TMB Barcelona — first
 non-English-speaking system, LIRR + Metro-North — first commuter railroads,
-sharing one adapter), polled every 10 min by a GitHub Actions cron
-(`.github/workflows/poll.yml`), backed up weekly to a private repo
+sharing one adapter); **eight are visible** — TMB is `hidden` pending a
+data-quality review of its feeds (see below), so the live site shows 8. Polled
+every 10 min by a GitHub Actions cron (`.github/workflows/poll.yml`; TMB's step
+is commented out while hidden), backed up weekly to a private repo
 (`backup.yml`), with a keepalive workflow so the poller/backup crons never
-auto-disable. A preview site styled as a digital train-departure display reads the archive (`site/`) — amber LED boards with reasons, expected returns, live station-access status, scheduled work, and expandable route notes; times shown agency-local; semantic tables (the accessible layer is the markup itself, no separate #sr-data).
-Repo: github.com/TrainsitAccess/liftwatch (public).
+auto-disable. The site is styled as a digital train-departure display
+(`site/`) — amber LED boards with reasons, expected returns, live
+station-access status, scheduled work, an OFFLINE column, and expandable route
+notes; times shown agency-local; info column is a right-to-left marquee;
+semantic tables (the accessible layer is the markup itself, no separate
+#sr-data). Repo: github.com/TrainsitAccess/liftwatch (public).
+
+- **`SystemCatalogEntry.hidden`** withholds a system from the ENTIRE site
+  (board, per-system pages, longest-outages, aggregate totals) without
+  deleting its adapter/catalog/checks/archive, and it stops being polled
+  (its poll.yml step is commented out). Reversible: `hidden: false` + restore
+  the poll step. TMB is currently hidden — its undocumented alerts feed is
+  sparse, and the richer `itransit/metro/ascensors` feed we found reports
+  statuses that contradict reality (274 "KO" vs 1 actually out of service —
+  a classic don't-trust-an-unverified-feed-field trap; see SPEC.md).
 
 ## Running it
 
@@ -140,19 +155,27 @@ parking lot). A station is accessible only if **every** segment is up.
 ## Conventions
 
 - **Elevators only.** `unit_type` reserves escalators but they aren't ingested.
-- **Planned vs unplanned** tracked separately; leaderboards rank unplanned by
-  default. MTA: `ismaintenanceoutage`/`reason`. BART: all real-time = unplanned.
+- **Planned vs unplanned** tracked separately; leaderboards **rank by
+  unplanned** (share of active fleet); scheduled work has its own column/board.
+  MTA: classified by `reason` (`ismaintenanceoutage` is vestigial — "N" on
+  every live record, even rows labeled "Maintenance"; regex covers
+  planned|capital|scheduled|maintenance|inspection). **MTA current feed also
+  MIXES IN future scheduled outages** (`isupcomingoutage=Y`, dated up to ~2
+  weeks out, duplicated in the upcoming feed) — the adapter drops Y rows whose
+  start hasn't passed, else they ingest as phantom open outages (this was a
+  real bug — inflated NYC Subway to 60 down/14.7% vs the true ~29/7.1%). BART:
+  all real-time = unplanned.
 - **Curated data lives in version-controlled files**, not just the DB — reviewable,
   survives rebuilds, re-asserted every poll.
 - **Timezones**: feeds report local wall-clock; parse to UTC (`src/lib/time.ts`,
   Luxon). Store UTC everywhere.
-- Nine systems, deliberately different fidelity: **MTA**, **MBTA**, **TfL**,
-  **TMB**, **LIRR**, **Metro-North** = per-elevator with full inventory
-  (`data_quality: good`; LIRR/MNR share one adapter + one UNDOCUMENTED feed
-  pair — backend-unified.mylirr.org, found by network-inspecting MTA's own
-  status page, same risk tier as TMB; LIRR sub-feed has no timestamps → our
-  polling timestamps outages; MNR sub-feed has epoch lastUpdated →
-  sourceStartedAt, and "long term outage" → planned);
+- Nine adapters, deliberately different fidelity (TMB currently `hidden`):
+  **MTA**, **MBTA**, **TfL**, **TMB**, **LIRR**, **Metro-North** = per-elevator
+  with full inventory (`data_quality: good`; LIRR/MNR share one adapter + one
+  UNDOCUMENTED feed pair — backend-unified.mylirr.org, found by
+  network-inspecting MTA's own status page, same risk tier as TMB; LIRR
+  sub-feed has no timestamps → our polling timestamps outages; MNR sub-feed has
+  epoch lastUpdated → sourceStartedAt, and "long term outage" → planned);
   **WMATA** = per-elevator ids but the feed only lists broken units (`fair`,
   `inventoryComplete: false`, no single_elevator inference, units discovered
   as they break; station list IS complete via `NormalizedRead.stations`).
@@ -205,9 +228,18 @@ parking lot). A station is accessible only if **every** segment is up.
   inventory-complete feed past ~2 polls opens an `offline_events` row (status
   UNKNOWN — "you can't know before you go"); closes on reappearance. Site
   shows an OFFLINE column, a per-system offline board + restored log, and
-  UNKNOWN on the access board. Requires the `offline_events` table (a later
-  schema addition — apply `db/schema.sql` in the Supabase SQL editor); ingest
-  and build-data warn + skip until it exists.
+  UNKNOWN on the access board. **Exemptions** (else false positives):
+  `inventoryComplete: false` systems (WMATA/CTA — absence is normal),
+  `best_effort` systems (BART — units are synthetic station-level
+  placeholders), and synthetic/orphan unit ids (`-UNSPECIFIED`, `TMB-`). With
+  every real feed complete + stable, this is genuinely ~0 today — it's a
+  feed-integrity safety net, not a common event (verified: all
+  inventory-complete feeds return their full inventory every poll). Requires
+  the `offline_events` table (a later schema addition — apply `db/schema.sql`
+  in the Supabase SQL editor, then `NOTIFY pgrst, 'reload schema';` or the API
+  won't see it); ingest and build-data warn + skip until it exists.
+  **IMPORTANT for any future DDL on this project: PostgREST caches the schema
+  — run `NOTIFY pgrst, 'reload schema';` in the SQL editor after adding tables.**
 
 ## Gotchas / deferred
 
@@ -242,16 +274,21 @@ parking lot). A station is accessible only if **every** segment is up.
   Classify against `Headline` + `ShortDescription` only. CTA has no
   per-elevator id at all (station-level, like BART) and no station-list
   feed wired yet (deferred — CTA's GTFS `stops.txt` could supply one).
-- **TMB's live outage feed is undocumented** — `api.tmb.cat/v1/alerts/metro/
-  channels/WEB` appears nowhere in developer.tmb.cat's published docs; it was
-  found by inspecting real network traffic on a TMB station page. It could
-  change or disappear without notice. Same `cause_code` trap as CTA's
-  `FullDescription` (all 10/10 sampled alerts say `"CONSTRUCTION"` regardless
-  of cause) — classify against the English publication text instead. Covers
-  conventional lines only (L1-L5, L11); L9/L10/FM automatic lines aren't
-  wired to TMB's own elevator-status system yet. Redundancy not modeled
-  (no verified per-direction topology signal yet, unlike TfL) — falls to
-  `assumed`. Deferred: verifying real per-direction topology before
-  attempting `pathways`-tier redundancy; a live re-fetch URL for the whole
-  network inventory in one call, if one is ever found, to replace the manual
-  `scripts/tmb-import.mjs` re-run.
+- **TMB is HIDDEN (2026-07-07) — data-quality concerns.** Kept intact
+  (adapter, catalog, `check:tmb`, archive) via `hidden: true`; not shown, not
+  polled. Two feed problems: (1) the live outage feed
+  `api.tmb.cat/v1/alerts/metro/channels/WEB` is undocumented (found by network
+  inspection), sparse, and covers conventional lines only (L1-L5, L11) — same
+  `cause_code` trap as CTA's `FullDescription`; (2) the richer feed we found,
+  **`api.tmb.cat/v1/itransit/metro/ascensors`** (real per-elevator status +
+  segment topology + all 11 lines, 466 unique elevators), reports statuses
+  that DON'T match reality — `KO` ("out of service") = 274 elevators while the
+  alerts feed shows 1 actually out; automatic lines read 0% KO, old lines ~70%
+  KO; a major hospital station reads all-KO. So itransit `KO` is NOT
+  operational status (the recurring don't-trust-an-unverified-feed-field trap:
+  cf. CTA `FullDescription`, TMB `cause_code`, MTA `isupcomingoutage`). Its
+  `NO_INFO` = "no communication" (109 elevators, all `origen: NO_INTEGRAT` =
+  never wired to monitoring, i.e. permanently unknown, not transient). **Do
+  NOT migrate TMB to itransit or trust its statuses** without first
+  time-series-sampling whether `KO` ever flips and comparing against TMB's own
+  rendered site. To unhide: `hidden: false` + restore the poll.yml step.
