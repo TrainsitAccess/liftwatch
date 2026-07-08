@@ -313,8 +313,9 @@ against a reference photo):
 - **Phase 4** — ntfy station alerts, coverage map with "request your city",
   public data export.
 
-Deferred / parked (not on the critical path): TfL multi-chain (needs
-`fromAreas`/`toAreas` decoding), TMB feed data-quality review (currently
+Deferred / parked (not on the critical path): TfL multi-chain review for the
+79 stations with branching/ambiguous topology (see §5's TfL section — the
+safe majority shipped 2026-07-08), TMB feed data-quality review (currently
 hidden), DB FaSta (Germany).
 
 ---
@@ -495,13 +496,57 @@ and the live disruptions endpoint.
   same station, so it's display-only, never a key). `FriendlyName` needs
   trimming (stray whitespace in real rows). Boolean-ish CSV columns mix
   `TRUE`/`True`/`FALSE`/`False` casing.
+- **Multi-chain access models** (2026-07-08, `scripts/tfl-chains.mjs` →
+  `src/catalog/tfl-data/chains.json`, loaded by `station-models.ts`): TfL has
+  no `linesservedbyelevator`-style field like MTA, so chains are derived
+  purely from graph structure — each lift's `FromAreas`/`ToAreas` area codes
+  are nodes, each lift an edge; lifts sharing the exact same tuple (already
+  `tfl-import.mjs`'s own redundant-group signal) are one parallel-OR edge;
+  connected components (via shared area-code nodes) reveal when a station
+  genuinely has multiple INDEPENDENT routes — e.g. Willesden Junction's
+  Bakerloo-platform lift and its National Rail high-level-platform lift share
+  zero area-code nodes, a real, verified two-route split matching the live
+  disruption text ("not available to the Bakerloo line and the Lioness
+  line"). **Deliberately conservative**: a component is modeled only if it's
+  a single edge, a single redundant group, or a clean path (exactly two
+  degree-1 endpoints, no multi-destination edge once 2+ edges are involved).
+  A branching hub node (3+ distinct routes through one shared area) is
+  EXCLUDED, not guessed — no line names are ever decoded from the area-code
+  abbreviations (verified genuinely ambiguous: e.g. `NTH` could mean
+  "Northern line" or "North Ticket Hall"; a wrong guess would be a bad-facing
+  accessibility claim). Multi-route chain labels are neutral ordinals
+  (" (Route 1)", " (Route 2)"), never an inferred line name. A station with
+  BOTH a safe chain and excluded (unmodeled) lifts still gets its safe chain
+  labeled — found by testing: Bank's Lift-8/Lift-9 form a clean 2-lift route
+  separate from its tangled 8-lift core; without a label it would appear
+  under the bare "Bank" name, indistinguishable from a fallback row about one
+  of the unmodeled lifts. Result: 167 chains across 140 of 201 lift-equipped
+  stations (83 components / 79 stations — all recognizable major
+  interchanges: Bank, King's Cross, Paddington, Stratford, Tottenham Court
+  Road, Victoria, Waterloo, Liverpool Street, Wembley Park, Farringdon,
+  Canary Wharf, and more — excluded to `chains-excluded.json` pending a
+  human review pass, same precedent as MTA's 9 hand-authored interchanges).
+  **Self-check** (`npm run check:tfl-chains`,
+  `src/checks/tfl-chains-check.ts`): every modeled elevator's chain-derived
+  redundancy must exactly equal its own `isRedundant` flag from
+  `lifts.json` — simpler than MTA's aggregate-across-chains check since
+  ambiguous topology is excluded entirely, so no elevator here spans more
+  than one chain. **Purely additive to the site display layer**: this only
+  feeds `build-data.ts`'s station-access / blackout / streak / SPOF boards
+  via `station-models.ts` — it does NOT touch the TfL adapter or `ingest.ts`,
+  so the archived per-unit `is_redundant`/`redundancy_source` stays exactly
+  as `tfl-import.mjs` already computes it (`pathways` source), unchanged.
+  Re-run `npm run tfl:chains` after re-importing TfL topology.
 - **Deferred**: `RampRoutes.csv`/`SameLevelPaths.csv` (non-lift step-free
   paths — would extend `accessibility.ts` to detect "a ramp bypasses this
   broken lift entirely," a strictly stronger redundancy signal than lift-to-
   lift matching); `Toilets.csv`/`Platforms.csv`/`PlatformServices.csv`
   (out of scope, elevators-only); a live re-fetch URL for topology, if one is
   ever found, would let the static snapshot self-refresh instead of manual
-  re-import.
+  re-import; a human review pass over the 79 excluded interchange stations
+  (`chains-excluded.json`) to hand-author their chains, mirroring MTA's
+  interchange walkthrough — likely including real line-name labels once a
+  human confirms the area-code semantics station by station.
 
 ### CTA feeds (in use) — station-level, discovered inventory
 

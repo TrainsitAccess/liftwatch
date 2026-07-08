@@ -151,6 +151,33 @@ parking lot). A station is accessible only if **every** segment is up.
   SPOF board) for units whose `redundancy_source` is NOT `assumed` — the
   assumed policy default is a conservative unknown, not a confirmed fact.
   Blackout/streak boards keep the conservative history-based logic.
+- **TfL multi-chain models are GENERATED from graph topology, not hand-typed**
+  (2026-07-08). Unlike MTA, TfL has no line-served field — only `FromAreas`/
+  `ToAreas` area codes. `npm run tfl:chains` (`scripts/tfl-chains.mjs`) treats
+  area codes as graph nodes and lifts as edges; connected components (shared
+  nodes) reveal when a station has independent routes (e.g. Willesden
+  Junction's Bakerloo lift and its National Rail lift share zero nodes — a
+  real two-route split, verified against the live disruption text). Output →
+  `src/catalog/tfl-data/chains.json`, loaded by `station-models.ts`.
+  **Deliberately conservative**: only single edges, single redundant groups,
+  or clean two-endpoint paths get modeled; a branching hub node or a
+  multi-destination edge in a multi-edge route is EXCLUDED (never guessed) to
+  `chains-excluded.json`. No line names are ever decoded from the area-code
+  abbreviations — genuinely ambiguous (`NTH` could mean "Northern line" or
+  "North Ticket Hall") — multi-route labels are neutral ordinals ("(Route
+  1)", "(Route 2)") only. **Self-check** (`npm run check:tfl-chains`): every
+  modeled elevator's chain-derived redundancy must equal its own `isRedundant`
+  flag from `lifts.json` — simpler than MTA's aggregate check since excluded
+  topology means no elevator here spans more than one chain. **Purely
+  additive to the site display layer** — feeds `build-data.ts`'s
+  station-access/blackout/streak/SPOF boards only; does NOT touch the TfL
+  adapter or `ingest.ts`, so archived per-unit redundancy stays exactly as
+  `tfl-import.mjs` computes it (`pathways` source), unchanged. Result: 167
+  chains across 140 of 201 lift-equipped stations; 79 stations (all
+  recognizable major interchanges — Bank, King's Cross, Paddington,
+  Stratford, Tottenham Court Road, Victoria, Waterloo, and more) are excluded
+  pending a human review pass, same precedent as MTA's 9 hand-authored
+  interchanges (see SPEC.md's TfL section for the full writeup).
 
 ## Conventions
 

@@ -1,33 +1,14 @@
 {
-  "generatedAt": "2026-07-08T04:22:31.962Z",
+  "generatedAt": "2026-07-08T18:38:26.572Z",
   "totals": {
     "systems": 8,
     "activeUnits": 2028,
     "staticUnitsInTotal": 493,
-    "down": 104,
-    "downUnplanned": 67,
+    "down": 84,
+    "downUnplanned": 62,
     "offline": 0
   },
   "systems": [
-    {
-      "id": "bart-bay-area",
-      "name": "BART",
-      "city": "San Francisco",
-      "label": "BART (San Francisco)",
-      "boardLabel": "BART",
-      "dataQuality": "best_effort",
-      "inventoryComplete": true,
-      "fleetSource": "live",
-      "activeUnits": 67,
-      "down": 4,
-      "downUnplanned": 4,
-      "downPlanned": 0,
-      "offline": 0,
-      "pctDown": 6,
-      "pctUnplanned": 6,
-      "staticFleetAsOf": null,
-      "staticFleetSource": null
-    },
     {
       "id": "cta-chicago",
       "name": "CTA",
@@ -38,12 +19,12 @@
       "inventoryComplete": false,
       "fleetSource": "static",
       "activeUnits": 173,
-      "down": 11,
-      "downUnplanned": 9,
+      "down": 12,
+      "downUnplanned": 10,
       "downPlanned": 2,
       "offline": 0,
-      "pctDown": 6.4,
-      "pctUnplanned": 5.2,
+      "pctDown": 6.9,
+      "pctUnplanned": 5.8,
       "staticFleetAsOf": "2026-07-05",
       "staticFleetSource": "https://www.transitchicago.com/elevatorescalatorupgrades/"
     },
@@ -67,6 +48,25 @@
       "staticFleetSource": null
     },
     {
+      "id": "bart-bay-area",
+      "name": "BART",
+      "city": "San Francisco",
+      "label": "BART (San Francisco)",
+      "boardLabel": "BART",
+      "dataQuality": "best_effort",
+      "inventoryComplete": true,
+      "fleetSource": "live",
+      "activeUnits": 67,
+      "down": 2,
+      "downUnplanned": 2,
+      "downPlanned": 0,
+      "offline": 0,
+      "pctDown": 3,
+      "pctUnplanned": 3,
+      "staticFleetAsOf": null,
+      "staticFleetSource": null
+    },
+    {
       "id": "mta-mnr",
       "name": "Metro-North",
       "city": "New York",
@@ -76,31 +76,12 @@
       "inventoryComplete": true,
       "fleetSource": "live",
       "activeUnits": 162,
-      "down": 8,
-      "downUnplanned": 6,
+      "down": 6,
+      "downUnplanned": 4,
       "downPlanned": 2,
       "offline": 0,
-      "pctDown": 4.9,
-      "pctUnplanned": 3.7,
-      "staticFleetAsOf": null,
-      "staticFleetSource": null
-    },
-    {
-      "id": "mta-lirr",
-      "name": "LIRR",
-      "city": "New York",
-      "label": "LIRR (New York)",
-      "boardLabel": "LIRR",
-      "dataQuality": "good",
-      "inventoryComplete": true,
-      "fleetSource": "live",
-      "activeUnits": 92,
-      "down": 3,
-      "downUnplanned": 3,
-      "downPlanned": 0,
-      "offline": 0,
-      "pctDown": 3.3,
-      "pctUnplanned": 3.3,
+      "pctDown": 3.7,
+      "pctUnplanned": 2.5,
       "staticFleetAsOf": null,
       "staticFleetSource": null
     },
@@ -114,12 +95,12 @@
       "inventoryComplete": true,
       "fleetSource": "live",
       "activeUnits": 408,
-      "down": 38,
-      "downUnplanned": 10,
-      "downPlanned": 28,
+      "down": 24,
+      "downUnplanned": 9,
+      "downPlanned": 15,
       "offline": 0,
-      "pctDown": 9.3,
-      "pctUnplanned": 2.5,
+      "pctDown": 5.9,
+      "pctUnplanned": 2.2,
       "staticFleetAsOf": null,
       "staticFleetSource": null
     },
@@ -133,11 +114,11 @@
       "inventoryComplete": true,
       "fleetSource": "live",
       "activeUnits": 237,
-      "down": 8,
+      "down": 6,
       "downUnplanned": 5,
-      "downPlanned": 3,
+      "downPlanned": 1,
       "offline": 0,
-      "pctDown": 3.4,
+      "pctDown": 2.5,
       "pctUnplanned": 2.1,
       "staticFleetAsOf": null,
       "staticFleetSource": null
@@ -152,14 +133,33 @@
       "inventoryComplete": false,
       "fleetSource": "static",
       "activeUnits": 320,
-      "down": 7,
-      "downUnplanned": 5,
+      "down": 8,
+      "downUnplanned": 6,
       "downPlanned": 2,
       "offline": 0,
-      "pctDown": 2.2,
-      "pctUnplanned": 1.6,
+      "pctDown": 2.5,
+      "pctUnplanned": 1.9,
       "staticFleetAsOf": "2026-07-04",
       "staticFleetSource": "https://www.wmata.com/ride/elevators-escalators.html"
+    },
+    {
+      "id": "mta-lirr",
+      "name": "LIRR",
+      "city": "New York",
+      "label": "LIRR (New York)",
+      "boardLabel": "LIRR",
+      "dataQuality": "good",
+      "inventoryComplete": true,
+      "fleetSource": "live",
+      "activeUnits": 92,
+      "down": 1,
+      "downUnplanned": 1,
+      "downPlanned": 0,
+      "offline": 0,
+      "pctDown": 1.1,
+      "pctUnplanned": 1.1,
+      "staticFleetAsOf": null,
+      "staticFleetSource": null
     }
   ],
   "longestOutages": [
@@ -175,7 +175,7 @@
       "estimatedReturn": null,
       "since": "2023-03-24T13:55:11+00:00",
       "tz": "America/New_York",
-      "days": 1201
+      "days": 1202
     },
     {
       "system": "NYC Subway",
@@ -186,24 +186,10 @@
       "soleAccess": false,
       "planned": false,
       "reason": "Repair",
-      "estimatedReturn": "2026-07-09T11:00:00+00:00",
+      "estimatedReturn": "2026-07-10T11:00:00+00:00",
       "since": "2024-10-28T10:26:00+00:00",
       "tz": "America/New_York",
-      "days": 617
-    },
-    {
-      "system": "NYC Subway",
-      "systemId": "mta-nyct",
-      "station": "161 St-Yankee Stadium",
-      "unit": "EL133",
-      "unitDesc": "Mezzanine to Manhattan-bound 4",
-      "soleAccess": true,
-      "planned": true,
-      "reason": "Capital Replacement",
-      "estimatedReturn": "2026-08-01T03:59:00+00:00",
-      "since": "2024-11-06T14:00:00+00:00",
-      "tz": "America/New_York",
-      "days": 608
+      "days": 618
     },
     {
       "system": "NYC Subway",
@@ -217,21 +203,21 @@
       "estimatedReturn": "2026-08-01T03:59:00+00:00",
       "since": "2024-11-06T14:00:00+00:00",
       "tz": "America/New_York",
-      "days": 608
+      "days": 609
     },
     {
       "system": "NYC Subway",
       "systemId": "mta-nyct",
-      "station": "Jamaica-179 St",
-      "unit": "EL433",
-      "unitDesc": "Mezzanine to terminal",
+      "station": "161 St-Yankee Stadium",
+      "unit": "EL133",
+      "unitDesc": "Mezzanine to Manhattan-bound 4",
       "soleAccess": true,
       "planned": true,
       "reason": "Capital Replacement",
       "estimatedReturn": "2026-08-01T03:59:00+00:00",
-      "since": "2025-11-22T04:40:00+00:00",
+      "since": "2024-11-06T14:00:00+00:00",
       "tz": "America/New_York",
-      "days": 227
+      "days": 609
     },
     {
       "system": "NYC Subway",
@@ -245,7 +231,7 @@
       "estimatedReturn": "2026-08-01T03:59:00+00:00",
       "since": "2025-11-22T04:40:00+00:00",
       "tz": "America/New_York",
-      "days": 227
+      "days": 228
     },
     {
       "system": "NYC Subway",
@@ -259,7 +245,21 @@
       "estimatedReturn": "2026-08-01T03:59:00+00:00",
       "since": "2025-11-22T04:40:00+00:00",
       "tz": "America/New_York",
-      "days": 227
+      "days": 228
+    },
+    {
+      "system": "NYC Subway",
+      "systemId": "mta-nyct",
+      "station": "Jamaica-179 St",
+      "unit": "EL433",
+      "unitDesc": "Mezzanine to terminal",
+      "soleAccess": true,
+      "planned": true,
+      "reason": "Capital Replacement",
+      "estimatedReturn": "2026-08-01T03:59:00+00:00",
+      "since": "2025-11-22T04:40:00+00:00",
+      "tz": "America/New_York",
+      "days": 228
     },
     {
       "system": "NYC Subway",
@@ -314,10 +314,10 @@
       "soleAccess": false,
       "planned": false,
       "reason": "Repair",
-      "estimatedReturn": "2026-07-09T11:00:00+00:00",
+      "estimatedReturn": "2026-07-10T11:00:00+00:00",
       "since": "2024-10-28T10:26:00+00:00",
       "tz": "America/New_York",
-      "days": 617
+      "days": 618
     },
     {
       "system": "MBTA",
@@ -345,7 +345,7 @@
       "estimatedReturn": null,
       "since": "2026-04-10T13:21:09+00:00",
       "tz": "America/New_York",
-      "days": 88
+      "days": 89
     },
     {
       "system": "NYC Subway",
@@ -359,7 +359,7 @@
       "estimatedReturn": "2026-07-14T03:00:00+00:00",
       "since": "2026-04-26T09:46:00+00:00",
       "tz": "America/New_York",
-      "days": 72
+      "days": 73
     },
     {
       "system": "DC Metro",
@@ -370,7 +370,7 @@
       "soleAccess": false,
       "planned": false,
       "reason": "Minor Repair",
-      "estimatedReturn": "2026-07-07T03:59:59+00:00",
+      "estimatedReturn": "2026-07-11T03:59:59+00:00",
       "since": "2026-06-08T00:15:00+00:00",
       "tz": "America/New_York",
       "days": 30
@@ -387,7 +387,7 @@
       "estimatedReturn": null,
       "since": "2026-06-13T10:09:00+00:00",
       "tz": "America/Chicago",
-      "days": 24
+      "days": 25
     },
     {
       "system": "MBTA",
@@ -401,7 +401,7 @@
       "estimatedReturn": null,
       "since": "2026-06-21T14:39:42+00:00",
       "tz": "America/New_York",
-      "days": 16
+      "days": 17
     },
     {
       "system": "NYC Subway",
@@ -412,10 +412,10 @@
       "soleAccess": false,
       "planned": false,
       "reason": "Repair",
-      "estimatedReturn": "2026-07-09T19:00:00+00:00",
+      "estimatedReturn": "2026-07-10T19:00:00+00:00",
       "since": "2026-06-24T18:15:00+00:00",
       "tz": "America/New_York",
-      "days": 13
+      "days": 14
     },
     {
       "system": "CTA",
@@ -429,21 +429,21 @@
       "estimatedReturn": null,
       "since": "2026-06-27T18:21:00+00:00",
       "tz": "America/Chicago",
-      "days": 10
+      "days": 11
     },
     {
       "system": "NYC Subway",
       "systemId": "mta-nyct",
       "station": "161 St-Yankee Stadium",
-      "unit": "EL134",
-      "unitDesc": "Mezzanine to Manhattan-bound B/D",
+      "unit": "EL135",
+      "unitDesc": "Mezzanine to Bronx-bound B/D",
       "soleAccess": true,
       "planned": false,
       "reason": "Con Edison Power Issue",
       "estimatedReturn": "2026-07-14T03:00:00+00:00",
-      "since": "2026-06-29T20:36:00+00:00",
+      "since": "2026-06-29T13:57:00+00:00",
       "tz": "America/New_York",
-      "days": 8
+      "days": 9
     }
   ],
   "longestPlanned": [
@@ -459,21 +459,7 @@
       "estimatedReturn": null,
       "since": "2023-03-24T13:55:11+00:00",
       "tz": "America/New_York",
-      "days": 1201
-    },
-    {
-      "system": "NYC Subway",
-      "systemId": "mta-nyct",
-      "station": "161 St-Yankee Stadium",
-      "unit": "EL133",
-      "unitDesc": "Mezzanine to Manhattan-bound 4",
-      "soleAccess": true,
-      "planned": true,
-      "reason": "Capital Replacement",
-      "estimatedReturn": "2026-08-01T03:59:00+00:00",
-      "since": "2024-11-06T14:00:00+00:00",
-      "tz": "America/New_York",
-      "days": 608
+      "days": 1202
     },
     {
       "system": "NYC Subway",
@@ -487,21 +473,21 @@
       "estimatedReturn": "2026-08-01T03:59:00+00:00",
       "since": "2024-11-06T14:00:00+00:00",
       "tz": "America/New_York",
-      "days": 608
+      "days": 609
     },
     {
       "system": "NYC Subway",
       "systemId": "mta-nyct",
-      "station": "Jamaica-179 St",
-      "unit": "EL433",
-      "unitDesc": "Mezzanine to terminal",
+      "station": "161 St-Yankee Stadium",
+      "unit": "EL133",
+      "unitDesc": "Mezzanine to Manhattan-bound 4",
       "soleAccess": true,
       "planned": true,
       "reason": "Capital Replacement",
       "estimatedReturn": "2026-08-01T03:59:00+00:00",
-      "since": "2025-11-22T04:40:00+00:00",
+      "since": "2024-11-06T14:00:00+00:00",
       "tz": "America/New_York",
-      "days": 227
+      "days": 609
     },
     {
       "system": "NYC Subway",
@@ -515,7 +501,7 @@
       "estimatedReturn": "2026-08-01T03:59:00+00:00",
       "since": "2025-11-22T04:40:00+00:00",
       "tz": "America/New_York",
-      "days": 227
+      "days": 228
     },
     {
       "system": "NYC Subway",
@@ -529,7 +515,21 @@
       "estimatedReturn": "2026-08-01T03:59:00+00:00",
       "since": "2025-11-22T04:40:00+00:00",
       "tz": "America/New_York",
-      "days": 227
+      "days": 228
+    },
+    {
+      "system": "NYC Subway",
+      "systemId": "mta-nyct",
+      "station": "Jamaica-179 St",
+      "unit": "EL433",
+      "unitDesc": "Mezzanine to terminal",
+      "soleAccess": true,
+      "planned": true,
+      "reason": "Capital Replacement",
+      "estimatedReturn": "2026-08-01T03:59:00+00:00",
+      "since": "2025-11-22T04:40:00+00:00",
+      "tz": "America/New_York",
+      "days": 228
     },
     {
       "system": "NYC Subway",
@@ -585,7 +585,7 @@
       "estimatedReturn": "2026-09-01T03:59:00+00:00",
       "since": "2025-12-03T04:25:00+00:00",
       "tz": "America/New_York",
-      "days": 216
+      "days": 217
     }
   ]
 }

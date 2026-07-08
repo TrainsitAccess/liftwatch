@@ -10,6 +10,19 @@ const mtaChains: StationModel[] = (
   }
 ).models;
 
+// TfL multi-chain models, generated from the bundled lift topology snapshot by
+// scripts/tfl-chains.mjs (self-checked against lifts.json's own isRedundant
+// flag). Deliberately conservative: covers only stations whose lift topology
+// is an unambiguous single path or set of disjoint paths — no line names are
+// guessed. Major interchanges with branching topology (Bank, King's Cross,
+// Paddington, Stratford, …) are excluded pending a human review pass; see
+// src/catalog/tfl-data/chains-excluded.json.
+const tflChains: StationModel[] = (
+  JSON.parse(readFileSync(new URL("./tfl-data/chains.json", import.meta.url), "utf8")) as {
+    models: StationModel[];
+  }
+).models;
+
 // Curated per-station accessibility structure — the source of truth for stations
 // whose feed doesn't expose per-elevator data (BART). Each station's step-free
 // chain is broken into segments with their elevators. From this we derive both
@@ -173,6 +186,8 @@ export const STATION_MODELS: StationModel[] = [
   // LIRR + Metro-North curated models (hand-built from eestatus location
   // text, walked through station-by-station with a human 2026-07-06).
   ...MTA_RAIL_STATION_MODELS,
+  // TfL's auto-generated multi-chain models (see tflChains above).
+  ...tflChains,
 ];
 
 // A physical station can have more than one entry (multiple independent

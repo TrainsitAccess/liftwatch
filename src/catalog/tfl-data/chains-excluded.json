@@ -1,0 +1,878 @@
+{
+  "note": "Stations/access-components whose lift topology is too ambiguous to auto-model safely: a branching hub node (3+ distinct routes through one shared area), a multi-destination lift within a multi-lift route, or an unclear traversal. Needs a human station-by-station review (walking each through with a person who knows the station, per this project's established practice for MTA's tangled interchanges) before adding to chains.json.",
+  "excludedStationCount": 79,
+  "excluded": [
+    {
+      "station": "Brent Cross West Station",
+      "stationId": "910GBRENTX",
+      "lifts": [
+        "910GBRENTX-Lift-2",
+        "910GBRENTX-Lift-3"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Chadwell Heath",
+      "stationId": "910GCHDWLHT",
+      "lifts": [
+        "910GCHDWLHT-Lift-1",
+        "910GCHDWLHT-Lift-2",
+        "910GCHDWLHT-Lift-3"
+      ],
+      "reason": "branching hub node (maxDeg=3)"
+    },
+    {
+      "station": "Canonbury",
+      "stationId": "910GCNNB",
+      "lifts": [
+        "910GCNNB-Lift-1",
+        "910GCNNB-Lift-2",
+        "910GCNNB-Lift-3"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Carshalton",
+      "stationId": "910GCRSHLTN",
+      "lifts": [
+        "910GCRSHLTN-Lift-1",
+        "910GCRSHLTN-Lift-2"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Dartford",
+      "stationId": "910GDARTFD",
+      "lifts": [
+        "910GDARTFD-Lift-1",
+        "910GDARTFD-Lift-2",
+        "910GDARTFD-Lift-3"
+      ],
+      "reason": "branching hub node (maxDeg=3)"
+    },
+    {
+      "station": "Denmark Hill",
+      "stationId": "910GDENMRKH",
+      "lifts": [
+        "910GDENMRKH-Lift-1",
+        "910GDENMRKH-Lift-2",
+        "910GDENMRKH-Lift-3"
+      ],
+      "reason": "branching hub node (maxDeg=3)"
+    },
+    {
+      "station": "Deptford",
+      "stationId": "910GDEPTFD",
+      "lifts": [
+        "910GDEPTFD-Lift-1",
+        "910GDEPTFD-Lift-2"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Elstree & Borehamwood",
+      "stationId": "910GELTR",
+      "lifts": [
+        "910GELTR-Lift-1",
+        "910GELTR-Lift-2",
+        "910GELTR-Lift-3"
+      ],
+      "reason": "branching hub node (maxDeg=3)"
+    },
+    {
+      "station": "Gidea Park",
+      "stationId": "910GGIDEAPK",
+      "lifts": [
+        "910GGIDEAPK-Lift-1",
+        "910GGIDEAPK-Lift-2",
+        "910GGIDEAPK-Lift-3"
+      ],
+      "reason": "branching hub node (maxDeg=3)"
+    },
+    {
+      "station": "Hayes & Harlington",
+      "stationId": "910GHAYESAH",
+      "lifts": [
+        "910GHAYESAH-Lift-1",
+        "910GHAYESAH-Lift-2",
+        "910GHAYESAH-Lift-4"
+      ],
+      "reason": "branching hub node (maxDeg=3)"
+    },
+    {
+      "station": "Harold Wood",
+      "stationId": "910GHRLDWOD",
+      "lifts": [
+        "910GHRLDWOD-Lift-1",
+        "910GHRLDWOD-Lift-2",
+        "910GHRLDWOD-Lift-3"
+      ],
+      "reason": "branching hub node (maxDeg=3)"
+    },
+    {
+      "station": "Iver",
+      "stationId": "910GIVER",
+      "lifts": [
+        "910GIVER-Lift-1",
+        "910GIVER-Lift-3",
+        "910GIVER-Lift-4"
+      ],
+      "reason": "branching hub node (maxDeg=3)"
+    },
+    {
+      "station": "Ilford",
+      "stationId": "910GILFORD",
+      "lifts": [
+        "910GILFORD-Lift-1",
+        "910GILFORD-Lift-2",
+        "910GILFORD-Lift-3"
+      ],
+      "reason": "branching hub node (maxDeg=3)"
+    },
+    {
+      "station": "Langley",
+      "stationId": "910GLANGLEY",
+      "lifts": [
+        "910GLANGLEY-Lift-1",
+        "910GLANGLEY-Lift-2",
+        "910GLANGLEY-Lift-3"
+      ],
+      "reason": "branching hub node (maxDeg=3)"
+    },
+    {
+      "station": "Manor Park",
+      "stationId": "910GMANRPK",
+      "lifts": [
+        "910GMANRPK-Lift-1",
+        "910GMANRPK-Lift-2",
+        "910GMANRPK-Lift-3"
+      ],
+      "reason": "branching hub node (maxDeg=3)"
+    },
+    {
+      "station": "Orpington",
+      "stationId": "910GORPNGTN",
+      "lifts": [
+        "910GORPNGTN-Lift 1",
+        "910GORPNGTN-Lift 2",
+        "910GORPNGTN-Lift 3"
+      ],
+      "reason": "branching hub node (maxDeg=3)"
+    },
+    {
+      "station": "Purley",
+      "stationId": "910GPURLEY",
+      "lifts": [
+        "910GPURLEY-Lift-1",
+        "910GPURLEY-Lift-2",
+        "910GPURLEY-Lift-3",
+        "910GPURLEY-Lift-4"
+      ],
+      "reason": "branching hub node (maxDeg=4)"
+    },
+    {
+      "station": "Reading",
+      "stationId": "910GRDNGSTN",
+      "lifts": [
+        "910GRDNGSTN-Lift-1",
+        "910GRDNGSTN-Lift-2",
+        "910GRDNGSTN-Lift-3",
+        "910GRDNGSTN-Lift-4",
+        "910GRDNGSTN-Lift-5"
+      ],
+      "reason": "branching hub node (maxDeg=5)"
+    },
+    {
+      "station": "Shenfield",
+      "stationId": "910GSHENFLD",
+      "lifts": [
+        "910GSHENFLD-Lift-1",
+        "910GSHENFLD-Lift-2",
+        "910GSHENFLD-Lift-3"
+      ],
+      "reason": "branching hub node (maxDeg=3)"
+    },
+    {
+      "station": "Slough",
+      "stationId": "910GSLOUGH",
+      "lifts": [
+        "910GSLOUGH-Lift-2",
+        "910GSLOUGH-Lift-3",
+        "910GSLOUGH-Lift-4"
+      ],
+      "reason": "branching hub node (maxDeg=3)"
+    },
+    {
+      "station": "Southall",
+      "stationId": "910GSTHALL",
+      "lifts": [
+        "910GSTHALL-Lift-1",
+        "910GSTHALL-Lift-2",
+        "910GSTHALL-Lift-3"
+      ],
+      "reason": "branching hub node (maxDeg=3)"
+    },
+    {
+      "station": "King's Cross St Pancras",
+      "stationId": "HUBKGX",
+      "lifts": [
+        "HUBKGX-Lift-A",
+        "HUBKGX-Lift-C",
+        "HUBKGX-Lift-D"
+      ],
+      "reason": "branching hub node (maxDeg=3)"
+    },
+    {
+      "station": "Seven Kings",
+      "stationId": "910GSVNKNGS",
+      "lifts": [
+        "910GSVNKNGS-Lift-2",
+        "910GSVNKNGS-Lift-1",
+        "910GSVNKNGS-Lift-3"
+      ],
+      "reason": "branching hub node (maxDeg=3)"
+    },
+    {
+      "station": "Taplow",
+      "stationId": "910GTAPLOW",
+      "lifts": [
+        "910GTAPLOW-Lift-1",
+        "910GTAPLOW-Lift-2",
+        "910GTAPLOW-Lift-3"
+      ],
+      "reason": "branching hub node (maxDeg=3)"
+    },
+    {
+      "station": "Twyford",
+      "stationId": "910GTWYFORD",
+      "lifts": [
+        "910GTWYFORD-Lift-1",
+        "910GTWYFORD-Lift-2",
+        "910GTWYFORD-Lift-3"
+      ],
+      "reason": "branching hub node (maxDeg=3)"
+    },
+    {
+      "station": "West Drayton",
+      "stationId": "910GWDRYTON",
+      "lifts": [
+        "910GWDRYTON-Lift-D",
+        "910GWDRYTON-Lift-B",
+        "910GWDRYTON-Lift-C",
+        "910GWDRYTON-Lift-A",
+        "910GWDRYTON-Lift-E"
+      ],
+      "reason": "branching hub node (maxDeg=3)"
+    },
+    {
+      "station": "West Hampstead Thameslink",
+      "stationId": "910GWHMPSTM",
+      "lifts": [
+        "910GWHMPSTM-Lift-1",
+        "910GWHMPSTM-Lift-2",
+        "910GWHMPSTM-Lift-3"
+      ],
+      "reason": "branching hub node (maxDeg=3)"
+    },
+    {
+      "station": "Custom House for ExCel",
+      "stationId": "HUBCUS",
+      "lifts": [
+        "HUBCUS-Lift-4",
+        "HUBCUS-Lift-2"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "King George V",
+      "stationId": "940GZZDLKGV",
+      "lifts": [
+        "940GZZDLKGV-Lift-1",
+        "940GZZDLKGV-Lift-2"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Prince Regent",
+      "stationId": "940GZZDLPRE",
+      "lifts": [
+        "940GZZDLPRE-Lift-1",
+        "940GZZDLPRE-Lift-2"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Royal Victoria",
+      "stationId": "940GZZDLRVC",
+      "lifts": [
+        "940GZZDLRVC-Lift-1",
+        "940GZZDLRVC-Lift-2",
+        "940GZZDLRVC-Lift-3"
+      ],
+      "reason": "branching hub node (maxDeg=3)"
+    },
+    {
+      "station": "Star Lane",
+      "stationId": "940GZZDLSTL",
+      "lifts": [
+        "940GZZDLSTL-Lift-1",
+        "940GZZDLSTL-Lift-2",
+        "940GZZDLSTL-Lift-3"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Westferry",
+      "stationId": "940GZZDLWFE",
+      "lifts": [
+        "940GZZDLWFE-Lift-1",
+        "940GZZDLWFE-Lift-2",
+        "940GZZDLWFE-Lift-3",
+        "940GZZDLWFE-Lift-4"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Bond Street",
+      "stationId": "HUBBDS",
+      "lifts": [
+        "HUBBDS-Lift-1",
+        "HUBBDS-Lift-2",
+        "HUBBDS-Lift-4"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Green Park",
+      "stationId": "940GZZLUGPK",
+      "lifts": [
+        "940GZZLUGPK-Lift-1",
+        "940GZZLUGPK-Lift-2",
+        "940GZZLUGPK-Lift-4",
+        "940GZZLUGPK-Lift-5",
+        "940GZZLUGPK-Lift-6"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Hainault",
+      "stationId": "940GZZLUHLT",
+      "lifts": [
+        "940GZZLUHLT-Lift-1",
+        "940GZZLUHLT-Lift-2",
+        "940GZZLUHLT-Lift-3"
+      ],
+      "reason": "branching hub node (maxDeg=3)"
+    },
+    {
+      "station": "North Greenwich",
+      "stationId": "940GZZLUNGW",
+      "lifts": [
+        "940GZZLUNGW-Lift-1",
+        "940GZZLUNGW-Lift-2",
+        "940GZZLUNGW-Lift-4"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Southwark",
+      "stationId": "940GZZLUSWK",
+      "lifts": [
+        "940GZZLUSWK-Lift-1",
+        "940GZZLUSWK-Lift-2"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Tottenham Court Road",
+      "stationId": "HUBTCR",
+      "lifts": [
+        "HUBTCR-Lift-1",
+        "HUBTCR-Lift-2",
+        "HUBTCR-Lift-3",
+        "HUBTCR-Lift-4",
+        "HUBTCR-Lift-5",
+        "HUBTCR-Lift-10",
+        "HUBTCR-Lift-12"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Wembley Park",
+      "stationId": "940GZZLUWYP",
+      "lifts": [
+        "940GZZLUWYP-Lift-1",
+        "940GZZLUWYP-Lift-2",
+        "940GZZLUWYP-Lift-3",
+        "940GZZLUWYP-Lift-4",
+        "940GZZLUWYP-Lift-5"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Bank",
+      "stationId": "HUBBAN",
+      "lifts": [
+        "HUBBAN-Lift-2",
+        "HUBBAN-Lift-3",
+        "HUBBAN-Lift-4",
+        "HUBBAN-Lift-5",
+        "HUBBAN-Lift-6",
+        "HUBBAN-Lift-7",
+        "HUBBAN-Lift 10",
+        "HUBBAN-Lift 11"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Blackfriars",
+      "stationId": "HUBBFR",
+      "lifts": [
+        "HUBBFR-Lift-1",
+        "HUBBFR-Lift-2",
+        "HUBBFR-Lift-3",
+        "HUBBFR-Lift-4"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Brixton",
+      "stationId": "HUBBRX",
+      "lifts": [
+        "HUBBRX-Lift-1",
+        "HUBBRX-Lift-2"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Canning Town",
+      "stationId": "HUBCAN",
+      "lifts": [
+        "HUBCAN-Lift-1",
+        "HUBCAN-Lift-2",
+        "HUBCAN-Lift-3",
+        "HUBCAN-Lift-4"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Canary Wharf",
+      "stationId": "HUBCAW",
+      "lifts": [
+        "HUBCAW-Lift-LU 1",
+        "HUBCAW-Lift-LU 2"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Canary Wharf",
+      "stationId": "HUBCAW",
+      "lifts": [
+        "HUBCAW-Lift-A",
+        "HUBCAW-Lift-B",
+        "HUBCAW-Lift-C",
+        "HUBCAW-Lift-D"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Clapham Junction",
+      "stationId": "HUBCLJ",
+      "lifts": [
+        "HUBCLJ-Lift-1",
+        "HUBCLJ-Lift-2",
+        "HUBCLJ-Lift-3",
+        "HUBCLJ-Lift-4"
+      ],
+      "reason": "no clean path endpoints (possible cycle)"
+    },
+    {
+      "station": "Crystal Palace",
+      "stationId": "HUBCYP",
+      "lifts": [
+        "HUBCYP-Lift-1",
+        "HUBCYP-Lift-2",
+        "HUBCYP-Lift-3"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "East Croydon",
+      "stationId": "HUBECY",
+      "lifts": [
+        "HUBECY-Lift-1",
+        "HUBECY-Lift-2",
+        "HUBECY-Lift-3",
+        "HUBECY-Lift-4"
+      ],
+      "reason": "branching hub node (maxDeg=4)"
+    },
+    {
+      "station": "Finsbury Park",
+      "stationId": "HUBFPK",
+      "lifts": [
+        "HUBFPK-Lift-1",
+        "HUBFPK-Lift-3",
+        "HUBFPK-Lift1A",
+        "HUBFPK-Lift 2",
+        "HUBFPK-Lift 7"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Greenwich",
+      "stationId": "HUBGNW",
+      "lifts": [
+        "HUBGNW-Lift-1",
+        "HUBGNW-Lift-2"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Harrow-on-the-Hill",
+      "stationId": "HUBHOH",
+      "lifts": [
+        "HUBHOH-Lift-2",
+        "HUBHOH-Lift-3",
+        "HUBHOH-Lift-4"
+      ],
+      "reason": "branching hub node (maxDeg=3)"
+    },
+    {
+      "station": "Highbury & Islington",
+      "stationId": "HUBHHY",
+      "lifts": [
+        "HUBHHY-Lift-1",
+        "HUBHHY-Lift-2",
+        "HUBHHY-Lift-3"
+      ],
+      "reason": "branching hub node (maxDeg=3)"
+    },
+    {
+      "station": "Hammersmith",
+      "stationId": "HUBHMS",
+      "lifts": [
+        "HUBHMS-Lift-1",
+        "HUBHMS-Lift-2"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Harrow & Wealdstone",
+      "stationId": "HUBHRW",
+      "lifts": [
+        "HUBHRW-Lift-1",
+        "HUBHRW-Lift-2",
+        "HUBHRW-Lift-3",
+        "HUBHRW-Lift-4"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "King's Cross St Pancras",
+      "stationId": "HUBKGX",
+      "lifts": [
+        "HUBKGX-Lift-1",
+        "HUBKGX-Lift-2",
+        "HUBKGX-Lift-3",
+        "HUBKGX-Lift-5"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "King's Cross St Pancras",
+      "stationId": "HUBKGX",
+      "lifts": [
+        "HUBKGX-Lift-10",
+        "HUBKGX-Lift-11",
+        "HUBKGX-Lift-6",
+        "HUBKGX-Lift-7",
+        "HUBKGX-Lift-8"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "London Bridge",
+      "stationId": "HUBLBG",
+      "lifts": [
+        "HUBLBG-Lift-3",
+        "HUBLBG-Lift-4"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Limehouse",
+      "stationId": "HUBLHS",
+      "lifts": [
+        "HUBLHS-Lift-1",
+        "HUBLHS-Lift-2",
+        "HUBLHS-Lift-3",
+        "HUBLHS-Lift-4",
+        "HUBLHS-Lift-5"
+      ],
+      "reason": "branching hub node (maxDeg=3)"
+    },
+    {
+      "station": "Liverpool Street",
+      "stationId": "HUBLST",
+      "lifts": [
+        "HUBLST-Lift-C",
+        "HUBLST-Lift-B",
+        "HUBLST-Lift-A"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "New Cross Gate",
+      "stationId": "HUBNXG",
+      "lifts": [
+        "HUBNXG-Lift-1",
+        "HUBNXG-Lift-2",
+        "HUBNXG-Lift-3"
+      ],
+      "reason": "branching hub node (maxDeg=3)"
+    },
+    {
+      "station": "Paddington",
+      "stationId": "HUBPAD",
+      "lifts": [
+        "HUBPAD-Lift-X",
+        "HUBPAD-Lift-Z"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Richmond",
+      "stationId": "HUBRMD",
+      "lifts": [
+        "HUBRMD-Lift-1",
+        "HUBRMD-Lift-2"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Stratford",
+      "stationId": "HUBSRA",
+      "lifts": [
+        "HUBSRA-Lift-10",
+        "HUBSRA-Lift-12",
+        "HUBSRA-Lift-16",
+        "HUBSRA-Lift-17",
+        "HUBSRA-Lift-3",
+        "HUBSRA-Lift-2",
+        "HUBSRA-Lift-18",
+        "HUBSRA-Lift-4",
+        "HUBSRA-Lift-5",
+        "HUBSRA-Lift-6",
+        "HUBSRA-Lift-7",
+        "HUBSRA-Lift-8",
+        "HUBSRA-Lift-9",
+        "HUBSRA-Lift-1",
+        "HUBSRA-Lift-11"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Upminster",
+      "stationId": "HUBUPM",
+      "lifts": [
+        "HUBUPM-Lift-1",
+        "HUBUPM-Lift-2",
+        "HUBUPM-Lift-3"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Victoria",
+      "stationId": "HUBVIC",
+      "lifts": [
+        "HUBVIC-Lift-C3",
+        "HUBVIC-Lift-E5",
+        "HUBVIC-Lift-F6",
+        "HUBVIC-Lift-G7"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Vauxhall",
+      "stationId": "HUBVXH",
+      "lifts": [
+        "HUBVXH-Lift-1",
+        "HUBVXH-Lift-2"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Vauxhall",
+      "stationId": "HUBVXH",
+      "lifts": [
+        "HUBVXH-Lift-3",
+        "HUBVXH-Lift-4",
+        "HUBVXH-Lift-5",
+        "HUBVXH-Lift-6"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Waterloo",
+      "stationId": "HUBWAT",
+      "lifts": [
+        "HUBWAT-Lift-1",
+        "HUBWAT-Lift-3",
+        "HUBWAT-Lift-4"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "West Ham",
+      "stationId": "HUBWEH",
+      "lifts": [
+        "HUBWEH-Lift-1",
+        "HUBWEH-Lift-2",
+        "HUBWEH-Lift-4",
+        "HUBWEH-Lift-5",
+        "HUBWEH-Lift-6"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Watford Junction",
+      "stationId": "HUBWFJ",
+      "lifts": [
+        "HUBWFJ-Lift-1",
+        "HUBWFJ-Lift-2",
+        "HUBWFJ-Lift-3"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Wimbledon",
+      "stationId": "HUBWIM",
+      "lifts": [
+        "HUBWIM-Lift-1",
+        "HUBWIM-Lift-2",
+        "HUBWIM-Lift-3",
+        "HUBWIM-Lift-4"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Wembley Central",
+      "stationId": "HUBWMB",
+      "lifts": [
+        "HUBWMB-Lift-1",
+        "HUBWMB-Lift-2",
+        "HUBWMB-Lift-3",
+        "HUBWMB-Lift-4"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Westminster",
+      "stationId": "HUBWSM",
+      "lifts": [
+        "HUBWSM-Lift-2",
+        "HUBWSM-Lift-3",
+        "HUBWSM-Lift-4",
+        "HUBWSM-Lift-5"
+      ],
+      "reason": "branching hub node (maxDeg=3)"
+    },
+    {
+      "station": "Canada Water",
+      "stationId": "HUBZCW",
+      "lifts": [
+        "HUBZCW-Lift-1",
+        "HUBZCW-Lift-2",
+        "HUBZCW-Lift-4"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Farringdon",
+      "stationId": "HUBZFD",
+      "lifts": [
+        "HUBZFD-Lift-7",
+        "HUBZFD-Lift-6",
+        "HUBZFD-Lift-8"
+      ],
+      "reason": "branching hub node (maxDeg=3)"
+    },
+    {
+      "station": "Ealing Broadway",
+      "stationId": "HUBEAL",
+      "lifts": [
+        "HUBEAL-Lift-1",
+        "HUBEAL-Lift-2",
+        "HUBEAL-Lift-3",
+        "HUBEAL-Lift-4"
+      ],
+      "reason": "branching hub node (maxDeg=3)"
+    },
+    {
+      "station": "Amersham",
+      "stationId": "HUBAMR",
+      "lifts": [
+        "HUBAMR-Lift-1",
+        "HUBAMR-Lift-2"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Whitechapel",
+      "stationId": "HUBZWL",
+      "lifts": [
+        "HUBZWL-Lift-2",
+        "HUBZWL-Lift-11",
+        "HUBZWL-Lift-3",
+        "HUBZWL-Lift-4",
+        "HUBZWL-Lift-5",
+        "HUBZWL-Lift-10",
+        "HUBZWL-Lift-6",
+        "HUBZWL-Lift-7"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Battersea Power Station",
+      "stationId": "940GZZBPSUST",
+      "lifts": [
+        "940GZZBPSUST-Lift-1",
+        "940GZZBPSUST-Lift-2",
+        "940GZZBPSUST-Lift-3",
+        "940GZZBPSUST-Lift-4"
+      ],
+      "reason": "branching hub node (maxDeg=3)"
+    },
+    {
+      "station": "Abbey Wood",
+      "stationId": "HUBABW",
+      "lifts": [
+        "HUBABW-Lift-6",
+        "HUBABW-Lift-5"
+      ],
+      "reason": "multi-destination edge in a multi-edge component"
+    },
+    {
+      "station": "Petts Wood",
+      "stationId": "910GPETSWD",
+      "lifts": [
+        "910GPETSWD-Lift-1",
+        "910GPETSWD-Lift-2",
+        "910GPETSWD-Lift-3",
+        "910GPETSWD-Lift-4"
+      ],
+      "reason": "branching hub node (maxDeg=4)"
+    },
+    {
+      "station": "Shortlands",
+      "stationId": "910GSHRTLND",
+      "lifts": [
+        "910GSHRTLND-Lift-1",
+        "910GSHRTLND-Lift-2",
+        "910GSHRTLND-Lift-3"
+      ],
+      "reason": "branching hub node (maxDeg=3)"
+    }
+  ]
+}
