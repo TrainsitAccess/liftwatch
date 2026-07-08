@@ -254,9 +254,17 @@ against a reference photo):
   agency-local timestamps, access impact (severed routes / working backups /
   ramp coverage) and the curated route notes. A bottom strip carries a live
   clock + rotating ticker. Systems rank by **unplanned** share; scheduled
-  work has its own column and its own board. New live boards: station access
-  (NO ACCESS / REDUCED per modeled route) and scheduled work. All times are
-  shown in the system's own IANA timezone (station time, not viewer time).
+  work has its own column and its own board. The homepage pairs the systems
+  board with **two longest-outage boards split by cause** (2026-07-07):
+  unplanned breakdowns (the shame metric) and planned closures, each ranked by
+  duration within its cause — so a wall of multi-year planned capital
+  replacements (161 St, Jamaica-179) can't bury the longest genuine breakdown,
+  while planned closures that strand a sole-access station for months stay
+  visible. Long durations **escalate for legibility** — plain days under a
+  month, then months, then years, so "1201D" reads "3Y 3MO" — the same ramp on
+  every day-count column (out, streaks, offline). New live boards: station
+  access (NO ACCESS / REDUCED per modeled route) and scheduled work. All times
+  are shown in the system's own IANA timezone (station time, not viewer time).
   Respect `prefers-reduced-motion` (no shuttle/ticker/blink; ellipsis +
   static text). Accessibility is the markup itself — real `<table>`s with
   captions and scoped headers, `aria-expanded` row toggles, skip link,
