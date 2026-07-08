@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import type { StationModel } from "../lib/accessibility.js";
 import { MTA_RAIL_STATION_MODELS } from "./mta-rail-models.js";
+import { BART_STATION_MODELS } from "./bart-station-models.js";
 
 // MTA multi-chain models, generated from the live elevator inventory by
 // scripts/mta-chains.mjs (self-checked against MTA's own ADA + redundant flags).
@@ -34,7 +35,7 @@ export const STATION_MODELS: StationModel[] = [
   {
     systemId: "bart-bay-area",
     stationExternalId: "ASHB",
-    note: "Two platform elevators give redundant platform access. The street elevator is not required: the concourse is also step-free from the sunken parking lot. No single outage severs access.",
+    note: "Two platform elevators give redundant platform access. The street elevator is not required: the concourse is also step-free from the sunken parking lot, and bart.gov's own outage-options page (2026-07-08) additionally names the Ed Roberts Campus elevator (open during its hours) as a further alternative. No single outage severs access.",
     segments: [
       {
         id: "street-concourse",
@@ -120,14 +121,14 @@ export const STATION_MODELS: StationModel[] = [
   {
     systemId: "bart-bay-area",
     stationExternalId: "SFIA",
-    note: "Two redundant platform elevators; the station connects directly to the airport at concourse level, so no street elevator is needed. Only both platform elevators failing severs access.",
+    note: "Two redundant platform elevators (confirmed against bart.gov's own outage-options page 2026-07-08: each explicitly names 'the other platform elevator' as its backup, no detour to another station); the station connects directly to the airport at concourse level, so no street elevator is needed. Only both platform elevators failing severs access.",
     segments: [
       {
         id: "concourse-platform",
         label: "Concourse to platform",
         elevators: [
-          { externalId: "SFIA-PLAT-1", label: "Platform Elevator 1", matchHints: ["platform"] },
-          { externalId: "SFIA-PLAT-2", label: "Platform Elevator 2", matchHints: ["platform"] },
+          { externalId: "SFIA-PLAT-1", label: "Platforms 1 & 2 Elevator", matchHints: ["platform"] },
+          { externalId: "SFIA-PLAT-2", label: "Platforms 3 & 4 Elevator", matchHints: ["platform"] },
         ],
       },
     ],
@@ -135,7 +136,7 @@ export const STATION_MODELS: StationModel[] = [
   {
     systemId: "bart-bay-area",
     stationExternalId: "WARM",
-    note: "Two street elevators and two platform elevators — every leg has a backup, so any single outage (or one per leg) keeps the station accessible.",
+    note: "Two street elevators and two platform elevators — every leg has a backup, so any single outage (or one per leg) keeps the station accessible. A fifth, separate pedestrian-bridge elevator (verified against bart.gov's own outage-options page 2026-07-08) is a secondary entrance with no backup of its own for ENTERING that way — BART's guidance is a 0.8 mi walk/roll to the main Warm Springs Blvd. entrance; exiting via the bridge is already covered by the main platform elevators.",
     segments: [
       {
         id: "street-concourse",
@@ -157,27 +158,52 @@ export const STATION_MODELS: StationModel[] = [
   },
   {
     systemId: "bart-bay-area",
+    stationExternalId: "WARM",
+    chainLabel: " (pedestrian bridge)",
+    note: "The pedestrian-bridge elevator is a separate, secondary entrance with no backup of its own for entering that way — BART's guidance is a 0.8 mi walk/roll to the main Warm Springs Blvd. entrance instead.",
+    segments: [{ id: "bridge", label: "Pedestrian bridge elevator", elevators: [{ externalId: "WARM-BRIDGE", label: "Pedestrian bridge elevator", matchHints: ["bridge", "pedestrian"] }] }],
+  },
+  {
+    // Corrected 2026-07-08 against bart.gov's own outage-options page: the
+    // previous model wrongly claimed 2 mutually-redundant platform elevators
+    // and 2 mutually-redundant street elevators. The real structure is 1
+    // platform elevator (a pure single point of failure, shared as a
+    // bottleneck by BOTH garage-side entries — same "shared prerequisite"
+    // pattern as MTA's bridge elevators) and 4 garage elevators split into
+    // TWO SEPARATE redundant pairs (North/Dublin side, South/Pleasanton
+    // side) that do NOT back each other up — BART's own text says "take the
+    // ALTERNATE parking garage elevator" (singular, same-side sibling only),
+    // never a cross-side alternative.
+    systemId: "bart-bay-area",
     stationExternalId: "WDUB",
-    note: "Two street elevators and two platform elevators — every leg has a backup, so any single outage (or one per leg) keeps the station accessible.",
+    chainLabel: " (North/Dublin side)",
+    note: "The North/Dublin-side garage elevators back each other up, but do not back up the South/Pleasanton-side pair — BART's own text names only 'the alternate' (same-side sibling). The single platform elevator beyond the garage is a pure single point of failure with no backup at all (BART's guidance is a detour through West Dublin/Pleasanton), shared as a bottleneck by both garage sides.",
     segments: [
-      {
-        id: "street-concourse",
-        label: "Street to concourse",
-        elevators: [
-          { externalId: "WDUB-ST-1", label: "Street elevator 1", matchHints: ["street"] },
-          { externalId: "WDUB-ST-2", label: "Street elevator 2", matchHints: ["street"] },
-        ],
-      },
-      {
-        id: "concourse-platform",
-        label: "Concourse to platform",
-        elevators: [
-          { externalId: "WDUB-PLAT-1", label: "Platform Elevator 1", matchHints: ["platform"] },
-          { externalId: "WDUB-PLAT-2", label: "Platform Elevator 2", matchHints: ["platform"] },
-        ],
-      },
+      { id: "garage-concourse", label: "North/Dublin garage to concourse", elevators: [
+        { externalId: "WDUB-GAR-N1", label: "Garage Elevator 1 (North/Dublin side)", matchHints: ["north", "dublin", "garage"] },
+        { externalId: "WDUB-GAR-N2", label: "Garage Elevator 2 (North/Dublin side)", matchHints: ["north", "dublin", "garage"] },
+      ] },
+      { id: "concourse-platform", label: "Concourse to platform", elevators: [{ externalId: "WDUB-PLAT", label: "Platform elevator", matchHints: ["platform"] }] },
     ],
   },
+  {
+    systemId: "bart-bay-area",
+    stationExternalId: "WDUB",
+    chainLabel: " (South/Pleasanton side)",
+    note: "The South/Pleasanton-side garage elevators back each other up, but do not back up the North/Dublin-side pair — BART's own text names only 'the alternate' (same-side sibling). The single platform elevator beyond the garage is a pure single point of failure with no backup at all (BART's guidance is a detour through West Dublin/Pleasanton), shared as a bottleneck by both garage sides.",
+    segments: [
+      { id: "garage-concourse", label: "South/Pleasanton garage to concourse", elevators: [
+        { externalId: "WDUB-GAR-S1", label: "Garage Elevator 1 (South/Pleasanton side)", matchHints: ["south", "pleasanton", "garage"] },
+        { externalId: "WDUB-GAR-S2", label: "Garage Elevator 2 (South/Pleasanton side)", matchHints: ["south", "pleasanton", "garage"] },
+      ] },
+      { id: "concourse-platform", label: "Concourse to platform", elevators: [{ externalId: "WDUB-PLAT", label: "Platform elevator", matchHints: ["platform"] }] },
+    ],
+  },
+  // The remaining 43 BART stations: curated 2026-07-08 from bart.gov's own
+  // outage-options page (+ 4 cross-validated against TransitAccess's Muni
+  // field survey) — see src/catalog/bart-station-models.ts for the full
+  // writeup and src/catalog/bart-data/elevator-pages.json for the raw source.
+  ...BART_STATION_MODELS,
   // MTA's multi-chain stations are generated from the live elevator inventory
   // by scripts/mta-chains.mjs (verified station-by-station with a human; see
   // src/catalog/mta-data/station-chains.json and CLAUDE.md). Regenerate with

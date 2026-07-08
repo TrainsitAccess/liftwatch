@@ -103,8 +103,10 @@ parking lot). A station is accessible only if **every** segment is up.
   Curated-vs-curated: incoming curated wins, so **editing your curation
   propagates**; only non-curated feed signals are blocked (they flag instead).
 - **Baseline** (`systems.redundancyBaseline`): `confirmed-none` means a fully-curated
-  system treats un-modeled stations as *confirmed* non-redundant. BART uses this →
-  all 50 stations human-confirmed, zero `assumed`.
+  system treats un-modeled stations as *confirmed* non-redundant. BART uses this,
+  though as of 2026-07-08 all 50 stations are individually modeled anyway (see
+  below) — the baseline is now just a safety net for a future new station, not
+  load-bearing for any station today.
 - **Contradiction flags** (`redundancy_flags`): a real signal that disagrees with a
   curated value never overwrites it — it opens a flag for human recheck. The
   `assumed` default never raises a flag.
@@ -197,6 +199,39 @@ parking lot). A station is accessible only if **every** segment is up.
   `evidenceHints` entry in `chains-excluded.json` — a head start for the
   eventual human review, not a resolution. Re-running after more polls
   absorbs more evidence automatically — no per-outage manual audit needed.
+- **ALL 50 BART stations are now curated** (2026-07-08, up from the original
+  7 — `src/catalog/bart-station-models.ts`, 43 more stations, wired into
+  `station-models.ts`'s STATION_MODELS array). BART has no per-elevator feed
+  at all (unlike TfL/MTA), so a topology-graph or line-served-field approach
+  was never possible — instead this uses a REAL, BART-published per-elevator
+  signal: bart.gov's own "Elevator Outage Options" page
+  (`bart.gov/stations/<code>/accessible`) states, for every elevator, what a
+  rider should do if it's out — directly revealing whether an in-station
+  backup exists or only a cross-station-only fallback ("continue on BART to
+  X and return"), which is treated as NOT redundant (a rider already headed
+  there is functionally stranded even though a paired elevator exists
+  elsewhere) — the same never-claim-redundancy-without-a-real-signal rule as
+  everywhere else in this project. `bart.gov` blocks WebFetch (403, a bot
+  WAF) but a plain `fetch()` with a spoofed browser User-Agent works fine.
+  4 stations (EMBR/MONT/POWL/CIVC — the BART/Muni shared Market St.
+  stations) were cross-validated against TransitAccess
+  (`C:\Users\Bryce\Claude\metro-access`)'s independent Muni field survey —
+  both sources agree exactly. **Two real structural bugs in the ORIGINAL 7
+  stations were found and fixed against this same source**: WDUB was wrongly
+  modeled as 2+2 redundant pairs — the real structure is 1 shared, non-
+  redundant platform elevator (a bottleneck for BOTH garage sides, same
+  "shared prerequisite" pattern as MTA's bridge elevators) plus 4 garage
+  elevators split into 2 SEPARATE non-cross-redundant pairs (BART's own text:
+  "the ALTERNATE parking garage elevator", singular, same-side sibling only);
+  WARM was missing a 5th pedestrian-bridge elevator entirely (added as its
+  own chain). SFIA/ASHB needed only label/note enrichment (their existing
+  structure was already correct). Many of the 43 new stations use
+  independent PER-DIRECTION chains (chainLabel, same pattern as MTA's 161 St)
+  since BART's "opposite platform" elevator pairs usually require riding to
+  a different station and back to reach the other one — not a real backup.
+  Verified via `npm run poll:bart:dry`: 95 elevators, all 50 stations
+  modeled across 66 chains, 0 structural errors. `demo:access` extended with
+  new regression coverage (35 checks total) for the corrected/new patterns.
 
 ## Conventions
 

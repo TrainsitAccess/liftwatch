@@ -3,48 +3,18 @@
   "name": "BART",
   "label": "BART (San Francisco)",
   "timezone": "America/Los_Angeles",
-  "generatedAt": "2026-07-08T00:14:20.799Z",
+  "generatedAt": "2026-07-08T19:32:57.671Z",
   "currentlyBroken": [
     {
       "station": "Richmond",
       "unitId": "RICH-UNSPECIFIED",
       "unit": "Station (unspecified elevator — conservative)",
-      "days": 3,
+      "days": 4,
       "since": "2026-07-04T02:54:57.211+00:00",
       "planned": false,
       "reason": "Station (unspecified elevator — conservative)",
       "estimatedReturn": null,
       "soleAccess": false,
-      "severs": [],
-      "backups": [],
-      "rampAlternative": false,
-      "chainNotes": []
-    },
-    {
-      "station": "Millbrae",
-      "unitId": "MLBR",
-      "unit": "Station elevator access (BART reports at station level)",
-      "days": 3,
-      "since": "2026-07-04T02:54:57.211+00:00",
-      "planned": false,
-      "reason": "Station - SF/East Bay/SFO Airport",
-      "estimatedReturn": null,
-      "soleAccess": true,
-      "severs": [],
-      "backups": [],
-      "rampAlternative": false,
-      "chainNotes": []
-    },
-    {
-      "station": "Hayward",
-      "unitId": "HAYW",
-      "unit": "Station elevator access (BART reports at station level)",
-      "days": 0,
-      "since": "2026-07-07T19:07:07.988+00:00",
-      "planned": false,
-      "reason": "Station - SF/Richmond",
-      "estimatedReturn": null,
-      "soleAccess": true,
       "severs": [],
       "backups": [],
       "rampAlternative": false,
@@ -71,105 +41,60 @@
     "log": []
   },
   "stationAccess": {
-    "rows": [
-      {
-        "name": "Hayward",
-        "state": "no_access",
-        "downUnits": [
-          "HAYW"
-        ],
-        "offlineUnits": [],
-        "note": null
-      },
-      {
-        "name": "Millbrae",
-        "state": "no_access",
-        "downUnits": [
-          "MLBR"
-        ],
-        "offlineUnits": [],
-        "note": null
-      },
-      {
-        "name": "Milpitas",
-        "state": "no_access",
-        "downUnits": [
-          "MLPT"
-        ],
-        "offlineUnits": [],
-        "note": null
-      }
-    ],
-    "chainsModeled": 7
+    "rows": [],
+    "chainsModeled": 66
   },
   "scheduledWork": [],
-  "accessibilityBlackouts": [
-    {
-      "name": "Millbrae",
-      "hours": 93.32321888888889
-    },
-    {
-      "name": "Hayward",
-      "hours": 8.0286575
-    },
-    {
-      "name": "Milpitas",
-      "hours": 3.2860105555555554
-    },
-    {
-      "name": "Coliseum",
-      "hours": 1.123981111111111
-    }
-  ],
+  "accessibilityBlackouts": [],
   "stepFreeStreak": [
     {
       "name": "Ashby",
-      "days": 3,
+      "days": 4,
       "blackedOutNow": false
     },
     {
       "name": "12th St. Oakland City Center",
-      "days": 3,
+      "days": 4,
       "blackedOutNow": false
     },
     {
       "name": "19th St. Oakland",
-      "days": 3,
+      "days": 4,
       "blackedOutNow": false
     },
     {
       "name": "Richmond",
-      "days": 3,
+      "days": 4,
       "blackedOutNow": false
     },
     {
       "name": "San Francisco International Airport",
-      "days": 3,
+      "days": 4,
       "blackedOutNow": false
     },
     {
       "name": "Warm Springs/South Fremont",
-      "days": 3,
+      "days": 4,
       "blackedOutNow": false
     },
     {
-      "name": "West Dublin/Pleasanton",
-      "days": 3,
+      "name": "Warm Springs/South Fremont (pedestrian bridge)",
+      "days": 0,
       "blackedOutNow": false
     },
     {
-      "name": "Downtown Berkeley",
-      "days": 3,
+      "name": "West Dublin/Pleasanton (North/Dublin side)",
+      "days": 0,
       "blackedOutNow": false
     },
     {
-      "name": "Dublin/Pleasanton",
-      "days": 3,
+      "name": "West Dublin/Pleasanton (South/Pleasanton side)",
+      "days": 0,
       "blackedOutNow": false
     },
     {
-      "name": "Lafayette",
-      "days": 3,
+      "name": "Embarcadero",
+      "days": 0,
       "blackedOutNow": false
     }
   ],
@@ -209,61 +134,61 @@
     {
       "unit": "Station elevator access (BART reports at station level)",
       "station": "Downtown Berkeley",
-      "days": 3,
+      "days": 4,
       "downNow": false
     },
     {
       "unit": "Station elevator access (BART reports at station level)",
       "station": "Dublin/Pleasanton",
-      "days": 3,
+      "days": 4,
       "downNow": false
     },
     {
       "unit": "Street elevator 2",
       "station": "West Dublin/Pleasanton",
-      "days": 3,
+      "days": 4,
       "downNow": false
     },
     {
       "unit": "Station elevator access (BART reports at station level)",
       "station": "Lafayette",
-      "days": 3,
+      "days": 4,
       "downNow": false
     },
     {
       "unit": "Station elevator access (BART reports at station level)",
       "station": "Union City",
-      "days": 3,
+      "days": 4,
       "downNow": false
     },
     {
       "unit": "Street elevator 1",
       "station": "Warm Springs/South Fremont",
-      "days": 3,
+      "days": 4,
       "downNow": false
     },
     {
       "unit": "Adeline Street East street elevator",
       "station": "Ashby",
-      "days": 3,
-      "downNow": false
-    },
-    {
-      "unit": "Platform elevator",
-      "station": "Richmond",
-      "days": 3,
+      "days": 4,
       "downNow": false
     },
     {
       "unit": "Station elevator access (BART reports at station level)",
       "station": "El Cerrito del Norte",
-      "days": 3,
+      "days": 4,
       "downNow": false
     },
     {
       "unit": "Station elevator access (BART reports at station level)",
       "station": "Embarcadero",
-      "days": 3,
+      "days": 4,
+      "downNow": false
+    },
+    {
+      "unit": "Platform elevator",
+      "station": "Richmond",
+      "days": 4,
       "downNow": false
     }
   ],
@@ -285,10 +210,6 @@
       "count": 1
     },
     {
-      "name": "Richmond",
-      "count": 1
-    },
-    {
       "name": "El Cerrito del Norte",
       "count": 1
     },
@@ -297,11 +218,15 @@
       "count": 1
     },
     {
-      "name": "West Oakland",
+      "name": "Richmond",
       "count": 1
     },
     {
       "name": "Balboa Park",
+      "count": 1
+    },
+    {
+      "name": "West Oakland",
       "count": 1
     },
     {

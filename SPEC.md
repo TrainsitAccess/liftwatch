@@ -183,8 +183,10 @@ the file wins); only non-curated *feed* signals are blocked from overwriting.
 **Curated baseline** (`systems.redundancyBaseline`): a system whose redundancy is
 fully hand-curated sets `confirmed-none`, so any un-modeled station is treated as
 `curated` non-redundant (not merely `assumed`) — absence from the model list is
-itself a confirmed statement. BART uses this: 7 stations modeled + the rest
-confirmed non-redundant = the whole system is human-confirmed, no `assumed` left.
+itself a confirmed statement. BART uses this — as of 2026-07-08 all 50 of its
+stations are individually modeled (see CLAUDE.md's redundancy section), so the
+baseline no longer has anything left to fall back on; it stays set for safety
+if a future station is ever added to BART's own feed before being curated.
 
 **Curation workflow** (admin view, Phase 2): a queue of `assumed` units ranked by
 impact (busiest / most-broken first) with a yes/no review that appends to the
@@ -353,27 +355,45 @@ external id · `stationcomplexid` → station id · `elevatorsgtfsstopid` → GT
 `is_planned` · `outagedate` → `source_started_at` · `estimatedreturntoservice` →
 `estimated_return`.
 
-### BART feeds (in use) — best-effort, station-level
+### BART feeds (in use) — best-effort, station-level, but ALL 50 stations curated
 
 BART exposes no structured per-elevator status. `data_quality: 'best_effort'`.
 - Real-time (in use): `bsa.aspx?cmd=elev` — a free-text, **station-level**
   advisory ("2 elevators out: MLBR: Station; RICH: Station"). Parsed by matching
   station codes against the station list.
-- Station list (in use): `stn.aspx?cmd=stns` — all ~50 stations + coordinates;
-  serves as the geo source and the denominator (one synthetic "station elevator
-  access" unit per station).
+- Station list (in use): `stn.aspx?cmd=stns` — all 50 stations + coordinates;
+  serves as the geo source and the denominator.
 - Public key `MW9S-E7SL-26DU-VV8V` (override via `BART_API_KEY`).
 
-Modeling: one synthetic unit per station; outages are stations named in the
-advisory. Redundancy is `assumed` (GTFS has **no** `pathways.txt`, so Tier-B
-derivation is unavailable). All real-time outages are unplanned.
+**Every one of BART's 50 stations is curated** (`src/catalog/bart-station-models.ts`
++ 7 more hand-authored inline in `station-models.ts`; see CLAUDE.md's
+redundancy section for the full writeup) — modeled stations expand into
+per-elevator units the same way as BART's original 7 (ASHB/12TH/19TH/RICH/
+SFIA/WARM/WDUB); outage advisories are attributed via `matchHints` (specific
+elevator > segment-only > station-unspecified, never a guess) exactly as
+before. Real-time outages that don't resolve to one specific elevator (the
+live feed is usually just "Station", too vague — confirmed live 2026-07-08)
+still fall to the conservative unspecified tier. All real-time outages are
+unplanned.
+
+**Source**: bart.gov's own "Elevator Outage Options" page
+(`bart.gov/stations/<code>/accessible`) — a real, BART-published per-elevator
+signal (scraped 2026-07-08, raw text archived at
+`src/catalog/bart-data/elevator-pages.json`): for every elevator, BART states
+what a rider should do if it's out, directly revealing whether an in-station
+backup exists. Blocked WebFetch (403, a bot-protection WAF) but a plain
+`fetch()` with a spoofed browser User-Agent works fine — no `claude-in-chrome`
+needed once that was found. 4 stations (EMBR/MONT/POWL/CIVC, the BART/Muni
+shared Market St. stations) additionally cross-validated against
+TransitAccess (a sibling Muni accessibility project,
+`C:\Users\Bryce\Claude\metro-access`)'s independent field survey — both
+sources agree exactly.
 
 Deferred sources (not parsed):
 - GTFS static — no pathways/levels; nothing beyond the station list. Not used.
 - Planned-advisories RSS (`rss/news/planned-elevator-advisories.xml`) —
   per-elevator, dated, prose (states redundancy in English). Brittle to parse;
-  a future "maintenance calendar" source and useful reference for the manual
-  redundancy curation queue.
+  largely superseded in spirit by the outage-options page above.
 
 ### MBTA feeds (in use) — genuinely per-elevator
 

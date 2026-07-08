@@ -34,11 +34,28 @@ const m = (abbr: string): StationModel => {
 };
 const accessible = (model: StationModel, down: string[]) => stationAccessible(model, new Set(down));
 
+// Explicit picker for stations with >1 chain (e.g. WARM's separate
+// pedestrian-bridge chain, added 2026-07-08) — same never-guess spirit as
+// m(), but the caller states which chain it means instead of the demo
+// silently picking one.
+const mChain = (abbr: string, chainLabel: string | undefined): StationModel => {
+  const chains = models.get(abbr);
+  const found = chains?.find((c) => c.chainLabel === chainLabel);
+  if (!found) throw new Error(`No ${abbr} chain with label ${JSON.stringify(chainLabel)}`);
+  return found;
+};
+
 console.log("\n  derived station redundancy (single-fault tolerance):");
 check("ASHB redundant", isSingleFaultTolerant(m("ASHB")), true);
 check("SFIA redundant", isSingleFaultTolerant(m("SFIA")), true);
-check("WARM redundant", isSingleFaultTolerant(m("WARM")), true);
-check("WDUB redundant", isSingleFaultTolerant(m("WDUB")), true);
+check("WARM redundant", isSingleFaultTolerant(mChain("WARM", undefined)), true);
+check("WARM pedestrian bridge not redundant (single elevator, no backup)", isSingleFaultTolerant(mChain("WARM", " (pedestrian bridge)")), false);
+// WDUB was corrected 2026-07-08 against bart.gov's own outage-options page:
+// the platform elevator is a single point of failure SHARED as a bottleneck
+// by both garage sides (not 2 redundant platform elevators as previously
+// modeled), so neither chain is single-fault-tolerant on its own.
+check("WDUB North/Dublin side NOT redundant (shared platform elevator is a SPOF)", isSingleFaultTolerant(mChain("WDUB", " (North/Dublin side)")), false);
+check("WDUB South/Pleasanton side NOT redundant (shared platform elevator is a SPOF)", isSingleFaultTolerant(mChain("WDUB", " (South/Pleasanton side)")), false);
 check("12TH not redundant (single platform elevator)", isSingleFaultTolerant(m("12TH")), false);
 check("19TH not redundant (single street elevator)", isSingleFaultTolerant(m("19TH")), false);
 check("RICH not redundant (single platform elevator)", isSingleFaultTolerant(m("RICH")), false);
@@ -55,8 +72,28 @@ check("RICH: both street elevators out -> accessible (ramp)", accessible(m("RICH
 check("RICH: platform elevator out -> inaccessible", accessible(m("RICH"), ["RICH-PLAT"]), false);
 check("SFIA: one platform elevator out -> accessible", accessible(m("SFIA"), ["SFIA-PLAT-1"]), true);
 check("SFIA: both platform elevators out -> inaccessible", accessible(m("SFIA"), ["SFIA-PLAT-1", "SFIA-PLAT-2"]), false);
-check("WARM: one street + one platform out -> accessible", accessible(m("WARM"), ["WARM-ST-1", "WARM-PLAT-1"]), true);
-check("WARM: both platform elevators out -> inaccessible", accessible(m("WARM"), ["WARM-PLAT-1", "WARM-PLAT-2"]), false);
+check("WARM: one street + one platform out -> accessible", accessible(mChain("WARM", undefined), ["WARM-ST-1", "WARM-PLAT-1"]), true);
+check("WARM: both platform elevators out -> inaccessible", accessible(mChain("WARM", undefined), ["WARM-PLAT-1", "WARM-PLAT-2"]), false);
+check("WARM pedestrian bridge: elevator out -> inaccessible (no backup)", accessible(mChain("WARM", " (pedestrian bridge)"), ["WARM-BRIDGE"]), false);
+
+console.log("\n  new BART stations, curated 2026-07-08 from bart.gov's own outage-options page:");
+check("BALB: single elevator, no working -> accessible", accessible(m("BALB"), []), true);
+check("BALB: single elevator out -> inaccessible (no backup)", accessible(m("BALB"), ["BALB-EL"]), false);
+// DELN's two directions are INDEPENDENT chains (a detour through another
+// station isn't a same-station backup) — one direction's elevator failing
+// must not affect the other direction's chain.
+check("DELN Richmond direction: elevator out -> inaccessible", accessible(mChain("DELN", " (Richmond direction)"), ["DELN-PLAT-1"]), false);
+check(
+  "DELN Berryessa/SFO direction: unaffected by the Richmond-direction elevator being out",
+  accessible(mChain("DELN", " (Berryessa/SFO/Millbrae/Daly City direction)"), ["DELN-PLAT-1"]),
+  true,
+);
+// WDUB's platform elevator is a SHARED bottleneck across both garage-side
+// chains — it going out must take down BOTH, even though the garage pairs
+// are independently redundant.
+check("WDUB North side: garage pair redundant, one out -> accessible", accessible(mChain("WDUB", " (North/Dublin side)"), ["WDUB-GAR-N1"]), true);
+check("WDUB North side: shared platform elevator out -> inaccessible", accessible(mChain("WDUB", " (North/Dublin side)"), ["WDUB-PLAT"]), false);
+check("WDUB South side: also inaccessible when the SAME shared platform elevator is out", accessible(mChain("WDUB", " (South/Pleasanton side)"), ["WDUB-PLAT"]), false);
 
 console.log("\n  attribution (advisory text -> elevator or segment):");
 check('12TH "14th St elevator" -> specific elevator', attributeOutage("14th St elevator", m("12TH")), {
@@ -77,7 +114,7 @@ check('RICH "street entrance" -> segment only (two candidates)', attributeOutage
 });
 check('12TH "Station" -> unattributed', attributeOutage("Station", m("12TH")), null);
 
-const total = 25;
+const total = 35;
 if (failures) {
   console.error(`\n  ${failures} check(s) FAILED\n`);
   process.exitCode = 1;
