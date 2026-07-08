@@ -231,7 +231,27 @@ parking lot). A station is accessible only if **every** segment is up.
   a different station and back to reach the other one — not a real backup.
   Verified via `npm run poll:bart:dry`: 95 elevators, all 50 stations
   modeled across 66 chains, 0 structural errors. `demo:access` extended with
-  new regression coverage (35 checks total) for the corrected/new patterns.
+  new regression coverage for the corrected/new patterns.
+- **BART live-outage ATTRIBUTION is a separate, still-open problem from
+  redundancy curation above** — see SPEC.md's BART section ("Attribution —
+  status as of 2026-07-08") for the full writeup; summary: BART's live
+  advisory has no per-elevator ID anywhere (checked 3 official sources), so
+  a bare "Station" advisory can never be auto-attributed by any text-
+  matching approach — structural, not a pattern-coverage gap.
+  `attributeOutageAcrossChains()` (`accessibility.ts`) fixed a real bug
+  (adapter only checked a station's first chain) and `matchHints` were
+  redesigned for all 12 per-direction stations, but only 2 (Milpitas,
+  Hayward) plus 12th St.'s "convention center" hint are CONFIRMED against a
+  real live advisory — the other 10 stations' hints are unverified guesses
+  at BART's live phrasing (built from the outage-options page's wording,
+  which turned out NOT to match the live feed's actual wording for
+  Milpitas). Two manual DB corrections were needed this session (Richmond,
+  Milpitas) precisely because nothing auto-attributes a bare "Station" text.
+  `src/catalog/attribution-overrides.ts` (mirrors `redundancy-overrides.ts`)
+  keeps a manual fix from getting clobbered by the next poll — has NO expiry
+  and must be pruned once the outage resolves. Bryce explicitly asked to
+  hold the core unsolved problem open, not have a fix proposed — see
+  `/liftwatch-bart-attribution` for the resume-work command.
 
 ## Conventions
 

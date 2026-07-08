@@ -395,73 +395,69 @@ Deferred sources (not parsed):
   per-elevator, dated, prose (states redundancy in English). Brittle to parse;
   largely superseded in spirit by the outage-options page above.
 
-**Open problem: no per-elevator ID exists anywhere in BART's public data**
-(checked 2026-07-08, three official sources: the live `bsa.aspx?cmd=elev`
-advisory's raw JSON — no fields beyond free text; the outage-options page's
-raw HTML — no hidden ids; BART's own "Elevator Dimension Guide" PDF
-(`bart.gov/sites/default/files/docs/AccessibilityBARTElevatorDimensions_0.pdf`)
-— catalogs every elevator by descriptive route ("Concourse/All Platforms"),
-never a number). This means an advisory whose text is just the bare word
-"Station" (common — no station name, no leg, nothing) can NEVER be
-auto-attributed by any text-matching approach, no matter how many match
-patterns are added — there's nothing in the text to match. Confirmed live
-2026-07-08: Richmond's `RICH-UNSPECIFIED` outage (open since 2026-07-04) was
-manually re-attributed to `RICH-PLAT` after Bryce confirmed in person which
-elevator it actually was (outage_events.id=42, unit_id updated directly,
-attributed:true set). **Known side effect of a manual fix like this — now
-mitigated (2026-07-08)**: without intervention, the NEXT poll would have
-opened a NEW, separate event on `RICH-UNSPECIFIED` for the same real-world
-outage (double-counting it under two units) while closing the manually-fixed
-`RICH-PLAT` event (the adapter never reports `RICH-PLAT` down specifically,
-so it wouldn't appear in that poll's "currently out" set) — traced exactly in
-`ingest.ts`'s event-derivation logic before it could happen. Fixed with
+**Attribution — status as of 2026-07-08 end of session.** BART's live
+`bsa.aspx?cmd=elev` advisory is the ONLY real-time signal, and it is free
+text with no structured elevator field anywhere — confirmed by checking three
+official sources (the live advisory's raw JSON, the outage-options page's raw
+HTML, and BART's own "Elevator Dimension Guide" PDF at
+`bart.gov/sites/default/files/docs/AccessibilityBARTElevatorDimensions_0.pdf`);
+none contains a numeric or otherwise stable per-elevator ID, only descriptive
+route names. So the ceiling on automatic attribution is always going to be
+"can we recognize enough of the free text," never "look up an ID."
+
+*What's shipped and working*: `attributeOutageAcrossChains()`
+(`src/lib/accessibility.ts`) tries every independent chain at a station and
+attributes only when EXACTLY ONE chain's `matchHints` matched — fixing a real
+bug where the adapter only ever checked a station's first chain (a stale
+"no BART station has more than one chain" comment, true when written, false
+after this session curated 13 multi-chain per-direction stations). Two
+stations — **Milpitas and Hayward** — have their `matchHints` CONFIRMED
+against a real live advisory (Milpitas: "SF/East Bay" regional shorthand,
+caught and fixed by testing before shipping; Hayward: "SF/Richmond").
+**12th St.'s "convention center" hint is also confirmed** (4 of BART's 11
+historical events used that exact phrase, found by mining the archive).
+
+*What's shipped but UNVERIFIED*: the other 10 per-direction stations (of 12
+total — DELN, PLZA, FTVL, PHIL, SANL, UCTY, WCRK, WOAK, MCAR, DALY; see
+`bart-station-models.ts`) have `matchHints` built from the outage-options
+page's wording only, with no real live advisory yet observed to confirm BART
+phrases it the same way. They may already work, may need the same kind of
+regional-shorthand correction Milpitas needed, or may never match — unknown
+until a real example appears in `outage_events.reason`.
+
+*What's still genuinely unsolved*: any advisory that is just the bare word
+"Station" — no direction, no destination, nothing — can NEVER be attributed
+by ANY text-matching approach, confirmed and structural, not a gap in
+pattern coverage. True for all single-chain stations always, and for any
+per-direction station whose real phrasing isn't the confirmed kind. Three
+candidate directions were surfaced and explicitly NOT pursued (Bryce asked to
+hold this open, not to have a fix proposed): (a) a smarter guessing
+heuristic — rejected, violates the project's never-guess-a-specific-elevator
+rule and would be wrong at multi-SPOF stations; (b) a semi-manual curation
+queue generalizing "assumed → curated" to "unspecified → attributed",
+surfaced for human review rather than auto-applied; (c) a different BART data
+source, not yet found despite three checked.
+
+*Manual corrections made this session* (both required because BART's own
+advisory gave no way to attribute automatically): Richmond's `RICH-PLAT`
+outage (open since 2026-07-04, confirmed by Bryce in person) and Milpitas's
+`MLPT-PLAT-2` outage (a `started_at` correction after a live-poll cutover
+artifact, not an attribution correction). Richmond's fix required
 `src/catalog/attribution-overrides.ts` (mirrors `redundancy-overrides.ts`'s
-pattern): redirects the ambiguous unit id to the confirmed one BEFORE
-ingest's open/refresh/close decision, so future polls find and refresh the
-SAME event instead of duplicating or closing it. This is explicitly NOT a
-standing guess — the override has no expiry and must be manually removed once
-the outage resolves (poll.ts now warns when it goes quiet), or it could
-silently mis-attribute a future, unrelated Richmond outage. This only patches
-the SYMPTOM (a manual fix getting clobbered); it does not make attribution
-itself automatic — that remains unsolved. **Bryce wants to interrogate this
-more and look for a more robust solution**
-before this becomes a recurring manual chore. **Progress made 2026-07-08,
-still not fully solved**: investigating "a more robust solution" (per Bryce's
-ask) surfaced two real, fixable bugs rather than requiring a guess:
-(1) the BART adapter's attribution only ever checked a station's FIRST chain
-(`models.get(abbr)?.[0]`, a stale comment said "no BART station has more than
-one chain today" — true when written, false after this session added 13
-multi-chain per-direction stations) — any advisory for a station's SECOND
-chain was silently never even attempted. Fixed with `attributeOutageAcrossChains()`
-in `accessibility.ts` (system-agnostic: tries every chain, returns a result
-only when exactly ONE matched — two chains matching is exactly as ambiguous
-as zero, same never-guess rule). (2) The curated `matchHints` (borrowed from
-the outage-options page's wording, e.g. "platform 1") don't match BART's LIVE
-advisory text, which uses different — sometimes regional-shorthand — phrasing.
-Redesigned all 24 per-direction elevators' hints using each chain's own
-already-curated destination names (verified disjoint per station first, so no
-hint can ambiguously match two chains at once), and added "convention center"
-to 12th St.'s 11th St. elevator after mining the outage_events archive found
-4 of BART's 11 historical events (36%) used that exact phrase. **Caught a real
-error in this fix by testing against the live feed before shipping**: assumed
-the live feed uses the same terminus names as the detailed page, but
-Milpitas's real live outage read "SF/East Bay" — a regional shorthand the
-initial hints didn't cover (fixed). Only Milpitas and Hayward have a
-CONFIRMED live example validating their hints — the other 8 per-direction
-stations' hints are unverified against real live-feed phrasing, only against
-the outage-options page's own wording, and may need similar correction once
-real examples accumulate (mining the growing archive, same technique as TfL's
-alert-evidence system, is the natural way to find those examples over time).
-This meaningfully reduces — but does not eliminate — the "bare word Station"
-problem: many BART advisories DO carry real direction/destination text this
-now catches; some still don't. **Still open**: what to do when an advisory is
-genuinely just "Station" with zero distinguishing content at all (true for
-single-chain stations, and for any per-direction station whose live phrasing
-isn't yet confirmed) — no committed direction yet on candidate angles (a) a
-smarter guessing heuristic (still rejected — goes against the never-guess
-rule, wrong at multi-SPOF stations); (b) a semi-manual curation queue
-generalizing "assumed -> curated" to "unspecified -> attributed", surfaced for
-a human; (c) a different BART data source, not yet found.
+pattern exactly) to survive future polls — it has no expiry and MUST be
+manually removed once that outage resolves (`RICH-PLAT`'s event closes),
+or it risks silently mis-attributing a future, unrelated Richmond outage.
+`poll.ts` warns when the override's source id stops being reported, as a
+reminder to prune it. Check whether it's still needed before touching BART
+attribution again.
+
+*Progressive angle worth carrying forward*: `outage_events.reason` is
+archived verbatim by every poll (nothing new to build), and mining it twice
+this session (12th St.'s "convention center", the full historical phrasing
+survey) is what found the real, confirmable examples above. The TfL
+alert-evidence system (`src/site/tfl-alert-evidence.ts`) is the precedent for
+turning this into a re-runnable, growing-over-time tool rather than one-off
+manual queries — nothing built yet for BART specifically.
 
 ### MBTA feeds (in use) — genuinely per-elevator
 
