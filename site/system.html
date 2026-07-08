@@ -385,6 +385,22 @@ function formatHours(hours) {
   return days > 0 ? `${months}MO ${days}D` : `${months}MO`;
 }
 
+// Escalate a whole-day count for legibility, mirroring formatHours' ramp so
+// every day-count column reads the same way: plain days under a month, months
+// up to a year, then years — "1201D" reads "3Y 3MO". 0 stays "0D" (the
+// sentinel for "currently out"/"blacked out now").
+function formatDays(days) {
+  if (days < 30) return `${days}D`;
+  if (days < 365) {
+    const months = Math.floor(days / 30);
+    const d = days % 30;
+    return d > 0 ? `${months}MO ${d}D` : `${months}MO`;
+  }
+  const years = Math.floor(days / 365);
+  const months = Math.floor((days % 365) / 30);
+  return months > 0 ? `${years}Y ${months}MO` : `${years}Y`;
+}
+
 // Information cells whose text overflows become right-to-left marquees — an
 // aria-hidden duplicate trails the text and the pair slides left by exactly
 // one copy-width (incl. the gap padding), so the wrap is seamless. Under
@@ -474,7 +490,7 @@ if (!id) {
         `<td>${esc(o.unitId)}</td>` +
         `<td class="white">${esc(o.station)}</td>` +
         `<td${o.planned ? ' class="dim"' : ""}>${esc(status)}</td>` +
-        `<td class="num${o.days > 180 ? " red" : ""}">${o.days}D</td>` +
+        `<td class="num${o.days > 180 ? " red" : ""}">${formatDays(o.days)}</td>` +
         `<td class="dim">${esc(ret)}</td>` +
         `<td class="info"><div class="scroll-cell"><span>${chips}${esc(infoBits.join(" · ") || "—")}</span></div></td>` +
         `<td><button class="expand" aria-expanded="false" aria-label="Details for ${esc(o.unitId)} at ${esc(o.station)}">▸</button></td>`;
@@ -519,7 +535,7 @@ if (!id) {
         `<td class="white">${esc(o.station)}</td>`,
         `<td>${isOff ? '<span class="chip red">OFFLINE</span>' : `<span class="chip green">RESTORED</span> <span class="dim">${esc(fmtWhen(o.restored) || "")}</span>`}</td>`,
         `<td class="dim">${esc(fmtWhen(o.since) || "—")}</td>`,
-        `<td class="num${isOff ? " red" : ""}">${isOff ? `${o.days}D` : (o.durationHours >= 48 ? Math.round(o.durationHours / 24) + "D" : o.durationHours + "H")}</td>`,
+        `<td class="num${isOff ? " red" : ""}">${isOff ? formatDays(o.days) : formatHours(o.durationHours)}</td>`,
       ]);
     }
 
@@ -589,7 +605,7 @@ if (!id) {
       simpleRow(stb, [
         `<td class="num dim">${i + 1}</td>`,
         `<td class="white">${esc(s.name)}</td>`,
-        `<td class="num${s.blackedOutNow ? " red" : ""}">${s.days}D</td>`,
+        `<td class="num${s.blackedOutNow ? " red" : ""}">${formatDays(s.days)}</td>`,
       ]);
     });
 
@@ -611,7 +627,7 @@ if (!id) {
         `<td class="num dim">${i + 1}</td>`,
         `<td class="info"><div class="scroll-cell"><span>${esc(u.unit)}</span></div></td>`,
         `<td class="white">${esc(u.station)}</td>`,
-        `<td class="num${u.downNow ? " red" : ""}">${u.days}D</td>`,
+        `<td class="num${u.downNow ? " red" : ""}">${formatDays(u.days)}</td>`,
       ]);
     });
 
