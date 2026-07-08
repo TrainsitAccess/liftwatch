@@ -303,6 +303,18 @@ function buildSystemDetail(systemId: string) {
   // silently dropped it from every board below except "Currently Broken
   // Elevators" (which reads events directly, not through this list).
   const systemUnits = unitsBySystem.get(systemId) ?? [];
+  // A unit permanently RETIRED (superseded by a re-model, e.g. BART's old
+  // per-station placeholder units after 2026-07-08's real per-elevator
+  // curation) is different from a temporarily-inactive-but-relevant one like
+  // MTA's capital replacement above — the distinguishing signal is an OPEN
+  // event: MTA's case needs one to justify staying visible; a truly retired
+  // unit has none. Exclude is_active:false units with no open event from the
+  // all-time/structural boards below (SPOF, most-broken, uptime streak) so a
+  // retired placeholder can't crowd out the real units that replaced it or
+  // claim a fake honor-board "streak" — but keep any is_active:false unit
+  // that DOES have an open event, preserving the MTA behavior exactly.
+  const openUnitIds = new Set(systemEvents.filter((e) => e.ended_at == null).map((e) => e.unit_id as string));
+  const isRetired = (u: (typeof systemUnits)[number]) => u.is_active === false && !openUnitIds.has(u.id as string);
 
   // --- Curated multi-chain stations (see station-models.ts) ---
   // A physical station can have more than one INDEPENDENT access chain
@@ -636,6 +648,7 @@ function buildSystemDetail(systemId: string) {
   const unitOutageCount = new Map<string, number>();
   for (const e of systemEvents) unitOutageCount.set(e.unit_id as string, (unitOutageCount.get(e.unit_id as string) ?? 0) + 1);
   const mostBrokenUnits = systemUnits
+    .filter((u) => !isRetired(u))
     .map((u) => ({
       unit: (u.description as string) || (u.external_id as string),
       station: displayStationName(u.station_id as string | null, u.external_id as string | undefined),
@@ -654,7 +667,8 @@ function buildSystemDetail(systemId: string) {
   }
   const uptimeStreak = systemUnits
     // An offline unit can't earn an honor streak — nobody can verify it's up.
-    .filter((u) => !offlineOpenUnitIds.has(u.id as string))
+    // A retired unit can't either — it's not a real tracked elevator anymore.
+    .filter((u) => !offlineOpenUnitIds.has(u.id as string) && !isRetired(u))
     .map((u) => {
       const unitEvents = eventsByUnit.get(u.id as string) ?? [];
       const downNow = unitEvents.some((e) => e.ended_at == null);
@@ -677,6 +691,7 @@ function buildSystemDetail(systemId: string) {
   // elevator it owns.
   const spofCountByStation = new Map<string, number>();
   for (const u of systemUnits) {
+    if (isRetired(u)) continue;
     if (!confirmedSoleAccess(u)) continue;
     const sid = u.station_id as string | null;
     if (!sid) continue;
