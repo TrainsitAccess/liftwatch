@@ -3,7 +3,7 @@
   "name": "TfL",
   "label": "TfL (London)",
   "timezone": "Europe/London",
-  "generatedAt": "2026-07-08T18:51:21.916Z",
+  "generatedAt": "2026-07-08T18:57:30.965Z",
   "currentlyBroken": [
     {
       "station": "Willesden Junction (Route 1)",
@@ -147,12 +147,12 @@
       "reason": "Hackney Wick: No Step Free Access - The lift to the westbound platform is out of service due to a fault. For step free access, use the ramp on Hepscott Road. Call us on 0343 222 1234 if you need help planning your journey.",
       "estimatedReturn": null,
       "soleAccess": true,
-      "severs": [
-        "Hackney Wick (Route 1)"
-      ],
+      "severs": [],
       "backups": [],
-      "rampAlternative": false,
-      "chainNotes": []
+      "rampAlternative": true,
+      "chainNotes": [
+        "TfL alert confirms a step-free alternative for Lift 1 (910GHACKNYW-Lift-1): the ramp on Hepscott Road."
+      ]
     },
     {
       "station": "Canary Wharf",
@@ -477,15 +477,6 @@
         "note": null
       },
       {
-        "name": "Hackney Wick (Route 1)",
-        "state": "no_access",
-        "downUnits": [
-          "910GHACKNYW-Lift-1"
-        ],
-        "offlineUnits": [],
-        "note": null
-      },
-      {
         "name": "Hounslow East",
         "state": "no_access",
         "downUnits": [
@@ -621,6 +612,15 @@
         ],
         "offlineUnits": [],
         "note": null
+      },
+      {
+        "name": "Hackney Wick (Route 1)",
+        "state": "reduced",
+        "downUnits": [
+          "910GHACKNYW-Lift-1"
+        ],
+        "offlineUnits": [],
+        "note": "TfL alert confirms a step-free alternative for Lift 1 (910GHACKNYW-Lift-1): the ramp on Hepscott Road."
       }
     ],
     "chainsModeled": 151
@@ -629,43 +629,43 @@
   "accessibilityBlackouts": [
     {
       "name": "Gospel Oak",
-      "hours": 90.15000666666667
+      "hours": 90.25252027777778
     },
     {
       "name": "Hackney Central",
-      "hours": 90.15000666666667
-    },
-    {
-      "name": "Hackney Wick (Route 1)",
-      "hours": 90.15000666666667
+      "hours": 90.25252027777778
     },
     {
       "name": "Finchley Central",
-      "hours": 90.15000666666667
+      "hours": 90.25252027777778
     },
     {
       "name": "Imperial Wharf",
-      "hours": 90.15000666666667
+      "hours": 90.25252027777778
     },
     {
       "name": "Willesden Junction (Route 1)",
-      "hours": 90.15000666666667
+      "hours": 90.25252027777778
     },
     {
       "name": "Moorgate (Route 2)",
-      "hours": 90.15000666666667
+      "hours": 90.25252027777778
     },
     {
       "name": "East India",
-      "hours": 90.15000666666667
+      "hours": 90.25252027777778
     },
     {
       "name": "Wembley Central",
-      "hours": 90.15000666666667
+      "hours": 90.25252027777778
     },
     {
       "name": "Wembley Park",
-      "hours": 90.15000666666667
+      "hours": 90.25252027777778
+    },
+    {
+      "name": "King's Cross St Pancras",
+      "hours": 90.25252027777778
     }
   ],
   "stepFreeStreak": [

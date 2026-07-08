@@ -314,9 +314,10 @@ against a reference photo):
   public data export.
 
 Deferred / parked (not on the critical path): TfL multi-chain review for the
-79 stations with branching/ambiguous topology (see §5's TfL section — the
-safe majority shipped 2026-07-08), TMB feed data-quality review (currently
-hidden), DB FaSta (Germany).
+85 stations with branching/ambiguous topology (see §5's TfL section — the
+safe majority shipped 2026-07-08, some now with alert-evidence hints from
+real down-elevator alerts as a review head start), TMB feed data-quality
+review (currently hidden), DB FaSta (Germany).
 
 ---
 
@@ -520,33 +521,72 @@ and the live disruptions endpoint.
   labeled — found by testing: Bank's Lift-8/Lift-9 form a clean 2-lift route
   separate from its tangled 8-lift core; without a label it would appear
   under the bare "Bank" name, indistinguishable from a fallback row about one
-  of the unmodeled lifts. Result: 167 chains across 140 of 201 lift-equipped
-  stations (83 components / 79 stations — all recognizable major
-  interchanges: Bank, King's Cross, Paddington, Stratford, Tottenham Court
-  Road, Victoria, Waterloo, Liverpool Street, Wembley Park, Farringdon,
-  Canary Wharf, and more — excluded to `chains-excluded.json` pending a
-  human review pass, same precedent as MTA's 9 hand-authored interchanges).
-  **Self-check** (`npm run check:tfl-chains`,
-  `src/checks/tfl-chains-check.ts`): every modeled elevator's chain-derived
-  redundancy must exactly equal its own `isRedundant` flag from
-  `lifts.json` — simpler than MTA's aggregate-across-chains check since
-  ambiguous topology is excluded entirely, so no elevator here spans more
-  than one chain. **Purely additive to the site display layer**: this only
-  feeds `build-data.ts`'s station-access / blackout / streak / SPOF boards
-  via `station-models.ts` — it does NOT touch the TfL adapter or `ingest.ts`,
-  so the archived per-unit `is_redundant`/`redundancy_source` stays exactly
-  as `tfl-import.mjs` already computes it (`pathways` source), unchanged.
-  Re-run `npm run tfl:chains` after re-importing TfL topology.
+  of the unmodeled lifts. A multi-level lift's `IntermediateAreas` landing
+  (41/569 lifts) ALSO counts as a real node for connectivity, not just
+  `FromAreas`/`ToAreas` — missed in the first pass, caught by cross-checking
+  live TfL alerts (below): King's Cross's Lift-A and Lift-B shared one live
+  alert, but Lift-A was (correctly) excluded as part of a branching complex
+  while Lift-B was wrongly modeled as its own isolated safe chain — Lift-A's
+  intermediate stop is the exact node Lift-B starts from, so they're actually
+  the same complex. A multi-edge component touching any intermediate landing
+  is excluded (the simple 2-node path model can't route through a 3rd stop),
+  same conservative treatment as a multi-destination edge. Result (after the
+  fix): 151 chains across 132 of 201 lift-equipped stations; 85 stations (93
+  components) — all recognizable major interchanges: Bank, King's Cross,
+  Paddington, Stratford, Tottenham Court Road, Victoria, Waterloo, Liverpool
+  Street, Wembley Park, Farringdon, Canary Wharf, and more — excluded to
+  `chains-excluded.json` pending a human review pass, same precedent as
+  MTA's 9 hand-authored interchanges. **Self-check**
+  (`npm run check:tfl-chains`, `src/checks/tfl-chains-check.ts`): every
+  modeled elevator's chain-derived redundancy must exactly equal its own
+  `isRedundant` flag from `lifts.json` — simpler than MTA's
+  aggregate-across-chains check since ambiguous topology is excluded
+  entirely, so no elevator here spans more than one chain. **Purely additive
+  to the site display layer**: this only feeds `build-data.ts`'s
+  station-access / blackout / streak / SPOF boards via `station-models.ts` —
+  it does NOT touch the TfL adapter or `ingest.ts`, so the archived per-unit
+  `is_redundant`/`redundancy_source` stays exactly as `tfl-import.mjs`
+  already computes it (`pathways` source), unchanged. Re-run
+  `npm run tfl:chains` after re-importing TfL topology.
+- **Alert-evidence enrichment** (2026-07-08, `src/site/tfl-alert-evidence.ts`
+  → `src/catalog/tfl-data/alert-evidence.json`, `npm run tfl:alert-evidence`):
+  TfL's own outage alert text — already archived verbatim in
+  `outage_events.reason` every poll, no new capture needed — sometimes
+  confirms a real step-free alternative our lift-only topology graph can't
+  see, because it's a ramp or a different entrance, not another lift (e.g.
+  Hackney Wick: "use the ramp on Hepscott Road"; East India: "use the
+  entrance on Blackwall Way"). Per Bryce's instruction, TfL's own words are
+  ground truth: a confirmed mention (matched via a small set of phrase
+  patterns — "use the X", "step-free access is still available", "please use
+  X for step-free access") marks that segment `stepFreeAlternative` and
+  records the fact in the chain's `note`, in TfL's own words, tracked as a
+  documented `evidenceExceptions` entry (mirrors MTA's
+  `REDUNDANCY_EXCEPTIONS` — expected to disagree with `lifts.json`'s narrow
+  "another identical-route lift" concept, so the self-check exempts it
+  instead of failing). This is deliberately asymmetric: a confirmed mention
+  only ever ADDS a bypass (reduces a false "no access" claim), so it's safe
+  to apply automatically; the ABSENCE of a mentioned alternative is never
+  treated as proof of non-redundancy (TfL just didn't publish one that time)
+  — it stays informational only. For a station whose whole topology is still
+  excluded, any evidence found for its lifts is attached as an
+  `evidenceHints` entry in `chains-excluded.json` instead — a real head start
+  for the eventual human review, not a resolution (e.g. King's Cross's
+  Lift-A/B evidence names "London Underground connections via Farringdon";
+  Wembley Park's Lift-5 names a ramp on Bridge Road). **Progressive by
+  design**: re-running this after more polls/outages naturally absorbs more
+  evidence as the archive grows — no new capture mechanism, no manual
+  per-outage audit needed going forward.
 - **Deferred**: `RampRoutes.csv`/`SameLevelPaths.csv` (non-lift step-free
-  paths — would extend `accessibility.ts` to detect "a ramp bypasses this
-  broken lift entirely," a strictly stronger redundancy signal than lift-to-
-  lift matching); `Toilets.csv`/`Platforms.csv`/`PlatformServices.csv`
-  (out of scope, elevators-only); a live re-fetch URL for topology, if one is
-  ever found, would let the static snapshot self-refresh instead of manual
-  re-import; a human review pass over the 79 excluded interchange stations
-  (`chains-excluded.json`) to hand-author their chains, mirroring MTA's
-  interchange walkthrough — likely including real line-name labels once a
-  human confirms the area-code semantics station by station.
+  paths — largely superseded in spirit by alert-evidence enrichment above,
+  though that only covers routes that have actually gone down at least once;
+  the static CSVs would give full coverage upfront); `Toilets.csv`/
+  `Platforms.csv`/`PlatformServices.csv` (out of scope, elevators-only); a
+  live re-fetch URL for topology, if one is ever found, would let the static
+  snapshot self-refresh instead of manual re-import; a human review pass over
+  the 85 excluded interchange stations (`chains-excluded.json`, some now with
+  alert-evidence hints as a head start) to hand-author their chains,
+  mirroring MTA's interchange walkthrough — likely including real line-name
+  labels once a human confirms the area-code semantics station by station.
 
 ### CTA feeds (in use) — station-level, discovered inventory
 

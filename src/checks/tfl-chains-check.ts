@@ -11,6 +11,10 @@ import { allElevators, stationAccessible, type StationModel } from "../lib/acces
 // already trusts (redundancy_source: "pathways"). Unlike MTA, no elevator here
 // spans more than one chain (ambiguous/branching topology is excluded entirely
 // by the generator), so this is a direct 1:1 check, not an aggregate one.
+// A mismatch is expected and fine when the elevator is in evidenceExceptions —
+// a TfL alert confirmed a real step-free alternative (a ramp, a different
+// entrance) that lifts.json's lift-only topology can't see; mirrors MTA's
+// REDUNDANCY_EXCEPTIONS pattern exactly.
 // Run: npm run check:tfl-chains
 
 interface CatalogLift { id: string; isRedundant: boolean }
@@ -19,7 +23,9 @@ const liftById = new Map(lifts.map((l) => [l.id, l]));
 
 const data = JSON.parse(readFileSync(new URL("../catalog/tfl-data/chains.json", import.meta.url), "utf8")) as {
   models: StationModel[];
+  evidenceExceptions?: Record<string, string>;
 };
+const evidenceExceptions = data.evidenceExceptions ?? {};
 const excluded = JSON.parse(readFileSync(new URL("../catalog/tfl-data/chains-excluded.json", import.meta.url), "utf8")) as {
   excludedStationCount: number;
   excluded: { station: string; stationId: string }[];
@@ -33,16 +39,18 @@ const ok = (cond: boolean, msg: string): void => {
 
 console.log("\n  Redundancy consistency (derived vs lifts.json's own isRedundant, 1:1 — no chain overlap by construction):");
 let checked = 0;
+let exceptionsUsed = 0;
 for (const m of data.models) {
   for (const el of allElevators(m)) {
     const catalogLift = liftById.get(el.externalId);
     if (!catalogLift) { ok(false, `${m.stationExternalId}${m.chainLabel ?? ""} ${el.externalId}: not in lifts.json`); continue; }
     const derived = stationAccessible(m, new Set([el.externalId]));
     if (derived === catalogLift.isRedundant) { checked++; continue; }
-    ok(false, `${m.stationExternalId}${m.chainLabel ?? ""} ${el.externalId}: derived redundant=${derived} but catalog isRedundant=${catalogLift.isRedundant}`);
+    if (el.externalId in evidenceExceptions) { exceptionsUsed++; continue; }
+    ok(false, `${m.stationExternalId}${m.chainLabel ?? ""} ${el.externalId}: derived redundant=${derived} but catalog isRedundant=${catalogLift.isRedundant} with no documented exception`);
   }
 }
-ok(checked > 0, `${checked} elevators consistent with their own catalog isRedundant flag`);
+ok(checked > 0, `${checked} elevators consistent with their own catalog isRedundant flag (${exceptionsUsed} documented alert-evidence exceptions applied)`);
 
 console.log("\n  No elevator appears in more than one chain (the generator's core safety invariant):");
 const chainCountByElevator = new Map<string, number>();
@@ -69,6 +77,16 @@ const labelsFor = (stationId: string) => chainsFor(stationId).map((m) => m.chain
 // the scouting pass: a fault on one lift only affects "the Bakerloo line and
 // the Lioness line", not the whole station).
 ok(JSON.stringify(labelsFor("HUBWIJ")) === JSON.stringify(["(Route 1)", "(Route 2)"]), "Willesden Junction splits into two independent routes");
+
+// Alert-evidence enrichment: Hackney Wick's Lift-1 outage alert names a real
+// ramp bypass ("use the ramp on Hepscott Road") that lifts.json's lift-only
+// topology can't see. This stays true even after that outage closes — the
+// archive keeps closed events' reason text permanently.
+const hackneyWick = chainsFor("910GHACKNYW").find((m) => m.chainLabel?.trim() === "(Route 1)");
+ok(
+  hackneyWick?.segments.some((s) => s.stepFreeAlternative) === true && "910GHACKNYW-Lift-1" in evidenceExceptions,
+  "Hackney Wick's Lift-1 got a TfL alert-confirmed step-free alternative applied",
+);
 
 // Known major interchanges (branching hub topology) must have their complex
 // core excluded pending a human review pass — same precedent as MTA's

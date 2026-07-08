@@ -172,12 +172,31 @@ parking lot). A station is accessible only if **every** segment is up.
   additive to the site display layer** — feeds `build-data.ts`'s
   station-access/blackout/streak/SPOF boards only; does NOT touch the TfL
   adapter or `ingest.ts`, so archived per-unit redundancy stays exactly as
-  `tfl-import.mjs` computes it (`pathways` source), unchanged. Result: 167
-  chains across 140 of 201 lift-equipped stations; 79 stations (all
-  recognizable major interchanges — Bank, King's Cross, Paddington,
-  Stratford, Tottenham Court Road, Victoria, Waterloo, and more) are excluded
-  pending a human review pass, same precedent as MTA's 9 hand-authored
-  interchanges (see SPEC.md's TfL section for the full writeup).
+  `tfl-import.mjs` computes it (`pathways` source), unchanged. A multi-level
+  lift's `IntermediateAreas` landing counts as a real connectivity node too
+  (missed in the first pass — caught by cross-checking live TfL alerts, below
+  — King's Cross's Lift-B was wrongly modeled as isolated when it's actually
+  linked to Lift-A/C/D through a shared landing). Result: 151 chains across
+  132 of 201 lift-equipped stations; 85 stations (all recognizable major
+  interchanges — Bank, King's Cross, Paddington, Stratford, Tottenham Court
+  Road, Victoria, Waterloo, and more) are excluded pending a human review
+  pass, same precedent as MTA's 9 hand-authored interchanges (see SPEC.md's
+  TfL section for the full writeup).
+- **TfL alert-evidence enrichment, progressive by design** (2026-07-08,
+  `npm run tfl:alert-evidence` → `src/site/tfl-alert-evidence.ts`): mines
+  TfL's own outage alert text — already archived verbatim in
+  `outage_events.reason` every poll — for confirmed step-free alternatives
+  (a ramp, a different entrance) our lift-only topology graph can't see.
+  Per Bryce's instruction, TfL's own words are ground truth: a confirmed
+  mention marks the segment `stepFreeAlternative` + records it in the
+  chain's `note`, tracked as a documented `evidenceExceptions` entry (mirrors
+  MTA's `REDUNDANCY_EXCEPTIONS`). Deliberately asymmetric: a confirmed
+  mention only ever ADDS a bypass (safe to auto-apply); absence of a mention
+  is never treated as proof of non-redundancy, only informational. For an
+  excluded (unmodeled) station, any evidence found attaches as an
+  `evidenceHints` entry in `chains-excluded.json` — a head start for the
+  eventual human review, not a resolution. Re-running after more polls
+  absorbs more evidence automatically — no per-outage manual audit needed.
 
 ## Conventions
 

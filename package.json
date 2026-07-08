@@ -35,6 +35,7 @@
     "check:tfl-chains": "tsx src/checks/tfl-chains-check.ts",
     "mta:chains": "node scripts/mta-chains.mjs",
     "tfl:chains": "node scripts/tfl-chains.mjs",
+    "tfl:alert-evidence": "tsx src/site/tfl-alert-evidence.ts",
     "db:status": "tsx src/checks/db-status.ts",
     "site:data": "tsx src/site/build-data.ts",
     "site:serve": "node scripts/serve.mjs",
