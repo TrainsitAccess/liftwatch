@@ -248,27 +248,50 @@ against a reference photo):
 - **Departure boards** for live + leaderboard views: amber LED rows on black
   strips, white sans-serif column headers, legibility-first (crisp mono type,
   no heavy pixel-grid effects). Outages read as departures: unit | station |
-  status (reason) | time out | estimated return | information. The
-  information column shuttle-scrolls when it overflows (paused on
-  hover/focus); every row expands to a detail strip with the full reason,
-  agency-local timestamps, access impact (severed routes / working backups /
-  ramp coverage) and the curated route notes. A bottom strip carries a live
-  clock + rotating ticker. Systems rank by **unplanned** share; scheduled
-  work has its own column and its own board. The homepage pairs the systems
-  board with **two longest-outage boards split by cause** (2026-07-07):
-  unplanned breakdowns (the shame metric) and planned closures, each ranked by
-  duration within its cause — so a wall of multi-year planned capital
-  replacements (161 St, Jamaica-179) can't bury the longest genuine breakdown,
-  while planned closures that strand a sole-access station for months stay
-  visible. Long durations **escalate for legibility** — plain days under a
-  month, then months, then years, so "1201D" reads "3Y 3MO" — the same ramp on
-  every day-count column (out, streaks, offline). New live boards: station
-  access (NO ACCESS / REDUCED per modeled route) and scheduled work. All times
-  are shown in the system's own IANA timezone (station time, not viewer time).
-  Respect `prefers-reduced-motion` (no shuttle/ticker/blink; ellipsis +
-  static text). Accessibility is the markup itself — real `<table>`s with
-  captions and scoped headers, `aria-expanded` row toggles, skip link,
-  focus-visible styles; the old duplicated `#sr-data` layer is gone.
+  status (reason) | time out | estimated return | information. A cell with
+  **more than 7 words** becomes a continuous right-to-left marquee (an
+  aria-hidden duplicate trails the visible text so the wrap is seamless;
+  paused on hover/focus) — a deterministic word-count trigger rather than
+  pixel overflow, which shifts with width/zoom. This applies to both the
+  information column and the **status column** (2026-07-08): TfL has no
+  structured status, so its whole free-text alert (30-40 words) lands there
+  and needs to scroll like any other long cell; short statuses ("Repair",
+  "Capital Replacement") stay put. A cell that's merely too wide without being
+  long enough to marquee ellipsizes rather than hard-clipping — the full text
+  is always in the row's expand strip. Every row expands to a detail strip
+  with the full reason, agency-local timestamps, access impact (severed
+  routes / working backups / ramp coverage) and the curated route notes. A
+  bottom strip carries a live clock + rotating ticker. Systems rank by
+  **unplanned** share; scheduled work has its own column and its own board.
+  The homepage pairs the systems board with **two longest-outage boards split
+  by cause** (2026-07-07): unplanned breakdowns (the shame metric) and
+  planned closures, each ranked by duration within its cause — so a wall of
+  multi-year planned capital replacements (161 St, Jamaica-179) can't bury
+  the longest genuine breakdown, while planned closures that strand a
+  sole-access station for months stay visible. Long durations **escalate for
+  legibility** — plain days under a month, then months, then years, so
+  "1201D" reads "3Y 3MO" — the same ramp on every day-count column (out,
+  streaks, offline). New live boards: station access (NO ACCESS / REDUCED per
+  modeled route) and scheduled work. All times are shown in the system's own
+  IANA timezone (station time, not viewer time). Respect
+  `prefers-reduced-motion` (no marquee/ticker/blink; ellipsis + static text).
+  **Responsive** (2026-07-08): below 940px each table row collapses into a
+  stacked card — every cell on its own line, labelled from its column header
+  (a generic `labelCells()` reads each table's `<thead>` and stamps
+  `data-label`, so it covers all board types with no per-board code) — so
+  nothing is cut off or requires horizontal scrolling on a phone. Above the
+  breakpoint the station column wraps to a second line rather than forcing
+  the table wide. The breakpoint sits at 940px rather than a conventional
+  tablet width because the widest board (a system with long unit ids plus two
+  marqueeing columns) needs that much room before its station column
+  shrinks to a sliver — cards take over below that instead. Accessibility is
+  the markup itself — real `<table>`s with captions and scoped headers,
+  `aria-expanded` row toggles, skip link, focus-visible styles; the old
+  duplicated `#sr-data` layer is gone. (Known tradeoff: the mobile card layout
+  sets `display: block` on table elements, which drops their native table
+  semantics for screen readers at that viewport — sighted mobile users get the
+  `data-label` prefixes, and the `<caption>` is retained; a documented,
+  common pattern for responsive tables, not a full accessible-table solution.)
 - **Editorial** treatment for methodology and story pages.
 - Deliberately not the generic-AI look: real type hierarchy, monospace numerals,
   one restrained status ramp, dense tables over airy cards.
