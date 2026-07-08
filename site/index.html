@@ -55,7 +55,7 @@
   .board-head .side { color: var(--dim); font-size: 12px; }
 
   .tablewrap { overflow-x: auto; }
-  table.led { width: 100%; border-collapse: separate; border-spacing: 0 5px; min-width: 700px; }
+  table.led { width: 100%; border-collapse: separate; border-spacing: 0 5px; min-width: 680px; }
   table.led thead th {
     text-align: left; font-size: 12px; font-weight: 700; color: var(--white);
     text-transform: lowercase; letter-spacing: .04em; padding: 2px 10px 6px;
@@ -74,6 +74,9 @@
   table.led tbody tr.row.clickable:hover td, table.led tbody tr.row:has(:focus-visible) td { background: var(--strip-hover); }
   td .dim, .led .dim { color: var(--dim); font-weight: 500; }
   td.white, .led .white-cell { color: var(--white); }
+  /* Station/name cells may wrap to a second line so a long name never forces
+     the whole table to scroll horizontally on desktop. */
+  table.led tbody tr.row td.white { white-space: normal; overflow-wrap: anywhere; }
   td.red, .led .red-text { color: var(--red); }
   td.green { color: var(--green); }
   tr.row td a { color: inherit; text-decoration: none; }
@@ -91,8 +94,8 @@
      marquee. The text plus an aria-hidden duplicate slide left by exactly one
      copy-width, so the loop wraps seamlessly. Purely visual — screen readers
      see the text once; pauses on hover/focus, off under reduced motion. */
-  td.info { max-width: 320px; }
-  .scroll-cell { overflow: hidden; max-width: 320px; white-space: nowrap; }
+  td.info { max-width: 220px; }
+  .scroll-cell { overflow: hidden; max-width: 220px; white-space: nowrap; }
   .scroll-cell > span { display: inline-block; white-space: nowrap; }
   /* Not long enough to scroll but still wider than the cell → ellipsis, never
      a silent hard clip. Scrolling cells (.overflowing) are excluded. */
@@ -151,6 +154,51 @@
 
   footer { color: var(--dim); font-size: 12.5px; line-height: 1.7; }
   footer p { margin: 6px 0; }
+
+  /* Narrow screens: 7-8 columns can't fit without horizontal scroll, so each
+     row stacks into a card — every cell on its own line, labelled from its
+     column header (stamped as data-label at render). All information stays
+     visible; nothing is clipped or scrolled off the side. */
+  @media (max-width: 939px) {
+    .tablewrap { overflow-x: visible; }
+    table.led { display: block; width: 100%; min-width: 0; border-spacing: 0; }
+    table.led thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+    table.led tbody, table.led tr { display: block; }
+
+    table.led tbody tr.row { background: var(--strip); border-radius: 7px; padding: 6px 12px; margin-bottom: 9px; }
+    table.led tbody tr.row.clickable:hover td, table.led tbody tr.row:has(:focus-visible) td { background: none; }
+    table.led tbody tr.row.clickable:hover, table.led tbody tr.row:has(:focus-visible) { background: var(--strip-hover); }
+    table.led tbody tr.row td {
+      display: flex; align-items: baseline; justify-content: space-between; gap: 16px;
+      background: none; border-radius: 0; padding: 5px 0; white-space: normal;
+      overflow-wrap: anywhere; text-align: right; min-width: 0;
+    }
+    table.led tbody tr.row td + td { border-top: 1px solid var(--hairline); }
+    table.led tbody tr.row td::before {
+      content: attr(data-label); flex: 0 0 auto; text-align: left; white-space: nowrap;
+      color: var(--dim); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: 700; font-size: 10.5px; letter-spacing: .05em; text-transform: uppercase;
+    }
+    table.led tbody tr.row td[data-label=""] { justify-content: flex-end; border-top: 0; padding-top: 2px; }
+    table.led tbody tr.row td[data-label=""]::before { content: none; }
+    table.led tbody tr.row td:empty { display: none; }
+
+    /* marquee cells fill the rest of the card line */
+    td.info { max-width: none; }
+    .scroll-cell { max-width: 100%; }
+
+    /* detail strip spans the whole card */
+    table.led tbody tr.detail-row { display: block; margin: -5px 0 9px; }
+    table.led tbody tr.detail-row > td { display: block; }
+    .detail { grid-template-columns: 1fr; }
+
+    /* bottom strip stacks; clock shrinks */
+    .substrip { flex-direction: column; gap: 8px; align-items: stretch; }
+    .clock { font-size: 30px; justify-content: center; }
+    .ticker { justify-content: center; font-size: 13px; }
+    h1 { font-size: 24px; }
+    h1 .brand-sub { font-size: 18px; margin-left: 8px; }
+  }
 
   @media (prefers-reduced-motion: reduce) {
     .scroll-cell.overflowing > span { animation: none; }
@@ -319,6 +367,22 @@ function markOverflows(root) {
   }
 }
 
+// On narrow screens each row stacks into a card; stamp every cell with its
+// column header (from thead, minus any sr-only text) as data-label so the card
+// can print "LABEL   value". No-op visually on desktop.
+function labelCells(root) {
+  for (const table of root.querySelectorAll("table.led")) {
+    const labels = Array.from(table.querySelectorAll("thead th")).map((th) => {
+      const c = th.cloneNode(true);
+      c.querySelectorAll(".sr-only").forEach((s) => s.remove());
+      return c.textContent.trim();
+    });
+    for (const tr of table.querySelectorAll("tbody tr.row")) {
+      Array.from(tr.children).forEach((td, i) => td.setAttribute("data-label", labels[i] || ""));
+    }
+  }
+}
+
 // Expandable row: the toggle button controls the sibling detail row.
 let detailSeq = 0;
 function attachExpand(row, detailRow) {
@@ -422,6 +486,7 @@ fetch("./data.json").then((r) => r.json()).then((data) => {
   document.getElementById("unplanned-empty").hidden = split.unplanned.length > 0;
   document.getElementById("planned-empty").hidden = split.planned.length > 0;
 
+  labelCells(document);
   markOverflows(document);
   addEventListener("resize", () => markOverflows(document));
 
