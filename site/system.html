@@ -717,9 +717,24 @@ if (!id) {
     addEventListener("resize", () => markOverflows(document));
 
     // --- Bottom strip ---
+    // Same freshness treatment as index.html: relative "updated N min ago"
+    // re-derived every 30s, plus a periodic newer-snapshot check that reloads
+    // only when generatedAt actually changed (data refreshes via Netlify
+    // Blobs every poll, ~5 min, no redeploy).
     const t = new Date(data.generatedAt);
-    document.getElementById("asof").textContent =
-      `Data as of ${t.toLocaleString()} · refreshed every 10 minutes · board times are shown in the system's local time${TZ ? ` (${TZ.split("/").pop().replace("_", " ")})` : ""}.`;
+    function renderAsOf() {
+      const mins = Math.max(0, Math.round((Date.now() - t.getTime()) / 60000));
+      const ago = mins === 0 ? "just now" : mins === 1 ? "1 min ago" : mins < 120 ? `${mins} min ago` : `${Math.floor(mins / 60)}h ago`;
+      document.getElementById("asof").textContent =
+        `Data updated ${ago} (${t.toLocaleString()}) · refreshes every 5 minutes · board times are shown in the system's local time${TZ ? ` (${TZ.split("/").pop().replace("_", " ")})` : ""}.`;
+    }
+    renderAsOf();
+    setInterval(renderAsOf, 30000);
+    setInterval(() => {
+      fetch(`./systems/${encodeURIComponent(id)}.json`, { cache: "no-store" }).then((r) => r.json()).then((fresh) => {
+        if (fresh.generatedAt && fresh.generatedAt !== data.generatedAt) location.reload();
+      }).catch(() => {});
+    }, 150000);
     const unplanned = data.currentlyBroken.filter((o) => !o.planned).length;
     const noAccess = (data.stationAccess?.rows ?? []).filter((r) => r.state === "no_access").length;
     const messages = [

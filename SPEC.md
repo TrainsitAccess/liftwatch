@@ -29,8 +29,8 @@ schema reserves `unit_type` for it, but we do not ingest or display escalators.
 |---|---|
 | Stack | Supabase (Postgres, free tier) + static frontend |
 | Schema philosophy | Store **events, not raw snapshots** — keeps us on the free tier for years |
-| Poller | Netlify scheduled function every 10 min (`netlify/functions/poll-background.mts`); migrated off GitHub Actions cron 2026-07-09 — see below |
-| Hosting | Netlify (site `liftwatch`, auto-deploys `main`); a post-poll Build Hook rebuilds the site with `npm run site:data` after each poll |
+| Poller | Netlify scheduled function every 5 min (`netlify/functions/poll-background.mts`); migrated off GitHub Actions cron 2026-07-09 — see below |
+| Hosting | Netlify (site `liftwatch`, auto-deploys `main` on push only); post-poll data reaches the live site via Netlify Blobs (`data.mts` serves /data.json + /systems/*), NOT rebuilds — zero build-minutes per poll |
 | Backup / export | Weekly GitHub Action → dated XLSX + CSVs → Google Drive folder |
 | Scope | Elevators only; `unit_type` reserved so escalators are a future config flip |
 | Planned outages | Tracked separately; leaderboards rank on **unplanned** by default, with a toggle |
@@ -314,10 +314,16 @@ against a reference photo):
   poll logic (`src/pollSystem.ts`) is now shared by both the CLI and a Netlify
   **background** scheduled function (`netlify/functions/poll-background.mts`,
   15-min ceiling vs a regular function's 30s — headroom for 8 sequential feed
-  fetches). Each poll pings a Netlify Build Hook so the static site rebuilds
-  from the fresh archive. `poll.yml` is kept as a redundant fallback until
-  Netlify's schedule proves reliable (idempotent ingest makes double-polling
-  harmless). See CLAUDE.md's "Deployment (Netlify)" for the operational detail.
+  fetches), on a **5-min** cadence. Each poll rebuilds the site's data
+  payloads (`src/site/build-site-data.ts`, shared with the `site:data` CLI)
+  into Netlify **Blobs**, served at the site's existing /data.json +
+  /systems/* URLs by `netlify/functions/data.mts` — fresh data with zero
+  rebuilds (a build-hook-per-poll design was considered and dropped: ~288
+  builds/day, ~9x the free tier, to swap a 17 KB file). Pages show "updated
+  N min ago" from `generatedAt` and self-reload when a newer snapshot lands.
+  `poll.yml` is kept as a redundant fallback until Netlify's schedule proves
+  reliable (idempotent ingest makes double-polling harmless). See CLAUDE.md's
+  "Deployment (Netlify)" for the operational detail.
 - **Phase 1.5** ✓ — weekly backup (XLSX + JSON) to a private git repo (Google
   Drive abandoned: service accounts have no Drive quota).
 - **Phase 2** ~ — the site: **live departure-board view shipped** (per-system

@@ -3,13 +3,13 @@
   "name": "MBTA",
   "label": "MBTA (Boston)",
   "timezone": "America/New_York",
-  "generatedAt": "2026-07-09T00:16:53.401Z",
+  "generatedAt": "2026-07-09T22:49:25.147Z",
   "currentlyBroken": [
     {
       "station": "Winchester Center",
       "unitId": "749",
       "unit": "Winchester Center Elevator 749 (Track 1 (outbound platform) to Main St)",
-      "days": 106,
+      "days": 107,
       "since": "2026-03-24T21:17:46+00:00",
       "planned": false,
       "reason": "Winchester Center Elevator 749 (Track 1 (outbound platform) to Main St) unavailable",
@@ -24,7 +24,7 @@
       "station": "Framingham",
       "unitId": "51",
       "unit": "Framingham Elevator 51 (Waverly Street to pedestrian bridge)",
-      "days": 17,
+      "days": 18,
       "since": "2026-06-21T14:39:42+00:00",
       "planned": false,
       "reason": "The elevators at Framingham Station are out of service from Waverly to the pedestrian bridge, until further notice. Passengers who need assistance should go to the intersection of Rts 135/126 to cross the tracks safely.",
@@ -39,7 +39,7 @@
       "station": "Natick Center",
       "unitId": "750",
       "unit": "Natick Center Elevator 750 (Track 1 to street)",
-      "days": 7,
+      "days": 8,
       "since": "2026-07-01T14:22:05+00:00",
       "planned": false,
       "reason": "Natick Center Elevator 750 (Track 1 to street) is unavailable.",
@@ -54,7 +54,7 @@
       "station": "Natick Center",
       "unitId": "751",
       "unit": "Natick Center Elevator 751 (Track 2 to street)",
-      "days": 6,
+      "days": 7,
       "since": "2026-07-02T19:01:38+00:00",
       "planned": false,
       "reason": "Natick Center Elevator 751 (Track 2 to street) is unavailable.",
@@ -69,7 +69,7 @@
       "station": "Downtown Crossing",
       "unitId": "999",
       "unit": "Downtown Crossing Elevator 999 (Oak Grove platform to Alewife platform)",
-      "days": 3,
+      "days": 4,
       "since": "2026-07-05T17:11:00+00:00",
       "planned": true,
       "reason": "Downtown Crossing Elevator 999 (Oak Grove platform to Alewife platform) is unavailable due to maintenance.",
@@ -84,55 +84,10 @@
       "station": "Worcester",
       "unitId": "782",
       "unit": "Worcester Elevator 782 (Parking lot to pedestrian bridge )",
-      "days": 2,
+      "days": 3,
       "since": "2026-07-06T15:19:40+00:00",
       "planned": false,
       "reason": "Worcester Elevator 782 (Parking lot to pedestrian bridge ) is unavailable. Please use elevator in main building at 2 Washington Sq.",
-      "estimatedReturn": null,
-      "soleAccess": false,
-      "severs": [],
-      "backups": [],
-      "rampAlternative": false,
-      "chainNotes": []
-    },
-    {
-      "station": "Ashmont",
-      "unitId": "970",
-      "unit": "Ashmont Elevator 970 (Ashmont platform to Mattapan Line lobby, busway)",
-      "days": 0,
-      "since": "2026-07-08T21:53:00+00:00",
-      "planned": true,
-      "reason": "Ashmont Elevator 970 (Ashmont platform to Mattapan Line lobby, busway) is unavailable due to maintenance.",
-      "estimatedReturn": null,
-      "soleAccess": false,
-      "severs": [],
-      "backups": [],
-      "rampAlternative": false,
-      "chainNotes": []
-    },
-    {
-      "station": "Sullivan Square",
-      "unitId": "881",
-      "unit": "Sullivan Square Elevator 881 (Oak Grove platform to lobby)",
-      "days": 0,
-      "since": "2026-07-08T22:26:02+00:00",
-      "planned": true,
-      "reason": "Sullivan Square Elevator 881 (Oak Grove platform to lobby) is unavailable due to maintenance.",
-      "estimatedReturn": null,
-      "soleAccess": true,
-      "severs": [],
-      "backups": [],
-      "rampAlternative": false,
-      "chainNotes": []
-    },
-    {
-      "station": "Wonderland",
-      "unitId": "711",
-      "unit": "Wonderland Elevator 711 (Ocean Avenue to pedestrian plaza)",
-      "days": 0,
-      "since": "2026-07-08T23:24:01+00:00",
-      "planned": true,
-      "reason": "Wonderland Elevator 711 (Ocean Avenue to pedestrian plaza) is unavailable due to maintenance.",
       "estimatedReturn": null,
       "soleAccess": false,
       "severs": [],
@@ -146,17 +101,7 @@
     "log": []
   },
   "stationAccess": {
-    "rows": [
-      {
-        "name": "Sullivan Square",
-        "state": "no_access",
-        "downUnits": [
-          "881"
-        ],
-        "offlineUnits": [],
-        "note": null
-      }
-    ],
+    "rows": [],
     "chainsModeled": 0
   },
   "scheduledWork": [
@@ -207,31 +152,31 @@
     },
     {
       "name": "Winchester Center",
-      "hours": 2546.9853891666667
+      "hours": 2569.527540833333
     },
     {
       "name": "Framingham",
-      "hours": 417.6198336111111
+      "hours": 440.1619852777778
     },
     {
       "name": "Natick Center",
-      "hours": 177.9134447222222
+      "hours": 200.4555963888889
     },
     {
       "name": "Downtown Crossing",
-      "hours": 79.09816694444444
+      "hours": 101.64031861111111
+    },
+    {
+      "name": "Worcester",
+      "hours": 79.49587416666667
     },
     {
       "name": "Porter",
       "hours": 72.73446305555555
     },
     {
-      "name": "Worcester",
-      "hours": 56.9537225
-    },
-    {
       "name": "Wonderland",
-      "hours": 29.939611666666668
+      "hours": 41.89541083333334
     },
     {
       "name": "Green Street",
@@ -241,52 +186,52 @@
   "stepFreeStreak": [
     {
       "name": "Government Center",
-      "days": 4,
+      "days": 5,
       "blackedOutNow": false
     },
     {
       "name": "Wollaston",
-      "days": 4,
-      "blackedOutNow": false
-    },
-    {
-      "name": "Quincy Adams",
-      "days": 4,
+      "days": 5,
       "blackedOutNow": false
     },
     {
       "name": "North Quincy",
-      "days": 4,
+      "days": 5,
       "blackedOutNow": false
     },
     {
       "name": "Quincy Center",
-      "days": 4,
+      "days": 5,
       "blackedOutNow": false
     },
     {
       "name": "Gilman Square",
-      "days": 4,
+      "days": 5,
       "blackedOutNow": false
     },
     {
       "name": "North Station",
-      "days": 4,
+      "days": 5,
       "blackedOutNow": false
     },
     {
       "name": "Park Street",
-      "days": 4,
+      "days": 5,
       "blackedOutNow": false
     },
     {
       "name": "Lechmere",
-      "days": 4,
+      "days": 5,
       "blackedOutNow": false
     },
     {
       "name": "Maverick",
-      "days": 4,
+      "days": 5,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Lansdowne",
+      "days": 5,
       "blackedOutNow": false
     }
   ],
@@ -294,7 +239,7 @@
     {
       "unit": "Wonderland Elevator 711 (Ocean Avenue to pedestrian plaza)",
       "station": "Wonderland",
-      "count": 3
+      "count": 4
     },
     {
       "unit": "Sullivan Square Elevator 881 (Oak Grove platform to lobby)",
@@ -304,6 +249,11 @@
     {
       "unit": "Arlington Elevator 964 (Lobby to Boylston Street)",
       "station": "Arlington",
+      "count": 2
+    },
+    {
+      "unit": "Haymarket Elevator 907 (Underpass to Oak Grove platform)",
+      "station": "Haymarket",
       "count": 2
     },
     {
@@ -332,13 +282,8 @@
       "count": 1
     },
     {
-      "unit": "Natick Center Elevator 750 (Track 1 to street)",
-      "station": "Natick Center",
-      "count": 1
-    },
-    {
-      "unit": "Arlington Elevator 963 (Park Street & North platform to lobby)",
-      "station": "Arlington",
+      "unit": "State Elevator 803 (Forest Hills platform to Washington Street, Milk Street)",
+      "station": "State",
       "count": 1
     }
   ],
@@ -346,61 +291,61 @@
     {
       "unit": "Government Center Elevator 722 (Blue Line platform to Green Line platform)",
       "station": "Government Center",
-      "days": 4,
+      "days": 5,
       "downNow": false
     },
     {
       "unit": "Wollaston Elevator 735 (Platform to pedestrian bridge)",
       "station": "Wollaston",
-      "days": 4,
+      "days": 5,
       "downNow": false
     },
     {
       "unit": "Quincy Adams Elevator 736 (Lobby to platform)",
       "station": "Quincy Adams",
-      "days": 4,
+      "days": 5,
       "downNow": false
     },
     {
       "unit": "North Quincy Elevator 740 (Pick-up/drop-off area and northern lobby to parking garage)",
       "station": "North Quincy",
-      "days": 4,
+      "days": 5,
       "downNow": false
     },
     {
       "unit": "Quincy Center Elevator 896 (Commuter Rail platform to lobby)",
       "station": "Quincy Center",
-      "days": 4,
+      "days": 5,
       "downNow": false
     },
     {
       "unit": "North Quincy Elevator 897 (Hancock Street parking to northern lobby)",
       "station": "North Quincy",
-      "days": 4,
+      "days": 5,
       "downNow": false
     },
     {
       "unit": "Haymarket Elevator 903 (Oak Grove platform to Congress Street lobby)",
       "station": "Haymarket",
-      "days": 4,
+      "days": 5,
       "downNow": false
     },
     {
       "unit": "South Station Elevator 753 (Bus Terminal to Commuter Rail concourse)",
       "station": "South Station",
-      "days": 4,
+      "days": 5,
       "downNow": false
     },
     {
       "unit": "South Station Elevator 754 (Bus Terminal to Commuter Rail concourse)",
       "station": "South Station",
-      "days": 4,
+      "days": 5,
       "downNow": false
     },
     {
       "unit": "Gilman Square Elevator 766 (Platform to School Street lobby)",
       "station": "Gilman Square",
-      "days": 4,
+      "days": 5,
       "downNow": false
     }
   ],

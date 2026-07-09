@@ -14,10 +14,12 @@ MBTA, WMATA, TfL — first non-North-America system, CTA, TMB Barcelona — firs
 non-English-speaking system, LIRR + Metro-North — first commuter railroads,
 sharing one adapter); **eight are visible** — TMB is `hidden` pending a
 data-quality review of its feeds (see below), so the live site shows 8. Polled
-every 10 min by a **Netlify scheduled function** (`netlify/functions/
+every **5 min** by a **Netlify scheduled function** (`netlify/functions/
 poll-background.mts`) that loops every system through the shared `pollSystem()`
-core, then pings a Netlify Build Hook to rebuild the public site with the fresh
-archive — migrated off GitHub Actions cron because GitHub silently stopped
+core, then rebuilds the site's data payloads into **Netlify Blobs** (served at
+/data.json + /systems/*.json by `netlify/functions/data.mts`) — fresh data
+reaches the live site every poll with ZERO rebuilds/redeploys; deploys happen
+only on push. Migrated off GitHub Actions cron because GitHub silently stopped
 firing the schedule for 30+ min stretches (confirmed live 2026-07-09: BART's
 Coliseum outage sat unarchived past its 10-min slot with no error, just a gap
 in `gh run list`). `.github/workflows/poll.yml` is KEPT as a redundant
@@ -73,30 +75,45 @@ fallback `poll.yml` — never in chat, never committed.
 
 ## Deployment (Netlify)
 
-Hosting + the 10-min poll cron both live on Netlify now (site
+Hosting + the 5-min poll cron both live on Netlify now (site
 `liftwatch`, linked to `main`, auto-deploys on push):
 
-- **`netlify.toml`** — build command `npm run site:data` (regenerates
-  `site/data.json` + per-system JSON from Supabase at build time), publish dir
-  `site`, functions dir `netlify/functions`, `NODE_VERSION=22` (supabase-js
-  needs native WebSocket, same constraint as the old poll.yml).
+- **`netlify.toml`** — build command `npm run site:data` (bakes a
+  `site/data.json` snapshot at push time — shadowed in production by the data
+  function below; kept for local preview parity), publish dir `site`,
+  functions dir `netlify/functions`, `NODE_VERSION=22` (supabase-js needs
+  native WebSocket, same constraint as the old poll.yml).
 - **`netlify/functions/poll-background.mts`** — the scheduled poller
-  (`schedule: "*/10 * * * *"`). A **background** function (not a regular one)
+  (`schedule: "*/5 * * * *"`). A **background** function (not a regular one)
   on purpose: regular functions cap at 30s, and polling 8 feeds sequentially
   can exceed that; background functions get up to 15 min. Loops
   `knownSystemIds()` through `pollSystem()`, each system in its own try/catch
   so one failing feed doesn't stop the rest (mirrors poll.yml's per-step
-  `if: !cancelled()`), then POSTs `NETLIFY_BUILD_HOOK_URL` to rebuild the site.
-- **`src/pollSystem.ts`** — the archiving core (adapter fetch → override
-  warnings → ingest), extracted so the CLI (`src/poll.ts`) and the Netlify
-  function share ONE code path. `poll.ts` now just adds arg-parsing + the
-  console summary on top; the function loops it. Keep archiving logic here,
-  not in either caller.
-- **Env vars on Netlify** (set in the UI, not committed): `SUPABASE_URL`,
-  `SUPABASE_SERVICE_KEY`, `WMATA_API_KEY`, `MBTA_API_KEY`, and
-  `NETLIFY_BUILD_HOOK_URL` (the post-poll rebuild trigger; treat as a mild
-  secret — anyone with it can trigger builds). TMB keys omitted (hidden, not
-  polled).
+  `if: !cancelled()`), then rebuilds the site data payloads via
+  `buildSiteData()` and writes them to the **`site-data` Netlify Blobs
+  store**. NO build hook / redeploy per poll — at a 5-min cadence that would
+  be ~288 builds/day (~9x the free tier's 300 build-min/month) just to swap
+  a 17 KB JSON file.
+- **`netlify/functions/data.mts`** — serves `/data.json` and
+  `/systems/{id}.json` straight from the `site-data` blobs (custom-path
+  functions shadow same-path static files by default), 60s shared cache. The
+  deploy-baked static JSON stays the LOCAL preview data source (site:serve
+  has no functions). Blobs persist across deploys; only a brand-new/wiped
+  store 503s until the first poll (~5 min).
+- **`src/pollSystem.ts`** / **`src/site/build-site-data.ts`** — the archiving
+  core and the site-payload builder, each extracted so the CLI
+  (`src/poll.ts`, `src/site/build-data.ts`) and the Netlify functions share
+  ONE code path apiece. Keep archiving/payload logic there, not in callers.
+- **Freshness UI**: both pages show "Data updated N min ago" derived from
+  `generatedAt` (re-rendered every 30s) and re-fetch their JSON every 2.5 min,
+  reloading only when `generatedAt` actually changed.
+- **Env vars on Netlify** (set in the UI, not committed — the MCP/API
+  route silently fails to persist for this account, same as Lighter Than
+  Air): `SUPABASE_URL`, `SUPABASE_SERVICE_KEY`, `WMATA_API_KEY`,
+  `MBTA_API_KEY`. TMB keys omitted (hidden, not polled).
+  `NETLIFY_BUILD_HOOK_URL` is OBSOLETE (build-hook design replaced by blobs
+  before ever shipping) — the env var and the build hook itself can be
+  deleted in the UI.
 - **Bundling gotcha**: the `.mts` function is a v2 function, bundled by `nft`
   (node-file-trace), which traces the whole `src/` graph and resolves the
   `.js`-specifier NodeNext imports to their `.ts` sources — the `node_bundler

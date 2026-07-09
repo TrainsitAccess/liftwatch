@@ -3,13 +3,13 @@
   "name": "LIRR",
   "label": "LIRR (New York)",
   "timezone": "America/New_York",
-  "generatedAt": "2026-07-09T00:16:53.401Z",
+  "generatedAt": "2026-07-09T22:49:25.147Z",
   "currentlyBroken": [
     {
       "station": "Grand Central",
       "unitId": "GCT-945",
       "unit": "EL21: Between LIRR Concourse and Metro-North Tracks 102-114 at 45th Street",
-      "days": 1,
+      "days": 2,
       "since": "2026-07-07T03:58:40.812+00:00",
       "planned": false,
       "reason": "Not Working",
@@ -19,25 +19,6 @@
       "backups": [],
       "rampAlternative": false,
       "chainNotes": []
-    },
-    {
-      "station": "Mineola (Track 2)",
-      "unitId": "MIN-435",
-      "unit": "Between western overpass, Intermodal Center, and Track 2 (south side)",
-      "days": 0,
-      "since": "2026-07-08T22:32:44.245+00:00",
-      "planned": false,
-      "reason": "Not Working",
-      "estimatedReturn": null,
-      "soleAccess": false,
-      "severs": [],
-      "backups": [
-        "Eastern overpass — Track 2 & kiss-and-ride"
-      ],
-      "rampAlternative": false,
-      "chainNotes": [
-        "Mineola Track 2 is reachable via the eastern overpass elevator (kiss-and-ride side) or the western overpass elevator (Intermodal Center) — two independent routes."
-      ]
     }
   ],
   "offline": {
@@ -45,17 +26,7 @@
     "log": []
   },
   "stationAccess": {
-    "rows": [
-      {
-        "name": "Mineola (Track 2)",
-        "state": "reduced",
-        "downUnits": [
-          "MIN-435"
-        ],
-        "offlineUnits": [],
-        "note": "Mineola Track 2 is reachable via the eastern overpass elevator (kiss-and-ride side) or the western overpass elevator (Intermodal Center) — two independent routes."
-      }
-    ],
+    "rows": [],
     "chainsModeled": 21
   },
   "scheduledWork": [],
@@ -84,52 +55,52 @@
   "stepFreeStreak": [
     {
       "name": "Atlantic Terminal",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Hicksville (Platform A)",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Hicksville (Platform B)",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Mineola (Track 2)",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Mineola (Track 3)",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Penn Station (Tks 13/14)",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Penn Station (Tks 15/16)",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Penn Station (Tk 17)",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Penn Station (Tks 18/19)",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Penn Station (Tks 20/21)",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     }
   ],
@@ -184,61 +155,61 @@
     {
       "unit": "Garage Elevator 2",
       "station": "Wyandanch",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Between overpass and Tracks 1 & 2  (Platform B)",
       "station": "Ronkonkoma",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Garage Elevator 1",
       "station": "Ronkonkoma",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Between Tracks 1 & 2 and street level (middle of platform)",
       "station": "St. Albans",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Between Tracks 1 & 2 and street level (east end of platform)",
       "station": "Rosedale",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Between Tracks 1 & 2 and street level (east side of station building)",
       "station": "Valley Stream",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Between Tracks A1 & A2 and street level (east side of station building) - Babylon trains",
       "station": "Lynbrook",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Between Tracks B1 & B2 and street level (east side of station building) - Long Beach trains",
       "station": "Lynbrook",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Between Tracks 1 & 2 and street level (east side of station building)",
       "station": "Freeport",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Between Tracks 1 & 2 and street level (east of station building)",
       "station": "Merrick",
-      "days": 1,
+      "days": 2,
       "downNow": false
     }
   ],

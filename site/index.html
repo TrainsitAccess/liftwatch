@@ -491,10 +491,26 @@ fetch("./data.json").then((r) => r.json()).then((data) => {
   addEventListener("resize", () => markOverflows(document));
 
   // --- Bottom strip: clock + ticker + data freshness ---
+  // "Updated N min ago" is re-derived every 30s from generatedAt (the moment
+  // the data snapshot was built server-side), and the page checks for a newer
+  // snapshot every few minutes, reloading only when generatedAt actually
+  // changed — data now refreshes via Netlify Blobs every poll (~5 min), with
+  // no redeploy involved.
   const t = new Date(data.generatedAt);
   const mark = data.totals.staticUnitsInTotal > 0 ? "*" : "";
-  document.getElementById("asof").textContent =
-    `Data as of ${t.toLocaleString()} · refreshed every 10 minutes · ${data.totals.down} of ${data.totals.activeUnits}${mark} monitored elevators out of service (${data.totals.downUnplanned} unplanned) across ${data.totals.systems} systems.`;
+  function renderAsOf() {
+    const mins = Math.max(0, Math.round((Date.now() - t.getTime()) / 60000));
+    const ago = mins === 0 ? "just now" : mins === 1 ? "1 min ago" : mins < 120 ? `${mins} min ago` : `${Math.floor(mins / 60)}h ago`;
+    document.getElementById("asof").textContent =
+      `Data updated ${ago} (${t.toLocaleString()}) · refreshes every 5 minutes · ${data.totals.down} of ${data.totals.activeUnits}${mark} monitored elevators out of service (${data.totals.downUnplanned} unplanned) across ${data.totals.systems} systems.`;
+  }
+  renderAsOf();
+  setInterval(renderAsOf, 30000);
+  setInterval(() => {
+    fetch("./data.json", { cache: "no-store" }).then((r) => r.json()).then((fresh) => {
+      if (fresh.generatedAt && fresh.generatedAt !== data.generatedAt) location.reload();
+    }).catch(() => {});
+  }, 150000);
 
   const messages = [
     `${data.totals.downUnplanned} UNPLANNED ELEVATOR OUTAGES RIGHT NOW · ${data.totals.down} TOTAL OUT OF ${data.totals.activeUnits}${mark} MONITORED ACROSS ${data.totals.systems} SYSTEMS`,

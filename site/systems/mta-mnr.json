@@ -3,13 +3,13 @@
   "name": "Metro-North",
   "label": "Metro-North (New York)",
   "timezone": "America/New_York",
-  "generatedAt": "2026-07-09T00:16:53.401Z",
+  "generatedAt": "2026-07-09T22:49:25.147Z",
   "currentlyBroken": [
     {
       "station": "Grand Central (North End: Tks 34/35/116)",
       "unitId": "0NY-NE-4",
       "unit": "NE-4:  At the 45th street Cross Passage to Tk 116 platform and Tks 34 & 35 platform.",
-      "days": 1202,
+      "days": 1203,
       "since": "2023-03-24T13:55:11+00:00",
       "planned": true,
       "reason": "long term outage",
@@ -28,7 +28,7 @@
       "station": "Grand Central",
       "unitId": "0NY-NE-2",
       "unit": "At the 47th street Cross Passage in the Northwest Passage.",
-      "days": 89,
+      "days": 90,
       "since": "2026-04-10T13:21:09+00:00",
       "planned": false,
       "reason": "not working",
@@ -43,7 +43,7 @@
       "station": "New Rochelle (New Haven-bound)",
       "unitId": "2NR-206E",
       "unit": "Elevator from the street to the Stamford/New Haven-bound platform (Track 4).",
-      "days": 43,
+      "days": 44,
       "since": "2026-05-26T11:11:52+00:00",
       "planned": true,
       "reason": "The elevator leading to the tracks 2 and 4 platform at New Rochelle is closed for upgrade work.",
@@ -60,7 +60,7 @@
       "station": "Grand Central (Terminal)",
       "unitId": "0NY-T-18",
       "unit": "Upper Level near Northeast Passageway entrance (B Hall).",
-      "days": 0,
+      "days": 1,
       "since": "2026-07-08T15:51:56+00:00",
       "planned": false,
       "reason": "not working",
@@ -82,41 +82,11 @@
       ]
     },
     {
-      "station": "Hawthorne",
-      "unitId": "1HN-142I",
-      "unit": "Elevator from the overpass to the island platform (Tracks 2 & 1).",
-      "days": 0,
-      "since": "2026-07-08T11:05:15+00:00",
-      "planned": false,
-      "reason": "investigating",
-      "estimatedReturn": null,
-      "soleAccess": false,
-      "severs": [],
-      "backups": [],
-      "rampAlternative": false,
-      "chainNotes": []
-    },
-    {
       "station": "Mt Vernon East",
       "unitId": "2ME-202E",
       "unit": "Elevator from the street to the Stamford/New Haven-bound platform (Track 4) and the overpass.",
-      "days": 0,
+      "days": 1,
       "since": "2026-07-08T11:56:42+00:00",
-      "planned": false,
-      "reason": "not working",
-      "estimatedReturn": null,
-      "soleAccess": false,
-      "severs": [],
-      "backups": [],
-      "rampAlternative": false,
-      "chainNotes": []
-    },
-    {
-      "station": "Southeast",
-      "unitId": "1BR-163I",
-      "unit": "Elevator from the overpass to the island platform (Tracks 2 & 1).",
-      "days": 0,
-      "since": "2026-07-08T23:20:54+00:00",
       "planned": false,
       "reason": "not working",
       "estimatedReturn": null,
@@ -167,11 +137,19 @@
   "accessibilityBlackouts": [
     {
       "name": "Grand Central (North End: Tks 34/35/116)",
-      "hours": 28858.361778055554
+      "hours": 28880.903929722223
     },
     {
       "name": "New Rochelle (New Haven-bound)",
-      "hours": 1045.0837225
+      "hours": 1067.6258741666666
+    },
+    {
+      "name": "Mt Vernon East",
+      "hours": 34.87865194444444
+    },
+    {
+      "name": "Hawthorne",
+      "hours": 32.0630625
     },
     {
       "name": "Purdy's",
@@ -186,71 +164,67 @@
       "hours": 18.203812777777777
     },
     {
-      "name": "Hawthorne",
-      "hours": 13.194000277777779
+      "name": "Southeast",
+      "hours": 12.610998333333333
     },
     {
-      "name": "Mt Vernon East",
-      "hours": 12.336500277777779
+      "name": "Garrison",
+      "hours": 4.585676944444445
     },
     {
       "name": "Yankees-E 153 St (Tks 1/2)",
       "hours": 4.206457777777778
-    },
-    {
-      "name": "Southeast",
-      "hours": 0.9331669444444445
     }
   ],
   "stepFreeStreak": [
     {
       "name": "Harlem-125 St (Tks 1/3)",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Harlem-125 St (Tks 2/4)",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "New Rochelle (New York-bound)",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "White Plains",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Yankees-E 153 St (Tks 4/6)",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Stamford (Track 5)",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Stamford (Track 4)",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Stamford (Track 3)",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Stamford (Track 2)",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Grand Central (Terminal)",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     }
   ],
@@ -266,13 +240,13 @@
       "count": 1
     },
     {
-      "unit": "Elevator from the overpass to the island platform (Tracks 2 & 1).",
-      "station": "Hawthorne",
+      "unit": "Elevator from the street level to the overpass.",
+      "station": "Purdy's",
       "count": 1
     },
     {
-      "unit": "Elevator from the street level to the overpass.",
-      "station": "Purdy's",
+      "unit": "Elevator from the overpass to the island platform (Tracks 2 & 1).",
+      "station": "Hawthorne",
       "count": 1
     },
     {
@@ -308,63 +282,63 @@
   ],
   "uptimeStreak": [
     {
-      "unit": "Elevator to the New Haven-bound platform (Tk 4) is located on the west end of platform.",
-      "station": "Fairfield-Black Rock",
-      "days": 1,
-      "downNow": false
-    },
-    {
-      "unit": "Elevator to the New York-bound platform (Tk 3) to street level is located on the west end of platform",
-      "station": "Fairfield-Black Rock",
-      "days": 1,
-      "downNow": false
-    },
-    {
       "unit": "Elevator from the New Haven-bound platform (Track 4) to the overpass",
       "station": "Greenwich",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Elevator from the street to the Ticket Office.",
       "station": "Greenwich",
-      "days": 1,
+      "days": 2,
+      "downNow": false
+    },
+    {
+      "unit": "Elevator to the New Haven-bound platform (Tk 4) is located on the west end of platform.",
+      "station": "Fairfield-Black Rock",
+      "days": 2,
+      "downNow": false
+    },
+    {
+      "unit": "Elevator to the New York-bound platform (Tk 3) to street level is located on the west end of platform",
+      "station": "Fairfield-Black Rock",
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Elevator from the New York-bound platform (Track 3) to the overpass",
       "station": "Greenwich",
-      "days": 1,
-      "downNow": false
-    },
-    {
-      "unit": "Track 2 Street Level/ Platform and Overpass",
-      "station": "Hartsdale",
-      "days": 1,
-      "downNow": false
-    },
-    {
-      "unit": "Elevator from the east-side parking lot to the overpass.",
-      "station": "Hawthorne",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Elevator from the street to the Stamford/New Haven-bound platform (Track 4).",
       "station": "Harrison",
-      "days": 1,
-      "downNow": false
-    },
-    {
-      "unit": "Elevator from the east-side parking lot to the overpass.",
-      "station": "Katonah",
-      "days": 1,
+      "days": 2,
       "downNow": false
     },
     {
       "unit": "Elevator from the New York-bound platform (Track 3) to the overpass.",
       "station": "Harrison",
-      "days": 1,
+      "days": 2,
+      "downNow": false
+    },
+    {
+      "unit": "Track 2 Street Level/ Platform and Overpass",
+      "station": "Hartsdale",
+      "days": 2,
+      "downNow": false
+    },
+    {
+      "unit": "Elevator from the east-side parking lot to the overpass.",
+      "station": "Hawthorne",
+      "days": 2,
+      "downNow": false
+    },
+    {
+      "unit": "Elevator from the east-side parking lot to the overpass.",
+      "station": "Katonah",
+      "days": 2,
       "downNow": false
     }
   ],
