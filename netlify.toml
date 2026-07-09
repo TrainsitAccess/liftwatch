@@ -1,0 +1,12 @@
+[build]
+  command = "npm run site:data"
+  publish = "site"
+
+[build.environment]
+  # supabase-js requires native WebSocket (Node 22+) — same constraint as
+  # poll.yml's actions/setup-node, see CLAUDE.md.
+  NODE_VERSION = "22"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"

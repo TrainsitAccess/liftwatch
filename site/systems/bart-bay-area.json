@@ -3,7 +3,7 @@
   "name": "BART",
   "label": "BART (San Francisco)",
   "timezone": "America/Los_Angeles",
-  "generatedAt": "2026-07-08T23:45:29.990Z",
+  "generatedAt": "2026-07-09T00:16:53.401Z",
   "currentlyBroken": [
     {
       "station": "Richmond",
@@ -23,6 +23,21 @@
       "chainNotes": [
         "A ramp gives step-free street access without elevators, so both street elevators can be out and the station stays accessible; but the single platform elevator is a single point of failure."
       ]
+    },
+    {
+      "station": "Coliseum",
+      "unitId": "COLS-UNSPECIFIED",
+      "unit": "Station - Tunnel (unspecified elevator — conservative)",
+      "days": 0,
+      "since": "2026-07-09T00:15:44.785+00:00",
+      "planned": false,
+      "reason": "Station - Tunnel (unspecified elevator — conservative)",
+      "estimatedReturn": null,
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "Milpitas (Millbrae/SFO/Daly City/Richmond direction)",
@@ -75,11 +90,11 @@
   "accessibilityBlackouts": [
     {
       "name": "Richmond",
-      "hours": 116.8424386111111
+      "hours": 117.36560833333333
     },
     {
       "name": "Milpitas (Millbrae/SFO/Daly City/Richmond direction)",
-      "hours": 4.090275277777778
+      "hours": 4.613445
     }
   ],
   "stepFreeStreak": [
@@ -141,11 +156,6 @@
       "count": 4
     },
     {
-      "unit": "Platform 2 elevator (Millbrae/SFO/Daly City/Richmond direction)",
-      "station": "Milpitas (Millbrae/SFO/Daly City/Richmond direction)",
-      "count": 1
-    },
-    {
       "unit": "Platform elevator",
       "station": "Richmond",
       "count": 1
@@ -153,6 +163,16 @@
     {
       "unit": "Station - SF/East Bay (unspecified elevator — conservative)",
       "station": "Milpitas",
+      "count": 1
+    },
+    {
+      "unit": "Platform 2 elevator (Millbrae/SFO/Daly City/Richmond direction)",
+      "station": "Milpitas (Millbrae/SFO/Daly City/Richmond direction)",
+      "count": 1
+    },
+    {
+      "unit": "Station - Tunnel (unspecified elevator — conservative)",
+      "station": "Coliseum",
       "count": 1
     }
   ],
@@ -206,14 +226,14 @@
       "downNow": false
     },
     {
-      "unit": "Street elevator 2",
-      "station": "Warm Springs/South Fremont",
+      "unit": "Platforms 1 & 2 Elevator",
+      "station": "San Francisco International Airport",
       "days": 4,
       "downNow": false
     },
     {
-      "unit": "Platforms 1 & 2 Elevator",
-      "station": "San Francisco International Airport",
+      "unit": "Platform Elevator 2",
+      "station": "Warm Springs/South Fremont",
       "days": 4,
       "downNow": false
     }

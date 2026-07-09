@@ -14,10 +14,18 @@ MBTA, WMATA, TfL — first non-North-America system, CTA, TMB Barcelona — firs
 non-English-speaking system, LIRR + Metro-North — first commuter railroads,
 sharing one adapter); **eight are visible** — TMB is `hidden` pending a
 data-quality review of its feeds (see below), so the live site shows 8. Polled
-every 10 min by a GitHub Actions cron (`.github/workflows/poll.yml`; TMB's step
-is commented out while hidden), backed up weekly to a private repo
-(`backup.yml`), with a keepalive workflow so the poller/backup crons never
-auto-disable. The site is styled as a digital train-departure display
+every 10 min by a **Netlify scheduled function** (`netlify/functions/
+poll-background.mts`) that loops every system through the shared `pollSystem()`
+core, then pings a Netlify Build Hook to rebuild the public site with the fresh
+archive — migrated off GitHub Actions cron because GitHub silently stopped
+firing the schedule for 30+ min stretches (confirmed live 2026-07-09: BART's
+Coliseum outage sat unarchived past its 10-min slot with no error, just a gap
+in `gh run list`). `.github/workflows/poll.yml` is KEPT as a redundant
+fallback during the transition (ingest is idempotent, so both firing is
+harmless) — remove it only once Netlify's schedule is confirmed reliable over
+a few cycles. Backed up weekly to a private repo (`backup.yml`), with a
+keepalive workflow so the backup cron never auto-disables. The site is styled
+as a digital train-departure display
 (`site/`) — amber LED boards with reasons, expected returns, live
 station-access status, scheduled work, an OFFLINE column, and expandable route
 notes; times shown agency-local; info column is a right-to-left marquee;
@@ -59,8 +67,44 @@ npm run site:data && npm run site:serve  # rebuild + preview the departure-board
 
 No `SUPABASE_*` env → always dry-run (fetch + normalize, no writes). Credentials
 (Supabase, MBTA_API_KEY, WMATA_API_KEY, TMB_APP_ID/TMB_APP_KEY) live in
-gitignored `.env` locally and as GitHub Actions secrets in CI — never in chat,
-never committed.
+gitignored `.env` locally, as **Netlify environment variables** for the
+scheduled poll + site build, and (still) as GitHub Actions secrets for the
+fallback `poll.yml` — never in chat, never committed.
+
+## Deployment (Netlify)
+
+Hosting + the 10-min poll cron both live on Netlify now (site
+`liftwatch`, linked to `main`, auto-deploys on push):
+
+- **`netlify.toml`** — build command `npm run site:data` (regenerates
+  `site/data.json` + per-system JSON from Supabase at build time), publish dir
+  `site`, functions dir `netlify/functions`, `NODE_VERSION=22` (supabase-js
+  needs native WebSocket, same constraint as the old poll.yml).
+- **`netlify/functions/poll-background.mts`** — the scheduled poller
+  (`schedule: "*/10 * * * *"`). A **background** function (not a regular one)
+  on purpose: regular functions cap at 30s, and polling 8 feeds sequentially
+  can exceed that; background functions get up to 15 min. Loops
+  `knownSystemIds()` through `pollSystem()`, each system in its own try/catch
+  so one failing feed doesn't stop the rest (mirrors poll.yml's per-step
+  `if: !cancelled()`), then POSTs `NETLIFY_BUILD_HOOK_URL` to rebuild the site.
+- **`src/pollSystem.ts`** — the archiving core (adapter fetch → override
+  warnings → ingest), extracted so the CLI (`src/poll.ts`) and the Netlify
+  function share ONE code path. `poll.ts` now just adds arg-parsing + the
+  console summary on top; the function loops it. Keep archiving logic here,
+  not in either caller.
+- **Env vars on Netlify** (set in the UI, not committed): `SUPABASE_URL`,
+  `SUPABASE_SERVICE_KEY`, `WMATA_API_KEY`, `MBTA_API_KEY`, and
+  `NETLIFY_BUILD_HOOK_URL` (the post-poll rebuild trigger; treat as a mild
+  secret — anyone with it can trigger builds). TMB keys omitted (hidden, not
+  polled).
+- **Bundling gotcha**: the `.mts` function is a v2 function, bundled by `nft`
+  (node-file-trace), which traces the whole `src/` graph and resolves the
+  `.js`-specifier NodeNext imports to their `.ts` sources — the `node_bundler
+  = "esbuild"` line in netlify.toml only applies to v1 functions and is
+  effectively ignored here. `npm run typecheck`'s tsconfig `include` is
+  `["src"]`, so it does NOT cover `netlify/`; verify the function bundles with
+  `npx netlify functions:build --src netlify/functions --functions <tmp>`
+  (checks the whole import graph resolves) after touching it.
 
 ## Architecture
 

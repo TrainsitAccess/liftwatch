@@ -1,13 +1,11 @@
 import "dotenv/config"; // load .env before anything reads process.env
 import type { NormalizedOutage, NormalizedRead } from "./types.js";
-import { getAdapter, knownSystemIds } from "./adapters/registry.js";
+import { knownSystemIds } from "./adapters/registry.js";
 import { getSystem } from "./catalog/systems.js";
-import { overridesFor } from "./catalog/redundancy-overrides.js";
-import { attributionOverridesFor } from "./catalog/attribution-overrides.js";
 import { stationModelsFor } from "./catalog/station-models.js";
 import { allElevators, chainDisplayName, findElevator, stationAccessibilityState } from "./lib/accessibility.js";
 import { getSupabase } from "./lib/supabase.js";
-import { ingest } from "./ingest.js";
+import { pollSystem } from "./pollSystem.js";
 
 // Usage:
 //   npm run poll -- <systemId> [--dry-run]
@@ -114,40 +112,17 @@ async function main(): Promise<void> {
 
   console.log(`\nLiftWatch poll — ${system.name} (${system.id})`);
 
-  const read = await getAdapter(systemId).fetch();
+  const db = dryFlag ? null : getSupabase();
+  const { read, overrideWarnings, result } = await pollSystem(systemId, db);
   summarize(read, system.redundancyBaseline ?? "assumed", system.inventoryComplete !== false);
 
-  // Validate manual overrides against live units — catches typo'd ids.
-  const knownExt = new Set(read.units.map((u) => u.externalId));
-  for (const ext of overridesFor(systemId).keys()) {
-    if (!knownExt.has(ext)) {
-      console.warn(`  ⚠ manual redundancy override "${ext}" matches no live unit — check the id`);
-    }
-  }
+  for (const w of overrideWarnings) console.warn(`  ⚠ ${w}`);
 
-  // Attribution overrides (src/catalog/attribution-overrides.ts) are a
-  // correction for a SPECIFIC ongoing outage, not a standing guess — once the
-  // ambiguous advisory stops being reported, the override goes quiet and
-  // should be pruned (see the file's header) before it can silently
-  // mis-attribute a future, unrelated outage at the same station.
-  const reportedExt = new Set(read.outages.map((o) => o.unitExternalId));
-  for (const [fromExt, override] of attributionOverridesFor(systemId)) {
-    if (!reportedExt.has(fromExt)) {
-      console.warn(
-        `  ⚠ attribution override "${fromExt}" -> "${override.toUnitExternalId}" is no longer being reported — ` +
-          `the outage it was confirmed for may have resolved. Review and remove it from attribution-overrides.ts ` +
-          `if so (leaving it could mis-attribute a future, unrelated outage).`,
-      );
-    }
-  }
-
-  const db = dryFlag ? null : getSupabase();
-  if (!db) {
+  if (!result) {
     console.log(`\n  ${dryFlag ? "--dry-run" : "no SUPABASE_* env"}: fetch + normalize only, nothing written.\n`);
     return;
   }
 
-  const result = await ingest(db, system, read);
   console.log(
     `\n  archived → opened ${result.eventsOpened}, closed ${result.eventsClosed}, ${result.outagesOpen} currently open, ${result.upcomingStored} upcoming stored.`,
   );

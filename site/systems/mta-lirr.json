@@ -3,47 +3,13 @@
   "name": "LIRR",
   "label": "LIRR (New York)",
   "timezone": "America/New_York",
-  "generatedAt": "2026-07-08T00:14:20.799Z",
+  "generatedAt": "2026-07-09T00:16:53.401Z",
   "currentlyBroken": [
-    {
-      "station": "Mineola (Track 3)",
-      "unitId": "MIN-1018",
-      "unit": "Between eastern overpass, Track 3, and street (north side)",
-      "days": 0,
-      "since": "2026-07-07T16:58:35.151+00:00",
-      "planned": false,
-      "reason": "Not Working",
-      "estimatedReturn": null,
-      "soleAccess": false,
-      "severs": [],
-      "backups": [
-        "Western overpass — Intermodal Center & Track 3"
-      ],
-      "rampAlternative": false,
-      "chainNotes": [
-        "Mineola Track 3 is reachable via the eastern overpass elevator (north-side street) or the western overpass elevator (Intermodal Center) — two independent routes."
-      ]
-    },
-    {
-      "station": "Wyandanch",
-      "unitId": "WYD-703",
-      "unit": "Garage Elevator 3",
-      "days": 0,
-      "since": "2026-07-07T19:05:50.507+00:00",
-      "planned": false,
-      "reason": "Not Working",
-      "estimatedReturn": null,
-      "soleAccess": false,
-      "severs": [],
-      "backups": [],
-      "rampAlternative": false,
-      "chainNotes": []
-    },
     {
       "station": "Grand Central",
       "unitId": "GCT-945",
       "unit": "EL21: Between LIRR Concourse and Metro-North Tracks 102-114 at 45th Street",
-      "days": 0,
+      "days": 1,
       "since": "2026-07-07T03:58:40.812+00:00",
       "planned": false,
       "reason": "Not Working",
@@ -53,6 +19,25 @@
       "backups": [],
       "rampAlternative": false,
       "chainNotes": []
+    },
+    {
+      "station": "Mineola (Track 2)",
+      "unitId": "MIN-435",
+      "unit": "Between western overpass, Intermodal Center, and Track 2 (south side)",
+      "days": 0,
+      "since": "2026-07-08T22:32:44.245+00:00",
+      "planned": false,
+      "reason": "Not Working",
+      "estimatedReturn": null,
+      "soleAccess": false,
+      "severs": [],
+      "backups": [
+        "Eastern overpass — Track 2 & kiss-and-ride"
+      ],
+      "rampAlternative": false,
+      "chainNotes": [
+        "Mineola Track 2 is reachable via the eastern overpass elevator (kiss-and-ride side) or the western overpass elevator (Intermodal Center) — two independent routes."
+      ]
     }
   ],
   "offline": {
@@ -62,19 +47,23 @@
   "stationAccess": {
     "rows": [
       {
-        "name": "Mineola (Track 3)",
+        "name": "Mineola (Track 2)",
         "state": "reduced",
         "downUnits": [
-          "MIN-1018"
+          "MIN-435"
         ],
         "offlineUnits": [],
-        "note": "Mineola Track 3 is reachable via the eastern overpass elevator (north-side street) or the western overpass elevator (Intermodal Center) — two independent routes."
+        "note": "Mineola Track 2 is reachable via the eastern overpass elevator (kiss-and-ride side) or the western overpass elevator (Intermodal Center) — two independent routes."
       }
     ],
     "chainsModeled": 21
   },
   "scheduledWork": [],
   "accessibilityBlackouts": [
+    {
+      "name": "Wyandanch",
+      "hours": 17.82988111111111
+    },
     {
       "name": "Jamaica (Tks 4/5)",
       "hours": 12.9984275
@@ -88,63 +77,68 @@
       "hours": 10.565690555555555
     },
     {
-      "name": "Wyandanch",
-      "hours": 5.141747777777778
+      "name": "Locust Manor",
+      "hours": 5.42221
     }
   ],
   "stepFreeStreak": [
     {
       "name": "Atlantic Terminal",
-      "days": 0,
+      "days": 1,
       "blackedOutNow": false
     },
     {
       "name": "Hicksville (Platform A)",
-      "days": 0,
+      "days": 1,
       "blackedOutNow": false
     },
     {
       "name": "Hicksville (Platform B)",
-      "days": 0,
+      "days": 1,
       "blackedOutNow": false
     },
     {
       "name": "Mineola (Track 2)",
-      "days": 0,
+      "days": 1,
       "blackedOutNow": false
     },
     {
       "name": "Mineola (Track 3)",
-      "days": 0,
+      "days": 1,
       "blackedOutNow": false
     },
     {
       "name": "Penn Station (Tks 13/14)",
-      "days": 0,
+      "days": 1,
       "blackedOutNow": false
     },
     {
       "name": "Penn Station (Tks 15/16)",
-      "days": 0,
+      "days": 1,
       "blackedOutNow": false
     },
     {
       "name": "Penn Station (Tk 17)",
-      "days": 0,
+      "days": 1,
       "blackedOutNow": false
     },
     {
       "name": "Penn Station (Tks 18/19)",
-      "days": 0,
+      "days": 1,
       "blackedOutNow": false
     },
     {
       "name": "Penn Station (Tks 20/21)",
-      "days": 0,
+      "days": 1,
       "blackedOutNow": false
     }
   ],
   "mostBrokenUnits": [
+    {
+      "unit": "Garage Elevator 3",
+      "station": "Wyandanch",
+      "count": 1
+    },
     {
       "unit": "Between Platform B and street level (east end of platform)",
       "station": "Queens Village",
@@ -156,13 +150,13 @@
       "count": 1
     },
     {
-      "unit": "Garage Elevator 3",
-      "station": "Wyandanch",
+      "unit": "Between eastern overpass, Track 2, and kiss-and-ride (south side)",
+      "station": "Mineola (Track 2)",
       "count": 1
     },
     {
-      "unit": "Between eastern overpass, Track 2, and kiss-and-ride (south side)",
-      "station": "Mineola (Track 2)",
+      "unit": "EL21: Between LIRR Concourse and Metro-North Tracks 102-114 at 45th Street",
+      "station": "Grand Central",
       "count": 1
     },
     {
@@ -171,75 +165,80 @@
       "count": 1
     },
     {
-      "unit": "Between Tracks 1 & 2 and street level (middle of platform)",
-      "station": "Laurelton",
+      "unit": "Between western overpass, Intermodal Center, and Track 2 (south side)",
+      "station": "Mineola (Track 2)",
       "count": 1
     },
     {
-      "unit": "EL21: Between LIRR Concourse and Metro-North Tracks 102-114 at 45th Street",
-      "station": "Grand Central",
+      "unit": "Between Platform A and street level (west end of platform)",
+      "station": "Locust Manor",
+      "count": 1
+    },
+    {
+      "unit": "Between Tracks 1 & 2 and street level (middle of platform)",
+      "station": "Laurelton",
       "count": 1
     }
   ],
   "uptimeStreak": [
     {
+      "unit": "Garage Elevator 2",
+      "station": "Wyandanch",
+      "days": 1,
+      "downNow": false
+    },
+    {
       "unit": "Between overpass and Tracks 1 & 2  (Platform B)",
       "station": "Ronkonkoma",
-      "days": 0,
+      "days": 1,
       "downNow": false
     },
     {
       "unit": "Garage Elevator 1",
       "station": "Ronkonkoma",
-      "days": 0,
+      "days": 1,
       "downNow": false
     },
     {
       "unit": "Between Tracks 1 & 2 and street level (middle of platform)",
       "station": "St. Albans",
-      "days": 0,
+      "days": 1,
       "downNow": false
     },
     {
       "unit": "Between Tracks 1 & 2 and street level (east end of platform)",
       "station": "Rosedale",
-      "days": 0,
+      "days": 1,
       "downNow": false
     },
     {
       "unit": "Between Tracks 1 & 2 and street level (east side of station building)",
       "station": "Valley Stream",
-      "days": 0,
+      "days": 1,
       "downNow": false
     },
     {
       "unit": "Between Tracks A1 & A2 and street level (east side of station building) - Babylon trains",
       "station": "Lynbrook",
-      "days": 0,
+      "days": 1,
       "downNow": false
     },
     {
       "unit": "Between Tracks B1 & B2 and street level (east side of station building) - Long Beach trains",
       "station": "Lynbrook",
-      "days": 0,
+      "days": 1,
       "downNow": false
     },
     {
       "unit": "Between Tracks 1 & 2 and street level (east side of station building)",
       "station": "Freeport",
-      "days": 0,
+      "days": 1,
       "downNow": false
     },
     {
       "unit": "Between Tracks 1 & 2 and street level (east of station building)",
       "station": "Merrick",
-      "days": 0,
-      "downNow": false
-    },
-    {
-      "unit": "Between Tracks 1 & 2 and street level (west of station building)",
-      "station": "Bellmore",
-      "days": 0,
+      "days": 1,
       "downNow": false
     }
   ],
