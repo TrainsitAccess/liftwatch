@@ -36,11 +36,15 @@
     "mta:chains": "node scripts/mta-chains.mjs",
     "tfl:chains": "node scripts/tfl-chains.mjs",
     "tfl:alert-evidence": "tsx src/site/tfl-alert-evidence.ts",
+    "bart:attribution-evidence": "tsx src/site/bart-attribution-evidence.ts",
+    "bart:attribution-queue": "tsx src/site/bart-attribution-queue.ts",
     "db:status": "tsx src/checks/db-status.ts",
     "site:data": "tsx src/site/build-data.ts",
     "site:serve": "node scripts/serve.mjs",
     "backup": "tsx src/backup/run.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "netlify:dev": "netlify dev",
+    "netlify:deploy": "netlify deploy --prod"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.45.0",

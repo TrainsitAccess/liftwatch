@@ -249,8 +249,18 @@ parking lot). A station is accessible only if **every** segment is up.
   Milpitas) precisely because nothing auto-attributes a bare "Station" text.
   `src/catalog/attribution-overrides.ts` (mirrors `redundancy-overrides.ts`)
   keeps a manual fix from getting clobbered by the next poll — has NO expiry
-  and must be pruned once the outage resolves. Bryce explicitly asked to
-  hold the core unsolved problem open, not have a fix proposed — see
+  and must be pruned once the outage resolves. **A progressive evidence-
+  mining tool now exists** (`npm run bart:attribution-evidence`,
+  `src/site/bart-attribution-evidence.ts`, built 2026-07-09) — re-derives
+  attribution fresh from archived `reason` text against TODAY's matchHints
+  every run (not the stale `unit_id` from original ingest), surfacing
+  confirmed matches, ambiguous raw text worth reviewing, and a `pureSpof`
+  finding (single-elevator SPOF stations get zero attribution credit today
+  since their generic "elevator" hint never matches real advisory text —
+  safe to auto-attribute everywhere except COLS, which has real unmodeled
+  auxiliary elevators). See SPEC.md's BART Attribution section for the full
+  writeup. Bryce explicitly asked to hold the core unsolved problem (bare
+  "Station" advisories) open, not have a fix proposed — see
   `/liftwatch-bart-attribution` for the resume-work command.
 
 ## Conventions

@@ -451,13 +451,62 @@ or it risks silently mis-attributing a future, unrelated Richmond outage.
 reminder to prune it. Check whether it's still needed before touching BART
 attribution again.
 
-*Progressive angle worth carrying forward*: `outage_events.reason` is
-archived verbatim by every poll (nothing new to build), and mining it twice
-this session (12th St.'s "convention center", the full historical phrasing
-survey) is what found the real, confirmable examples above. The TfL
-alert-evidence system (`src/site/tfl-alert-evidence.ts`) is the precedent for
-turning this into a re-runnable, growing-over-time tool rather than one-off
-manual queries — nothing built yet for BART specifically.
+*Progressive evidence-mining tool — built 2026-07-09* (`src/site/
+bart-attribution-evidence.ts`, `npm run bart:attribution-evidence`, mirroring
+the TfL alert-evidence precedent above): re-runnable, growing-over-time
+version of the one-off manual queries that found the confirmed examples
+above. Its one important design choice: it does NOT trust the `unit_id`
+archived at original ingest time — it re-derives attribution fresh, running
+TODAY's `matchHints` against the archived raw `reason` text for every
+historical event. This matters because trusting the stored `unit_id`
+understates progress (verified live: every archived 12TH event predates the
+"convention center" hint by four days, so its stored id was still the old
+"unspecified" fallback even though today's hint now resolves it correctly —
+the recompute approach fixed this and now shows 12TH as confirmed
+automatically, no manual query needed). Output (`src/catalog/bart-data/
+attribution-evidence.json`) buckets events into `confirmed` (resolves to one
+elevator under today's hints — same evidentiary bar as Milpitas/Hayward/12th
+St.), `chainAmbiguous` (multi-chain stations where zero/2+ chains matched —
+the main mining target for the 10 unverified stations), `segmentAmbiguous`,
+and `structuralUnsolvable` (resolves to nothing even under today's hints;
+annotated with `manualOverrideNotes` when a human has already worked around
+that station, and `pureSpof` when the station's model is a genuine single-
+elevator SPOF with no known unmodeled siblings — see below). Never
+auto-applies anything; every bucket is raw evidence for a human to read.
+
+*A real finding from building it, and a claim retracted*: a live example from
+Bryce ("Coliseum's advisory can read 'Station - Tunnel', about the
+pedestrian-bridge elevator to the arena") was first suspected to be a live
+misattribution bug — COLS-EL's only hint is the generic word "elevator", and
+BART's advisory always contains "N elevators out:", so the fear was that
+generic hint would match ANY Coliseum advisory including ones about other,
+unmodeled elevators there. **Verified false**: `parseAffected()`
+(`src/adapters/bart/index.ts`) already strips the "N elevators out:" prefix
+before per-station matching — the per-station `desc` text never contains the
+literal word "elevator" in any observed example ("Station", "Station - SF/
+East Bay", "Station - Convention Center", "- Terminal/Station"), so a generic
+"elevator" hint effectively never matches at all and there is no live
+misattribution risk today. The evidence tool still carries a `genericHintRisk`
+detector (defense-in-depth, currently 0 flagged) in case that ever changes.
+The REAL finding underneath the false alarm: because "elevator" never
+matches, EVERY pure-single-elevator SPOF station (BALB, BAYF, BERY, CAST,
+COLM, CONC, DUBL, FRMT, GLEN, LAFY, NBRK, NCON, ORIN, PCTR, ROCK, SBRN, SSAN,
+OAKL — the `matchHints: ["elevator"]` template) currently gets ZERO
+attribution credit even though a station-level advisory there is logically
+unambiguous (there is no OTHER elevator it could mean) — the site's
+per-elevator stats for these ~17 stations never accumulate real downtime,
+always falling to `{ABBR}-UNSPECIFIED` instead of the one real elevator id. A
+blanket "always attribute a single-chain station's advisory to its one
+elevator" fix would be safe at all of these EXCEPT COLS, which is a single
+MODELED chain but has real unmodeled auxiliary elevators noted in its own
+curated comment (Oakland Airport Connector, a parking-lot lift, a pedestrian
+bridge to the arena) — a genuine competing candidate the advisory could
+actually mean. The evidence tool's `pureSpof` flag already distinguishes
+these (checks the model's own note for "auxiliary"/"not modeled" language
+before flagging), but the fix itself — auto-attributing genuinely unambiguous
+SPOFs — was surfaced, not applied; it's a real change to attribution
+semantics, not just a `matchHints` tweak, and needs Bryce's steer like
+everything else in this section.
 
 ### MBTA feeds (in use) — genuinely per-elevator
 
