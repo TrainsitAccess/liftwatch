@@ -19,7 +19,7 @@ import {
 //   - the CLI (src/site/build-data.ts, `npm run site:data`) writes the
 //     payloads to site/*.json for local preview and the push-time deploy
 //     fallback;
-//   - the Netlify scheduled poller (netlify/functions/poll-background.mts)
+//   - the Netlify scheduled poller (netlify/functions/poll.mts)
 //     writes them to Netlify Blobs after every poll, so the LIVE site's data
 //     refreshes every poll cycle WITHOUT a rebuild/redeploy (a build-hook-
 //     per-poll design would have burned ~288 build-minutes/day at a 5-min

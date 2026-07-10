@@ -29,7 +29,7 @@ schema reserves `unit_type` for it, but we do not ingest or display escalators.
 |---|---|
 | Stack | Supabase (Postgres, free tier) + static frontend |
 | Schema philosophy | Store **events, not raw snapshots** — keeps us on the free tier for years |
-| Poller | Netlify scheduled function every 5 min (`netlify/functions/poll-background.mts`); migrated off GitHub Actions cron 2026-07-09 — see below |
+| Poller | Netlify scheduled function every 5 min (`netlify/functions/poll.mts`); migrated off GitHub Actions cron 2026-07-09 — see below |
 | Hosting | Netlify (site `liftwatch`, auto-deploys `main` on push only); post-poll data reaches the live site via Netlify Blobs (`data.mts` serves /data.json + /systems/*), NOT rebuilds — zero build-minutes per poll |
 | Backup / export | Weekly GitHub Action → dated XLSX + CSVs → Google Drive folder |
 | Scope | Elevators only; `unit_type` reserved so escalators are a future config flip |
@@ -312,9 +312,10 @@ against a reference photo):
   its slot (`gh run list` showed a gap; GitHub documents scheduled workflows
   as best-effort and deprioritizes them on lower-traffic/public repos). The
   poll logic (`src/pollSystem.ts`) is now shared by both the CLI and a Netlify
-  **background** scheduled function (`netlify/functions/poll-background.mts`,
-  15-min ceiling vs a regular function's 30s — headroom for 8 sequential feed
-  fetches), on a **5-min** cadence. Each poll rebuilds the site's data
+  scheduled function (`netlify/functions/poll.mts`) on a **5-min** cadence —
+  a REGULAR synchronous function polling all 8 feeds in parallel to fit the
+  30s cap; a background function was tried first and its schedule silently
+  never fires (see the function's header comment). Each poll rebuilds the site's data
   payloads (`src/site/build-site-data.ts`, shared with the `site:data` CLI)
   into Netlify **Blobs**, served at the site's existing /data.json +
   /systems/* URLs by `netlify/functions/data.mts` — fresh data with zero

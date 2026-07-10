@@ -3,7 +3,7 @@ import { getStore } from "@netlify/blobs";
 
 // Serves the site's data payloads from Netlify Blobs at the SAME paths the
 // static pages have always fetched (/data.json, /systems/{id}.json), so
-// index.html/system.html need no URL changes. poll-background.mts refreshes
+// index.html/system.html need no URL changes. poll.mts refreshes
 // these blobs every poll — this is what lets the live site's data update
 // every 5 minutes with zero rebuilds/redeploys (see that file's header).
 //

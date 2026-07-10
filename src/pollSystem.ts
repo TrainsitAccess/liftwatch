@@ -8,8 +8,8 @@ import type { NormalizedRead } from "./types.js";
 
 // The archiving-relevant core of a poll, shared between the CLI (src/poll.ts,
 // which adds arg parsing + a console summary) and the Netlify scheduled
-// function (netlify/functions/poll-background.mts, which loops this over
-// every system on a timer instead of GitHub Actions cron). Kept dependency-
+// function (netlify/functions/poll.mts, which runs this over every system
+// in parallel on a timer instead of GitHub Actions cron). Kept dependency-
 // light and free of console formatting so it's cheap to call in a loop.
 
 export interface PollSystemResult {

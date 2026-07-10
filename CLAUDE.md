@@ -15,8 +15,8 @@ non-English-speaking system, LIRR + Metro-North — first commuter railroads,
 sharing one adapter); **eight are visible** — TMB is `hidden` pending a
 data-quality review of its feeds (see below), so the live site shows 8. Polled
 every **5 min** by a **Netlify scheduled function** (`netlify/functions/
-poll-background.mts`) that loops every system through the shared `pollSystem()`
-core, then rebuilds the site's data payloads into **Netlify Blobs** (served at
+poll.mts`) that runs every system through the shared `pollSystem()`
+core in parallel, then rebuilds the site's data payloads into **Netlify Blobs** (served at
 /data.json + /systems/*.json by `netlify/functions/data.mts`) — fresh data
 reaches the live site every poll with ZERO rebuilds/redeploys; deploys happen
 only on push. Migrated off GitHub Actions cron because GitHub silently stopped
@@ -83,17 +83,21 @@ Hosting + the 5-min poll cron both live on Netlify now (site
   function below; kept for local preview parity), publish dir `site`,
   functions dir `netlify/functions`, `NODE_VERSION=22` (supabase-js needs
   native WebSocket, same constraint as the old poll.yml).
-- **`netlify/functions/poll-background.mts`** — the scheduled poller
-  (`schedule: "*/5 * * * *"`). A **background** function (not a regular one)
-  on purpose: regular functions cap at 30s, and polling 8 feeds sequentially
-  can exceed that; background functions get up to 15 min. Loops
-  `knownSystemIds()` through `pollSystem()`, each system in its own try/catch
-  so one failing feed doesn't stop the rest (mirrors poll.yml's per-step
-  `if: !cancelled()`), then rebuilds the site data payloads via
-  `buildSiteData()` and writes them to the **`site-data` Netlify Blobs
-  store**. NO build hook / redeploy per poll — at a 5-min cadence that would
-  be ~288 builds/day (~9x the free tier's 300 build-min/month) just to swap
-  a 17 KB JSON file.
+- **`netlify/functions/poll.mts`** — the scheduled poller
+  (`schedule: "*/5 * * * *"`). A **REGULAR** synchronous function —
+  **scheduled functions must not be background functions**: the first
+  version was named `poll-background.mts`, and the `-background` name
+  suffix forces background invocation mode, which Netlify's scheduler
+  SILENTLY never fires (the schedule registers in the deploy log and
+  manifest, but zero invocations ever happen; a manual POST returns 202
+  "accepted" yet never executes either). Regular functions cap at 30s, so
+  the 8 per-system polls run in PARALLEL (`Promise.allSettled` — wall-clock
+  = slowest single feed; one failing feed doesn't stop the rest, mirroring
+  poll.yml's per-step `if: !cancelled()`), then the site data payloads are
+  rebuilt via `buildSiteData()` and written to the **`site-data` Netlify
+  Blobs store**. NO build hook / redeploy per poll — at a 5-min cadence
+  that would be ~288 builds/day (~9x the free tier's 300 build-min/month)
+  just to swap a 17 KB JSON file.
 - **`netlify/functions/data.mts`** — serves `/data.json` and
   `/systems/{id}.json` straight from the `site-data` blobs (custom-path
   functions shadow same-path static files by default), 60s shared cache. The

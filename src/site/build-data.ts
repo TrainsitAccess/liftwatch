@@ -6,7 +6,7 @@ import { buildSiteData } from "./build-site-data.js";
 // CLI wrapper: snapshot the archive into site/*.json. Run: npm run site:data
 // Used for local preview (site:serve) and as the push-time deploy fallback —
 // the LIVE site's data is refreshed every poll via Netlify Blobs instead
-// (see build-site-data.ts's header and poll-background.mts).
+// (see build-site-data.ts's header and netlify/functions/poll.mts).
 
 const db = getSupabase();
 if (!db) {
