@@ -3,7 +3,7 @@
   "name": "Metro-North",
   "label": "Metro-North (New York)",
   "timezone": "America/New_York",
-  "generatedAt": "2026-07-10T16:00:12.761Z",
+  "generatedAt": "2026-07-10T19:10:09.040Z",
   "currentlyBroken": [
     {
       "station": "Grand Central (North End: Tks 34/35/116)",
@@ -82,25 +82,6 @@
       ]
     },
     {
-      "station": "Mt Vernon East (Track 4)",
-      "unitId": "2ME-202E",
-      "unit": "Elevator from the street to the Stamford/New Haven-bound platform (Track 4) and the overpass.",
-      "days": 2,
-      "since": "2026-07-08T11:56:42+00:00",
-      "planned": false,
-      "reason": "not working",
-      "estimatedReturn": null,
-      "soleAccess": false,
-      "severs": [
-        "Mt Vernon East (Track 4)"
-      ],
-      "backups": [],
-      "rampAlternative": false,
-      "chainNotes": [
-        "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
-      ]
-    },
-    {
       "station": "Greenwich",
       "unitId": "2GN-218E",
       "unit": "Elevator from the New Haven-bound platform (Track 4) to the overpass",
@@ -124,28 +105,9 @@
       "planned": false,
       "reason": "not working",
       "estimatedReturn": null,
-      "soleAccess": false,
+      "soleAccess": true,
       "severs": [
         "New Haven (Tracks 1 & 3)"
-      ],
-      "backups": [],
-      "rampAlternative": false,
-      "chainNotes": [
-        "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
-      ]
-    },
-    {
-      "station": "Chappaqua",
-      "unitId": "1CQ-148I",
-      "unit": "Elevator from the overpass to the island platform (Tracks 2 & 1).",
-      "days": 0,
-      "since": "2026-07-10T00:15:09+00:00",
-      "planned": false,
-      "reason": "not working",
-      "estimatedReturn": null,
-      "soleAccess": false,
-      "severs": [
-        "Chappaqua"
       ],
       "backups": [],
       "rampAlternative": false,
@@ -165,15 +127,6 @@
   "stationAccess": {
     "rows": [
       {
-        "name": "Chappaqua",
-        "state": "no_access",
-        "downUnits": [
-          "1CQ-148I"
-        ],
-        "offlineUnits": [],
-        "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
-      },
-      {
         "name": "Grand Central (North End: Tks 34/35/116)",
         "state": "no_access",
         "downUnits": [
@@ -181,15 +134,6 @@
         ],
         "offlineUnits": [],
         "note": "Grand Central's 45th St cross passage: NE-4 is the sole elevator to the Track 116 and Tracks 34 & 35 platforms from this passage. It has been out of service since March 2023 (long-term outage). The other North End units (NE-1/2/3/5/6) are tracked but not yet modeled — passage topology unverified."
-      },
-      {
-        "name": "Mt Vernon East (Track 4)",
-        "state": "no_access",
-        "downUnits": [
-          "2ME-202E"
-        ],
-        "offlineUnits": [],
-        "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
       },
       {
         "name": "New Haven (Tracks 1 & 3)",
@@ -225,15 +169,15 @@
   "accessibilityBlackouts": [
     {
       "name": "Grand Central (North End: Tks 34/35/116)",
-      "hours": 28898.0838225
+      "hours": 28901.249455555557
     },
     {
       "name": "New Rochelle (New Haven-bound)",
-      "hours": 1084.8057669444445
+      "hours": 1087.9714
     },
     {
       "name": "Mt Vernon East (Track 4)",
-      "hours": 52.05854472222222
+      "hours": 54.146436944444446
     },
     {
       "name": "Hawthorne",
@@ -252,16 +196,16 @@
       "hours": 24.20590222222222
     },
     {
+      "name": "New Haven (Tracks 1 & 3)",
+      "hours": 18.383066666666668
+    },
+    {
       "name": "Larchmont (Track 4)",
       "hours": 18.203812777777777
     },
     {
       "name": "Chappaqua",
-      "hours": 15.751044722222222
-    },
-    {
-      "name": "New Haven (Tracks 1 & 3)",
-      "hours": 15.217433611111112
+      "hours": 17.724271388888887
     }
   ],
   "stepFreeStreak": [
@@ -318,28 +262,18 @@
   ],
   "mostBrokenUnits": [
     {
+      "unit": "Elevator from the overpass to the island platform (Tracks 2 & 1).",
+      "station": "Hawthorne",
+      "count": 1
+    },
+    {
+      "unit": "Elevator from the street to the Stamford/New Haven-bound platform (Track 4) and the overpass.",
+      "station": "Mt Vernon East (Track 4)",
+      "count": 1
+    },
+    {
       "unit": "Elevator from the street to the Stamford/New Haven-bound platform (Track 4).",
       "station": "New Rochelle (New Haven-bound)",
-      "count": 1
-    },
-    {
-      "unit": "At the 47th street Cross Passage in the Northwest Passage.",
-      "station": "Grand Central",
-      "count": 1
-    },
-    {
-      "unit": "Bridge to Platform and Parking Level",
-      "station": "Purdy's",
-      "count": 1
-    },
-    {
-      "unit": "Elevator from the overpass to the island platform (Tracks 2 & 1).",
-      "station": "Purdy's",
-      "count": 1
-    },
-    {
-      "unit": "Elevator from the street to the New York-bound platform (Track 3).",
-      "station": "Darien (Track 3)",
       "count": 1
     },
     {
@@ -348,36 +282,88 @@
       "count": 1
     },
     {
-      "unit": "Elevator from the overpass to the island platform (Tracks 2 & 1).",
-      "station": "Chappaqua",
+      "unit": "Bridge to Platform and Parking Level",
+      "station": "Purdy's",
       "count": 1
     },
     {
-      "unit": "Upper Level near Northeast Passageway entrance (B Hall).",
-      "station": "Grand Central (Terminal)",
+      "unit": "Elevator from the street level to the overpass.",
+      "station": "Purdy's",
       "count": 1
     },
     {
       "unit": "Elevator from the overpass to the island platform (Tracks 2 & 1).",
-      "station": "Hawthorne",
+      "station": "Purdy's",
       "count": 1
     },
     {
       "unit": "Elevator from the parking lot to the Stamford/New Haven-bound platform (Track 4) to the overpass",
       "station": "Larchmont (Track 4)",
       "count": 1
+    },
+    {
+      "unit": "Elevator from the New Haven-bound platform (Track 4) to the overpass",
+      "station": "Greenwich",
+      "count": 1
+    },
+    {
+      "unit": "Elevator from the overpass to the island platform (Tracks 2 & 1).",
+      "station": "Chappaqua",
+      "count": 1
     }
   ],
   "uptimeStreak": [
     {
-      "unit": "Elevator from the Southbound platform (Tk 4) to the overpass.",
-      "station": "Greystone (Track 4)",
+      "unit": "Elevator from the main station overpass to the Tracks 1 & 2 platform.",
+      "station": "Croton-Harmon",
       "days": 3,
       "downNow": false
     },
     {
-      "unit": "Elevator from the underpass to the station building.",
-      "station": "New Haven",
+      "unit": "Elevator from the overpass to the White Plains/Southeast-bound platform (Track 1).",
+      "station": "Fleetwood (Track 1)",
+      "days": 3,
+      "downNow": false
+    },
+    {
+      "unit": "Elevator from the east-side parking lot to the overpass.",
+      "station": "Katonah",
+      "days": 3,
+      "downNow": false
+    },
+    {
+      "unit": "Elevator from the overpass to the Grand Central Terminal bound platform (Track 2,4).",
+      "station": "Fleetwood (Tracks 2 & 4)",
+      "days": 3,
+      "downNow": false
+    },
+    {
+      "unit": "Elevator from the station building to the Southeast/New Haven-bound platform (Track 3).",
+      "station": "Fordham (Track 3)",
+      "days": 3,
+      "downNow": false
+    },
+    {
+      "unit": "Elevator from the parking lot to the New York-bound platform (Track 3) to the overpass",
+      "station": "Larchmont (Track 3)",
+      "days": 3,
+      "downNow": false
+    },
+    {
+      "unit": "Elevator from street to Island platform (Tk 1 )",
+      "station": "Morris Heights",
+      "days": 3,
+      "downNow": false
+    },
+    {
+      "unit": "Elevator from the overpass to the island platform (Tracks 2 ).",
+      "station": "Katonah",
+      "days": 3,
+      "downNow": false
+    },
+    {
+      "unit": "Elevator from the street  to the New York-bound platform (Track 3) and the overpass.",
+      "station": "Mt Vernon East (Track 3)",
       "days": 3,
       "downNow": false
     },
@@ -386,98 +372,68 @@
       "station": "New Rochelle (New York-bound)",
       "days": 3,
       "downNow": false
-    },
-    {
-      "unit": "0PE-TK2",
-      "station": "Peekskill",
-      "days": 3,
-      "downNow": false
-    },
-    {
-      "unit": "Elevator from the street to the island platform (Tracks 2 & 1).",
-      "station": "Pleasantville",
-      "days": 3,
-      "downNow": false
-    },
-    {
-      "unit": "Elevator 03 - Concourse to/from Track 2/4 center island platform",
-      "station": "Stamford",
-      "days": 3,
-      "downNow": false
-    },
-    {
-      "unit": "Elevator 04 - Concourse to/from Track 4 & Station Place",
-      "station": "Stamford",
-      "days": 3,
-      "downNow": false
-    },
-    {
-      "unit": "Elevator 07 - East pedestrian bridge to/from Track 4",
-      "station": "Stamford (Track 4)",
-      "days": 3,
-      "downNow": false
-    },
-    {
-      "unit": "Riverside Elevator from Parking Lot to Overpass",
-      "station": "Tarrytown",
-      "days": 3,
-      "downNow": false
-    },
-    {
-      "unit": "Elevator from the New Haven-bound  platform (Tk 4) to street level to underpass is located on the west end of platform",
-      "station": "Westport (Track 4)",
-      "days": 3,
-      "downNow": false
     }
   ],
   "singlePointsOfFailure": [
     {
+      "name": "New Haven",
+      "count": 5
+    },
+    {
+      "name": "North White Plains",
+      "count": 3
+    },
+    {
+      "name": "Crestwood",
+      "count": 3
+    },
+    {
       "name": "Yankees-E 153 St",
       "count": 3
+    },
+    {
+      "name": "Fleetwood",
+      "count": 2
+    },
+    {
+      "name": "Hawthorne",
+      "count": 2
+    },
+    {
+      "name": "Katonah",
+      "count": 2
+    },
+    {
+      "name": "Mt Vernon East",
+      "count": 2
+    },
+    {
+      "name": "Fordham",
+      "count": 2
+    },
+    {
+      "name": "Larchmont",
+      "count": 2
     },
     {
       "name": "New Rochelle",
       "count": 2
     },
     {
-      "name": "Stamford",
+      "name": "Mt Kisco",
       "count": 2
     },
     {
-      "name": "Harlem-125 St",
+      "name": "Mt Vernon West",
       "count": 2
     },
     {
-      "name": "Pleasantville",
-      "count": 1
+      "name": "Poughkeepsie",
+      "count": 2
     },
     {
-      "name": "White Plains",
-      "count": 1
-    },
-    {
-      "name": "Beacon",
-      "count": 1
-    },
-    {
-      "name": "Morris Heights",
-      "count": 1
-    },
-    {
-      "name": "Port Chester",
-      "count": 1
-    },
-    {
-      "name": "University Heights",
-      "count": 1
-    },
-    {
-      "name": "Grand Central",
-      "count": 1
-    },
-    {
-      "name": "Merritt 7",
-      "count": 1
+      "name": "Southeast",
+      "count": 2
     }
   ]
 }

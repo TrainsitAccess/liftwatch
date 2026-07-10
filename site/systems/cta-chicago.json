@@ -3,13 +3,13 @@
   "name": "CTA",
   "label": "CTA (Chicago)",
   "timezone": "America/Chicago",
-  "generatedAt": "2026-07-10T16:00:12.761Z",
+  "generatedAt": "2026-07-10T19:10:09.040Z",
   "currentlyBroken": [
     {
       "station": "Western",
       "unitId": "41480",
       "unit": "41480",
-      "days": 58,
+      "days": 59,
       "since": "2026-05-12T17:00:00+00:00",
       "planned": true,
       "reason": "The Kimball-bound platform elevator at Western Brown Line stn is temporarily out of service. It is being upgraded to ensure continued safe, accessible service.",
@@ -39,7 +39,7 @@
       "station": "Clark/Lake",
       "unitId": "40380",
       "unit": "40380",
-      "days": 12,
+      "days": 13,
       "since": "2026-06-27T18:21:00+00:00",
       "planned": false,
       "reason": "The elevator at 203 N. LaSalle (Brown and Harlem-bound Green Line platform from street and subway concourse) at Clark/Lake is temporarily out-of-service.",
@@ -84,7 +84,7 @@
       "station": "Cottage Grove",
       "unitId": "40720",
       "unit": "40720",
-      "days": 1,
+      "days": 2,
       "since": "2026-07-08T16:45:00+00:00",
       "planned": false,
       "reason": "The elevator to/from street at Cottage Grove (Green Line) is temporarily out-of-service.\r\n",
@@ -96,28 +96,13 @@
       "chainNotes": []
     },
     {
-      "station": "Halsted",
-      "unitId": "41130",
-      "unit": "41130",
+      "station": "Pulaski",
+      "unitId": "40030",
+      "unit": "40030",
       "days": 0,
-      "since": "2026-07-10T15:26:00+00:00",
+      "since": "2026-07-10T18:23:00+00:00",
       "planned": false,
-      "reason": "The elevator at Halsted (Orange Line) is temporarily out-of-service.",
-      "estimatedReturn": "2026-07-17T05:00:00+00:00",
-      "soleAccess": false,
-      "severs": [],
-      "backups": [],
-      "rampAlternative": false,
-      "chainNotes": []
-    },
-    {
-      "station": "Racine",
-      "unitId": "40470",
-      "unit": "40470",
-      "days": 0,
-      "since": "2026-07-09T17:35:00+00:00",
-      "planned": false,
-      "reason": "The elevator at Racine (Blue Line) is temporarily out-of-service.\r\n\r\n",
+      "reason": "The 63rd-bound platform elevator at Pulaski (Green Line) is temporarily out-of-service.",
       "estimatedReturn": null,
       "soleAccess": false,
       "severs": [],
@@ -156,14 +141,44 @@
       "chainNotes": []
     },
     {
-      "station": "Montrose",
-      "unitId": "41500",
-      "unit": "41500",
+      "station": "Roosevelt",
+      "unitId": "41400",
+      "unit": "41400",
       "days": 0,
-      "since": "2026-07-10T11:28:00+00:00",
+      "since": "2026-07-10T16:41:00+00:00",
       "planned": false,
-      "reason": "The Kimball-bound platform elevator at Montrose (Brown Line) is temporarily out-of-service.",
+      "reason": "The transfer tunnel elevator at Roosevelt (Red, Orange and Green Lines) is temporarily out-of-service.",
+      "estimatedReturn": "2026-07-17T05:00:00+00:00",
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
+    },
+    {
+      "station": "Cermak-McCormick Place",
+      "unitId": "41690",
+      "unit": "41690",
+      "days": 0,
+      "since": "2026-07-10T18:50:00+00:00",
+      "planned": false,
+      "reason": "The elevator to/from 23rd street at Cermak-McCormick Place (Green Line) is temporarily out-of-service.",
       "estimatedReturn": null,
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
+    },
+    {
+      "station": "Cumberland",
+      "unitId": "40230",
+      "unit": "40230",
+      "days": 0,
+      "since": "2026-07-10T17:39:00+00:00",
+      "planned": false,
+      "reason": "The elevator to/from platform at Cumberland (Blue Line) is temporarily out-of-service.",
+      "estimatedReturn": "2026-07-17T05:00:00+00:00",
       "soleAccess": false,
       "severs": [],
       "backups": [],
@@ -187,11 +202,11 @@
   "accessibilityBlackouts": [
     {
       "name": "Western",
-      "hours": 1415.0035447222222
+      "hours": 1418.1691777777778
     },
     {
       "name": "Lake",
-      "hours": 1178.0035447222222
+      "hours": 1181.1691777777778
     },
     {
       "name": "King Drive",
@@ -199,11 +214,11 @@
     },
     {
       "name": "Clark/Lake",
-      "hours": 309.65354472222225
+      "hours": 312.8191777777778
     },
     {
       "name": "Loyola",
-      "hours": 295.43609944444444
+      "hours": 298.6017325
     },
     {
       "name": "47th",
@@ -219,7 +234,7 @@
     },
     {
       "name": "35th-Bronzeville-IIT",
-      "hours": 149.45721722222223
+      "hours": 152.6228502777778
     },
     {
       "name": "63rd",
@@ -243,6 +258,11 @@
       "blackedOutNow": false
     },
     {
+      "name": "California",
+      "days": 4,
+      "blackedOutNow": false
+    },
+    {
       "name": "Forest Park",
       "days": 3,
       "blackedOutNow": false
@@ -258,12 +278,12 @@
       "blackedOutNow": false
     },
     {
-      "name": "Cermak-McCormick Place",
+      "name": "47th",
       "days": 3,
       "blackedOutNow": false
     },
     {
-      "name": "47th",
+      "name": "63rd",
       "days": 3,
       "blackedOutNow": false
     },
@@ -271,14 +291,14 @@
       "name": "Howard",
       "days": 3,
       "blackedOutNow": false
-    },
-    {
-      "name": "California",
-      "days": 3,
-      "blackedOutNow": false
     }
   ],
   "mostBrokenUnits": [
+    {
+      "unit": "40030",
+      "station": "Pulaski",
+      "count": 3
+    },
     {
       "unit": "40170",
       "station": "Ashland",
@@ -300,11 +320,6 @@
       "count": 2
     },
     {
-      "unit": "40030",
-      "station": "Pulaski",
-      "count": 2
-    },
-    {
       "unit": "41130",
       "station": "Halsted",
       "count": 2
@@ -315,18 +330,18 @@
       "count": 2
     },
     {
+      "unit": "41400",
+      "station": "Roosevelt",
+      "count": 2
+    },
+    {
+      "unit": "41690",
+      "station": "Cermak-McCormick Place",
+      "count": 2
+    },
+    {
       "unit": "41440",
       "station": "Addison",
-      "count": 2
-    },
-    {
-      "unit": "41500",
-      "station": "Montrose",
-      "count": 2
-    },
-    {
-      "unit": "40540",
-      "station": "Wilson",
       "count": 2
     }
   ],
@@ -350,6 +365,12 @@
       "downNow": false
     },
     {
+      "unit": "41360",
+      "station": "California",
+      "days": 4,
+      "downNow": false
+    },
+    {
       "unit": "40390",
       "station": "Forest Park",
       "days": 3,
@@ -368,26 +389,20 @@
       "downNow": false
     },
     {
-      "unit": "41690",
-      "station": "Cermak-McCormick Place",
-      "days": 3,
-      "downNow": false
-    },
-    {
       "unit": "41230",
       "station": "47th",
       "days": 3,
       "downNow": false
     },
     {
-      "unit": "40900",
-      "station": "Howard",
+      "unit": "40910",
+      "station": "63rd",
       "days": 3,
       "downNow": false
     },
     {
-      "unit": "41360",
-      "station": "California",
+      "unit": "40900",
+      "station": "Howard",
       "days": 3,
       "downNow": false
     }

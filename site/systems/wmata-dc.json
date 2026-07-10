@@ -3,7 +3,7 @@
   "name": "DC Metro",
   "label": "DC Metro (Washington)",
   "timezone": "America/New_York",
-  "generatedAt": "2026-07-10T16:00:12.761Z",
+  "generatedAt": "2026-07-10T19:10:09.040Z",
   "currentlyBroken": [
     {
       "station": "Glenmont",
@@ -54,7 +54,7 @@
       "station": "Huntington",
       "unitId": "C15S03",
       "unit": "Garage #2 elevator",
-      "days": 9,
+      "days": 10,
       "since": "2026-06-30T17:00:00+00:00",
       "planned": false,
       "reason": "Inspection Repair",
@@ -130,9 +130,39 @@
       "unitId": "K06X04",
       "unit": "Garage elevator",
       "days": 0,
-      "since": "2026-07-10T14:02:00+00:00",
-      "planned": true,
-      "reason": "Safety Inspection",
+      "since": "2026-07-10T16:25:00+00:00",
+      "planned": false,
+      "reason": "Inspection Repair",
+      "estimatedReturn": "2026-07-16T03:59:59+00:00",
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
+    },
+    {
+      "station": "Ronald Reagan Washington National Airport",
+      "unitId": "C10S02",
+      "unit": "Elevator between mezzanine and platform to Mt.Vernon Sq/Largo Town Center",
+      "days": 0,
+      "since": "2026-07-10T17:21:00+00:00",
+      "planned": false,
+      "reason": "Service Call",
+      "estimatedReturn": "2026-07-13T03:59:59+00:00",
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
+    },
+    {
+      "station": "Deanwood",
+      "unitId": "D10X02",
+      "unit": "Elevator between mezzanine and platform",
+      "days": 0,
+      "since": "2026-07-10T18:15:00+00:00",
+      "planned": false,
+      "reason": "Service Call",
       "estimatedReturn": "2026-07-13T03:59:59+00:00",
       "soleAccess": false,
       "severs": [],
@@ -157,23 +187,23 @@
   "accessibilityBlackouts": [
     {
       "name": "Glenmont",
-      "hours": 3072.5368780555555
+      "hours": 3075.702511111111
     },
     {
       "name": "Rockville",
-      "hours": 1931.3368780555556
+      "hours": 1934.502511111111
     },
     {
       "name": "Columbia Heights",
-      "hours": 783.7535447222223
+      "hours": 786.9191777777778
     },
     {
       "name": "Huntington",
-      "hours": 239.00354472222222
+      "hours": 242.16917777777778
     },
     {
       "name": "Mt Vernon Sq 7th St-Convention Center",
-      "hours": 149.4202113888889
+      "hours": 152.58584444444443
     },
     {
       "name": "L'Enfant Plaza",
@@ -181,19 +211,19 @@
     },
     {
       "name": "Federal Triangle",
-      "hours": 48.95674972222222
+      "hours": 52.12238277777778
     },
     {
       "name": "Gallery Pl-Chinatown",
       "hours": 41.81525027777778
     },
     {
-      "name": "North Bethesda",
-      "hours": 28.470702777777777
+      "name": "Franconia-Springfield",
+      "hours": 29.45251111111111
     },
     {
-      "name": "Capitol Heights",
-      "hours": 28.24712583333333
+      "name": "North Bethesda",
+      "hours": 28.470702777777777
     }
   ],
   "stepFreeStreak": [
@@ -228,6 +258,11 @@
       "blackedOutNow": false
     },
     {
+      "name": "North Bethesda",
+      "days": 3,
+      "blackedOutNow": false
+    },
+    {
       "name": "Capitol South",
       "days": 3,
       "blackedOutNow": false
@@ -239,11 +274,6 @@
     },
     {
       "name": "L'Enfant Plaza",
-      "days": 2,
-      "blackedOutNow": false
-    },
-    {
-      "name": "North Bethesda",
       "days": 2,
       "blackedOutNow": false
     }
@@ -260,6 +290,11 @@
       "count": 2
     },
     {
+      "unit": "Garage elevator",
+      "station": "West Falls Church",
+      "count": 2
+    },
+    {
       "unit": "Elevator between platform for Green/Yellow lines and platform to Shady Grove",
       "station": "Gallery Pl-Chinatown",
       "count": 2
@@ -267,6 +302,11 @@
     {
       "unit": "Elevator between street and mezzanine",
       "station": "L'Enfant Plaza",
+      "count": 2
+    },
+    {
+      "unit": "Elevator between street and mezzanine",
+      "station": "Eastern Market",
       "count": 2
     },
     {
@@ -287,16 +327,6 @@
     {
       "unit": "Elevator between mezzanine and platform",
       "station": "Archives-Navy Memorial-Penn Quarter",
-      "count": 1
-    },
-    {
-      "unit": "Elevator between mezzanine and platform",
-      "station": "Wheaton",
-      "count": 1
-    },
-    {
-      "unit": "Garage elevator",
-      "station": "Glenmont",
       "count": 1
     }
   ],
@@ -350,14 +380,14 @@
       "downNow": false
     },
     {
-      "unit": "Elevator between mezzanine and platform",
-      "station": "Capitol South",
-      "days": 3,
+      "unit": "Elevator between street and mezzanine to Vienna",
+      "station": "Ballston-MU",
+      "days": 4,
       "downNow": false
     },
     {
-      "unit": "Elevator between mezzanine and platform",
-      "station": "Congress Heights",
+      "unit": "Elevator between street and mezzanine",
+      "station": "Mt Vernon Sq 7th St-Convention Center",
       "days": 3,
       "downNow": false
     }

@@ -3,7 +3,7 @@
   "name": "BART",
   "label": "BART (San Francisco)",
   "timezone": "America/Los_Angeles",
-  "generatedAt": "2026-07-10T16:00:12.761Z",
+  "generatedAt": "2026-07-10T19:10:09.040Z",
   "currentlyBroken": [
     {
       "station": "Richmond",
@@ -115,11 +115,11 @@
   "accessibilityBlackouts": [
     {
       "name": "Richmond",
-      "hours": 157.08765277777778
+      "hours": 160.25328583333334
     },
     {
       "name": "Milpitas (Millbrae/SFO/Daly City/Richmond direction)",
-      "hours": 17.188178611111113
+      "hours": 20.353811666666665
     },
     {
       "name": "El Cerrito Plaza (Berryessa/SFO/Millbrae/Daly City direction)",
@@ -227,12 +227,6 @@
   ],
   "uptimeStreak": [
     {
-      "unit": "Platforms 1 & 2 Elevator",
-      "station": "San Francisco International Airport",
-      "days": 6,
-      "downNow": false
-    },
-    {
       "unit": "Platform Elevator 1",
       "station": "Ashby",
       "days": 6,
@@ -253,6 +247,12 @@
     {
       "unit": "Platform Elevator 1",
       "station": "19th St. Oakland",
+      "days": 6,
+      "downNow": false
+    },
+    {
+      "unit": "Platforms 1 & 2 Elevator",
+      "station": "San Francisco International Airport",
       "days": 6,
       "downNow": false
     },
@@ -293,11 +293,7 @@
       "count": 3
     },
     {
-      "name": "Union City",
-      "count": 2
-    },
-    {
-      "name": "El Cerrito del Norte",
+      "name": "Embarcadero",
       "count": 2
     },
     {
@@ -305,35 +301,7 @@
       "count": 2
     },
     {
-      "name": "San Leandro",
-      "count": 2
-    },
-    {
-      "name": "South Hayward",
-      "count": 2
-    },
-    {
-      "name": "Walnut Creek",
-      "count": 2
-    },
-    {
-      "name": "El Cerrito Plaza",
-      "count": 2
-    },
-    {
-      "name": "Embarcadero",
-      "count": 2
-    },
-    {
-      "name": "16th St. Mission",
-      "count": 2
-    },
-    {
-      "name": "24th St. Mission",
-      "count": 2
-    },
-    {
-      "name": "Civic Center/UN Plaza",
+      "name": "El Cerrito del Norte",
       "count": 2
     },
     {
@@ -345,7 +313,39 @@
       "count": 2
     },
     {
-      "name": "Antioch",
+      "name": "San Leandro",
+      "count": 2
+    },
+    {
+      "name": "South Hayward",
+      "count": 2
+    },
+    {
+      "name": "Montgomery St.",
+      "count": 2
+    },
+    {
+      "name": "El Cerrito Plaza",
+      "count": 2
+    },
+    {
+      "name": "16th St. Mission",
+      "count": 2
+    },
+    {
+      "name": "24th St. Mission",
+      "count": 2
+    },
+    {
+      "name": "Walnut Creek",
+      "count": 2
+    },
+    {
+      "name": "Union City",
+      "count": 2
+    },
+    {
+      "name": "Civic Center/UN Plaza",
       "count": 2
     }
   ]

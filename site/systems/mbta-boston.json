@@ -3,7 +3,7 @@
   "name": "MBTA",
   "label": "MBTA (Boston)",
   "timezone": "America/New_York",
-  "generatedAt": "2026-07-10T16:00:12.761Z",
+  "generatedAt": "2026-07-10T19:10:09.040Z",
   "currentlyBroken": [
     {
       "station": "Winchester Center",
@@ -13,6 +13,36 @@
       "since": "2026-03-24T21:17:46+00:00",
       "planned": false,
       "reason": "Winchester Center Elevator 749 (Track 1 (outbound platform) to Main St) unavailable",
+      "estimatedReturn": null,
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
+    },
+    {
+      "station": "Lynn",
+      "unitId": "930",
+      "unit": "Lynn Elevator 930 (Street to parking garage)",
+      "days": 73,
+      "since": "2026-04-28T18:00:23+00:00",
+      "planned": true,
+      "reason": "Lynn Elevators 929 (Street to parking garage) and 930 (Street to parking garage) are unavailable until further notice. Please use the accessible parking spaces on the ground level of the garage while the elevators are out of service.",
+      "estimatedReturn": null,
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
+    },
+    {
+      "station": "Lynn",
+      "unitId": "929",
+      "unit": "Lynn Elevator 929 (Street to parking garage)",
+      "days": 73,
+      "since": "2026-04-28T18:00:23+00:00",
+      "planned": true,
+      "reason": "Lynn Elevators 929 (Street to parking garage) and 930 (Street to parking garage) are unavailable until further notice. Please use the accessible parking spaces on the ground level of the garage while the elevators are out of service.",
       "estimatedReturn": null,
       "soleAccess": false,
       "severs": [],
@@ -54,7 +84,7 @@
       "station": "Natick Center",
       "unitId": "751",
       "unit": "Natick Center Elevator 751 (Track 2 to street)",
-      "days": 7,
+      "days": 8,
       "since": "2026-07-02T19:01:38+00:00",
       "planned": false,
       "reason": "Natick Center Elevator 751 (Track 2 to street) is unavailable.",
@@ -69,7 +99,7 @@
       "station": "Downtown Crossing",
       "unitId": "999",
       "unit": "Downtown Crossing Elevator 999 (Oak Grove platform to Alewife platform)",
-      "days": 4,
+      "days": 5,
       "since": "2026-07-05T17:11:00+00:00",
       "planned": true,
       "reason": "Downtown Crossing Elevator 999 (Oak Grove platform to Alewife platform) is unavailable due to maintenance.",
@@ -94,6 +124,21 @@
       "backups": [],
       "rampAlternative": false,
       "chainNotes": []
+    },
+    {
+      "station": "Kendall/MIT",
+      "unitId": "777",
+      "unit": "Kendall/MIT Elevator 777 (Alewife platform to Main Street)",
+      "days": 1,
+      "since": "2026-07-08T19:12:14+00:00",
+      "planned": true,
+      "reason": "Kendall/MIT Elevator 777 (Alewife platform to Main Street) is unavailable due to maintenance.",
+      "estimatedReturn": null,
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     }
   ],
   "offline": {
@@ -101,8 +146,23 @@
     "log": []
   },
   "accessIssues": {
-    "current": 0,
-    "log": []
+    "current": 1,
+    "log": [
+      {
+        "facilityId": "subplat-SB-0189-1",
+        "type": "elevated_subplatform",
+        "typeLabel": "Mini-high platform",
+        "facility": "Stoughton mini-high platform",
+        "station": "Stoughton",
+        "planned": false,
+        "reason": "The Stoughton mini-high platform is out of service until further notice. For passengers with accessibility needs, please use the portable lift.",
+        "since": "2026-07-06T16:00:00+00:00",
+        "days": 4,
+        "estimatedReturn": null,
+        "restored": null,
+        "durationHours": null
+      }
+    ]
   },
   "stationAccess": {
     "rows": [],
@@ -156,40 +216,45 @@
     },
     {
       "name": "Winchester Center",
-      "hours": 2586.707433611111
+      "hours": 2589.8730666666665
+    },
+    {
+      "name": "Lynn",
+      "hours": 1753.1627888888888
     },
     {
       "name": "Framingham",
-      "hours": 457.3418780555556
+      "hours": 460.5075111111111
     },
     {
       "name": "Natick Center",
-      "hours": 217.63548916666667
+      "hours": 220.80112222222223
     },
     {
       "name": "Downtown Crossing",
-      "hours": 118.8202113888889
+      "hours": 121.98584444444444
     },
     {
       "name": "Worcester",
-      "hours": 96.67576694444445
+      "hours": 99.8414
     },
     {
       "name": "Porter",
       "hours": 72.73446305555555
     },
     {
-      "name": "Wonderland",
-      "hours": 41.89541083333334
-    },
-    {
-      "name": "Sullivan Square",
-      "hours": 27.965230555555557
+      "name": "Kendall/MIT",
+      "hours": 47.96528888888889
     }
   ],
   "stepFreeStreak": [
     {
-      "name": "North Quincy",
+      "name": "Roxbury Crossing",
+      "days": 6,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Andrew",
       "days": 6,
       "blackedOutNow": false
     },
@@ -199,42 +264,37 @@
       "blackedOutNow": false
     },
     {
-      "name": "Central",
-      "days": 6,
-      "blackedOutNow": false
-    },
-    {
       "name": "Government Center",
       "days": 6,
       "blackedOutNow": false
     },
     {
-      "name": "Kenmore",
+      "name": "Medford/Tufts",
       "days": 6,
       "blackedOutNow": false
     },
     {
-      "name": "World Trade Center",
+      "name": "Central",
       "days": 6,
       "blackedOutNow": false
     },
     {
-      "name": "Copley",
+      "name": "Braintree",
       "days": 6,
       "blackedOutNow": false
     },
     {
-      "name": "Prudential",
+      "name": "Wollaston",
       "days": 6,
       "blackedOutNow": false
     },
     {
-      "name": "Courthouse",
+      "name": "Union Square",
       "days": 6,
       "blackedOutNow": false
     },
     {
-      "name": "Airport",
+      "name": "Gilman Square",
       "days": 6,
       "blackedOutNow": false
     }
@@ -261,18 +321,23 @@
       "count": 2
     },
     {
+      "unit": "Worcester Elevator 782 (Parking lot to pedestrian bridge )",
+      "station": "Worcester",
+      "count": 1
+    },
+    {
       "unit": "Winchester Center Elevator 749 (Track 1 (outbound platform) to Main St)",
       "station": "Winchester Center",
       "count": 1
     },
     {
-      "unit": "Natick Center Elevator 751 (Track 2 to street)",
-      "station": "Natick Center",
+      "unit": "Jackson Square Elevator 846 (Platform to paid lobby)",
+      "station": "Jackson Square",
       "count": 1
     },
     {
-      "unit": "Worcester Elevator 782 (Parking lot to pedestrian bridge )",
-      "station": "Worcester",
+      "unit": "Natick Center Elevator 751 (Track 2 to street)",
+      "station": "Natick Center",
       "count": 1
     },
     {
@@ -284,47 +349,24 @@
       "unit": "Park Street Elevator 808 (Red Line center platform to Government Center & North platform, Winter Street Concourse)",
       "station": "Park Street",
       "count": 1
-    },
-    {
-      "unit": "Broadway Elevator 868 (Lobby to street)",
-      "station": "Broadway",
-      "count": 1
     }
   ],
   "uptimeStreak": [
     {
-      "unit": "Winchester Center Elevator 748 (Track 1 (outbound platform) to Waterfield St, parking)",
-      "station": "Winchester Center",
+      "unit": "Roxbury Crossing Elevator 847 (Platform to paid lobby)",
+      "station": "Roxbury Crossing",
       "days": 6,
       "downNow": false
     },
     {
-      "unit": "North Quincy Elevator 898 (Newport Avenue to northern lobby)",
-      "station": "North Quincy",
+      "unit": "Andrew Elevator 880 (Alewife platform to lobby)",
+      "station": "Andrew",
       "days": 6,
       "downNow": false
     },
     {
-      "unit": "Wonderland Elevator 702 (Main lobby to garage)",
-      "station": "Wonderland",
-      "days": 6,
-      "downNow": false
-    },
-    {
-      "unit": "Wonderland Elevator 703 (Main lobby to garage)",
-      "station": "Wonderland",
-      "days": 6,
-      "downNow": false
-    },
-    {
-      "unit": "Wonderland Elevator 708 (Main lobby to pedestrian bridge)",
-      "station": "Wonderland",
-      "days": 6,
-      "downNow": false
-    },
-    {
-      "unit": "Quincy Adams Elevator 806 (Lobby to parking garage)",
-      "station": "Quincy Adams",
+      "unit": "Park Street Elevator 804 (Government Center & North lobby to Tremont Street, Winter Street)",
+      "station": "Park Street",
       "days": 6,
       "downNow": false
     },
@@ -341,33 +383,47 @@
       "downNow": false
     },
     {
+      "unit": "Worcester Elevator 783 (Lobby to platform)",
+      "station": "Worcester",
+      "days": 6,
+      "downNow": false
+    },
+    {
+      "unit": "Quincy Adams Elevator 806 (Lobby to parking garage)",
+      "station": "Quincy Adams",
+      "days": 6,
+      "downNow": false
+    },
+    {
       "unit": "Alewife Elevator 814 (Main lobby to street, parking garage)",
       "station": "Alewife",
       "days": 6,
       "downNow": false
     },
     {
-      "unit": "Park Street Elevator 804 (Government Center & North lobby to Tremont Street, Winter Street)",
-      "station": "Park Street",
+      "unit": "Wonderland Elevator 703 (Main lobby to garage)",
+      "station": "Wonderland",
+      "days": 6,
+      "downNow": false
+    },
+    {
+      "unit": "Wonderland Elevator 708 (Main lobby to pedestrian bridge)",
+      "station": "Wonderland",
       "days": 6,
       "downNow": false
     }
   ],
   "singlePointsOfFailure": [
     {
-      "name": "Sullivan Square",
-      "count": 1
-    },
-    {
-      "name": "Providence",
-      "count": 1
-    },
-    {
       "name": "Roxbury Crossing",
       "count": 1
     },
     {
-      "name": "Ball Square",
+      "name": "Sullivan Square",
+      "count": 1
+    },
+    {
+      "name": "Jackson Square",
       "count": 1
     },
     {
@@ -375,11 +431,11 @@
       "count": 1
     },
     {
-      "name": "Green Street",
+      "name": "Ball Square",
       "count": 1
     },
     {
-      "name": "Jackson Square",
+      "name": "Green Street",
       "count": 1
     },
     {
@@ -396,6 +452,10 @@
     },
     {
       "name": "Stony Brook",
+      "count": 1
+    },
+    {
+      "name": "Providence",
       "count": 1
     },
     {

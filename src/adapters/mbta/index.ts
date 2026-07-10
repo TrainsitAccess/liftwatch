@@ -4,6 +4,7 @@ import type {
   NormalizedAccessIssue,
   NormalizedOutage,
   NormalizedRead,
+  NormalizedStation,
   NormalizedUnit,
 } from "../../types.js";
 import { nowUtcIso } from "../../lib/time.js";
@@ -110,6 +111,20 @@ export function createMbtaAdapter(config: MbtaConfig = MBTA_CONFIG): Adapter {
       // Non-elevator access facilities, keyed by facility id, for the alert
       // join below. Own `included` stops (this was a separate request).
       const accessStopById = new Map((accessRes.included ?? []).map((s) => [s.id, s]));
+
+      // Station layer for the access-facility stops (WMATA's
+      // NormalizedRead.stations pattern): a station can host access facilities
+      // while having NO elevators (Stoughton — mini-high platform, no
+      // elevator), so it never enters the units-derived station set and its
+      // access events would render with no station name. Emitting these stops
+      // here lets ingest upsert them like any other station.
+      const stations: NormalizedStation[] = [...accessStopById.values()].map((s) => ({
+        externalId: s.id,
+        name: s.attributes.name,
+        borough: s.attributes.municipality ?? undefined,
+        latitude: s.attributes.latitude ?? undefined,
+        longitude: s.attributes.longitude ?? undefined,
+      }));
       const accessFacilityById = new Map(
         accessRes.data
           .filter((f) => ACCESS_FACILITY_TYPES[f.attributes.type])
@@ -227,6 +242,7 @@ export function createMbtaAdapter(config: MbtaConfig = MBTA_CONFIG): Adapter {
         units,
         outages: current,
         upcoming,
+        stations,
         accessIssues,
       };
     },
