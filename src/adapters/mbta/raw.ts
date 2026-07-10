@@ -48,7 +48,11 @@ export interface MbtaAlertRaw {
   attributes: {
     active_period: { start: string | null; end: string | null }[]; // ISO 8601 with offset
     cause: string; // "MAINTENANCE" | "CONSTRUCTION" | "UNKNOWN_CAUSE" | ...
-    effect: string; // "ELEVATOR_CLOSURE" | "ACCESSIBILITY_ISSUE" | ...
+    // MBTA labels elevators-out inconsistently across effects — ELEVATOR_CLOSURE,
+    // ACCESS_ISSUE, and FACILITY_ISSUE all seen live. The adapter does NOT trust
+    // this field to identify elevator outages; it joins informed_entity facilities
+    // against the ELEVATOR-filtered facilities feed instead (see adapter comment).
+    effect: string; // "ELEVATOR_CLOSURE" | "ACCESS_ISSUE" | "FACILITY_ISSUE" | ...
     header: string;
     description: string | null;
     informed_entity: MbtaInformedEntity[];

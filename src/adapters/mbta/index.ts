@@ -105,7 +105,15 @@ export function createMbtaAdapter(config: MbtaConfig = MBTA_CONFIG): Adapter {
       const seenFacility = new Set<string>();
 
       for (const a of alertsRes.data) {
-        if (a.attributes.effect !== "ELEVATOR_CLOSURE") continue;
+        // Do NOT gate on `effect`: MBTA files the same real elevator outage under
+        // several effect labels. ELEVATOR_CLOSURE, ACCESS_ISSUE, and FACILITY_ISSUE
+        // have all been observed live for elevators-out — e.g. Kendall/MIT 777
+        // "unavailable due to maintenance" arrives as ACCESS_ISSUE, and Lynn
+        // 929/930 likewise. The reliable filter is the facility-type join below:
+        // informed_entity facilities are kept only when the ELEVATOR-filtered
+        // facilities feed confirms they're elevators, so escalators (e.g.
+        // FACILITY_ISSUE 143) and mini-high platforms (e.g. ACCESS_ISSUE
+        // subplat-*) are excluded regardless of what effect MBTA tagged.
         const period = a.attributes.active_period[0];
         const startsInFuture = period?.start ? Date.parse(period.start) > now : false;
 
