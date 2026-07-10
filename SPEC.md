@@ -1083,3 +1083,78 @@ railroad. Facts below verified live 2026-07-06.
   Grand Central (NE-1/2/3/5/6 — passage topology unverified); Yankees-E
   153 St's PE4 overpass elevator (level relationship to the mezzanine
   unverified, conservatively omitted from chains).
+
+### Rail chain generator — auto-modeled simple stations (2026-07-10)
+
+Only 13 railroad stations were hand-curated; the other ~86 elevator-equipped
+LIRR/MNR stations fell to `assumed` redundancy — so a real severing outage
+(the motivating case: Chappaqua's 148I, the sole overpass→island elevator,
+broken with LiftWatch showing nothing) carried no access claim at all. The
+subway solved this with a generator because `nyct_ene` ships a structured
+serving field AND a declared per-elevator `redundant` flag to self-check
+against; **eestatus ships neither** — only free location text — so the rail
+generator's answer key is the hand-curated models themselves.
+
+- **Engine/mapper split (universality, deliberate)**:
+  `src/lib/chain-inference.ts` is a SYSTEM-AGNOSTIC engine over
+  landing-classified elevators (street / platform-with-identity / named hub /
+  garage); `src/adapters/mta-rail/chain-mapper.ts` is the thin MTA-rail text
+  vocabulary, presence-based (an elevator = the set of landings its text
+  mentions), calibrated against the complete live feed. Any future system
+  with "from X to Y" elevator text reuses the engine with its own mapper —
+  same split as the MTA and TfL chain generators.
+- **Roles fall out of landings**: fullPath (street+platform — the elevator IS
+  the route), spoke (hub+platform), streetLeg (street+hub). A fullPath unit
+  that also lists the hub doubles as a streetLeg for that hub's spokes (the
+  Woodside-449 pattern). Redundant grouping ONLY on an exact platform-key
+  match (the TfL exact-match precedent). Garage-only units sit outside chains
+  (White Plains WP2 precedent).
+- **Conservative by construction**: `stepFreeAlternative` is never emitted
+  (humans only); a street-leg elevator, when present, is REQUIRED (over-warn
+  direction); a hub with no street-leg elevator is grade-assumed ONLY when
+  the agency itself declares the station fully accessible
+  (`infrastructure.accessibility === "FULL"` — the New Rochelle 206W
+  precedent). Anything ambiguous — unknown landing words (ticket office,
+  bridge, waterway…), hub↔hub elevators (GCT), multi-hub mismatches
+  (Tarrytown, Yankees), platform-only units (Fairfield), unnamed platforms
+  alongside named ones, direct+via-hub mixes needing CNF — is EXCLUDED to
+  `chains-excluded.json` for human review, never guessed.
+- **GROUND-TRUTH GATE (hard fail)**: at generation time, every hand-curated
+  station the engine chooses to model must match the hand model semantically —
+  chain count, exact member set, and per-elevator severed-chain count under
+  single-outage simulation via the production `stationAccessible()`. Any
+  mismatch aborts with nothing written (per the project owner: "if what you
+  generate disagrees with what I've told you, then your generator is
+  broken"). Result: **9 of 13 curated stations reproduced exactly** (incl.
+  Penn's five chains sharing P34, Jamaica's six sharing 521, Woodside's
+  triple-role 449, New Rochelle's per-direction split); the 4 complex ones
+  (GCT ×2, Stamford, Yankees) self-exclude — Yankees even trips on the same
+  PE4 ambiguity the hand model deliberately omits.
+- **The gate caught a real bug before ship**: the first run's track regex
+  missed the feed's "Tk 3" abbreviation, collapsing the Hudson line's
+  per-side platforms into one unnamed platform and generating FIVE false
+  redundant pairs (0AR/0GY/0HS/0RV/2WP) — the under-warn direction. Caught by
+  scanning every multi-elevator segment (redundancy claim) in the output, not
+  by the curated gate (those stations aren't curated) — **both reviews are
+  necessary**.
+- **Two-tier redundancy at ingest**: hand-curated models keep emitting
+  `curated`; generated models emit `serving_text` ("inferred from what each
+  elevator serves" — literally true here), an honest tier BELOW every human
+  signal: a future hand curation wins outright, and a contradiction with an
+  already-curated DB value raises a `redundancy_flags` row instead of
+  clobbering. `serving_text` is non-`assumed`, so generated sole-access units
+  DO get the ▮ marker and SPOF board. The generator guarantees the two model
+  sets share no station and no elevator (checked).
+- **Output** (`npm run rail:chains` → `src/catalog/mta-rail-data/`):
+  115 chains across 72 stations (Chappaqua: parking→overpass 148P +
+  overpass→island 148I, both sole-access — a 148I outage now reads NO ACCESS
+  to Tracks 1 & 2, matching MTA's own status page); 14 stations excluded for
+  review; 9 garage units outside chains; only two redundant groups emitted,
+  both genuine (Ronkonkoma's street pair, Tuckahoe's two Track-1 elevators).
+  MNR modeled routes went 15 → 81 on the access board.
+- **Offline regression**: `npm run check:rail-chains`
+  (`src/checks/rail-chains-check.ts`, 50 checks) re-runs mapper + engine +
+  ground-truth gate against a committed raw-feed fixture — no network — plus
+  the Chappaqua and Fairfield regressions, the no-overlap/no-ramp-claims
+  invariants, and locked counts (update `LOCKED` when deliberately
+  regenerating).

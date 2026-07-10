@@ -44,7 +44,9 @@
     "backup": "tsx src/backup/run.ts",
     "typecheck": "tsc --noEmit",
     "netlify:dev": "netlify dev",
-    "netlify:deploy": "netlify deploy --prod"
+    "netlify:deploy": "netlify deploy --prod",
+    "rail:chains": "tsx scripts/rail-chains.mts",
+    "check:rail-chains": "tsx src/checks/rail-chains-check.ts"
   },
   "dependencies": {
     "@netlify/blobs": "^10.7.9",

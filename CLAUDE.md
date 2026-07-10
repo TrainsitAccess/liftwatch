@@ -60,6 +60,8 @@ npm run check:tfl        # prove TfL's topology-derived redundancy (10 checks)
 npm run check:tmb        # prove TMB's elevator catalog integrity (7 checks)
 npm run check:mta        # prove MTA's multi-chain models vs feed flags (offline)
 npm run check:rail       # prove the LIRR/MNR mapper + curated models (offline fixture)
+npm run rail:chains      # regenerate LIRR/MNR simple-station chains (ground-truth-gated)
+npm run check:rail-chains # prove the rail chain generator vs the 13 hand models (offline)
 npm run mta:chains       # regenerate MTA multi-chain models from the live feed
 npm run typecheck        # tsc --noEmit — run after edits
 npm run db:status        # row counts + latest poll_runs, once Supabase is set up
@@ -218,6 +220,28 @@ parking lot). A station is accessible only if **every** segment is up.
   SPOF board) for units whose `redundancy_source` is NOT `assumed` — the
   assumed policy default is a conservative unknown, not a confirmed fact.
   Blackout/streak boards keep the conservative history-based logic.
+- **LIRR/MNR simple-station chains are GENERATED from feed text,
+  ground-truth-gated by the 13 hand models** (2026-07-10). eestatus has no
+  serving field and no declared redundancy flag (unlike the subway), so
+  `npm run rail:chains` (`scripts/rail-chains.mts`) parses each elevator's
+  free location text via a SYSTEM-AGNOSTIC landing-classification engine
+  (`src/lib/chain-inference.ts`) + a thin MTA-rail vocabulary mapper
+  (`src/adapters/mta-rail/chain-mapper.ts` — engine/mapper split, reusable by
+  any future free-text system). HARD GATE: every hand-curated station the
+  engine models must match the hand model semantically or the run aborts
+  ("if what you generate disagrees with what I've told you, then your
+  generator is broken") — 9/13 reproduce exactly, the 4 tangled ones
+  self-exclude. Output: 115 chains / 72 stations →
+  `src/catalog/mta-rail-data/chains.json` (+ `chains-excluded.json`, 14
+  stations for human review — TfL precedent). **Two-tier ingest**: hand
+  models stay `curated`; generated models enter as `serving_text` (below
+  every human signal; contradictions flag, never clobber; non-assumed, so ▮ +
+  SPOF apply). The generator guarantees no station/elevator overlap between
+  tiers. Offline: `npm run check:rail-chains` (50 checks, incl. the
+  Chappaqua-148I regression that motivated the whole build). GOTCHA locked in
+  the mapper: the feed abbreviates "Tk 3" — the first run's regex missed it
+  and minted five FALSE redundant pairs; when touching the mapper, re-scan
+  every multi-elevator segment in the output, not just the curated gate.
 - **TfL multi-chain models are GENERATED from graph topology, not hand-typed**
   (2026-07-08). Unlike MTA, TfL has no line-served field — only `FromAreas`/
   `ToAreas` area codes. `npm run tfl:chains` (`scripts/tfl-chains.mjs`) treats

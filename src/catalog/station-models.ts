@@ -9,6 +9,7 @@ import { BART_STATION_MODELS } from "./bart-station-models.js";
 // bundler alike. Same pattern in the TfL/TMB adapters' catalog loads.
 import mtaChainsJson from "./mta-data/station-chains.json" with { type: "json" };
 import tflChainsJson from "./tfl-data/chains.json" with { type: "json" };
+import railChainsJson from "./mta-rail-data/chains.json" with { type: "json" };
 
 // MTA multi-chain models, generated from the live elevator inventory by
 // scripts/mta-chains.mjs (self-checked against MTA's own ADA + redundant flags).
@@ -22,6 +23,16 @@ const mtaChains: StationModel[] = (mtaChainsJson as { models: StationModel[] }).
 // Paddington, Stratford, …) are excluded pending a human review pass; see
 // src/catalog/tfl-data/chains-excluded.json.
 const tflChains: StationModel[] = (tflChainsJson as { models: StationModel[] }).models;
+
+// LIRR / Metro-North auto-generated chain models for SIMPLE stations, derived
+// from the eestatus feed's own per-elevator location text by
+// scripts/rail-chains.mts (ground-truth-gated at generation time against the
+// 13 hand-curated models below — any semantic disagreement aborts the run;
+// re-verified offline by `npm run check:rail-chains`). Complex stations are
+// excluded to mta-rail-data/chains-excluded.json pending human review (TfL
+// precedent). Generated and hand-curated sets share no station and no
+// elevator. Regenerate with `npm run rail:chains` — do not hand-edit the JSON.
+const railChains: StationModel[] = (railChainsJson as { models: StationModel[] }).models;
 
 // Curated per-station accessibility structure — the source of truth for stations
 // whose feed doesn't expose per-elevator data (BART). Each station's step-free
@@ -216,6 +227,8 @@ export const STATION_MODELS: StationModel[] = [
   // LIRR + Metro-North curated models (hand-built from eestatus location
   // text, walked through station-by-station with a human 2026-07-06).
   ...MTA_RAIL_STATION_MODELS,
+  // LIRR + Metro-North auto-generated simple-station chains (see railChains).
+  ...railChains,
   // TfL's auto-generated multi-chain models (see tflChains above).
   ...tflChains,
 ];

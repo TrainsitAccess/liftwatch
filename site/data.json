@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-07-09T22:49:25.147Z",
+  "generatedAt": "2026-07-10T16:00:12.761Z",
   "totals": {
     "systems": 8,
     "activeUnits": 2062,
     "staticUnitsInTotal": 493,
-    "down": 92,
-    "downUnplanned": 70,
+    "down": 107,
+    "downUnplanned": 80,
     "offline": 0
   },
   "systems": [
@@ -19,12 +19,12 @@
       "inventoryComplete": true,
       "fleetSource": "live",
       "activeUnits": 569,
-      "down": 33,
-      "downUnplanned": 33,
-      "downPlanned": 0,
+      "down": 39,
+      "downUnplanned": 37,
+      "downPlanned": 2,
       "offline": 0,
-      "pctDown": 5.8,
-      "pctUnplanned": 5.8,
+      "pctDown": 6.9,
+      "pctUnplanned": 6.5,
       "staticFleetAsOf": null,
       "staticFleetSource": null
     },
@@ -48,6 +48,25 @@
       "staticFleetSource": "https://www.transitchicago.com/elevatorescalatorupgrades/"
     },
     {
+      "id": "mta-mnr",
+      "name": "Metro-North",
+      "city": "New York",
+      "label": "Metro-North (New York)",
+      "boardLabel": "Metro-North",
+      "dataQuality": "good",
+      "inventoryComplete": true,
+      "fleetSource": "live",
+      "activeUnits": 162,
+      "down": 8,
+      "downUnplanned": 6,
+      "downPlanned": 2,
+      "offline": 0,
+      "pctDown": 4.9,
+      "pctUnplanned": 3.7,
+      "staticFleetAsOf": null,
+      "staticFleetSource": null
+    },
+    {
       "id": "mta-nyct",
       "name": "NYC Subway",
       "city": "New York",
@@ -57,12 +76,31 @@
       "inventoryComplete": true,
       "fleetSource": "live",
       "activeUnits": 408,
-      "down": 26,
-      "downUnplanned": 11,
-      "downPlanned": 15,
+      "down": 30,
+      "downUnplanned": 14,
+      "downPlanned": 16,
       "offline": 0,
-      "pctDown": 6.4,
-      "pctUnplanned": 2.7,
+      "pctDown": 7.4,
+      "pctUnplanned": 3.4,
+      "staticFleetAsOf": null,
+      "staticFleetSource": null
+    },
+    {
+      "id": "bart-bay-area",
+      "name": "BART",
+      "city": "San Francisco",
+      "label": "BART (San Francisco)",
+      "boardLabel": "BART",
+      "dataQuality": "best_effort",
+      "inventoryComplete": true,
+      "fleetSource": "live",
+      "activeUnits": 101,
+      "down": 3,
+      "downUnplanned": 3,
+      "downPlanned": 0,
+      "offline": 0,
+      "pctDown": 3,
+      "pctUnplanned": 3,
       "staticFleetAsOf": null,
       "staticFleetSource": null
     },
@@ -86,25 +124,6 @@
       "staticFleetSource": null
     },
     {
-      "id": "bart-bay-area",
-      "name": "BART",
-      "city": "San Francisco",
-      "label": "BART (San Francisco)",
-      "boardLabel": "BART",
-      "dataQuality": "best_effort",
-      "inventoryComplete": true,
-      "fleetSource": "live",
-      "activeUnits": 101,
-      "down": 2,
-      "downUnplanned": 2,
-      "downPlanned": 0,
-      "offline": 0,
-      "pctDown": 2,
-      "pctUnplanned": 2,
-      "staticFleetAsOf": null,
-      "staticFleetSource": null
-    },
-    {
       "id": "wmata-dc",
       "name": "DC Metro",
       "city": "Washington",
@@ -114,33 +133,14 @@
       "inventoryComplete": false,
       "fleetSource": "static",
       "activeUnits": 320,
-      "down": 8,
-      "downUnplanned": 6,
-      "downPlanned": 2,
+      "down": 9,
+      "downUnplanned": 5,
+      "downPlanned": 4,
       "offline": 0,
-      "pctDown": 2.5,
-      "pctUnplanned": 1.9,
+      "pctDown": 2.8,
+      "pctUnplanned": 1.6,
       "staticFleetAsOf": "2026-07-04",
       "staticFleetSource": "https://www.wmata.com/ride/elevators-escalators.html"
-    },
-    {
-      "id": "mta-mnr",
-      "name": "Metro-North",
-      "city": "New York",
-      "label": "Metro-North (New York)",
-      "boardLabel": "Metro-North",
-      "dataQuality": "good",
-      "inventoryComplete": true,
-      "fleetSource": "live",
-      "activeUnits": 162,
-      "down": 5,
-      "downUnplanned": 3,
-      "downPlanned": 2,
-      "offline": 0,
-      "pctDown": 3.1,
-      "pctUnplanned": 1.9,
-      "staticFleetAsOf": null,
-      "staticFleetSource": null
     },
     {
       "id": "mta-lirr",
@@ -175,7 +175,7 @@
       "estimatedReturn": null,
       "since": "2023-03-24T13:55:11+00:00",
       "tz": "America/New_York",
-      "days": 1203
+      "days": 1204
     },
     {
       "system": "NYC Subway",
@@ -189,7 +189,7 @@
       "estimatedReturn": "2027-01-01T04:00:00+00:00",
       "since": "2024-10-28T10:26:00+00:00",
       "tz": "America/New_York",
-      "days": 619
+      "days": 620
     },
     {
       "system": "NYC Subway",
@@ -203,7 +203,7 @@
       "estimatedReturn": "2026-08-01T03:59:00+00:00",
       "since": "2024-11-06T14:00:00+00:00",
       "tz": "America/New_York",
-      "days": 610
+      "days": 611
     },
     {
       "system": "NYC Subway",
@@ -217,7 +217,7 @@
       "estimatedReturn": "2026-08-01T03:59:00+00:00",
       "since": "2024-11-06T14:00:00+00:00",
       "tz": "America/New_York",
-      "days": 610
+      "days": 611
     },
     {
       "system": "NYC Subway",
@@ -231,21 +231,7 @@
       "estimatedReturn": "2026-08-01T03:59:00+00:00",
       "since": "2025-11-22T04:40:00+00:00",
       "tz": "America/New_York",
-      "days": 229
-    },
-    {
-      "system": "NYC Subway",
-      "systemId": "mta-nyct",
-      "station": "Jamaica-179 St",
-      "unit": "EL433",
-      "unitDesc": "Mezzanine to terminal",
-      "soleAccess": true,
-      "planned": true,
-      "reason": "Capital Replacement",
-      "estimatedReturn": "2026-08-01T03:59:00+00:00",
-      "since": "2025-11-22T04:40:00+00:00",
-      "tz": "America/New_York",
-      "days": 229
+      "days": 230
     },
     {
       "system": "NYC Subway",
@@ -259,7 +245,21 @@
       "estimatedReturn": "2026-08-01T03:59:00+00:00",
       "since": "2025-11-22T04:40:00+00:00",
       "tz": "America/New_York",
-      "days": 229
+      "days": 230
+    },
+    {
+      "system": "NYC Subway",
+      "systemId": "mta-nyct",
+      "station": "Jamaica-179 St",
+      "unit": "EL433",
+      "unitDesc": "Mezzanine to terminal",
+      "soleAccess": true,
+      "planned": true,
+      "reason": "Capital Replacement",
+      "estimatedReturn": "2026-08-01T03:59:00+00:00",
+      "since": "2025-11-22T04:40:00+00:00",
+      "tz": "America/New_York",
+      "days": 230
     },
     {
       "system": "NYC Subway",
@@ -273,7 +273,7 @@
       "estimatedReturn": "2026-09-01T03:59:00+00:00",
       "since": "2025-12-02T03:50:00+00:00",
       "tz": "America/New_York",
-      "days": 219
+      "days": 220
     },
     {
       "system": "NYC Subway",
@@ -287,7 +287,7 @@
       "estimatedReturn": "2026-09-01T03:59:00+00:00",
       "since": "2025-12-02T03:14:00+00:00",
       "tz": "America/New_York",
-      "days": 219
+      "days": 220
     },
     {
       "system": "NYC Subway",
@@ -301,7 +301,7 @@
       "estimatedReturn": "2026-09-01T03:59:00+00:00",
       "since": "2025-12-03T04:08:00+00:00",
       "tz": "America/New_York",
-      "days": 218
+      "days": 219
     }
   ],
   "longestUnplanned": [
@@ -317,7 +317,7 @@
       "estimatedReturn": "2027-01-01T04:00:00+00:00",
       "since": "2024-10-28T10:26:00+00:00",
       "tz": "America/New_York",
-      "days": 619
+      "days": 620
     },
     {
       "system": "MBTA",
@@ -345,7 +345,7 @@
       "estimatedReturn": null,
       "since": "2026-04-10T13:21:09+00:00",
       "tz": "America/New_York",
-      "days": 90
+      "days": 91
     },
     {
       "system": "DC Metro",
@@ -359,7 +359,7 @@
       "estimatedReturn": "2026-07-11T03:59:59+00:00",
       "since": "2026-06-08T00:15:00+00:00",
       "tz": "America/New_York",
-      "days": 31
+      "days": 32
     },
     {
       "system": "MBTA",
@@ -373,7 +373,7 @@
       "estimatedReturn": null,
       "since": "2026-06-21T14:39:42+00:00",
       "tz": "America/New_York",
-      "days": 18
+      "days": 19
     },
     {
       "system": "NYC Subway",
@@ -384,7 +384,7 @@
       "soleAccess": false,
       "planned": false,
       "reason": "Repair",
-      "estimatedReturn": "2026-07-11T19:00:00+00:00",
+      "estimatedReturn": "2026-07-12T19:00:00+00:00",
       "since": "2026-06-24T18:15:00+00:00",
       "tz": "America/New_York",
       "days": 15
@@ -415,7 +415,7 @@
       "estimatedReturn": "2026-07-14T03:00:00+00:00",
       "since": "2026-06-29T13:57:00+00:00",
       "tz": "America/New_York",
-      "days": 10
+      "days": 11
     },
     {
       "system": "NYC Subway",
@@ -459,7 +459,7 @@
       "estimatedReturn": null,
       "since": "2023-03-24T13:55:11+00:00",
       "tz": "America/New_York",
-      "days": 1203
+      "days": 1204
     },
     {
       "system": "NYC Subway",
@@ -473,7 +473,7 @@
       "estimatedReturn": "2026-08-01T03:59:00+00:00",
       "since": "2024-11-06T14:00:00+00:00",
       "tz": "America/New_York",
-      "days": 610
+      "days": 611
     },
     {
       "system": "NYC Subway",
@@ -487,7 +487,7 @@
       "estimatedReturn": "2026-08-01T03:59:00+00:00",
       "since": "2024-11-06T14:00:00+00:00",
       "tz": "America/New_York",
-      "days": 610
+      "days": 611
     },
     {
       "system": "NYC Subway",
@@ -501,21 +501,7 @@
       "estimatedReturn": "2026-08-01T03:59:00+00:00",
       "since": "2025-11-22T04:40:00+00:00",
       "tz": "America/New_York",
-      "days": 229
-    },
-    {
-      "system": "NYC Subway",
-      "systemId": "mta-nyct",
-      "station": "Jamaica-179 St",
-      "unit": "EL433",
-      "unitDesc": "Mezzanine to terminal",
-      "soleAccess": true,
-      "planned": true,
-      "reason": "Capital Replacement",
-      "estimatedReturn": "2026-08-01T03:59:00+00:00",
-      "since": "2025-11-22T04:40:00+00:00",
-      "tz": "America/New_York",
-      "days": 229
+      "days": 230
     },
     {
       "system": "NYC Subway",
@@ -529,7 +515,21 @@
       "estimatedReturn": "2026-08-01T03:59:00+00:00",
       "since": "2025-11-22T04:40:00+00:00",
       "tz": "America/New_York",
-      "days": 229
+      "days": 230
+    },
+    {
+      "system": "NYC Subway",
+      "systemId": "mta-nyct",
+      "station": "Jamaica-179 St",
+      "unit": "EL433",
+      "unitDesc": "Mezzanine to terminal",
+      "soleAccess": true,
+      "planned": true,
+      "reason": "Capital Replacement",
+      "estimatedReturn": "2026-08-01T03:59:00+00:00",
+      "since": "2025-11-22T04:40:00+00:00",
+      "tz": "America/New_York",
+      "days": 230
     },
     {
       "system": "NYC Subway",
@@ -543,7 +543,7 @@
       "estimatedReturn": "2026-09-01T03:59:00+00:00",
       "since": "2025-12-02T03:50:00+00:00",
       "tz": "America/New_York",
-      "days": 219
+      "days": 220
     },
     {
       "system": "NYC Subway",
@@ -557,7 +557,7 @@
       "estimatedReturn": "2026-09-01T03:59:00+00:00",
       "since": "2025-12-02T03:14:00+00:00",
       "tz": "America/New_York",
-      "days": 219
+      "days": 220
     },
     {
       "system": "NYC Subway",
@@ -571,7 +571,7 @@
       "estimatedReturn": "2026-09-01T03:59:00+00:00",
       "since": "2025-12-03T04:08:00+00:00",
       "tz": "America/New_York",
-      "days": 218
+      "days": 219
     },
     {
       "system": "NYC Subway",
@@ -585,7 +585,7 @@
       "estimatedReturn": "2026-09-01T03:59:00+00:00",
       "since": "2025-12-03T04:25:00+00:00",
       "tz": "America/New_York",
-      "days": 218
+      "days": 219
     }
   ]
 }

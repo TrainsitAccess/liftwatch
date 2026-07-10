@@ -1,8 +1,22 @@
 import type { Adapter, NormalizedOutage, NormalizedRead, NormalizedStation, NormalizedUnit } from "../../types.js";
 import { nowUtcIso, msToUtcIso } from "../../lib/time.js";
 import { allElevators, elevatorRedundant, type StationModel } from "../../lib/accessibility.js";
-import { stationModelsFor } from "../../catalog/station-models.js";
+import { MTA_RAIL_STATION_MODELS } from "../../catalog/mta-rail-models.js";
+// Static json import, NOT readFileSync — the Netlify function bundler inlines
+// the whole import graph (see station-models.ts for the live-confirmed 502).
+import railChainsJson from "../../catalog/mta-rail-data/chains.json" with { type: "json" };
 import type { CamsysAlertsResponse, RailEeStatusResponse, RailInfrastructureResponse } from "./raw.js";
+
+// Auto-generated chain models (scripts/rail-chains.mts) for the simple
+// stations the hand walk-through never covered. Ground-truth-gated against the
+// hand-curated models at generation time, but still MACHINE-derived from feed
+// text — so their redundancy enters ingest as `serving_text` ("inferred from
+// what each elevator serves"), NOT `curated`. Precedence keeps them below any
+// human signal: a future hand curation wins outright, and a contradiction
+// with an already-curated DB value raises a redundancy_flag instead of
+// clobbering. The generator guarantees the two model sets share no station
+// and no elevator.
+const RAIL_GENERATED_MODELS = (railChainsJson as { models: StationModel[] }).models;
 
 // MTA commuter railroads — LIRR and Metro-North share ONE feed pair at
 // backend-unified.mylirr.org (the backend of MTA's own elevator-escalator-
@@ -157,24 +171,30 @@ export function normalizeRail(
     gtfsStopId: s.gtfs_stop_id != null ? String(s.gtfs_stop_id) : undefined,
   }));
 
-  // Curated station models (src/catalog/mta-rail-models.ts, human-verified):
-  // a modeled unit carries its model-DERIVED redundancy as curated, the same
-  // way BART's modeled stations do. A unit can sit in SEVERAL chains (a
-  // shared street elevator like Penn's P34) — it is redundant only if its
-  // own outage severs NO chain, the same aggregation the MTA subway
-  // self-check uses. Un-modeled units stay undefined (ingest applies
-  // single_elevator/assumed).
-  const models = stationModelsFor(config.systemId);
-  const chainsByElevator = new Map<string, StationModel[]>();
-  for (const chains of models.values()) {
-    for (const model of chains) {
+  // Station models drive per-unit redundancy, in two tiers:
+  //   - HAND-CURATED models (src/catalog/mta-rail-models.ts, human-verified)
+  //     carry model-derived redundancy as `curated`, the BART pattern.
+  //   - GENERATED models (rail chain generator, ground-truth-gated but
+  //     machine-derived from feed text) carry theirs as `serving_text` — an
+  //     honest tier below every human signal.
+  // A unit can sit in SEVERAL chains (a shared street elevator like Penn's
+  // P34) — it is redundant only if its own outage severs NO chain, the same
+  // aggregation the MTA subway self-check uses. The generator guarantees no
+  // elevator appears in both tiers. Un-modeled units stay undefined (ingest
+  // applies single_elevator/assumed).
+  const buildChainIndex = (models: StationModel[]): Map<string, StationModel[]> => {
+    const byElevator = new Map<string, StationModel[]>();
+    for (const model of models.filter((m) => m.systemId === config.systemId)) {
       for (const el of allElevators(model)) {
-        const list = chainsByElevator.get(el.externalId) ?? [];
+        const list = byElevator.get(el.externalId) ?? [];
         list.push(model);
-        chainsByElevator.set(el.externalId, list);
+        byElevator.set(el.externalId, list);
       }
     }
-  }
+    return byElevator;
+  };
+  const curatedChainsByElevator = buildChainIndex(MTA_RAIL_STATION_MODELS);
+  const generatedChainsByElevator = buildChainIndex(RAIL_GENERATED_MODELS);
 
   const units: NormalizedUnit[] = [];
   const outages: NormalizedOutage[] = [];
@@ -195,7 +215,8 @@ export function normalizeRail(
       // Elevators only — entry.escalators is intentionally ignored
       // (unit_type reserves escalators but they aren't ingested).
       const externalId = `${code}-${(u.unitId ?? "").trim()}`;
-      const memberOf = chainsByElevator.get(externalId);
+      const curatedOf = curatedChainsByElevator.get(externalId);
+      const generatedOf = generatedChainsByElevator.get(externalId);
       units.push({
         externalId,
         unitType: "elevator",
@@ -204,12 +225,17 @@ export function normalizeRail(
         borough: station.branch || undefined,
         description: u.location || undefined,
         isAda: true,
-        ...(memberOf
+        ...(curatedOf
           ? {
-              isRedundant: memberOf.every((m) => elevatorRedundant(m, externalId)),
+              isRedundant: curatedOf.every((m) => elevatorRedundant(m, externalId)),
               redundancySource: "curated" as const,
             }
-          : {}),
+          : generatedOf
+            ? {
+                isRedundant: generatedOf.every((m) => elevatorRedundant(m, externalId)),
+                redundancySource: "serving_text" as const,
+              }
+            : {}),
         isActive: true,
         latitude: Number.isFinite(station.latitude) ? station.latitude : undefined,
         longitude: Number.isFinite(station.longitude) ? station.longitude : undefined,

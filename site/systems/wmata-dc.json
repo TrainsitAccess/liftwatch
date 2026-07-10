@@ -3,13 +3,13 @@
   "name": "DC Metro",
   "label": "DC Metro (Washington)",
   "timezone": "America/New_York",
-  "generatedAt": "2026-07-09T22:49:25.147Z",
+  "generatedAt": "2026-07-10T16:00:12.761Z",
   "currentlyBroken": [
     {
       "station": "Glenmont",
       "unitId": "B11X05",
       "unit": "Garage elevator",
-      "days": 127,
+      "days": 128,
       "since": "2026-03-04T15:28:00+00:00",
       "planned": true,
       "reason": "Modernization",
@@ -24,7 +24,7 @@
       "station": "Rockville",
       "unitId": "A14X01",
       "unit": "Elevator between pedestrian bridge and mezzanine",
-      "days": 79,
+      "days": 80,
       "since": "2026-04-21T04:40:00+00:00",
       "planned": true,
       "reason": "Modernization",
@@ -39,7 +39,7 @@
       "station": "Columbia Heights",
       "unitId": "E04X02",
       "unit": "Elevator between mezzanine and platform",
-      "days": 31,
+      "days": 32,
       "since": "2026-06-08T00:15:00+00:00",
       "planned": false,
       "reason": "Minor Repair",
@@ -69,7 +69,7 @@
       "station": "Mt Vernon Sq 7th St-Convention Center",
       "unitId": "E01X04",
       "unit": "Elevator between mezzanine and platform",
-      "days": 5,
+      "days": 6,
       "since": "2026-07-04T10:35:00+00:00",
       "planned": false,
       "reason": "Minor Repair",
@@ -84,7 +84,7 @@
       "station": "Mt Vernon Sq 7th St-Convention Center",
       "unitId": "E01X01",
       "unit": "Elevator between street and mezzanine",
-      "days": 2,
+      "days": 3,
       "since": "2026-07-07T11:10:00+00:00",
       "planned": false,
       "reason": "Minor Repair",
@@ -99,7 +99,7 @@
       "station": "Franconia-Springfield",
       "unitId": "J03X02",
       "unit": "Elevator between mezzanine and platform",
-      "days": 0,
+      "days": 1,
       "since": "2026-07-09T13:43:00+00:00",
       "planned": false,
       "reason": "Other",
@@ -115,10 +115,25 @@
       "unitId": "D01X01",
       "unit": "Elevator between street and mezzanine",
       "days": 0,
-      "since": "2026-07-09T16:28:00+00:00",
-      "planned": false,
-      "reason": "Other",
-      "estimatedReturn": "2026-07-12T03:59:59+00:00",
+      "since": "2026-07-10T15:15:00+00:00",
+      "planned": true,
+      "reason": "Safety Inspection",
+      "estimatedReturn": "2026-07-13T03:59:59+00:00",
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
+    },
+    {
+      "station": "West Falls Church",
+      "unitId": "K06X04",
+      "unit": "Garage elevator",
+      "days": 0,
+      "since": "2026-07-10T14:02:00+00:00",
+      "planned": true,
+      "reason": "Safety Inspection",
+      "estimatedReturn": "2026-07-13T03:59:59+00:00",
       "soleAccess": false,
       "severs": [],
       "backups": [],
@@ -130,6 +145,10 @@
     "current": 0,
     "log": []
   },
+  "accessIssues": {
+    "current": 0,
+    "log": []
+  },
   "stationAccess": {
     "rows": [],
     "chainsModeled": 0
@@ -138,35 +157,35 @@
   "accessibilityBlackouts": [
     {
       "name": "Glenmont",
-      "hours": 3055.3569852777778
+      "hours": 3072.5368780555555
     },
     {
       "name": "Rockville",
-      "hours": 1914.1569852777777
+      "hours": 1931.3368780555556
     },
     {
       "name": "Columbia Heights",
-      "hours": 766.5736519444445
+      "hours": 783.7535447222223
     },
     {
       "name": "Huntington",
-      "hours": 221.82365194444444
+      "hours": 239.00354472222222
     },
     {
       "name": "Mt Vernon Sq 7th St-Convention Center",
-      "hours": 132.24031861111112
+      "hours": 149.4202113888889
     },
     {
       "name": "L'Enfant Plaza",
       "hours": 54.97631805555555
     },
     {
-      "name": "Gallery Pl-Chinatown",
-      "hours": 41.81525027777778
+      "name": "Federal Triangle",
+      "hours": 48.95674972222222
     },
     {
-      "name": "Federal Triangle",
-      "hours": 31.927585555555556
+      "name": "Gallery Pl-Chinatown",
+      "hours": 41.81525027777778
     },
     {
       "name": "North Bethesda",
@@ -174,38 +193,38 @@
     },
     {
       "name": "Capitol Heights",
-      "hours": 26.64198638888889
+      "hours": 28.24712583333333
     }
   ],
   "stepFreeStreak": [
     {
       "name": "Waterfront",
-      "days": 4,
+      "days": 5,
       "blackedOutNow": false
     },
     {
       "name": "Metro Center",
-      "days": 4,
+      "days": 5,
       "blackedOutNow": false
     },
     {
       "name": "Downtown Largo",
-      "days": 4,
+      "days": 5,
       "blackedOutNow": false
     },
     {
       "name": "Bethesda",
-      "days": 3,
+      "days": 4,
       "blackedOutNow": false
     },
     {
       "name": "Potomac Ave",
-      "days": 3,
+      "days": 4,
       "blackedOutNow": false
     },
     {
       "name": "Medical Center",
-      "days": 3,
+      "days": 4,
       "blackedOutNow": false
     },
     {
@@ -214,17 +233,17 @@
       "blackedOutNow": false
     },
     {
-      "name": "North Bethesda",
-      "days": 2,
-      "blackedOutNow": false
-    },
-    {
       "name": "Congress Heights",
+      "days": 3,
+      "blackedOutNow": false
+    },
+    {
+      "name": "L'Enfant Plaza",
       "days": 2,
       "blackedOutNow": false
     },
     {
-      "name": "Archives-Navy Memorial-Penn Quarter",
+      "name": "North Bethesda",
       "days": 2,
       "blackedOutNow": false
     }
@@ -233,7 +252,7 @@
     {
       "unit": "Elevator between street and mezzanine",
       "station": "Federal Triangle",
-      "count": 3
+      "count": 4
     },
     {
       "unit": "Elevator between bike trail and mezzanine",
@@ -251,6 +270,11 @@
       "count": 2
     },
     {
+      "unit": "Elevator between street and mezzanine",
+      "station": "Capitol Heights",
+      "count": 2
+    },
+    {
       "unit": "Elevator between mezzanine/upper platform to Branch Ave/Huntington and lower platform for Blue/Orange Lines",
       "station": "L'Enfant Plaza",
       "count": 2
@@ -261,23 +285,18 @@
       "count": 2
     },
     {
-      "unit": "Elevator between street and mezzanine",
-      "station": "Mt Vernon Sq 7th St-Convention Center",
-      "count": 1
-    },
-    {
-      "unit": "Elevator between street and mezzanine",
-      "station": "Mt Vernon Sq 7th St-Convention Center",
-      "count": 1
-    },
-    {
-      "unit": "Elevator between street and mezzanine, corner of Wisconsin Ave. and Montgomery Lane",
-      "station": "Bethesda",
+      "unit": "Elevator between mezzanine and platform",
+      "station": "Archives-Navy Memorial-Penn Quarter",
       "count": 1
     },
     {
       "unit": "Elevator between mezzanine and platform",
-      "station": "Franconia-Springfield",
+      "station": "Wheaton",
+      "count": 1
+    },
+    {
+      "unit": "Garage elevator",
+      "station": "Glenmont",
       "count": 1
     }
   ],
@@ -285,6 +304,24 @@
     {
       "unit": "Elevator between street and mezzanine, north side of M Street, S.W.",
       "station": "Waterfront",
+      "days": 5,
+      "downNow": false
+    },
+    {
+      "unit": "Elevator between street and mezzanine",
+      "station": "Metro Center",
+      "days": 5,
+      "downNow": false
+    },
+    {
+      "unit": "Elevator between street and mezzanine",
+      "station": "Downtown Largo",
+      "days": 5,
+      "downNow": false
+    },
+    {
+      "unit": "Elevator between street and mezzanine, corner of Wisconsin Ave. and Montgomery Lane",
+      "station": "Bethesda",
       "days": 4,
       "downNow": false
     },
@@ -301,33 +338,15 @@
       "downNow": false
     },
     {
-      "unit": "Elevator between street and mezzanine",
-      "station": "Metro Center",
-      "days": 4,
-      "downNow": false
-    },
-    {
-      "unit": "Elevator between street and mezzanine",
-      "station": "Downtown Largo",
-      "days": 4,
-      "downNow": false
-    },
-    {
-      "unit": "Elevator between street and mezzanine, corner of Wisconsin Ave. and Montgomery Lane",
-      "station": "Bethesda",
-      "days": 3,
-      "downNow": false
-    },
-    {
       "unit": "Elevator between mezzanine and platform",
       "station": "Potomac Ave",
-      "days": 3,
+      "days": 4,
       "downNow": false
     },
     {
       "unit": "Elevator between street and mezzanine",
       "station": "Medical Center",
-      "days": 3,
+      "days": 4,
       "downNow": false
     },
     {
@@ -337,8 +356,8 @@
       "downNow": false
     },
     {
-      "unit": " Elevator between street and mezzanine, 14 Street, Southbound Entrance",
-      "station": "Columbia Heights",
+      "unit": "Elevator between mezzanine and platform",
+      "station": "Congress Heights",
       "days": 3,
       "downNow": false
     }

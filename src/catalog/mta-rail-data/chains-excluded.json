@@ -1,0 +1,284 @@
+{
+  "generatedAt": "2026-07-10T15:56:06.842Z",
+  "note": "Stations the chain generator refuses to model — pending human review (TfL precedent).",
+  "stations": [
+    {
+      "code": "AVL",
+      "name": "Amityville",
+      "railroad": "LIRR",
+      "reason": "unknown-landing",
+      "detail": "AVL-1061: \"Located in the station plaza just west of the waiting room.\"",
+      "units": [
+        {
+          "unitId": "1061",
+          "location": "Located in the station plaza just west of the waiting room."
+        }
+      ]
+    },
+    {
+      "code": "LHT",
+      "name": "Lindenhurst",
+      "railroad": "LIRR",
+      "reason": "unknown-landing",
+      "detail": "LHT-1062: \"Located in the station plaza just west of the waiting room.\"",
+      "units": [
+        {
+          "unitId": "1062",
+          "location": "Located in the station plaza just west of the waiting room."
+        }
+      ]
+    },
+    {
+      "code": "1BG",
+      "name": "Botanical Garden",
+      "railroad": "MNR",
+      "reason": "unknown-landing",
+      "detail": "1BG-110S: \"\"",
+      "units": [
+        {
+          "unitId": "110N",
+          "location": "Elevator from the station building to the White Plains/Southeast-bound platform (Track 3)."
+        },
+        {
+          "unitId": "110S",
+          "location": ""
+        }
+      ]
+    },
+    {
+      "code": "2BP",
+      "name": "Bridgeport",
+      "railroad": "MNR",
+      "reason": "unknown-landing",
+      "detail": "2BP-246P: \"Elevator from the Water Street parking lot to the Ticket Office.\"",
+      "units": [
+        {
+          "unitId": "246E",
+          "location": "Elevator from the underpass to the New Haven-bound platform (Track 4)."
+        },
+        {
+          "unitId": "246P",
+          "location": "Elevator from the Water Street parking lot to the Ticket Office."
+        },
+        {
+          "unitId": "246W",
+          "location": "Elevator from the underpass to the New York-bound platform and Ticket Office (Track 3 - Tower B)."
+        }
+      ]
+    },
+    {
+      "code": "0CT",
+      "name": "Cortlandt",
+      "railroad": "MNR",
+      "reason": "unparseable-unit",
+      "detail": "0CT-045PW: \"Elevator from West Side Parking Lot\"",
+      "units": [
+        {
+          "unitId": "043P",
+          "location": "Elevator from the street level entrance to the station overpass."
+        },
+        {
+          "unitId": "043I",
+          "location": "Elevator from the overpass to the platform."
+        },
+        {
+          "unitId": "045PW",
+          "location": "Elevator from West Side Parking Lot"
+        }
+      ]
+    },
+    {
+      "code": "0HM",
+      "name": "Croton-Harmon",
+      "railroad": "MNR",
+      "reason": "unparseable-unit",
+      "detail": "0HM-038P: \"Elevator from the street level entrance to the station.\"",
+      "units": [
+        {
+          "unitId": "03813",
+          "location": "Elevator from the main station overpass to the Tracks 3 & 1 platform."
+        },
+        {
+          "unitId": "03821",
+          "location": "Elevator from the main station overpass to the Tracks 1 & 2 platform."
+        },
+        {
+          "unitId": "03842",
+          "location": "Elevator from the main station overpass to the Tracks 4 & 2 platform."
+        },
+        {
+          "unitId": "038P",
+          "location": "Elevator from the street level entrance to the station."
+        }
+      ]
+    },
+    {
+      "code": "2FM",
+      "name": "Fairfield-Black Rock",
+      "railroad": "MNR",
+      "reason": "missing-origin",
+      "detail": "2FM-245N: \"Elevator to the New Haven-bound platform (Tk 4) is located on the west end of platform.\"",
+      "units": [
+        {
+          "unitId": "245N",
+          "location": "Elevator to the New Haven-bound platform (Tk 4) is located on the west end of platform."
+        },
+        {
+          "unitId": "245S",
+          "location": "Elevator to the New York-bound platform (Tk 3) to street level is located on the west end of platform"
+        }
+      ]
+    },
+    {
+      "code": "2GN",
+      "name": "Greenwich",
+      "railroad": "MNR",
+      "reason": "unknown-landing",
+      "detail": "2GN-218T: \"Elevator from the street to the Ticket Office.\"",
+      "units": [
+        {
+          "unitId": "218E",
+          "location": "Elevator from the New Haven-bound platform (Track 4) to the overpass"
+        },
+        {
+          "unitId": "218T",
+          "location": "Elevator from the street to the Ticket Office."
+        },
+        {
+          "unitId": "218W",
+          "location": "Elevator from the New York-bound platform (Track 3) to the overpass"
+        }
+      ]
+    },
+    {
+      "code": "0OS",
+      "name": "Ossining",
+      "railroad": "MNR",
+      "reason": "unknown-landing",
+      "detail": "0OS-036S: \"Elevator from the overpass to the waterway on southbound side.\"",
+      "units": [
+        {
+          "unitId": "03624",
+          "location": "Elevator from overpass to track # 2/4."
+        },
+        {
+          "unitId": "0363",
+          "location": "Elevator from overpass to track #3."
+        },
+        {
+          "unitId": "036N",
+          "location": "Elevator from the overpass to the parking lot on northbound side."
+        },
+        {
+          "unitId": "036R",
+          "location": "Riverside Elevator from Parking Lot to Overpass"
+        },
+        {
+          "unitId": "036S",
+          "location": "Elevator from the overpass to the waterway on southbound side."
+        }
+      ]
+    },
+    {
+      "code": "0PE",
+      "name": "Peekskill",
+      "railroad": "MNR",
+      "reason": "unknown-landing",
+      "detail": "0PE-TK2: \"\"",
+      "units": [
+        {
+          "unitId": "046N",
+          "location": "Elevator from the overpass to the Poughkeepsie-bound platform (Track  1)."
+        },
+        {
+          "unitId": "046S",
+          "location": "Elevator from the overpass to the New York-bound platform (Track 2)."
+        },
+        {
+          "unitId": "TK2",
+          "location": ""
+        }
+      ]
+    },
+    {
+      "code": "1PY",
+      "name": "Purdy's",
+      "railroad": "MNR",
+      "reason": "unknown-landing",
+      "detail": "1PY-158B: \"Bridge to Platform and Parking Level\"",
+      "units": [
+        {
+          "unitId": "158B",
+          "location": "Bridge to Platform and Parking Level"
+        },
+        {
+          "unitId": "158P",
+          "location": "Elevator from the street level to the overpass."
+        },
+        {
+          "unitId": "158I",
+          "location": "Elevator from the overpass to the island platform (Tracks 2 & 1)."
+        }
+      ]
+    },
+    {
+      "code": "2SN",
+      "name": "South Norwalk",
+      "railroad": "MNR",
+      "reason": "unknown-landing",
+      "detail": "2SN-234E: \"Elevator from the underpass to the Waiting Room.\"",
+      "units": [
+        {
+          "unitId": "234E",
+          "location": "Elevator from the underpass to the Waiting Room."
+        },
+        {
+          "unitId": "234WN",
+          "location": "Elevator from the underpass to the Ticket Office & platform and parking garage."
+        },
+        {
+          "unitId": "234WS",
+          "location": "Elevator from the underpass to the Ticket Office & platform and parking garage."
+        }
+      ]
+    },
+    {
+      "code": "0TT",
+      "name": "Tarrytown",
+      "railroad": "MNR",
+      "reason": "street-leg-hub-mismatch",
+      "detail": "0TT-030R serves hub \"overpass\" but no platform elevator uses it",
+      "units": [
+        {
+          "unitId": "030N",
+          "location": "Elevator from the north overpass to the Croton-Harmon/Poughkeepsie-bound platform (Track 3)."
+        },
+        {
+          "unitId": "030R",
+          "location": "Riverside Elevator from Parking Lot to Overpass"
+        },
+        {
+          "unitId": "030S",
+          "location": "Elevator from the north overpass to the New York-bound platform (Tracks 4 & 2)."
+        }
+      ]
+    },
+    {
+      "code": "0YK",
+      "name": "Yonkers",
+      "railroad": "MNR",
+      "reason": "missing-origin",
+      "detail": "0YK-016S: \"Tk 2/4\"",
+      "units": [
+        {
+          "unitId": "016N",
+          "location": "Elevator from the station concourse to the Croton-Harmon/Poughkeepsie-bound platform (Tracks 3 & 1)."
+        },
+        {
+          "unitId": "016S",
+          "location": "Tk 2/4"
+        }
+      ]
+    }
+  ]
+}

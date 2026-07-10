@@ -128,7 +128,14 @@ ok(jam342?.isRedundant === false && jam342?.redundancySource === "curated", "JAM
 const gct947 = unit(lirr, "GCT-947");
 ok(gct947?.isRedundant === true && gct947?.redundancySource === "curated", "GCT-947 (EL01): concourse-mezzanine pair with EL02 -> curated redundant");
 const ar026n = unit(mnr, "0AR-026N");
-ok(ar026n?.isRedundant === undefined && ar026n?.redundancySource === undefined, "un-modeled station's units carry no redundancy claim (ingest decides)");
+// Ardsley was this check's "un-modeled station" example until the rail chain
+// generator (scripts/rail-chains.mts) auto-modeled it — its per-side sole
+// elevators now carry machine-derived redundancy as serving_text, an honest
+// tier BELOW curated (a future hand curation wins; contradictions flag).
+ok(
+  ar026n?.isRedundant === false && ar026n?.redundancySource === "serving_text",
+  `0AR-026N: generated-model station -> serving_text non-redundant, never curated (got ${ar026n?.redundancySource}/${ar026n?.isRedundant})`,
+);
 
 console.log("\n  Station metadata:");
 const jam = lirr.stations!.find((s) => s.externalId === "JAM");

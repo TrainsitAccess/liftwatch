@@ -1,0 +1,2338 @@
+{
+  "generatedAt": "2026-07-10T15:56:06.842Z",
+  "source": "backend-unified.mylirr.org/eestatus location text",
+  "models": [
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "NAV",
+      "chainLabel": " (Platform A)",
+      "segments": [
+        {
+          "id": "street-platform-P:A",
+          "label": "Street to Platform A",
+          "elevators": [
+            {
+              "externalId": "NAV-743",
+              "label": "Between Platform A and street level (north side of Atlantic Av)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "NAV",
+      "chainLabel": " (Platform B)",
+      "segments": [
+        {
+          "id": "street-platform-P:B",
+          "label": "Street to Platform B",
+          "elevators": [
+            {
+              "externalId": "NAV-742",
+              "label": "Between Platform B and street level (south side of Atlantic Av)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "FLS",
+      "chainLabel": " (Platform A)",
+      "segments": [
+        {
+          "id": "street-platform-P:A",
+          "label": "Street to Platform A",
+          "elevators": [
+            {
+              "externalId": "FLS-701",
+              "label": "Between Platform A and street level (east end of platform)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "FLS",
+      "chainLabel": " (Platform B)",
+      "segments": [
+        {
+          "id": "street-platform-P:B",
+          "label": "Street to Platform B",
+          "elevators": [
+            {
+              "externalId": "FLS-702",
+              "label": "Between Platform B and street level (east end of platform)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "MHL",
+      "chainLabel": " (Track 1)",
+      "segments": [
+        {
+          "id": "street-platform-1",
+          "label": "Street to Track 1",
+          "elevators": [
+            {
+              "externalId": "MHL-783",
+              "label": "Between street level and Track 1 (east of overpass)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "MHL",
+      "chainLabel": " (Track 2)",
+      "segments": [
+        {
+          "id": "street-platform-2",
+          "label": "Street to Track 2",
+          "elevators": [
+            {
+              "externalId": "MHL-782",
+              "label": "Between street level and Track 2 (west of overpass)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "ADL",
+      "segments": [
+        {
+          "id": "street-platform-1&2",
+          "label": "Street to Tracks 1 & 2",
+          "elevators": [
+            {
+              "externalId": "ADL-421",
+              "label": "Between Tracks 1 & 2 and street level (east side of 192 St)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "GNK",
+      "chainLabel": " (Platform A)",
+      "segments": [
+        {
+          "id": "street-platform-P:A",
+          "label": "Street to Platform A",
+          "elevators": [
+            {
+              "externalId": "GNK-427",
+              "label": "Between street level and Platform A"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "GNK",
+      "chainLabel": " (Platform B)",
+      "segments": [
+        {
+          "id": "street-platform-P:B",
+          "label": "Street to Platform B",
+          "elevators": [
+            {
+              "externalId": "GNK-426",
+              "label": "Between street level and Platform B"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "QVG",
+      "chainLabel": " (Platform A)",
+      "segments": [
+        {
+          "id": "street-platform-P:A",
+          "label": "Street to Platform A",
+          "elevators": [
+            {
+              "externalId": "QVG-641",
+              "label": "Between Platform A and street level (east side of station building)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "QVG",
+      "chainLabel": " (Platform B)",
+      "segments": [
+        {
+          "id": "street-platform-P:B",
+          "label": "Street to Platform B",
+          "elevators": [
+            {
+              "externalId": "QVG-642",
+              "label": "Between Platform B and street level (east end of platform)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "FPK",
+      "chainLabel": " (Tracks 1 & 2)",
+      "segments": [
+        {
+          "id": "street-platform-1&2",
+          "label": "Street to Tracks 1 & 2",
+          "elevators": [
+            {
+              "externalId": "FPK-821",
+              "label": "Between Tracks 1 and 2 and street level (east side of station building)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "FPK",
+      "chainLabel": " (Track 3)",
+      "segments": [
+        {
+          "id": "street-platform-3",
+          "label": "Street to Track 3",
+          "elevators": [
+            {
+              "externalId": "FPK-822",
+              "label": "Between Track 3 and street level"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "FPK",
+      "chainLabel": " (Track 4)",
+      "segments": [
+        {
+          "id": "street-platform-4",
+          "label": "Street to Track 4",
+          "elevators": [
+            {
+              "externalId": "FPK-823",
+              "label": "Between Track 4 and street level"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "MAV",
+      "chainLabel": " (Track 2)",
+      "segments": [
+        {
+          "id": "street-platform-2",
+          "label": "Street to Track 2",
+          "elevators": [
+            {
+              "externalId": "MAV-901",
+              "label": "Unit B - between Nassau Boulevard and Track 2"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "MAV",
+      "chainLabel": " (Track 3)",
+      "segments": [
+        {
+          "id": "street-platform-3",
+          "label": "Street to Track 3",
+          "elevators": [
+            {
+              "externalId": "MAV-902",
+              "label": "Unit A - between Nassau Boulevard and Track 3"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "CPL",
+      "chainLabel": " (Track 2)",
+      "segments": [
+        {
+          "id": "street-platform-2",
+          "label": "Street to Track 2",
+          "elevators": [
+            {
+              "externalId": "CPL-802",
+              "label": "Between overpass, Track 2, and Garden Avenue"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "CPL",
+      "chainLabel": " (Track 3)",
+      "segments": [
+        {
+          "id": "street",
+          "label": "Street/parking to overpass",
+          "elevators": [
+            {
+              "externalId": "CPL-802",
+              "label": "Between overpass, Track 2, and Garden Avenue"
+            }
+          ]
+        },
+        {
+          "id": "platform-3",
+          "label": "Overpass to Track 3",
+          "elevators": [
+            {
+              "externalId": "CPL-801",
+              "label": "Between overpass and Track 3"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "WBY",
+      "chainLabel": " (Track 2)",
+      "segments": [
+        {
+          "id": "street-platform-2",
+          "label": "Street to Track 2",
+          "elevators": [
+            {
+              "externalId": "WBY-961",
+              "label": "Between western overpass, Track 2, and Railroad Av"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "WBY",
+      "chainLabel": " (Track 3)",
+      "segments": [
+        {
+          "id": "street-platform-3",
+          "label": "Street to Track 3",
+          "elevators": [
+            {
+              "externalId": "WBY-962",
+              "label": "Between western overpass, Track 3, and Union Av"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "WYD",
+      "chainLabel": " (Platform A)",
+      "segments": [
+        {
+          "id": "platform-P:A",
+          "label": "Overpass to Platform A",
+          "elevators": [
+            {
+              "externalId": "WYD-726",
+              "label": "Between overpass and Platform A"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "WYD",
+      "chainLabel": " (Platform B)",
+      "segments": [
+        {
+          "id": "platform-P:B",
+          "label": "Overpass to Platform B",
+          "elevators": [
+            {
+              "externalId": "WYD-727",
+              "label": "Between overpass and Platform B"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "RON",
+      "chainLabel": " (Track 1)",
+      "segments": [
+        {
+          "id": "street-platform-1",
+          "label": "Street to Track 1",
+          "elevators": [
+            {
+              "externalId": "RON-442",
+              "label": "Between overpass, Track 1 (Platform A), and station plaza"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "RON",
+      "chainLabel": " (Tracks 1 & 2)",
+      "segments": [
+        {
+          "id": "street",
+          "label": "Street/parking to overpass",
+          "elevators": [
+            {
+              "externalId": "RON-442",
+              "label": "Between overpass, Track 1 (Platform A), and station plaza"
+            },
+            {
+              "externalId": "RON-441",
+              "label": "Between overpass, Track 2 (Platform C), and street level"
+            }
+          ]
+        },
+        {
+          "id": "platform-1&2",
+          "label": "Overpass to Tracks 1 & 2",
+          "elevators": [
+            {
+              "externalId": "RON-443",
+              "label": "Between overpass and Tracks 1 & 2  (Platform B)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "RON",
+      "chainLabel": " (Track 2)",
+      "segments": [
+        {
+          "id": "street-platform-2",
+          "label": "Street to Track 2",
+          "elevators": [
+            {
+              "externalId": "RON-441",
+              "label": "Between overpass, Track 2 (Platform C), and street level"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "SAB",
+      "segments": [
+        {
+          "id": "street-platform-1&2",
+          "label": "Street to Tracks 1 & 2",
+          "elevators": [
+            {
+              "externalId": "SAB-1101",
+              "label": "Between Tracks 1 & 2 and street level (middle of platform)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "LMR",
+      "chainLabel": " (Platform A)",
+      "segments": [
+        {
+          "id": "street-platform-P:A",
+          "label": "Street to Platform A",
+          "elevators": [
+            {
+              "externalId": "LMR-1123",
+              "label": "Between Platform A and street level (west end of platform)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "LMR",
+      "chainLabel": " (Platform B)",
+      "segments": [
+        {
+          "id": "street-platform-P:B",
+          "label": "Street to Platform B",
+          "elevators": [
+            {
+              "externalId": "LMR-1122",
+              "label": "Between Platform B and street level (west end of platform)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "LTN",
+      "segments": [
+        {
+          "id": "street-platform-1&2",
+          "label": "Street to Tracks 1 & 2",
+          "elevators": [
+            {
+              "externalId": "LTN-1124",
+              "label": "Between Tracks 1 & 2 and street level (middle of platform)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "ROS",
+      "segments": [
+        {
+          "id": "street-platform-1&2",
+          "label": "Street to Tracks 1 & 2",
+          "elevators": [
+            {
+              "externalId": "ROS-445",
+              "label": "Between Tracks 1 & 2 and street level (east end of platform)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "VSM",
+      "segments": [
+        {
+          "id": "street-platform-1&2",
+          "label": "Street to Tracks 1 & 2",
+          "elevators": [
+            {
+              "externalId": "VSM-446",
+              "label": "Between Tracks 1 & 2 and street level (east side of station building)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "LYN",
+      "chainLabel": " (Tracks A1 & A2)",
+      "segments": [
+        {
+          "id": "street-platform-A1&A2",
+          "label": "Street to Tracks A1 & A2",
+          "elevators": [
+            {
+              "externalId": "LYN-432",
+              "label": "Between Tracks A1 & A2 and street level (east side of station building) - Babylon trains"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "LYN",
+      "chainLabel": " (Tracks B1 & B2)",
+      "segments": [
+        {
+          "id": "street-platform-B1&B2",
+          "label": "Street to Tracks B1 & B2",
+          "elevators": [
+            {
+              "externalId": "LYN-431",
+              "label": "Between Tracks B1 & B2 and street level (east side of station building) - Long Beach trains"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "RVC",
+      "segments": [
+        {
+          "id": "street-platform-1&2",
+          "label": "Street to Tracks 1 & 2",
+          "elevators": [
+            {
+              "externalId": "RVC-444",
+              "label": "Between Tracks 1 & 2 and street level (west of station building)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "BWN",
+      "segments": [
+        {
+          "id": "street-platform-1&2",
+          "label": "Street to Tracks 1 & 2",
+          "elevators": [
+            {
+              "externalId": "BWN-424",
+              "label": "Between Tracks 1 & 2 and street level (east side of station building)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "FPT",
+      "segments": [
+        {
+          "id": "street-platform-1&2",
+          "label": "Street to Tracks 1 & 2",
+          "elevators": [
+            {
+              "externalId": "FPT-462",
+              "label": "Between Tracks 1 & 2 and street level (east side of station building)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "MRK",
+      "segments": [
+        {
+          "id": "street-platform-1&2",
+          "label": "Street to Tracks 1 & 2",
+          "elevators": [
+            {
+              "externalId": "MRK-436",
+              "label": "Between Tracks 1 & 2 and street level (east of station building)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "BMR",
+      "segments": [
+        {
+          "id": "street-platform-1&2",
+          "label": "Street to Tracks 1 & 2",
+          "elevators": [
+            {
+              "externalId": "BMR-461",
+              "label": "Between Tracks 1 & 2 and street level (west of station building)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "WGH",
+      "segments": [
+        {
+          "id": "street-platform-1&2",
+          "label": "Street to Tracks 1 & 2",
+          "elevators": [
+            {
+              "externalId": "WGH-681",
+              "label": "Between Tracks 1 & 2 and street level (west of station building)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "SFD",
+      "segments": [
+        {
+          "id": "street-platform-1&2",
+          "label": "Street to Tracks 1 & 2",
+          "elevators": [
+            {
+              "externalId": "SFD-601",
+              "label": "Between Tracks 1 & 2 and street level (west side of station building)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "MQA",
+      "segments": [
+        {
+          "id": "street-platform-1&2",
+          "label": "Street to Tracks 1 & 2",
+          "elevators": [
+            {
+              "externalId": "MQA-433",
+              "label": "Between Tracks 1 & 2 and street level (east side of station building)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "MPK",
+      "segments": [
+        {
+          "id": "street-platform-1&2",
+          "label": "Street to Tracks 1 & 2",
+          "elevators": [
+            {
+              "externalId": "MPK-1081",
+              "label": "Between Tracks 1 & 2 and street level (east side of station building)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "CPG",
+      "segments": [
+        {
+          "id": "street-platform-1&2",
+          "label": "Street to Tracks 1 & 2",
+          "elevators": [
+            {
+              "externalId": "CPG-1021",
+              "label": "Between tracks 1 & 2 and the street level east of the station building."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "BTA",
+      "chainLabel": " (Tracks 1 & 2)",
+      "segments": [
+        {
+          "id": "street-platform-1&2",
+          "label": "Street to Tracks 1 & 2",
+          "elevators": [
+            {
+              "externalId": "BTA-422",
+              "label": "Elevator A2 serves Platform A tracks 1&2  (located on street level west of station building)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "BTA",
+      "chainLabel": " (Tracks 2 & 3)",
+      "segments": [
+        {
+          "id": "street-platform-2&3",
+          "label": "Street to Tracks 2 & 3",
+          "elevators": [
+            {
+              "externalId": "BTA-423",
+              "label": "Elevator B2 serves Platform B tracks 2&3 (located on street level west of station building)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "EMT",
+      "chainLabel": " (Track 3)",
+      "segments": [
+        {
+          "id": "platform-3",
+          "label": "Overpass to Track 3",
+          "elevators": [
+            {
+              "externalId": "EMT-881",
+              "label": "Elevator A: Between overpass and Track 3."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-lirr",
+      "stationExternalId": "EMT",
+      "chainLabel": " (Track 4)",
+      "segments": [
+        {
+          "id": "platform-4",
+          "label": "Overpass to Track 4",
+          "elevators": [
+            {
+              "externalId": "EMT-921",
+              "label": "Elevator B: Between overpass and Track 4, access to arena shuttle buses."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "0AR",
+      "chainLabel": " (Track 3)",
+      "segments": [
+        {
+          "id": "platform-3",
+          "label": "Overpass to Track 3",
+          "elevators": [
+            {
+              "externalId": "0AR-026N",
+              "label": "Elevator from the Northbound platform (Tk 3) to the overpass."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "0AR",
+      "chainLabel": " (Track 4)",
+      "segments": [
+        {
+          "id": "platform-4",
+          "label": "Overpass to Track 4",
+          "elevators": [
+            {
+              "externalId": "0AR-026S",
+              "label": "Elevator from the Southbound platform (Tk 4) to the overpass.."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "0BC",
+      "segments": [
+        {
+          "id": "platform-main",
+          "label": "Underpass to platform",
+          "elevators": [
+            {
+              "externalId": "0BC-056I",
+              "label": "Elevator from the underpass to the platform."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "1BH",
+      "segments": [
+        {
+          "id": "street",
+          "label": "Street/parking to overpass",
+          "elevators": [
+            {
+              "externalId": "1BH-152P",
+              "label": "Elevator from the east-side parking lot to the overpass."
+            }
+          ]
+        },
+        {
+          "id": "platform-1&2",
+          "label": "Overpass to Tracks 1 & 2",
+          "elevators": [
+            {
+              "externalId": "1BH-152I",
+              "label": "Elevator from the overpass to the island platform (Tracks 2 & 1)."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "1BW",
+      "segments": [
+        {
+          "id": "street",
+          "label": "Street/parking to overpass",
+          "elevators": [
+            {
+              "externalId": "1BW-162P",
+              "label": "Elevator from the street level to the overpass."
+            }
+          ]
+        },
+        {
+          "id": "platform-1&2",
+          "label": "Overpass to Tracks 1 & 2",
+          "elevators": [
+            {
+              "externalId": "1BW-162I",
+              "label": "Elevator from the overpass to the island platform (Tracks 2 & 1)."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "1CQ",
+      "segments": [
+        {
+          "id": "street",
+          "label": "Street/parking to overpass",
+          "elevators": [
+            {
+              "externalId": "1CQ-148P",
+              "label": "Elevator from the east-side parking lot to the overpass."
+            }
+          ]
+        },
+        {
+          "id": "platform-1&2",
+          "label": "Overpass to Tracks 1 & 2",
+          "elevators": [
+            {
+              "externalId": "1CQ-148I",
+              "label": "Elevator from the overpass to the island platform (Tracks 2 & 1)."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "0CS",
+      "chainLabel": " (Track 1)",
+      "segments": [
+        {
+          "id": "platform-1",
+          "label": "Overpass to Track 1",
+          "elevators": [
+            {
+              "externalId": "0CS-054N",
+              "label": "Elevator from the overpass to the Poughkeepsie-bound platform (Track 1)."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "0CS",
+      "chainLabel": " (Track 2)",
+      "segments": [
+        {
+          "id": "platform-2",
+          "label": "Overpass to Track 2",
+          "elevators": [
+            {
+              "externalId": "0CS-054S",
+              "label": "Elevator from the overpass to the New York-bound platform (Track 2)."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "1CW",
+      "chainLabel": " (Track 1)",
+      "segments": [
+        {
+          "id": "street",
+          "label": "Street/parking to overpass",
+          "elevators": [
+            {
+              "externalId": "1CW-126P",
+              "label": "Elevator from the West side parking lot to the overpass."
+            }
+          ]
+        },
+        {
+          "id": "platform-1",
+          "label": "Overpass to Track 1",
+          "elevators": [
+            {
+              "externalId": "1CW-126N",
+              "label": "Elevator from the overpass to the White Plains/Southeast-bound platform (Track 1)."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "1CW",
+      "chainLabel": " (Tracks 2 & 4)",
+      "segments": [
+        {
+          "id": "street",
+          "label": "Street/parking to overpass",
+          "elevators": [
+            {
+              "externalId": "1CW-126P",
+              "label": "Elevator from the West side parking lot to the overpass."
+            }
+          ]
+        },
+        {
+          "id": "platform-2&4",
+          "label": "Overpass to Tracks 2 & 4",
+          "elevators": [
+            {
+              "externalId": "1CW-126S",
+              "label": "Elevator from the overpass to the New York-bound platform (Tracks 4 & 2)."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "1CF",
+      "segments": [
+        {
+          "id": "street",
+          "label": "Street/parking to overpass",
+          "elevators": [
+            {
+              "externalId": "1CF-160P",
+              "label": "Elevator from the street level to the overpass."
+            }
+          ]
+        },
+        {
+          "id": "platform-1&2",
+          "label": "Overpass to Tracks 1 & 2",
+          "elevators": [
+            {
+              "externalId": "1CF-160I",
+              "label": "Elevator from the overpass to the island platform (Tracks 2 & 1)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "2DA",
+      "chainLabel": " (Track 3)",
+      "segments": [
+        {
+          "id": "street-platform-3",
+          "label": "Street to Track 3",
+          "elevators": [
+            {
+              "externalId": "2DA-230W",
+              "label": "Elevator from the street to the New York-bound platform (Track 3)."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "2DA",
+      "chainLabel": " (Track 4)",
+      "segments": [
+        {
+          "id": "street-platform-4",
+          "label": "Street to Track 4",
+          "elevators": [
+            {
+              "externalId": "2DA-230E",
+              "label": "Elevator from the street to the New Haven-bound platform (Track 4)."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "0DF",
+      "chainLabel": " (Track 3)",
+      "segments": [
+        {
+          "id": "street-platform-3",
+          "label": "Street to Track 3",
+          "elevators": [
+            {
+              "externalId": "0DF-024N",
+              "label": "Elevator from the Northbound platform (Tk 3) to the overpass and street."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "0DF",
+      "chainLabel": " (Track 4)",
+      "segments": [
+        {
+          "id": "street",
+          "label": "Street/parking to overpass",
+          "elevators": [
+            {
+              "externalId": "0DF-024N",
+              "label": "Elevator from the Northbound platform (Tk 3) to the overpass and street."
+            }
+          ]
+        },
+        {
+          "id": "platform-4",
+          "label": "Overpass to Track 4",
+          "elevators": [
+            {
+              "externalId": "0DF-024S",
+              "label": "Elevator from the Southbound platform (Tk 4) to the overpass."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "1FW",
+      "chainLabel": " (Track 1)",
+      "segments": [
+        {
+          "id": "platform-1",
+          "label": "Overpass to Track 1",
+          "elevators": [
+            {
+              "externalId": "1FW-120N",
+              "label": "Elevator from the overpass to the White Plains/Southeast-bound platform (Track 1)."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "1FW",
+      "chainLabel": " (Tracks 2 & 4)",
+      "segments": [
+        {
+          "id": "platform-2&4",
+          "label": "Overpass to Tracks 2 & 4",
+          "elevators": [
+            {
+              "externalId": "1FW-120S",
+              "label": "Elevator from the overpass to the Grand Central Terminal bound platform (Track 2,4)."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "1FO",
+      "chainLabel": " (Track 3)",
+      "segments": [
+        {
+          "id": "street-platform-3",
+          "label": "Street to Track 3",
+          "elevators": [
+            {
+              "externalId": "1FO-108N",
+              "label": "Elevator from the station building to the Southeast/New Haven-bound platform (Track 3)."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "1FO",
+      "chainLabel": " (Track 4)",
+      "segments": [
+        {
+          "id": "street-platform-4",
+          "label": "Street to Track 4",
+          "elevators": [
+            {
+              "externalId": "1FO-108S",
+              "label": "Elevator from the station building to the New York-bound platform (Track 4)."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "0GA",
+      "chainLabel": " (Track 1)",
+      "segments": [
+        {
+          "id": "platform-1",
+          "label": "Overpass to Track 1",
+          "elevators": [
+            {
+              "externalId": "0GA-050N",
+              "label": "Elevator from the overpass to the Poughkeepsie-bound platform (Track 1)."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "0GA",
+      "chainLabel": " (Track 2)",
+      "segments": [
+        {
+          "id": "platform-2",
+          "label": "Overpass to Track 2",
+          "elevators": [
+            {
+              "externalId": "0GA-050S",
+              "label": "Elevator from the overpass to the New York-bound platform (Track 2)."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "0GD",
+      "chainLabel": " (Track 3)",
+      "segments": [
+        {
+          "id": "street-platform-3",
+          "label": "Street to Track 3",
+          "elevators": [
+            {
+              "externalId": "0GD-018N",
+              "label": "Elevator from street to overpass and Northbound platform (Tk 3) to the overpass"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "0GD",
+      "chainLabel": " (Track 4)",
+      "segments": [
+        {
+          "id": "street",
+          "label": "Street/parking to overpass",
+          "elevators": [
+            {
+              "externalId": "0GD-018N",
+              "label": "Elevator from street to overpass and Northbound platform (Tk 3) to the overpass"
+            }
+          ]
+        },
+        {
+          "id": "platform-4",
+          "label": "Overpass to Track 4",
+          "elevators": [
+            {
+              "externalId": "0GD-018S",
+              "label": "Elevator from overpass to Southbound platform (Tk 4)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "1GO",
+      "segments": [
+        {
+          "id": "street",
+          "label": "Street/parking to overpass",
+          "elevators": [
+            {
+              "externalId": "1GO-156P",
+              "label": "Elevator from the west-side parking lot to the overpass."
+            }
+          ]
+        },
+        {
+          "id": "platform-1&2",
+          "label": "Overpass to Tracks 1 & 2",
+          "elevators": [
+            {
+              "externalId": "1GO-156I",
+              "label": "Elevator from the overpass to the island platform (Tracks 2 & 1)."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "0GY",
+      "chainLabel": " (Track 3)",
+      "segments": [
+        {
+          "id": "platform-3",
+          "label": "Overpass to Track 3",
+          "elevators": [
+            {
+              "externalId": "0GY-020N",
+              "label": "Elevator from the Northbound platform (Tk 3) to the overpass."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "0GY",
+      "chainLabel": " (Track 4)",
+      "segments": [
+        {
+          "id": "platform-4",
+          "label": "Overpass to Track 4",
+          "elevators": [
+            {
+              "externalId": "0GY-020S",
+              "label": "Elevator from the Southbound platform (Tk 4) to the overpass."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "2HS",
+      "chainLabel": " (Track 3)",
+      "segments": [
+        {
+          "id": "platform-3",
+          "label": "Overpass to Track 3",
+          "elevators": [
+            {
+              "externalId": "2HS-212W",
+              "label": "Elevator from the New York-bound platform (Track 3) to the overpass."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "2HS",
+      "chainLabel": " (Track 4)",
+      "segments": [
+        {
+          "id": "street-platform-4",
+          "label": "Street to Track 4",
+          "elevators": [
+            {
+              "externalId": "2HS-212E",
+              "label": "Elevator from the street to the Stamford/New Haven-bound platform (Track 4)."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "1HA",
+      "chainLabel": " (Track 1)",
+      "segments": [
+        {
+          "id": "street-platform-1",
+          "label": "Street to Track 1",
+          "elevators": [
+            {
+              "externalId": "1HA-HD1",
+              "label": "Track 1 Street Level/ Platform and Overpass"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "1HA",
+      "chainLabel": " (Track 2)",
+      "segments": [
+        {
+          "id": "street-platform-2",
+          "label": "Street to Track 2",
+          "elevators": [
+            {
+              "externalId": "1HA-HD2",
+              "label": "Track 2 Street Level/ Platform and Overpass"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "0HS",
+      "chainLabel": " (Track 3)",
+      "segments": [
+        {
+          "id": "platform-3",
+          "label": "Overpass to Track 3",
+          "elevators": [
+            {
+              "externalId": "0HS-022N",
+              "label": "Elevator from the Northbound platform (Tk 3) to the overpass."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "0HS",
+      "chainLabel": " (Track 4)",
+      "segments": [
+        {
+          "id": "platform-4",
+          "label": "Overpass to Track 4",
+          "elevators": [
+            {
+              "externalId": "0HS-022S",
+              "label": "Elevator from the Southbound platform (Tk 4) to the overpass."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "1HN",
+      "segments": [
+        {
+          "id": "street",
+          "label": "Street/parking to overpass",
+          "elevators": [
+            {
+              "externalId": "1HN-142P",
+              "label": "Elevator from the east-side parking lot to the overpass."
+            }
+          ]
+        },
+        {
+          "id": "platform-1&2",
+          "label": "Overpass to Tracks 1 & 2",
+          "elevators": [
+            {
+              "externalId": "1HN-142I",
+              "label": "Elevator from the overpass to the island platform (Tracks 2 & 1)."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "1KA",
+      "segments": [
+        {
+          "id": "street",
+          "label": "Street/parking to overpass",
+          "elevators": [
+            {
+              "externalId": "1KA-154P",
+              "label": "Elevator from the east-side parking lot to the overpass."
+            }
+          ]
+        },
+        {
+          "id": "platform-2",
+          "label": "Overpass to Track 2",
+          "elevators": [
+            {
+              "externalId": "1KA-154I",
+              "label": "Elevator from the overpass to the island platform (Tracks 2 )."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "2LA",
+      "chainLabel": " (Track 3)",
+      "segments": [
+        {
+          "id": "street-platform-3",
+          "label": "Street to Track 3",
+          "elevators": [
+            {
+              "externalId": "2LA-208W",
+              "label": "Elevator from the parking lot to the New York-bound platform (Track 3) to the overpass"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "2LA",
+      "chainLabel": " (Track 4)",
+      "segments": [
+        {
+          "id": "street-platform-4",
+          "label": "Street to Track 4",
+          "elevators": [
+            {
+              "externalId": "2LA-208E",
+              "label": "Elevator from the parking lot to the Stamford/New Haven-bound platform (Track 4) to the overpass"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "4M7",
+      "segments": [
+        {
+          "id": "street-platform-main",
+          "label": "Street to platform",
+          "elevators": [
+            {
+              "externalId": "4M7-M7",
+              "label": "From Street Level to the Platform and Overpass"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "0MH",
+      "segments": [
+        {
+          "id": "street-platform-1",
+          "label": "Street to Track 1",
+          "elevators": [
+            {
+              "externalId": "0MH-004I",
+              "label": "Elevator from street to Island platform (Tk 1 )"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "1MK",
+      "segments": [
+        {
+          "id": "street",
+          "label": "Street/parking to overpass",
+          "elevators": [
+            {
+              "externalId": "1MK-150P",
+              "label": "Elevator from the east-side parking lot to the overpass."
+            }
+          ]
+        },
+        {
+          "id": "platform-1&2",
+          "label": "Overpass to Tracks 1 & 2",
+          "elevators": [
+            {
+              "externalId": "1MK-150I",
+              "label": "Elevator from the overpass to the island platform (Tracks 2 & 1)."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "2ME",
+      "chainLabel": " (Track 3)",
+      "segments": [
+        {
+          "id": "street-platform-3",
+          "label": "Street to Track 3",
+          "elevators": [
+            {
+              "externalId": "2ME-202W",
+              "label": "Elevator from the street  to the New York-bound platform (Track 3) and the overpass."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "2ME",
+      "chainLabel": " (Track 4)",
+      "segments": [
+        {
+          "id": "street-platform-4",
+          "label": "Street to Track 4",
+          "elevators": [
+            {
+              "externalId": "2ME-202E",
+              "label": "Elevator from the street to the Stamford/New Haven-bound platform (Track 4) and the overpass."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "1MW",
+      "chainLabel": " (Tracks 1 & 3)",
+      "segments": [
+        {
+          "id": "street-platform-1&3",
+          "label": "Street to Tracks 1 & 3",
+          "elevators": [
+            {
+              "externalId": "1MW-118N",
+              "label": "Elevator from the station concourse (Main Street entrance) to the White Plains/Southeast-bound platform (Tracks 1 & 3)."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "1MW",
+      "chainLabel": " (Tracks 2 & 4)",
+      "segments": [
+        {
+          "id": "street",
+          "label": "Street/parking to station concourse",
+          "elevators": [
+            {
+              "externalId": "1MW-118N",
+              "label": "Elevator from the station concourse (Main Street entrance) to the White Plains/Southeast-bound platform (Tracks 1 & 3)."
+            }
+          ]
+        },
+        {
+          "id": "platform-2&4",
+          "label": "Station concourse to Tracks 2 & 4",
+          "elevators": [
+            {
+              "externalId": "1MW-118S",
+              "label": "Elevator from  the station concourse to the New York-bound platform (Tracks 4 & 2)."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "2SS",
+      "chainLabel": " (Track 1)",
+      "segments": [
+        {
+          "id": "street-platform-1",
+          "label": "Street to Track 1",
+          "elevators": [
+            {
+              "externalId": "2SS-253I",
+              "label": "Elevator from street level to track 1 platform."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "2SS",
+      "chainLabel": " (Tracks 4 & 6)",
+      "segments": [
+        {
+          "id": "street-platform-4&6",
+          "label": "Street to Tracks 4 & 6",
+          "elevators": [
+            {
+              "externalId": "2SS-NHS 1",
+              "label": "Street level to track 4/6 platform."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "2NH",
+      "chainLabel": " (Tracks 1 & 3)",
+      "segments": [
+        {
+          "id": "street",
+          "label": "Street/parking to underpass",
+          "elevators": [
+            {
+              "externalId": "2NH-252SU",
+              "label": "Elevator from the underpass to the station building."
+            }
+          ]
+        },
+        {
+          "id": "platform-1&3",
+          "label": "Underpass to Tracks 1 & 3",
+          "elevators": [
+            {
+              "externalId": "2NH-25213",
+              "label": "Elevator from the underpass to the Tracks 3 & 1 platform"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "2NH",
+      "chainLabel": " (Tracks 12 & 14)",
+      "segments": [
+        {
+          "id": "street",
+          "label": "Street/parking to underpass",
+          "elevators": [
+            {
+              "externalId": "2NH-252SU",
+              "label": "Elevator from the underpass to the station building."
+            }
+          ]
+        },
+        {
+          "id": "platform-12&14",
+          "label": "Underpass to Tracks 12 & 14",
+          "elevators": [
+            {
+              "externalId": "2NH-2521214",
+              "label": "Elevator from the underpass to the Tracks 14 & 12 platform."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "2NH",
+      "chainLabel": " (Tracks 2 & 4)",
+      "segments": [
+        {
+          "id": "street",
+          "label": "Street/parking to underpass",
+          "elevators": [
+            {
+              "externalId": "2NH-252SU",
+              "label": "Elevator from the underpass to the station building."
+            }
+          ]
+        },
+        {
+          "id": "platform-2&4",
+          "label": "Underpass to Tracks 2 & 4",
+          "elevators": [
+            {
+              "externalId": "2NH-25224",
+              "label": "Elevator from the underpass to the Tracks 4 & 2 platform."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "2NH",
+      "chainLabel": " (Tracks 8 & 10)",
+      "segments": [
+        {
+          "id": "street",
+          "label": "Street/parking to underpass",
+          "elevators": [
+            {
+              "externalId": "2NH-252SU",
+              "label": "Elevator from the underpass to the station building."
+            }
+          ]
+        },
+        {
+          "id": "platform-8&10",
+          "label": "Underpass to Tracks 8 & 10",
+          "elevators": [
+            {
+              "externalId": "2NH-252810",
+              "label": "Elevator from the underpass to the Tracks 10 & 8 platform."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "1NW",
+      "chainLabel": " (Tracks 1 & 2)",
+      "segments": [
+        {
+          "id": "street",
+          "label": "Street/parking to overpass",
+          "elevators": [
+            {
+              "externalId": "1NW-134P",
+              "label": "Elevator from east-side parking lot to the overpass."
+            }
+          ]
+        },
+        {
+          "id": "platform-1&2",
+          "label": "Overpass to Tracks 1 & 2",
+          "elevators": [
+            {
+              "externalId": "1NW-134S",
+              "label": "Elevator from the overpass to the island platform (Tracks 2 & 1)."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "1NW",
+      "chainLabel": " (Tracks 1 & 3)",
+      "segments": [
+        {
+          "id": "street",
+          "label": "Street/parking to overpass",
+          "elevators": [
+            {
+              "externalId": "1NW-134P",
+              "label": "Elevator from east-side parking lot to the overpass."
+            }
+          ]
+        },
+        {
+          "id": "platform-1&3",
+          "label": "Overpass to Tracks 1 & 3",
+          "elevators": [
+            {
+              "externalId": "1NW-134N",
+              "label": "Elevator from the overpass to the island platform (Tracks 1 & 3)."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "1PV",
+      "segments": [
+        {
+          "id": "street-platform-1&2",
+          "label": "Street to Tracks 1 & 2",
+          "elevators": [
+            {
+              "externalId": "1PV-146I",
+              "label": "Elevator from the street to the island platform (Tracks 2 & 1)."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "2PC",
+      "segments": [
+        {
+          "id": "street-platform-4",
+          "label": "Street to Track 4",
+          "elevators": [
+            {
+              "externalId": "2PC-001",
+              "label": "Elevator is located on the track 4 platform at west end. It connects the track 4 platform to street level (Westchester Ave)."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "0PO",
+      "chainLabel": " (Tracks 1 & 3)",
+      "segments": [
+        {
+          "id": "platform-1&3",
+          "label": "Main station overpass to Tracks 1 & 3",
+          "elevators": [
+            {
+              "externalId": "0PO-058N",
+              "label": "Elevator from the main station overpass to the Tracks 1 & 3 platform."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "0PO",
+      "chainLabel": " (Track 2)",
+      "segments": [
+        {
+          "id": "platform-2",
+          "label": "Station overpass to Track 2",
+          "elevators": [
+            {
+              "externalId": "0PO-058S",
+              "label": "Elevator from the station overpass to the Track 2 platform."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "0RV",
+      "chainLabel": " (Track 3)",
+      "segments": [
+        {
+          "id": "platform-3",
+          "label": "Overpass to Track 3",
+          "elevators": [
+            {
+              "externalId": "0RV-012N",
+              "label": "Elevator from the Northbound platform (Tk 3) to the overpass."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "0RV",
+      "chainLabel": " (Track 4)",
+      "segments": [
+        {
+          "id": "platform-4",
+          "label": "Overpass to Track 4",
+          "elevators": [
+            {
+              "externalId": "0RV-012S",
+              "label": "Elevator from the Southbound platform (Tk 4) to the overpass."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "2RY",
+      "chainLabel": " (Track 3)",
+      "segments": [
+        {
+          "id": "street-platform-3",
+          "label": "Street to Track 3",
+          "elevators": [
+            {
+              "externalId": "2RY-214W",
+              "label": "Elevator from the street to the New York-bound platform (Track 3) and the overpass."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "2RY",
+      "chainLabel": " (Track 4)",
+      "segments": [
+        {
+          "id": "street-platform-4",
+          "label": "Street to Track 4",
+          "elevators": [
+            {
+              "externalId": "2RY-214E",
+              "label": "Elevator from the street to the Stamford/New Haven-bound platform (Track 4) and the overpass."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "0SB",
+      "segments": [
+        {
+          "id": "street",
+          "label": "Street/parking to overpass",
+          "elevators": [
+            {
+              "externalId": "0SB-034N",
+              "label": "Elevator from overpass to parking lot"
+            }
+          ]
+        },
+        {
+          "id": "platform-4",
+          "label": "Overpass to Track 4",
+          "elevators": [
+            {
+              "externalId": "0SB-034S",
+              "label": "Elevator from overpass to platform (Track 4)."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "1SC",
+      "chainLabel": " (Track 1)",
+      "segments": [
+        {
+          "id": "street-platform-1",
+          "label": "Street to Track 1",
+          "elevators": [
+            {
+              "externalId": "1SC-128N",
+              "label": "Elevator from the street level to the White Plains/Southeast-bound platform (Track 1)."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "1SC",
+      "chainLabel": " (Track 2)",
+      "segments": [
+        {
+          "id": "street-platform-2",
+          "label": "Street to Track 2",
+          "elevators": [
+            {
+              "externalId": "1SC-SD1",
+              "label": "Southbound side, track 2 Street level / platform / overpass."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "1BR",
+      "segments": [
+        {
+          "id": "street",
+          "label": "Street/parking to overpass",
+          "elevators": [
+            {
+              "externalId": "1BR-163P",
+              "label": "Elevator from the street level to the overpass"
+            }
+          ]
+        },
+        {
+          "id": "platform-1&2",
+          "label": "Overpass to Tracks 1 & 2",
+          "elevators": [
+            {
+              "externalId": "1BR-163I",
+              "label": "Elevator from the overpass to the island platform (Tracks 2 & 1)."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "1TK",
+      "segments": [
+        {
+          "id": "street-platform-1",
+          "label": "Street to Track 1",
+          "elevators": [
+            {
+              "externalId": "1TK-124N",
+              "label": "Elevator from the street level to the White Plains/Southeast-bound platform (Track 1)."
+            },
+            {
+              "externalId": "1TK-T1",
+              "label": "Track 1 from the elevated Street side/Overpass level to the platform."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "0UH",
+      "segments": [
+        {
+          "id": "street-platform-main",
+          "label": "Street to platform",
+          "elevators": [
+            {
+              "externalId": "0UH-006I",
+              "label": "Elevator from street to the island platform"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "1VA",
+      "segments": [
+        {
+          "id": "street",
+          "label": "Street/parking to overpass",
+          "elevators": [
+            {
+              "externalId": "1VA-136P",
+              "label": "Elevator from the east-side parking lot to the overpass."
+            }
+          ]
+        },
+        {
+          "id": "platform-1&2",
+          "label": "Overpass to Tracks 1 & 2",
+          "elevators": [
+            {
+              "externalId": "1VA-136I",
+              "label": "Elevator from the overpass to the island platform (Tracks 2 & 1)."
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "2WP",
+      "chainLabel": " (Track 3)",
+      "segments": [
+        {
+          "id": "street-platform-3",
+          "label": "Street to Track 3",
+          "elevators": [
+            {
+              "externalId": "2WP-238W",
+              "label": "Elevator from the New York-bound platform (Tk 3) to street level to underpass is located on the west end of platform"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mta-mnr",
+      "stationExternalId": "2WP",
+      "chainLabel": " (Track 4)",
+      "segments": [
+        {
+          "id": "street-platform-4",
+          "label": "Street to Track 4",
+          "elevators": [
+            {
+              "externalId": "2WP-238E",
+              "label": "Elevator from the New Haven-bound  platform (Tk 4) to street level to underpass is located on the west end of platform"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    }
+  ],
+  "nonChainUnits": [
+    {
+      "code": "WBY",
+      "unitId": "WBY-841",
+      "location": "Northwest corner of North Parking Garage"
+    },
+    {
+      "code": "WBY",
+      "unitId": "WBY-842",
+      "location": "Southeast corner of North Parking Garage"
+    },
+    {
+      "code": "WYD",
+      "unitId": "WYD-705",
+      "location": "Garage Elevator 1"
+    },
+    {
+      "code": "WYD",
+      "unitId": "WYD-704",
+      "location": "Garage Elevator 2"
+    },
+    {
+      "code": "WYD",
+      "unitId": "WYD-703",
+      "location": "Garage Elevator 3"
+    },
+    {
+      "code": "RON",
+      "unitId": "RON-707",
+      "location": "Garage Elevator 1"
+    },
+    {
+      "code": "RON",
+      "unitId": "RON-706",
+      "location": "Garage Elevator 2"
+    },
+    {
+      "code": "0PO",
+      "unitId": "0PO-058PE",
+      "location": "Elevator from the east-side parking garage."
+    },
+    {
+      "code": "0PO",
+      "unitId": "0PO-058PW",
+      "location": "Elevator from the west-side parking garage."
+    }
+  ]
+}

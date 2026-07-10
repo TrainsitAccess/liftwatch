@@ -3,13 +3,13 @@
   "name": "LIRR",
   "label": "LIRR (New York)",
   "timezone": "America/New_York",
-  "generatedAt": "2026-07-09T22:49:25.147Z",
+  "generatedAt": "2026-07-10T16:00:12.761Z",
   "currentlyBroken": [
     {
       "station": "Grand Central",
       "unitId": "GCT-945",
       "unit": "EL21: Between LIRR Concourse and Metro-North Tracks 102-114 at 45th Street",
-      "days": 2,
+      "days": 3,
       "since": "2026-07-07T03:58:40.812+00:00",
       "planned": false,
       "reason": "Not Working",
@@ -25,22 +25,22 @@
     "current": 0,
     "log": []
   },
+  "accessIssues": {
+    "current": 0,
+    "log": []
+  },
   "stationAccess": {
     "rows": [],
-    "chainsModeled": 21
+    "chainsModeled": 68
   },
   "scheduledWork": [],
   "accessibilityBlackouts": [
-    {
-      "name": "Wyandanch",
-      "hours": 17.82988111111111
-    },
     {
       "name": "Jamaica (Tks 4/5)",
       "hours": 12.9984275
     },
     {
-      "name": "Queens Village",
+      "name": "Queens Village (Platform B)",
       "hours": 10.565690555555555
     },
     {
@@ -48,63 +48,93 @@
       "hours": 10.565690555555555
     },
     {
-      "name": "Locust Manor",
+      "name": "Locust Manor (Platform A)",
       "hours": 5.42221
+    },
+    {
+      "name": "Penn Station (Tks 13/14)",
+      "hours": 0.9566158333333333
+    },
+    {
+      "name": "Penn Station (Tks 15/16)",
+      "hours": 0.9566158333333333
+    },
+    {
+      "name": "Penn Station (Tk 17)",
+      "hours": 0.9566158333333333
+    },
+    {
+      "name": "Penn Station (Tks 18/19)",
+      "hours": 0.9566158333333333
+    },
+    {
+      "name": "Penn Station (Tks 20/21)",
+      "hours": 0.9566158333333333
     }
   ],
   "stepFreeStreak": [
     {
       "name": "Atlantic Terminal",
-      "days": 2,
+      "days": 3,
       "blackedOutNow": false
     },
     {
       "name": "Hicksville (Platform A)",
-      "days": 2,
+      "days": 3,
       "blackedOutNow": false
     },
     {
       "name": "Hicksville (Platform B)",
-      "days": 2,
+      "days": 3,
       "blackedOutNow": false
     },
     {
       "name": "Mineola (Track 2)",
-      "days": 2,
+      "days": 3,
       "blackedOutNow": false
     },
     {
       "name": "Mineola (Track 3)",
-      "days": 2,
+      "days": 3,
       "blackedOutNow": false
     },
     {
-      "name": "Penn Station (Tks 13/14)",
-      "days": 2,
+      "name": "Jamaica (Tks 1/2)",
+      "days": 3,
       "blackedOutNow": false
     },
     {
-      "name": "Penn Station (Tks 15/16)",
-      "days": 2,
+      "name": "Jamaica (Tks 2/3)",
+      "days": 3,
       "blackedOutNow": false
     },
     {
-      "name": "Penn Station (Tk 17)",
-      "days": 2,
+      "name": "Jamaica (Tks 6/7)",
+      "days": 3,
       "blackedOutNow": false
     },
     {
-      "name": "Penn Station (Tks 18/19)",
-      "days": 2,
+      "name": "Jamaica (Tks 7/8)",
+      "days": 3,
       "blackedOutNow": false
     },
     {
-      "name": "Penn Station (Tks 20/21)",
-      "days": 2,
+      "name": "Jamaica (Tks 11/12)",
+      "days": 3,
       "blackedOutNow": false
     }
   ],
   "mostBrokenUnits": [
+    {
+      "unit": "Between Platform A and street level (west end of platform)",
+      "station": "Locust Manor (Platform A)",
+      "count": 1
+    },
+    {
+      "unit": "Between Tracks 1 & 2 and street level (middle of platform)",
+      "station": "Laurelton",
+      "count": 1
+    },
     {
       "unit": "Garage Elevator 3",
       "station": "Wyandanch",
@@ -112,7 +142,7 @@
     },
     {
       "unit": "Between Platform B and street level (east end of platform)",
-      "station": "Queens Village",
+      "station": "Queens Village (Platform B)",
       "count": 1
     },
     {
@@ -131,6 +161,11 @@
       "count": 1
     },
     {
+      "unit": "Unit P34, between 34th Street/7 Avenue and LIRR concourse level",
+      "station": "Penn Station",
+      "count": 1
+    },
+    {
       "unit": "Between eastern overpass, Track 3, and street (north side)",
       "station": "Mineola (Track 3)",
       "count": 1
@@ -139,77 +174,67 @@
       "unit": "Between western overpass, Intermodal Center, and Track 2 (south side)",
       "station": "Mineola (Track 2)",
       "count": 1
-    },
-    {
-      "unit": "Between Platform A and street level (west end of platform)",
-      "station": "Locust Manor",
-      "count": 1
-    },
-    {
-      "unit": "Between Tracks 1 & 2 and street level (middle of platform)",
-      "station": "Laurelton",
-      "count": 1
     }
   ],
   "uptimeStreak": [
     {
-      "unit": "Garage Elevator 2",
-      "station": "Wyandanch",
-      "days": 2,
-      "downNow": false
-    },
-    {
-      "unit": "Between overpass and Tracks 1 & 2  (Platform B)",
-      "station": "Ronkonkoma",
-      "days": 2,
-      "downNow": false
-    },
-    {
-      "unit": "Garage Elevator 1",
-      "station": "Ronkonkoma",
-      "days": 2,
-      "downNow": false
-    },
-    {
       "unit": "Between Tracks 1 & 2 and street level (middle of platform)",
-      "station": "St. Albans",
-      "days": 2,
-      "downNow": false
-    },
-    {
-      "unit": "Between Tracks 1 & 2 and street level (east end of platform)",
-      "station": "Rosedale",
-      "days": 2,
-      "downNow": false
-    },
-    {
-      "unit": "Between Tracks 1 & 2 and street level (east side of station building)",
-      "station": "Valley Stream",
-      "days": 2,
-      "downNow": false
-    },
-    {
-      "unit": "Between Tracks A1 & A2 and street level (east side of station building) - Babylon trains",
-      "station": "Lynbrook",
-      "days": 2,
-      "downNow": false
-    },
-    {
-      "unit": "Between Tracks B1 & B2 and street level (east side of station building) - Long Beach trains",
-      "station": "Lynbrook",
-      "days": 2,
+      "station": "Laurelton",
+      "days": 3,
       "downNow": false
     },
     {
       "unit": "Between Tracks 1 & 2 and street level (east side of station building)",
       "station": "Freeport",
-      "days": 2,
+      "days": 3,
       "downNow": false
     },
     {
       "unit": "Between Tracks 1 & 2 and street level (east of station building)",
       "station": "Merrick",
-      "days": 2,
+      "days": 3,
+      "downNow": false
+    },
+    {
+      "unit": "Elevator A: Between overpass and Track 3.",
+      "station": "Elmont-UBS Arena (Track 3)",
+      "days": 3,
+      "downNow": false
+    },
+    {
+      "unit": "Elevator B: Between overpass and Track 4, access to arena shuttle buses.",
+      "station": "Elmont-UBS Arena (Track 4)",
+      "days": 3,
+      "downNow": false
+    },
+    {
+      "unit": "Between overpass, Track 2, and Garden Avenue",
+      "station": "Carle Place",
+      "days": 3,
+      "downNow": false
+    },
+    {
+      "unit": "Between Platform B and street level (west end of platform)",
+      "station": "Locust Manor (Platform B)",
+      "days": 3,
+      "downNow": false
+    },
+    {
+      "unit": "Garage Elevator 2",
+      "station": "Wyandanch",
+      "days": 3,
+      "downNow": false
+    },
+    {
+      "unit": "Between overpass and Tracks 1 & 2  (Platform B)",
+      "station": "Ronkonkoma (Tracks 1 & 2)",
+      "days": 3,
+      "downNow": false
+    },
+    {
+      "unit": "Between street level and Platform A",
+      "station": "Great Neck (Platform A)",
+      "days": 3,
       "downNow": false
     }
   ],
@@ -227,15 +252,7 @@
       "count": 3
     },
     {
-      "name": "St. Albans",
-      "count": 1
-    },
-    {
-      "name": "Rosedale",
-      "count": 1
-    },
-    {
-      "name": "Valley Stream",
+      "name": "Laurelton",
       "count": 1
     },
     {
@@ -259,7 +276,7 @@
       "count": 1
     },
     {
-      "name": "Rockville Centre",
+      "name": "Copiague",
       "count": 1
     },
     {
@@ -267,11 +284,19 @@
       "count": 1
     },
     {
+      "name": "St. Albans",
+      "count": 1
+    },
+    {
+      "name": "Rockville Centre",
+      "count": 1
+    },
+    {
       "name": "Baldwin",
       "count": 1
     },
     {
-      "name": "Auburndale",
+      "name": "Valley Stream",
       "count": 1
     }
   ]

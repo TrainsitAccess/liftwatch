@@ -1,0 +1,434 @@
+{
+  "generatedAt": "2026-07-10T15:56:06.842Z",
+  "stations": {
+    "ATL": {
+      "name": "Atlantic Terminal",
+      "railroad": "LIRR",
+      "accessibility": "FULL",
+      "elevators": [
+        {
+          "unitId": "664",
+          "location": "Unit 1, between street level and concourse/platform level (adjacent to MTA Police)"
+        },
+        {
+          "unitId": "663",
+          "location": "Unit 2, between street level and concourse/platform level (adjacent to MTA Police)"
+        }
+      ]
+    },
+    "HVL": {
+      "name": "Hicksville",
+      "railroad": "LIRR",
+      "accessibility": "FULL",
+      "elevators": [
+        {
+          "unitId": "429",
+          "location": "Unit A1, between Tracks 1 & 2 (Platform A) and street level (east side of station building)"
+        },
+        {
+          "unitId": "721",
+          "location": "Unit A2, between Tracks 1 & 2 (Platform A) and street level (west side of station building)"
+        },
+        {
+          "unitId": "428",
+          "location": "Unit B1, between Tracks 2 & 3 (Platform B) and street level (east side of station building)"
+        },
+        {
+          "unitId": "722",
+          "location": "Unit B2, between Tracks 2 & 3 (Platform B) and street level (west side of station building)"
+        }
+      ]
+    },
+    "MIN": {
+      "name": "Mineola",
+      "railroad": "LIRR",
+      "accessibility": "FULL",
+      "elevators": [
+        {
+          "unitId": "1017",
+          "location": "Between eastern overpass, Track 2, and kiss-and-ride (south side)"
+        },
+        {
+          "unitId": "1018",
+          "location": "Between eastern overpass, Track 3, and street (north side)"
+        },
+        {
+          "unitId": "435",
+          "location": "Between western overpass, Intermodal Center, and Track 2 (south side)"
+        },
+        {
+          "unitId": "434",
+          "location": "Between western overpass, Intermodal Center, and Track 3 (north side)"
+        }
+      ]
+    },
+    "NYK": {
+      "name": "Penn Station",
+      "railroad": "LIRR",
+      "accessibility": "FULL",
+      "elevators": [
+        {
+          "unitId": "438",
+          "location": "Unit P10, between LIRR concourse level and Tracks 18 & 19"
+        },
+        {
+          "unitId": "437",
+          "location": "Unit P11, between LIRR concourse level and Tracks 20 & 21"
+        },
+        {
+          "unitId": "861",
+          "location": "Unit P34, between 34th Street/7 Avenue and LIRR concourse level"
+        },
+        {
+          "unitId": "440",
+          "location": "Unit P7, between LIRR concourse level and Tracks 13 & 14"
+        },
+        {
+          "unitId": "323",
+          "location": "Unit P8, between LIRR concourse level and Tracks 15 & 16"
+        },
+        {
+          "unitId": "322",
+          "location": "Unit P9, between LIRR concourse level and Track 17"
+        }
+      ]
+    },
+    "JAM": {
+      "name": "Jamaica",
+      "railroad": "LIRR",
+      "accessibility": "FULL",
+      "elevators": [
+        {
+          "unitId": "430",
+          "location": "Between eastern overpass and Tracks 1 & 2"
+        },
+        {
+          "unitId": "761",
+          "location": "Between eastern overpass and Tracks 11 & 12"
+        },
+        {
+          "unitId": "341",
+          "location": "Between eastern overpass and Tracks 2 & 3"
+        },
+        {
+          "unitId": "342",
+          "location": "Between eastern overpass and Tracks 4 & 5"
+        },
+        {
+          "unitId": "401",
+          "location": "Between eastern overpass and Tracks 6 & 7"
+        },
+        {
+          "unitId": "402",
+          "location": "Between eastern overpass and Tracks 7 & 8"
+        },
+        {
+          "unitId": "521",
+          "location": "Between eastern overpass, street level, and subway"
+        }
+      ]
+    },
+    "WDD": {
+      "name": "Woodside",
+      "railroad": "LIRR",
+      "accessibility": "FULL",
+      "elevators": [
+        {
+          "unitId": "447",
+          "location": "Between mezzanine and Track 1 (Platform C)"
+        },
+        {
+          "unitId": "448",
+          "location": "Between mezzanine and Tracks 2 & 3 (Platform B)"
+        },
+        {
+          "unitId": "449",
+          "location": "Between mezzanine, Track 4 (Platform A), and street level"
+        }
+      ]
+    },
+    "GCT": {
+      "name": "Grand Central",
+      "railroad": "LIRR",
+      "accessibility": "FULL",
+      "elevators": [
+        {
+          "unitId": "947",
+          "location": "EL01 - Between LIRR Concourse and Mezzanine for access to all tracks"
+        },
+        {
+          "unitId": "948",
+          "location": "EL02 - Between LIRR Concourse and Mezzanine for access to all tracks"
+        },
+        {
+          "unitId": "951",
+          "location": "EL05: Between Tracks 203/204, Mezzanine, and Tracks 303/304"
+        },
+        {
+          "unitId": "942",
+          "location": "EL06: Between Tracks 203/204, Mezzanine, and Tracks 303/304"
+        },
+        {
+          "unitId": "949",
+          "location": "EL07: Between Tracks 201/202, Mezzanine, and Tracks 301/302"
+        },
+        {
+          "unitId": "950",
+          "location": "EL08: Between Tracks 201/202, Mezzanine and Tracks 301/302"
+        },
+        {
+          "unitId": "943",
+          "location": "EL12: Between 44th Street and LIRR Concourse"
+        },
+        {
+          "unitId": "941",
+          "location": "EL13: Between 47th Street and LIRR Concourse"
+        },
+        {
+          "unitId": "944",
+          "location": "EL20: Between 48th Street and LIRR Concourse"
+        },
+        {
+          "unitId": "945",
+          "location": "EL21: Between LIRR Concourse and Metro-North Tracks 102-114 at 45th Street"
+        }
+      ]
+    },
+    "0HL": {
+      "name": "Harlem-125 St",
+      "railroad": "MNR",
+      "accessibility": "FULL",
+      "elevators": [
+        {
+          "unitId": "002N",
+          "location": "Elevator from the station building to the Tracks 3 & 1 platform."
+        },
+        {
+          "unitId": "002S",
+          "location": "Elevator from the station building to the Tracks 4 & 2 platform."
+        }
+      ]
+    },
+    "2NR": {
+      "name": "New Rochelle",
+      "railroad": "MNR",
+      "accessibility": "FULL",
+      "elevators": [
+        {
+          "unitId": "206E",
+          "location": "Elevator from the street to the Stamford/New Haven-bound platform (Track 4)."
+        },
+        {
+          "unitId": "206W",
+          "location": "Elevator from the New York-bound platform (Track 3) to the overpass."
+        }
+      ]
+    },
+    "1WP": {
+      "name": "White Plains",
+      "railroad": "MNR",
+      "accessibility": "FULL",
+      "elevators": [
+        {
+          "unitId": "132I",
+          "location": "Elevator from the street entrance to the island platform (Tracks 1 & 2)."
+        },
+        {
+          "unitId": "WP2",
+          "location": "Elevator to parking garage"
+        }
+      ]
+    },
+    "0YS": {
+      "name": "Yankees-E 153 St",
+      "railroad": "MNR",
+      "accessibility": "FULL",
+      "elevators": [
+        {
+          "unitId": "00321",
+          "location": "Elevator from station mezzanine to tracks 2,1 platform PE3"
+        },
+        {
+          "unitId": "00364",
+          "location": "Elevator from station mezzanine to tracks 6,4 platform PE2"
+        },
+        {
+          "unitId": "003P",
+          "location": "Elevator from east end of the overpass to the street and parking PE4"
+        },
+        {
+          "unitId": "003W",
+          "location": "Elevator from the mezzanine to the west side parking areas and ferries PE1"
+        }
+      ]
+    },
+    "2SM": {
+      "name": "Stamford",
+      "railroad": "MNR",
+      "accessibility": "FULL",
+      "elevators": [
+        {
+          "unitId": "1 STM",
+          "location": "Elevator 01 - To/from concourse, Track 5 & street (South State Street), and lower level"
+        },
+        {
+          "unitId": "22624",
+          "location": "Elevator 03 - Concourse to/from Track 2/4 center island platform"
+        },
+        {
+          "unitId": "22635",
+          "location": "Elevator 02 - Concourse to/from Track 3/5 center island platform"
+        },
+        {
+          "unitId": "2264",
+          "location": "Elevator 04 - Concourse to/from Track 4 & Station Place"
+        },
+        {
+          "unitId": "2265",
+          "location": "Elevator 10 - East pedestrian bridge to/from Track 5 & South State Street"
+        },
+        {
+          "unitId": "7 STM",
+          "location": "Elevator 07 - East pedestrian bridge to/from Track 4"
+        },
+        {
+          "unitId": "8 STM",
+          "location": "Elevator 08 - Garage (orange section) to street (Station Place)"
+        },
+        {
+          "unitId": "9 STM",
+          "location": "Elevator 09 - Garage (orange section) to street (Station Place)"
+        },
+        {
+          "unitId": "G1",
+          "location": "Garage to South State Street"
+        },
+        {
+          "unitId": "G2",
+          "location": "Garage to South State Street"
+        },
+        {
+          "unitId": "G3",
+          "location": "Garage to South State Street"
+        }
+      ]
+    },
+    "0NY": {
+      "name": "Grand Central",
+      "railroad": "MNR",
+      "accessibility": "FULL",
+      "elevators": [
+        {
+          "unitId": "NE-1",
+          "location": "At 47th Street & Madison Avenue in the 47th street Cross Passage."
+        },
+        {
+          "unitId": "NE-2",
+          "location": "At the 47th street Cross Passage in the Northwest Passage."
+        },
+        {
+          "unitId": "NE-3",
+          "location": "At the 47th street Cross Passage in the Northeast Passage."
+        },
+        {
+          "unitId": "NE-4",
+          "location": "NE-4:  At the 45th street Cross Passage to Tk 116 platform and Tks 34 & 35 platform."
+        },
+        {
+          "unitId": "NE-5",
+          "location": "At the 45th street Cross Passage in the Northwest Passage."
+        },
+        {
+          "unitId": "NE-6",
+          "location": "At the 45th street Cross Passage in the Northeast Passage."
+        },
+        {
+          "unitId": "SE-6",
+          "location": "Kitty Kelly Elevator located near the Kitty Kelly Ramp by East 42nd Street and Vanderbilt Entrance"
+        },
+        {
+          "unitId": "SE-7",
+          "location": "Kitty Kelly Elevator located near the Kitty Kelly Ramp by East 42nd Street and Vanderbilt Entrance"
+        },
+        {
+          "unitId": "T-10",
+          "location": "Oyster Bar ramp off the Shuttle Passageway"
+        },
+        {
+          "unitId": "T-11",
+          "location": "Oyster Bar ramp off the Shuttle Passageway."
+        },
+        {
+          "unitId": "T-12",
+          "location": "Oyster Bar ramp off the Shuttle Passageway."
+        },
+        {
+          "unitId": "T-13",
+          "location": "ADA Elevator by Track 11/13"
+        },
+        {
+          "unitId": "T-18",
+          "location": "Upper Level near Northeast Passageway entrance (B Hall)."
+        },
+        {
+          "unitId": "T-19",
+          "location": "Upper Level near Northeast Passageway entrance (B Hall)."
+        },
+        {
+          "unitId": "T-20",
+          "location": "Upper Level near Northeast Passageway entrance (B Hall)."
+        },
+        {
+          "unitId": "T-6",
+          "location": "Vanderbilt Avenue next to Michael Jordan's Restaurant (A Hall)."
+        },
+        {
+          "unitId": "T-7",
+          "location": "Vanderbilt Avenue next to Michael Jordan's Restaurant (A Hall)."
+        },
+        {
+          "unitId": "T-8",
+          "location": "Vanderbilt Avenue next to Michael Jordan's Restaurant - ADA ACCESS TO TERMINAL (Hall A)."
+        },
+        {
+          "unitId": "T-9",
+          "location": "Oyster Bar ramp off the Shuttle Passageway"
+        },
+        {
+          "unitId": "WCL",
+          "location": "ADA ACCESS TO TERMINAL:  Wheelchair Lift to elevator located at Vanderbilt Avenue next to Michael Jordan's Restaurant (Hall A)."
+        }
+      ]
+    },
+    "1CQ": {
+      "name": "Chappaqua",
+      "railroad": "MNR",
+      "accessibility": "FULL",
+      "elevators": [
+        {
+          "unitId": "148P",
+          "location": "Elevator from the east-side parking lot to the overpass."
+        },
+        {
+          "unitId": "148I",
+          "location": "Elevator from the overpass to the island platform (Tracks 2 & 1)."
+        }
+      ]
+    },
+    "2FM": {
+      "name": "Fairfield-Black Rock",
+      "railroad": "MNR",
+      "accessibility": "FULL",
+      "elevators": [
+        {
+          "unitId": "245N",
+          "location": "Elevator to the New Haven-bound platform (Tk 4) is located on the west end of platform."
+        },
+        {
+          "unitId": "245S",
+          "location": "Elevator to the New York-bound platform (Tk 3) to street level is located on the west end of platform"
+        }
+      ]
+    }
+  }
+}
