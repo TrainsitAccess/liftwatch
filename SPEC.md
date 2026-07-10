@@ -554,19 +554,74 @@ covers our cadence — a key raises it to 1,000/min).
   stations (one page, `page[limit]=200` + pagination guard for headroom).
   `include=stop` gives station name, municipality, and coordinates directly —
   no separate geo enrichment needed, unlike MTA/BART.
-- `/alerts?filter[activity]=USING_WHEELCHAIR` — kept only where
-  `effect = "ELEVATOR_CLOSURE"`; `active_period[0].start/end` are **already
-  ISO-8601 with a UTC offset** (no local-time parsing, unlike MTA/BART).
-  `cause` in `{MAINTENANCE, CONSTRUCTION}` → planned. `lifecycle`/future
-  `active_period.start` splits current vs. `upcoming`.
+- `/alerts?filter[activity]=USING_WHEELCHAIR` — an elevator outage is an alert
+  whose `informed_entity` names a **known ELEVATOR facility** (join against the
+  `/facilities?filter[type]=ELEVATOR` set above), NOT one whose `effect` is
+  `ELEVATOR_CLOSURE`. **MBTA files the same real elevator outage under several
+  effect labels** — `ELEVATOR_CLOSURE`, `ACCESS_ISSUE`, and `FACILITY_ISSUE`
+  all seen live for elevators-out (e.g. Kendall/MIT 777 "unavailable due to
+  maintenance" arrives as `ACCESS_ISSUE`; Lynn 929/930 likewise). Gating on
+  `effect` silently dropped those; the facility-type join is the reliable
+  filter and also excludes non-elevators (escalator under `FACILITY_ISSUE`,
+  mini-high platform under `ACCESS_ISSUE`) regardless of effect. Same
+  don't-trust-an-unverified-feed-field trap as CTA `FullDescription` / MTA
+  `isupcomingoutage`. `active_period[0].start/end` are **already ISO-8601 with
+  a UTC offset** (no local-time parsing, unlike MTA/BART). `cause` in
+  `{MAINTENANCE, CONSTRUCTION}` → planned. Future `active_period.start` splits
+  current vs. `upcoming`.
 - One alert's `informed_entity` can list the same `facility` id many times
   (once per affected stop/route) — deduped to unique facility ids per alert.
+- **Non-elevator access-issue layer** (see "Access issues" below): the same
+  alert feed also names non-elevator accessibility facilities (mini-high
+  platforms, ramps, portable lifts). These are captured as a SEPARATE layer,
+  never mixed into elevator metrics.
 - No explicit redundancy field — falls through to the existing precedence
   engine (`single_elevator` / `assumed`), same as any uncurated system. Some
   facility `properties` include `alternate-service-text` naming a backup
   elevator in prose (e.g. "use the nearby Elevator 736") — a candidate for
   future curation, intentionally not auto-parsed (same policy as BART's
   planned RSS).
+
+### Access issues — non-elevator step-free facilities (MBTA)
+
+A supplementary "before you go" layer for accessibility facilities that are
+**not elevators** but whose loss removes step-free/accessible access: mini-high
+boarding platforms (`ELEVATED_SUBPLATFORM`), raised platforms
+(`FULLY_ELEVATED_PLATFORM`), portable boarding lifts (`PORTABLE_BOARDING_LIFT`),
+and ramps (`RAMP`). Escalators are deliberately **excluded** (not
+step-free/wheelchair access; the project reserves-but-doesn't-track them).
+
+- **Walled off from elevators by design.** These facilities are never in
+  `units`, never enter the elevator inventory, the "% of fleet down" math, or
+  any elevator leaderboard. They live in their own denormalized `access_events`
+  table (no FK to `units`) and render on their own per-system "Access issues"
+  board, hidden for every system that exposes no such data (all but MBTA today).
+- **Captured by facility TYPE, not `effect`** — same reliable join as the
+  elevator fix: a second `/facilities?filter[type]=…` call fetches the
+  accessibility facility types, and any alert `informed_entity` naming one is
+  emitted as a `NormalizedAccessIssue`. Only current (not future-dated) issues
+  are archived. `cause ∈ {MAINTENANCE, CONSTRUCTION}` → planned, same as
+  elevators.
+- **Archived, open/close, like outages** (the user chose history over a
+  current-only snapshot): ingest §6.5 opens/refreshes/closes `access_events`
+  keyed by `(system_id, facility_external_id)`; the board shows current-out
+  first, then a recent resolved log with durations.
+- **General mechanism — and a COMMITTED goal to extend it.** The type
+  (`NormalizedAccessIssue`), table, ingest, and board are system-agnostic; only
+  the MBTA adapter populates `NormalizedRead.accessIssues` today. **Whenever
+  another tracked system exposes comparable non-elevator step-free-access data
+  (boarding platforms, portable lifts, ramps, or an equivalent "access issue"
+  feed), we WANT to wire it into this same layer** — this is an ongoing project
+  direction, not an MBTA one-off. The bar is the usual one: a REAL, verified
+  per-facility signal (never a guessed or unverified feed field), captured by
+  facility identity/type rather than by a fragile status/effect label. As each
+  system is audited against its agency's own accessibility status page, check
+  whether it has such facilities and add them here.
+- `access_events` is a **later schema addition** — apply the block in
+  `db/schema.sql` in the Supabase SQL editor, then `NOTIFY pgrst, 'reload
+  schema';` (PostgREST caches the schema — same gotcha as `offline_events`).
+  Ingest and build-site-data degrade (warn + skip → empty board) until it
+  exists, so shipping the code before applying the DDL is safe.
 
 ### WMATA feeds (in use) — per-elevator ids, discovered inventory
 

@@ -14,6 +14,8 @@ export interface IngestResult {
   upcomingStored: number;
   offlineOpened: number;
   offlineClosed: number;
+  accessOpened: number;
+  accessClosed: number;
 }
 
 const unitId = (systemId: string, ext: string) => `${systemId}:${ext}`;
@@ -477,6 +479,92 @@ export async function ingest(
       eventsClosed++;
     }
 
+    // 6.5 Access events: NON-ELEVATOR accessibility-facility outages (mini-high
+    //     platforms, portable lifts, ramps — see NormalizedAccessIssue). Same
+    //     open/refresh/close treatment as outages, in the denormalized
+    //     access_events table (no FK to units — these are NOT elevators and never
+    //     touch elevator metrics). Keyed by (system_id, facility_external_id).
+    //     Only adapters that expose such facilities populate read.accessIssues
+    //     (MBTA); it's undefined elsewhere, so this is a no-op for other systems.
+    //     Degrades gracefully (warn + skip) until the access_events table exists.
+    // Always run (even with zero current issues) so a resolved issue closes.
+    let accessOpened = 0;
+    let accessClosed = 0;
+    const accessIssues = read.accessIssues ?? [];
+    {
+      try {
+        const openAccess = await db
+          .from("access_events")
+          .select("id, facility_external_id")
+          .eq("system_id", system.id)
+          .is("ended_at", null);
+        fail("select open access events", openAccess.error);
+        const openAccessByFacility = new Map<string, number>(
+          (openAccess.data ?? []).map((r) => [r.facility_external_id as string, r.id as number]),
+        );
+
+        const currentAccess = new Set<string>();
+        for (const ai of accessIssues) {
+          if (currentAccess.has(ai.facilityExternalId)) continue; // one open issue per facility
+          currentAccess.add(ai.facilityExternalId);
+          const existing = openAccessByFacility.get(ai.facilityExternalId);
+          if (existing === undefined) {
+            fail(
+              "open access event",
+              (
+                await db.from("access_events").insert({
+                  system_id: system.id,
+                  station_id: ai.stationExternalId ? stationId(system.id, ai.stationExternalId) : null,
+                  facility_external_id: ai.facilityExternalId,
+                  facility_type: ai.facilityType,
+                  description: ai.description ?? null,
+                  started_at: now,
+                  is_planned: ai.isPlanned,
+                  reason: ai.reason ?? null,
+                  source_started_at: ai.sourceStartedAt ?? null,
+                  estimated_return: ai.estimatedReturn ?? null,
+                })
+              ).error,
+            );
+            accessOpened++;
+          } else {
+            fail(
+              "refresh access event",
+              (
+                await db
+                  .from("access_events")
+                  .update({
+                    is_planned: ai.isPlanned,
+                    description: ai.description ?? null,
+                    reason: ai.reason ?? null,
+                    estimated_return: ai.estimatedReturn ?? null,
+                    updated_at: now,
+                  })
+                  .eq("id", existing)
+              ).error,
+            );
+          }
+        }
+
+        for (const [facilityId, eventId] of openAccessByFacility) {
+          if (currentAccess.has(facilityId)) continue;
+          fail(
+            "close access event",
+            (await db.from("access_events").update({ ended_at: now, updated_at: now }).eq("id", eventId)).error,
+          );
+          accessClosed++;
+        }
+      } catch (err) {
+        if (/access_events/.test(String(err))) {
+          console.warn(
+            `  ⚠ ${system.id}: access_events table missing — access-issue tracking skipped (apply the addition in db/schema.sql)`,
+          );
+        } else {
+          throw err;
+        }
+      }
+    }
+
     // 7. Upcoming (scheduled) outages: a snapshot, wiped and replaced each poll —
     //    agencies revise schedules, so history of "upcoming" is not meaningful.
     fail(
@@ -512,6 +600,8 @@ export async function ingest(
       upcomingStored: read.upcoming.length,
       offlineOpened,
       offlineClosed,
+      accessOpened,
+      accessClosed,
     };
 
     fail(

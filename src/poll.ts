@@ -131,6 +131,11 @@ async function main(): Promise<void> {
       `  offline tracking → ${result.offlineOpened} unit(s) went dark (status unknown), ${result.offlineClosed} back in the feed.`,
     );
   }
+  if (result.accessOpened || result.accessClosed) {
+    console.log(
+      `  access issues → ${result.accessOpened} non-elevator facility outage(s) opened, ${result.accessClosed} resolved.`,
+    );
+  }
   if (result.flagsRaised) {
     console.log(`  ⚠ ${result.flagsRaised} redundancy flag(s) raised for review.`);
   }

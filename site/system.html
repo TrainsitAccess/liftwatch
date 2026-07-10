@@ -271,6 +271,29 @@
     <p class="legend">An <span class="red">OFFLINE</span> elevator has vanished from the agency's feed: not reported broken, not reported working — unknowable, which is as bad as broken for planning a trip. Spells are logged like outages; <span class="green">RESTORED</span> rows show recent spells that ended.</p>
   </section>
 
+  <section class="board" id="axi-section" aria-labelledby="axi-h" hidden>
+    <div class="board-head">
+      <h2 id="axi-h">Access issues <span class="t-sub">non-elevator step-free facilities</span></h2>
+      <span class="side board-note" id="axi-summary"></span>
+    </div>
+    <div class="tablewrap">
+      <table class="led narrow">
+        <caption class="sr-only">Non-elevator accessibility facilities out of service — mini-high platforms, portable lifts, ramps — plus recently restored ones</caption>
+        <thead>
+          <tr>
+            <th scope="col">facility</th>
+            <th scope="col">station</th>
+            <th scope="col">status</th>
+            <th scope="col">reported</th>
+            <th class="num" scope="col">out for</th>
+          </tr>
+        </thead>
+        <tbody id="axi-body"></tbody>
+      </table>
+    </div>
+    <p class="legend">These are <strong>not elevators</strong> — boarding platforms, portable lifts, and ramps whose loss removes step-free access. Tracked and archived separately; <strong>never counted</strong> in this system's elevator totals or rankings. <span class="red">OUT</span> = currently out of service; <span class="green">RESTORED</span> = a recent spell that ended.</p>
+  </section>
+
   <section class="board" aria-labelledby="access-h">
     <div class="board-head">
       <h2 id="access-h">Station access <span class="t-sub">live status of modeled routes</span></h2>
@@ -608,6 +631,30 @@ if (!id) {
         `<td class="dim">${esc(fmtWhen(o.since) || "—")}</td>`,
         `<td class="num${isOff ? " red" : ""}">${isOff ? formatDays(o.days) : formatHours(o.durationHours)}</td>`,
       ]);
+    }
+
+    // --- Access issues (non-elevator step-free facilities) ---
+    // A separate layer from elevators — hidden entirely for systems that don't
+    // expose such facilities (everything except MBTA today).
+    const axi = data.accessIssues ?? { current: 0, log: [] };
+    const axiSection = document.getElementById("axi-section");
+    axiSection.hidden = axi.log.length === 0;
+    if (axi.log.length) {
+      document.getElementById("axi-summary").textContent =
+        axi.current > 0 ? `${axi.current} currently out` : "";
+      const axb = document.getElementById("axi-body");
+      for (const a of axi.log) {
+        const isOut = a.restored === null;
+        const plannedChip = a.planned ? ' <span class="chip sched">PLANNED</span>' : "";
+        const reason = a.reason ? `<div class="dim">${esc(a.reason)}</div>` : "";
+        simpleRow(axb, [
+          `<td>${esc(a.typeLabel)}</td>`,
+          `<td class="white">${esc(a.station)}${reason}</td>`,
+          `<td>${isOut ? '<span class="chip red">OUT</span>' + plannedChip : `<span class="chip green">RESTORED</span> <span class="dim">${esc(fmtWhen(a.restored) || "")}</span>`}</td>`,
+          `<td class="dim">${esc(fmtWhen(a.since) || "—")}</td>`,
+          `<td class="num${isOut ? " red" : ""}">${isOut ? formatDays(a.days) : formatHours(a.durationHours)}</td>`,
+        ]);
+      }
     }
 
     // --- Station access (live) ---

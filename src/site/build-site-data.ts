@@ -31,6 +31,19 @@ export interface SiteData {
   systemDetails: { id: string; detail: Record<string, unknown> }[]; // systems/{id}.json
 }
 
+// Rider-facing labels for non-elevator accessibility-facility types (the
+// access-issue layer). Kept here so the site renders a clean category, not a
+// raw enum. Unknown types fall back to a title-cased version.
+const ACCESS_TYPE_LABELS: Record<string, string> = {
+  elevated_subplatform: "Mini-high platform",
+  fully_elevated_platform: "Raised platform",
+  portable_boarding_lift: "Portable lift",
+  ramp: "Ramp",
+};
+function accessTypeLabelFallback(type: string): string {
+  return type.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
 export async function buildSiteData(db: SupabaseClient): Promise<SiteData> {
 // PostgREST caps a single response at 1000 rows by default — a plain
 // `.select()` silently TRUNCATES past that (no error), which stayed
@@ -123,6 +136,47 @@ try {
 const openOfflineBySystem = new Map<string, number>();
 for (const o of offlineData) {
   if (o.ended_at == null) openOfflineBySystem.set(o.system_id, (openOfflineBySystem.get(o.system_id) ?? 0) + 1);
+}
+
+// Access events — NON-ELEVATOR accessibility-facility outages (mini-high
+// platforms, portable lifts, ramps; see ingest 6.5). A SEPARATE layer, never
+// mixed into elevator inventory/%/leaderboards. Also a hand-applied later
+// schema addition, so degrade to empty until the table exists.
+type AccessRow = {
+  system_id: string;
+  station_id: string | null;
+  facility_external_id: string;
+  facility_type: string;
+  description: string | null;
+  started_at: string;
+  ended_at: string | null;
+  is_planned: boolean;
+  reason: string | null;
+  source_started_at: string | null;
+  estimated_return: string | null;
+};
+let accessData: AccessRow[] = [];
+try {
+  accessData = await fetchAll<AccessRow>(
+    (from, to) =>
+      db
+        .from("access_events")
+        .select(
+          "system_id, station_id, facility_external_id, facility_type, description, started_at, ended_at, is_planned, reason, source_started_at, estimated_return",
+        )
+        .range(from, to),
+    "access_events",
+  );
+} catch (err) {
+  if (/access_events/.test(String(err))) {
+    console.warn("access_events table missing — access-issue boards empty (apply the db/schema.sql addition)");
+  } else {
+    throw err;
+  }
+}
+const openAccessBySystem = new Map<string, number>();
+for (const a of accessData) {
+  if (a.ended_at == null) openAccessBySystem.set(a.system_id, (openAccessBySystem.get(a.system_id) ?? 0) + 1);
 }
 
 const stationName = new Map((stations.data ?? []).map((s) => [s.id as string, s.name as string]));
@@ -498,6 +552,38 @@ function buildSystemDetail(systemId: string) {
     })
     .sort((a, b) => (a.restored === null && b.restored === null ? b.since.localeCompare(a.since) : a.restored === null ? -1 : b.restored === null ? 1 : b.restored.localeCompare(a.restored)));
 
+  // --- Access issues board: NON-ELEVATOR accessibility facilities out of
+  // service (mini-high platforms, portable lifts, ramps). A separate "before
+  // you go" signal, archived like outages; NEVER counted in elevator metrics.
+  // Current (still out) first, then the recent resolved log.
+  const systemAccess = accessData.filter((a) => a.system_id === systemId);
+  const accessIssues = systemAccess
+    .map((a) => ({
+      facilityId: a.facility_external_id,
+      type: a.facility_type,
+      typeLabel: ACCESS_TYPE_LABELS[a.facility_type] ?? a.facility_type,
+      facility: a.description || accessTypeLabelFallback(a.facility_type),
+      station: (a.station_id && stationName.get(a.station_id)) || a.description || "Unknown",
+      planned: a.is_planned,
+      reason: a.reason,
+      since: (a.source_started_at ?? a.started_at) as string,
+      days: daysSince((a.source_started_at ?? a.started_at) as string),
+      estimatedReturn: a.estimated_return,
+      restored: a.ended_at,
+      durationHours: a.ended_at ? Math.round((Date.parse(a.ended_at) - Date.parse(a.started_at)) / 3_600_000) : null,
+    }))
+    // Currently-out first (restored === null), then most-recently-restored.
+    .sort((a, b) =>
+      a.restored === null && b.restored === null
+        ? b.since.localeCompare(a.since)
+        : a.restored === null
+          ? -1
+          : b.restored === null
+            ? 1
+            : (b.restored as string).localeCompare(a.restored as string),
+    )
+    .slice(0, 25);
+
   // --- Station access board (live) ---
   // Modeled chains with a relevant outage right now: still accessible via a
   // backup ("REDUCED") or actually severed ("NO ACCESS"). Un-modeled
@@ -713,6 +799,7 @@ function buildSystemDetail(systemId: string) {
   return {
     currentlyBroken,
     offline: { current: offlineLog.filter((o) => o.restored === null).length, log: offlineLog },
+    accessIssues: { current: accessIssues.filter((a) => a.restored === null).length, log: accessIssues },
     stationAccess: { rows: stationAccess, chainsModeled: chainsTotal },
     scheduledWork,
     accessibilityBlackouts,

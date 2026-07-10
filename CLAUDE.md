@@ -330,7 +330,10 @@ parking lot). A station is accessible only if **every** segment is up.
 
 ## Conventions
 
-- **Elevators only.** `unit_type` reserves escalators but they aren't ingested.
+- **Elevators only** (for the core metrics). `unit_type` reserves escalators
+  but they aren't ingested. Non-elevator step-free facilities are tracked in a
+  SEPARATE, walled-off access-issues layer — see the Access issues convention
+  below; they never touch elevator counts/%/leaderboards.
 - **Planned vs unplanned** tracked separately; leaderboards **rank by
   unplanned** (share of active fleet); scheduled work has its own column/board.
   MTA: classified by `reason` (`ismaintenanceoutage` is vestigial — "N" on
@@ -416,6 +419,26 @@ parking lot). A station is accessible only if **every** segment is up.
   won't see it); ingest and build-data warn + skip until it exists.
   **IMPORTANT for any future DDL on this project: PostgREST caches the schema
   — run `NOTIFY pgrst, 'reload schema';` in the SQL editor after adding tables.**
+
+- **Access issues — NON-ELEVATOR step-free facilities** (2026-07-10): a
+  SEPARATE layer for accessibility facilities that aren't elevators but whose
+  loss removes step-free access — mini-high/raised boarding platforms, portable
+  boarding lifts, ramps (escalators deliberately excluded). Deliberately walled
+  off: never in `units`, never in the elevator inventory / `%`-down / any
+  leaderboard. Own denormalized `access_events` table (no FK to `units`), own
+  per-system "Access issues" board (hidden for systems with no such data).
+  Captured by facility TYPE from the facilities feed, NOT by trusting an
+  alert's `effect` label (MBTA files elevators-out under `ELEVATOR_CLOSURE`,
+  `ACCESS_ISSUE`, AND `FACILITY_ISSUE` — the effect field is unreliable, same
+  trap as CTA `FullDescription`). `NormalizedRead.accessIssues`, ingest §6.5
+  (open/close like outages), `build-site-data` → `accessIssues` board.
+  `access_events` is a later schema addition (apply `db/schema.sql` + `NOTIFY
+  pgrst, 'reload schema';`; degrades to empty until it exists).
+  **COMMITTED GOAL: extend this to any other system with comparable
+  non-elevator access-facility data** — as each system is cross-checked against
+  its agency's accessibility status page, add its access facilities here (given
+  a real, verified per-facility signal, never a guessed feed field). Only MBTA
+  populates it today.
 
 ## Gotchas / deferred
 

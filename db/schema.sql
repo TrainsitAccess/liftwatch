@@ -120,6 +120,45 @@ create unique index if not exists one_open_offline_per_unit
 create index if not exists offline_events_system on offline_events (system_id);
 
 -- ---------------------------------------------------------------------------
+-- access_events: NON-ELEVATOR accessibility-facility outages — a mini-high or
+-- fully-elevated boarding platform, a portable boarding lift, or a ramp that is
+-- out of service. As inconvenient for a step-free trip as a broken elevator
+-- ("you can't know before you go"), so it gets the same open/close event
+-- archive treatment. DELIBERATELY WALLED OFF from elevators: these facilities
+-- are NOT in `units`, never enter the elevator inventory, the "% of fleet down"
+-- math, or any elevator leaderboard. Denormalized (no FK to units) — the
+-- facility's identity/type/station live inline on the event. Populated only by
+-- adapters whose agency exposes such facilities (MBTA today, joined by facility
+-- TYPE from the facilities feed, never by trusting the alert `effect` label).
+-- A later schema addition: apply this block in the Supabase SQL editor, then
+-- `NOTIFY pgrst, 'reload schema';` or PostgREST won't see the table; ingest and
+-- build-site-data degrade (warn + skip) until it exists.
+-- ---------------------------------------------------------------------------
+create table if not exists access_events (
+  id                   bigint generated always as identity primary key,
+  system_id            text not null,          -- denormalized for fast group-by
+  station_id           text,
+  facility_external_id text not null,          -- agency's stable id, 'subplat-SB-0189-1'
+  facility_type        text not null           -- normalized accessibility-facility type
+                       check (facility_type in
+                         ('elevated_subplatform', 'fully_elevated_platform',
+                          'portable_boarding_lift', 'ramp')),
+  description          text,                    -- 'Stoughton mini-high platform'
+  started_at           timestamptz not null,   -- when WE first observed it out
+  ended_at             timestamptz,            -- null => still out
+  is_planned           boolean not null default false,
+  reason               text,
+  source_started_at    timestamptz,            -- feed-reported start (may predate us)
+  estimated_return     timestamptz,
+  created_at           timestamptz not null default now(),
+  updated_at           timestamptz not null default now()
+);
+-- at most one open access event per facility
+create unique index if not exists one_open_access_event_per_facility
+  on access_events (system_id, facility_external_id) where ended_at is null;
+create index if not exists access_events_system on access_events (system_id);
+
+-- ---------------------------------------------------------------------------
 -- daily_rollups: precomputed per-unit daily downtime (fast uptime % / trends)
 -- ---------------------------------------------------------------------------
 create table if not exists daily_rollups (
@@ -200,6 +239,7 @@ alter table stations          enable row level security;
 alter table units             enable row level security;
 alter table outage_events     enable row level security;
 alter table offline_events    enable row level security;
+alter table access_events     enable row level security;
 alter table daily_rollups     enable row level security;
 alter table poll_runs         enable row level security;
 alter table redundancy_flags  enable row level security;
