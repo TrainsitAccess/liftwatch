@@ -1,9 +1,10 @@
-import { readFileSync } from "node:fs";
-import { fileURLToPath } from "node:url";
-import { join, dirname } from "node:path";
 import type { Adapter, NormalizedOutage, NormalizedRead, NormalizedStation, NormalizedUnit } from "../../types.js";
 import { nowUtcIso } from "../../lib/time.js";
 import type { TflCatalogLift, TflCatalogStation, TflLiftDisruptionRaw } from "./raw.js";
+// STATIC json imports — runtime-relative readFileSync paths break inside the
+// bundled Netlify function (see station-models.ts's note; live-confirmed 502).
+import stationsJson from "../../catalog/tfl-data/stations.json" with { type: "json" };
+import liftsJson from "../../catalog/tfl-data/lifts.json" with { type: "json" };
 
 // TfL (London) — the richest source yet: a REAL per-lift inventory (569
 // lifts, stable LiftUniqueId matching the live disruption feed exactly) with
@@ -32,11 +33,9 @@ export const TFL_CONFIG: TflConfig = {
   disruptionsUrl: "https://api.tfl.gov.uk/Disruptions/Lifts/v2",
 };
 
-const DATA_DIR = join(dirname(fileURLToPath(import.meta.url)), "../../catalog/tfl-data");
-
 function loadCatalog() {
-  const stations: TflCatalogStation[] = JSON.parse(readFileSync(join(DATA_DIR, "stations.json"), "utf8"));
-  const lifts: TflCatalogLift[] = JSON.parse(readFileSync(join(DATA_DIR, "lifts.json"), "utf8"));
+  const stations = stationsJson as TflCatalogStation[];
+  const lifts = liftsJson as TflCatalogLift[];
   return { stations, lifts };
 }
 

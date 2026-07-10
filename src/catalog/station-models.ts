@@ -1,15 +1,18 @@
-import { readFileSync } from "node:fs";
 import type { StationModel } from "../lib/accessibility.js";
 import { MTA_RAIL_STATION_MODELS } from "./mta-rail-models.js";
 import { BART_STATION_MODELS } from "./bart-station-models.js";
+// STATIC json imports, deliberately NOT readFileSync(new URL(import.meta.url))
+// — the Netlify function bundler compiles its whole import graph into one
+// poll.mjs, so runtime-relative file paths break in production (live-confirmed
+// 2026-07-09: ENOENT on station-chains.json, a 502 on every poll invocation).
+// Static imports are resolved/inlined at build time by tsx, tsc, and the
+// bundler alike. Same pattern in the TfL/TMB adapters' catalog loads.
+import mtaChainsJson from "./mta-data/station-chains.json" with { type: "json" };
+import tflChainsJson from "./tfl-data/chains.json" with { type: "json" };
 
 // MTA multi-chain models, generated from the live elevator inventory by
 // scripts/mta-chains.mjs (self-checked against MTA's own ADA + redundant flags).
-const mtaChains: StationModel[] = (
-  JSON.parse(readFileSync(new URL("./mta-data/station-chains.json", import.meta.url), "utf8")) as {
-    models: StationModel[];
-  }
-).models;
+const mtaChains: StationModel[] = (mtaChainsJson as { models: StationModel[] }).models;
 
 // TfL multi-chain models, generated from the bundled lift topology snapshot by
 // scripts/tfl-chains.mjs (self-checked against lifts.json's own isRedundant
@@ -18,11 +21,7 @@ const mtaChains: StationModel[] = (
 // guessed. Major interchanges with branching topology (Bank, King's Cross,
 // Paddington, Stratford, …) are excluded pending a human review pass; see
 // src/catalog/tfl-data/chains-excluded.json.
-const tflChains: StationModel[] = (
-  JSON.parse(readFileSync(new URL("./tfl-data/chains.json", import.meta.url), "utf8")) as {
-    models: StationModel[];
-  }
-).models;
+const tflChains: StationModel[] = (tflChainsJson as { models: StationModel[] }).models;
 
 // Curated per-station accessibility structure — the source of truth for stations
 // whose feed doesn't expose per-elevator data (BART). Each station's step-free

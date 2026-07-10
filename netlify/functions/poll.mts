@@ -1,6 +1,7 @@
 import type { Config } from "@netlify/functions";
 import { getStore } from "@netlify/blobs";
 import { knownSystemIds } from "../../src/adapters/registry.js";
+import { getSystem } from "../../src/catalog/systems.js";
 import { getSupabase } from "../../src/lib/supabase.js";
 import { pollSystem } from "../../src/pollSystem.js";
 import { buildSiteData } from "../../src/site/build-site-data.js";
@@ -52,7 +53,11 @@ export default async (req: Request): Promise<Response> => {
     return new Response("no supabase env", { status: 500 });
   }
 
-  const systemIds = knownSystemIds();
+  // Hidden systems (SystemCatalogEntry.hidden — TMB today) are withheld from
+  // the site AND not polled. The old GitHub workflow enforced this by simply
+  // commenting out the system's step; the registry has no such filter, so it
+  // must happen here (knownSystemIds() returns all 9 systems, hidden or not).
+  const systemIds = knownSystemIds().filter((id) => getSystem(id)?.hidden !== true);
   const settled = await Promise.allSettled(
     systemIds.map(async (systemId) => {
       const { result, overrideWarnings } = await pollSystem(systemId, db);

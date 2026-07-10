@@ -1,9 +1,9 @@
-import { readFileSync } from "node:fs";
-import { fileURLToPath } from "node:url";
-import { join, dirname } from "node:path";
 import type { Adapter, NormalizedOutage, NormalizedRead, NormalizedUnit } from "../../types.js";
 import { nowUtcIso, msToUtcIso } from "../../lib/time.js";
 import type { TmbAlertRaw, TmbAlertsResponse, TmbCatalogUnit } from "./raw.js";
+// STATIC json import — runtime-relative readFileSync paths break inside the
+// bundled Netlify function (see station-models.ts's note; live-confirmed 502).
+import unitsJson from "../../catalog/tmb-data/units.json" with { type: "json" };
 
 // TMB (Barcelona) — a real per-elevator inventory (src/catalog/tmb-data,
 // built by scripts/tmb-import.mjs from the documented "transit" API) combined
@@ -48,10 +48,8 @@ export const TMB_CONFIG: TmbConfig = {
   appKey: process.env.TMB_APP_KEY || undefined,
 };
 
-const DATA_DIR = join(dirname(fileURLToPath(import.meta.url)), "../../catalog/tmb-data");
-
 function loadCatalog(): TmbCatalogUnit[] {
-  return JSON.parse(readFileSync(join(DATA_DIR, "units.json"), "utf8"));
+  return unitsJson as TmbCatalogUnit[];
 }
 
 // The only elevator-outage effect code in the live taxonomy (verified
