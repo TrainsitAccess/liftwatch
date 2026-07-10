@@ -2,6 +2,7 @@ import type { Adapter, NormalizedOutage, NormalizedRead, NormalizedUnit } from "
 import { nowUtcIso } from "../../lib/time.js";
 import { attributeOutageAcrossChains, elevatorRedundant } from "../../lib/accessibility.js";
 import { stationModelsFor } from "../../catalog/station-models.js";
+import { fetchPlannedAdvisories } from "./planned-rss.js";
 import type { BartBsaRaw, BartElevResponse, BartStationRaw, BartStnResponse, BartText } from "./raw.js";
 
 // BART exposes no structured per-elevator status. The real-time `cmd=elev`
@@ -11,7 +12,9 @@ import type { BartBsaRaw, BartElevResponse, BartStationRaw, BartStnResponse, Bar
 // attributed via matchHints (specific elevator > segment-only > unspecified —
 // never a guess). Un-modeled stations stay one station-level unit. Its GTFS has
 // no pathways.txt, so redundancy is all curation. The planned-advisories RSS
-// (per-elevator, prose) is intentionally not parsed here — see SPEC.
+// (per-elevator, prose) feeds `upcoming` — see planned-rss.ts; its fetch is
+// best-effort (a failure degrades to no scheduled work, never a failed poll,
+// same posture as the LIRR/MNR camsys alert enrichment).
 
 export interface BartConfig {
   systemId: string;
@@ -81,6 +84,17 @@ export function createBartAdapter(config: BartConfig = BART_CONFIG): Adapter {
         fetchJson<BartStnResponse>(stnsUrl),
         fetchJson<BartElevResponse>(elevUrl),
       ]);
+      // Planned-advisories RSS, best-effort AFTER the required feeds: needs
+      // the station list for name matching, and its failure must never fail
+      // the poll (scheduled work degrades to empty; the outage archive is the
+      // part that matters).
+      const advisories = await fetchPlannedAdvisories(
+        (stnsRes.root?.stations?.station ?? []).map((s) => ({ abbr: s.abbr, name: s.name })),
+        stationModelsFor(config.systemId),
+      ).catch((err) => {
+        console.warn(`  ⚠ BART planned-advisories RSS failed (scheduled work will be empty): ${err instanceof Error ? err.message : err}`);
+        return [];
+      });
 
       const stations: BartStationRaw[] = stnsRes.root?.stations?.station ?? [];
       const stationByAbbr = new Map(stations.map((s) => [s.abbr.toUpperCase(), s]));
@@ -183,12 +197,46 @@ export function createBartAdapter(config: BartConfig = BART_CONFIG): Adapter {
         return { ...base, unitExternalId: abbr, attributed: false, reason: desc || "Elevator out of service" };
       });
 
+      // Live-outage planned upgrade, EXACT-match only: when a planned
+      // advisory attributed to a specific elevator is active right now AND a
+      // live outage attributed to that SAME elevator exists, mark it planned
+      // and attach the scheduled return. Additive only (never downgrades) —
+      // and deliberately narrow: a bare "Station" live advisory yields
+      // ABBR-UNSPECIFIED, which never equals a specific elevator id, so no
+      // upgrade happens on ambiguity (assuming "the only live outage must be
+      // the planned one" would be a guess — cmd=elev's coverage of planned
+      // closures is unverified).
+      const now = nowUtcIso();
+      for (const o of outages) {
+        const adv = advisories.find(
+          (a) => a.attributed && a.unitExternalId === o.unitExternalId && a.startUtc && a.endUtc && a.startUtc <= now && now <= a.endUtc,
+        );
+        if (adv) {
+          o.isPlanned = true;
+          o.estimatedReturn = o.estimatedReturn ?? adv.endUtc;
+        }
+      }
+
+      const upcoming: NormalizedOutage[] = advisories.map((a) => ({
+        unitExternalId: a.unitExternalId,
+        unitType: "elevator" as const,
+        stationExternalId: a.stationAbbr,
+        stationName: a.stationName,
+        isPlanned: true,
+        isUpcoming: true,
+        attributed: a.attributed,
+        segmentId: a.segmentId,
+        reason: a.reason,
+        sourceStartedAt: a.startUtc,
+        estimatedReturn: a.endUtc,
+      }));
+
       return {
         systemId: config.systemId,
         fetchedAt: nowUtcIso(),
         units,
         outages,
-        upcoming: [],
+        upcoming,
       };
     },
   };

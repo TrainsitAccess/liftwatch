@@ -411,9 +411,26 @@ sources agree exactly.
 
 Deferred sources (not parsed):
 - GTFS static — no pathways/levels; nothing beyond the station list. Not used.
-- Planned-advisories RSS (`rss/news/planned-elevator-advisories.xml`) —
-  per-elevator, dated, prose (states redundancy in English). Brittle to parse;
-  largely superseded in spirit by the outage-options page above.
+
+Planned-advisories RSS (`rss/news/planned-elevator-advisories.xml`) — WIRED
+2026-07-09 (`src/adapters/bart/planned-rss.ts`, was deferred as "brittle
+prose"): feeds `upcoming` (the scheduled-work board) and, narrowly, upgrades
+a live outage to planned on an EXACT elevator-id match with an active
+advisory window. The prose is indeed brittle, and two real traps were caught
+by live verification before shipping: (a) the description names sibling
+elevators that "remain in service" AND recommends alternative STATIONS
+("use the 16th St. Mission Station instead"), so station matching + elevator
+attribution both run ONLY on the title/subject clause (before "will be out
+of service") — full-description matching live-misattributed the real 24th
+St. item to 16TH; (b) BART strips HTML without spacing ("tank unit.During
+this outage"), so nothing assumes ". " sentence separators. Date ranges
+parse from the description's explicit "July 13 to August 10, 2026" prose
+(title fallback, pubDate-anchored year resolution); unparseable dates
+degrade to null, unrecognizable stations are skipped, ambiguous elevator
+attribution falls to `${abbr}-UNSPECIFIED` — never a guess, same rule as
+the live advisory. Fetch is best-effort (failure = empty scheduled work,
+never a failed poll — same posture as camsys enrichment); www.bart.gov's
+WAF needs the browser-UA workaround (same as the elevator-pages scrape).
 
 **Attribution — status as of 2026-07-08 end of session.** BART's live
 `bsa.aspx?cmd=elev` advisory is the ONLY real-time signal, and it is free
