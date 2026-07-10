@@ -207,9 +207,12 @@ parking lot). A station is accessible only if **every** segment is up.
   pair by railroad; see SPEC.md's railroad section for the feed dossier), and
   (b) the five subway interchanges that touch them (Penn, Grand Central,
   Atlantic, Woodside, Sutphin Blvd–Jamaica) carry subway-side "(LIRR)" chains
-  built only from subway-feed elevators. Thirteen railroad stations have
+  built only from subway-feed elevators. Fourteen railroad stations have
   hand-curated models (`src/catalog/mta-rail-models.ts`, human walk-through
-  2026-07-06 — its notes outrank the feed's location strings; Stamford uses a
+  2026-07-06; Greenwich added 2026-07-10 after a live 218E outage exposed it
+  in the generator's review queue — overpass at grade, Track 3 ramp off
+  Greenwich Plaza, 218T outside the chains — its notes outrank the feed's
+  location strings); Stamford uses a
   paired-segment CNF encoding for "direct elevator OR multi-elevator detour",
   ramps are `stepFreeAlternative` legs). Penn's EL34X ≡ LIRR's NYK-861 (one
   physical elevator, tracked in both systems deliberately). Grand Central

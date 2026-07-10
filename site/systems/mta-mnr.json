@@ -3,7 +3,7 @@
   "name": "Metro-North",
   "label": "Metro-North (New York)",
   "timezone": "America/New_York",
-  "generatedAt": "2026-07-10T19:10:09.040Z",
+  "generatedAt": "2026-07-10T19:24:33.651Z",
   "currentlyBroken": [
     {
       "station": "Grand Central (North End: Tks 34/35/116)",
@@ -82,7 +82,7 @@
       ]
     },
     {
-      "station": "Greenwich",
+      "station": "Greenwich (New Haven-bound)",
       "unitId": "2GN-218E",
       "unit": "Elevator from the New Haven-bound platform (Track 4) to the overpass",
       "days": 0,
@@ -91,10 +91,14 @@
       "reason": "not working",
       "estimatedReturn": null,
       "soleAccess": false,
-      "severs": [],
+      "severs": [
+        "Greenwich (New Haven-bound)"
+      ],
       "backups": [],
       "rampAlternative": false,
-      "chainNotes": []
+      "chainNotes": [
+        "Greenwich: the overpass is reachable at grade, and elevator 218E is the sole step-free access to the New Haven-bound platform (Track 4) — no ramp, no backup (human-verified 2026-07-10). 218T serves the street-to-ticket-office trip only and is not part of any platform's access chain."
+      ]
     },
     {
       "station": "New Haven (Tracks 1 & 3)",
@@ -136,6 +140,15 @@
         "note": "Grand Central's 45th St cross passage: NE-4 is the sole elevator to the Track 116 and Tracks 34 & 35 platforms from this passage. It has been out of service since March 2023 (long-term outage). The other North End units (NE-1/2/3/5/6) are tracked but not yet modeled — passage topology unverified."
       },
       {
+        "name": "Greenwich (New Haven-bound)",
+        "state": "no_access",
+        "downUnits": [
+          "2GN-218E"
+        ],
+        "offlineUnits": [],
+        "note": "Greenwich: the overpass is reachable at grade, and elevator 218E is the sole step-free access to the New Haven-bound platform (Track 4) — no ramp, no backup (human-verified 2026-07-10). 218T serves the street-to-ticket-office trip only and is not part of any platform's access chain."
+      },
+      {
         "name": "New Haven (Tracks 1 & 3)",
         "state": "no_access",
         "downUnits": [
@@ -163,17 +176,17 @@
         "note": "Grand Central Terminal proper is step-free via the Oyster Bar and Kitty Kelly ramps — no elevator outage can sever main-terminal access. Elevators listed here are conveniences within the ramp-served areas."
       }
     ],
-    "chainsModeled": 81
+    "chainsModeled": 83
   },
   "scheduledWork": [],
   "accessibilityBlackouts": [
     {
       "name": "Grand Central (North End: Tks 34/35/116)",
-      "hours": 28901.249455555557
+      "hours": 28901.489625277776
     },
     {
       "name": "New Rochelle (New Haven-bound)",
-      "hours": 1087.9714
+      "hours": 1088.2115697222223
     },
     {
       "name": "Mt Vernon East (Track 4)",
@@ -197,7 +210,7 @@
     },
     {
       "name": "New Haven (Tracks 1 & 3)",
-      "hours": 18.383066666666668
+      "hours": 18.623236388888888
     },
     {
       "name": "Larchmont (Track 4)",
@@ -221,6 +234,11 @@
     },
     {
       "name": "New Rochelle (New York-bound)",
+      "days": 3,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Greenwich (New York-bound)",
       "days": 3,
       "blackedOutNow": false
     },
@@ -251,11 +269,6 @@
     },
     {
       "name": "Stamford (Track 2)",
-      "days": 3,
-      "blackedOutNow": false
-    },
-    {
-      "name": "Grand Central (Terminal)",
       "days": 3,
       "blackedOutNow": false
     }
@@ -303,7 +316,7 @@
     },
     {
       "unit": "Elevator from the New Haven-bound platform (Track 4) to the overpass",
-      "station": "Greenwich",
+      "station": "Greenwich (New Haven-bound)",
       "count": 1
     },
     {
@@ -332,6 +345,12 @@
       "downNow": false
     },
     {
+      "unit": "Elevator from the station overpass to the Track 2 platform.",
+      "station": "Poughkeepsie (Track 2)",
+      "days": 3,
+      "downNow": false
+    },
+    {
       "unit": "Elevator from the overpass to the Grand Central Terminal bound platform (Track 2,4).",
       "station": "Fleetwood (Tracks 2 & 4)",
       "days": 3,
@@ -344,6 +363,12 @@
       "downNow": false
     },
     {
+      "unit": "Elevator from the overpass to the island platform (Tracks 2 ).",
+      "station": "Katonah",
+      "days": 3,
+      "downNow": false
+    },
+    {
       "unit": "Elevator from the parking lot to the New York-bound platform (Track 3) to the overpass",
       "station": "Larchmont (Track 3)",
       "days": 3,
@@ -352,18 +377,6 @@
     {
       "unit": "Elevator from street to Island platform (Tk 1 )",
       "station": "Morris Heights",
-      "days": 3,
-      "downNow": false
-    },
-    {
-      "unit": "Elevator from the overpass to the island platform (Tracks 2 ).",
-      "station": "Katonah",
-      "days": 3,
-      "downNow": false
-    },
-    {
-      "unit": "Elevator from the street  to the New York-bound platform (Track 3) and the overpass.",
-      "station": "Mt Vernon East (Track 3)",
       "days": 3,
       "downNow": false
     },
@@ -404,7 +417,7 @@
       "count": 2
     },
     {
-      "name": "Mt Vernon East",
+      "name": "Poughkeepsie",
       "count": 2
     },
     {
@@ -413,6 +426,10 @@
     },
     {
       "name": "Larchmont",
+      "count": 2
+    },
+    {
+      "name": "Mt Vernon East",
       "count": 2
     },
     {
@@ -425,10 +442,6 @@
     },
     {
       "name": "Mt Vernon West",
-      "count": 2
-    },
-    {
-      "name": "Poughkeepsie",
       "count": 2
     },
     {

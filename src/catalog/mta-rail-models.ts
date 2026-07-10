@@ -352,6 +352,39 @@ export const MTA_RAIL_STATION_MODELS: StationModel[] = [
     ],
   },
   {
+    // Greenwich — human-verified with Bryce 2026-07-10 (prompted by a live
+    // 218E outage carrying no access assessment; the chain generator had
+    // excluded the station because 218T's "Ticket Office" landing is
+    // unplaceable from text). Verified topology: the overpass is reachable
+    // AT GRADE from the street, so 218T serves the ticket office only and
+    // sits OUTSIDE the access chains (the White Plains WP2 precedent).
+    systemId: "mta-mnr",
+    stationExternalId: "2GN",
+    chainLabel: " (New Haven-bound)",
+    note: "Greenwich: the overpass is reachable at grade, and elevator 218E is the sole step-free access to the New Haven-bound platform (Track 4) — no ramp, no backup (human-verified 2026-07-10). 218T serves the street-to-ticket-office trip only and is not part of any platform's access chain.",
+    segments: [
+      {
+        id: "nh-bound",
+        label: "Overpass to New Haven-bound platform (Track 4)",
+        elevators: [{ externalId: "2GN-218E", label: "New Haven-bound platform (Track 4) to overpass" }],
+      },
+    ],
+  },
+  {
+    systemId: "mta-mnr",
+    stationExternalId: "2GN",
+    chainLabel: " (New York-bound)",
+    note: "Greenwich New York-bound platform (Track 3) has a RAMP off Greenwich Plaza — always step-free; elevator 218W is a convenience (human-verified 2026-07-10).",
+    segments: [
+      {
+        id: "ny-bound",
+        label: "Greenwich Plaza to New York-bound platform (Track 3) (ramp; elevator as backup)",
+        stepFreeAlternative: true, // ramp off Greenwich Plaza
+        elevators: [{ externalId: "2GN-218W", label: "New York-bound platform (Track 3) to overpass" }],
+      },
+    ],
+  },
+  {
     systemId: "mta-mnr",
     stationExternalId: "1WP",
     note: "White Plains: one elevator gates the island platform (Tracks 1 & 2) — sole access. WP2 serves the parking garage only and sits outside the access chain.",

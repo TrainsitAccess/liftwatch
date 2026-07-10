@@ -56,8 +56,12 @@ const curatedByCode = new Map<string, StationModel[]>();
 for (const m of MTA_RAIL_STATION_MODELS) {
   curatedByCode.set(m.stationExternalId, [...(curatedByCode.get(m.stationExternalId) ?? []), m]);
 }
-// The complex four the engine must keep refusing to model.
-const EXPECT_EXCLUDED = new Set(["GCT", "0NY", "2SM", "0YS"]);
+// Curated stations the engine must keep refusing to model: the complex four,
+// plus Greenwich (2GN) — its 218T "Ticket Office" landing is unplaceable from
+// text, and the human-verified truth (overpass at grade, Track 3 ramp off
+// Greenwich Plaza, 218T outside the chains) is knowledge no text parse could
+// derive. Hand-curated 2026-07-10.
+const EXPECT_EXCLUDED = new Set(["GCT", "0NY", "2SM", "0YS", "2GN"]);
 for (const [code, curated] of curatedByCode) {
   const st = fixture[code];
   check(`fixture has curated station ${code}`, !!st);

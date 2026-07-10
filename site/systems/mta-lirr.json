@@ -3,7 +3,7 @@
   "name": "LIRR",
   "label": "LIRR (New York)",
   "timezone": "America/New_York",
-  "generatedAt": "2026-07-10T19:10:09.040Z",
+  "generatedAt": "2026-07-10T19:24:33.651Z",
   "currentlyBroken": [
     {
       "station": "Grand Central",
@@ -19,23 +19,6 @@
       "backups": [],
       "rampAlternative": false,
       "chainNotes": []
-    },
-    {
-      "station": "Jamaica (Tks 7/8)",
-      "unitId": "JAM-402",
-      "unit": "Between eastern overpass and Tracks 7 & 8",
-      "days": 0,
-      "since": "2026-07-10T16:37:24.074+00:00",
-      "planned": false,
-      "reason": "Not Working",
-      "estimatedReturn": null,
-      "soleAccess": true,
-      "severs": [
-        "Jamaica (Tks 7/8)"
-      ],
-      "backups": [],
-      "rampAlternative": false,
-      "chainNotes": []
     }
   ],
   "offline": {
@@ -47,17 +30,7 @@
     "log": []
   },
   "stationAccess": {
-    "rows": [
-      {
-        "name": "Jamaica (Tks 7/8)",
-        "state": "no_access",
-        "downUnits": [
-          "JAM-402"
-        ],
-        "offlineUnits": [],
-        "note": null
-      }
-    ],
+    "rows": [],
     "chainsModeled": 68
   },
   "scheduledWork": [],
@@ -80,7 +53,7 @@
     },
     {
       "name": "Jamaica (Tks 7/8)",
-      "hours": 2.545823888888889
+      "hours": 2.6569913888888887
     },
     {
       "name": "Penn Station (Tks 13/14)",

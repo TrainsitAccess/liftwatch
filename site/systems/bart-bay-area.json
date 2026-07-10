@@ -3,7 +3,7 @@
   "name": "BART",
   "label": "BART (San Francisco)",
   "timezone": "America/Los_Angeles",
-  "generatedAt": "2026-07-10T19:10:09.040Z",
+  "generatedAt": "2026-07-10T19:24:33.651Z",
   "currentlyBroken": [
     {
       "station": "Richmond",
@@ -115,11 +115,11 @@
   "accessibilityBlackouts": [
     {
       "name": "Richmond",
-      "hours": 160.25328583333334
+      "hours": 160.49345555555556
     },
     {
       "name": "Milpitas (Millbrae/SFO/Daly City/Richmond direction)",
-      "hours": 20.353811666666665
+      "hours": 20.59398138888889
     },
     {
       "name": "El Cerrito Plaza (Berryessa/SFO/Millbrae/Daly City direction)",
@@ -297,11 +297,11 @@
       "count": 2
     },
     {
-      "name": "Milpitas",
+      "name": "El Cerrito del Norte",
       "count": 2
     },
     {
-      "name": "El Cerrito del Norte",
+      "name": "Milpitas",
       "count": 2
     },
     {
@@ -317,10 +317,6 @@
       "count": 2
     },
     {
-      "name": "South Hayward",
-      "count": 2
-    },
-    {
       "name": "Montgomery St.",
       "count": 2
     },
@@ -329,11 +325,15 @@
       "count": 2
     },
     {
-      "name": "16th St. Mission",
+      "name": "24th St. Mission",
       "count": 2
     },
     {
-      "name": "24th St. Mission",
+      "name": "South Hayward",
+      "count": 2
+    },
+    {
+      "name": "16th St. Mission",
       "count": 2
     },
     {

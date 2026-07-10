@@ -3,7 +3,7 @@
   "name": "MBTA",
   "label": "MBTA (Boston)",
   "timezone": "America/New_York",
-  "generatedAt": "2026-07-10T19:10:09.040Z",
+  "generatedAt": "2026-07-10T19:24:33.651Z",
   "currentlyBroken": [
     {
       "station": "Winchester Center",
@@ -129,10 +129,25 @@
       "station": "Kendall/MIT",
       "unitId": "777",
       "unit": "Kendall/MIT Elevator 777 (Alewife platform to Main Street)",
-      "days": 1,
+      "days": 2,
       "since": "2026-07-08T19:12:14+00:00",
       "planned": true,
       "reason": "Kendall/MIT Elevator 777 (Alewife platform to Main Street) is unavailable due to maintenance.",
+      "estimatedReturn": null,
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
+    },
+    {
+      "station": "Sullivan Square",
+      "unitId": "840",
+      "unit": "Sullivan Square Elevator 840 (Center platform to lobby)",
+      "days": 0,
+      "since": "2026-07-10T19:16:01+00:00",
+      "planned": true,
+      "reason": "Sullivan Square Elevator 840 (Center platform to lobby) is unavailable due to maintenance.",
       "estimatedReturn": null,
       "soleAccess": false,
       "severs": [],
@@ -216,27 +231,27 @@
     },
     {
       "name": "Winchester Center",
-      "hours": 2589.8730666666665
+      "hours": 2590.1132363888887
     },
     {
       "name": "Lynn",
-      "hours": 1753.1627888888888
+      "hours": 1753.4029586111112
     },
     {
       "name": "Framingham",
-      "hours": 460.5075111111111
+      "hours": 460.74768083333333
     },
     {
       "name": "Natick Center",
-      "hours": 220.80112222222223
+      "hours": 221.04129194444445
     },
     {
       "name": "Downtown Crossing",
-      "hours": 121.98584444444444
+      "hours": 122.22601416666667
     },
     {
       "name": "Worcester",
-      "hours": 99.8414
+      "hours": 100.08156972222223
     },
     {
       "name": "Porter",
@@ -244,7 +259,7 @@
     },
     {
       "name": "Kendall/MIT",
-      "hours": 47.96528888888889
+      "hours": 48.20545861111111
     }
   ],
   "stepFreeStreak": [
@@ -341,13 +356,13 @@
       "count": 1
     },
     {
-      "unit": "Natick Center Elevator 750 (Track 1 to street)",
-      "station": "Natick Center",
+      "unit": "Broadway Elevator 868 (Lobby to street)",
+      "station": "Broadway",
       "count": 1
     },
     {
-      "unit": "Park Street Elevator 808 (Red Line center platform to Government Center & North platform, Winter Street Concourse)",
-      "station": "Park Street",
+      "unit": "Natick Center Elevator 750 (Track 1 to street)",
+      "station": "Natick Center",
       "count": 1
     }
   ],
@@ -361,6 +376,12 @@
     {
       "unit": "Andrew Elevator 880 (Alewife platform to lobby)",
       "station": "Andrew",
+      "days": 6,
+      "downNow": false
+    },
+    {
+      "unit": "Worcester Elevator 783 (Lobby to platform)",
+      "station": "Worcester",
       "days": 6,
       "downNow": false
     },
@@ -383,12 +404,6 @@
       "downNow": false
     },
     {
-      "unit": "Worcester Elevator 783 (Lobby to platform)",
-      "station": "Worcester",
-      "days": 6,
-      "downNow": false
-    },
-    {
       "unit": "Quincy Adams Elevator 806 (Lobby to parking garage)",
       "station": "Quincy Adams",
       "days": 6,
@@ -401,14 +416,14 @@
       "downNow": false
     },
     {
-      "unit": "Wonderland Elevator 703 (Main lobby to garage)",
-      "station": "Wonderland",
+      "unit": "Government Center Elevator 722 (Blue Line platform to Green Line platform)",
+      "station": "Government Center",
       "days": 6,
       "downNow": false
     },
     {
-      "unit": "Wonderland Elevator 708 (Main lobby to pedestrian bridge)",
-      "station": "Wonderland",
+      "unit": "Medford/Tufts Elevator 770 (Platform to lobby)",
+      "station": "Medford/Tufts",
       "days": 6,
       "downNow": false
     }

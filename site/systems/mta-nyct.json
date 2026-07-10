@@ -3,7 +3,7 @@
   "name": "NYC Subway",
   "label": "NYC Subway (New York)",
   "timezone": "America/New_York",
-  "generatedAt": "2026-07-10T19:10:09.040Z",
+  "generatedAt": "2026-07-10T19:24:33.651Z",
   "currentlyBroken": [
     {
       "station": "42St/Port Authority-Bus Terminal (A/C/E)",
@@ -65,8 +65,8 @@
     },
     {
       "station": "Jamaica-179 St",
-      "unitId": "EL432",
-      "unit": "Mezzanine to Manhattan-bound platform",
+      "unitId": "EL431",
+      "unit": "Street to mezzanine",
       "days": 230,
       "since": "2025-11-22T04:40:00+00:00",
       "planned": true,
@@ -97,8 +97,8 @@
     },
     {
       "station": "Jamaica-179 St",
-      "unitId": "EL431",
-      "unit": "Street to mezzanine",
+      "unitId": "EL432",
+      "unit": "Mezzanine to Manhattan-bound platform",
       "days": 230,
       "since": "2025-11-22T04:40:00+00:00",
       "planned": true,
@@ -145,10 +145,10 @@
     },
     {
       "station": "Prospect Park",
-      "unitId": "EL382",
-      "unit": "Street to Manhattan-bound platform",
+      "unitId": "EL383",
+      "unit": "Street to Brooklyn-bound platform",
       "days": 219,
-      "since": "2025-12-03T04:25:00+00:00",
+      "since": "2025-12-03T04:08:00+00:00",
       "planned": true,
       "reason": "Capital Replacement",
       "estimatedReturn": "2026-09-01T03:59:00+00:00",
@@ -161,10 +161,10 @@
     },
     {
       "station": "Prospect Park",
-      "unitId": "EL383",
-      "unit": "Street to Brooklyn-bound platform",
+      "unitId": "EL382",
+      "unit": "Street to Manhattan-bound platform",
       "days": 219,
-      "since": "2025-12-03T04:08:00+00:00",
+      "since": "2025-12-03T04:25:00+00:00",
       "planned": true,
       "reason": "Capital Replacement",
       "estimatedReturn": "2026-09-01T03:59:00+00:00",
@@ -193,10 +193,10 @@
     },
     {
       "station": "72 St",
-      "unitId": "EL240",
-      "unit": "Street to downtown platform",
+      "unitId": "EL239",
+      "unit": "Street to uptown platform",
       "days": 204,
-      "since": "2025-12-18T03:45:00+00:00",
+      "since": "2025-12-18T07:00:00+00:00",
       "planned": true,
       "reason": "Capital Replacement",
       "estimatedReturn": "2026-08-01T03:59:00+00:00",
@@ -209,10 +209,10 @@
     },
     {
       "station": "72 St",
-      "unitId": "EL239",
-      "unit": "Street to uptown platform",
+      "unitId": "EL240",
+      "unit": "Street to downtown platform",
       "days": 204,
-      "since": "2025-12-18T07:00:00+00:00",
+      "since": "2025-12-18T03:45:00+00:00",
       "planned": true,
       "reason": "Capital Replacement",
       "estimatedReturn": "2026-08-01T03:59:00+00:00",
@@ -241,6 +241,24 @@
     },
     {
       "station": "Atlantic Av-Barclays Ctr (B/Q)",
+      "unitId": "EL307",
+      "unit": "Mezzanine to B/Q platform",
+      "days": 97,
+      "since": "2026-04-04T11:30:00+00:00",
+      "planned": true,
+      "reason": "Capital Replacement",
+      "estimatedReturn": "2026-10-01T03:59:00+00:00",
+      "soleAccess": true,
+      "severs": [
+        "Atlantic Av-Barclays Ctr (B/Q)"
+      ],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": [],
+      "note": "This elevator is likely being replaced."
+    },
+    {
+      "station": "Atlantic Av-Barclays Ctr (B/Q)",
       "unitId": "EL306",
       "unit": "Mezzanine to Manhattan-bound 2/3",
       "days": 97,
@@ -255,24 +273,6 @@
       "backups": [
         "Southbound 2,3, and local night time 4 train Platform level (Front), Mezz level"
       ],
-      "rampAlternative": false,
-      "chainNotes": [],
-      "note": "This elevator is likely being replaced."
-    },
-    {
-      "station": "Atlantic Av-Barclays Ctr (B/Q)",
-      "unitId": "EL307",
-      "unit": "Mezzanine to B/Q platform",
-      "days": 97,
-      "since": "2026-04-04T11:30:00+00:00",
-      "planned": true,
-      "reason": "Capital Replacement",
-      "estimatedReturn": "2026-10-01T03:59:00+00:00",
-      "soleAccess": true,
-      "severs": [
-        "Atlantic Av-Barclays Ctr (B/Q)"
-      ],
-      "backups": [],
       "rampAlternative": false,
       "chainNotes": [],
       "note": "This elevator is likely being replaced."
@@ -352,21 +352,6 @@
       "chainNotes": []
     },
     {
-      "station": "Mosholu Pkwy",
-      "unitId": "EL524",
-      "unit": "Transfer Mezzanine to Manhattan-bound Platform.",
-      "days": 0,
-      "since": "2026-07-09T23:52:00+00:00",
-      "planned": false,
-      "reason": "Repair",
-      "estimatedReturn": "2026-07-12T03:00:00+00:00",
-      "soleAccess": true,
-      "severs": [],
-      "backups": [],
-      "rampAlternative": false,
-      "chainNotes": []
-    },
-    {
       "station": "Kings Hwy",
       "unitId": "EL760",
       "unit": "Street to Manhattan-bound platform",
@@ -392,6 +377,38 @@
       "estimatedReturn": "2026-07-10T21:00:00+00:00",
       "soleAccess": true,
       "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
+    },
+    {
+      "station": "Mosholu Pkwy",
+      "unitId": "EL524",
+      "unit": "Transfer Mezzanine to Manhattan-bound Platform.",
+      "days": 0,
+      "since": "2026-07-09T23:52:00+00:00",
+      "planned": false,
+      "reason": "Repair",
+      "estimatedReturn": "2026-07-12T03:00:00+00:00",
+      "soleAccess": true,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
+    },
+    {
+      "station": "14 St (A/C/E)",
+      "unitId": "EL223",
+      "unit": "Upper Mezzanine to Northbound A/C/E trains Platform level (Front)",
+      "days": 0,
+      "since": "2026-07-10T19:01:00+00:00",
+      "planned": false,
+      "reason": "Under Investigation",
+      "estimatedReturn": "2026-07-11T03:00:00+00:00",
+      "soleAccess": true,
+      "severs": [
+        "14 St (A/C/E)"
+      ],
       "backups": [],
       "rampAlternative": false,
       "chainNotes": []
@@ -477,6 +494,15 @@
   "stationAccess": {
     "rows": [
       {
+        "name": "14 St (A/C/E)",
+        "state": "no_access",
+        "downUnits": [
+          "EL223"
+        ],
+        "offlineUnits": [],
+        "note": null
+      },
+      {
         "name": "161 St-Yankee Stadium (4)",
         "state": "no_access",
         "downUnits": [
@@ -509,7 +535,7 @@
         "name": "72 St",
         "state": "no_access",
         "downUnits": [
-          "EL240"
+          "EL239"
         ],
         "offlineUnits": [],
         "note": null
@@ -518,7 +544,7 @@
         "name": "72 St",
         "state": "no_access",
         "downUnits": [
-          "EL239"
+          "EL240"
         ],
         "offlineUnits": [],
         "note": null
@@ -536,8 +562,8 @@
         "name": "Atlantic Av-Barclays Ctr (B/Q)",
         "state": "no_access",
         "downUnits": [
-          "EL306",
-          "EL307"
+          "EL307",
+          "EL306"
         ],
         "offlineUnits": [],
         "note": null
@@ -582,7 +608,7 @@
         "name": "Jamaica-179 St",
         "state": "no_access",
         "downUnits": [
-          "EL432"
+          "EL431"
         ],
         "offlineUnits": [],
         "note": null
@@ -600,7 +626,7 @@
         "name": "Jamaica-179 St",
         "state": "no_access",
         "downUnits": [
-          "EL431"
+          "EL432"
         ],
         "offlineUnits": [],
         "note": null
@@ -654,7 +680,7 @@
         "name": "Prospect Park",
         "state": "no_access",
         "downUnits": [
-          "EL382"
+          "EL383"
         ],
         "offlineUnits": [],
         "note": null
@@ -663,7 +689,7 @@
         "name": "Prospect Park",
         "state": "no_access",
         "downUnits": [
-          "EL383"
+          "EL382"
         ],
         "offlineUnits": [],
         "note": null
@@ -845,35 +871,35 @@
   "accessibilityBlackouts": [
     {
       "name": "161 St-Yankee Stadium (4)",
-      "hours": 14669.169177777778
+      "hours": 14669.4093475
     },
     {
       "name": "Jamaica-179 St",
-      "hours": 5534.502511111111
+      "hours": 5534.742680833333
     },
     {
       "name": "Crown Hts-Utica Av",
-      "hours": 5295.935844444444
+      "hours": 5296.176014166666
     },
     {
       "name": "Prospect Park",
-      "hours": 5271.035844444445
+      "hours": 5271.276014166667
     },
     {
       "name": "Coney Island-Stillwell Av",
-      "hours": 5127.019177777778
+      "hours": 5127.2593475
     },
     {
       "name": "72 St",
-      "hours": 4911.419177777778
+      "hours": 4911.6593475
     },
     {
       "name": "Flushing-Main St",
-      "hours": 3782.702511111111
+      "hours": 3782.9426808333333
     },
     {
       "name": "Atlantic Av-Barclays Ctr (B/Q)",
-      "hours": 2335.669177777778
+      "hours": 2335.9093475
     },
     {
       "name": "51 St (6)",
@@ -881,15 +907,10 @@
     },
     {
       "name": "161 St-Yankee Stadium (B/D)",
-      "hours": 269.21917777777776
+      "hours": 269.4593475
     }
   ],
   "stepFreeStreak": [
-    {
-      "name": "14 St (A/C/E)",
-      "days": 6,
-      "blackedOutNow": false
-    },
     {
       "name": "14 St-Union Sq (N/Q/R/W)",
       "days": 6,
@@ -932,6 +953,11 @@
     },
     {
       "name": "34 St-Penn Station (LIRR)",
+      "days": 6,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Fulton St (R/W)",
       "days": 6,
       "blackedOutNow": false
     }
@@ -1014,26 +1040,26 @@
       "downNow": false
     },
     {
-      "unit": "Street to uptown 4/5",
-      "station": "Fulton St (4/5)",
-      "days": 6,
-      "downNow": false
-    },
-    {
-      "unit": "Mezzanine to Queens-bound E/F/M/R",
-      "station": "74 St-Broadway",
-      "days": 6,
-      "downNow": false
-    },
-    {
       "unit": "Mezzanine to uptown A/C",
       "station": "168 St",
       "days": 6,
       "downNow": false
     },
     {
-      "unit": "Upper to lower mezzanine",
-      "station": "190 St",
+      "unit": "Mezzanine to Brooklyn-bound platform",
+      "station": "DeKalb Av",
+      "days": 6,
+      "downNow": false
+    },
+    {
+      "unit": "Street to uptown 4/5 & mezzanine",
+      "station": "Fulton St",
+      "days": 6,
+      "downNow": false
+    },
+    {
+      "unit": "Street to uptown 4/5",
+      "station": "Fulton St (4/5)",
       "days": 6,
       "downNow": false
     },
@@ -1044,8 +1070,8 @@
       "downNow": false
     },
     {
-      "unit": "street to concourse",
-      "station": "34 St-Penn Station",
+      "unit": "Upper to lower mezzanine",
+      "station": "190 St",
       "days": 6,
       "downNow": false
     }

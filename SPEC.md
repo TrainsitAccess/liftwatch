@@ -1020,11 +1020,14 @@ railroad. Facts below verified live 2026-07-06.
   means "no elevators", not "missing data"; the complete station layer
   still comes from `/infrastructure` via `NormalizedRead.stations` (branch
   rides in the borough slot).
-- **Redundancy**: no signal in the feed. Thirteen major stations are
+- **Redundancy**: no signal in the feed. Fourteen major stations are
   hand-modeled in `src/catalog/mta-rail-models.ts` (walked through
   station-by-station with a human 2026-07-06 — the walk-through corrected
   three feed-text misreadings at Stamford alone; its notes outrank the raw
-  location strings). The adapter applies model-derived redundancy as
+  location strings. Greenwich added 2026-07-10, resolved live from the
+  generator's review queue when its 218E broke: overpass reachable at grade,
+  218E sole access to the New Haven-bound platform, Track 3 covered by a ramp
+  off Greenwich Plaza, 218T = street→ticket office only, outside the chains). The adapter applies model-derived redundancy as
   `curated`, aggregated across every chain a unit appears in; un-modeled
   units fall to `assumed`. Commuter-rail chains are PER-TRACK
   ("Stamford (Track 3)") the way subway chains are per-line. Stamford uses

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-10T15:56:06.842Z",
+  "generatedAt": "2026-07-10T19:24:14.450Z",
   "note": "Stations the chain generator refuses to model — pending human review (TfL precedent).",
   "stations": [
     {
@@ -126,27 +126,6 @@
         {
           "unitId": "245S",
           "location": "Elevator to the New York-bound platform (Tk 3) to street level is located on the west end of platform"
-        }
-      ]
-    },
-    {
-      "code": "2GN",
-      "name": "Greenwich",
-      "railroad": "MNR",
-      "reason": "unknown-landing",
-      "detail": "2GN-218T: \"Elevator from the street to the Ticket Office.\"",
-      "units": [
-        {
-          "unitId": "218E",
-          "location": "Elevator from the New Haven-bound platform (Track 4) to the overpass"
-        },
-        {
-          "unitId": "218T",
-          "location": "Elevator from the street to the Ticket Office."
-        },
-        {
-          "unitId": "218W",
-          "location": "Elevator from the New York-bound platform (Track 3) to the overpass"
         }
       ]
     },
