@@ -1,3 +1,4 @@
+import { DateTime } from "luxon";
 import type { Adapter, NormalizedOutage, NormalizedRead, NormalizedUnit } from "../../types.js";
 import { nowUtcIso, parseIsoLocalToUtcIso } from "../../lib/time.js";
 import type { CtaAlertRaw, CtaAlertsResponse, CtaServiceRaw } from "./raw.js";
@@ -9,9 +10,9 @@ import type { CtaAlertRaw, CtaAlertsResponse, CtaServiceRaw } from "./raw.js";
 // (inventoryComplete: false, same mechanism as WMATA). Unlike WMATA there is
 // no per-elevator id at all — only a station-level identifier — so each
 // "unit" here is a whole station's elevator access, same modeling tier as
-// BART's un-modeled stations. A station with two simultaneous elevator
-// alerts would collide onto one unit; not observed live, documented as a
-// known limitation (see SPEC.md).
+// BART's un-modeled stations. A station with several simultaneous elevator
+// alerts (live-observed 2026-07-10: Pulaski, both platforms) merges onto its
+// one unit with every distinct reason kept — see mergeStationAlerts below.
 
 export interface CtaConfig {
   systemId: string;
@@ -39,6 +40,32 @@ function asArray<T>(v: T | T[] | undefined): T[] {
 function cdata(v: { "#cdata-section"?: string } | string | undefined): string {
   if (!v) return "";
   return typeof v === "string" ? v : (v["#cdata-section"] ?? "");
+}
+
+// CTA splits an alert's information across fields: the HEADLINE alone carries
+// the entrance detail ("Elevator at Lake (Washington/Randolph Entrance)
+// Temporarily Out-of-Service") while ShortDescription alone carries the cause
+// ("...temporarily out-of-service due to upgrades"). Using either one drops
+// real rider-facing detail — live-verified 2026-07-10 when the Lake alert's
+// entrance went missing from the archive — so the reason is both, joined.
+function combinedReason(a: CtaAlertRaw): string | undefined {
+  const parts = [a.Headline, a.ShortDescription].map((s) => (s ?? "").trim()).filter(Boolean);
+  return parts.join(" — ") || cdata(a.FullDescription) || undefined;
+}
+
+// Most CTA elevator alerts have no structured EventEnd; the return estimate
+// lives only in FullDescription prose: "The elevator is currently estimated
+// to return to service on Friday, July 31st, 2026. (Note: date subject to
+// change)." Parse exactly that phrasing (weekday optional, ordinal suffixes
+// stripped), Chicago wall-clock; anything else stays undefined. This is a
+// date EXTRACTION from prose, not a classification — the FullDescription
+// planned-text trap (boilerplate footer) doesn't apply because the footer
+// carries no dates.
+function returnEstimateFromProse(text: string): string | undefined {
+  const m = /estimated to return to service on\s+(?:[A-Za-z]+,\s+)?([A-Za-z]+)\s+(\d{1,2})(?:st|nd|rd|th)?,?\s+(\d{4})/i.exec(text);
+  if (!m) return undefined;
+  const dt = DateTime.fromFormat(`${m[1]} ${m[2]} ${m[3]}`, "LLLL d yyyy", { zone: CTA_ZONE });
+  return dt.isValid ? (dt.toUTC().toISO() ?? undefined) : undefined;
 }
 
 async function fetchAlerts(url: string): Promise<CtaAlertRaw[]> {
@@ -91,9 +118,10 @@ export function createCtaAdapter(config: CtaConfig = CTA_CONFIG): Adapter {
           stationName: station.ServiceName,
           isPlanned: PLANNED_TEXT.test(`${a.Headline} ${a.ShortDescription}`),
           isUpcoming,
-          reason: a.ShortDescription || cdata(a.FullDescription) || undefined,
+          reason: combinedReason(a),
           sourceStartedAt: startIso,
-          estimatedReturn: parseIsoLocalToUtcIso(a.EventEnd, CTA_ZONE),
+          estimatedReturn:
+            parseIsoLocalToUtcIso(a.EventEnd, CTA_ZONE) ?? returnEstimateFromProse(cdata(a.FullDescription)),
         };
         (isUpcoming ? upcoming : outages).push(outage);
       }
@@ -102,9 +130,45 @@ export function createCtaAdapter(config: CtaConfig = CTA_CONFIG): Adapter {
         systemId: config.systemId,
         fetchedAt: nowUtcIso(),
         units: [...units.values()],
-        outages,
-        upcoming,
+        outages: mergeStationAlerts(outages),
+        upcoming: mergeStationAlerts(upcoming),
       };
     },
   };
+}
+
+// A CTA station can have SEVERAL simultaneous elevator alerts (live-observed
+// 2026-07-10: Pulaski's 63rd-bound AND Harlem-bound platform elevators out at
+// once, in separate alerts — plus an exact-duplicate alert of one of them).
+// With no per-elevator id, all of them land on the one station-level unit,
+// and ingest keeps one open event per unit — so without merging, every alert
+// after the first silently vanishes. Merge same-unit alerts into ONE outage
+// that keeps every distinct reason visible. Conservative merge rules:
+//   - reasons: deduped verbatim, joined with " · " (riders see both outages);
+//   - isPlanned: only if EVERY alert is planned — a mix means at least one
+//     real breakdown, which must stay in the unplanned rankings;
+//   - sourceStartedAt: earliest (the station's elevator trouble began then);
+//   - estimatedReturn: latest, and only when every alert has one (the station
+//     isn't fully restored until the last elevator returns; a missing
+//     estimate anywhere makes the whole thing unknown).
+function mergeStationAlerts(list: NormalizedOutage[]): NormalizedOutage[] {
+  const byUnit = new Map<string, NormalizedOutage[]>();
+  for (const o of list) {
+    const group = byUnit.get(o.unitExternalId) ?? [];
+    group.push(o);
+    byUnit.set(o.unitExternalId, group);
+  }
+  return [...byUnit.values()].map((group) => {
+    if (group.length === 1) return group[0]!;
+    const reasons = [...new Set(group.map((o) => o.reason).filter(Boolean))];
+    const starts = group.map((o) => o.sourceStartedAt).filter((s): s is string => !!s);
+    const returns = group.map((o) => o.estimatedReturn);
+    return {
+      ...group[0]!,
+      isPlanned: group.every((o) => o.isPlanned),
+      reason: reasons.length ? reasons.join(" · ") : undefined,
+      sourceStartedAt: starts.length ? starts.sort()[0] : undefined,
+      estimatedReturn: returns.every((r): r is string => !!r) ? returns.sort().at(-1) : undefined,
+    };
+  });
 }

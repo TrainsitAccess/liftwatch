@@ -826,8 +826,25 @@ and the live disruptions endpoint.
   (`ImpactedService.Service` where `ServiceType === "T"`; `ServiceId` matches
   CTA's GTFS parent-station id, `4xxxx` range). So each "unit" is a whole
   station's elevator access, same modeling tier as BART's un-modeled
-  stations — a station with two simultaneous elevator alerts would collide
-  onto one unit (not observed live; documented limitation, not fixed).
+  stations. A station with several simultaneous elevator alerts (LIVE-OBSERVED
+  2026-07-10: Pulaski's 63rd-bound AND Harlem-bound platform elevators out in
+  separate alerts, plus an exact-duplicate of one) **merges onto its one unit
+  with every distinct reason kept** (`mergeStationAlerts`): reasons deduped
+  and joined " · "; planned only if EVERY alert is planned (a mix = at least
+  one real breakdown, stays in the unplanned rankings); earliest source
+  start; latest return, and only when every alert carries one. Before this,
+  only the first alert survived ingest — the second outage was invisible.
+- **An alert's fields carry DIFFERENT facts — `reason` is Headline +
+  ShortDescription joined** (live-verified 2026-07-10): the Headline alone
+  carries entrance detail ("Elevator at Lake **(Washington/Randolph
+  Entrance)**…") while ShortDescription alone carries the cause ("…due to
+  upgrades"). Either one alone drops rider-facing detail.
+- **Return estimates live in FullDescription prose** ("currently estimated to
+  return to service on Friday, July 31st, 2026"), parsed only when the
+  structured `EventEnd` is absent, only that exact phrasing (weekday
+  optional, ordinals stripped), Chicago wall-clock. This is date EXTRACTION,
+  not classification — the FullDescription planned-text trap (boilerplate
+  footer) doesn't apply because the footer carries no dates.
 - **No full inventory feed** — CTA's GTFS is a standard 10-table schedule
   feed (agency.txt, stops.txt, routes.txt, trips.txt, stop_times.txt,
   calendar.txt, calendar_dates.txt, shapes.txt, frequencies.txt,

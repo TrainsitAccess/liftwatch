@@ -3,7 +3,7 @@
   "name": "NYC Subway",
   "label": "NYC Subway (New York)",
   "timezone": "America/New_York",
-  "generatedAt": "2026-07-10T19:24:33.651Z",
+  "generatedAt": "2026-07-10T19:32:39.382Z",
   "currentlyBroken": [
     {
       "station": "42St/Port Authority-Bus Terminal (A/C/E)",
@@ -22,26 +22,6 @@
       ],
       "rampAlternative": false,
       "chainNotes": []
-    },
-    {
-      "station": "161 St-Yankee Stadium (4)",
-      "unitId": "EL132",
-      "unit": "B/D mezzanine to 4 train",
-      "days": 611,
-      "since": "2024-11-06T14:00:00+00:00",
-      "planned": true,
-      "reason": "Capital Replacement",
-      "estimatedReturn": "2026-08-01T03:59:00+00:00",
-      "soleAccess": true,
-      "severs": [
-        "161 St-Yankee Stadium (4)"
-      ],
-      "backups": [],
-      "rampAlternative": false,
-      "chainNotes": [
-        "EL132/EL133 gate the 4 platform by direction and are NOT redundant with each other (EL132 = Bronx-bound, EL133 = Manhattan-bound; verified directly — the feed's text for EL132, 'B/D mezzanine to 4 train', omits the direction). EL131 (street to mezzanine) is a shared prerequisite with the (B/D) chain. EL132/EL133 are mid capital-replacement (expected summer 2026), marked inactive in MTA's feed despite the real ongoing outage."
-      ],
-      "note": "This elevator is likely being replaced."
     },
     {
       "station": "161 St-Yankee Stadium (4)",
@@ -64,19 +44,23 @@
       "note": "This elevator is likely being replaced."
     },
     {
-      "station": "Jamaica-179 St",
-      "unitId": "EL431",
-      "unit": "Street to mezzanine",
-      "days": 230,
-      "since": "2025-11-22T04:40:00+00:00",
+      "station": "161 St-Yankee Stadium (4)",
+      "unitId": "EL132",
+      "unit": "B/D mezzanine to 4 train",
+      "days": 611,
+      "since": "2024-11-06T14:00:00+00:00",
       "planned": true,
       "reason": "Capital Replacement",
       "estimatedReturn": "2026-08-01T03:59:00+00:00",
       "soleAccess": true,
-      "severs": [],
+      "severs": [
+        "161 St-Yankee Stadium (4)"
+      ],
       "backups": [],
       "rampAlternative": false,
-      "chainNotes": [],
+      "chainNotes": [
+        "EL132/EL133 gate the 4 platform by direction and are NOT redundant with each other (EL132 = Bronx-bound, EL133 = Manhattan-bound; verified directly — the feed's text for EL132, 'B/D mezzanine to 4 train', omits the direction). EL131 (street to mezzanine) is a shared prerequisite with the (B/D) chain. EL132/EL133 are mid capital-replacement (expected summer 2026), marked inactive in MTA's feed despite the real ongoing outage."
+      ],
       "note": "This elevator is likely being replaced."
     },
     {
@@ -112,14 +96,14 @@
       "note": "This elevator is likely being replaced."
     },
     {
-      "station": "Crown Hts-Utica Av",
-      "unitId": "EL323",
-      "unit": "Mezzanine to platforms",
-      "days": 220,
-      "since": "2025-12-02T03:14:00+00:00",
+      "station": "Jamaica-179 St",
+      "unitId": "EL431",
+      "unit": "Street to mezzanine",
+      "days": 230,
+      "since": "2025-11-22T04:40:00+00:00",
       "planned": true,
       "reason": "Capital Replacement",
-      "estimatedReturn": "2026-09-01T03:59:00+00:00",
+      "estimatedReturn": "2026-08-01T03:59:00+00:00",
       "soleAccess": true,
       "severs": [],
       "backups": [],
@@ -144,11 +128,11 @@
       "note": "This elevator is likely being replaced."
     },
     {
-      "station": "Prospect Park",
-      "unitId": "EL383",
-      "unit": "Street to Brooklyn-bound platform",
-      "days": 219,
-      "since": "2025-12-03T04:08:00+00:00",
+      "station": "Crown Hts-Utica Av",
+      "unitId": "EL323",
+      "unit": "Mezzanine to platforms",
+      "days": 220,
+      "since": "2025-12-02T03:14:00+00:00",
       "planned": true,
       "reason": "Capital Replacement",
       "estimatedReturn": "2026-09-01T03:59:00+00:00",
@@ -165,6 +149,22 @@
       "unit": "Street to Manhattan-bound platform",
       "days": 219,
       "since": "2025-12-03T04:25:00+00:00",
+      "planned": true,
+      "reason": "Capital Replacement",
+      "estimatedReturn": "2026-09-01T03:59:00+00:00",
+      "soleAccess": true,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": [],
+      "note": "This elevator is likely being replaced."
+    },
+    {
+      "station": "Prospect Park",
+      "unitId": "EL383",
+      "unit": "Street to Brooklyn-bound platform",
+      "days": 219,
+      "since": "2025-12-03T04:08:00+00:00",
       "planned": true,
       "reason": "Capital Replacement",
       "estimatedReturn": "2026-09-01T03:59:00+00:00",
@@ -506,8 +506,8 @@
         "name": "161 St-Yankee Stadium (4)",
         "state": "no_access",
         "downUnits": [
-          "EL132",
-          "EL133"
+          "EL133",
+          "EL132"
         ],
         "offlineUnits": [],
         "note": "EL132/EL133 gate the 4 platform by direction and are NOT redundant with each other (EL132 = Bronx-bound, EL133 = Manhattan-bound; verified directly — the feed's text for EL132, 'B/D mezzanine to 4 train', omits the direction). EL131 (street to mezzanine) is a shared prerequisite with the (B/D) chain. EL132/EL133 are mid capital-replacement (expected summer 2026), marked inactive in MTA's feed despite the real ongoing outage."
@@ -516,8 +516,8 @@
         "name": "161 St-Yankee Stadium (B/D)",
         "state": "no_access",
         "downUnits": [
-          "EL134",
-          "EL135"
+          "EL135",
+          "EL134"
         ],
         "offlineUnits": [],
         "note": "EL134/EL135 gate the B/D platform by direction and are NOT redundant with each other (EL134 = Manhattan-bound, EL135 = Bronx-bound). EL131 (street to mezzanine) is a shared prerequisite with the (4) chain — if it fails, both chains go down together."
@@ -581,7 +581,7 @@
         "name": "Crown Hts-Utica Av",
         "state": "no_access",
         "downUnits": [
-          "EL323"
+          "EL322"
         ],
         "offlineUnits": [],
         "note": null
@@ -590,7 +590,7 @@
         "name": "Crown Hts-Utica Av",
         "state": "no_access",
         "downUnits": [
-          "EL322"
+          "EL323"
         ],
         "offlineUnits": [],
         "note": null
@@ -600,15 +600,6 @@
         "state": "no_access",
         "downUnits": [
           "EL414"
-        ],
-        "offlineUnits": [],
-        "note": null
-      },
-      {
-        "name": "Jamaica-179 St",
-        "state": "no_access",
-        "downUnits": [
-          "EL431"
         ],
         "offlineUnits": [],
         "note": null
@@ -627,6 +618,15 @@
         "state": "no_access",
         "downUnits": [
           "EL432"
+        ],
+        "offlineUnits": [],
+        "note": null
+      },
+      {
+        "name": "Jamaica-179 St",
+        "state": "no_access",
+        "downUnits": [
+          "EL431"
         ],
         "offlineUnits": [],
         "note": null
@@ -680,7 +680,7 @@
         "name": "Prospect Park",
         "state": "no_access",
         "downUnits": [
-          "EL383"
+          "EL382"
         ],
         "offlineUnits": [],
         "note": null
@@ -689,7 +689,7 @@
         "name": "Prospect Park",
         "state": "no_access",
         "downUnits": [
-          "EL382"
+          "EL383"
         ],
         "offlineUnits": [],
         "note": null
@@ -735,14 +735,14 @@
   },
   "scheduledWork": [
     {
-      "unitId": "EL518",
+      "unitId": "EL517",
       "station": "181 St",
       "starts": "2026-07-11T02:00:00+00:00",
       "until": "2026-07-11T10:00:00+00:00",
       "reason": "Maintenance"
     },
     {
-      "unitId": "EL517",
+      "unitId": "EL518",
       "station": "181 St",
       "starts": "2026-07-11T02:00:00+00:00",
       "until": "2026-07-11T10:00:00+00:00",
@@ -871,35 +871,35 @@
   "accessibilityBlackouts": [
     {
       "name": "161 St-Yankee Stadium (4)",
-      "hours": 14669.4093475
+      "hours": 14669.544272777777
     },
     {
       "name": "Jamaica-179 St",
-      "hours": 5534.742680833333
+      "hours": 5534.877606111111
     },
     {
       "name": "Crown Hts-Utica Av",
-      "hours": 5296.176014166666
+      "hours": 5296.310939444445
     },
     {
       "name": "Prospect Park",
-      "hours": 5271.276014166667
+      "hours": 5271.410939444444
     },
     {
       "name": "Coney Island-Stillwell Av",
-      "hours": 5127.2593475
+      "hours": 5127.394272777778
     },
     {
       "name": "72 St",
-      "hours": 4911.6593475
+      "hours": 4911.794272777778
     },
     {
       "name": "Flushing-Main St",
-      "hours": 3782.9426808333333
+      "hours": 3783.077606111111
     },
     {
       "name": "Atlantic Av-Barclays Ctr (B/Q)",
-      "hours": 2335.9093475
+      "hours": 2336.0442727777777
     },
     {
       "name": "51 St (6)",
@@ -907,7 +907,7 @@
     },
     {
       "name": "161 St-Yankee Stadium (B/D)",
-      "hours": 269.4593475
+      "hours": 269.5942727777778
     }
   ],
   "stepFreeStreak": [
@@ -1040,18 +1040,6 @@
       "downNow": false
     },
     {
-      "unit": "Mezzanine to uptown A/C",
-      "station": "168 St",
-      "days": 6,
-      "downNow": false
-    },
-    {
-      "unit": "Mezzanine to Brooklyn-bound platform",
-      "station": "DeKalb Av",
-      "days": 6,
-      "downNow": false
-    },
-    {
       "unit": "Street to uptown 4/5 & mezzanine",
       "station": "Fulton St",
       "days": 6,
@@ -1060,6 +1048,18 @@
     {
       "unit": "Street to uptown 4/5",
       "station": "Fulton St (4/5)",
+      "days": 6,
+      "downNow": false
+    },
+    {
+      "unit": "Mezzanine to uptown A/C",
+      "station": "168 St",
+      "days": 6,
+      "downNow": false
+    },
+    {
+      "unit": "Mezzanine to Brooklyn-bound platform",
+      "station": "DeKalb Av",
       "days": 6,
       "downNow": false
     },
@@ -1118,11 +1118,11 @@
       "count": 4
     },
     {
-      "name": "14 St",
+      "name": "14 St-Union Sq",
       "count": 4
     },
     {
-      "name": "14 St-Union Sq",
+      "name": "14 St",
       "count": 4
     },
     {

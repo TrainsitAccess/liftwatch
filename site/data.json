@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-10T19:24:33.651Z",
+  "generatedAt": "2026-07-10T19:32:39.382Z",
   "totals": {
     "systems": 8,
     "activeUnits": 2062,
@@ -86,25 +86,6 @@
       "staticFleetSource": null
     },
     {
-      "id": "mta-mnr",
-      "name": "Metro-North",
-      "city": "New York",
-      "label": "Metro-North (New York)",
-      "boardLabel": "Metro-North",
-      "dataQuality": "good",
-      "inventoryComplete": true,
-      "fleetSource": "live",
-      "activeUnits": 162,
-      "down": 6,
-      "downUnplanned": 4,
-      "downPlanned": 2,
-      "offline": 0,
-      "pctDown": 3.7,
-      "pctUnplanned": 2.5,
-      "staticFleetAsOf": null,
-      "staticFleetSource": null
-    },
-    {
       "id": "wmata-dc",
       "name": "DC Metro",
       "city": "Washington",
@@ -122,6 +103,25 @@
       "pctUnplanned": 2.5,
       "staticFleetAsOf": "2026-07-04",
       "staticFleetSource": "https://www.wmata.com/ride/elevators-escalators.html"
+    },
+    {
+      "id": "mta-mnr",
+      "name": "Metro-North",
+      "city": "New York",
+      "label": "Metro-North (New York)",
+      "boardLabel": "Metro-North",
+      "dataQuality": "good",
+      "inventoryComplete": true,
+      "fleetSource": "live",
+      "activeUnits": 162,
+      "down": 6,
+      "downUnplanned": 4,
+      "downPlanned": 2,
+      "offline": 0,
+      "pctDown": 3.7,
+      "pctUnplanned": 2.5,
+      "staticFleetAsOf": null,
+      "staticFleetSource": null
     },
     {
       "id": "mbta-boston",
@@ -195,20 +195,6 @@
       "system": "NYC Subway",
       "systemId": "mta-nyct",
       "station": "161 St-Yankee Stadium",
-      "unit": "EL132",
-      "unitDesc": "B/D mezzanine to 4 train",
-      "soleAccess": true,
-      "planned": true,
-      "reason": "Capital Replacement",
-      "estimatedReturn": "2026-08-01T03:59:00+00:00",
-      "since": "2024-11-06T14:00:00+00:00",
-      "tz": "America/New_York",
-      "days": 611
-    },
-    {
-      "system": "NYC Subway",
-      "systemId": "mta-nyct",
-      "station": "161 St-Yankee Stadium",
       "unit": "EL133",
       "unitDesc": "Mezzanine to Manhattan-bound 4",
       "soleAccess": true,
@@ -222,16 +208,16 @@
     {
       "system": "NYC Subway",
       "systemId": "mta-nyct",
-      "station": "Jamaica-179 St",
-      "unit": "EL431",
-      "unitDesc": "Street to mezzanine",
+      "station": "161 St-Yankee Stadium",
+      "unit": "EL132",
+      "unitDesc": "B/D mezzanine to 4 train",
       "soleAccess": true,
       "planned": true,
       "reason": "Capital Replacement",
       "estimatedReturn": "2026-08-01T03:59:00+00:00",
-      "since": "2025-11-22T04:40:00+00:00",
+      "since": "2024-11-06T14:00:00+00:00",
       "tz": "America/New_York",
-      "days": 230
+      "days": 611
     },
     {
       "system": "NYC Subway",
@@ -264,16 +250,16 @@
     {
       "system": "NYC Subway",
       "systemId": "mta-nyct",
-      "station": "Crown Hts-Utica Av",
-      "unit": "EL323",
-      "unitDesc": "Mezzanine to platforms",
+      "station": "Jamaica-179 St",
+      "unit": "EL431",
+      "unitDesc": "Street to mezzanine",
       "soleAccess": true,
       "planned": true,
       "reason": "Capital Replacement",
-      "estimatedReturn": "2026-09-01T03:59:00+00:00",
-      "since": "2025-12-02T03:14:00+00:00",
+      "estimatedReturn": "2026-08-01T03:59:00+00:00",
+      "since": "2025-11-22T04:40:00+00:00",
       "tz": "America/New_York",
-      "days": 220
+      "days": 230
     },
     {
       "system": "NYC Subway",
@@ -292,14 +278,28 @@
     {
       "system": "NYC Subway",
       "systemId": "mta-nyct",
-      "station": "Prospect Park",
-      "unit": "EL383",
-      "unitDesc": "Street to Brooklyn-bound platform",
+      "station": "Crown Hts-Utica Av",
+      "unit": "EL323",
+      "unitDesc": "Mezzanine to platforms",
       "soleAccess": true,
       "planned": true,
       "reason": "Capital Replacement",
       "estimatedReturn": "2026-09-01T03:59:00+00:00",
-      "since": "2025-12-03T04:08:00+00:00",
+      "since": "2025-12-02T03:14:00+00:00",
+      "tz": "America/New_York",
+      "days": 220
+    },
+    {
+      "system": "NYC Subway",
+      "systemId": "mta-nyct",
+      "station": "Prospect Park",
+      "unit": "EL382",
+      "unitDesc": "Street to Manhattan-bound platform",
+      "soleAccess": true,
+      "planned": true,
+      "reason": "Capital Replacement",
+      "estimatedReturn": "2026-09-01T03:59:00+00:00",
+      "since": "2025-12-03T04:25:00+00:00",
       "tz": "America/New_York",
       "days": 219
     }
@@ -397,7 +397,7 @@
       "unitDesc": null,
       "soleAccess": false,
       "planned": false,
-      "reason": "The elevator at 203 N. LaSalle (Brown and Harlem-bound Green Line platform from street and subway concourse) at Clark/Lake is temporarily out-of-service.",
+      "reason": "Elevator at Clark/Lake (203 N. LaSalle) Temporarily Out-of-Service — The elevator at 203 N. LaSalle (Brown and Harlem-bound Green Line platform from street and subway concourse) at Clark/Lake is temporarily out-of-service.",
       "estimatedReturn": null,
       "since": "2026-06-27T18:21:00+00:00",
       "tz": "America/Chicago",
@@ -465,20 +465,6 @@
       "system": "NYC Subway",
       "systemId": "mta-nyct",
       "station": "161 St-Yankee Stadium",
-      "unit": "EL132",
-      "unitDesc": "B/D mezzanine to 4 train",
-      "soleAccess": true,
-      "planned": true,
-      "reason": "Capital Replacement",
-      "estimatedReturn": "2026-08-01T03:59:00+00:00",
-      "since": "2024-11-06T14:00:00+00:00",
-      "tz": "America/New_York",
-      "days": 611
-    },
-    {
-      "system": "NYC Subway",
-      "systemId": "mta-nyct",
-      "station": "161 St-Yankee Stadium",
       "unit": "EL133",
       "unitDesc": "Mezzanine to Manhattan-bound 4",
       "soleAccess": true,
@@ -492,16 +478,16 @@
     {
       "system": "NYC Subway",
       "systemId": "mta-nyct",
-      "station": "Jamaica-179 St",
-      "unit": "EL431",
-      "unitDesc": "Street to mezzanine",
+      "station": "161 St-Yankee Stadium",
+      "unit": "EL132",
+      "unitDesc": "B/D mezzanine to 4 train",
       "soleAccess": true,
       "planned": true,
       "reason": "Capital Replacement",
       "estimatedReturn": "2026-08-01T03:59:00+00:00",
-      "since": "2025-11-22T04:40:00+00:00",
+      "since": "2024-11-06T14:00:00+00:00",
       "tz": "America/New_York",
-      "days": 230
+      "days": 611
     },
     {
       "system": "NYC Subway",
@@ -534,16 +520,16 @@
     {
       "system": "NYC Subway",
       "systemId": "mta-nyct",
-      "station": "Crown Hts-Utica Av",
-      "unit": "EL323",
-      "unitDesc": "Mezzanine to platforms",
+      "station": "Jamaica-179 St",
+      "unit": "EL431",
+      "unitDesc": "Street to mezzanine",
       "soleAccess": true,
       "planned": true,
       "reason": "Capital Replacement",
-      "estimatedReturn": "2026-09-01T03:59:00+00:00",
-      "since": "2025-12-02T03:14:00+00:00",
+      "estimatedReturn": "2026-08-01T03:59:00+00:00",
+      "since": "2025-11-22T04:40:00+00:00",
       "tz": "America/New_York",
-      "days": 220
+      "days": 230
     },
     {
       "system": "NYC Subway",
@@ -562,16 +548,16 @@
     {
       "system": "NYC Subway",
       "systemId": "mta-nyct",
-      "station": "Prospect Park",
-      "unit": "EL383",
-      "unitDesc": "Street to Brooklyn-bound platform",
+      "station": "Crown Hts-Utica Av",
+      "unit": "EL323",
+      "unitDesc": "Mezzanine to platforms",
       "soleAccess": true,
       "planned": true,
       "reason": "Capital Replacement",
       "estimatedReturn": "2026-09-01T03:59:00+00:00",
-      "since": "2025-12-03T04:08:00+00:00",
+      "since": "2025-12-02T03:14:00+00:00",
       "tz": "America/New_York",
-      "days": 219
+      "days": 220
     },
     {
       "system": "NYC Subway",
@@ -584,6 +570,20 @@
       "reason": "Capital Replacement",
       "estimatedReturn": "2026-09-01T03:59:00+00:00",
       "since": "2025-12-03T04:25:00+00:00",
+      "tz": "America/New_York",
+      "days": 219
+    },
+    {
+      "system": "NYC Subway",
+      "systemId": "mta-nyct",
+      "station": "Prospect Park",
+      "unit": "EL383",
+      "unitDesc": "Street to Brooklyn-bound platform",
+      "soleAccess": true,
+      "planned": true,
+      "reason": "Capital Replacement",
+      "estimatedReturn": "2026-09-01T03:59:00+00:00",
+      "since": "2025-12-03T04:08:00+00:00",
       "tz": "America/New_York",
       "days": 219
     }

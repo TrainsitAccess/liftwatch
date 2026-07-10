@@ -3,7 +3,7 @@
   "name": "BART",
   "label": "BART (San Francisco)",
   "timezone": "America/Los_Angeles",
-  "generatedAt": "2026-07-10T19:24:33.651Z",
+  "generatedAt": "2026-07-10T19:32:39.382Z",
   "currentlyBroken": [
     {
       "station": "Richmond",
@@ -115,11 +115,11 @@
   "accessibilityBlackouts": [
     {
       "name": "Richmond",
-      "hours": 160.49345555555556
+      "hours": 160.62838083333332
     },
     {
       "name": "Milpitas (Millbrae/SFO/Daly City/Richmond direction)",
-      "hours": 20.59398138888889
+      "hours": 20.728906666666667
     },
     {
       "name": "El Cerrito Plaza (Berryessa/SFO/Millbrae/Daly City direction)",
@@ -325,6 +325,10 @@
       "count": 2
     },
     {
+      "name": "16th St. Mission",
+      "count": 2
+    },
+    {
       "name": "24th St. Mission",
       "count": 2
     },
@@ -333,19 +337,15 @@
       "count": 2
     },
     {
-      "name": "16th St. Mission",
-      "count": 2
-    },
-    {
       "name": "Walnut Creek",
       "count": 2
     },
     {
-      "name": "Union City",
+      "name": "Civic Center/UN Plaza",
       "count": 2
     },
     {
-      "name": "Civic Center/UN Plaza",
+      "name": "Union City",
       "count": 2
     }
   ]
