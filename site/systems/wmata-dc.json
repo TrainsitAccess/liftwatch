@@ -3,7 +3,7 @@
   "name": "DC Metro",
   "label": "DC Metro (Washington)",
   "timezone": "America/New_York",
-  "generatedAt": "2026-07-10T19:32:39.382Z",
+  "generatedAt": "2026-07-11T00:50:44.646Z",
   "currentlyBroken": [
     {
       "station": "Glenmont",
@@ -39,7 +39,7 @@
       "station": "Columbia Heights",
       "unitId": "E04X02",
       "unit": "Elevator between mezzanine and platform",
-      "days": 32,
+      "days": 33,
       "since": "2026-06-08T00:15:00+00:00",
       "planned": false,
       "reason": "Minor Repair",
@@ -141,11 +141,11 @@
       "chainNotes": []
     },
     {
-      "station": "Ronald Reagan Washington National Airport",
-      "unitId": "C10S02",
-      "unit": "Elevator between mezzanine and platform to Mt.Vernon Sq/Largo Town Center",
+      "station": "Wiehle-Reston East",
+      "unitId": "N06X02",
+      "unit": "Elevator - south entry pavilion",
       "days": 0,
-      "since": "2026-07-10T17:21:00+00:00",
+      "since": "2026-07-11T00:29:00+00:00",
       "planned": false,
       "reason": "Service Call",
       "estimatedReturn": "2026-07-13T03:59:59+00:00",
@@ -156,11 +156,26 @@
       "chainNotes": []
     },
     {
-      "station": "Deanwood",
-      "unitId": "D10X02",
-      "unit": "Elevator between mezzanine and platform",
+      "station": "Benning Road",
+      "unitId": "G01X01",
+      "unit": "Elevator between street and mezzanine, north side of Benning Road at 45th Street",
       "days": 0,
-      "since": "2026-07-10T18:15:00+00:00",
+      "since": "2026-07-10T22:45:00+00:00",
+      "planned": false,
+      "reason": "Minor Repair",
+      "estimatedReturn": "2026-07-13T03:59:59+00:00",
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
+    },
+    {
+      "station": "NoMa-Gallaudet U",
+      "unitId": "B35N02",
+      "unit": "Elevator between bike trail and mezzanine",
+      "days": 0,
+      "since": "2026-07-10T20:53:00+00:00",
       "planned": false,
       "reason": "Service Call",
       "estimatedReturn": "2026-07-13T03:59:59+00:00",
@@ -187,31 +202,31 @@
   "accessibilityBlackouts": [
     {
       "name": "Glenmont",
-      "hours": 3076.077606111111
+      "hours": 3081.379068333333
     },
     {
       "name": "Rockville",
-      "hours": 1934.8776061111112
+      "hours": 1940.1790683333334
     },
     {
       "name": "Columbia Heights",
-      "hours": 787.2942727777778
+      "hours": 792.595735
     },
     {
       "name": "Huntington",
-      "hours": 242.5442727777778
+      "hours": 247.845735
     },
     {
       "name": "Mt Vernon Sq 7th St-Convention Center",
-      "hours": 152.96093944444445
+      "hours": 158.26240166666668
+    },
+    {
+      "name": "Federal Triangle",
+      "hours": 57.79894
     },
     {
       "name": "L'Enfant Plaza",
       "hours": 54.97631805555555
-    },
-    {
-      "name": "Federal Triangle",
-      "hours": 52.497477777777775
     },
     {
       "name": "Gallery Pl-Chinatown",
@@ -219,7 +234,7 @@
     },
     {
       "name": "Franconia-Springfield",
-      "hours": 29.827606111111113
+      "hours": 35.129068333333336
     },
     {
       "name": "North Bethesda",
@@ -228,17 +243,17 @@
   ],
   "stepFreeStreak": [
     {
+      "name": "Downtown Largo",
+      "days": 6,
+      "blackedOutNow": false
+    },
+    {
       "name": "Waterfront",
       "days": 5,
       "blackedOutNow": false
     },
     {
       "name": "Metro Center",
-      "days": 5,
-      "blackedOutNow": false
-    },
-    {
-      "name": "Downtown Largo",
       "days": 5,
       "blackedOutNow": false
     },
@@ -258,23 +273,23 @@
       "blackedOutNow": false
     },
     {
-      "name": "North Bethesda",
+      "name": "Capitol South",
+      "days": 4,
+      "blackedOutNow": false
+    },
+    {
+      "name": "L'Enfant Plaza",
       "days": 3,
       "blackedOutNow": false
     },
     {
-      "name": "Capitol South",
+      "name": "North Bethesda",
       "days": 3,
       "blackedOutNow": false
     },
     {
       "name": "Congress Heights",
       "days": 3,
-      "blackedOutNow": false
-    },
-    {
-      "name": "L'Enfant Plaza",
-      "days": 2,
       "blackedOutNow": false
     }
   ],
@@ -287,7 +302,7 @@
     {
       "unit": "Elevator between bike trail and mezzanine",
       "station": "NoMa-Gallaudet U",
-      "count": 2
+      "count": 3
     },
     {
       "unit": "Garage elevator",
@@ -325,15 +340,33 @@
       "count": 2
     },
     {
-      "unit": "Elevator between mezzanine and platform",
-      "station": "Archives-Navy Memorial-Penn Quarter",
+      "unit": "Elevator - south entry pavilion",
+      "station": "Tysons",
       "count": 1
     }
   ],
   "uptimeStreak": [
     {
+      "unit": "Elevator between street and mezzanine",
+      "station": "Downtown Largo",
+      "days": 6,
+      "downNow": false
+    },
+    {
       "unit": "Elevator between street and mezzanine, north side of M Street, S.W.",
       "station": "Waterfront",
+      "days": 5,
+      "downNow": false
+    },
+    {
+      "unit": "Elevator between street and mezzanine, east side of station at bus bay/Kiss & Ride",
+      "station": "Glenmont",
+      "days": 5,
+      "downNow": false
+    },
+    {
+      "unit": "Elevator between mezzanine and platform",
+      "station": "Glenmont",
       "days": 5,
       "downNow": false
     },
@@ -344,26 +377,8 @@
       "downNow": false
     },
     {
-      "unit": "Elevator between street and mezzanine",
-      "station": "Downtown Largo",
-      "days": 5,
-      "downNow": false
-    },
-    {
       "unit": "Elevator between street and mezzanine, corner of Wisconsin Ave. and Montgomery Lane",
       "station": "Bethesda",
-      "days": 4,
-      "downNow": false
-    },
-    {
-      "unit": "Elevator between street and mezzanine, east side of station at bus bay/Kiss & Ride",
-      "station": "Glenmont",
-      "days": 4,
-      "downNow": false
-    },
-    {
-      "unit": "Elevator between mezzanine and platform",
-      "station": "Glenmont",
       "days": 4,
       "downNow": false
     },
@@ -380,15 +395,15 @@
       "downNow": false
     },
     {
-      "unit": "Elevator between street and mezzanine to Vienna",
-      "station": "Ballston-MU",
+      "unit": "Elevator between mezzanine and platform",
+      "station": "Capitol South",
       "days": 4,
       "downNow": false
     },
     {
-      "unit": "Elevator between street and mezzanine",
-      "station": "Mt Vernon Sq 7th St-Convention Center",
-      "days": 3,
+      "unit": " Elevator between street and mezzanine, 14 Street, Southbound Entrance",
+      "station": "Columbia Heights",
+      "days": 4,
       "downNow": false
     }
   ],

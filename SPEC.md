@@ -1194,3 +1194,57 @@ generator's answer key is the hand-curated models themselves.
   the Chappaqua and Fairfield regressions, the no-overlap/no-ramp-claims
   invariants, and locked counts (update `LOCKED` when deliberately
   regenerating).
+
+### MBTA chain generator — validated by the agency's own guidance (2026-07-10)
+
+The chain engine's second reuse (after LIRR/MNR), from the
+classifier-everywhere mandate: apply the accessibility classifier to every
+system that lacks it, using as much of each feed as possible. MBTA had NO
+station models — despite the richest untapped inputs of any system:
+
+- **Topology input**: every elevator's `long_name` ends with a route
+  parenthetical ("Track 1 (outbound platform) to pedestrian bridge") — direct
+  engine input via a new MBTA vocabulary mapper
+  (`src/adapters/mbta/chain-mapper.ts`). MBTA vocabulary differs from rail by
+  design (why mappers are per-system): lobbies and pedestrian bridges are
+  ordinary hubs; paid/unpaid variants are DISTINCT hub identities (Orient
+  Heights' paid vs unpaid bridges are different places); platforms are
+  direction-named ("Alewife platform") — identity is the normalized name; an
+  elevator naming TWO platform identities (Government Center's Blue↔Green
+  transfer elevator) is beyond the model → station excluded.
+- **THE ANSWER KEY IS IN THE FEED**: 215/237 elevators carry
+  `alternate-service-text` — MBTA's own per-elevator rider guidance
+  (bart.gov's outage-options pattern, but machine-readable in the API).
+  Parsed into declared expectations: a named SAME-STATION backup ("use nearby
+  Wonderland Elevators 702 or 703") ⇒ redundant; "see station personnel" or a
+  ride-around detour ⇒ sole access. Every modeled elevator's topology-derived
+  redundancy must AGREE with its declaration or the whole station is excluded
+  (`declared-alternate-mismatch`). This solves the no-ground-truth problem:
+  no hand-curated MBTA models exist and the maintainer has never ridden the
+  system — the agency's own declaration is the independent second signal,
+  exactly like the subway's declared `redundant` flag.
+- **CRITICAL parsing rule (misread 13 stations on the first run)**: guidance
+  that names an elevator but reaches it by RIDING A TRAIN ("exit the train at
+  Savin Hill, then take an Ashmont-bound train to Fields Corner and use
+  Elevator 958") is a DETOUR, not a backup — the BART cross-station rule; a
+  rider on the platform is functionally stranded. Detour parsing takes
+  precedence over named-elevator parsing.
+- **Result**: 39 of 80 elevator-equipped stations modeled (60 chains), 66
+  elevator redundancy claims corroborated by MBTA's own guidance; 41 stations
+  excluded with reasons (`chains-excluded.json`) — incl. Wellington, the one
+  genuine topology-vs-guidance disagreement (its guidance says "exit the
+  other side of the train onto the center platform": within-station nuance
+  the per-platform chain model can't express; human review). Shipped-but-
+  unvalidatable items live in `review-flags.json` for the joint review pass:
+  12 street-crossing alternates (possible step-free paths — NEVER
+  auto-applied; e.g. Framingham's Concord St crossing, so Framingham
+  currently over-warns NO ACCESS by design) + 3 elevators with no guidance
+  text. Adapter ships chain members as `serving_text` (machine-derived, below
+  every human signal); un-modeled units keep single_elevator/assumed exactly
+  as before. Offline: `npm run check:mbta-chains` — a FULL-FEED fixture
+  (every station, not a subset) re-verifies mapper + engine + validation +
+  exact reproduction of the committed chains, plus the Fields Corner detour
+  and Wellington exclusion regressions. First live effect: Kendall/MIT's 777
+  outage reads REDUCED (866 backs it up, per MBTA's own guidance); Winchester
+  Center stays ACCESSIBLE on 748 with 749 out; Natick Center reads NO ACCESS
+  per platform; the MBTA access board went from 0 to 60 modeled routes.

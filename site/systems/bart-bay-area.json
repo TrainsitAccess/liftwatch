@@ -3,7 +3,7 @@
   "name": "BART",
   "label": "BART (San Francisco)",
   "timezone": "America/Los_Angeles",
-  "generatedAt": "2026-07-10T19:32:39.382Z",
+  "generatedAt": "2026-07-11T00:50:44.646Z",
   "currentlyBroken": [
     {
       "station": "Richmond",
@@ -23,6 +23,21 @@
       "chainNotes": [
         "A ramp gives step-free street access without elevators, so both street elevators can be out and the station stays accessible; but the single platform elevator is a single point of failure."
       ]
+    },
+    {
+      "station": "Powell St.",
+      "unitId": "POWL-UNSPECIFIED",
+      "unit": "Station (unspecified elevator — conservative)",
+      "days": 0,
+      "since": "2026-07-10T20:35:15.299+00:00",
+      "planned": false,
+      "reason": "Station (unspecified elevator — conservative)",
+      "estimatedReturn": null,
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     },
     {
       "station": "12th St. Oakland City Center",
@@ -115,11 +130,11 @@
   "accessibilityBlackouts": [
     {
       "name": "Richmond",
-      "hours": 160.62838083333332
+      "hours": 165.92984305555555
     },
     {
       "name": "Milpitas (Millbrae/SFO/Daly City/Richmond direction)",
-      "hours": 20.728906666666667
+      "hours": 26.030368888888887
     },
     {
       "name": "El Cerrito Plaza (Berryessa/SFO/Millbrae/Daly City direction)",
@@ -154,27 +169,27 @@
     },
     {
       "name": "Warm Springs/South Fremont (pedestrian bridge)",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "West Dublin/Pleasanton (North/Dublin side)",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "West Dublin/Pleasanton (South/Pleasanton side)",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Embarcadero",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     },
     {
       "name": "Montgomery St.",
-      "days": 1,
+      "days": 2,
       "blackedOutNow": false
     }
   ],
@@ -197,6 +212,11 @@
     {
       "unit": "Platform 2 elevator (Berryessa/SFO/Millbrae/Daly City direction)",
       "station": "El Cerrito Plaza (Berryessa/SFO/Millbrae/Daly City direction)",
+      "count": 1
+    },
+    {
+      "unit": "Station (unspecified elevator — conservative)",
+      "station": "Powell St.",
       "count": 1
     },
     {
@@ -227,6 +247,12 @@
   ],
   "uptimeStreak": [
     {
+      "unit": "Platform Elevator 2",
+      "station": "19th St. Oakland",
+      "days": 6,
+      "downNow": false
+    },
+    {
       "unit": "Platform Elevator 1",
       "station": "Ashby",
       "days": 6,
@@ -235,6 +261,18 @@
     {
       "unit": "Platform Elevator 2",
       "station": "Ashby",
+      "days": 6,
+      "downNow": false
+    },
+    {
+      "unit": "Street elevator 2",
+      "station": "Richmond",
+      "days": 6,
+      "downNow": false
+    },
+    {
+      "unit": "Platforms 1 & 2 Elevator",
+      "station": "San Francisco International Airport",
       "days": 6,
       "downNow": false
     },
@@ -246,18 +284,6 @@
     },
     {
       "unit": "Platform Elevator 1",
-      "station": "19th St. Oakland",
-      "days": 6,
-      "downNow": false
-    },
-    {
-      "unit": "Platforms 1 & 2 Elevator",
-      "station": "San Francisco International Airport",
-      "days": 6,
-      "downNow": false
-    },
-    {
-      "unit": "Platform Elevator 2",
       "station": "19th St. Oakland",
       "days": 6,
       "downNow": false
@@ -279,12 +305,6 @@
       "station": "Richmond",
       "days": 6,
       "downNow": false
-    },
-    {
-      "unit": "Street elevator 2",
-      "station": "Richmond",
-      "days": 6,
-      "downNow": false
     }
   ],
   "singlePointsOfFailure": [
@@ -293,15 +313,23 @@
       "count": 3
     },
     {
-      "name": "Embarcadero",
-      "count": 2
-    },
-    {
       "name": "El Cerrito del Norte",
       "count": 2
     },
     {
-      "name": "Milpitas",
+      "name": "24th St. Mission",
+      "count": 2
+    },
+    {
+      "name": "Antioch",
+      "count": 2
+    },
+    {
+      "name": "El Cerrito Plaza",
+      "count": 2
+    },
+    {
+      "name": "Hayward",
       "count": 2
     },
     {
@@ -317,11 +345,11 @@
       "count": 2
     },
     {
-      "name": "Montgomery St.",
+      "name": "South Hayward",
       "count": 2
     },
     {
-      "name": "El Cerrito Plaza",
+      "name": "Milpitas",
       "count": 2
     },
     {
@@ -329,11 +357,7 @@
       "count": 2
     },
     {
-      "name": "24th St. Mission",
-      "count": 2
-    },
-    {
-      "name": "South Hayward",
+      "name": "Union City",
       "count": 2
     },
     {
@@ -342,10 +366,6 @@
     },
     {
       "name": "Civic Center/UN Plaza",
-      "count": 2
-    },
-    {
-      "name": "Union City",
       "count": 2
     }
   ]

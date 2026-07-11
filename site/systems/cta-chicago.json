@@ -3,7 +3,7 @@
   "name": "CTA",
   "label": "CTA (Chicago)",
   "timezone": "America/Chicago",
-  "generatedAt": "2026-07-10T19:32:39.382Z",
+  "generatedAt": "2026-07-11T00:50:44.646Z",
   "currentlyBroken": [
     {
       "station": "Western",
@@ -51,25 +51,10 @@
       "chainNotes": []
     },
     {
-      "station": "Cottage Grove",
-      "unitId": "40720",
-      "unit": "40720",
-      "days": 2,
-      "since": "2026-07-08T16:45:00+00:00",
-      "planned": false,
-      "reason": "Elevator at Cottage Grove Temporarily Out-of-Service — The elevator to/from street at Cottage Grove (Green Line) is temporarily out-of-service.",
-      "estimatedReturn": null,
-      "soleAccess": false,
-      "severs": [],
-      "backups": [],
-      "rampAlternative": false,
-      "chainNotes": []
-    },
-    {
       "station": "Jackson",
       "unitId": "40560",
       "unit": "40560",
-      "days": 2,
+      "days": 3,
       "since": "2026-07-07T23:18:00+00:00",
       "planned": false,
       "reason": "Elevator at Jackson Temporarily Out-of-Service — The elevator to/from platform at the Adams-Jackson entrance to Jackson (Red Line) is temporarily out-of-service.",
@@ -84,7 +69,7 @@
       "station": "Loyola",
       "unitId": "41300",
       "unit": "41300",
-      "days": 2,
+      "days": 3,
       "since": "2026-07-07T20:17:00+00:00",
       "planned": false,
       "reason": "Elevator at Loyola Temporarily Out-of-Service — The elevator at Loyola ( Red Line) is temporarily out-of-service.",
@@ -96,28 +81,13 @@
       "chainNotes": []
     },
     {
-      "station": "Pulaski",
-      "unitId": "40030",
-      "unit": "40030",
-      "days": 0,
-      "since": "2026-07-10T18:23:00+00:00",
+      "station": "Cottage Grove",
+      "unitId": "40720",
+      "unit": "40720",
+      "days": 2,
+      "since": "2026-07-08T16:45:00+00:00",
       "planned": false,
-      "reason": "Elevator at Pulaski Temporarily Out-of-Service — The 63rd-bound platform elevator at Pulaski (Green Line) is temporarily out-of-service. · Elevator at Pulaski Temporarily Out-of-Service — The Harlem-bound platform elevator at Pulaski (Green Line) is temporarily out-of-service.",
-      "estimatedReturn": null,
-      "soleAccess": false,
-      "severs": [],
-      "backups": [],
-      "rampAlternative": false,
-      "chainNotes": []
-    },
-    {
-      "station": "35th-Bronzeville-IIT",
-      "unitId": "41120",
-      "unit": "41120",
-      "days": 0,
-      "since": "2026-07-10T11:20:00+00:00",
-      "planned": false,
-      "reason": "Elevator at 35th-Bronzeville-IIT Temporarily Out-of-Service — The elevator at 35th-Bronzeville-IIT (Green Line) is temporarily out-of-service.",
+      "reason": "Elevator at Cottage Grove Temporarily Out-of-Service — The elevator to/from street at Cottage Grove (Green Line) is temporarily out-of-service.",
       "estimatedReturn": null,
       "soleAccess": false,
       "severs": [],
@@ -141,14 +111,14 @@
       "chainNotes": []
     },
     {
-      "station": "Roosevelt",
-      "unitId": "41400",
-      "unit": "41400",
+      "station": "35th-Bronzeville-IIT",
+      "unitId": "41120",
+      "unit": "41120",
       "days": 0,
-      "since": "2026-07-10T16:41:00+00:00",
+      "since": "2026-07-10T11:20:00+00:00",
       "planned": false,
-      "reason": "Elevator at Roosevelt Temporarily Out-of-Service — The transfer tunnel elevator at Roosevelt (Red, Orange and Green Lines) is temporarily out-of-service.",
-      "estimatedReturn": "2026-07-17T05:00:00+00:00",
+      "reason": "Elevator at 35th-Bronzeville-IIT Temporarily Out-of-Service — The elevator at 35th-Bronzeville-IIT (Green Line) is temporarily out-of-service.",
+      "estimatedReturn": null,
       "soleAccess": false,
       "severs": [],
       "backups": [],
@@ -160,7 +130,7 @@
       "unitId": "41690",
       "unit": "41690",
       "days": 0,
-      "since": "2026-07-10T18:50:00+00:00",
+      "since": "2026-07-11T00:18:00+00:00",
       "planned": false,
       "reason": "Elevator at Cermak-McCormick Place (Green Line) Temporarily Out-of-Service — The elevator to/from 23rd street at Cermak-McCormick Place (Green Line) is temporarily out-of-service.",
       "estimatedReturn": null,
@@ -171,14 +141,14 @@
       "chainNotes": []
     },
     {
-      "station": "Cumberland",
-      "unitId": "40230",
-      "unit": "40230",
+      "station": "Wilson",
+      "unitId": "40540",
+      "unit": "40540",
       "days": 0,
-      "since": "2026-07-10T17:39:00+00:00",
+      "since": "2026-07-11T00:41:00+00:00",
       "planned": false,
-      "reason": "Elevator at Cumberland Temporarily Out-of-Service — The elevator to/from platform at Cumberland (Blue Line) is temporarily out-of-service.",
-      "estimatedReturn": "2026-07-17T05:00:00+00:00",
+      "reason": "Elevator at Wilson Temporarily Out-of-Service — The 95th-bound and Loop-bound platform elevator at Wilson (Red, Purple Lines) is temporarily out-of-service.",
+      "estimatedReturn": null,
       "soleAccess": false,
       "severs": [],
       "backups": [],
@@ -202,11 +172,11 @@
   "accessibilityBlackouts": [
     {
       "name": "Western",
-      "hours": 1418.5442727777777
+      "hours": 1423.845735
     },
     {
       "name": "Lake",
-      "hours": 1181.5442727777777
+      "hours": 1186.845735
     },
     {
       "name": "King Drive",
@@ -214,11 +184,11 @@
     },
     {
       "name": "Clark/Lake",
-      "hours": 313.19427277777777
+      "hours": 318.495735
     },
     {
       "name": "Loyola",
-      "hours": 298.9768275
+      "hours": 304.2782897222222
     },
     {
       "name": "47th",
@@ -230,11 +200,11 @@
     },
     {
       "name": "Wilson",
-      "hours": 173.24012083333332
+      "hours": 173.4025225
     },
     {
       "name": "35th-Bronzeville-IIT",
-      "hours": 152.99794527777777
+      "hours": 158.2994075
     },
     {
       "name": "63rd",
@@ -258,6 +228,16 @@
       "blackedOutNow": false
     },
     {
+      "name": "Cicero",
+      "days": 4,
+      "blackedOutNow": false
+    },
+    {
+      "name": "47th",
+      "days": 4,
+      "blackedOutNow": false
+    },
+    {
       "name": "California",
       "days": 4,
       "blackedOutNow": false
@@ -273,22 +253,12 @@
       "blackedOutNow": false
     },
     {
-      "name": "Cicero",
+      "name": "43rd",
       "days": 3,
       "blackedOutNow": false
     },
     {
-      "name": "47th",
-      "days": 3,
-      "blackedOutNow": false
-    },
-    {
-      "name": "63rd",
-      "days": 3,
-      "blackedOutNow": false
-    },
-    {
-      "name": "Howard",
+      "name": "Addison",
       "days": 3,
       "blackedOutNow": false
     }
@@ -310,8 +280,18 @@
       "count": 3
     },
     {
+      "unit": "41690",
+      "station": "Cermak-McCormick Place",
+      "count": 3
+    },
+    {
       "unit": "40720",
       "station": "Cottage Grove",
+      "count": 3
+    },
+    {
+      "unit": "40540",
+      "station": "Wilson",
       "count": 3
     },
     {
@@ -332,16 +312,6 @@
     {
       "unit": "41400",
       "station": "Roosevelt",
-      "count": 2
-    },
-    {
-      "unit": "41690",
-      "station": "Cermak-McCormick Place",
-      "count": 2
-    },
-    {
-      "unit": "41440",
-      "station": "Addison",
       "count": 2
     }
   ],
@@ -365,6 +335,18 @@
       "downNow": false
     },
     {
+      "unit": "40480",
+      "station": "Cicero",
+      "days": 4,
+      "downNow": false
+    },
+    {
+      "unit": "41230",
+      "station": "47th",
+      "days": 4,
+      "downNow": false
+    },
+    {
       "unit": "41360",
       "station": "California",
       "days": 4,
@@ -383,26 +365,14 @@
       "downNow": false
     },
     {
-      "unit": "40480",
-      "station": "Cicero",
+      "unit": "41270",
+      "station": "43rd",
       "days": 3,
       "downNow": false
     },
     {
-      "unit": "41230",
-      "station": "47th",
-      "days": 3,
-      "downNow": false
-    },
-    {
-      "unit": "40910",
-      "station": "63rd",
-      "days": 3,
-      "downNow": false
-    },
-    {
-      "unit": "40900",
-      "station": "Howard",
+      "unit": "41440",
+      "station": "Addison",
       "days": 3,
       "downNow": false
     }

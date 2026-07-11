@@ -63,6 +63,8 @@ npm run check:rail       # prove the LIRR/MNR mapper + curated models (offline f
 npm run rail:chains      # regenerate LIRR/MNR simple-station chains (ground-truth-gated)
 npm run check:rail-chains # prove the rail chain generator vs the 13 hand models (offline)
 npm run mta:chains       # regenerate MTA multi-chain models from the live feed
+npm run mbta:chains      # regenerate MBTA simple-station chains (validated vs MBTA's own guidance)
+npm run check:mbta-chains # prove the MBTA chain generator offline (full-feed fixture)
 npm run typecheck        # tsc --noEmit — run after edits
 npm run db:status        # row counts + latest poll_runs, once Supabase is set up
 npm run site:data && npm run site:serve  # rebuild + preview the departure-board site
@@ -223,8 +225,28 @@ parking lot). A station is accessible only if **every** segment is up.
   SPOF board) for units whose `redundancy_source` is NOT `assumed` — the
   assumed policy default is a conservative unknown, not a confirmed fact.
   Blackout/streak boards keep the conservative history-based logic.
+- **MBTA simple-station chains are GENERATED from feed text, validated by
+  MBTA's own rider guidance** (2026-07-10). Same engine as rail
+  (`chain-inference.ts`) + an MBTA vocabulary mapper
+  (`src/adapters/mbta/chain-mapper.ts` — lobbies/pedestrian bridges are
+  ordinary hubs here, paid/unpaid variants are DISTINCT hub identities,
+  platforms are direction-named). The answer key is IN the feed: 215/237
+  elevators carry `alternate-service-text` (MBTA's per-elevator rider
+  guidance) — a named same-station backup ⇔ topology-derived redundancy must
+  agree, else the station is excluded. CRITICAL parsing rule: guidance that
+  NAMES an elevator but reaches it by riding a train ("exit at Savin Hill,
+  take an Ashmont-bound train back…") is a DETOUR, not a backup (the BART
+  cross-station rule) — checking named-first misread 13 stations on the
+  first run. Output: 39/80 stations, 60 chains
+  (`src/catalog/mbta-data/chains.json` + `chains-excluded.json` 41 stations +
+  `review-flags.json`: 12 street-alternates never auto-applied + 3
+  unvalidated). The adapter emits chain members as `serving_text`; un-modeled
+  units keep single_elevator/assumed. Offline: `npm run check:mbta-chains`
+  (full-feed fixture reproduction + Fields Corner detour + Wellington
+  exclusion regressions).
 - **LIRR/MNR simple-station chains are GENERATED from feed text,
-  ground-truth-gated by the 13 hand models** (2026-07-10). eestatus has no
+  ground-truth-gated by the hand-curated models (14 as of Greenwich)**
+  (2026-07-10). eestatus has no
   serving field and no declared redundancy flag (unlike the subway), so
   `npm run rail:chains` (`scripts/rail-chains.mts`) parses each elevator's
   free location text via a SYSTEM-AGNOSTIC landing-classification engine

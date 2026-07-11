@@ -3,7 +3,7 @@
   "name": "LIRR",
   "label": "LIRR (New York)",
   "timezone": "America/New_York",
-  "generatedAt": "2026-07-10T19:32:39.382Z",
+  "generatedAt": "2026-07-11T00:50:44.646Z",
   "currentlyBroken": [
     {
       "station": "Grand Central",
@@ -19,6 +19,23 @@
       "backups": [],
       "rampAlternative": false,
       "chainNotes": []
+    },
+    {
+      "station": "Jamaica (Tks 4/5)",
+      "unitId": "JAM-342",
+      "unit": "Between eastern overpass and Tracks 4 & 5",
+      "days": 0,
+      "since": "2026-07-10T21:05:36.11+00:00",
+      "planned": false,
+      "reason": "Not Working",
+      "estimatedReturn": null,
+      "soleAccess": true,
+      "severs": [
+        "Jamaica (Tks 4/5)"
+      ],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
     }
   ],
   "offline": {
@@ -30,14 +47,24 @@
     "log": []
   },
   "stationAccess": {
-    "rows": [],
+    "rows": [
+      {
+        "name": "Jamaica (Tks 4/5)",
+        "state": "no_access",
+        "downUnits": [
+          "JAM-342"
+        ],
+        "offlineUnits": [],
+        "note": null
+      }
+    ],
     "chainsModeled": 68
   },
   "scheduledWork": [],
   "accessibilityBlackouts": [
     {
       "name": "Jamaica (Tks 4/5)",
-      "hours": 12.9984275
+      "hours": 16.75079861111111
     },
     {
       "name": "Queens Village (Platform B)",
@@ -113,11 +140,6 @@
       "blackedOutNow": false
     },
     {
-      "name": "Jamaica (Tks 4/5)",
-      "days": 3,
-      "blackedOutNow": false
-    },
-    {
       "name": "Jamaica (Tks 6/7)",
       "days": 3,
       "blackedOutNow": false
@@ -126,9 +148,24 @@
       "name": "Jamaica (Tks 11/12)",
       "days": 3,
       "blackedOutNow": false
+    },
+    {
+      "name": "Woodside (Platform A)",
+      "days": 3,
+      "blackedOutNow": false
     }
   ],
   "mostBrokenUnits": [
+    {
+      "unit": "Between eastern overpass and Tracks 4 & 5",
+      "station": "Jamaica (Tks 4/5)",
+      "count": 2
+    },
+    {
+      "unit": "Between eastern overpass, Track 2, and kiss-and-ride (south side)",
+      "station": "Mineola (Track 2)",
+      "count": 2
+    },
     {
       "unit": "Garage Elevator 3",
       "station": "Wyandanch",
@@ -147,16 +184,6 @@
     {
       "unit": "Between Tracks 1 & 2 and street level (middle of platform)",
       "station": "Laurelton",
-      "count": 1
-    },
-    {
-      "unit": "Between eastern overpass and Tracks 4 & 5",
-      "station": "Jamaica (Tks 4/5)",
-      "count": 1
-    },
-    {
-      "unit": "Between eastern overpass, Track 2, and kiss-and-ride (south side)",
-      "station": "Mineola (Track 2)",
       "count": 1
     },
     {
@@ -194,38 +221,38 @@
       "downNow": false
     },
     {
-      "unit": "Between eastern overpass and Tracks 11 & 12",
-      "station": "Jamaica (Tks 11/12)",
+      "unit": "Between eastern overpass and Tracks 1 & 2",
+      "station": "Jamaica (Tks 1/2)",
       "days": 3,
       "downNow": false
     },
     {
-      "unit": "Between eastern overpass and Tracks 6 & 7",
-      "station": "Jamaica (Tks 6/7)",
+      "unit": "Between Tracks 1 & 2 and street level (middle of platform)",
+      "station": "St. Albans",
       "days": 3,
       "downNow": false
     },
     {
-      "unit": "Between eastern overpass, street level, and subway",
-      "station": "Jamaica",
+      "unit": "Between tracks 1 & 2 and the street level east of the station building.",
+      "station": "Copiague",
       "days": 3,
       "downNow": false
     },
     {
-      "unit": "Between Platform A and street level (east end of platform)",
-      "station": "Flushing Main Street (Platform A)",
+      "unit": "Located in the station plaza just west of the waiting room.",
+      "station": "Lindenhurst",
       "days": 3,
       "downNow": false
     },
     {
-      "unit": "Between street level and Platform A",
-      "station": "Great Neck (Platform A)",
+      "unit": "Elevator A2 serves Platform A tracks 1&2  (located on street level west of station building)",
+      "station": "Babylon (Tracks 1 & 2)",
       "days": 3,
       "downNow": false
     },
     {
-      "unit": "Between Platform A and street level (east side of station building)",
-      "station": "Queens Village (Platform A)",
+      "unit": "Between overpass and Tracks 1 & 2  (Platform B)",
+      "station": "Ronkonkoma (Tracks 1 & 2)",
       "days": 3,
       "downNow": false
     },
@@ -236,8 +263,8 @@
       "downNow": false
     },
     {
-      "unit": "Between overpass and Tracks 1 & 2  (Platform B)",
-      "station": "Ronkonkoma (Tracks 1 & 2)",
+      "unit": "Garage Elevator 2",
+      "station": "Ronkonkoma",
       "days": 3,
       "downNow": false
     }
@@ -264,22 +291,6 @@
       "count": 3
     },
     {
-      "name": "Flushing Main Street",
-      "count": 2
-    },
-    {
-      "name": "Great Neck",
-      "count": 2
-    },
-    {
-      "name": "Queens Village",
-      "count": 2
-    },
-    {
-      "name": "Locust Manor",
-      "count": 2
-    },
-    {
       "name": "Babylon",
       "count": 2
     },
@@ -288,7 +299,23 @@
       "count": 2
     },
     {
+      "name": "Locust Manor",
+      "count": 2
+    },
+    {
       "name": "Carle Place",
+      "count": 2
+    },
+    {
+      "name": "Queens Village",
+      "count": 2
+    },
+    {
+      "name": "Flushing Main Street",
+      "count": 2
+    },
+    {
+      "name": "Great Neck",
       "count": 2
     },
     {

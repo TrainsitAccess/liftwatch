@@ -114,18 +114,20 @@ export function inferStationChains(
     if (u.hubs.length >= 2) return fail("multi-level-hub", `${u.externalId} connects hubs ${u.hubs.join(" + ")}`);
   }
 
-  // Garage-only units sit outside chains (they serve parking, not the access
-  // path). Anything else with no platform, no hub, and no street is
+  // Garage units without a platform landing sit outside chains — they serve
+  // parking, not the access path (White Plains WP2 precedent), whether they
+  // land at street or at a hub level (MBTA's Wonderland lobby<->garage
+  // elevators). Anything else with no platform, no hub, and no street is
   // unplaceable; street-only units likewise (destination unknown).
   const nonChainUnits: InferenceUnit[] = [];
   const chainUnits: InferenceUnit[] = [];
   for (const u of station.units) {
+    if (u.garage && u.platformKey === null) {
+      nonChainUnits.push(u);
+      continue;
+    }
     const placeable = u.platformKey !== null || u.hubs.length > 0;
     if (!placeable) {
-      if (u.garage) {
-        nonChainUnits.push(u);
-        continue;
-      }
       return fail("unparseable-unit", `${u.externalId}: "${u.raw}"`);
     }
     chainUnits.push(u);

@@ -1,0 +1,1266 @@
+{
+  "generatedAt": "2026-07-11T00:47:48.704Z",
+  "source": "MBTA facilities long_name route text, validated against alternate-service-text",
+  "models": [
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-WML-0214",
+      "segments": [
+        {
+          "id": "street",
+          "label": "Street/parking to pedestrian bridge",
+          "elevators": [
+            {
+              "externalId": "51",
+              "label": "Framingham Elevator 51 (Waverly Street to pedestrian bridge)"
+            }
+          ]
+        },
+        {
+          "id": "platform-1",
+          "label": "Pedestrian bridge to Track 1",
+          "elevators": [
+            {
+              "externalId": "50",
+              "label": "Framingham Elevator 50 (Track 1 (outbound platform) to pedestrian bridge)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-FR-0253",
+      "chainLabel": " (Track 1)",
+      "segments": [
+        {
+          "id": "platform-1",
+          "label": "Pedestrian bridge to Track 1",
+          "elevators": [
+            {
+              "externalId": "704",
+              "label": "South Acton Elevator 704 (Track 1 (outbound platform) to pedestrian bridge)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-FR-0253",
+      "chainLabel": " (Track 2)",
+      "segments": [
+        {
+          "id": "platform-2",
+          "label": "Pedestrian bridge to Track 2",
+          "elevators": [
+            {
+              "externalId": "705",
+              "label": "South Acton Elevator 705 (Track 2 (Boston platform) to pedestrian bridge)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-brntn",
+      "chainLabel": " (Commuter Rail platform)",
+      "segments": [
+        {
+          "id": "street-platform-commuter rail",
+          "label": "Street to Commuter Rail platform",
+          "elevators": [
+            {
+              "externalId": "729",
+              "label": "Braintree Elevator 729 (Busway to Commuter Rail platform, parking garage)"
+            },
+            {
+              "externalId": "730",
+              "label": "Braintree Elevator 730 (Busway to Commuter Rail platform, parking garage)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-brntn",
+      "chainLabel": " (Red Line platform)",
+      "segments": [
+        {
+          "id": "platform-red line",
+          "label": "Lobby to Red Line platform",
+          "elevators": [
+            {
+              "externalId": "811",
+              "label": "Braintree Elevator 811 (Red Line platform to lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-qamnl",
+      "segments": [
+        {
+          "id": "platform-main",
+          "label": "Lobby to Platform",
+          "elevators": [
+            {
+              "externalId": "736",
+              "label": "Quincy Adams Elevator 736 (Lobby to platform)"
+            },
+            {
+              "externalId": "805",
+              "label": "Quincy Adams Elevator 805 (Lobby to platform)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-NHRML-0078",
+      "chainLabel": " (Track 1)",
+      "segments": [
+        {
+          "id": "street-platform-1",
+          "label": "Street to Track 1",
+          "elevators": [
+            {
+              "externalId": "748",
+              "label": "Winchester Center Elevator 748 (Track 1 (outbound platform) to Waterfield St, parking)"
+            },
+            {
+              "externalId": "749",
+              "label": "Winchester Center Elevator 749 (Track 1 (outbound platform) to Main St)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-NHRML-0078",
+      "chainLabel": " (Track 2)",
+      "segments": [
+        {
+          "id": "street-platform-2",
+          "label": "Street to Track 2",
+          "elevators": [
+            {
+              "externalId": "747",
+              "label": "Winchester Center Elevator 747 (Track 2 (Boston platform) to Waterfield St, parking)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-WML-0177",
+      "chainLabel": " (Track 1)",
+      "segments": [
+        {
+          "id": "street-platform-1",
+          "label": "Street to Track 1",
+          "elevators": [
+            {
+              "externalId": "750",
+              "label": "Natick Center Elevator 750 (Track 1 to street)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-WML-0177",
+      "chainLabel": " (Track 2)",
+      "segments": [
+        {
+          "id": "street-platform-2",
+          "label": "Street to Track 2",
+          "elevators": [
+            {
+              "externalId": "751",
+              "label": "Natick Center Elevator 751 (Track 2 to street)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-knncl",
+      "chainLabel": " (Alewife platform)",
+      "segments": [
+        {
+          "id": "street-platform-alewife",
+          "label": "Street to Alewife platform",
+          "elevators": [
+            {
+              "externalId": "777",
+              "label": "Kendall/MIT Elevator 777 (Alewife platform to Main Street)"
+            },
+            {
+              "externalId": "866",
+              "label": "Kendall/MIT Elevator 866 (Alewife platform to Main Street)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-knncl",
+      "chainLabel": " (Ashmont/Braintree platform)",
+      "segments": [
+        {
+          "id": "street-platform-ashmont+braintree",
+          "label": "Street to Ashmont/Braintree platform",
+          "elevators": [
+            {
+              "externalId": "756",
+              "label": "Kendall/MIT Elevator 756 (Ashmont/Braintree platform to Main Street)"
+            },
+            {
+              "externalId": "757",
+              "label": "Kendall/MIT Elevator 757 (Ashmont/Braintree platform to Main Street)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-mgngl",
+      "segments": [
+        {
+          "id": "platform-main",
+          "label": "Lobby to Platform",
+          "elevators": [
+            {
+              "externalId": "767",
+              "label": "Magoun Square Elevator 767 (Platform to lobby)"
+            },
+            {
+              "externalId": "768",
+              "label": "Magoun Square Elevator 768 (Platform to lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-balsq",
+      "segments": [
+        {
+          "id": "platform-main",
+          "label": "Broadway lobby to Platform",
+          "elevators": [
+            {
+              "externalId": "769",
+              "label": "Ball Square Elevator 769 (Platform to Broadway lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-mdftf",
+      "segments": [
+        {
+          "id": "platform-main",
+          "label": "Lobby to Platform",
+          "elevators": [
+            {
+              "externalId": "770",
+              "label": "Medford/Tufts Elevator 770 (Platform to lobby)"
+            },
+            {
+              "externalId": "772",
+              "label": "Medford/Tufts Elevator 772 (Platform to lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-unsqu",
+      "segments": [
+        {
+          "id": "street-platform-main",
+          "label": "Street to Platform",
+          "elevators": [
+            {
+              "externalId": "771",
+              "label": "Union Square Elevator 771 (Platform to Prospect Street)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-NBM-0374",
+      "segments": [
+        {
+          "id": "street",
+          "label": "Street/parking to pedestrian bridge",
+          "elevators": [
+            {
+              "externalId": "778",
+              "label": "East Taunton Elevator 778 (Parking to pedestrian bridge)"
+            }
+          ]
+        },
+        {
+          "id": "platform-main",
+          "label": "Pedestrian bridge to Platform",
+          "elevators": [
+            {
+              "externalId": "779",
+              "label": "East Taunton Elevator 779 (Platform to pedestrian bridge)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-qnctr",
+      "chainLabel": " (Commuter Rail platform)",
+      "segments": [
+        {
+          "id": "platform-commuter rail",
+          "label": "Lobby to Commuter Rail platform",
+          "elevators": [
+            {
+              "externalId": "896",
+              "label": "Quincy Center Elevator 896 (Commuter Rail platform to lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-qnctr",
+      "chainLabel": " (Red Line platform)",
+      "segments": [
+        {
+          "id": "platform-red line",
+          "label": "Lobby to Red Line platform",
+          "elevators": [
+            {
+              "externalId": "810",
+              "label": "Quincy Center Elevator 810 (Red Line platform to lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-davis",
+      "segments": [
+        {
+          "id": "street",
+          "label": "Street/parking to lobby",
+          "elevators": [
+            {
+              "externalId": "817",
+              "label": "Davis Elevator 817 (Lobby to College Avenue)"
+            }
+          ]
+        },
+        {
+          "id": "platform-main",
+          "label": "Lobby to Platform",
+          "elevators": [
+            {
+              "externalId": "816",
+              "label": "Davis Elevator 816 (Platform to lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-jfk",
+      "chainLabel": " (Ashmont branch platform)",
+      "segments": [
+        {
+          "id": "platform-ashmont branch",
+          "label": "Lobby to Ashmont branch platform",
+          "elevators": [
+            {
+              "externalId": "831",
+              "label": "JFK/UMass Elevator 831 (Ashmont branch platform to lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-jfk",
+      "chainLabel": " (Braintree branch platform)",
+      "segments": [
+        {
+          "id": "platform-braintree branch",
+          "label": "Lobby to Braintree branch platform",
+          "elevators": [
+            {
+              "externalId": "830",
+              "label": "JFK/UMass Elevator 830 (Braintree branch platform to lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-grnst",
+      "segments": [
+        {
+          "id": "platform-main",
+          "label": "Paid lobby to Platform",
+          "elevators": [
+            {
+              "externalId": "844",
+              "label": "Green Street Elevator 844 (Platform to paid lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-sbmnl",
+      "segments": [
+        {
+          "id": "platform-main",
+          "label": "Paid lobby to Platform",
+          "elevators": [
+            {
+              "externalId": "845",
+              "label": "Stony Brook Elevator 845 (Platform to paid lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-jaksn",
+      "segments": [
+        {
+          "id": "platform-main",
+          "label": "Paid lobby to Platform",
+          "elevators": [
+            {
+              "externalId": "846",
+              "label": "Jackson Square Elevator 846 (Platform to paid lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-rcmnl",
+      "segments": [
+        {
+          "id": "platform-main",
+          "label": "Paid lobby to Platform",
+          "elevators": [
+            {
+              "externalId": "847",
+              "label": "Roxbury Crossing Elevator 847 (Platform to paid lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-masta",
+      "segments": [
+        {
+          "id": "platform-main",
+          "label": "Paid lobby to Platform",
+          "elevators": [
+            {
+              "externalId": "852",
+              "label": "Massachusetts Avenue Elevator 852 (Platform to paid lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-cntsq",
+      "chainLabel": " (Alewife platform)",
+      "segments": [
+        {
+          "id": "street-platform-alewife",
+          "label": "Street to Alewife platform",
+          "elevators": [
+            {
+              "externalId": "860",
+              "label": "Central Elevator 860 (Alewife platform to Massachusetts Avenue)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-cntsq",
+      "chainLabel": " (Ashmont/Braintree platform)",
+      "segments": [
+        {
+          "id": "street-platform-ashmont+braintree",
+          "label": "Street to Ashmont/Braintree platform",
+          "elevators": [
+            {
+              "externalId": "861",
+              "label": "Central Elevator 861 (Ashmont/Braintree platform to Massachusetts Avenue)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-brdwy",
+      "segments": [
+        {
+          "id": "street",
+          "label": "Street/parking to lobby",
+          "elevators": [
+            {
+              "externalId": "868",
+              "label": "Broadway Elevator 868 (Lobby to street)"
+            }
+          ]
+        },
+        {
+          "id": "platform-main",
+          "label": "Lobby to Platform",
+          "elevators": [
+            {
+              "externalId": "867",
+              "label": "Broadway Elevator 867 (Platform to lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-andrw",
+      "chainLabel": " (Alewife platform)",
+      "segments": [
+        {
+          "id": "street",
+          "label": "Street/parking to lobby",
+          "elevators": [
+            {
+              "externalId": "872",
+              "label": "Andrew Elevator 872 (Lobby to street)"
+            }
+          ]
+        },
+        {
+          "id": "platform-alewife",
+          "label": "Lobby to Alewife platform",
+          "elevators": [
+            {
+              "externalId": "880",
+              "label": "Andrew Elevator 880 (Alewife platform to lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-andrw",
+      "chainLabel": " (Ashmont/Braintree platform)",
+      "segments": [
+        {
+          "id": "street",
+          "label": "Street/parking to lobby",
+          "elevators": [
+            {
+              "externalId": "872",
+              "label": "Andrew Elevator 872 (Lobby to street)"
+            }
+          ]
+        },
+        {
+          "id": "platform-ashmont+braintree",
+          "label": "Lobby to Ashmont/Braintree platform",
+          "elevators": [
+            {
+              "externalId": "879",
+              "label": "Andrew Elevator 879 (Ashmont/Braintree platform to lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-chncl",
+      "chainLabel": " (Forest Hills platform)",
+      "segments": [
+        {
+          "id": "street-platform-forest hills",
+          "label": "Street to Forest Hills platform",
+          "elevators": [
+            {
+              "externalId": "922",
+              "label": "Chinatown Elevator 922 (Forest Hills platform to Boylston St, Washington St)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-chncl",
+      "chainLabel": " (Oak Grove platform)",
+      "segments": [
+        {
+          "id": "street-platform-oak grove",
+          "label": "Street to Oak Grove platform",
+          "elevators": [
+            {
+              "externalId": "876",
+              "label": "Chinatown Elevator 876 (Oak Grove platform to Washington St, Essex St)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-rbmnl",
+      "chainLabel": " (Bowdoin platform)",
+      "segments": [
+        {
+          "id": "platform-bowdoin",
+          "label": "Lobby to Bowdoin platform",
+          "elevators": [
+            {
+              "externalId": "884",
+              "label": "Revere Beach Elevator 884 (Bowdoin platform to lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-rbmnl",
+      "chainLabel": " (Wonderland platform)",
+      "segments": [
+        {
+          "id": "platform-wonderl",
+          "label": "Lobby to Wonderland platform",
+          "elevators": [
+            {
+              "externalId": "885",
+              "label": "Revere Beach Elevator 885 (Wonderland platform to lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-bmmnl",
+      "chainLabel": " (Bowdoin platform)",
+      "segments": [
+        {
+          "id": "platform-bowdoin",
+          "label": "Lobby to Bowdoin platform",
+          "elevators": [
+            {
+              "externalId": "886",
+              "label": "Beachmont Elevator 886 (Bowdoin platform to lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-bmmnl",
+      "chainLabel": " (Wonderland platform)",
+      "segments": [
+        {
+          "id": "platform-wonderl",
+          "label": "Lobby to Wonderland platform",
+          "elevators": [
+            {
+              "externalId": "887",
+              "label": "Beachmont Elevator 887 (Wonderland platform to lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-wimnl",
+      "chainLabel": " (Bowdoin platform)",
+      "segments": [
+        {
+          "id": "platform-bowdoin",
+          "label": "Pedestrian bridge to Bowdoin platform",
+          "elevators": [
+            {
+              "externalId": "889",
+              "label": "Wood Island Elevator 889 (Bowdoin platform to pedestrian bridge)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-wimnl",
+      "chainLabel": " (Wonderland platform)",
+      "segments": [
+        {
+          "id": "platform-wonderl",
+          "label": "Pedestrian bridge to Wonderland platform",
+          "elevators": [
+            {
+              "externalId": "890",
+              "label": "Wood Island Elevator 890 (Wonderland platform to pedestrian bridge)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-prmnl",
+      "chainLabel": " (Heath Street platform)",
+      "segments": [
+        {
+          "id": "street",
+          "label": "Street/parking to lobby",
+          "elevators": [
+            {
+              "externalId": "917",
+              "label": "Prudential Elevator 917 (Lobby to Huntington Avenue)"
+            }
+          ]
+        },
+        {
+          "id": "platform-heath street",
+          "label": "Lobby to Heath Street platform",
+          "elevators": [
+            {
+              "externalId": "920",
+              "label": "Prudential Elevator 920 (Heath Street platform to lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-prmnl",
+      "chainLabel": " (Lechmere platform)",
+      "segments": [
+        {
+          "id": "street",
+          "label": "Street/parking to lobby",
+          "elevators": [
+            {
+              "externalId": "917",
+              "label": "Prudential Elevator 917 (Lobby to Huntington Avenue)"
+            }
+          ]
+        },
+        {
+          "id": "platform-lechmere",
+          "label": "Lobby to Lechmere platform",
+          "elevators": [
+            {
+              "externalId": "921",
+              "label": "Prudential Elevator 921 (Lechmere platform to lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-ccmnl",
+      "segments": [
+        {
+          "id": "platform-main",
+          "label": "Paid lobby to Platform",
+          "elevators": [
+            {
+              "externalId": "933",
+              "label": "Community College Elevator 933 (Paid lobby to platform)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-wtcst",
+      "chainLabel": " (Airport/Design Center/Chelsea platform)",
+      "segments": [
+        {
+          "id": "street",
+          "label": "Street/parking to lobby",
+          "elevators": [
+            {
+              "externalId": "934",
+              "label": "World Trade Center Elevator 934 (Lobby to World Trade Center Avenue)"
+            }
+          ]
+        },
+        {
+          "id": "platform-airport+chelsea+design",
+          "label": "Lobby to Airport/Design Center/Chelsea platform",
+          "elevators": [
+            {
+              "externalId": "936",
+              "label": "World Trade Center Elevator 936 (Airport/Design Center/Chelsea platform to lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-wtcst",
+      "chainLabel": " (South Station platform)",
+      "segments": [
+        {
+          "id": "street",
+          "label": "Street/parking to lobby",
+          "elevators": [
+            {
+              "externalId": "934",
+              "label": "World Trade Center Elevator 934 (Lobby to World Trade Center Avenue)"
+            }
+          ]
+        },
+        {
+          "id": "platform-south station",
+          "label": "Lobby to South Station platform",
+          "elevators": [
+            {
+              "externalId": "935",
+              "label": "World Trade Center Elevator 935 (South Station platform to lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-mlmnl",
+      "chainLabel": " (Commuter Rail platform)",
+      "segments": [
+        {
+          "id": "platform-commuter rail",
+          "label": "Lobby to Commuter Rail platform",
+          "elevators": [
+            {
+              "externalId": "944",
+              "label": "Malden Center Elevator 944 (Lobby to Commuter Rail platform)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-mlmnl",
+      "chainLabel": " (Orange Line platform)",
+      "segments": [
+        {
+          "id": "platform-orange line",
+          "label": "Lobby to Orange Line platform",
+          "elevators": [
+            {
+              "externalId": "945",
+              "label": "Malden Center Elevator 945 (Lobby to Orange Line platform)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-kencl",
+      "chainLabel": " (North platform)",
+      "segments": [
+        {
+          "id": "street-platform-north",
+          "label": "Street to North platform",
+          "elevators": [
+            {
+              "externalId": "972",
+              "label": "Kenmore Elevator 972 (Park Street & North platform to lobby, busway)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-kencl",
+      "chainLabel": " (Westbound platform)",
+      "segments": [
+        {
+          "id": "street",
+          "label": "Street/parking to lobby",
+          "elevators": [
+            {
+              "externalId": "948",
+              "label": "Kenmore Elevator 948 (Lobby to Commonwealth Avenue)"
+            },
+            {
+              "externalId": "972",
+              "label": "Kenmore Elevator 972 (Park Street & North platform to lobby, busway)"
+            }
+          ]
+        },
+        {
+          "id": "platform-westbound",
+          "label": "Lobby to Westbound platform",
+          "elevators": [
+            {
+              "externalId": "971",
+              "label": "Kenmore Elevator 971 (Westbound platform to lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-chmnl",
+      "chainLabel": " (Alewife platform)",
+      "segments": [
+        {
+          "id": "platform-alewife",
+          "label": "Lobby to Alewife platform",
+          "elevators": [
+            {
+              "externalId": "952",
+              "label": "Charles/MGH Elevator 952 (Alewife platform to lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-chmnl",
+      "chainLabel": " (Ashmont/Braintree platform)",
+      "segments": [
+        {
+          "id": "platform-ashmont+braintree",
+          "label": "Lobby to Ashmont/Braintree platform",
+          "elevators": [
+            {
+              "externalId": "951",
+              "label": "Charles/MGH Elevator 951 (Ashmont/Braintree platform to lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-smmnl",
+      "chainLabel": " (Alewife platform)",
+      "segments": [
+        {
+          "id": "platform-alewife",
+          "label": "Lobby to Alewife platform",
+          "elevators": [
+            {
+              "externalId": "953",
+              "label": "Shawmut Elevator 953 (Alewife platform to lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-smmnl",
+      "chainLabel": " (Ashmont platform)",
+      "segments": [
+        {
+          "id": "platform-ashmont",
+          "label": "Lobby to Ashmont platform",
+          "elevators": [
+            {
+              "externalId": "954",
+              "label": "Shawmut Elevator 954 (Ashmont platform to lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-fldcr",
+      "chainLabel": " (Alewife platform)",
+      "segments": [
+        {
+          "id": "platform-alewife",
+          "label": "Paid lobby to Alewife platform",
+          "elevators": [
+            {
+              "externalId": "957",
+              "label": "Fields Corner Elevator 957 (Paid lobby to Alewife platform)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-fldcr",
+      "chainLabel": " (Ashmont platform)",
+      "segments": [
+        {
+          "id": "platform-ashmont",
+          "label": "Paid lobby to Ashmont platform",
+          "elevators": [
+            {
+              "externalId": "958",
+              "label": "Fields Corner Elevator 958 (Paid lobby to Ashmont platform)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-portr",
+      "chainLabel": " (Commuter Rail platform)",
+      "segments": [
+        {
+          "id": "street",
+          "label": "Street/parking to lobby",
+          "elevators": [
+            {
+              "externalId": "982",
+              "label": "Porter Elevator 982 (Lobby to Somerville Avenue & Mass Avenue)"
+            },
+            {
+              "externalId": "985",
+              "label": "Porter Elevator 985 (Lobby to Somerville Avenue)"
+            }
+          ]
+        },
+        {
+          "id": "platform-commuter rail",
+          "label": "Lobby to Commuter Rail platform",
+          "elevators": [
+            {
+              "externalId": "986",
+              "label": "Porter Elevator 986 (Commuter Rail platform to lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-portr",
+      "chainLabel": " (Red Line platforms)",
+      "segments": [
+        {
+          "id": "street",
+          "label": "Street/parking to lobby",
+          "elevators": [
+            {
+              "externalId": "982",
+              "label": "Porter Elevator 982 (Lobby to Somerville Avenue & Mass Avenue)"
+            },
+            {
+              "externalId": "985",
+              "label": "Porter Elevator 985 (Lobby to Somerville Avenue)"
+            }
+          ]
+        },
+        {
+          "id": "platform-red line",
+          "label": "Lobby to Red Line platforms",
+          "elevators": [
+            {
+              "externalId": "983",
+              "label": "Porter Elevator 983 (Red Line platforms to lobby)"
+            },
+            {
+              "externalId": "987",
+              "label": "Porter Elevator 987 (Red Line platforms to lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-ER-0168",
+      "segments": [
+        {
+          "id": "street-platform-main",
+          "label": "Street to Platforms",
+          "elevators": [
+            {
+              "externalId": "996",
+              "label": "Salem Elevator 996 (Bridge St to parking garage to busway and platforms)"
+            },
+            {
+              "externalId": "997",
+              "label": "Salem Elevator 997 (Bridge St to parking garage to busway and platforms)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-NEC-1768",
+      "segments": [
+        {
+          "id": "platform-main",
+          "label": "Walkway to Platform",
+          "elevators": [
+            {
+              "externalId": "elev_7a57_3d92_400",
+              "label": "TF Green Airport Elevator (Walkway to platform)"
+            },
+            {
+              "externalId": "elev_7a57_3d92_401",
+              "label": "TF Green Airport Elevator (Walkway to platform)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-NEC-1891",
+      "segments": [
+        {
+          "id": "street-platform-1",
+          "label": "Street to Track 1",
+          "elevators": [
+            {
+              "externalId": "elev_b748_c4e7_405",
+              "label": "Pawtucket/Central Falls Elevator (Track 1 (outbound platform) to Pine St, Barton St)"
+            },
+            {
+              "externalId": "elev_b748_c4e7_406",
+              "label": "Pawtucket/Central Falls Elevator (Track 1 (outbound platform) to Pine St, Barton St)"
+            }
+          ]
+        }
+      ],
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+    }
+  ],
+  "nonChainUnits": [
+    {
+      "stopId": "place-qamnl",
+      "facilityId": "806",
+      "longName": "Quincy Adams Elevator 806 (Lobby to parking garage)"
+    },
+    {
+      "stopId": "place-qamnl",
+      "facilityId": "807",
+      "longName": "Quincy Adams Elevator 807 (Lobby to parking garage)"
+    }
+  ]
+}

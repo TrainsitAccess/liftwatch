@@ -10,6 +10,7 @@ import { BART_STATION_MODELS } from "./bart-station-models.js";
 import mtaChainsJson from "./mta-data/station-chains.json" with { type: "json" };
 import tflChainsJson from "./tfl-data/chains.json" with { type: "json" };
 import railChainsJson from "./mta-rail-data/chains.json" with { type: "json" };
+import mbtaChainsJson from "./mbta-data/chains.json" with { type: "json" };
 
 // MTA multi-chain models, generated from the live elevator inventory by
 // scripts/mta-chains.mjs (self-checked against MTA's own ADA + redundant flags).
@@ -33,6 +34,18 @@ const tflChains: StationModel[] = (tflChainsJson as { models: StationModel[] }).
 // precedent). Generated and hand-curated sets share no station and no
 // elevator. Regenerate with `npm run rail:chains` — do not hand-edit the JSON.
 const railChains: StationModel[] = (railChainsJson as { models: StationModel[] }).models;
+
+// MBTA auto-generated chain models for SIMPLE stations, derived from each
+// elevator's own long_name route text by scripts/mbta-chains.mts and
+// VALIDATED against MBTA's own per-elevator alternate-service-text (the
+// agency's rider guidance = an in-feed answer key, since no hand-curated MBTA
+// models exist and the maintainer has never ridden the system). A station
+// whose topology contradicts the guidance is excluded to
+// mbta-data/chains-excluded.json; shipped-but-unvalidatable items are listed
+// in mbta-data/review-flags.json for the human pass. Re-verified offline by
+// `npm run check:mbta-chains`. Regenerate with `npm run mbta:chains` — do not
+// hand-edit the JSON.
+const mbtaChains: StationModel[] = (mbtaChainsJson as { models: StationModel[] }).models;
 
 // Curated per-station accessibility structure — the source of truth for stations
 // whose feed doesn't expose per-elevator data (BART). Each station's step-free
@@ -229,6 +242,8 @@ export const STATION_MODELS: StationModel[] = [
   ...MTA_RAIL_STATION_MODELS,
   // LIRR + Metro-North auto-generated simple-station chains (see railChains).
   ...railChains,
+  // MBTA auto-generated simple-station chains (see mbtaChains).
+  ...mbtaChains,
   // TfL's auto-generated multi-chain models (see tflChains above).
   ...tflChains,
 ];

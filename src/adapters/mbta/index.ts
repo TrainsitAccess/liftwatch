@@ -8,12 +8,32 @@ import type {
   NormalizedUnit,
 } from "../../types.js";
 import { nowUtcIso } from "../../lib/time.js";
+import { allElevators, elevatorRedundant, type StationModel } from "../../lib/accessibility.js";
+// Static json import, NOT readFileSync — the Netlify function bundler inlines
+// the whole import graph (see station-models.ts for the live-confirmed 502).
+import mbtaChainsJson from "../../catalog/mbta-data/chains.json" with { type: "json" };
 import type {
   MbtaAlertRaw,
   MbtaFacilityRaw,
   MbtaJsonApiResponse,
   MbtaStopIncluded,
 } from "./raw.js";
+
+// Auto-generated chain models (scripts/mbta-chains.mts), validated against
+// MBTA's own alternate-service-text at generation time. MACHINE-derived from
+// feed text, so their redundancy enters ingest as `serving_text` — below
+// every human signal (a future hand curation wins; contradictions with a
+// stored curated value flag instead of clobbering). Same two-tier pattern as
+// the rail adapter, minus a curated tier (no hand-curated MBTA models exist).
+const MBTA_GENERATED_MODELS = (mbtaChainsJson as { models: StationModel[] }).models;
+const generatedChainsByElevator = new Map<string, StationModel[]>();
+for (const model of MBTA_GENERATED_MODELS) {
+  for (const el of allElevators(model)) {
+    const list = generatedChainsByElevator.get(el.externalId) ?? [];
+    list.push(model);
+    generatedChainsByElevator.set(el.externalId, list);
+  }
+}
 
 // MBTA (Boston) — JSON:API, genuinely per-elevator, and unlike MTA/BART its
 // alert timestamps are already ISO-8601 with a UTC offset (no local-time
@@ -147,6 +167,11 @@ export function createMbtaAdapter(config: MbtaConfig = MBTA_CONFIG): Adapter {
       const units: NormalizedUnit[] = facilitiesRes.data.map((f) => {
         const stopId = f.relationships.stop.data?.id ?? f.id;
         const stop = stopById.get(stopId);
+        // A unit in a generated chain carries its model-derived redundancy as
+        // serving_text (aggregated across every chain it sits in — redundant
+        // only if its own outage severs none). Un-modeled units stay
+        // undefined; ingest applies single_elevator/assumed as before.
+        const memberOf = generatedChainsByElevator.get(f.id);
         return {
           externalId: f.id,
           unitType: "elevator",
@@ -155,6 +180,12 @@ export function createMbtaAdapter(config: MbtaConfig = MBTA_CONFIG): Adapter {
           borough: stop?.attributes.municipality ?? undefined,
           description: f.attributes.long_name || f.attributes.short_name,
           isAda: true,
+          ...(memberOf
+            ? {
+                isRedundant: memberOf.every((m) => elevatorRedundant(m, f.id)),
+                redundancySource: "serving_text" as const,
+              }
+            : {}),
           isActive: true,
           latitude: stop?.attributes.latitude ?? f.attributes.latitude ?? undefined,
           longitude: stop?.attributes.longitude ?? f.attributes.longitude ?? undefined,

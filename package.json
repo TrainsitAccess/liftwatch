@@ -46,7 +46,9 @@
     "netlify:dev": "netlify dev",
     "netlify:deploy": "netlify deploy --prod",
     "rail:chains": "tsx scripts/rail-chains.mts",
-    "check:rail-chains": "tsx src/checks/rail-chains-check.ts"
+    "check:rail-chains": "tsx src/checks/rail-chains-check.ts",
+    "mbta:chains": "tsx scripts/mbta-chains.mts",
+    "check:mbta-chains": "tsx src/checks/mbta-chains-check.ts"
   },
   "dependencies": {
     "@netlify/blobs": "^10.7.9",

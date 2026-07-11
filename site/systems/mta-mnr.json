@@ -3,7 +3,7 @@
   "name": "Metro-North",
   "label": "Metro-North (New York)",
   "timezone": "America/New_York",
-  "generatedAt": "2026-07-10T19:32:39.382Z",
+  "generatedAt": "2026-07-11T00:50:44.646Z",
   "currentlyBroken": [
     {
       "station": "Grand Central (North End: Tks 34/35/116)",
@@ -82,29 +82,10 @@
       ]
     },
     {
-      "station": "Greenwich (New Haven-bound)",
-      "unitId": "2GN-218E",
-      "unit": "Elevator from the New Haven-bound platform (Track 4) to the overpass",
-      "days": 0,
-      "since": "2026-07-10T14:11:10+00:00",
-      "planned": false,
-      "reason": "not working",
-      "estimatedReturn": null,
-      "soleAccess": false,
-      "severs": [
-        "Greenwich (New Haven-bound)"
-      ],
-      "backups": [],
-      "rampAlternative": false,
-      "chainNotes": [
-        "Greenwich: the overpass is reachable at grade, and elevator 218E is the sole step-free access to the New Haven-bound platform (Track 4) — no ramp, no backup (human-verified 2026-07-10). 218T serves the street-to-ticket-office trip only and is not part of any platform's access chain."
-      ]
-    },
-    {
       "station": "New Haven (Tracks 1 & 3)",
       "unitId": "2NH-25213",
       "unit": "Elevator from the underpass to the Tracks 3 & 1 platform",
-      "days": 0,
+      "days": 1,
       "since": "2026-07-10T00:47:10+00:00",
       "planned": false,
       "reason": "not working",
@@ -117,6 +98,25 @@
       "rampAlternative": false,
       "chainNotes": [
         "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      ]
+    },
+    {
+      "station": "Greenwich (New Haven-bound)",
+      "unitId": "2GN-218E",
+      "unit": "Elevator from the New Haven-bound platform (Track 4) to the overpass",
+      "days": 0,
+      "since": "2026-07-10T14:11:10+00:00",
+      "planned": false,
+      "reason": "not working",
+      "estimatedReturn": null,
+      "soleAccess": true,
+      "severs": [
+        "Greenwich (New Haven-bound)"
+      ],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": [
+        "Greenwich: the overpass is reachable at grade, and elevator 218E is the sole step-free access to the New Haven-bound platform (Track 4) — no ramp, no backup (human-verified 2026-07-10). 218T serves the street-to-ticket-office trip only and is not part of any platform's access chain."
       ]
     }
   ],
@@ -182,11 +182,11 @@
   "accessibilityBlackouts": [
     {
       "name": "Grand Central (North End: Tks 34/35/116)",
-      "hours": 28901.624550555556
+      "hours": 28906.926012777778
     },
     {
       "name": "New Rochelle (New Haven-bound)",
-      "hours": 1088.346495
+      "hours": 1093.6479572222222
     },
     {
       "name": "Mt Vernon East (Track 4)",
@@ -210,7 +210,7 @@
     },
     {
       "name": "New Haven (Tracks 1 & 3)",
-      "hours": 18.758161666666666
+      "hours": 24.05962388888889
     },
     {
       "name": "Larchmont (Track 4)",
@@ -229,11 +229,6 @@
     },
     {
       "name": "Harlem-125 St (Tks 2/4)",
-      "days": 3,
-      "blackedOutNow": false
-    },
-    {
-      "name": "New Rochelle (New York-bound)",
       "days": 3,
       "blackedOutNow": false
     },
@@ -271,17 +266,22 @@
       "name": "Stamford (Track 2)",
       "days": 3,
       "blackedOutNow": false
+    },
+    {
+      "name": "Grand Central (Terminal)",
+      "days": 3,
+      "blackedOutNow": false
     }
   ],
   "mostBrokenUnits": [
     {
-      "unit": "Elevator from the overpass to the island platform (Tracks 2 & 1).",
-      "station": "Hawthorne",
+      "unit": "Elevator from the street to the Stamford/New Haven-bound platform (Track 4) and the overpass.",
+      "station": "Mt Vernon East (Track 4)",
       "count": 1
     },
     {
-      "unit": "Elevator from the street to the Stamford/New Haven-bound platform (Track 4) and the overpass.",
-      "station": "Mt Vernon East (Track 4)",
+      "unit": "At the 45th street Cross Passage in the Northeast Passage.",
+      "station": "Grand Central",
       "count": 1
     },
     {
@@ -291,7 +291,22 @@
     },
     {
       "unit": "Elevator from the overpass to the island platform (Tracks 2 & 1).",
+      "station": "Hawthorne",
+      "count": 1
+    },
+    {
+      "unit": "Elevator from the New York-bound platform (Track 3) to the overpass.",
+      "station": "New Rochelle (New York-bound)",
+      "count": 1
+    },
+    {
+      "unit": "Elevator from the overpass to the island platform (Tracks 2 & 1).",
       "station": "Southeast",
+      "count": 1
+    },
+    {
+      "unit": "Elevator from the parking lot to the Stamford/New Haven-bound platform (Track 4) to the overpass",
+      "station": "Larchmont (Track 4)",
       "count": 1
     },
     {
@@ -308,30 +323,9 @@
       "unit": "Elevator from the overpass to the island platform (Tracks 2 & 1).",
       "station": "Purdy's",
       "count": 1
-    },
-    {
-      "unit": "Elevator from the parking lot to the Stamford/New Haven-bound platform (Track 4) to the overpass",
-      "station": "Larchmont (Track 4)",
-      "count": 1
-    },
-    {
-      "unit": "Elevator from the New Haven-bound platform (Track 4) to the overpass",
-      "station": "Greenwich (New Haven-bound)",
-      "count": 1
-    },
-    {
-      "unit": "Elevator from the overpass to the island platform (Tracks 2 & 1).",
-      "station": "Chappaqua",
-      "count": 1
     }
   ],
   "uptimeStreak": [
-    {
-      "unit": "Elevator from the station overpass to the Track 2 platform.",
-      "station": "Poughkeepsie (Track 2)",
-      "days": 3,
-      "downNow": false
-    },
     {
       "unit": "Elevator from the main station overpass to the Tracks 1 & 2 platform.",
       "station": "Croton-Harmon",
@@ -339,26 +333,26 @@
       "downNow": false
     },
     {
-      "unit": "Elevator from the overpass to the White Plains/Southeast-bound platform (Track 1).",
-      "station": "Fleetwood (Track 1)",
-      "days": 3,
-      "downNow": false
-    },
-    {
       "unit": "Elevator from the east-side parking lot to the overpass.",
-      "station": "Katonah",
+      "station": "Mt Kisco",
       "days": 3,
       "downNow": false
     },
     {
-      "unit": "Elevator from the overpass to the Grand Central Terminal bound platform (Track 2,4).",
-      "station": "Fleetwood (Tracks 2 & 4)",
+      "unit": "Elevator from the overpass to the island platform (Tracks 2 & 1).",
+      "station": "Mt Kisco",
       "days": 3,
       "downNow": false
     },
     {
-      "unit": "Elevator from the station building to the Southeast/New Haven-bound platform (Track 3).",
-      "station": "Fordham (Track 3)",
+      "unit": "Elevator from the underpass to the station building.",
+      "station": "New Haven",
+      "days": 3,
+      "downNow": false
+    },
+    {
+      "unit": "At the 45th street Cross Passage in the Northwest Passage.",
+      "station": "Grand Central",
       "days": 3,
       "downNow": false
     },
@@ -381,8 +375,14 @@
       "downNow": false
     },
     {
-      "unit": "Elevator from the New York-bound platform (Track 3) to the overpass.",
-      "station": "New Rochelle (New York-bound)",
+      "unit": "Elevator from the overpass to the White Plains/Southeast-bound platform (Track 1).",
+      "station": "Fleetwood (Track 1)",
+      "days": 3,
+      "downNow": false
+    },
+    {
+      "unit": "Elevator from the overpass to the Grand Central Terminal bound platform (Track 2,4).",
+      "station": "Fleetwood (Tracks 2 & 4)",
       "days": 3,
       "downNow": false
     }
@@ -397,35 +397,15 @@
       "count": 3
     },
     {
-      "name": "Crestwood",
-      "count": 3
-    },
-    {
       "name": "Yankees-E 153 St",
       "count": 3
     },
     {
-      "name": "Poughkeepsie",
-      "count": 2
+      "name": "Crestwood",
+      "count": 3
     },
     {
-      "name": "Fleetwood",
-      "count": 2
-    },
-    {
-      "name": "Hawthorne",
-      "count": 2
-    },
-    {
-      "name": "Katonah",
-      "count": 2
-    },
-    {
-      "name": "Fordham",
-      "count": 2
-    },
-    {
-      "name": "Larchmont",
+      "name": "Mt Kisco",
       "count": 2
     },
     {
@@ -433,19 +413,39 @@
       "count": 2
     },
     {
+      "name": "Katonah",
+      "count": 2
+    },
+    {
+      "name": "Larchmont",
+      "count": 2
+    },
+    {
       "name": "New Rochelle",
       "count": 2
     },
     {
-      "name": "Mt Vernon West",
+      "name": "Fleetwood",
       "count": 2
     },
     {
-      "name": "Mt Kisco",
+      "name": "Fordham",
+      "count": 2
+    },
+    {
+      "name": "Hawthorne",
+      "count": 2
+    },
+    {
+      "name": "Riverdale",
       "count": 2
     },
     {
       "name": "Southeast",
+      "count": 2
+    },
+    {
+      "name": "Mt Vernon West",
       "count": 2
     }
   ]
