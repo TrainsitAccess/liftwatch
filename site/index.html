@@ -200,6 +200,16 @@
     h1 .brand-sub { font-size: 18px; margin-left: 8px; }
   }
 
+  /* Prose blocks (disclaimer / methodology) — same panel language as the
+     boards, but set for reading: sentence case, generous line height. */
+  .prose { font-size: 14px; line-height: 1.65; color: var(--dim); max-width: 72ch; }
+  .prose p { margin: 0 0 12px; }
+  .prose strong { color: var(--white); font-weight: 700; }
+  .prose em { color: var(--amber); font-style: normal; }
+  .prose h3 { color: var(--white); font-size: 14px; letter-spacing: .04em; text-transform: lowercase; margin: 18px 0 8px; border-bottom: 1px solid var(--hairline); padding-bottom: 5px; }
+  .prose ol, .prose ul { margin: 0 0 12px; padding-left: 22px; }
+  .prose li { margin-bottom: 4px; }
+
   @media (prefers-reduced-motion: reduce) {
     .scroll-cell.overflowing > span { animation: none; }
     .scroll-cell { text-overflow: ellipsis; }
@@ -296,6 +306,23 @@
     <p class="empty" id="planned-empty" hidden>No planned closures posted right now.</p>
     <p class="legend">Scheduled capital replacements and maintenance can keep a station's only step-free elevator out for months or years — those show <span class="red">NO STEP-FREE</span> too · times shown in each system's local time</p>
   </section>
+
+  <section class="board" aria-labelledby="disclaimer-h">
+    <div class="board-head">
+      <h2 id="disclaimer-h">About these assessments <span class="t-sub">how LiftWatch decides what to claim</span></h2>
+      <span class="side"><a href="methodology.html">full methodology →</a></span>
+    </div>
+    <div class="prose">
+      <p>When LiftWatch says a station is <strong>accessible</strong> or <strong>inaccessible</strong>, that claim comes from a model of the station's step-free route: which elevators a rider actually depends on, and which ones back each other up. If every path through the model is severed by the current outages, the station reads <em>NO&nbsp;ACCESS</em>. These models are <strong>partially automatically generated and partially human-verified</strong> — and the honest answer to "how much should I trust this?" has two separate parts.</p>
+      <h3>how good is the agency's data?</h3>
+      <p><strong>Transport for London and the New York City Subway publish the best redundancy data of any system here — trust their assessments the most.</strong> TfL provides a real per-lift map of its stations; the NYC Subway declares, elevator by elevator, whether a backup exists. At the other end, DC Metro and the CTA publish only which elevators are broken — nothing about station structure — so LiftWatch makes <strong>no</strong> accessible/inaccessible proclamations for them at all: an outage list, never a verdict.</p>
+      <h3>how personally verified is it?</h3>
+      <p>I maintain LiftWatch, and my own familiarity with these systems varies. In order: <strong>(1) DC Metro and BART</strong> — the systems I know best; <strong>(2) the New York City Subway, Long Island Rail Road, and Metro-North</strong>; <strong>(3) the CTA</strong>; <strong>(4) TfL</strong> — least familiar, where I lean on TfL's excellent data instead of personal knowledge. <strong>I have never been on the MBTA</strong> — nothing in Boston is personally verified.</p>
+      <p>Everything is built to <strong>over-warn rather than under-warn</strong>: a station is never assumed to have a backup elevator without a real signal, an unattributable outage reads as a risk rather than being hidden, and <em>UNKNOWN</em> is never quietly upgraded to accessible. Each system's page carries its own specific disclaimer.</p>
+      <h3>feedback</h3>
+      <p>A proper feedback channel is coming. If an assessment here contradicts what you see on the ground — a station marked inaccessible that has a working ramp, a backup elevator the model doesn't know about — that is exactly the kind of error I want to hear about, and there will soon be a way to report it directly from this page.</p>
+    </div>
+  </section>
 </main>
 
 <div class="substrip">
@@ -306,7 +333,7 @@
 
 <footer>
   <p>Agencies overwrite this data constantly — LiftWatch archives it permanently. Systems are ranked by <strong>unplanned</strong> breakdowns; scheduled maintenance is tracked separately and never hidden.</p>
-  <p>Early preview, more systems coming. Fleet figures marked * use an agency-published total rather than a live feed.</p>
+  <p>Early preview, more systems coming. Fleet figures marked * use an agency-published total rather than a live feed. <a href="methodology.html">How these assessments are made</a>.</p>
 </footer>
 
 <script>

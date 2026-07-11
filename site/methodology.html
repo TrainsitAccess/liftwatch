@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LiftWatch — methodology &amp; disclaimer</title>
+<meta name="description" content="How LiftWatch decides what to claim about station accessibility: where the data comes from, what is automatically generated, what is human-verified, and how much to trust each system's assessments.">
+<style>
+  :root {
+    --bg: #050506;
+    --panel: #0b0b0d;
+    --strip: #141418;
+    --hairline: #26262c;
+    --amber: #ffb843;
+    --amber-dim: #a97e2f;
+    --white: #f2f2ee;
+    --dim: #9c9c94;
+    --red: #ff5747;
+    --green: #43d97e;
+    --focus: #ffd27a;
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--bg); }
+  body {
+    margin: 0; min-height: 100vh; background: var(--bg); color: var(--white);
+    font-family: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+    display: flex; flex-direction: column; align-items: center; padding: 34px 16px 56px;
+  }
+  a { color: var(--amber); }
+  :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 3px; }
+  .skip {
+    position: absolute; left: -9999px; top: 0; background: var(--amber); color: #000;
+    padding: 8px 14px; font-weight: 700; z-index: 10; border-radius: 0 0 6px 0;
+  }
+  .skip:focus { left: 0; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  header.masthead, main, footer { width: min(880px, 100%); }
+  header.masthead { margin-bottom: 22px; }
+  h1 { margin: 0; font-size: 30px; letter-spacing: .01em; }
+  h1 .brand { font-weight: 800; color: var(--white); }
+  h1 .brand-sub { font-weight: 300; color: var(--dim); margin-left: 10px; font-size: 24px; }
+  .tag { color: var(--dim); font-size: 13px; margin: 6px 0 0; }
+  .tag a { color: var(--amber); }
+
+  section.board {
+    background: var(--panel); border: 1px solid var(--hairline); border-radius: 10px;
+    padding: 18px 18px 12px; margin-bottom: 22px;
+  }
+  .board-head { margin-bottom: 10px; }
+  .board-head h2 { margin: 0; font-size: 19px; font-weight: 800; letter-spacing: .01em; }
+  .board-head h2 .t-sub { font-weight: 300; color: var(--dim); font-size: 15px; margin-left: 8px; }
+
+  .prose { font-size: 14px; line-height: 1.65; color: var(--dim); max-width: 72ch; }
+  .prose p { margin: 0 0 12px; }
+  .prose strong { color: var(--white); font-weight: 700; }
+  .prose em { color: var(--amber); font-style: normal; }
+  .prose h3 { color: var(--white); font-size: 14px; letter-spacing: .04em; text-transform: lowercase; margin: 18px 0 8px; border-bottom: 1px solid var(--hairline); padding-bottom: 5px; }
+  .prose ol, .prose ul { margin: 0 0 12px; padding-left: 22px; }
+  .prose li { margin-bottom: 6px; }
+  .prose .red { color: var(--red); }
+  .prose .green { color: var(--green); }
+  dl.sys { margin: 0; }
+  dl.sys dt {
+    color: var(--amber); font-weight: 700; margin-top: 14px;
+    font-family: ui-monospace, "IBM Plex Mono", SFMono-Regular, Menlo, Consolas, monospace;
+    text-transform: uppercase; letter-spacing: .05em; font-size: 13px;
+  }
+  dl.sys dd { margin: 4px 0 0; }
+
+  footer { color: var(--dim); font-size: 12px; border-top: 1px solid var(--hairline); padding-top: 14px; }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="masthead">
+  <h1><span class="brand">LiftWatch</span><span class="brand-sub">Methodology &amp; Disclaimer</span></h1>
+  <p class="tag"><a href="index.html">← back to the service board</a></p>
+</header>
+
+<main id="main">
+  <section class="board" aria-labelledby="claims-h">
+    <div class="board-head"><h2 id="claims-h">What the board actually claims</h2></div>
+    <div class="prose">
+      <p>LiftWatch tracks public-transit <strong>elevator</strong> outages and archives them permanently. Most of what it shows is a fact taken straight from an agency's own feed: this elevator is out of service, since this time, for this stated reason. Those rows are only as good as the agency's reporting, but they involve no judgment on LiftWatch's part.</p>
+      <p>The stronger claims — the ones this page exists to explain — are the <strong>accessibility proclamations</strong>: <em>NO&nbsp;ACCESS</em> (a station, or one platform of it, currently has no step-free route), <em>REDUCED</em> (an elevator is down but a backup elevator or ramp still covers the route), <em>UNKNOWN</em> (an elevator on the route has vanished from the agency's feed, so the route can't be verified before you go), the <span class="red">▮ sole step-free access</span> marker, and the historical "accessibility blackout" rankings built from all of the above.</p>
+      <p>Those claims come from a <strong>model</strong> of each station: its step-free route broken into legs (street to overpass, overpass to platform…), with the elevators serving each leg, and any ramp or grade path that covers a leg without an elevator. A station is accessible only if <strong>every</strong> leg has a working elevator or a step-free alternative. If the current outages sever every path, the model says so — that's a NO&nbsp;ACCESS proclamation.</p>
+    </div>
+  </section>
+
+  <section class="board" aria-labelledby="models-h">
+    <div class="board-head"><h2 id="models-h">Where the models come from <span class="t-sub">partially generated, partially verified</span></h2></div>
+    <div class="prose">
+      <p>No agency publishes these models directly, so LiftWatch builds them four ways, always preferring a real signal over an assumption:</p>
+      <ul>
+        <li><strong>The agency declares redundancy.</strong> The New York City Subway's feed states, elevator by elevator, whether a backup exists. Station models are generated from that feed and cross-checked against it automatically; nine tangled interchanges were additionally modeled by hand and verified station-by-station.</li>
+        <li><strong>The agency publishes real topology.</strong> TfL provides an actual map of every lift — which levels it connects at which station. Route models are derived from that graph mechanically, and only where the topology is unambiguous; major interchanges (Bank, King's Cross, Paddington…) are deliberately left unmodeled pending human review rather than guessed.</li>
+        <li><strong>Generated from the agency's own descriptions, gated by human ground truth.</strong> The LIRR and Metro-North feeds describe each elevator in plain text ("from the overpass to the island platform, Tracks 2 &amp; 1"). Simple stations are auto-modeled from those descriptions — but the generator must exactly reproduce the hand-verified stations before its output is trusted, and anything ambiguous goes to a human-review queue instead of being guessed.</li>
+        <li><strong>Hand-curated from the agency's rider guidance.</strong> BART publishes, for every elevator, what a rider should do when it's out. All 50 stations were modeled from that guidance, several verified in person.</li>
+      </ul>
+      <p>Every model claim is <strong>conservative by construction</strong>: a backup is never assumed without a real signal; a ramp is never claimed unless a human (or the agency's own words) confirmed it; an outage that can't be pinned to a specific elevator reads as a risk rather than being dropped. When the model is wrong, it should be wrong in the direction of <strong>over-warning</strong>.</p>
+    </div>
+  </section>
+
+  <section class="board" aria-labelledby="trust-h">
+    <div class="board-head"><h2 id="trust-h">How much to trust it <span class="t-sub">two separate questions</span></h2></div>
+    <div class="prose">
+      <h3>1 · how good is the agency's data?</h3>
+      <p><strong>TfL and the New York City Subway provide the best redundancy data — trust their assessments the most.</strong> Both give a genuine, per-elevator answer to "is there a backup?": TfL through its lift topology, New York through a declared redundancy flag. The LIRR, Metro-North, and BART sit in the middle: good per-elevator or per-station information, but the redundancy picture is built by LiftWatch (verified where possible) rather than stated by the agency. The MBTA reports individual elevators well but says nothing about station structure. <strong>DC Metro and the CTA publish only which elevators are currently broken</strong> — no inventory, no structure — so LiftWatch makes <strong>no accessibility proclamations</strong> for them at all: you get the outage list, never a verdict. (Their fleet percentages use the agencies' own published totals, marked with an asterisk.)</p>
+      <h3>2 · how personally familiar am I with the system?</h3>
+      <p>I maintain LiftWatch. Models can be verified against feeds and documents, but knowing a station in person catches what no feed shows. My familiarity, in order:</p>
+      <ol>
+        <li><strong>DC Metro and BART</strong> — the systems I know best.</li>
+        <li><strong>The New York City Subway, Long Island Rail Road, and Metro-North</strong> — I know these well; the tricky interchange and terminal models were walked through by hand.</li>
+        <li><strong>The CTA</strong>.</li>
+        <li><strong>TfL</strong> — the system I know least; there I lean on TfL's excellent data rather than personal knowledge.</li>
+      </ol>
+      <p><strong>I have never been on the MBTA.</strong> Boston's data flows through the same conservative machinery, but none of it is personally verified.</p>
+      <p>Notice the two axes cut in opposite directions: I know DC Metro best, but its feed supports the fewest claims; I know TfL least, but its data deserves the most trust. Both facts are stated on each system's own page, and neither is allowed to substitute for the other.</p>
+    </div>
+  </section>
+
+  <section class="board" aria-labelledby="sys-h">
+    <div class="board-head"><h2 id="sys-h">System by system</h2></div>
+    <div class="prose">
+      <dl class="sys">
+        <dt>New York City Subway</dt>
+        <dd>Per-elevator feed with declared redundancy — the best data alongside TfL. Models generated from the feed and self-checked against it; major interchanges hand-verified. Personal familiarity: high. <strong>Trust the assessments.</strong></dd>
+        <dt>TfL (London)</dt>
+        <dd>Real per-lift inventory and station topology — the best data alongside New York. Routes derived mechanically only where unambiguous; big interchanges deliberately unmodeled pending review. Personal familiarity: my lowest — the data carries the weight here. <strong>Trust the assessments.</strong></dd>
+        <dt>Long Island Rail Road · Metro-North</dt>
+        <dd>Per-elevator status feeds (the same data behind MTA's own status page) but no redundancy signal — station models are LiftWatch's: 14 stations hand-verified, the simpler ones auto-generated from the feed's own elevator descriptions and gated by the hand-verified ground truth. Personal familiarity: high.</dd>
+        <dt>BART</dt>
+        <dd>Station-level advisories only — BART never says <em>which</em> elevator is out, so attribution is conservative and sometimes reads "unspecified". Redundancy for all 50 stations hand-curated from BART's own rider guidance. Personal familiarity: my highest.</dd>
+        <dt>MBTA (Boston)</dt>
+        <dd>Good per-elevator feed with a full inventory, plus the only non-elevator access-issue tracking here (mini-high platforms, portable lifts). But no station structure models — a sole-access marker appears only where a station has exactly one elevator. <strong>I have never been on the MBTA; nothing is personally verified.</strong></dd>
+        <dt>DC Metro (WMATA)</dt>
+        <dd>The feed lists only broken elevators — no inventory, no structure — so <strong>no accessibility proclamations are made</strong>, despite this being one of the systems I know best. Fleet % uses WMATA's published 320-elevator total (marked *).</dd>
+        <dt>CTA (Chicago)</dt>
+        <dd>Station-level alerts, no per-elevator ids, no inventory — <strong>no accessibility proclamations</strong>; alert text is preserved verbatim, including entrance details. Fleet % uses CTA's published total (marked *). Personal familiarity: moderate.</dd>
+      </dl>
+      <p style="margin-top:14px">One system, TMB (Barcelona), was built and then <strong>withdrawn from the board</strong> after its feeds failed a data-quality review — statuses that contradicted observable reality. Publishing nothing beats publishing something wrong; it may return if the data improves.</p>
+    </div>
+  </section>
+
+  <section class="board" aria-labelledby="feedback-h">
+    <div class="board-head"><h2 id="feedback-h">Feedback &amp; error reports <span class="t-sub">coming soon</span></h2></div>
+    <div class="prose">
+      <p>A proper feedback channel is coming to this site. The reports I most want: <strong>an assessment that contradicts the ground truth</strong> — a station marked NO&nbsp;ACCESS that has a working ramp, a backup elevator a model doesn't know about, an outage the agency shows that LiftWatch missed, or entrance-level detail the board dropped. Ground truth from someone standing in the station beats every feed and every model on this page, and several of the corrections already baked into these models came from exactly that kind of report.</p>
+      <p>Until the feedback feature ships, there is no direct reporting link here — check back soon.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>LiftWatch archives what agencies overwrite. Assessments are conservative by design: over-warn, never under-warn. <a href="index.html">Back to the service board</a>.</p>
+</footer>
+</body>
+</html>

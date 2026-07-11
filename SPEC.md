@@ -296,6 +296,22 @@ against a reference photo):
   `data-label` prefixes, and the `<caption>` is retained; a documented,
   common pattern for responsive tables, not a full accessible-table solution.)
 - **Editorial** treatment for methodology and story pages.
+- **Disclaimer & methodology (2026-07-10)**: accessibility proclamations are
+  explained on TWO SEPARATE TRUST AXES, never blended — (1) agency data
+  quality: TfL + NYC Subway publish the best redundancy data ("trust the
+  most"); WMATA + CTA feeds can't support access claims at all (outage list,
+  never a verdict); (2) the maintainer's personal familiarity, ranked: 1
+  DC Metro & BART · 2 NYC Subway, LIRR, Metro-North · 3 CTA · 4 TfL — and
+  **never been on the MBTA** (stated plainly; nothing in Boston personally
+  verified). The two axes deliberately cut opposite ways (knows DC best,
+  weakest feed; knows TfL least, best feed). Three surfaces: an "About these
+  assessments" section on the homepage, a full `site/methodology.html` page
+  (what a proclamation means, the chain model, the four model-building
+  methods, per-system summaries, the TMB withdrawal), and a per-system
+  disclaimer section on `system.html` (a `DISCLAIMERS` map keyed by system
+  id — editorial copy versioned with the page; a system without an entry
+  shows no section). Feedback: a "coming soon" section by explicit choice —
+  no live link until the real feedback feature ships.
 - Deliberately not the generic-AI look: real type hierarchy, monospace numerals,
   one restrained status ramp, dense tables over airy cards.
 
