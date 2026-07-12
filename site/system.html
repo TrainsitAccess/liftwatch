@@ -278,14 +278,36 @@
     <p class="legend">An <span class="red">OFFLINE</span> elevator has vanished from the agency's feed: not reported broken, not reported working — unknowable, which is as bad as broken for planning a trip. Spells are logged like outages; <span class="green">RESTORED</span> rows show recent spells that ended.</p>
   </section>
 
+  <section class="board" id="review-section" aria-labelledby="review-h" hidden>
+    <div class="board-head">
+      <h2 id="review-h">Needs review <span class="t-sub">outages we couldn't confidently place</span></h2>
+      <span class="side board-note" id="review-summary"></span>
+    </div>
+    <div class="tablewrap">
+      <table class="led narrow">
+        <caption class="sr-only">Elevator outages that could not be confidently attributed to a specific known elevator — flagged for a human to verify</caption>
+        <thead>
+          <tr>
+            <th scope="col">unit</th>
+            <th scope="col">station</th>
+            <th scope="col">reason</th>
+            <th class="num" scope="col">open for</th>
+          </tr>
+        </thead>
+        <tbody id="review-body"></tbody>
+      </table>
+    </div>
+    <p class="legend">These outages couldn't be matched to a specific known elevator — a station-level advisory with no identifying detail, or a low-confidence default at a station with several elevators. Shown so a human can confirm which elevator is really out.</p>
+  </section>
+
   <section class="board" id="axi-section" aria-labelledby="axi-h" hidden>
     <div class="board-head">
-      <h2 id="axi-h">Access issues <span class="t-sub">non-elevator step-free facilities</span></h2>
+      <h2 id="axi-h">Other accessibility equipment <span class="t-sub">non-elevator step-free equipment</span></h2>
       <span class="side board-note" id="axi-summary"></span>
     </div>
     <div class="tablewrap">
       <table class="led narrow">
-        <caption class="sr-only">Non-elevator accessibility facilities out of service — mini-high platforms, portable lifts, ramps — plus recently restored ones</caption>
+        <caption class="sr-only">Other accessibility equipment out of service — mini-high platforms, portable/wheelchair lifts, ramps — plus recently restored ones</caption>
         <thead>
           <tr>
             <th scope="col">facility</th>
@@ -588,7 +610,7 @@ const DISCLAIMERS = {
     personal: `Familiarity tier 1 of 4 — one of the two systems I know best, which is exactly why I'm comfortable saying the feed can't support access claims yet.`,
   },
   "mbta-boston": {
-    data: `A good per-elevator feed with a full inventory, plus the only <strong>non-elevator access-issue tracking</strong> on the site (mini-high platforms, portable lifts, ramps). No station structure models exist — a sole-access marker appears only where a station has exactly one elevator.`,
+    data: `A good per-elevator feed with a full inventory, plus <strong>other accessibility equipment tracking</strong> (mini-high platforms, portable lifts, ramps). No station structure models exist — a sole-access marker appears only where a station has exactly one elevator.`,
     personal: `<strong>I have never been on the MBTA.</strong> Nothing here is personally verified — the conservative machinery is doing all the work.`,
   },
   "cta-chicago": {
@@ -697,10 +719,28 @@ if (!id) {
       ]);
     }
 
-    // --- Access issues (non-elevator step-free facilities) ---
+    // --- Needs review (unidentified outages) ---
+    // Hidden unless there's something to review.
+    const review = data.needsReview ?? { current: 0, rows: [] };
+    const reviewSection = document.getElementById("review-section");
+    reviewSection.hidden = review.rows.length === 0;
+    if (review.rows.length) {
+      document.getElementById("review-summary").textContent = `${review.rows.length} needing review`;
+      const rb = document.getElementById("review-body");
+      for (const r of review.rows) {
+        simpleRow(rb, [
+          `<td>${esc(r.unitId)}</td>`,
+          `<td class="white">${esc(r.station)}</td>`,
+          `<td class="dim">${esc(r.reason || "—")}</td>`,
+          `<td class="num red">${formatDays(r.days)}</td>`,
+        ]);
+      }
+    }
+
+    // --- Other accessibility equipment (non-elevator step-free equipment) ---
     // A separate layer from elevators — hidden entirely for systems that don't
-    // expose such facilities (everything except MBTA today).
-    const axi = data.accessIssues ?? { current: 0, log: [] };
+    // expose such equipment (MBTA, and BART's Coliseum parking-lot lift).
+    const axi = data.otherEquipment ?? { current: 0, log: [] };
     const axiSection = document.getElementById("axi-section");
     axiSection.hidden = axi.log.length === 0;
     if (axi.log.length) {

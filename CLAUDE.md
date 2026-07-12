@@ -118,7 +118,9 @@ Hosting + the 5-min poll cron both live on Netlify now (site
 - **Env vars on Netlify** (set in the UI, not committed — the MCP/API
   route silently fails to persist for this account, same as Lighter Than
   Air): `SUPABASE_URL`, `SUPABASE_SERVICE_KEY`, `WMATA_API_KEY`,
-  `MBTA_API_KEY`. TMB keys omitted (hidden, not polled).
+  `MBTA_API_KEY`, and `NTFY_TOPIC` (the unidentified-outage push target;
+  optional `NTFY_URL` defaults to https://ntfy.sh — without `NTFY_TOPIC` the
+  push is a silent no-op). TMB keys omitted (hidden, not polled).
   `NETLIFY_BUILD_HOOK_URL` is OBSOLETE (build-hook design replaced by blobs
   before ever shipping) — the env var and the build hook itself can be
   deleted in the UI.
@@ -496,25 +498,41 @@ parking lot). A station is accessible only if **every** segment is up.
   **IMPORTANT for any future DDL on this project: PostgREST caches the schema
   — run `NOTIFY pgrst, 'reload schema';` in the SQL editor after adding tables.**
 
-- **Access issues — NON-ELEVATOR step-free facilities** (2026-07-10): a
-  SEPARATE layer for accessibility facilities that aren't elevators but whose
-  loss removes step-free access — mini-high/raised boarding platforms, portable
-  boarding lifts, ramps (escalators deliberately excluded). Deliberately walled
-  off: never in `units`, never in the elevator inventory / `%`-down / any
-  leaderboard. Own denormalized `access_events` table (no FK to `units`), own
-  per-system "Access issues" board (hidden for systems with no such data).
-  Captured by facility TYPE from the facilities feed, NOT by trusting an
+- **Other accessibility equipment — NON-ELEVATOR step-free equipment**
+  (2026-07-10; renamed from "Access issues" 2026-07-12 across the board per
+  Bryce): a SEPARATE layer for accessibility equipment that isn't an elevator
+  but whose loss removes step-free access — mini-high/raised boarding platforms,
+  portable boarding lifts, **wheelchair lifts**, ramps (escalators deliberately
+  excluded). Deliberately walled off: never in `units`, never in the elevator
+  inventory / `%`-down / any leaderboard. Own denormalized
+  `other_equipment_events` table (no FK to `units`), own per-system "Other
+  accessibility equipment" board (hidden for systems with no such data).
+  Captured by facility TYPE from the facilities feed (MBTA), NOT by trusting an
   alert's `effect` label (MBTA files elevators-out under `ELEVATOR_CLOSURE`,
   `ACCESS_ISSUE`, AND `FACILITY_ISSUE` — the effect field is unreliable, same
-  trap as CTA `FullDescription`). `NormalizedRead.accessIssues`, ingest §6.5
-  (open/close like outages), `build-site-data` → `accessIssues` board.
-  `access_events` is a later schema addition (apply `db/schema.sql` + `NOTIFY
-  pgrst, 'reload schema';`; degrades to empty until it exists).
-  **COMMITTED GOAL: extend this to any other system with comparable
-  non-elevator access-facility data** — as each system is cross-checked against
-  its agency's accessibility status page, add its access facilities here (given
-  a real, verified per-facility signal, never a guessed feed field). Only MBTA
-  populates it today.
+  trap as CTA `FullDescription`). Types: `NormalizedOtherEquipment` /
+  `OtherEquipmentType` / `NormalizedRead.otherEquipment`, ingest §6.5
+  (open/close like outages), `build-site-data` → `otherEquipment` board.
+  `other_equipment_events` is a later schema addition (apply `db/schema.sql` +
+  `NOTIFY pgrst, 'reload schema';`; degrades to empty until it exists).
+  **BART's Coliseum parking-lot wheelchair lift** is the first non-MBTA member
+  (2026-07-12): a curated `bart-other-equipment.ts` list + a `matchHint` on the
+  advisory text (BART has no per-facility feed), split OUT of the elevator model
+  so it never inflates the elevator count. Other systems: add their equipment
+  here as each is cross-checked against its agency's accessibility page (a real,
+  verified per-facility signal, never a guessed feed field).
+- **Unidentified-outage flag (universal, 2026-07-12)**: `NormalizedOutage.
+  needsReview` marks an outage we could NOT confidently place onto a specific
+  known elevator — a conservative `-UNSPECIFIED` fallback, or a low-confidence
+  guess (BART's platform default at a station that ALSO has other equipment,
+  e.g. Coliseum; a single-platform default like Richmond/Powell is confident and
+  does NOT flag). Persisted as `outage_events.needs_review`. Surfaced three
+  ways: a poll-time warning (`poll.ts`), a per-system "Needs review" board
+  (`build-site-data` → `needsReview`, rendered in `system.html`), and an **ntfy
+  push** (`src/lib/notify.ts`, fired from `pollSystem` for NEWLY-opened flagged
+  outages only, so a standing one doesn't re-alert every poll). Any adapter may
+  set `needsReview`; today BART does. Requires `NTFY_TOPIC` env (silent no-op
+  without it).
 
 ## Gotchas / deferred
 

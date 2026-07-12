@@ -131,13 +131,19 @@ async function main(): Promise<void> {
       `  offline tracking → ${result.offlineOpened} unit(s) went dark (status unknown), ${result.offlineClosed} back in the feed.`,
     );
   }
-  if (result.accessOpened || result.accessClosed) {
+  if (result.otherEquipmentOpened || result.otherEquipmentClosed) {
     console.log(
-      `  access issues → ${result.accessOpened} non-elevator facility outage(s) opened, ${result.accessClosed} resolved.`,
+      `  other accessibility equipment → ${result.otherEquipmentOpened} outage(s) opened, ${result.otherEquipmentClosed} resolved.`,
     );
   }
   if (result.flagsRaised) {
     console.log(`  ⚠ ${result.flagsRaised} redundancy flag(s) raised for review.`);
+  }
+  if (result.newlyFlagged.length) {
+    console.warn(
+      `  ⚠ ${result.newlyFlagged.length} UNIDENTIFIED outage(s) — couldn't place onto a known elevator, needs review:`,
+    );
+    for (const f of result.newlyFlagged) console.warn(`      ${f.stationName} (${f.unitExternalId}): ${f.reason}`);
   }
   console.log("");
 }

@@ -501,11 +501,34 @@ whose real meaning differs gets a `matchHint` (or, if truly unreachable, an
 reached. Live effect (verified `poll:bart:dry` 2026-07-12): RICH/POWL/COLS all
 went from `-UNSPECIFIED` to `RICH-PLAT`/`POWL-PLAT`/`COLS-EL` with clean
 reasons; MacArthur still attributes via its direction hint; regressions in
-`demo:access` (now 45 checks) lock in single-platform→attributes and
-per-direction→null. NOTE the residual caveat this default accepts by design:
-at COLS, a future outage of an UNMODELED auxiliary elevator (Airport
-Connector, parking lift) reported as "Station" would attribute to `COLS-EL` —
-acceptable per "unless I say otherwise," correctable with a per-station hint.
+`demo:access` lock in single-platform→attributes and per-direction→null.
+
+*Coliseum — all four elevators now modeled (2026-07-12, Bryce: "include it
+all")*: BART tracks FOUR elevators at COLS, and the platform default made the
+earlier "any COLS advisory → COLS-EL" over-warn risk concrete. Now each is its
+own chain sharing the COLS id: the main **station** chain (`COLS-EL` → BART
+platforms) plus three chains flagged `auxiliary: true` on the `StationModel` —
+**Oakland Airport Connector** (`COLS-OAC`, sole access, non-redundant),
+**arena footbridge** (`COLS-ARENA`, redundant — ramp alternative), **parking
+lot** (`COLS-PARKING-LIFT`, redundant — surface-street alternative). An
+auxiliary outage severs only its own labeled route (build-data evaluates each
+chain independently), never the BART platforms. The new `auxiliary` flag is
+consumed ONLY by `platformDefaultElevator`, which now filters auxiliary chains
+out before its exactly-one-platform test — so a bare/ambiguous "Station" (or
+the live "Terminal/Station") still resolves to `COLS-EL`. HINT ASSIGNMENT
+follows Bryce's own reading of BART's unreliable text, NOT a guess about the
+words: the station elevator is HINT-FREE (it is the platform default, so
+anything unclaimed lands there — "Terminal/Station" is the platform elevator
+per Bryce); `"tunnel"` hints the **arena** elevator, because Bryce identified
+BART's "Station - Tunnel" advisory as the arena footbridge elevator (NOT the
+station — an easy mis-assignment the first pass made). The OAC hint remains a
+GUESS from BART's page name (no live OAC advisory observed) — flagged for
+confirmation. The parking-lot `COLS-PARKING-LIFT` is a wheelchair LIFT, not an
+elevator, so (Bryce, 2026-07-12) it was MOVED OUT of the elevator model into the
+other-accessibility-equipment layer (`bart-other-equipment.ts`, matched by a
+"parking" hint on the advisory) — it never touches the elevator count. Coliseum
+therefore has 3 elevators (station + 2 auxiliary chains) plus 1 tracked
+non-elevator lift.
 
 *Richmond override — REMOVED 2026-07-12*: the manual
 `src/catalog/attribution-overrides.ts` entry that redirected
@@ -615,33 +638,43 @@ covers our cadence — a key raises it to 1,000/min).
   future curation, intentionally not auto-parsed (same policy as BART's
   planned RSS).
 
-### Access issues — non-elevator step-free facilities (MBTA)
+### Other accessibility equipment — non-elevator step-free equipment (MBTA + BART Coliseum lift)
 
-A supplementary "before you go" layer for accessibility facilities that are
-**not elevators** but whose loss removes step-free/accessible access: mini-high
-boarding platforms (`ELEVATED_SUBPLATFORM`), raised platforms
-(`FULLY_ELEVATED_PLATFORM`), portable boarding lifts (`PORTABLE_BOARDING_LIFT`),
-and ramps (`RAMP`). Escalators are deliberately **excluded** (not
-step-free/wheelchair access; the project reserves-but-doesn't-track them).
+*(Renamed from "Access issues" across the board 2026-07-12, per Bryce.)* A
+supplementary "before you go" layer for accessibility equipment that is **not an
+elevator** but whose loss removes step-free/accessible access: mini-high boarding
+platforms (`ELEVATED_SUBPLATFORM`), raised platforms (`FULLY_ELEVATED_PLATFORM`),
+portable boarding lifts (`PORTABLE_BOARDING_LIFT`), wheelchair lifts
+(`WHEELCHAIR_LIFT`), and ramps (`RAMP`). Escalators are deliberately **excluded**
+(not step-free/wheelchair access; the project reserves-but-doesn't-track them).
 
 - **Walled off from elevators by design.** These facilities are never in
   `units`, never enter the elevator inventory, the "% of fleet down" math, or
-  any elevator leaderboard. They live in their own denormalized `access_events`
-  table (no FK to `units`) and render on their own per-system "Access issues"
-  board, hidden for every system that exposes no such data (all but MBTA today).
+  any elevator leaderboard. They live in their own denormalized
+  `other_equipment_events` table (no FK to `units`) and render on their own
+  per-system "Other accessibility equipment" board, hidden for every system that
+  exposes no such data.
 - **Captured by facility TYPE, not `effect`** — same reliable join as the
   elevator fix: a second `/facilities?filter[type]=…` call fetches the
   accessibility facility types, and any alert `informed_entity` naming one is
-  emitted as a `NormalizedAccessIssue`. Only current (not future-dated) issues
+  emitted as a `NormalizedOtherEquipment`. Only current (not future-dated) items
   are archived. `cause ∈ {MAINTENANCE, CONSTRUCTION}` → planned, same as
   elevators.
 - **Archived, open/close, like outages** (the user chose history over a
-  current-only snapshot): ingest §6.5 opens/refreshes/closes `access_events`
-  keyed by `(system_id, facility_external_id)`; the board shows current-out
-  first, then a recent resolved log with durations.
+  current-only snapshot): ingest §6.5 opens/refreshes/closes
+  `other_equipment_events` keyed by `(system_id, facility_external_id)`; the
+  board shows current-out first, then a recent resolved log with durations.
+- **BART Coliseum wheelchair lift — first non-MBTA member** (2026-07-12). BART
+  has no per-facility feed, so its one piece of other equipment (the Coliseum
+  station-to-parking wheelchair lift) is a CURATED entry
+  (`src/catalog/bart-other-equipment.ts`) matched against the advisory text by a
+  "parking" hint, checked in the adapter BEFORE elevator attribution so a match
+  emits a `NormalizedOtherEquipment` instead of an elevator outage. Split out of
+  the elevator model so it never inflates the elevator count.
 - **General mechanism — and a COMMITTED goal to extend it.** The type
-  (`NormalizedAccessIssue`), table, ingest, and board are system-agnostic; only
-  the MBTA adapter populates `NormalizedRead.accessIssues` today. **Whenever
+  (`NormalizedOtherEquipment`), table, ingest, and board are system-agnostic;
+  MBTA (by facility type) and BART (by curated hint) populate
+  `NormalizedRead.otherEquipment` today. **Whenever
   another tracked system exposes comparable non-elevator step-free-access data
   (boarding platforms, portable lifts, ramps, or an equivalent "access issue"
   feed), we WANT to wire it into this same layer** — this is an ongoing project
@@ -650,11 +683,27 @@ step-free/wheelchair access; the project reserves-but-doesn't-track them).
   facility identity/type rather than by a fragile status/effect label. As each
   system is audited against its agency's own accessibility status page, check
   whether it has such facilities and add them here.
-- `access_events` is a **later schema addition** — apply the block in
+- `other_equipment_events` is a **later schema addition** — apply the block in
   `db/schema.sql` in the Supabase SQL editor, then `NOTIFY pgrst, 'reload
   schema';` (PostgREST caches the schema — same gotcha as `offline_events`).
   Ingest and build-site-data degrade (warn + skip → empty board) until it
   exists, so shipping the code before applying the DDL is safe.
+
+### Unidentified-outage flag (universal, 2026-07-12)
+
+`NormalizedOutage.needsReview` marks an outage we could NOT confidently place
+onto a specific known elevator: a conservative `-UNSPECIFIED` fallback, or a
+low-confidence guess (BART's platform default at a station that ALSO has other
+equipment, e.g. Coliseum — a single-platform default like Richmond/Powell is
+confident and does NOT flag). Persisted as `outage_events.needs_review`.
+Surfaced three ways so a human gets flagged: a poll-time warning (`poll.ts`), a
+per-system "Needs review" board (`build-site-data` → `needsReview`, rendered in
+`system.html`), and an **ntfy push** (`src/lib/notify.ts`, fired from
+`pollSystem` for NEWLY-opened flagged outages only, so a standing one doesn't
+re-alert every 5-minute poll). The mechanism is universal — any adapter may set
+`needsReview`; today only BART does. Requires the `NTFY_TOPIC` env var for the
+push (silent no-op without it); `needs_review` is part of the `outage_events`
+DDL, so a fresh `db/schema.sql` apply picks it up.
 
 ### WMATA feeds (in use) — per-elevator ids, discovered inventory
 

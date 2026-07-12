@@ -1,7 +1,8 @@
-import type { Adapter, NormalizedOutage, NormalizedRead, NormalizedUnit } from "../../types.js";
+import type { Adapter, NormalizedOutage, NormalizedOtherEquipment, NormalizedRead, NormalizedUnit } from "../../types.js";
 import { nowUtcIso } from "../../lib/time.js";
 import { attributeOutageAcrossChains, elevatorRedundant, platformDefaultElevator } from "../../lib/accessibility.js";
 import { stationModelsFor } from "../../catalog/station-models.js";
+import { matchBartOtherEquipment } from "../../catalog/bart-other-equipment.js";
 import { fetchPlannedAdvisories } from "./planned-rss.js";
 import type { BartBsaRaw, BartElevResponse, BartStationRaw, BartStnResponse, BartText } from "./raw.js";
 
@@ -162,8 +163,30 @@ export function createBartAdapter(config: BartConfig = BART_CONFIG): Adapter {
         .join("; ");
       const affected = parseAffected(advisoryText, new Set(stationByAbbr.keys()));
 
-      const outages: NormalizedOutage[] = affected.map(({ abbr, desc }) => {
+      const outages: NormalizedOutage[] = [];
+      const otherEquipment: NormalizedOtherEquipment[] = [];
+      for (const { abbr, desc } of affected) {
         const stationName = stationByAbbr.get(abbr)?.name ?? abbr;
+
+        // Other accessibility equipment (curated, NON-elevator — e.g.
+        // Coliseum's parking-lot wheelchair lift) is routed to its own
+        // walled-off layer and never enters the elevator inventory. Checked
+        // BEFORE elevator attribution; a unique hint match wins.
+        const equip = matchBartOtherEquipment(abbr, desc);
+        if (equip) {
+          otherEquipment.push({
+            facilityExternalId: equip.facilityExternalId,
+            facilityType: equip.facilityType,
+            stationExternalId: abbr,
+            stationName,
+            description: equip.description,
+            isPlanned: false,
+            isUpcoming: false,
+            reason: desc || "Out of service",
+          });
+          continue;
+        }
+
         // BART's advisory is one free-text sentence per station, not per chain
         // — a multi-chain station (e.g. per-direction platforms) needs EVERY
         // chain's hints tried, not just the first. attributeOutageAcrossChains
@@ -183,12 +206,14 @@ export function createBartAdapter(config: BartConfig = BART_CONFIG): Adapter {
           const attr = attributeOutageAcrossChains(desc, stationModels);
           if (attr?.elevatorExternalId) {
             // Uniquely named elevator — full attribution.
-            return { ...base, unitExternalId: attr.elevatorExternalId, segmentId: attr.segmentId, attributed: true, reason: desc || "Elevator out of service" };
+            outages.push({ ...base, unitExternalId: attr.elevatorExternalId, segmentId: attr.segmentId, attributed: true, reason: desc || "Elevator out of service" });
+            continue;
           }
           if (attr) {
             // Segment identified but elevator ambiguous — never guess a specific
-            // unit (it would corrupt per-elevator stats).
-            return { ...base, unitExternalId: `${abbr}-${attr.segmentId.toUpperCase()}-UNSPECIFIED`, segmentId: attr.segmentId, attributed: false, reason: `${desc || "Elevator out of service"} (elevator within ${attr.segmentId} — ambiguous, conservative)` };
+            // unit (it would corrupt per-elevator stats). Flag for review.
+            outages.push({ ...base, unitExternalId: `${abbr}-${attr.segmentId.toUpperCase()}-UNSPECIFIED`, segmentId: attr.segmentId, attributed: false, needsReview: true, reason: `${desc || "Elevator out of service"} (elevator within ${attr.segmentId} — ambiguous, conservative)` });
+            continue;
           }
           // No matchHint caught direction/segment text — i.e. "simply the
           // station elevator". BART policy (Bryce, 2026-07-12): default to the
@@ -198,14 +223,21 @@ export function createBartAdapter(config: BartConfig = BART_CONFIG): Adapter {
           const plat = platformDefaultElevator(stationModels);
           if (plat?.elevatorExternalId) {
             const cleanDesc = (desc || "Elevator out of service").replace(/^[\s\-–—/]+/, "").trim();
-            return { ...base, unitExternalId: plat.elevatorExternalId, segmentId: plat.segmentId, attributed: true, reason: `${cleanDesc} (station-level advisory → platform elevator)` };
+            // A platform default at a station that ALSO has auxiliary chains
+            // (Coliseum) is a GUESS that could actually be an auxiliary elevator
+            // whose advisory wording we haven't confirmed — flag for review. At
+            // a station with no auxiliaries (Richmond, Powell) it's unambiguous.
+            const hasAux = stationModels.some((m) => m.auxiliary);
+            outages.push({ ...base, unitExternalId: plat.elevatorExternalId, segmentId: plat.segmentId, attributed: true, needsReview: hasAux || undefined, reason: `${cleanDesc} (station-level advisory → platform elevator${hasAux ? "; unconfirmed — station has other equipment" : ""})` });
+            continue;
           }
           // Genuinely ambiguous (matched >1 chain, or >1 platform elevator) ->
-          // unspecified elevator at station.
-          return { ...base, unitExternalId: `${abbr}-UNSPECIFIED`, attributed: false, reason: `${desc || "Elevator out of service"} (unspecified elevator — conservative)` };
+          // unspecified elevator at station. Flag for review.
+          outages.push({ ...base, unitExternalId: `${abbr}-UNSPECIFIED`, attributed: false, needsReview: true, reason: `${desc || "Elevator out of service"} (unspecified elevator — conservative)` });
+          continue;
         }
-        return { ...base, unitExternalId: abbr, attributed: false, reason: desc || "Elevator out of service" };
-      });
+        outages.push({ ...base, unitExternalId: abbr, attributed: false, needsReview: true, reason: desc || "Elevator out of service" });
+      }
 
       // Live-outage planned upgrade, EXACT-match only: when a planned
       // advisory attributed to a specific elevator is active right now AND a
@@ -247,6 +279,7 @@ export function createBartAdapter(config: BartConfig = BART_CONFIG): Adapter {
         units,
         outages,
         upcoming,
+        otherEquipment,
       };
     },
   };

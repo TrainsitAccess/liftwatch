@@ -4,6 +4,7 @@ import { getSystem } from "./catalog/systems.js";
 import { overridesFor } from "./catalog/redundancy-overrides.js";
 import { attributionOverridesFor } from "./catalog/attribution-overrides.js";
 import { ingest, type IngestResult } from "./ingest.js";
+import { pushNotification } from "./lib/notify.js";
 import type { NormalizedRead } from "./types.js";
 
 // The archiving-relevant core of a poll, shared between the CLI (src/poll.ts,
@@ -55,5 +56,19 @@ export async function pollSystem(
   if (!db) return { systemId, read, overrideWarnings, result: null };
 
   const result = await ingest(db, system, read);
+
+  // UNIVERSAL "unidentified outage" flag: when a poll opens an outage we
+  // couldn't confidently place onto a known elevator, ping a human (ntfy).
+  // Only NEWLY-opened flagged outages notify, so a standing one doesn't
+  // re-alert every 5 minutes. Best-effort — a failed push never fails the poll.
+  if (result.newlyFlagged.length) {
+    const lines = result.newlyFlagged.map((f) => `• ${f.stationName} (${f.unitExternalId}): ${f.reason}`).join("\n");
+    await pushNotification(
+      `LiftWatch: ${result.newlyFlagged.length} unidentified elevator outage(s) — ${systemId}`,
+      `An outage couldn't be confidently placed onto a known elevator and needs review:\n\n${lines}`,
+      { priority: "high", tags: "elevator,warning" },
+    );
+  }
+
   return { systemId, read, overrideWarnings, result };
 }

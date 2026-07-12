@@ -1,4 +1,5 @@
 import { stationModelsFor } from "../catalog/station-models.js";
+import { matchBartOtherEquipment } from "../catalog/bart-other-equipment.js";
 import {
   attributeOutage,
   attributeOutageAcrossChains,
@@ -152,12 +153,34 @@ check('RICH bare "Station" -> RICH-PLAT (single platform elevator)',
   platformDefaultElevator(models.get("RICH")!), { elevatorExternalId: "RICH-PLAT", segmentId: "concourse-platform" });
 check('POWL bare "Station" -> POWL-PLAT (street elevator is a separate segment)',
   platformDefaultElevator(models.get("POWL")!), { elevatorExternalId: "POWL-PLAT", segmentId: "mezzanine-platform" });
-check('COLS bare "Station" -> COLS-EL (single-segment station elevator)',
+check('COLS bare "Station" -> COLS-EL (auxiliary chains skipped, platform chain remains)',
   platformDefaultElevator(models.get("COLS")!), { elevatorExternalId: "COLS-EL", segmentId: "station" });
 check('HAYW bare "Station" -> null (two per-direction platform elevators, never guess)',
   platformDefaultElevator(models.get("HAYW")!), null);
 
-const total = 45;
+console.log("\n  Coliseum multi-destination attribution (2026-07-12 — 4 tracked elevators;");
+console.log("  auxiliary chains attribute distinctly and never hijack the platform default):");
+const colsChains = models.get("COLS")!;
+check('COLS "Station - Tunnel" -> COLS-ARENA (per Bryce: BART\'s "Tunnel" text is the arena elevator)',
+  attributeOutageAcrossChains("Station - Tunnel", colsChains), { model: mChain("COLS", " (Arena footbridge)"), elevatorExternalId: "COLS-ARENA", segmentId: "arena" });
+check('COLS "Airport Connector out" -> COLS-OAC (GUESSED hint, pending live confirmation)',
+  attributeOutageAcrossChains("Airport Connector out", colsChains), { model: mChain("COLS", " (Oakland Airport Connector)"), elevatorExternalId: "COLS-OAC", segmentId: "oac" });
+check('COLS "Terminal/Station" -> null via hints (station elevator is hint-free by design)',
+  attributeOutageAcrossChains("Terminal/Station", colsChains), null);
+check('COLS "Terminal/Station" then platform-default -> COLS-EL (auxiliaries filtered out)',
+  platformDefaultElevator(colsChains), { elevatorExternalId: "COLS-EL", segmentId: "station" });
+
+console.log("\n  Other accessibility equipment + unidentified-outage flag (2026-07-12):");
+check('COLS "parking" advisory -> the wheelchair lift (other equipment, NOT an elevator)',
+  matchBartOtherEquipment("COLS", "Parking lot lift out")?.facilityExternalId ?? null, "COLS-PARKING-LIFT");
+check('COLS "Terminal/Station" -> NOT other equipment (no parking hint)',
+  matchBartOtherEquipment("COLS", "Terminal/Station"), null);
+check('COLS has auxiliary chains -> a platform default there is flagged needsReview',
+  models.get("COLS")!.some((m) => m.auxiliary === true), true);
+check('RICH has no auxiliary chains -> its platform default is confident (no flag)',
+  models.get("RICH")!.some((m) => m.auxiliary === true), false);
+
+const total = 53;
 if (failures) {
   console.error(`\n  ${failures} check(s) FAILED\n`);
   process.exitCode = 1;

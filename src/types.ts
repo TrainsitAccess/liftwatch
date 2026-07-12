@@ -62,28 +62,37 @@ export interface NormalizedOutage {
   // elevator (true) or fell back to an unspecified/conservative unit (false).
   attributed?: boolean;
   segmentId?: string;
+  // UNIVERSAL "unidentified outage" flag: an outage we could NOT confidently
+  // place onto a specific known elevator — a conservative/unspecified fallback,
+  // or a low-confidence guess (BART's platform default at a station that also
+  // has other equipment). Surfaced for human review (a "Needs review" board, a
+  // poll warning, and an ntfy push). Any adapter may set it; today BART does.
+  needsReview?: boolean;
 }
 
-// A NON-ELEVATOR accessibility facility whose loss removes step-free/accessible
-// access — a mini-high or fully-elevated boarding platform, a portable boarding
-// lift, a ramp. Deliberately SEPARATE from elevators: these never enter the
-// elevator inventory, the "% of fleet down" math, or any elevator leaderboard.
-// They are a supplementary "before you go" access signal, archived in their own
-// table. Only adapters whose agency exposes such facilities populate these
-// (MBTA today); every other system leaves them undefined.
-export type AccessFacilityType =
+// OTHER ACCESSIBILITY EQUIPMENT — a NON-ELEVATOR facility whose loss removes
+// step-free/accessible access — a mini-high or fully-elevated boarding platform,
+// a portable boarding lift, a wheelchair lift, a ramp. Deliberately SEPARATE
+// from elevators: these never enter the elevator inventory, the "% of fleet
+// down" math, or any elevator leaderboard. They are a supplementary "before you
+// go" access signal, archived in their own table. Only adapters whose agency
+// exposes such equipment populate these (MBTA by facility type; BART's Coliseum
+// parking-lot wheelchair lift by curated matchHint); other systems leave them
+// undefined.
+export type OtherEquipmentType =
   | "elevated_subplatform" // mini-high platform
   | "fully_elevated_platform"
   | "portable_boarding_lift"
+  | "wheelchair_lift"
   | "ramp";
 
-/** One non-elevator accessibility facility currently out of service. */
-export interface NormalizedAccessIssue {
-  facilityExternalId: string; // agency's stable facility id, e.g. "subplat-SB-0189-1"
-  facilityType: AccessFacilityType;
+/** One piece of other accessibility equipment currently out of service. */
+export interface NormalizedOtherEquipment {
+  facilityExternalId: string; // agency's stable id, e.g. "subplat-SB-0189-1"
+  facilityType: OtherEquipmentType;
   stationExternalId?: string;
   stationName: string;
-  description?: string; // facility long name, e.g. "Stoughton mini-high platform"
+  description?: string; // long name, e.g. "Stoughton mini-high platform"
   isPlanned: boolean;
   isUpcoming: boolean;
   reason?: string;
@@ -114,11 +123,11 @@ export interface NormalizedRead {
   // only discovered as they break). Ingest upserts these BEFORE unit-derived
   // stations; units still add any station missing from this list.
   stations?: NormalizedStation[];
-  // NON-ELEVATOR accessibility-facility outages, currently out (see
-  // NormalizedAccessIssue). Walled off from all elevator metrics; archived
-  // separately. Populated only by adapters whose agency exposes such
-  // facilities (MBTA); undefined elsewhere.
-  accessIssues?: NormalizedAccessIssue[];
+  // OTHER ACCESSIBILITY EQUIPMENT outages, currently out (see
+  // NormalizedOtherEquipment). Walled off from all elevator metrics; archived
+  // separately. Populated only by adapters whose agency exposes such equipment
+  // (MBTA, BART Coliseum lift); undefined elsewhere.
+  otherEquipment?: NormalizedOtherEquipment[];
 }
 
 /** The contract every system adapter implements. */

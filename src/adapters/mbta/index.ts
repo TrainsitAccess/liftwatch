@@ -1,7 +1,7 @@
 import type {
-  AccessFacilityType,
+  OtherEquipmentType,
   Adapter,
-  NormalizedAccessIssue,
+  NormalizedOtherEquipment,
   NormalizedOutage,
   NormalizedRead,
   NormalizedStation,
@@ -60,12 +60,12 @@ export const MBTA_CONFIG: MbtaConfig = {
 const PLANNED_CAUSES = new Set(["MAINTENANCE", "CONSTRUCTION"]);
 
 // NON-ELEVATOR accessibility facilities whose loss removes step-free/accessible
-// access — surfaced as a SEPARATE access-issue layer, never mixed into elevator
+// access — surfaced as a SEPARATE other-equipment layer, never mixed into elevator
 // metrics. Escalators are deliberately EXCLUDED (not step-free/wheelchair
 // access, and the project reserves-but-doesn't-track them). The MBTA raw
-// facility `type` maps to our normalized AccessFacilityType here; this map also
+// facility `type` maps to our normalized OtherEquipmentType here; this map also
 // IS the fetch filter (its keys are the facility types we request).
-const ACCESS_FACILITY_TYPES: Record<string, AccessFacilityType> = {
+const OTHER_EQUIPMENT_TYPES: Record<string, OtherEquipmentType> = {
   ELEVATED_SUBPLATFORM: "elevated_subplatform",
   FULLY_ELEVATED_PLATFORM: "fully_elevated_platform",
   PORTABLE_BOARDING_LIFT: "portable_boarding_lift",
@@ -110,11 +110,11 @@ export function createMbtaAdapter(config: MbtaConfig = MBTA_CONFIG): Adapter {
   // dropped) even though a quick manual re-check moments later looked clean.
   const facilitiesUrl = `${config.apiBase}/facilities?filter%5Btype%5D=ELEVATOR&sort=id&page%5Blimit%5D=200&include=stop`;
   const alertsUrl = `${config.apiBase}/alerts?filter%5Bactivity%5D=USING_WHEELCHAIR&sort=id&page%5Blimit%5D=200`;
-  // The non-elevator accessibility facilities (see ACCESS_FACILITY_TYPES), for
-  // the separate access-issue layer. A distinct facilities call so the elevator
+  // The non-elevator accessibility facilities (see OTHER_EQUIPMENT_TYPES), for
+  // the separate other-equipment layer. A distinct facilities call so the elevator
   // inventory above stays exactly what it was.
-  const accessTypeFilter = Object.keys(ACCESS_FACILITY_TYPES).join(",");
-  const accessFacilitiesUrl = `${config.apiBase}/facilities?filter%5Btype%5D=${accessTypeFilter}&sort=id&page%5Blimit%5D=500&include=stop`;
+  const equipmentTypeFilter = Object.keys(OTHER_EQUIPMENT_TYPES).join(",");
+  const accessFacilitiesUrl = `${config.apiBase}/facilities?filter%5Btype%5D=${equipmentTypeFilter}&sort=id&page%5Blimit%5D=500&include=stop`;
 
   return {
     systemId: config.systemId,
@@ -147,7 +147,7 @@ export function createMbtaAdapter(config: MbtaConfig = MBTA_CONFIG): Adapter {
       }));
       const accessFacilityById = new Map(
         accessRes.data
-          .filter((f) => ACCESS_FACILITY_TYPES[f.attributes.type])
+          .filter((f) => OTHER_EQUIPMENT_TYPES[f.attributes.type])
           .map((f) => {
             const stopId = f.relationships.stop.data?.id ?? f.id;
             const stop = accessStopById.get(stopId);
@@ -155,7 +155,7 @@ export function createMbtaAdapter(config: MbtaConfig = MBTA_CONFIG): Adapter {
               f.id,
               {
                 // Non-null: the .filter above kept only mapped types.
-                facilityType: ACCESS_FACILITY_TYPES[f.attributes.type]!,
+                facilityType: OTHER_EQUIPMENT_TYPES[f.attributes.type]!,
                 stationExternalId: stopId,
                 stationName: stop?.attributes.name ?? stopId,
                 description: f.attributes.long_name || f.attributes.short_name,
@@ -195,7 +195,7 @@ export function createMbtaAdapter(config: MbtaConfig = MBTA_CONFIG): Adapter {
 
       const current: NormalizedOutage[] = [];
       const upcoming: NormalizedOutage[] = [];
-      const accessIssues: NormalizedAccessIssue[] = [];
+      const otherEquipment: NormalizedOtherEquipment[] = [];
       const now = Date.now();
       const seenFacility = new Set<string>();
       const seenAccessFacility = new Set<string>();
@@ -251,7 +251,7 @@ export function createMbtaAdapter(config: MbtaConfig = MBTA_CONFIG): Adapter {
             if (seenAccessFacility.has(facilityId)) continue; // one open issue per facility
             seenAccessFacility.add(facilityId);
             const fac = accessFacilityById.get(facilityId)!;
-            accessIssues.push({
+            otherEquipment.push({
               facilityExternalId: facilityId,
               facilityType: fac.facilityType,
               stationExternalId: fac.stationExternalId,
@@ -274,7 +274,7 @@ export function createMbtaAdapter(config: MbtaConfig = MBTA_CONFIG): Adapter {
         outages: current,
         upcoming,
         stations,
-        accessIssues,
+        otherEquipment,
       };
     },
   };

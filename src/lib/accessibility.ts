@@ -46,6 +46,13 @@ export interface StationModel {
   coveredStationExternalIds?: string[];
   segments: AccessSegment[];
   note?: string;
+  // An AUXILIARY chain is a tracked access path at the station that is NOT the
+  // core transit-platform route — e.g. Coliseum's elevators to the Oakland
+  // Airport Connector, the arena footbridge, or the parking lot. It gets its
+  // own access status (via chainLabel) like any chain, but it is excluded from
+  // platformDefaultElevator: a bare "Station" advisory means the PLATFORM
+  // elevator, never one of these. Omit for ordinary chains.
+  auxiliary?: boolean;
 }
 
 /** Every feed station id this model accounts for (canonical + any merged-in). */
@@ -147,7 +154,10 @@ export function attributeOutageAcrossChains(description: string, models: Station
 // unit). "Unless I say otherwise" = a station whose real meaning differs gets a
 // matchHint that resolves it specifically before this default is ever reached.
 export function platformDefaultElevator(models: StationModel[]): Attribution | null {
-  const terminals = models.map((m) => m.segments[m.segments.length - 1]).filter((s): s is AccessSegment => !!s);
+  // Auxiliary chains (airport connector, arena bridge, parking lot) are never
+  // what a bare "station elevator" advisory means — consider only core chains.
+  const core = models.filter((m) => !m.auxiliary);
+  const terminals = core.map((m) => m.segments[m.segments.length - 1]).filter((s): s is AccessSegment => !!s);
   const byId = new Map(terminals.flatMap((s) => s.elevators.map((e) => [e.externalId, { segmentId: s.id, e }] as const)));
   if (byId.size !== 1) return null;
   const only = [...byId.values()][0]!;

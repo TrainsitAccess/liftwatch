@@ -14,8 +14,11 @@ export interface IngestResult {
   upcomingStored: number;
   offlineOpened: number;
   offlineClosed: number;
-  accessOpened: number;
-  accessClosed: number;
+  otherEquipmentOpened: number;
+  otherEquipmentClosed: number;
+  // Newly-opened outages we couldn't confidently place — for the human-flag
+  // path (poll warning + ntfy push). Empty on a clean poll.
+  newlyFlagged: { unitExternalId: string; stationName: string; reason: string }[];
 }
 
 const unitId = (systemId: string, ext: string) => `${systemId}:${ext}`;
@@ -424,6 +427,10 @@ export async function ingest(
 
     const currentlyOut = new Set<string>();
     let eventsOpened = 0;
+    // Newly-OPENED outages we couldn't confidently place (needsReview) — returned
+    // so the caller can flag a human (poll warning + ntfy push). Only newly
+    // opened ones, so a long-standing flagged outage doesn't re-notify each poll.
+    const newlyFlagged: { unitExternalId: string; stationName: string; reason: string }[] = [];
     for (const o of read.outages) {
       const redirectTo = attributionOverrides.get(o.unitExternalId)?.toUnitExternalId;
       const uId = unitId(system.id, redirectTo ?? o.unitExternalId);
@@ -444,6 +451,7 @@ export async function ingest(
               started_at: now,
               is_planned: o.isPlanned,
               attributed: o.attributed ?? null,
+              needs_review: o.needsReview ?? false,
               reason: o.reason ?? null,
               source_started_at: o.sourceStartedAt ?? null,
               estimated_return: o.estimatedReturn ?? null,
@@ -451,6 +459,7 @@ export async function ingest(
           ).error,
         );
         eventsOpened++;
+        if (o.needsReview) newlyFlagged.push({ unitExternalId: redirectTo ?? o.unitExternalId, stationName: o.stationName, reason: o.reason ?? "" });
       } else {
         fail(
           "refresh event",
@@ -459,6 +468,7 @@ export async function ingest(
               .from("outage_events")
               .update({
                 is_planned: o.isPlanned,
+                needs_review: o.needsReview ?? false,
                 reason: o.reason ?? null,
                 estimated_return: o.estimatedReturn ?? null,
                 updated_at: now,
@@ -479,22 +489,22 @@ export async function ingest(
       eventsClosed++;
     }
 
-    // 6.5 Access events: NON-ELEVATOR accessibility-facility outages (mini-high
-    //     platforms, portable lifts, ramps — see NormalizedAccessIssue). Same
+    // 6.5 Other-equipment events: NON-ELEVATOR other-equipment outages (mini-high
+    //     platforms, portable lifts, ramps — see NormalizedOtherEquipment). Same
     //     open/refresh/close treatment as outages, in the denormalized
-    //     access_events table (no FK to units — these are NOT elevators and never
+    //     other_equipment_events table (no FK to units — these are NOT elevators and never
     //     touch elevator metrics). Keyed by (system_id, facility_external_id).
-    //     Only adapters that expose such facilities populate read.accessIssues
+    //     Only adapters that expose such facilities populate read.otherEquipment
     //     (MBTA); it's undefined elsewhere, so this is a no-op for other systems.
-    //     Degrades gracefully (warn + skip) until the access_events table exists.
+    //     Degrades gracefully (warn + skip) until the other_equipment_events table exists.
     // Always run (even with zero current issues) so a resolved issue closes.
-    let accessOpened = 0;
-    let accessClosed = 0;
-    const accessIssues = read.accessIssues ?? [];
+    let otherEquipmentOpened = 0;
+    let otherEquipmentClosed = 0;
+    const otherEquipment = read.otherEquipment ?? [];
     {
       try {
         const openAccess = await db
-          .from("access_events")
+          .from("other_equipment_events")
           .select("id, facility_external_id")
           .eq("system_id", system.id)
           .is("ended_at", null);
@@ -504,7 +514,7 @@ export async function ingest(
         );
 
         const currentAccess = new Set<string>();
-        for (const ai of accessIssues) {
+        for (const ai of otherEquipment) {
           if (currentAccess.has(ai.facilityExternalId)) continue; // one open issue per facility
           currentAccess.add(ai.facilityExternalId);
           const existing = openAccessByFacility.get(ai.facilityExternalId);
@@ -512,7 +522,7 @@ export async function ingest(
             fail(
               "open access event",
               (
-                await db.from("access_events").insert({
+                await db.from("other_equipment_events").insert({
                   system_id: system.id,
                   station_id: ai.stationExternalId ? stationId(system.id, ai.stationExternalId) : null,
                   facility_external_id: ai.facilityExternalId,
@@ -526,13 +536,13 @@ export async function ingest(
                 })
               ).error,
             );
-            accessOpened++;
+            otherEquipmentOpened++;
           } else {
             fail(
               "refresh access event",
               (
                 await db
-                  .from("access_events")
+                  .from("other_equipment_events")
                   .update({
                     is_planned: ai.isPlanned,
                     description: ai.description ?? null,
@@ -550,14 +560,14 @@ export async function ingest(
           if (currentAccess.has(facilityId)) continue;
           fail(
             "close access event",
-            (await db.from("access_events").update({ ended_at: now, updated_at: now }).eq("id", eventId)).error,
+            (await db.from("other_equipment_events").update({ ended_at: now, updated_at: now }).eq("id", eventId)).error,
           );
-          accessClosed++;
+          otherEquipmentClosed++;
         }
       } catch (err) {
-        if (/access_events/.test(String(err))) {
+        if (/other_equipment_events/.test(String(err))) {
           console.warn(
-            `  ⚠ ${system.id}: access_events table missing — access-issue tracking skipped (apply the addition in db/schema.sql)`,
+            `  ⚠ ${system.id}: other_equipment_events table missing — other-equipment tracking skipped (apply the addition in db/schema.sql)`,
           );
         } else {
           throw err;
@@ -600,8 +610,9 @@ export async function ingest(
       upcomingStored: read.upcoming.length,
       offlineOpened,
       offlineClosed,
-      accessOpened,
-      accessClosed,
+      otherEquipmentOpened,
+      otherEquipmentClosed,
+      newlyFlagged,
     };
 
     fail(

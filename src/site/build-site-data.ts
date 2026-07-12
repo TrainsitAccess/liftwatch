@@ -31,8 +31,8 @@ export interface SiteData {
   systemDetails: { id: string; detail: Record<string, unknown> }[]; // systems/{id}.json
 }
 
-// Rider-facing labels for non-elevator accessibility-facility types (the
-// access-issue layer). Kept here so the site renders a clean category, not a
+// Rider-facing labels for non-elevator equipment types (the
+// other-equipment layer). Kept here so the site renders a clean category, not a
 // raw enum. Unknown types fall back to a title-cased version.
 const ACCESS_TYPE_LABELS: Record<string, string> = {
   elevated_subplatform: "Mini-high platform",
@@ -40,7 +40,7 @@ const ACCESS_TYPE_LABELS: Record<string, string> = {
   portable_boarding_lift: "Portable lift",
   ramp: "Ramp",
 };
-function accessTypeLabelFallback(type: string): string {
+function equipmentTypeLabelFallback(type: string): string {
   return type.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
@@ -93,7 +93,7 @@ const [systemsData, unitsData, stationsData, eventsData, upcomingData] = await P
     (from, to) =>
       db
         .from("outage_events")
-        .select("unit_id, system_id, station_id, is_planned, reason, started_at, ended_at, source_started_at, estimated_return, attributed")
+        .select("unit_id, system_id, station_id, is_planned, reason, started_at, ended_at, source_started_at, estimated_return, attributed, needs_review")
         .range(from, to),
     "outage_events",
   ),
@@ -138,11 +138,11 @@ for (const o of offlineData) {
   if (o.ended_at == null) openOfflineBySystem.set(o.system_id, (openOfflineBySystem.get(o.system_id) ?? 0) + 1);
 }
 
-// Access events — NON-ELEVATOR accessibility-facility outages (mini-high
+// Other-equipment events — NON-ELEVATOR other-equipment outages (mini-high
 // platforms, portable lifts, ramps; see ingest 6.5). A SEPARATE layer, never
 // mixed into elevator inventory/%/leaderboards. Also a hand-applied later
 // schema addition, so degrade to empty until the table exists.
-type AccessRow = {
+type OtherEquipmentRow = {
   system_id: string;
   station_id: string | null;
   facility_external_id: string;
@@ -155,27 +155,27 @@ type AccessRow = {
   source_started_at: string | null;
   estimated_return: string | null;
 };
-let accessData: AccessRow[] = [];
+let otherEquipmentData: OtherEquipmentRow[] = [];
 try {
-  accessData = await fetchAll<AccessRow>(
+  otherEquipmentData = await fetchAll<OtherEquipmentRow>(
     (from, to) =>
       db
-        .from("access_events")
+        .from("other_equipment_events")
         .select(
           "system_id, station_id, facility_external_id, facility_type, description, started_at, ended_at, is_planned, reason, source_started_at, estimated_return",
         )
         .range(from, to),
-    "access_events",
+    "other_equipment_events",
   );
 } catch (err) {
-  if (/access_events/.test(String(err))) {
-    console.warn("access_events table missing — access-issue boards empty (apply the db/schema.sql addition)");
+  if (/other_equipment_events/.test(String(err))) {
+    console.warn("other_equipment_events table missing — other-equipment boards empty (apply the db/schema.sql addition)");
   } else {
     throw err;
   }
 }
 const openAccessBySystem = new Map<string, number>();
-for (const a of accessData) {
+for (const a of otherEquipmentData) {
   if (a.ended_at == null) openAccessBySystem.set(a.system_id, (openAccessBySystem.get(a.system_id) ?? 0) + 1);
 }
 
@@ -552,17 +552,17 @@ function buildSystemDetail(systemId: string) {
     })
     .sort((a, b) => (a.restored === null && b.restored === null ? b.since.localeCompare(a.since) : a.restored === null ? -1 : b.restored === null ? 1 : b.restored.localeCompare(a.restored)));
 
-  // --- Access issues board: NON-ELEVATOR accessibility facilities out of
+  // --- Other accessibility equipment board: NON-ELEVATOR accessibility equipment out of
   // service (mini-high platforms, portable lifts, ramps). A separate "before
   // you go" signal, archived like outages; NEVER counted in elevator metrics.
   // Current (still out) first, then the recent resolved log.
-  const systemAccess = accessData.filter((a) => a.system_id === systemId);
-  const accessIssues = systemAccess
+  const systemAccess = otherEquipmentData.filter((a) => a.system_id === systemId);
+  const otherEquipment = systemAccess
     .map((a) => ({
       facilityId: a.facility_external_id,
       type: a.facility_type,
       typeLabel: ACCESS_TYPE_LABELS[a.facility_type] ?? a.facility_type,
-      facility: a.description || accessTypeLabelFallback(a.facility_type),
+      facility: a.description || equipmentTypeLabelFallback(a.facility_type),
       station: (a.station_id && stationName.get(a.station_id)) || a.description || "Unknown",
       planned: a.is_planned,
       reason: a.reason,
@@ -796,10 +796,30 @@ function buildSystemDetail(systemId: string) {
     .sort((a, b) => b.count - a.count)
     .slice(0, 15);
 
+  // "Needs review" — currently-open outages we couldn't confidently place onto
+  // a specific known elevator (needs_review). The universal human-flag surface.
+  const needsReview = systemEvents
+    .filter((e) => e.ended_at == null && e.needs_review === true)
+    .map((e) => {
+      const unit = unitById.get(e.unit_id as string);
+      const ext = unit?.external_id as string | undefined;
+      const since = (e.source_started_at as string | null) ?? (e.started_at as string);
+      const sid = (e.station_id as string | null) ?? (unit?.station_id as string | null);
+      return {
+        station: displayStationName(sid, ext),
+        unitId: ext ?? "?",
+        reason: (e.reason as string | null) ?? null,
+        since,
+        days: daysSince(since),
+      };
+    })
+    .sort((a, b) => b.days - a.days);
+
   return {
     currentlyBroken,
+    needsReview: { current: needsReview.length, rows: needsReview },
     offline: { current: offlineLog.filter((o) => o.restored === null).length, log: offlineLog },
-    accessIssues: { current: accessIssues.filter((a) => a.restored === null).length, log: accessIssues },
+    otherEquipment: { current: otherEquipment.filter((a) => a.restored === null).length, log: otherEquipment },
     stationAccess: { rows: stationAccess, chainsModeled: chainsTotal },
     scheduledWork,
     accessibilityBlackouts,

@@ -437,17 +437,42 @@ export const BART_STATION_MODELS: StationModel[] = [
     segments: [{ id: "connector", label: "Connector platform elevator", elevators: [{ externalId: "OAKL-EL", label: "Airport connector elevator", matchHints: ["elevator"] }] }],
   },
   {
-    // Coliseum: modeled on its PRIMARY station elevator only (the one
-    // covering ordinary BART station entry/exit). BART's page also lists an
-    // Oakland Airport Connector elevator, a wheelchair lift to a parking lot,
-    // and a pedestrian bridge elevator to the arena — genuinely auxiliary
-    // access points (not the core street/platform path), left unmodeled
-    // (not incorrectly claimed as backups for the main elevator, and not
-    // incorrectly claimed as the main elevator's own segments either).
+    // Coliseum: BART lists FOUR pieces of equipment here (accessible-station
+    // page). Three are ELEVATORS, each serving an INDEPENDENT destination, so
+    // each is its own chain sharing the COLS id — the main station chain (BART
+    // platforms) plus two AUXILIARY chains (Oakland Airport Connector, arena
+    // footbridge). An auxiliary outage severs only its own labeled route, never
+    // the BART platforms. The FOURTH, the parking-lot wheelchair LIFT, is NOT an
+    // elevator — it lives in the other-accessibility-equipment layer
+    // (bart-other-equipment.ts), never the elevator inventory. HINT ASSIGNMENT
+    // per Bryce's own observations of BART's
+    // (unreliable) live text: the STATION elevator gets NO hint — it's the
+    // platform default, so anything not claimed by an auxiliary lands here
+    // ("Terminal/Station" is the platform elevator, per Bryce); "Station -
+    // Tunnel" is the ARENA footbridge elevator (per Bryce), so "tunnel" hints
+    // the arena, NOT the station. The OAC hint is still a GUESS from BART's page
+    // name (no live OAC advisory observed) — flagged for confirmation, same
+    // honesty caveat as the unconfirmed per-direction stations.
     systemId: "bart-bay-area",
     stationExternalId: "COLS",
-    note: "Single main station elevator, no backup for ordinary station entry/exit — BART's guidance is an AC Transit bus to Fruitvale. Coliseum also has separate, auxiliary elevators for the Oakland Airport Connector, a parking-lot wheelchair lift, and a pedestrian bridge to the arena — not modeled here as they don't serve the core station entry/exit path.",
-    segments: [{ id: "station", label: "Station elevator", elevators: [{ externalId: "COLS-EL", label: "Station elevator", matchHints: ["elevator"] }] }],
+    note: "Station elevator: sole step-free access to the BART platforms — no in-station backup, BART's outage guidance is an AC Transit bus to Fruitvale (2.1 mi). No matchHint: it is the platform default, so a bare/unclaimed COLS advisory resolves here.",
+    segments: [{ id: "station", label: "Station elevator (to BART platforms)", elevators: [{ externalId: "COLS-EL", label: "Station elevator" }] }],
+  },
+  {
+    systemId: "bart-bay-area",
+    stationExternalId: "COLS",
+    chainLabel: " (Oakland Airport Connector)",
+    auxiliary: true,
+    note: "Elevator to the Oakland Airport Connector (OAC) platform — a separate BART destination. Sole step-free access to the OAC (BART's outage guidance is an AC Transit bus to the airport); its loss severs the OAC route only, not the BART platforms. Hints are a GUESS (no observed OAC advisory).",
+    segments: [{ id: "oac", label: "Elevator to Oakland Airport Connector", elevators: [{ externalId: "COLS-OAC", label: "Oakland Airport Connector elevator", matchHints: ["airport", "connector", "oac"] }] }],
+  },
+  {
+    systemId: "bart-bay-area",
+    stationExternalId: "COLS",
+    chainLabel: " (Arena footbridge)",
+    auxiliary: true,
+    note: "Elevator to the pedestrian footbridge to the Oakland Arena. Not sole access — BART's guidance routes around it via a ramp from the Amtrak parking lot (73rd St), a step-free alternative, so its loss does not sever step-free access to the arena. Bryce: BART's 'Station - Tunnel' advisory refers to THIS elevator, hence the 'tunnel' hint.",
+    segments: [{ id: "arena", label: "Footbridge elevator to arena", stepFreeAlternative: true, elevators: [{ externalId: "COLS-ARENA", label: "Arena footbridge elevator", matchHints: ["tunnel", "arena", "footbridge"] }] }],
   },
   {
     // Daly City: Platforms 1&2 (East Bay direction) and Platform 3 (SFO/
