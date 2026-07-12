@@ -225,6 +225,17 @@ parking lot). A station is accessible only if **every** segment is up.
   SPOF board) for units whose `redundancy_source` is NOT `assumed` — the
   assumed policy default is a conservative unknown, not a confirmed fact.
   Blackout/streak boards keep the conservative history-based logic.
+- **Step-free detour policy (2026-07-10, locked)**: an ELEVATOR-FREE detour of
+  at most **0.3 miles** counts as a step-free alternative, with the walk
+  always disclosed in the rider-facing note (Daly City's surface walk
+  qualifies; Warm Springs' 0.8 mi and any detour that depends on another
+  elevator do not). **Garage elevators (Millbrae precedent)**: a garage
+  elevator providing a back access route is a REAL chain member when the
+  agency's guidance or a human confirms the route; outside chains only when
+  its destination is unknowable. **Agency-contradicts-us**: an agency's own
+  elevator-free alternative guidance is applied via a HUMAN-APPROVED
+  allowlist (`APPROVED_STREET_ALTERNATES` in scripts/mbta-chains.mts), never
+  auto-parsed, quoting the agency in the note.
 - **MBTA simple-station chains are GENERATED from feed text, validated by
   MBTA's own rider guidance** (2026-07-10). Same engine as rail
   (`chain-inference.ts`) + an MBTA vocabulary mapper
@@ -238,12 +249,28 @@ parking lot). A station is accessible only if **every** segment is up.
   take an Ashmont-bound train back…") is a DETOUR, not a backup (the BART
   cross-station rule) — checking named-first misread 13 stations on the
   first run. Output: 39/80 stations, 60 chains
-  (`src/catalog/mbta-data/chains.json` + `chains-excluded.json` 41 stations +
-  `review-flags.json`: 12 street-alternates never auto-applied + 3
-  unvalidated). The adapter emits chain members as `serving_text`; un-modeled
+  (`src/catalog/mbta-data/chains.json` + `chains-excluded.json` 41 stations).
+  The adapter emits chain members as `serving_text`; un-modeled
   units keep single_elevator/assumed. Offline: `npm run check:mbta-chains`
   (full-feed fixture reproduction + Fields Corner detour + Wellington
   exclusion regressions).
+- **MBTA joint review pass COMPLETE (2026-07-12): `review-flags.json` is now
+  empty.** Every flagged street-alternate and no-guidance elevator was walked
+  through with Bryce and resolved into one of four HUMAN-approved lists in
+  `scripts/mbta-chains.mts` (all re-asserted by `check:mbta-chains`, now 18
+  checks): (1) `APPROVED_STREET_ALTERNATES` — 8 elevators (Framingham 50/51,
+  Natick 750/751, Ball Square 769, Union Square 771, East Taunton 778/779):
+  MBTA names an elevator-free ≤0.3-mi step-free route → sets
+  `stepFreeAlternative` + discloses the walk. (2) `DISCLOSED_ALTERNATES` — NEW
+  note-only category (South Acton 704/705): a real step-free route BEYOND 0.3
+  mi → NO step-free credit (chains still read NO ACCESS) but MBTA's routing is
+  surfaced in the note for riders willing to walk it. (3) `CONFIRMED_REDUNDANT`
+  — NEW guarded human override (TF Green 400/401): a redundant pair with NO
+  `alternate-service-text`; the human is the signal, and a check guards that a
+  feed change making one sole-access excludes the station loudly. (4)
+  Sibling-corroboration (generic): an elevator named by a sibling's guidance
+  (Salem 996 → "use nearby 997") validates the un-texted sibling — no override.
+  Pawtucket 405/406 confirmed redundant via the earlier `named-generic` parser.
 - **LIRR/MNR simple-station chains are GENERATED from feed text,
   ground-truth-gated by the hand-curated models (14 as of Greenwich)**
   (2026-07-10). eestatus has no

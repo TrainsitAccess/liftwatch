@@ -472,8 +472,19 @@ export const BART_STATION_MODELS: StationModel[] = [
     systemId: "bart-bay-area",
     stationExternalId: "DALY",
     chainLabel: " (pedestrian tunnel)",
-    note: "The pedestrian-tunnel elevators (connecting the De Long St. parking area to the station) have no backup for reaching the station from that side — BART's guidance is to walk/roll the surface route (about 0.3 mi) via John Daly Blvd. and De Long St. instead.",
-    segments: [{ id: "tunnel", label: "Pedestrian tunnel elevator", elevators: [{ externalId: "DALY-TUNNEL", label: "Pedestrian tunnel elevator", matchHints: ["tunnel"] }] }],
+    note: "With the pedestrian-tunnel elevator out, BART's own step-free alternative is the surface route: a walk/roll of about 0.3 miles via John Daly Blvd. and De Long St. — within the project's 0.3-mile elevator-free-detour limit, so this route stays accessible, with the walk disclosed here.",
+    segments: [{
+      id: "tunnel",
+      label: "Pedestrian tunnel elevator (surface walk ~0.3 mi as backup)",
+      // Policy (2026-07-10, Bryce): an ELEVATOR-FREE step-free detour of at
+      // most 0.3 miles counts as a real alternative — but the walk must be
+      // disclosed to the rider (note + label above). Warm Springs' 0.8 mi
+      // stays a non-backup; 19th St's 0.3 mi walk depends on ANOTHER
+      // station's elevator, so it stays a non-backup too (the detour itself
+      // must be elevator-free).
+      stepFreeAlternative: true,
+      elevators: [{ externalId: "DALY-TUNNEL", label: "Pedestrian tunnel elevator", matchHints: ["tunnel"] }],
+    }],
   },
   {
     // South Hayward: a genuinely asymmetric two-leg layout — the "station"

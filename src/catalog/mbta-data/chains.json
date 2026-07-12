@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-11T00:47:48.704Z",
+  "generatedAt": "2026-07-12T01:39:17.595Z",
   "source": "MBTA facilities long_name route text, validated against alternate-service-text",
   "models": [
     {
@@ -14,7 +14,8 @@
               "externalId": "51",
               "label": "Framingham Elevator 51 (Waverly Street to pedestrian bridge)"
             }
-          ]
+          ],
+          "stepFreeAlternative": true
         },
         {
           "id": "platform-1",
@@ -24,10 +25,11 @@
               "externalId": "50",
               "label": "Framingham Elevator 50 (Track 1 (outbound platform) to pedestrian bridge)"
             }
-          ]
+          ],
+          "stepFreeAlternative": true
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn. Elevator-free alternative per the agency's own guidance (human-approved 2026-07-10, walk disclosed): MBTA: “Please proceed to Concord street to cross over to the outbound platform.” Elevator-free alternative per the agency's own guidance (human-approved 2026-07-10, walk disclosed): MBTA: “Please proceed to Concord street to cross over to the outbound platform.”"
     },
     {
       "systemId": "mbta-boston",
@@ -45,7 +47,7 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn. A step-free route exists but is beyond the 0.3-mile limit, so it is not counted as an accessible backup — this platform still shows no step-free access when the elevator is out. Riders able to make the longer walk can follow MBTA's routing: To travel from the Fitchburg platform to the North Station platform, travel to the east end of the platform and proceed down the ramp to the small parking lot. Continue east on Railroad St to Main St. At Main St, turn right and continue to Maple St. At Maple St, turn right and continue to the walkway that leads to the platform. To travel from the North Station platform to the Fitchburg platform, travel east on Maple St towards Main St. At Main St, turn left and continue to Railroad St. At Railroad St, turn left and continue to the station, where a ramp to the Fitchburg platform is located next the small parking lot."
     },
     {
       "systemId": "mbta-boston",
@@ -63,7 +65,7 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn. A step-free route exists but is beyond the 0.3-mile limit, so it is not counted as an accessible backup — this platform still shows no step-free access when the elevator is out. Riders able to make the longer walk can follow MBTA's routing: To travel from the North Station platform to the Fitchburg platform, travel east on Maple St towards Main St. At Main St, turn left and continue to Railroad St. At Railroad St, turn left and continue to the station, where a ramp to the Fitchburg platform is located next the small parking lot. To travel from the Fitchburg platform to the North Station platform, travel to the east end of the platform and proceed down the ramp to the small parking lot. Continue east on Railroad St to Main St. At Main St, turn right and continue to Maple St. At Maple St, turn right and continue to the walkway that leads to the platform."
     },
     {
       "systemId": "mbta-boston",
@@ -179,10 +181,11 @@
               "externalId": "750",
               "label": "Natick Center Elevator 750 (Track 1 to street)"
             }
-          ]
+          ],
+          "stepFreeAlternative": true
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn. Elevator-free alternative per the agency's own guidance (human-approved 2026-07-10, walk disclosed): MBTA: “Go to the east end of the platform. Take the ramp to Washington St.”"
     },
     {
       "systemId": "mbta-boston",
@@ -197,10 +200,11 @@
               "externalId": "751",
               "label": "Natick Center Elevator 751 (Track 2 to street)"
             }
-          ]
+          ],
+          "stepFreeAlternative": true
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn. Elevator-free alternative per the agency's own guidance (human-approved 2026-07-10, walk disclosed): MBTA: “Go to the east end of the platform. Take the ramp to Washington St.”"
     },
     {
       "systemId": "mbta-boston",
@@ -279,10 +283,11 @@
               "externalId": "769",
               "label": "Ball Square Elevator 769 (Platform to Broadway lobby)"
             }
-          ]
+          ],
+          "stepFreeAlternative": true
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn. Elevator-free alternative per the agency's own guidance (human-approved 2026-07-10, walk disclosed): MBTA: “proceed to the track crossing located at the south end of the platform … use the Boston Ave entrance”"
     },
     {
       "systemId": "mbta-boston",
@@ -317,10 +322,11 @@
               "externalId": "771",
               "label": "Union Square Elevator 771 (Platform to Prospect Street)"
             }
-          ]
+          ],
+          "stepFreeAlternative": true
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn. Elevator-free alternative per the agency's own guidance (human-approved 2026-07-10, walk disclosed): MBTA: “use the accessible walkway that connects the station entrance with Prospect St.”"
     },
     {
       "systemId": "mbta-boston",
@@ -334,7 +340,8 @@
               "externalId": "778",
               "label": "East Taunton Elevator 778 (Parking to pedestrian bridge)"
             }
-          ]
+          ],
+          "stepFreeAlternative": true
         },
         {
           "id": "platform-main",
@@ -344,10 +351,11 @@
               "externalId": "779",
               "label": "East Taunton Elevator 779 (Platform to pedestrian bridge)"
             }
-          ]
+          ],
+          "stepFreeAlternative": true
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn. Elevator-free alternative per the agency's own guidance (human-approved 2026-07-10, walk disclosed): MBTA: “Take the ramp to the parking lot … Take the path near the accessible drop-off/pick-up area.” Elevator-free alternative per the agency's own guidance (human-approved 2026-07-10, walk disclosed): MBTA: “Take the ramp to the parking lot … Take the path near the accessible drop-off/pick-up area.”"
     },
     {
       "systemId": "mbta-boston",

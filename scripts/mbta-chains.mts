@@ -57,6 +57,7 @@ const stopById = new Map((feed.included ?? []).map((s) => [s.id, s]));
 // --- Declared-alternate parsing ---------------------------------------------
 type Declared =
   | { kind: "named"; ids: string[] } // same-feed elevator numbers offered as backups
+  | { kind: "named-generic" } // "use the elevator directly across the hallway" — a same-station backup without a number
   | { kind: "personnel" } // "see station personnel" — no self-service backup
   | { kind: "detour" } // ride to another station/stop — NOT a backup (BART rule)
   | { kind: "street" } // a street-level crossing/route — possible step-free alt, human review
@@ -78,10 +79,60 @@ function parseAlternate(text: string | undefined): Declared {
     (m) => m[1]!.match(/\d+/g) ?? [],
   );
   if (ids.length) return { kind: "named", ids: [...new Set(ids)] };
+  // A same-station backup referenced WITHOUT a number ("Please use the
+  // elevator located directly across the hallway" — Pawtucket/Central Falls).
+  // First run missed this AND misread it as a street alternate because the
+  // un-anchored /cross/ matched "aCROSS" — street words are word-bounded now.
+  if (/use the (?:other |nearby |adjacent )?elevator\b(?!s?\s*#?\d)/i.test(text)) return { kind: "named-generic" };
   if (/station personnel|customer service|for assistance/i.test(text)) return { kind: "personnel" };
-  if (/street|cross|walk|ramp|entrance/i.test(text)) return { kind: "street" };
+  if (/\b(?:street|crossing|cross|walk|walkway|ramp|entrance|path)\b/i.test(text)) return { kind: "street" };
   return { kind: "none" };
 }
+
+// --- Human-approved street alternates -----------------------------------------
+// MBTA's own guidance sometimes contradicts a NO ACCESS claim by describing a
+// REAL elevator-free route: a track crossing, a ramp, an accessible walkway.
+// Policy (Bryce, 2026-07-10): when the agency's own information contradicts
+// us and the detour is elevator-free and at most ~0.3 miles, it counts as a
+// step-free alternative — and the walk is always DISCLOSED to the rider (the
+// agency's own words go in the note). Entries here are HUMAN-APPROVED, never
+// auto-added: the generator flags new street-kind guidance to
+// review-flags.json, and only this list applies it. (South Acton 704/705 is
+// NOT here — its walk is too long to earn credit; it's a DISCLOSED_ALTERNATE
+// below instead.)
+const APPROVED_STREET_ALTERNATES = new Map<string, string>([
+  ["50", "MBTA: “Please proceed to Concord street to cross over to the outbound platform.”"],
+  ["51", "MBTA: “Please proceed to Concord street to cross over to the outbound platform.”"],
+  ["750", "MBTA: “Go to the east end of the platform. Take the ramp to Washington St.”"],
+  ["751", "MBTA: “Go to the east end of the platform. Take the ramp to Washington St.”"],
+  ["769", "MBTA: “proceed to the track crossing located at the south end of the platform … use the Boston Ave entrance”"],
+  ["771", "MBTA: “use the accessible walkway that connects the station entrance with Prospect St.”"],
+  ["778", "MBTA: “Take the ramp to the parking lot … Take the path near the accessible drop-off/pick-up area.”"],
+  ["779", "MBTA: “Take the ramp to the parking lot … Take the path near the accessible drop-off/pick-up area.”"],
+]);
+
+// --- Note-only disclosures (joint review 2026-07-12) --------------------------
+// A step-free route that is REAL but beyond the 0.3-mile limit earns NO
+// step-free credit — the platform still reads NO ACCESS when the elevator is
+// out — yet MBTA's routing is surfaced in the rider-facing note for anyone
+// willing to make the longer walk. South Acton's ramp-based detour is
+// step-free but loops several blocks around the station (Railroad → Main →
+// Maple St), so it discloses without qualifying.
+const DISCLOSED_ALTERNATES = new Set<string>(["704", "705"]);
+
+// --- Human-confirmed redundant pairs (joint review 2026-07-12) ----------------
+// Two elevators the topology engine already groups into ONE redundant segment
+// but which carry NO alternate-service-text to corroborate the pairing. The
+// "never claim redundancy without a real signal" rule would flag them as
+// unvalidated; a human is that signal here. GUARDED: if a feed change ever
+// makes one sole-access, the mismatch excludes the station loudly rather than
+// trusting a stale human call. (Salem 997 is deliberately NOT here — it needs
+// no override: sibling 996's guidance "Please use nearby Salem Elevator 997"
+// already corroborates that pair, handled generically below.)
+const CONFIRMED_REDUNDANT = new Map<string, string>([
+  ["elev_7a57_3d92_400", "TF Green Airport: two walkway↔platform elevators back each other up (human-confirmed 2026-07-12; no MBTA alternate-service-text)"],
+  ["elev_7a57_3d92_401", "TF Green Airport: two walkway↔platform elevators back each other up (human-confirmed 2026-07-12; no MBTA alternate-service-text)"],
+]);
 
 // --- Group facilities by station ---------------------------------------------
 interface FacilityInfo {
@@ -142,6 +193,14 @@ for (const [stopId, facilities] of byStop) {
   const stationModels = inference.result.models.map((m) => ({ systemId: SYSTEM_ID, ...m }));
   const stationFacilityIds = new Set(facilities.map((f) => f.facilityId));
   const memberIds = new Set(stationModels.flatMap((m) => allElevators(m).map((e) => e.externalId)));
+  // Elevators NAMED as backups by a sibling's guidance are feed-corroborated
+  // even when they carry no text of their own (Salem 997 is named by 996's
+  // "Please use nearby Salem Elevator 997") — so they don't need a human
+  // override and aren't flagged as unvalidated.
+  const namedBySiblings = new Set<string>();
+  for (const f of facilities) {
+    if (f.declared.kind === "named") for (const id of f.declared.ids) if (id !== f.facilityId) namedBySiblings.add(id);
+  }
   let mismatch: string | null = null;
   const stationFlags: typeof flags = [];
   for (const f of facilities) {
@@ -159,6 +218,14 @@ for (const [stopId, facilities] of byStop) {
         break;
       }
       validated++;
+    } else if (d.kind === "named-generic") {
+      // A same-station backup referenced without a number — the declaration
+      // says "redundant" even though we can't name which elevator.
+      if (!topologyRedundant) {
+        mismatch = `${f.facilityId}: topology says sole-access, but MBTA's guidance points to a nearby elevator — "${(f.altText ?? "").slice(0, 120)}"`;
+        break;
+      }
+      validated++;
     } else if (d.kind === "personnel" || d.kind === "detour") {
       if (topologyRedundant) {
         mismatch = `${f.facilityId}: topology says redundant, but MBTA's guidance offers ${d.kind === "personnel" ? "only station personnel" : "a ride-around detour"} — "${(f.altText ?? "").slice(0, 120)}"`;
@@ -166,16 +233,57 @@ for (const [stopId, facilities] of byStop) {
       }
       validated++;
     } else if (d.kind === "street") {
+      if (APPROVED_STREET_ALTERNATES.has(f.facilityId)) continue; // step-free credit applied below, no flag
+      if (DISCLOSED_ALTERNATES.has(f.facilityId)) continue; // note-only disclosure applied below, no flag
+
       // Possible step-free alternative (a crossing, a different entrance) —
       // never auto-applied; the model stays conservative and a human reviews.
       stationFlags.push({ stopId, name, kind: "street-alternate", facilityId: f.facilityId, detail: (f.altText ?? "").slice(0, 200) });
     } else {
-      stationFlags.push({ stopId, name, kind: "unvalidated", facilityId: f.facilityId, detail: "no alternate-service-text" });
+      // No guidance text of its own. Resolved three ways before falling to a flag:
+      if (namedBySiblings.has(f.facilityId)) {
+        validated++; // a sibling's alternate names this elevator (feed-corroborated)
+      } else if (CONFIRMED_REDUNDANT.has(f.facilityId)) {
+        if (!topologyRedundant) {
+          mismatch = `${f.facilityId}: human-confirmed redundant, but topology now says sole-access — feed changed, recheck the pairing`;
+          break;
+        }
+        validated++;
+      } else {
+        stationFlags.push({ stopId, name, kind: "unvalidated", facilityId: f.facilityId, detail: "no alternate-service-text" });
+      }
     }
   }
   if (mismatch) {
     excludeRecord("declared-alternate-mismatch", mismatch);
     continue;
+  }
+
+  // Apply the HUMAN-APPROVED street alternates (after validation, which is
+  // about elevator topology only): every segment containing an approved
+  // facility gets stepFreeAlternative + the agency's own words in the note —
+  // the walk is always disclosed to the rider.
+  for (const m of stationModels) {
+    for (const seg of m.segments) {
+      const approved = seg.elevators.map((e) => APPROVED_STREET_ALTERNATES.get(e.externalId)).find(Boolean);
+      if (!approved) continue;
+      seg.stepFreeAlternative = true;
+      const disclosure = `Elevator-free alternative per the agency's own guidance (human-approved 2026-07-10, walk disclosed): ${approved}`;
+      m.note = m.note ? `${m.note} ${disclosure}` : disclosure;
+    }
+  }
+
+  // Apply NOTE-ONLY disclosures: no step-free credit (the segment stays
+  // sole-access), but MBTA's routing is surfaced for riders willing to walk it.
+  const altById = new Map(facilities.map((f) => [f.facilityId, f.altText]));
+  for (const m of stationModels) {
+    for (const seg of m.segments) {
+      const disclosedId = seg.elevators.map((e) => e.externalId).find((id) => DISCLOSED_ALTERNATES.has(id));
+      if (!disclosedId) continue;
+      const routing = (altById.get(disclosedId) ?? "").replace(/\s+/g, " ").trim();
+      const disclosure = `A step-free route exists but is beyond the 0.3-mile limit, so it is not counted as an accessible backup — this platform still shows no step-free access when the elevator is out. Riders able to make the longer walk can follow MBTA's routing: ${routing}`;
+      m.note = m.note ? `${m.note} ${disclosure}` : disclosure;
+    }
   }
 
   models.push(...stationModels);

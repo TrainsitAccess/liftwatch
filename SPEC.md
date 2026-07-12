@@ -37,6 +37,9 @@ schema reserves `unit_type` for it, but we do not ingest or display escalators.
 | Catalog | Solo-maintained, but structured as clean per-system files |
 | Frontend | Hybrid: digital departure-display boards (amber LED aesthetic), editorial methodology pages |
 | Alerts (later) | ntfy station subscriptions (reused from prior project) |
+| Step-free detour limit | (2026-07-10) An **elevator-free** detour of at most **0.3 miles** counts as a step-free alternative — and the walk is always disclosed to the rider in the note. The detour itself must not depend on any elevator (Daly City's 0.3-mi surface walk qualifies; Warm Springs' 0.8 mi and 19th St's walk-to-another-station's-elevator do not) |
+| Garage elevators | (2026-07-10, Millbrae precedent) A garage elevator that provides a **back access route** is a real chain member, included in models when the agency's guidance or a human confirms the route (MLBR, WDUB). Outside chains only when its destination is genuinely unknowable (bare "Garage Elevator 1" texts) |
+| Agency-contradicts-us rule | (2026-07-10) When an agency's own guidance describes an elevator-free alternative that contradicts a NO ACCESS claim, it is applied via a **human-approved allowlist** (never auto-parsed), quoting the agency's words in the rider-facing note |
 
 ---
 
@@ -1229,17 +1232,38 @@ station models — despite the richest untapped inputs of any system:
   Elevator 958") is a DETOUR, not a backup — the BART cross-station rule; a
   rider on the platform is functionally stranded. Detour parsing takes
   precedence over named-elevator parsing.
-- **Result**: 39 of 80 elevator-equipped stations modeled (60 chains), 66
+- **Result**: 39 of 80 elevator-equipped stations modeled (60 chains), 71
   elevator redundancy claims corroborated by MBTA's own guidance; 41 stations
   excluded with reasons (`chains-excluded.json`) — incl. Wellington, the one
   genuine topology-vs-guidance disagreement (its guidance says "exit the
   other side of the train onto the center platform": within-station nuance
-  the per-platform chain model can't express; human review). Shipped-but-
-  unvalidatable items live in `review-flags.json` for the joint review pass:
-  12 street-crossing alternates (possible step-free paths — NEVER
-  auto-applied; e.g. Framingham's Concord St crossing, so Framingham
-  currently over-warns NO ACCESS by design) + 3 elevators with no guidance
-  text. Adapter ships chain members as `serving_text` (machine-derived, below
+  the per-platform chain model can't express; human review).
+- **Joint review pass complete (2026-07-12)**: `review-flags.json` is now
+  empty — every previously-flagged street-alternate and unvalidated elevator
+  was walked through with the maintainer and resolved into one of these
+  categories (each a HUMAN-approved list in `scripts/mbta-chains.mts`,
+  re-asserted by `check:mbta-chains`):
+  1. **Approved street-alternate** (`APPROVED_STREET_ALTERNATES`, 8 elevators
+     across 5 stations — Framingham, Natick Center, Ball Square, Union Square,
+     East Taunton): MBTA's own guidance names an elevator-free, ≤0.3-mi,
+     step-free route (ramp / track crossing / accessible walkway). Sets
+     `stepFreeAlternative` **and** discloses the walk in the note.
+  2. **Note-only disclosure** (`DISCLOSED_ALTERNATES`, South Acton 704/705): a
+     REAL step-free route that is beyond 0.3 mi (South Acton's ramped detour
+     loops several blocks — Railroad → Main → Maple St). Earns NO step-free
+     credit — both per-track chains still read NO ACCESS when the elevator is
+     out — but MBTA's routing is surfaced in the rider-facing note for anyone
+     willing to make the longer walk.
+  3. **Human-confirmed redundant** (`CONFIRMED_REDUNDANT`, TF Green 400/401):
+     a pair the topology engine already groups into one redundant segment but
+     with NO `alternate-service-text` to corroborate it. The maintainer is the
+     signal. GUARDED: if a feed change ever makes one sole-access, the mismatch
+     excludes the station loudly rather than trusting a stale human call.
+  4. **Sibling-corroborated** (generic, e.g. Salem 997): an elevator with no
+     text of its own that a SIBLING's `named` guidance points to ("Please use
+     nearby Salem Elevator 997") is validated by that reciprocal reference —
+     no override needed.
+  Adapter ships chain members as `serving_text` (machine-derived, below
   every human signal); un-modeled units keep single_elevator/assumed exactly
   as before. Offline: `npm run check:mbta-chains` — a FULL-FEED fixture
   (every station, not a subset) re-verifies mapper + engine + validation +
