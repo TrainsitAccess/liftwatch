@@ -1,5 +1,5 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { REDUNDANCY_PRECEDENCE, type NormalizedRead, type NormalizedUnit, type RedundancySource } from "./types.js";
+import { REDUNDANCY_PRECEDENCE, type NormalizedOutage, type NormalizedRead, type NormalizedUnit, type RedundancySource } from "./types.js";
 import type { SystemCatalogEntry } from "./catalog/systems.js";
 import { overridesFor, type RedundancyOverride } from "./catalog/redundancy-overrides.js";
 import { attributionOverridesFor } from "./catalog/attribution-overrides.js";
@@ -431,6 +431,16 @@ export async function ingest(
     // so the caller can flag a human (poll warning + ntfy push). Only newly
     // opened ones, so a long-standing flagged outage doesn't re-notify each poll.
     const newlyFlagged: { unitExternalId: string; stationName: string; reason: string }[] = [];
+    // Schema-tolerant, like other_equipment_events / offline_events: needs_review
+    // is a later column addition. Detect it once so a poll keeps archiving BEFORE
+    // the DDL is applied (omit the field until the column exists — the in-memory
+    // needsReview flag still drives the poll warning + ntfy push regardless; only
+    // the persisted "Needs review" board waits on the column).
+    const hasNeedsReview = !(await db.from("outage_events").select("needs_review").limit(1)).error;
+    if (!hasNeedsReview) {
+      console.warn(`  ⚠ ${system.id}: outage_events.needs_review column missing — flag not persisted (apply db/schema.sql). Poll continues.`);
+    }
+    const reviewCol = (o: NormalizedOutage) => (hasNeedsReview ? { needs_review: o.needsReview ?? false } : {});
     for (const o of read.outages) {
       const redirectTo = attributionOverrides.get(o.unitExternalId)?.toUnitExternalId;
       const uId = unitId(system.id, redirectTo ?? o.unitExternalId);
@@ -451,7 +461,7 @@ export async function ingest(
               started_at: now,
               is_planned: o.isPlanned,
               attributed: o.attributed ?? null,
-              needs_review: o.needsReview ?? false,
+              ...reviewCol(o),
               reason: o.reason ?? null,
               source_started_at: o.sourceStartedAt ?? null,
               estimated_return: o.estimatedReturn ?? null,
@@ -468,7 +478,7 @@ export async function ingest(
               .from("outage_events")
               .update({
                 is_planned: o.isPlanned,
-                needs_review: o.needsReview ?? false,
+                ...reviewCol(o),
                 reason: o.reason ?? null,
                 estimated_return: o.estimatedReturn ?? null,
                 updated_at: now,

@@ -72,6 +72,15 @@ async function fetchAll<T>(
   return rows;
 }
 
+// Schema-tolerant, like the ingest side: needs_review is a later column
+// addition. Probe once and include it in the select only if it exists, so the
+// site build keeps working before the DDL is applied (the "Needs review" board
+// is just empty until then).
+const hasNeedsReview = !(await db.from("outage_events").select("needs_review").limit(1)).error;
+const eventCols =
+  "unit_id, system_id, station_id, is_planned, reason, started_at, ended_at, source_started_at, estimated_return, attributed" +
+  (hasNeedsReview ? ", needs_review" : "");
+
 const [systemsData, unitsData, stationsData, eventsData, upcomingData] = await Promise.all([
   fetchAll(
     (from, to) => db.from("systems").select("id, short_name, city, metro_area, data_quality").range(from, to),
@@ -93,7 +102,7 @@ const [systemsData, unitsData, stationsData, eventsData, upcomingData] = await P
     (from, to) =>
       db
         .from("outage_events")
-        .select("unit_id, system_id, station_id, is_planned, reason, started_at, ended_at, source_started_at, estimated_return, attributed, needs_review")
+        .select(eventCols)
         .range(from, to),
     "outage_events",
   ),
@@ -112,7 +121,23 @@ const [systemsData, unitsData, stationsData, eventsData, upcomingData] = await P
 const systems = { data: systemsData };
 const units = { data: unitsData };
 const stations = { data: stationsData };
-const allEvents = eventsData;
+// The dynamic (schema-tolerant) select above erases supabase-js's row typing;
+// restore it with an explicit row shape (needs_review optional — absent before
+// the DDL is applied).
+interface EventRow {
+  unit_id: string;
+  system_id: string;
+  station_id: string | null;
+  is_planned: boolean;
+  reason: string | null;
+  started_at: string;
+  ended_at: string | null;
+  source_started_at: string | null;
+  estimated_return: string | null;
+  attributed: boolean | null;
+  needs_review?: boolean;
+}
+const allEvents = eventsData as unknown as EventRow[];
 const events = { data: allEvents.filter((e) => e.ended_at == null) };
 
 // Offline events — units whose status became UNKNOWN (vanished from an
