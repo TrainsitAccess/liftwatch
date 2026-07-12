@@ -135,6 +135,25 @@ export function attributeOutageAcrossChains(description: string, models: Station
   return { model: matched[0]!.model, ...matched[0]!.attr };
 }
 
+// BART policy (Bryce, 2026-07-12): when an advisory is "simply the station
+// elevator" — no direction or segment text that any matchHint catches, so
+// attributeOutageAcrossChains returned null — it means the PLATFORM elevator by
+// default. The platform is the terminus of the access chain, so the elevator in
+// each chain's LAST segment (models are authored street → … → platform) is the
+// platform elevator. This fires ONLY when the whole station resolves to exactly
+// ONE such elevator: a per-direction station has several platform elevators, so
+// "the platform elevator" is ambiguous and this returns null, preserving the
+// never-guess rule (the caller then falls back to the conservative unspecified
+// unit). "Unless I say otherwise" = a station whose real meaning differs gets a
+// matchHint that resolves it specifically before this default is ever reached.
+export function platformDefaultElevator(models: StationModel[]): Attribution | null {
+  const terminals = models.map((m) => m.segments[m.segments.length - 1]).filter((s): s is AccessSegment => !!s);
+  const byId = new Map(terminals.flatMap((s) => s.elevators.map((e) => [e.externalId, { segmentId: s.id, e }] as const)));
+  if (byId.size !== 1) return null;
+  const only = [...byId.values()][0]!;
+  return { elevatorExternalId: only.e.externalId, segmentId: only.segmentId };
+}
+
 export type AccessState = "accessible" | "inaccessible" | "at_risk";
 
 // Conservative: an outage we couldn't attribute (a down id not in the model)

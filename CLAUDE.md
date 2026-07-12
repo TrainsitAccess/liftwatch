@@ -373,36 +373,36 @@ parking lot). A station is accessible only if **every** segment is up.
   Verified via `npm run poll:bart:dry`: 95 elevators, all 50 stations
   modeled across 66 chains, 0 structural errors. `demo:access` extended with
   new regression coverage for the corrected/new patterns.
-- **BART live-outage ATTRIBUTION is a separate, still-open problem from
-  redundancy curation above** — see SPEC.md's BART section ("Attribution —
-  status as of 2026-07-08") for the full writeup; summary: BART's live
-  advisory has no per-elevator ID anywhere (checked 3 official sources), so
-  a bare "Station" advisory can never be auto-attributed by any text-
-  matching approach — structural, not a pattern-coverage gap.
-  `attributeOutageAcrossChains()` (`accessibility.ts`) fixed a real bug
-  (adapter only checked a station's first chain) and `matchHints` were
-  redesigned for all 12 per-direction stations, but only 2 (Milpitas,
-  Hayward) plus 12th St.'s "convention center" hint are CONFIRMED against a
-  real live advisory — the other 10 stations' hints are unverified guesses
-  at BART's live phrasing (built from the outage-options page's wording,
-  which turned out NOT to match the live feed's actual wording for
-  Milpitas). Two manual DB corrections were needed this session (Richmond,
-  Milpitas) precisely because nothing auto-attributes a bare "Station" text.
-  `src/catalog/attribution-overrides.ts` (mirrors `redundancy-overrides.ts`)
-  keeps a manual fix from getting clobbered by the next poll — has NO expiry
-  and must be pruned once the outage resolves. **A progressive evidence-
+- **BART live-outage ATTRIBUTION** — see SPEC.md's BART "Attribution" section
+  for the full writeup. BART's live advisory has no per-elevator ID anywhere
+  (checked 3 official sources), so a bare "Station" advisory can't be
+  auto-attributed by text-matching — structural. **The bare-"Station" case is
+  now DIRECTED BY POLICY (Bryce, 2026-07-12): "a bare station-elevator
+  advisory means the platform elevator, unless I say otherwise."**
+  `platformDefaultElevator()` (`accessibility.ts`) defaults to the elevator in
+  each chain's LAST (platform-terminus) segment, but ONLY when the station has
+  exactly ONE — a per-direction station has several, so it declines and stays
+  `-UNSPECIFIED` (never guesses which platform). This resolved the live
+  RICH/POWL/COLS "unspecified" complaints (all now RICH-PLAT/POWL-PLAT/COLS-EL,
+  verified `poll:bart:dry`), and let the **Richmond attribution-override be
+  REMOVED** (`ATTRIBUTION_OVERRIDES` is now empty; the mechanism stays for a
+  future human-confirmed elevator neither hints nor the default can reach).
+  Regressions in `demo:access` (now 45). `matchHints` for the 12 per-direction
+  stations: only Milpitas, Hayward, and 12th St.'s "convention center" hint
+  are CONFIRMED against a real live advisory; the other 10 are unverified
+  guesses at BART's phrasing (built from the outage-options page wording,
+  which for Milpitas turned out NOT to match the live feed). **A progressive
+  evidence-
   mining tool now exists** (`npm run bart:attribution-evidence`,
   `src/site/bart-attribution-evidence.ts`, built 2026-07-09) — re-derives
   attribution fresh from archived `reason` text against TODAY's matchHints
   every run (not the stale `unit_id` from original ingest), surfacing
   confirmed matches, ambiguous raw text worth reviewing, and a `pureSpof`
-  finding (single-elevator SPOF stations get zero attribution credit today
-  since their generic "elevator" hint never matches real advisory text —
-  safe to auto-attribute everywhere except COLS, which has real unmodeled
-  auxiliary elevators). See SPEC.md's BART Attribution section for the full
-  writeup. Bryce explicitly asked to hold the core unsolved problem (bare
-  "Station" advisories) open, not have a fix proposed — see
-  `/liftwatch-bart-attribution` for the resume-work command.
+  finding (single-elevator SPOF stations — note the platform default now gives
+  these attribution credit on a bare "Station" advisory; the COLS
+  auxiliary-elevator caveat is documented in SPEC.md as an accepted residual).
+  The remaining OPEN part is the 10 unconfirmed per-direction `matchHints` —
+  see `/liftwatch-bart-attribution` for the resume-work command.
 
 ## Conventions
 

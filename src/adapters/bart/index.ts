@@ -1,6 +1,6 @@
 import type { Adapter, NormalizedOutage, NormalizedRead, NormalizedUnit } from "../../types.js";
 import { nowUtcIso } from "../../lib/time.js";
-import { attributeOutageAcrossChains, elevatorRedundant } from "../../lib/accessibility.js";
+import { attributeOutageAcrossChains, elevatorRedundant, platformDefaultElevator } from "../../lib/accessibility.js";
 import { stationModelsFor } from "../../catalog/station-models.js";
 import { fetchPlannedAdvisories } from "./planned-rss.js";
 import type { BartBsaRaw, BartElevResponse, BartStationRaw, BartStnResponse, BartText } from "./raw.js";
@@ -190,8 +190,18 @@ export function createBartAdapter(config: BartConfig = BART_CONFIG): Adapter {
             // unit (it would corrupt per-elevator stats).
             return { ...base, unitExternalId: `${abbr}-${attr.segmentId.toUpperCase()}-UNSPECIFIED`, segmentId: attr.segmentId, attributed: false, reason: `${desc || "Elevator out of service"} (elevator within ${attr.segmentId} — ambiguous, conservative)` };
           }
-          // Too vague to attribute at all (or matched >1 chain, ambiguous
-          // WHICH one) -> unspecified elevator at station.
+          // No matchHint caught direction/segment text — i.e. "simply the
+          // station elevator". BART policy (Bryce, 2026-07-12): default to the
+          // PLATFORM elevator, but ONLY when the station has exactly one (a
+          // per-direction station has several, so this returns null and we stay
+          // conservative below — never guessing which platform).
+          const plat = platformDefaultElevator(stationModels);
+          if (plat?.elevatorExternalId) {
+            const cleanDesc = (desc || "Elevator out of service").replace(/^[\s\-–—/]+/, "").trim();
+            return { ...base, unitExternalId: plat.elevatorExternalId, segmentId: plat.segmentId, attributed: true, reason: `${cleanDesc} (station-level advisory → platform elevator)` };
+          }
+          // Genuinely ambiguous (matched >1 chain, or >1 platform elevator) ->
+          // unspecified elevator at station.
           return { ...base, unitExternalId: `${abbr}-UNSPECIFIED`, attributed: false, reason: `${desc || "Elevator out of service"} (unspecified elevator — conservative)` };
         }
         return { ...base, unitExternalId: abbr, attributed: false, reason: desc || "Elevator out of service" };

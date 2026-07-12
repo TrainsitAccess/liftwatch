@@ -2,6 +2,7 @@ import { stationModelsFor } from "../catalog/station-models.js";
 import {
   attributeOutage,
   attributeOutageAcrossChains,
+  platformDefaultElevator,
   isSingleFaultTolerant,
   stationAccessible,
   type StationModel,
@@ -145,7 +146,18 @@ check("synthetic: text matching only chain A's unique hint -> chain A", attribut
   segmentId: "seg",
 });
 
-const total = 41;
+console.log("\n  platform-default attribution (2026-07-12 — a bare 'station elevator'");
+console.log("  advisory means the platform elevator, but ONLY when unambiguous):");
+check('RICH bare "Station" -> RICH-PLAT (single platform elevator)',
+  platformDefaultElevator(models.get("RICH")!), { elevatorExternalId: "RICH-PLAT", segmentId: "concourse-platform" });
+check('POWL bare "Station" -> POWL-PLAT (street elevator is a separate segment)',
+  platformDefaultElevator(models.get("POWL")!), { elevatorExternalId: "POWL-PLAT", segmentId: "mezzanine-platform" });
+check('COLS bare "Station" -> COLS-EL (single-segment station elevator)',
+  platformDefaultElevator(models.get("COLS")!), { elevatorExternalId: "COLS-EL", segmentId: "station" });
+check('HAYW bare "Station" -> null (two per-direction platform elevators, never guess)',
+  platformDefaultElevator(models.get("HAYW")!), null);
+
+const total = 45;
 if (failures) {
   console.error(`\n  ${failures} check(s) FAILED\n`);
   process.exitCode = 1;

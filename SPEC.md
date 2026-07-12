@@ -481,31 +481,45 @@ phrases it the same way. They may already work, may need the same kind of
 regional-shorthand correction Milpitas needed, or may never match — unknown
 until a real example appears in `outage_events.reason`.
 
-*What's still genuinely unsolved*: any advisory that is just the bare word
-"Station" — no direction, no destination, nothing — can NEVER be attributed
-by ANY text-matching approach, confirmed and structural, not a gap in
-pattern coverage. True for all single-chain stations always, and for any
-per-direction station whose real phrasing isn't the confirmed kind. Three
-candidate directions were surfaced and explicitly NOT pursued (Bryce asked to
-hold this open, not to have a fix proposed): (a) a smarter guessing
-heuristic — rejected, violates the project's never-guess-a-specific-elevator
-rule and would be wrong at multi-SPOF stations; (b) a semi-manual curation
-queue generalizing "assumed → curated" to "unspecified → attributed",
-surfaced for human review rather than auto-applied; (c) a different BART data
-source, not yet found despite three checked.
+*The bare-"Station" case — DIRECTED BY POLICY 2026-07-12 (Bryce)*: a bare
+"Station" advisory (no direction/destination that any `matchHint` catches)
+can never be attributed by text-matching — that's structural. Bryce's rule
+resolves it by DEFAULT instead of by text: **"when BART refers to something
+simply as the station elevator, unless I say otherwise, that means it goes to
+the platforms."** Implemented as `platformDefaultElevator()`
+(`src/lib/accessibility.ts`): the platform is the terminus of the access
+chain, so the elevator in each chain's LAST segment is the platform elevator;
+the adapter falls to it when `attributeOutageAcrossChains()` returns null.
+CRITICALLY it fires ONLY when the whole station resolves to exactly ONE
+platform elevator — a per-direction station has several, so it returns null
+and stays conservative (`{ABBR}-UNSPECIFIED`), preserving the
+never-guess-a-specific-elevator rule (this is NOT the rejected "smart
+guessing heuristic" — it's a single, explicit, station-structure default that
+declines whenever there's a choice). "Unless I say otherwise" = a station
+whose real meaning differs gets a `matchHint` (or, if truly unreachable, an
+`attribution-overrides.ts` entry) that resolves it before the default is
+reached. Live effect (verified `poll:bart:dry` 2026-07-12): RICH/POWL/COLS all
+went from `-UNSPECIFIED` to `RICH-PLAT`/`POWL-PLAT`/`COLS-EL` with clean
+reasons; MacArthur still attributes via its direction hint; regressions in
+`demo:access` (now 45 checks) lock in single-platform→attributes and
+per-direction→null. NOTE the residual caveat this default accepts by design:
+at COLS, a future outage of an UNMODELED auxiliary elevator (Airport
+Connector, parking lift) reported as "Station" would attribute to `COLS-EL` —
+acceptable per "unless I say otherwise," correctable with a per-station hint.
 
-*Manual corrections made this session* (both required because BART's own
-advisory gave no way to attribute automatically): Richmond's `RICH-PLAT`
-outage (open since 2026-07-04, confirmed by Bryce in person) and Milpitas's
-`MLPT-PLAT-2` outage (a `started_at` correction after a live-poll cutover
-artifact, not an attribution correction). Richmond's fix required
-`src/catalog/attribution-overrides.ts` (mirrors `redundancy-overrides.ts`'s
-pattern exactly) to survive future polls — it has no expiry and MUST be
-manually removed once that outage resolves (`RICH-PLAT`'s event closes),
-or it risks silently mis-attributing a future, unrelated Richmond outage.
-`poll.ts` warns when the override's source id stops being reported, as a
-reminder to prune it. Check whether it's still needed before touching BART
-attribution again.
+*Richmond override — REMOVED 2026-07-12*: the manual
+`src/catalog/attribution-overrides.ts` entry that redirected
+`RICH-UNSPECIFIED → RICH-PLAT` (added 2026-07-08, Bryce-confirmed) is gone —
+the platform-default policy above now attributes "RICH: Station" to
+`RICH-PLAT` directly at the adapter, with a clean reason, so no ingest-level
+redirect is needed. (It also fixed a subtler artifact: ingest re-writes an
+event's `reason` every poll from the adapter's text, so the override moved the
+`unit_id` but the reason still read "unspecified elevator — conservative" —
+attributing at the adapter fixes both.) `ATTRIBUTION_OVERRIDES` is now an
+empty array; the mechanism stays for a future station where a human confirms a
+specific elevator that neither `matchHints` nor the platform default can
+reach. (Milpitas's `MLPT-PLAT-2` `started_at` correction this session was a
+cutover-timing fix, not an attribution override.)
 
 *Progressive evidence-mining tool — built 2026-07-09* (`src/site/
 bart-attribution-evidence.ts`, `npm run bart:attribution-evidence`, mirroring

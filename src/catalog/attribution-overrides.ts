@@ -42,13 +42,13 @@ export interface AttributionOverride {
 }
 
 export const ATTRIBUTION_OVERRIDES: AttributionOverride[] = [
-  {
-    systemId: "bart-bay-area",
-    fromUnitExternalId: "RICH-UNSPECIFIED",
-    toUnitExternalId: "RICH-PLAT",
-    note: "Bryce confirmed in person 2026-07-08 that Richmond's ongoing outage (open since 2026-07-04) is the mezzanine-to-platform elevator. BART's own advisory text is just the bare word \"Station\" — nothing to text-match against. REMOVE once this outage resolves (RICH-PLAT's event closes) — do not leave in place for a future Richmond advisory without fresh confirmation.",
-    confirmedOn: "2026-07-08",
-  },
+  // (Empty.) The Richmond override lived here until 2026-07-12, when the general
+  // BART policy "a bare 'station elevator' advisory means the platform elevator"
+  // (platformDefaultElevator in accessibility.ts) made it redundant — "RICH:
+  // Station" now attributes to RICH-PLAT directly at the adapter, with a clean
+  // reason, so no ingest-level redirect (and no stale 'unspecified' reason) is
+  // needed. This mechanism remains for a future station where a human confirms a
+  // specific elevator that neither matchHints nor the platform default can reach.
 ];
 
 export function attributionOverridesFor(systemId: string): Map<string, AttributionOverride> {
