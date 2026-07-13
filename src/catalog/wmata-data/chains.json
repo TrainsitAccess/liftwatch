@@ -1,0 +1,1483 @@
+{
+  "generatedAt": "2026-07-13T20:21:49.844Z",
+  "source": "WMATA GTFS pathways topology (conservative single-platform Street→Mezzanine→Platform ladders)",
+  "models": [
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "A07",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-platform",
+          "label": "Street to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-A07_ELE",
+              "label": "Tenleytown-AU elevator (Street to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "A08",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 2 elevators, Mezzanine→Platform: 2 elevators. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine",
+          "label": "Street to Mezzanine",
+          "elevators": [
+            {
+              "externalId": "WMATA-A08_N_ELE1",
+              "label": "Friendship Heights elevator (Street to Mezzanine)"
+            },
+            {
+              "externalId": "WMATA-A08_S_ELE1",
+              "label": "Friendship Heights elevator (Street to Mezzanine)"
+            }
+          ]
+        },
+        {
+          "id": "mezzanine-platform",
+          "label": "Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-A08_N_ELE2",
+              "label": "Friendship Heights elevator (Mezzanine to Platform)"
+            },
+            {
+              "externalId": "WMATA-A08_S_ELE2",
+              "label": "Friendship Heights elevator (Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "A09",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 1 elevator, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine",
+          "label": "Street to Mezzanine",
+          "elevators": [
+            {
+              "externalId": "WMATA-A09_ELE1",
+              "label": "Bethesda elevator (Street to Mezzanine)"
+            }
+          ]
+        },
+        {
+          "id": "mezzanine-platform",
+          "label": "Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-A09_ELE2",
+              "label": "Bethesda elevator (Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "A10",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 1 elevator, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine",
+          "label": "Street to Mezzanine",
+          "elevators": [
+            {
+              "externalId": "WMATA-A10_ELE1",
+              "label": "Medical Center elevator (Street to Mezzanine)"
+            }
+          ]
+        },
+        {
+          "id": "mezzanine-platform",
+          "label": "Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-A10_ELE2",
+              "label": "Medical Center elevator (Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "A11",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "mezzanine-platform",
+          "label": "Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-A11_ELE",
+              "label": "Grosvenor-Strathmore elevator (Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "A12",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street/Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine-platform",
+          "label": "Street/Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-A12_ELE",
+              "label": "North Bethesda elevator (Street/Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "A13",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street/Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine-platform",
+          "label": "Street/Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-A13_ELE",
+              "label": "Twinbrook elevator (Street/Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "A14",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street/Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine-platform",
+          "label": "Street/Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-A14_ELE",
+              "label": "Rockville elevator (Street/Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "A15",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 1 elevator, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine",
+          "label": "Street to Mezzanine",
+          "elevators": [
+            {
+              "externalId": "WMATA-A15_ELE1",
+              "label": "Shady Grove elevator (Street to Mezzanine)"
+            }
+          ]
+        },
+        {
+          "id": "mezzanine-platform",
+          "label": "Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-A15_ELE2",
+              "label": "Shady Grove elevator (Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "B03",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 1 elevator, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine",
+          "label": "Street to Mezzanine",
+          "elevators": [
+            {
+              "externalId": "WMATA-B03_N_ELE1",
+              "label": "Union Station elevator (Street to Mezzanine)"
+            }
+          ]
+        },
+        {
+          "id": "mezzanine-platform",
+          "label": "Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-B03_N_ELE2",
+              "label": "Union Station elevator (Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "B04",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street/Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine-platform",
+          "label": "Street/Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-B04_ELE",
+              "label": "Rhode Island Av elevator (Street/Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "B05",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 1 elevator, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine",
+          "label": "Street to Mezzanine",
+          "elevators": [
+            {
+              "externalId": "WMATA-B05_ELE1",
+              "label": "Brookland-CUA elevator (Street to Mezzanine)"
+            }
+          ]
+        },
+        {
+          "id": "mezzanine-platform",
+          "label": "Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-B05_ELE2",
+              "label": "Brookland-CUA elevator (Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "B07",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street/Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine-platform",
+          "label": "Street/Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-B07_ELE",
+              "label": "Takoma elevator (Street/Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "B08",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street/Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine-platform",
+          "label": "Street/Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-B08_S_ELE",
+              "label": "Silver Spring elevator (Street/Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "B09",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "mezzanine-platform",
+          "label": "Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-B09_ELE",
+              "label": "Forest Glen elevator (Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "B10",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 1 elevator, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine",
+          "label": "Street to Mezzanine",
+          "elevators": [
+            {
+              "externalId": "WMATA-B10_E_ELE",
+              "label": "Wheaton elevator (Street to Mezzanine)"
+            }
+          ]
+        },
+        {
+          "id": "mezzanine-platform",
+          "label": "Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-B10_MZ_ELE",
+              "label": "Wheaton elevator (Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "B11",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 2 elevators, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine",
+          "label": "Street to Mezzanine",
+          "elevators": [
+            {
+              "externalId": "WMATA-B11_E_ELE",
+              "label": "Glenmont elevator (Street to Mezzanine)"
+            },
+            {
+              "externalId": "WMATA-B11_W_ELE",
+              "label": "Glenmont elevator (Street to Mezzanine)"
+            }
+          ]
+        },
+        {
+          "id": "mezzanine-platform",
+          "label": "Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-B11_MZ_ELE",
+              "label": "Glenmont elevator (Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "B35",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street/Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine-platform",
+          "label": "Street/Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-B35_ELE",
+              "label": "NoMa-Gallaudet U elevator (Street/Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "C04",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 1 elevator, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine",
+          "label": "Street to Mezzanine",
+          "elevators": [
+            {
+              "externalId": "WMATA-C04_E_ELE",
+              "label": "Foggy Bottom-GWU elevator (Street to Mezzanine)"
+            }
+          ]
+        },
+        {
+          "id": "mezzanine-platform",
+          "label": "Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-C04_MZ_ELE",
+              "label": "Foggy Bottom-GWU elevator (Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "C12",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street/Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine-platform",
+          "label": "Street/Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-C12_ELE",
+              "label": "Braddock Rd elevator (Street/Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "C13",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street/Mezzanine→Platform: 2 elevators. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine-platform",
+          "label": "Street/Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-C13_MID_ELE1",
+              "label": "King St-Old Town elevator (Street/Mezzanine to Platform)"
+            },
+            {
+              "externalId": "WMATA-C13_N_ELE1",
+              "label": "King St-Old Town elevator (Street/Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "D01",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 1 elevator, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine",
+          "label": "Street to Mezzanine",
+          "elevators": [
+            {
+              "externalId": "WMATA-D01_ELE1",
+              "label": "Federal Triangle elevator (Street to Mezzanine)"
+            }
+          ]
+        },
+        {
+          "id": "mezzanine-platform",
+          "label": "Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-D01_ELE2",
+              "label": "Federal Triangle elevator (Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "D04",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 1 elevator, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine",
+          "label": "Street to Mezzanine",
+          "elevators": [
+            {
+              "externalId": "WMATA-D04_ELE1",
+              "label": "Federal Center SW elevator (Street to Mezzanine)"
+            }
+          ]
+        },
+        {
+          "id": "mezzanine-platform",
+          "label": "Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-D04_ELE2",
+              "label": "Federal Center SW elevator (Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "D05",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 1 elevator, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine",
+          "label": "Street to Mezzanine",
+          "elevators": [
+            {
+              "externalId": "WMATA-D05_ELE1",
+              "label": "Capitol South elevator (Street to Mezzanine)"
+            }
+          ]
+        },
+        {
+          "id": "mezzanine-platform",
+          "label": "Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-D05_ELE2",
+              "label": "Capitol South elevator (Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "D06",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 1 elevator, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine",
+          "label": "Street to Mezzanine",
+          "elevators": [
+            {
+              "externalId": "WMATA-D06_ELE1",
+              "label": "Eastern Market elevator (Street to Mezzanine)"
+            }
+          ]
+        },
+        {
+          "id": "mezzanine-platform",
+          "label": "Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-D06_ELE2",
+              "label": "Eastern Market elevator (Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "D07",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 1 elevator, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine",
+          "label": "Street to Mezzanine",
+          "elevators": [
+            {
+              "externalId": "WMATA-D07_ELE1",
+              "label": "Potomac Av elevator (Street to Mezzanine)"
+            }
+          ]
+        },
+        {
+          "id": "mezzanine-platform",
+          "label": "Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-D07_ELE2",
+              "label": "Potomac Av elevator (Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "D08",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 1 elevator, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine",
+          "label": "Street to Mezzanine",
+          "elevators": [
+            {
+              "externalId": "WMATA-D08_ELE1_S",
+              "label": "Stadium-Armory elevator (Street to Mezzanine)"
+            }
+          ]
+        },
+        {
+          "id": "mezzanine-platform",
+          "label": "Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-D08_ELE2_S",
+              "label": "Stadium-Armory elevator (Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "D09",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 1 elevator, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine",
+          "label": "Street to Mezzanine",
+          "elevators": [
+            {
+              "externalId": "WMATA-D09_ELE1",
+              "label": "Minnesota Av elevator (Street to Mezzanine)"
+            }
+          ]
+        },
+        {
+          "id": "mezzanine-platform",
+          "label": "Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-D09_ELE2",
+              "label": "Minnesota Av elevator (Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "D10",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street/Mezzanine→Mezzanine: 1 elevator, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine-mezzanine",
+          "label": "Street/Mezzanine to Mezzanine",
+          "elevators": [
+            {
+              "externalId": "WMATA-D10_MZ_ELE1",
+              "label": "Deanwood elevator (Street/Mezzanine to Mezzanine)"
+            }
+          ]
+        },
+        {
+          "id": "mezzanine-platform",
+          "label": "Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-D10_MZ_ELE2",
+              "label": "Deanwood elevator (Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "D12",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street/Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine-platform",
+          "label": "Street/Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-D12_ELE",
+              "label": "Landover elevator (Street/Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "E01",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 2 elevators, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine",
+          "label": "Street to Mezzanine",
+          "elevators": [
+            {
+              "externalId": "WMATA-E01_M_ELE",
+              "label": "Mt Vernon Sq elevator (Street to Mezzanine)"
+            },
+            {
+              "externalId": "WMATA-E01_N_ELE",
+              "label": "Mt Vernon Sq elevator (Street to Mezzanine)"
+            }
+          ]
+        },
+        {
+          "id": "mezzanine-platform",
+          "label": "Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-E01_ELE",
+              "label": "Mt Vernon Sq elevator (Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "E02",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 1 elevator, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine",
+          "label": "Street to Mezzanine",
+          "elevators": [
+            {
+              "externalId": "WMATA-E02_ELE_N",
+              "label": "Shaw-Howard U elevator (Street to Mezzanine)"
+            }
+          ]
+        },
+        {
+          "id": "mezzanine-platform",
+          "label": "Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-E02_MZ_ELE_N",
+              "label": "Shaw-Howard U elevator (Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "E04",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 1 elevator, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine",
+          "label": "Street to Mezzanine",
+          "elevators": [
+            {
+              "externalId": "WMATA-E04_ELV1",
+              "label": "Columbia Heights elevator (Street to Mezzanine)"
+            }
+          ]
+        },
+        {
+          "id": "mezzanine-platform",
+          "label": "Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-E04_ELV2",
+              "label": "Columbia Heights elevator (Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "E05",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 1 elevator, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine",
+          "label": "Street to Mezzanine",
+          "elevators": [
+            {
+              "externalId": "WMATA-E05_W_ELV",
+              "label": "Georgia Av-Petworth elevator (Street to Mezzanine)"
+            }
+          ]
+        },
+        {
+          "id": "mezzanine-platform",
+          "label": "Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-E05_MZ_ELV",
+              "label": "Georgia Av-Petworth elevator (Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "E09",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 2 elevators, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine",
+          "label": "Street to Mezzanine",
+          "elevators": [
+            {
+              "externalId": "WMATA-E09_ELV_E",
+              "label": "College Park-U of Md elevator (Street to Mezzanine)"
+            },
+            {
+              "externalId": "WMATA-E09_ELE_W",
+              "label": "College Park-U of Md elevator (Street to Mezzanine)"
+            }
+          ]
+        },
+        {
+          "id": "mezzanine-platform",
+          "label": "Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-E09_MZ_ELV",
+              "label": "College Park-U of Md elevator (Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "F02",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 1 elevator, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine",
+          "label": "Street to Mezzanine",
+          "elevators": [
+            {
+              "externalId": "WMATA-F02_ELE1",
+              "label": "Archives elevator (Street to Mezzanine)"
+            }
+          ]
+        },
+        {
+          "id": "mezzanine-platform",
+          "label": "Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-F02_MZ_ELE2",
+              "label": "Archives elevator (Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "F04",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 1 elevator, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine",
+          "label": "Street to Mezzanine",
+          "elevators": [
+            {
+              "externalId": "WMATA-F04_ELV1",
+              "label": "Waterfront elevator (Street to Mezzanine)"
+            }
+          ]
+        },
+        {
+          "id": "mezzanine-platform",
+          "label": "Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-F04_MZ_ELV2",
+              "label": "Waterfront elevator (Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "F06",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street/Mezzanine→Platform: 2 elevators. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine-platform",
+          "label": "Street/Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-F06_MZ_ELE_S",
+              "label": "Anacostia elevator (Street/Mezzanine to Platform)"
+            },
+            {
+              "externalId": "WMATA-F06_MZ_ELV_N",
+              "label": "Anacostia elevator (Street/Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "F07",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 1 elevator, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine",
+          "label": "Street to Mezzanine",
+          "elevators": [
+            {
+              "externalId": "WMATA-F07_ELE1",
+              "label": "Congress Heights elevator (Street to Mezzanine)"
+            }
+          ]
+        },
+        {
+          "id": "mezzanine-platform",
+          "label": "Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-F07_ELE2",
+              "label": "Congress Heights elevator (Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "F09",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street/Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine-platform",
+          "label": "Street/Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-F09_ELV",
+              "label": "Naylor Rd elevator (Street/Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "F11",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street/Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine-platform",
+          "label": "Street/Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-F11_MZ_ELV",
+              "label": "Branch Av elevator (Street/Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "G01",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 1 elevator, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine",
+          "label": "Street to Mezzanine",
+          "elevators": [
+            {
+              "externalId": "WMATA-G01_MZ_ELV1",
+              "label": "Benning Rd elevator (Street to Mezzanine)"
+            }
+          ]
+        },
+        {
+          "id": "mezzanine-platform",
+          "label": "Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-G01_MZ_ELV2",
+              "label": "Benning Rd elevator (Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "G02",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 1 elevator, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine",
+          "label": "Street to Mezzanine",
+          "elevators": [
+            {
+              "externalId": "WMATA-G02_MZ_ELV1",
+              "label": "Capitol Heights elevator (Street to Mezzanine)"
+            }
+          ]
+        },
+        {
+          "id": "mezzanine-platform",
+          "label": "Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-G02_MZ_ELV2",
+              "label": "Capitol Heights elevator (Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "G03",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street/Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine-platform",
+          "label": "Street/Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-G03_MZ_ELV",
+              "label": "Addison Rd elevator (Street/Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "G04",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street/Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine-platform",
+          "label": "Street/Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-G04_MZ_ELV",
+              "label": "Morgan Blvd elevator (Street/Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "G05",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Street/Mezzanine: 1 elevator, Street/Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-street-mezzanine",
+          "label": "Street to Street/Mezzanine",
+          "elevators": [
+            {
+              "externalId": "WMATA-G05_MZ_ELV1",
+              "label": "Downtown Largo elevator (Street to Street/Mezzanine)"
+            }
+          ]
+        },
+        {
+          "id": "street-mezzanine-platform",
+          "label": "Street/Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-G05_MZ_ELV2",
+              "label": "Downtown Largo elevator (Street/Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "J02",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street/Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine-platform",
+          "label": "Street/Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-J02_MZ_ELV",
+              "label": "Van Dorn St elevator (Street/Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "K01",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 1 elevator, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine",
+          "label": "Street to Mezzanine",
+          "elevators": [
+            {
+              "externalId": "WMATA-K01_ELE1",
+              "label": "Court House elevator (Street to Mezzanine)"
+            }
+          ]
+        },
+        {
+          "id": "mezzanine-platform",
+          "label": "Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-K01_ELE2",
+              "label": "Court House elevator (Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "K05",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street/Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine-platform",
+          "label": "Street/Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-K05_ELE",
+              "label": "East Falls Church elevator (Street/Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "K07",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street/Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine-platform",
+          "label": "Street/Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-K07_ELE",
+              "label": "Dunn Loring elevator (Street/Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "K08",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street/Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine-platform",
+          "label": "Street/Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-K08_MZ_ELE",
+              "label": "Vienna elevator (Street/Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "N01",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 2 elevators, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine",
+          "label": "Street to Mezzanine",
+          "elevators": [
+            {
+              "externalId": "WMATA-N01_S_PAV_ELE",
+              "label": "McLean elevator (Street to Mezzanine)"
+            },
+            {
+              "externalId": "WMATA-N01_E_PAV_ELE",
+              "label": "McLean elevator (Street to Mezzanine)"
+            }
+          ]
+        },
+        {
+          "id": "mezzanine-platform",
+          "label": "Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-N01_MZ_ELE",
+              "label": "McLean elevator (Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "N02",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 2 elevators, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine",
+          "label": "Street to Mezzanine",
+          "elevators": [
+            {
+              "externalId": "WMATA-N02_S_PAV_ELE",
+              "label": "Tysons elevator (Street to Mezzanine)"
+            },
+            {
+              "externalId": "WMATA-N02_W_ELE",
+              "label": "Tysons elevator (Street to Mezzanine)"
+            }
+          ]
+        },
+        {
+          "id": "mezzanine-platform",
+          "label": "Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-N02_MZ_ELV",
+              "label": "Tysons elevator (Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "N03",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 2 elevators, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine",
+          "label": "Street to Mezzanine",
+          "elevators": [
+            {
+              "externalId": "WMATA-N03_S_PAV_ELE",
+              "label": "Greensboro elevator (Street to Mezzanine)"
+            },
+            {
+              "externalId": "WMATA-N03_N_PAV_ELV",
+              "label": "Greensboro elevator (Street to Mezzanine)"
+            }
+          ]
+        },
+        {
+          "id": "mezzanine-platform",
+          "label": "Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-N03_MZ_ELE",
+              "label": "Greensboro elevator (Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "N04",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 2 elevators, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine",
+          "label": "Street to Mezzanine",
+          "elevators": [
+            {
+              "externalId": "WMATA-N04_S_PAV_ELE",
+              "label": "Spring Hill elevator (Street to Mezzanine)"
+            },
+            {
+              "externalId": "WMATA-N04_N_PAV_EL",
+              "label": "Spring Hill elevator (Street to Mezzanine)"
+            }
+          ]
+        },
+        {
+          "id": "mezzanine-platform",
+          "label": "Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-N04_MZ_ELV",
+              "label": "Spring Hill elevator (Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "N06",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 1 elevator, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine",
+          "label": "Street to Mezzanine",
+          "elevators": [
+            {
+              "externalId": "WMATA-N06_S_PAV_ELV",
+              "label": "Wiehle-Reston East elevator (Street to Mezzanine)"
+            }
+          ]
+        },
+        {
+          "id": "mezzanine-platform",
+          "label": "Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-N06_MZ_ELV",
+              "label": "Wiehle-Reston East elevator (Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "N07",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 2 elevators, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine",
+          "label": "Street to Mezzanine",
+          "elevators": [
+            {
+              "externalId": "WMATA-N07_N_PAV_ELV",
+              "label": "Reston Town Center elevator (Street to Mezzanine)"
+            },
+            {
+              "externalId": "WMATA-N07_S_PAV_ELE",
+              "label": "Reston Town Center elevator (Street to Mezzanine)"
+            }
+          ]
+        },
+        {
+          "id": "mezzanine-platform",
+          "label": "Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-N07_MZ_ELE",
+              "label": "Reston Town Center elevator (Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "N08",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 2 elevators, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine",
+          "label": "Street to Mezzanine",
+          "elevators": [
+            {
+              "externalId": "WMATA-N08_S_PAV_ELV",
+              "label": "Herndon elevator (Street to Mezzanine)"
+            },
+            {
+              "externalId": "WMATA-N08_N_PAV_ELV",
+              "label": "Herndon elevator (Street to Mezzanine)"
+            }
+          ]
+        },
+        {
+          "id": "mezzanine-platform",
+          "label": "Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-N08_MZ_ELV",
+              "label": "Herndon elevator (Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "N10",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street/Mezzanine→Platform: 2 elevators. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine-platform",
+          "label": "Street/Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-N10_MZ_ELV1",
+              "label": "Washington Dulles International Airport elevator (Street/Mezzanine to Platform)"
+            },
+            {
+              "externalId": "WMATA-N10_MZ_ELV2",
+              "label": "Washington Dulles International Airport elevator (Street/Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "N11",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 1 elevator, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine",
+          "label": "Street to Mezzanine",
+          "elevators": [
+            {
+              "externalId": "WMATA-N11_N_PAV_ELV",
+              "label": "Loudoun Gateway elevator (Street to Mezzanine)"
+            }
+          ]
+        },
+        {
+          "id": "mezzanine-platform",
+          "label": "Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-N11_MZ_ELV",
+              "label": "Loudoun Gateway elevator (Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "systemId": "wmata-dc",
+      "stationExternalId": "N12",
+      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 2 elevators, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
+      "segments": [
+        {
+          "id": "street-mezzanine",
+          "label": "Street to Mezzanine",
+          "elevators": [
+            {
+              "externalId": "WMATA-N12_S_PAV_ELV",
+              "label": "Ashburn elevator (Street to Mezzanine)"
+            },
+            {
+              "externalId": "WMATA-N12_N_PAV_ELV",
+              "label": "Ashburn elevator (Street to Mezzanine)"
+            }
+          ]
+        },
+        {
+          "id": "mezzanine-platform",
+          "label": "Mezzanine to Platform",
+          "elevators": [
+            {
+              "externalId": "WMATA-N12_MZ_ELV",
+              "label": "Ashburn elevator (Mezzanine to Platform)"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

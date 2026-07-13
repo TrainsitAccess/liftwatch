@@ -1,0 +1,404 @@
+{
+  "generatedAt": "2026-07-13T20:21:49.844Z",
+  "note": "Stations NOT auto-modeled — complex/side-platform/non-standard, pending a human pass.",
+  "stations": [
+    {
+      "station": "A01_C01",
+      "name": "Metro Center",
+      "reason": "non-standard-levels",
+      "detail": "Lower Mezzanine/Upper Platform, Lower Platform",
+      "levels": [
+        "Street",
+        "Lower Mezzanine/Upper Platform",
+        "Lower Platform"
+      ]
+    },
+    {
+      "station": "A02",
+      "name": "Farragut North",
+      "reason": "corrupt-levels",
+      "detail": "GTFS level_id points at another station's levels",
+      "levels": [
+        "Mezzanine",
+        "Platform"
+      ]
+    },
+    {
+      "station": "A03",
+      "name": "Dupont Circle",
+      "reason": "side-platforms",
+      "detail": "platform elevators serve disjoint directions (per-direction, not redundant)",
+      "levels": [
+        "Street",
+        "Mezzanine",
+        "Platform"
+      ]
+    },
+    {
+      "station": "A04",
+      "name": "Woodley Park",
+      "reason": "non-standard-levels",
+      "detail": "Mezzanine/Intermediate Passageway",
+      "levels": [
+        "Street",
+        "Mezzanine/Intermediate Passageway",
+        "Platform"
+      ]
+    },
+    {
+      "station": "A05",
+      "name": "Cleveland Park",
+      "reason": "non-standard-levels",
+      "detail": "Mezzanine/Intermediate Passageway",
+      "levels": [
+        "Street",
+        "Mezzanine/Intermediate Passageway",
+        "Platform"
+      ]
+    },
+    {
+      "station": "A06",
+      "name": "Van Ness-UDC",
+      "reason": "non-standard-levels",
+      "detail": "Mezzanine/Intermediate Passageway",
+      "levels": [
+        "Street",
+        "Mezzanine/Intermediate Passageway",
+        "Platform"
+      ]
+    },
+    {
+      "station": "B01_F01",
+      "name": "Gallery Place",
+      "reason": "non-standard-levels",
+      "detail": "Lower Mezzanine/Upper Platform, Lower Platform",
+      "levels": [
+        "Street",
+        "Lower Mezzanine/Upper Platform",
+        "Lower Platform"
+      ]
+    },
+    {
+      "station": "B02",
+      "name": "Judiciary Sq",
+      "reason": "side-platforms",
+      "detail": "platform elevators serve disjoint directions (per-direction, not redundant)",
+      "levels": [
+        "Street",
+        "Platform"
+      ]
+    },
+    {
+      "station": "B06_E06",
+      "name": "Fort Totten",
+      "reason": "multi-level-shaft",
+      "detail": "an elevator serves 3+ named levels",
+      "levels": [
+        "Street/Mezzanine",
+        "Lower Platform",
+        "Upper Platform"
+      ]
+    },
+    {
+      "station": "C02",
+      "name": "McPherson Sq",
+      "reason": "side-platforms",
+      "detail": "platform elevators serve disjoint directions (per-direction, not redundant)",
+      "levels": [
+        "Street",
+        "Mezzanine",
+        "Platform"
+      ]
+    },
+    {
+      "station": "C03",
+      "name": "Farragut West",
+      "reason": "side-platforms",
+      "detail": "platform elevators serve disjoint directions (per-direction, not redundant)",
+      "levels": [
+        "Street",
+        "Mezzanine",
+        "Platform"
+      ]
+    },
+    {
+      "station": "C05",
+      "name": "Rosslyn",
+      "reason": "non-standard-levels",
+      "detail": "Mezzanine/Upper Platform, Lower Platform",
+      "levels": [
+        "Street",
+        "Mezzanine/Upper Platform",
+        "Lower Platform"
+      ]
+    },
+    {
+      "station": "C06",
+      "name": "Arlington Cemetery",
+      "reason": "side-platforms",
+      "detail": "platform elevators serve disjoint directions (per-direction, not redundant)",
+      "levels": [
+        "Street",
+        "Platform"
+      ]
+    },
+    {
+      "station": "C07",
+      "name": "Pentagon",
+      "reason": "non-standard-levels",
+      "detail": "Mezzanine/Upper Platform, Lower Platform",
+      "levels": [
+        "Street",
+        "Mezzanine/Upper Platform",
+        "Lower Platform"
+      ]
+    },
+    {
+      "station": "C08",
+      "name": "Pentagon City",
+      "reason": "side-platforms",
+      "detail": "platform elevators serve disjoint directions (per-direction, not redundant)",
+      "levels": [
+        "Street",
+        "Mezzanine",
+        "Platform"
+      ]
+    },
+    {
+      "station": "C09",
+      "name": "Crystal City",
+      "reason": "side-platforms",
+      "detail": "platform elevators serve disjoint directions (per-direction, not redundant)",
+      "levels": [
+        "Mezzanine",
+        "Street",
+        "Platform"
+      ]
+    },
+    {
+      "station": "C10",
+      "name": "Ronald Reagan Washington National Airport",
+      "reason": "side-platforms",
+      "detail": "platform elevators serve disjoint directions (per-direction, not redundant)",
+      "levels": [
+        "Street/Mezzanine",
+        "Platform"
+      ]
+    },
+    {
+      "station": "C11",
+      "name": "Potomac Yard",
+      "reason": "side-platforms",
+      "detail": "platform elevators serve disjoint directions (per-direction, not redundant)",
+      "levels": [
+        "Mezzanine",
+        "Platform",
+        "Street"
+      ]
+    },
+    {
+      "station": "C14",
+      "name": "Eisenhower Av",
+      "reason": "side-platforms",
+      "detail": "platform elevators serve disjoint directions (per-direction, not redundant)",
+      "levels": [
+        "Street/Mezzanine",
+        "Platform"
+      ]
+    },
+    {
+      "station": "C15",
+      "name": "Huntington",
+      "reason": "non-standard-levels",
+      "detail": "North Mezzanine, South Mezzanine",
+      "levels": [
+        "North Mezzanine",
+        "Platform",
+        "Street/Mezzanine",
+        "South Mezzanine"
+      ]
+    },
+    {
+      "station": "D02",
+      "name": "Smithsonian",
+      "reason": "multi-level-shaft",
+      "detail": "an elevator serves 3+ named levels",
+      "levels": [
+        "Street",
+        "Platform",
+        "Mezzanine"
+      ]
+    },
+    {
+      "station": "D03_F03",
+      "name": "L'Enfant Plaza",
+      "reason": "non-standard-levels",
+      "detail": "North Mezzanine, Upper Platform/Intermediate Passageway, Lower Platform",
+      "levels": [
+        "Street",
+        "North Mezzanine",
+        "Upper Platform/Intermediate Passageway",
+        "Lower Platform"
+      ]
+    },
+    {
+      "station": "D11",
+      "name": "Cheverly",
+      "reason": "side-platforms",
+      "detail": "platform elevators serve disjoint directions (per-direction, not redundant)",
+      "levels": [
+        "Street",
+        "Mezzanine",
+        "Platform"
+      ]
+    },
+    {
+      "station": "D13",
+      "name": "New Carrollton",
+      "reason": "non-standard-levels",
+      "detail": "NorthWest Mezzanine",
+      "levels": [
+        "NorthWest Mezzanine",
+        "Platform",
+        "Street/Mezzanine"
+      ]
+    },
+    {
+      "station": "E03",
+      "name": "U St",
+      "reason": "non-standard-levels",
+      "detail": "East/West Mezzanine",
+      "levels": [
+        "East/West Mezzanine",
+        "Platform"
+      ]
+    },
+    {
+      "station": "E07",
+      "name": "West Hyattsville",
+      "reason": "side-platforms",
+      "detail": "platform elevators serve disjoint directions (per-direction, not redundant)",
+      "levels": [
+        "Street/Mezzanine",
+        "Platform"
+      ]
+    },
+    {
+      "station": "E08",
+      "name": "Hyattsville Crossing",
+      "reason": "side-platforms",
+      "detail": "platform elevators serve disjoint directions (per-direction, not redundant)",
+      "levels": [
+        "Street/Mezzanine",
+        "Platform"
+      ]
+    },
+    {
+      "station": "E10",
+      "name": "Greenbelt",
+      "reason": "unorderable-levels",
+      "detail": "elevator level pair not a standard rung",
+      "levels": [
+        "Street/Mezzanine"
+      ]
+    },
+    {
+      "station": "F05",
+      "name": "Navy Yard-Ballpark",
+      "reason": "non-standard-levels",
+      "detail": "Street/West Mezzanine, Mezzanine/Intermediate Passageway",
+      "levels": [
+        "Street/West Mezzanine",
+        "Mezzanine/Intermediate Passageway",
+        "Platform"
+      ]
+    },
+    {
+      "station": "F08",
+      "name": "Southern Av",
+      "reason": "non-standard-levels",
+      "detail": "Pedestrian Bridge",
+      "levels": [
+        "Pedestrian Bridge",
+        "Street/Mezzanine",
+        "Platform"
+      ]
+    },
+    {
+      "station": "F10",
+      "name": "Suitland",
+      "reason": "non-standard-levels",
+      "detail": "Pedestrian Bridge",
+      "levels": [
+        "Pedestrian Bridge",
+        "Street/Mezzanine",
+        "Platform"
+      ]
+    },
+    {
+      "station": "J03",
+      "name": "Franconia-Springfield",
+      "reason": "non-standard-levels",
+      "detail": "Street/Street",
+      "levels": [
+        "Street/Street",
+        "Mezzanine",
+        "Platform"
+      ]
+    },
+    {
+      "station": "K02",
+      "name": "Clarendon",
+      "reason": "side-platforms",
+      "detail": "platform elevators serve disjoint directions (per-direction, not redundant)",
+      "levels": [
+        "Street",
+        "Mezzanine",
+        "Platform"
+      ]
+    },
+    {
+      "station": "K03",
+      "name": "Virginia Sq-GMU",
+      "reason": "side-platforms",
+      "detail": "platform elevators serve disjoint directions (per-direction, not redundant)",
+      "levels": [
+        "Street",
+        "Mezzanine",
+        "Platform"
+      ]
+    },
+    {
+      "station": "K04",
+      "name": "Ballston-MU",
+      "reason": "multi-level-shaft",
+      "detail": "an elevator serves 3+ named levels",
+      "levels": [
+        "Street",
+        "Platform",
+        "Mezzanine"
+      ]
+    },
+    {
+      "station": "K06",
+      "name": "West Falls Church",
+      "reason": "side-platforms",
+      "detail": "platform elevators serve disjoint directions (per-direction, not redundant)",
+      "levels": [
+        "Street",
+        "Mezzanine",
+        "Platform"
+      ]
+    },
+    {
+      "station": "N09",
+      "name": "Innovation Center",
+      "reason": "unorderable-levels",
+      "detail": "elevator level pair not a standard rung",
+      "levels": [
+        "Mezzanine",
+        "Platform"
+      ]
+    }
+  ]
+}

@@ -1,39 +1,41 @@
-// ⚠️ WIP / DRAFT (2026-07-12) — NOT wired into the app yet, and MUST NOT be
-// until the extraction below is completed and validated. Known gap: the
-// elevator-node regex `NODE_<code>_<id>_(BT|TP)` on from_stop only captured 154
-// of ~205 distinct mode-5 elevators — WMATA's node naming is inconsistent
-// (ELV/ELE/EL markers, BT/TP/MID/LG/UP suffixes, some `ENT_`-prefixed nodes,
-// both endpoints). A missed elevator on a segment could make a station read
-// ACCESSIBLE when it isn't (under-warn — the cardinal sin), so this needs:
-//   1. robust elevator-identity extraction across ALL node patterns (get levels
-//      from stops.txt regardless of node name; strip the position suffix to
-//      group a physical elevator's pathways, incl. 3-level BT/MID/TP elevators);
-//   2. reconcile the count (~205 rail-pathways elevators vs WMATA's published
-//      ~320 — likely garage/facility elevators excluded from the RAIL GTFS;
-//      confirm, don't assume);
-//   3. validate redundancy against a ground truth before shipping.
-// The ARCHITECTURE is proven though: pathways give inventory + topology
-// redundancy, and the live Incidents `LocationDescription` ("Elevator between
-// street and mezzanine") crosswalks each outage to its segment by level pair.
+// Generate WMATA's in-station elevator inventory + access-chain models from its
+// GTFS pathways graph (pathways.txt + stops.txt + levels.txt). WMATA's live feed
+// (Incidents.svc) only lists BROKEN elevators — no roster, no topology — which is
+// why WMATA was `inventoryComplete: false` with no redundancy. GTFS pathways fill
+// the topology gap for the IN-STATION (street↔platform) elevators.
 //
-// Generate WMATA's elevator inventory + access-chain models from its GTFS
-// pathways graph (pathways.txt + stops.txt + levels.txt). WMATA's live feed
-// (Incidents.svc) only lists BROKEN elevators — no roster, no topology — which
-// is why WMATA was `inventoryComplete: false` with no redundancy. GTFS
-// pathways fills BOTH gaps: every mode-5 (elevator) pathway is a physical
-// elevator connecting two named levels (Street / Mezzanine / Platform), so we
-// get a full roster AND topology-derived redundancy (two elevators between the
-// same level pair back each other up — same idea as TfL's topology models).
+// ── Extraction (the correctness-critical part) ────────────────────────────────
+// A physical elevator = a CONNECTED COMPONENT of the mode-5 (elevator) pathway
+// subgraph, NOT a regex over node names. Two nodes are the same elevator iff a
+// mode-5 pathway links them; different elevators never share a mode-5 edge. This
+// is robust to WMATA's inconsistent node naming (ELV/ELE/EL markers, BT/TP/MID/LG
+// suffixes, ENT_-prefixed entrances) and structurally groups a 3-level shaft
+// (Street↔Mezz↔Platform, three pairwise pathways) into ONE elevator — so it can
+// never over-split one elevator into a false redundant pair (the cardinal
+// under-warn). Levels come from stops.txt (level_id → levels.txt), NOT the node
+// name; entrances (location_type 2, blank level) are the Street level. This
+// captures all ~206 in-station elevators (the first-pass regex got only 154).
+//
+// ── What GTFS does NOT contain (see the header notes + the session findings) ───
+//  • GARAGE / facility elevators — absent from the rail pathways graph, but they
+//    exist, break, and appear in the live feed ("Garage elevator"). ~206 GTFS
+//    in-station + ~garage/facility ≈ WMATA's published ~320. So the roster here
+//    is COMPLETE for in-station access but is NOT the whole fleet.
+//  • Side-platform stations — where the two mezzanine→platform elevators serve
+//    DIFFERENT directions (distinct platform faces PF_x_1 / PF_x_2) and are NOT
+//    redundant. Grouping by level name alone would mark them redundant = a false
+//    ACCESSIBLE = under-warn. We detect these via step-free platform reachability
+//    and EXCLUDE them (per-direction modeling is a human pass, and a live
+//    "mezzanine and platform" advisory can't even say which direction).
+//
+// DELIBERATELY CONSERVATIVE: only single-platform stations whose levels are the
+// standard Street → (Mezzanine) → Platform ladder AND whose any-redundancy is
+// backed by identical platform reachability are modeled; everything else is
+// EXCLUDED to chains-excluded.json with a reason for a human pass.
 //
 // The live outage feed crosswalks in by LEVEL PAIR: Incidents carry a
-// LocationDescription like "Elevator between street and mezzanine", which maps
-// onto the segment the pathways graph already knows (see the adapter).
-//
-// DELIBERATELY CONSERVATIVE (TfL precedent): only stations whose levels are the
-// standard Street → (Mezzanine) → Platform ladder are modeled; anything with an
-// intermediate passageway, multiple/《directional》mezzanines, lower platforms,
-// pedestrian bridges, etc. is EXCLUDED to chains-excluded.json for a human pass
-// rather than guessed.
+// LocationDescription like "Elevator between street and mezzanine", mapped onto
+// the segment the pathways graph knows (see the adapter, once wired).
 //
 // Usage: node scripts/wmata-pathways.mts <gtfs-dir> [out-dir]
 //   <gtfs-dir> holds the extracted rail-gtfs-static.zip (pathways/stops/levels).
@@ -75,115 +77,270 @@ function splitRow(line: string): string[] {
   out.push(cur);
   return out;
 }
-
 const read = (f: string) => parseCsv(readFileSync(join(gtfsDir, f), "utf8"));
 
 // level_id -> normalized level name
 const levelName = new Map<string, string>();
 for (const l of read("levels.txt")) levelName.set(l.level_id!, (l.level_name || "").trim());
 
-// stop_id -> { level, station, name } ; also station -> name
-const nodeLevel = new Map<string, string>();
+// node metadata
+interface NodeInfo { levelId: string; level: string; loctype: string; parent: string; name: string }
+const node = new Map<string, NodeInfo>();
 const stationName = new Map<string, string>();
 for (const s of read("stops.txt")) {
-  if (s.level_id) nodeLevel.set(s.stop_id!, levelName.get(s.level_id) ?? s.level_id);
-  if (s.location_type === "1") {
-    const code = (s.stop_id || "").replace(/^.*_/, ""); // parent stations use the raw code
-    stationName.set(s.stop_id!, s.stop_name || s.stop_id!);
+  node.set(s.stop_id!, {
+    levelId: s.level_id || "",
+    level: s.level_id ? (levelName.get(s.level_id) ?? `?${s.level_id}`) : "",
+    loctype: s.location_type || "",
+    parent: s.parent_station || "",
+    name: s.stop_name || "",
+  });
+  if (s.location_type === "1") stationName.set(s.stop_id!, s.stop_name || s.stop_id!);
+}
+
+const stripPrefix = (id: string) => id.replace(/^(NODE_|ENT_|PF_|PLF_)/, "");
+const stationCodeOf = (id: string): string => {
+  const info = node.get(id);
+  if (info && info.parent) return info.parent.replace(/^STN_/, "");
+  const m = stripPrefix(id).match(/^([A-Z]\d{2}(?:_[A-Z]\d{2})?)/);
+  return m ? m[1]! : "??";
+};
+const stationCodeOfLevel = (levelId: string): string => {
+  const m = levelId.match(/^([A-Z]\d{2}(?:_[A-Z]\d{2})?)/);
+  return m ? m[1]! : "";
+};
+// ORIGINAL level straight from stops.txt (entrances → Street). Used for the
+// exclusion gates so a genuinely non-standard level (Upper/Lower Platform, named
+// mezzanine, passageway) or a 3-level shaft is never masked by the override below.
+const origLevelOf = (id: string): string => {
+  const info = node.get(id);
+  if (!info) return "?missing";
+  if (info.level) return info.level;
+  if (info.loctype === "2") return "Street";
+  return "?nolevel";
+};
+// STRUCTURAL level: a node with a direct walkway (mode 1/3) to a PLF_ platform is
+// physically AT platform level — trust that over its stops.txt level_id, which
+// WMATA mislabels at the platform end of several elevators (K07/D05/E02: both
+// ends read the mezzanine/combined level). Used to build segments for stations
+// the gates already cleared as standard, so it only ever FIXES a degenerate
+// same-level pair; it can't invent a non-standard-platform station into cleanness
+// (those are excluded on origLevel first).
+const levelOf = (id: string): string => (platformNode.has(id) ? "Platform" : origLevelOf(id));
+const isElevNode = (id: string) => /(ELE|ELV|EL)\d*/.test(id);
+const isPlatformLevel = (l: string) => /platform/i.test(l);
+
+// --- graph edges by mode ---
+const modeAdj = new Map<string, { to: string; mode: string }[]>();
+const m5adj = new Map<string, Set<string>>();
+const m5nodes = new Set<string>();
+function link(a: string, b: string, mode: string) {
+  if (!modeAdj.has(a)) modeAdj.set(a, []);
+  if (!modeAdj.has(b)) modeAdj.set(b, []);
+  modeAdj.get(a)!.push({ to: b, mode });
+  modeAdj.get(b)!.push({ to: a, mode });
+}
+for (const p of read("pathways.txt")) {
+  link(p.from_stop_id!, p.to_stop_id!, p.pathway_mode!);
+  if (p.pathway_mode === "5") {
+    m5nodes.add(p.from_stop_id!); m5nodes.add(p.to_stop_id!);
+    if (!m5adj.has(p.from_stop_id!)) m5adj.set(p.from_stop_id!, new Set());
+    if (!m5adj.has(p.to_stop_id!)) m5adj.set(p.to_stop_id!, new Set());
+    m5adj.get(p.from_stop_id!)!.add(p.to_stop_id!);
+    m5adj.get(p.to_stop_id!)!.add(p.from_stop_id!);
   }
 }
-// Station code -> friendly name (parent station stop_id IS the code, e.g. "C11")
-const nameByCode = new Map<string, string>();
-for (const s of read("stops.txt")) {
-  if (s.location_type === "1" && /^[A-Z]\d{2}$/.test(s.stop_id || "")) nameByCode.set(s.stop_id!, s.stop_name || s.stop_id!);
+
+// Structural platform-level override: a node with a DIRECT same-level walkway
+// (mode 1 / travelator 3) edge to a PLF_ platform stop is physically AT platform
+// level — trust that over its stops.txt level_id, which WMATA mislabels at the
+// platform end of several elevators (K07/N09/E10/D05/E02: both ends read the
+// mezzanine/combined level). Fare gates (6/7) sit at the mezzanine, so they are
+// excluded — only a walkway edge implies same-level-as-platform.
+const platformNode = new Set<string>();
+for (const [n, nbrs] of modeAdj) {
+  if (nbrs.some(({ to, mode }) => to.startsWith("PLF_") && (mode === "1" || mode === "3"))) platformNode.add(n);
 }
 
-// --- collect elevators (mode-5 pathways) per station ---
-interface Elev { station: string; elevId: string; levels: [string, string] }
-const byStation = new Map<string, Elev[]>();
-for (const p of read("pathways.txt")) {
-  if (p.pathway_mode !== "5") continue;
-  const m = (p.from_stop_id || "").match(/^NODE_([A-Z]\d{2})_(.+?)_(BT|TP)$/);
-  if (!m) continue;
-  const station = m[1]!, elevId = m[2]!;
-  const a = nodeLevel.get(p.from_stop_id!) ?? "?";
-  const b = nodeLevel.get(p.to_stop_id!) ?? "?";
-  const list = byStation.get(station) ?? [];
-  list.push({ station, elevId, levels: [a, b] });
-  byStation.set(station, list);
+// --- physical elevators = connected components of the mode-5 subgraph ---
+interface Elev { station: string; elevId: string; nodes: string[]; levels: string[]; origLevels: string[]; servedPlf: string[] }
+const compSeen = new Set<string>();
+const elevators: Elev[] = [];
+// step-free non-elevator reachability: modes 1 (walkway) / 3 (travelator) / 6,7 (fare gates)
+const STEPFREE = new Set(["1", "3", "6", "7"]);
+function reachablePlf(from: string): Set<string> {
+  const vis = new Set([from]);
+  const st = [from];
+  const plfs = new Set<string>();
+  while (st.length) {
+    const n = st.pop()!;
+    if (n.startsWith("PLF_")) plfs.add(n);
+    for (const { to, mode } of modeAdj.get(n) ?? []) {
+      if (!STEPFREE.has(mode) || vis.has(to)) continue;
+      vis.add(to); st.push(to);
+    }
+  }
+  return plfs;
+}
+for (const start of m5nodes) {
+  if (compSeen.has(start)) continue;
+  const comp: string[] = [];
+  const st = [start];
+  compSeen.add(start);
+  while (st.length) {
+    const n = st.pop()!;
+    comp.push(n);
+    for (const nb of m5adj.get(n) ?? []) if (!compSeen.has(nb)) { compSeen.add(nb); st.push(nb); }
+  }
+  const elevNodes = comp.filter(isElevNode);
+  if (!elevNodes.length) continue; // stray non-elevator component (e.g. faregate leak)
+  const station = stationCodeOf(elevNodes[0]!);
+  // stable id = node name with the trailing position token stripped
+  const elevId = stripPrefix(elevNodes.slice().sort()[0]!).replace(/_(BT|TP|MZ|LPLF|UPLF|MID|LL|LG|UP)$/i, "");
+  const levels = [...new Set(elevNodes.map(levelOf))];
+  const origLevels = [...new Set(elevNodes.map(origLevelOf))];
+  const servedPlf = new Set<string>();
+  for (const n of comp) if (isPlatformLevel(levelOf(n))) for (const p of reachablePlf(n)) servedPlf.add(p);
+  elevators.push({ station, elevId, nodes: comp, levels, origLevels, servedPlf: [...servedPlf] });
 }
 
+// --- classify + model per station ---
 const STD = new Set(["Street", "Mezzanine", "Platform", "Street/Mezzanine"]);
-// Order along the access ladder. Street/Mezzanine is the combined entry level.
-const LADDER = ["Street", "Street/Mezzanine", "Mezzanine", "Platform"];
-const rank = (lvl: string) => LADDER.indexOf(lvl);
+const RANK: Record<string, number> = { Street: 0, "Street/Mezzanine": 0, Mezzanine: 1, Platform: 2 };
+const segId = (a: string, b: string) => `${a}-${b}`.toLowerCase().replace(/[^a-z]+/g, "-").replace(/^-|-$/g, "");
 const segLabel = (a: string, b: string) => `${a} to ${b}`;
-const segId = (a: string, b: string) => `${a}-${b}`.toLowerCase().replace(/[^a-z]+/g, "-");
+
+const byStation = new Map<string, Elev[]>();
+for (const e of elevators) (byStation.get(e.station) ?? byStation.set(e.station, []).get(e.station)!).push(e);
+
+// all platform faces (PF_*) and directional platform stops (PLF_*) per station
+const stationPlf = new Map<string, Set<string>>();
+for (const [id] of node) if (id.startsWith("PLF_")) {
+  const s = stationCodeOf(id);
+  (stationPlf.get(s) ?? stationPlf.set(s, new Set()).get(s)!).add(id);
+}
 
 const models: StationModel[] = [];
-const units: { externalId: string; station: string; stationName: string; description: string; segment: string; isRedundant: boolean; levelFrom: string; levelTo: string }[] = [];
-const excluded: { station: string; name: string; reason: string; levels: string[] }[] = [];
+interface Unit { externalId: string; station: string; stationName: string; description: string; levelFrom: string; levelTo: string; segment: string; modeled: boolean; isRedundant: boolean }
+const units: Unit[] = [];
+const excluded: { station: string; name: string; reason: string; detail: string; levels: string[] }[] = [];
 
-for (const [station, els] of [...byStation.entries()].sort()) {
-  const name = nameByCode.get(station) ?? station;
-  const levels = new Set(els.flatMap((e) => e.levels));
-  const nonStd = [...levels].filter((l) => !STD.has(l));
-  if (nonStd.length) {
-    excluded.push({ station, name, reason: "non-standard levels (transfer/multi-level)", levels: [...levels] });
+function nameOf(st: string) { return stationName.get(`STN_${st}`) ?? stationName.get(st) ?? st; }
+function exclude(st: string, reason: string, detail: string, levels: string[]) {
+  excluded.push({ station: st, name: nameOf(st), reason, detail, levels });
+  // still emit the elevators into the inventory (roster), just unmodeled
+  for (const e of byStation.get(st) ?? []) {
+    const [a, b] = e.levels.length === 2 ? [e.levels[0]!, e.levels[1]!] : [e.levels.join("/"), ""];
+    units.push({
+      externalId: `WMATA-${e.elevId}`, station: st, stationName: nameOf(st),
+      description: e.levels.join(" ↔ "), levelFrom: a, levelTo: b, segment: "",
+      modeled: false, isRedundant: false,
+    });
+  }
+}
+
+for (const [st, els] of [...byStation.entries()].sort()) {
+  const name = nameOf(st);
+  // (1) corruption guard: any elevator node whose level_id belongs to a DIFFERENT
+  //     station (live-observed at A02, whose nodes point at A03's levels).
+  const corrupt = els.some((e) => e.nodes.some((n) => {
+    const lid = node.get(n)?.levelId || "";
+    const ls = stationCodeOfLevel(lid);
+    return ls && ls !== st;
+  }));
+  if (corrupt) { exclude(st, "corrupt-levels", "GTFS level_id points at another station's levels", [...new Set(els.flatMap((e) => e.levels))]); continue; }
+
+  const allLevels = new Set(els.flatMap((e) => e.levels));
+  const allOrig = new Set(els.flatMap((e) => e.origLevels));
+  // (2) any 3+ level shaft (spans two segments) — complex, human pass. Uses the
+  //     ORIGINAL levels so the platform override can't collapse a true 3-level
+  //     shaft (e.g. Fort Totten's Upper+Lower Platform) into a clean 2-rung ladder.
+  if (els.some((e) => e.origLevels.length > 2)) { exclude(st, "multi-level-shaft", "an elevator serves 3+ named levels", [...allOrig]); continue; }
+  // (3) non-standard levels (lower/upper platform, multiple/named mezzanines, ped
+  //     bridge, passageway) — again on ORIGINAL levels.
+  const nonStd = [...allOrig].filter((l) => !STD.has(l));
+  if (nonStd.length) { exclude(st, "non-standard-levels", nonStd.join(", "), [...allOrig]); continue; }
+
+  // (4) side-platform detection: >1 directional platform face, and no single
+  //     elevator reaches ALL of them (each platform elevator serves one direction).
+  const plfAll = [...(stationPlf.get(st) ?? [])];
+  const platEls = els.filter((e) => e.levels.some(isPlatformLevel));
+  const coversAll = (e: Elev) => plfAll.length > 0 && plfAll.every((p) => e.servedPlf.includes(p));
+  if (plfAll.length > 1 && platEls.length > 0 && !platEls.some(coversAll)) {
+    exclude(st, "side-platforms", "platform elevators serve disjoint directions (per-direction, not redundant)", [...allLevels]);
     continue;
   }
-  // Group elevators into segments by their (ordered) level pair.
-  const segMap = new Map<string, { from: string; to: string; elevIds: string[] }>();
+
+  // (5) build the ladder from level pairs; require a contiguous entry→Platform chain
+  const segMap = new Map<string, { from: string; to: string; els: Elev[] }>();
   let bad = false;
   for (const e of els) {
-    const [x, y] = e.levels;
-    const from = rank(x) <= rank(y) ? x : y;
-    const to = rank(x) <= rank(y) ? y : x;
-    if (rank(from) < 0 || rank(to) < 0 || from === to) { bad = true; break; }
+    if (e.levels.length !== 2) { bad = true; break; }
+    const [x, y] = e.levels as [string, string];
+    if (!(x in RANK) || !(y in RANK)) { bad = true; break; }
+    const from = RANK[x]! <= RANK[y]! ? x : y;
+    const to = RANK[x]! <= RANK[y]! ? y : x;
+    if (from === to) { bad = true; break; }
     const key = `${from}|${to}`;
-    const seg = segMap.get(key) ?? { from, to, elevIds: [] };
-    if (!seg.elevIds.includes(e.elevId)) seg.elevIds.push(e.elevId);
-    segMap.set(key, seg);
+    (segMap.get(key) ?? segMap.set(key, { from, to, els: [] }).get(key)!).els.push(e);
   }
-  if (bad) { excluded.push({ station, name, reason: "unorderable level pair", levels: [...levels] }); continue; }
+  if (bad) { exclude(st, "unorderable-levels", "elevator level pair not a standard rung", [...allLevels]); continue; }
 
-  // The segments must form ONE contiguous ladder from the entry level to Platform.
-  const segs = [...segMap.values()].sort((a, b) => rank(a.from) - rank(b.from));
+  const segs = [...segMap.values()].sort((a, b) => RANK[a.from]! - RANK[b.from]!);
   const chainOk = segs.every((s, i) => i === 0 || s.from === segs[i - 1]!.to);
   const reachesPlatform = segs.length > 0 && segs[segs.length - 1]!.to === "Platform";
-  if (!chainOk || !reachesPlatform) {
-    excluded.push({ station, name, reason: "non-contiguous ladder or no platform elevator", levels: [...levels] });
-    continue;
-  }
+  if (!chainOk || !reachesPlatform) { exclude(st, "non-contiguous-ladder", "segments do not chain entry→platform", [...allLevels]); continue; }
 
+  // (6) redundancy safety gate: any segment claiming >=2 elevators that touches a
+  //     platform must have all its elevators reach an identical, non-empty platform
+  //     set (island). Otherwise treat as per-direction (should have been caught in
+  //     (4), but double-guard the reachability).
+  let redunUnsafe = false;
+  for (const s of segs) {
+    if (s.els.length < 2 || s.to !== "Platform") continue;
+    const sets = s.els.map((e) => new Set(e.servedPlf));
+    const first = sets[0]!;
+    const identical = first.size > 0 && sets.every((z) => z.size === first.size && [...z].every((v) => first.has(v)));
+    if (!identical) redunUnsafe = true;
+  }
+  if (redunUnsafe) { exclude(st, "unsafe-platform-redundancy", "same-segment platform elevators reach differing platforms", [...allLevels]); continue; }
+
+  // build the model
   const model: StationModel = {
     systemId: "wmata-dc",
-    stationExternalId: station,
-    note: `Topology from WMATA GTFS pathways: ${segs.map((s) => `${s.from}→${s.to} (${s.elevIds.length} elevator${s.elevIds.length > 1 ? "s" : ""})`).join(", ")}.`,
+    stationExternalId: st,
+    note: `Topology from WMATA GTFS pathways (mode-5 elevator components). ${segs.map((s) => `${s.from}→${s.to}: ${s.els.length} elevator${s.els.length > 1 ? "s" : ""}`).join(", ")}. In-station elevators only — garage/facility elevators are not in the rail GTFS.`,
     segments: segs.map((s): AccessSegment => ({
       id: segId(s.from, s.to),
       label: segLabel(s.from, s.to),
-      elevators: s.elevIds.map((id) => ({ externalId: `${station}-${id}`, label: `${name} elevator (${segLabel(s.from, s.to)})` })),
+      elevators: s.els.map((e) => ({ externalId: `WMATA-${e.elevId}`, label: `${name} elevator (${segLabel(s.from, s.to)})` })),
     })),
   };
   models.push(model);
-  for (const s of segs) for (const id of s.elevIds) {
+  for (const s of segs) for (const e of s.els) {
     units.push({
-      externalId: `${station}-${id}`, station, stationName: name,
+      externalId: `WMATA-${e.elevId}`, station: st, stationName: name,
       description: `Elevator between ${s.from.toLowerCase()} and ${s.to.toLowerCase()}`,
-      segment: segId(s.from, s.to), isRedundant: elevatorRedundant(model, `${station}-${id}`),
-      levelFrom: s.from, levelTo: s.to,
+      levelFrom: s.from, levelTo: s.to, segment: segId(s.from, s.to),
+      modeled: true, isRedundant: elevatorRedundant(model, `WMATA-${e.elevId}`),
     });
   }
 }
 
 mkdirSync(outDir, { recursive: true });
 const generatedAt = new Date().toISOString();
-writeFileSync(join(outDir, "units.json"), JSON.stringify({ generatedAt, source: "WMATA GTFS rail pathways.txt (mode 5)", units }, null, 2) + "\n");
-writeFileSync(join(outDir, "chains.json"), JSON.stringify({ generatedAt, source: "WMATA GTFS pathways topology (Street→Mezzanine→Platform ladder)", models }, null, 2) + "\n");
-writeFileSync(join(outDir, "chains-excluded.json"), JSON.stringify({ generatedAt, note: "Transfer/multi-level stations pending human review.", stations: excluded }, null, 2) + "\n");
+units.sort((a, b) => a.externalId.localeCompare(b.externalId));
+writeFileSync(join(outDir, "units.json"), JSON.stringify({ generatedAt, source: "WMATA GTFS rail pathways.txt mode-5 connected components (in-station elevators only)", units }, null, 2) + "\n");
+writeFileSync(join(outDir, "chains.json"), JSON.stringify({ generatedAt, source: "WMATA GTFS pathways topology (conservative single-platform Street→Mezzanine→Platform ladders)", models }, null, 2) + "\n");
+writeFileSync(join(outDir, "chains-excluded.json"), JSON.stringify({ generatedAt, note: "Stations NOT auto-modeled — complex/side-platform/non-standard, pending a human pass.", stations: excluded.sort((a, b) => a.station.localeCompare(b.station)) }, null, 2) + "\n");
 
-const redundant = units.filter((u) => u.isRedundant).length;
-console.log(`WMATA pathways: ${byStation.size} stations w/ elevators → modeled ${models.length}, excluded ${excluded.length}`);
-console.log(`Inventory: ${units.length} elevators (${redundant} redundant, ${units.length - redundant} sole-access)`);
-console.log(`Wrote units.json, chains.json, chains-excluded.json → src/catalog/wmata-data/`);
+// --- report ---
+const modeledUnits = units.filter((u) => u.modeled);
+const redundant = modeledUnits.filter((u) => u.isRedundant).length;
+const byReason = new Map<string, string[]>();
+for (const e of excluded) (byReason.get(e.reason) ?? byReason.set(e.reason, []).get(e.reason)!).push(e.station);
+console.log(`WMATA GTFS pathways → ${elevators.length} in-station elevators across ${byStation.size} stations`);
+console.log(`  Modeled: ${models.length} stations, ${modeledUnits.length} elevators (${redundant} redundant, ${modeledUnits.length - redundant} sole-access)`);
+console.log(`  Excluded: ${excluded.length} stations (${units.length - modeledUnits.length} elevators unmodeled but in roster)`);
+for (const [reason, sts] of [...byReason.entries()].sort()) console.log(`    ${reason} (${sts.length}): ${sts.join(", ")}`);
+console.log(`Wrote units.json (${units.length}), chains.json (${models.length}), chains-excluded.json (${excluded.length}) → ${outDir}`);
