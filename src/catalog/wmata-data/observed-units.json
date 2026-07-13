@@ -1,0 +1,474 @@
+{
+  "updatedAt": "2026-07-13T21:11:34.499Z",
+  "note": "Every WMATA elevator UnitName ever observed (archive + live feed). Grows only. Consumed by scripts/wmata-pathways.mts as an undercount/vocabulary gate.",
+  "units": [
+    {
+      "unitName": "A09X01",
+      "stationCode": "A09",
+      "location": "Elevator between street and mezzanine, corner of Wisconsin Ave. and Montgomery Lane",
+      "firstObserved": "2026-07-05T15:54:52.126119+00:00"
+    },
+    {
+      "unitName": "A10X01",
+      "stationCode": "A10",
+      "location": "Elevator between street and mezzanine",
+      "firstObserved": "2026-07-06T06:07:15.810503+00:00"
+    },
+    {
+      "unitName": "A12X03",
+      "stationCode": "A12",
+      "location": "Garage elevator",
+      "firstObserved": "2026-07-06T17:27:50.476385+00:00"
+    },
+    {
+      "unitName": "A14X01",
+      "stationCode": "A14",
+      "location": "Elevator between pedestrian bridge and mezzanine",
+      "firstObserved": "2026-07-04T19:23:55.417927+00:00"
+    },
+    {
+      "unitName": "A14X02",
+      "stationCode": "A14",
+      "location": "Elevator between pedestrian bridge and mezzanine",
+      "firstObserved": "2026-07-13T16:56:32.168769+00:00"
+    },
+    {
+      "unitName": "B01E02",
+      "stationCode": "B01",
+      "location": "Elevator between street and platform to Glenmont",
+      "firstObserved": "2026-07-09T05:38:15.760673+00:00"
+    },
+    {
+      "unitName": "B01E03",
+      "stationCode": "B01",
+      "location": "Elevator between platform for Green/Yellow lines and platform to Glenmont",
+      "firstObserved": "2026-07-11T19:19:20.460137+00:00"
+    },
+    {
+      "unitName": "B01E04",
+      "stationCode": "B01",
+      "location": "Elevator between platform for Green/Yellow lines and platform to Shady Grove",
+      "firstObserved": "2026-07-05T15:54:52.126119+00:00"
+    },
+    {
+      "unitName": "B02N01",
+      "stationCode": "B02",
+      "location": "Elevator between street and platform to Shady Grove",
+      "firstObserved": "2026-07-08T21:21:08.628597+00:00"
+    },
+    {
+      "unitName": "B09X04",
+      "stationCode": "B09",
+      "location": "Elevator between mezzanine and platform",
+      "firstObserved": "2026-07-09T11:57:17.772448+00:00"
+    },
+    {
+      "unitName": "B09X05",
+      "stationCode": "B09",
+      "location": "Elevator between mezzanine and platform",
+      "firstObserved": "2026-07-09T11:57:17.772448+00:00"
+    },
+    {
+      "unitName": "B09X06",
+      "stationCode": "B09",
+      "location": "Elevator between mezzanine and platform",
+      "firstObserved": "2026-07-09T11:57:17.772448+00:00"
+    },
+    {
+      "unitName": "B10X01",
+      "stationCode": "B10",
+      "location": "Elevator between mezzanine and platform",
+      "firstObserved": "2026-07-10T12:15:50.800135+00:00"
+    },
+    {
+      "unitName": "B10X02",
+      "stationCode": "B10",
+      "location": "Garage elevator",
+      "firstObserved": "2026-07-11T16:43:01.020176+00:00"
+    },
+    {
+      "unitName": "B11X01",
+      "stationCode": "B11",
+      "location": "Elevator between street and mezzanine, east side of station at bus bay/Kiss & Ride",
+      "firstObserved": "2026-07-05T17:09:41.228717+00:00"
+    },
+    {
+      "unitName": "B11X03",
+      "stationCode": "B11",
+      "location": "Elevator between mezzanine and platform",
+      "firstObserved": "2026-07-05T17:09:41.228717+00:00"
+    },
+    {
+      "unitName": "B11X05",
+      "stationCode": "B11",
+      "location": "Garage elevator",
+      "firstObserved": "2026-07-04T19:23:55.417927+00:00"
+    },
+    {
+      "unitName": "B11X06",
+      "stationCode": "B11",
+      "location": "Garage elevator",
+      "firstObserved": "2026-07-09T15:19:05.190777+00:00"
+    },
+    {
+      "unitName": "B11X07",
+      "stationCode": "B11",
+      "location": "Garage elevator",
+      "firstObserved": "2026-07-10T13:06:03.407004+00:00"
+    },
+    {
+      "unitName": "B11X08",
+      "stationCode": "B11",
+      "location": "Garage elevator",
+      "firstObserved": "2026-07-10T13:06:03.407004+00:00"
+    },
+    {
+      "unitName": "B35N02",
+      "stationCode": "B35",
+      "location": "Elevator between bike trail and mezzanine",
+      "firstObserved": "2026-07-07T19:07:14.9493+00:00"
+    },
+    {
+      "unitName": "C01N01",
+      "stationCode": "C01",
+      "location": "Elevator between street and mezzanine",
+      "firstObserved": "2026-07-05T00:16:15.96259+00:00"
+    },
+    {
+      "unitName": "C05E03",
+      "stationCode": "C05",
+      "location": "Elevator between street, and upper platform",
+      "firstObserved": "2026-07-11T15:56:41.525963+00:00"
+    },
+    {
+      "unitName": "C08X01",
+      "stationCode": "C08",
+      "location": "Elevator between street and mezzanine on west side of Hayes street, at The Fashion Center",
+      "firstObserved": "2026-07-08T12:55:25.390463+00:00"
+    },
+    {
+      "unitName": "C10S01",
+      "stationCode": "C10",
+      "location": "Elevator between mezzanine and platform to Huntington/Franconia-Springfield",
+      "firstObserved": "2026-07-11T14:55:53.045355+00:00"
+    },
+    {
+      "unitName": "C10S02",
+      "stationCode": "C10",
+      "location": "Elevator between mezzanine and platform to Mt.Vernon Sq/Largo Town Center",
+      "firstObserved": "2026-07-10T17:26:47.289918+00:00"
+    },
+    {
+      "unitName": "C13N01",
+      "stationCode": "C13",
+      "location": "Elevator between mezzanine and platform",
+      "firstObserved": "2026-07-11T22:42:05.342343+00:00"
+    },
+    {
+      "unitName": "C13N02",
+      "stationCode": "C13",
+      "location": "Elevator between mezzanine and platform",
+      "firstObserved": "2026-07-10T01:18:56.361437+00:00"
+    },
+    {
+      "unitName": "C15S01",
+      "stationCode": "C15",
+      "location": "Garage #1 elevator",
+      "firstObserved": "2026-07-11T12:25:14.654957+00:00"
+    },
+    {
+      "unitName": "C15S03",
+      "stationCode": "C15",
+      "location": "Garage #2 elevator",
+      "firstObserved": "2026-07-04T19:23:55.417927+00:00"
+    },
+    {
+      "unitName": "D01X01",
+      "stationCode": "D01",
+      "location": "Elevator between street and mezzanine",
+      "firstObserved": "2026-07-06T14:33:23.297451+00:00"
+    },
+    {
+      "unitName": "D02S01",
+      "stationCode": "D02",
+      "location": "Elevator between street, mezzanine, and platform to New Carrollton/Largo Town Center",
+      "firstObserved": "2026-07-09T11:57:17.772448+00:00"
+    },
+    {
+      "unitName": "D02S02",
+      "stationCode": "D02",
+      "location": "Elevator between mezzanine and platform to Vienna/Franconia-Springfield",
+      "firstObserved": "2026-07-11T11:35:49.853905+00:00"
+    },
+    {
+      "unitName": "D03W04",
+      "stationCode": "D03",
+      "location": "Elevator between mezzanine/upper platform to Branch Ave/Huntington and lower platform for Blue/Orange Lines",
+      "firstObserved": "2026-07-07T23:16:53.800561+00:00"
+    },
+    {
+      "unitName": "D05X02",
+      "stationCode": "D05",
+      "location": "Elevator between mezzanine and platform",
+      "firstObserved": "2026-07-06T17:27:50.476385+00:00"
+    },
+    {
+      "unitName": "D06X01",
+      "stationCode": "D06",
+      "location": "Elevator between street and mezzanine",
+      "firstObserved": "2026-07-08T15:21:59.95168+00:00"
+    },
+    {
+      "unitName": "D07X02",
+      "stationCode": "D07",
+      "location": "Elevator between mezzanine and platform",
+      "firstObserved": "2026-07-05T23:48:09.578667+00:00"
+    },
+    {
+      "unitName": "D09X04",
+      "stationCode": "D09",
+      "location": "Garage Elevator",
+      "firstObserved": "2026-07-10T13:21:59.822067+00:00"
+    },
+    {
+      "unitName": "D10X02",
+      "stationCode": "D10",
+      "location": "Elevator between mezzanine and platform",
+      "firstObserved": "2026-07-10T18:23:02.490365+00:00"
+    },
+    {
+      "unitName": "D12X01",
+      "stationCode": "D12",
+      "location": "Elevator between mezzanine and platform",
+      "firstObserved": "2026-07-11T11:47:34.54455+00:00"
+    },
+    {
+      "unitName": "D13X05",
+      "stationCode": "D13",
+      "location": "Garage elevator",
+      "firstObserved": "2026-07-12T21:52:17.643505+00:00"
+    },
+    {
+      "unitName": "E01X01",
+      "stationCode": "E01",
+      "location": "Elevator between street and mezzanine",
+      "firstObserved": "2026-07-07T11:51:58.042144+00:00"
+    },
+    {
+      "unitName": "E01X02",
+      "stationCode": "E01",
+      "location": "Elevator between street and mezzanine",
+      "firstObserved": "2026-07-07T11:51:58.042144+00:00"
+    },
+    {
+      "unitName": "E01X04",
+      "stationCode": "E01",
+      "location": "Elevator between mezzanine and platform",
+      "firstObserved": "2026-07-04T19:23:55.417927+00:00"
+    },
+    {
+      "unitName": "E01X05",
+      "stationCode": "E01",
+      "location": "Elevator between mezzanine and platform",
+      "firstObserved": "2026-07-12T19:17:18.430796+00:00"
+    },
+    {
+      "unitName": "E04X01",
+      "stationCode": "E04",
+      "location": "Elevator between street and mezzanine, 14 Street, Southbound Entrance",
+      "firstObserved": "2026-07-06T14:33:23.297451+00:00"
+    },
+    {
+      "unitName": "E04X02",
+      "stationCode": "E04",
+      "location": "Elevator between mezzanine and platform",
+      "firstObserved": "2026-07-04T19:23:55.417927+00:00"
+    },
+    {
+      "unitName": "E05X01",
+      "stationCode": "E05",
+      "location": "Elevator between street and mezzanine, west side at New Hampshire & Georgia Ave.",
+      "firstObserved": "2026-07-09T15:19:05.190777+00:00"
+    },
+    {
+      "unitName": "E07X02",
+      "stationCode": "E07",
+      "location": "Elevator between mezzanine and platform to Branch Ave",
+      "firstObserved": "2026-07-12T01:26:35.051766+00:00"
+    },
+    {
+      "unitName": "E09X04",
+      "stationCode": "E09",
+      "location": "Garage elevator",
+      "firstObserved": "2026-07-08T15:21:59.95168+00:00"
+    },
+    {
+      "unitName": "E09X05",
+      "stationCode": "E09",
+      "location": "Garage elevator",
+      "firstObserved": "2026-07-08T12:55:25.390463+00:00"
+    },
+    {
+      "unitName": "F02X01",
+      "stationCode": "F02",
+      "location": "Elevator between street entrance and mezzanine, on 7th Street, just north of Pennsylvania Ave",
+      "firstObserved": "2026-07-07T03:58:28.088328+00:00"
+    },
+    {
+      "unitName": "F02X02",
+      "stationCode": "F02",
+      "location": "Elevator between mezzanine and platform",
+      "firstObserved": "2026-07-10T09:12:04.82535+00:00"
+    },
+    {
+      "unitName": "F03N01",
+      "stationCode": "F03",
+      "location": "Elevator between street and mezzanine",
+      "firstObserved": "2026-07-05T17:09:41.228717+00:00"
+    },
+    {
+      "unitName": "F04X01",
+      "stationCode": "F04",
+      "location": "Elevator between street and mezzanine, north side of M Street, S.W.",
+      "firstObserved": "2026-07-05T06:04:48.643642+00:00"
+    },
+    {
+      "unitName": "F04X02",
+      "stationCode": "F04",
+      "location": "Elevator between mezzanine AND platform",
+      "firstObserved": "2026-07-12T14:46:10.115299+00:00"
+    },
+    {
+      "unitName": "F05W01",
+      "stationCode": "F05",
+      "location": "Elevator between street and mezzanine",
+      "firstObserved": "2026-07-11T10:42:40.872517+00:00"
+    },
+    {
+      "unitName": "F05W02",
+      "stationCode": "F05",
+      "location": "Elevator between mezzanine and platform",
+      "firstObserved": "2026-07-11T10:45:18.647671+00:00"
+    },
+    {
+      "unitName": "F07X01",
+      "stationCode": "F07",
+      "location": "Elevator between mezzanine and street",
+      "firstObserved": "2026-07-12T04:56:21.072145+00:00"
+    },
+    {
+      "unitName": "F07X02",
+      "stationCode": "F07",
+      "location": "Elevator between mezzanine and platform",
+      "firstObserved": "2026-07-07T01:27:17.988474+00:00"
+    },
+    {
+      "unitName": "G01X01",
+      "stationCode": "G01",
+      "location": "Elevator between street and mezzanine, north side of Benning Road at 45th Street",
+      "firstObserved": "2026-07-10T22:48:30.813372+00:00"
+    },
+    {
+      "unitName": "G01X02",
+      "stationCode": "G01",
+      "location": "Elevator between mezzanine and platform",
+      "firstObserved": "2026-07-13T10:27:16.23672+00:00"
+    },
+    {
+      "unitName": "G02X01",
+      "stationCode": "G02",
+      "location": "Elevator between street and mezzanine",
+      "firstObserved": "2026-07-07T23:16:53.800561+00:00"
+    },
+    {
+      "unitName": "G04X01",
+      "stationCode": "G04",
+      "location": "Elevator between mezzanine and platform",
+      "firstObserved": "2026-07-13T15:49:48.070465+00:00"
+    },
+    {
+      "unitName": "G04X02",
+      "stationCode": "G04",
+      "location": "Elevator between mezzanine and platform",
+      "firstObserved": "2026-07-13T15:49:48.070465+00:00"
+    },
+    {
+      "unitName": "G05X01",
+      "stationCode": "G05",
+      "location": "Elevator between street and mezzanine",
+      "firstObserved": "2026-07-04T19:23:55.417927+00:00"
+    },
+    {
+      "unitName": "J03X02",
+      "stationCode": "J03",
+      "location": "Elevator between mezzanine and platform",
+      "firstObserved": "2026-07-09T15:19:05.190777+00:00"
+    },
+    {
+      "unitName": "K04X03",
+      "stationCode": "K04",
+      "location": "Elevator between street and mezzanine to Vienna",
+      "firstObserved": "2026-07-05T20:42:58.696253+00:00"
+    },
+    {
+      "unitName": "K04X05",
+      "stationCode": "K04",
+      "location": "Elevator between street and mezzanine to New Carrollton",
+      "firstObserved": "2026-07-09T20:55:55.715656+00:00"
+    },
+    {
+      "unitName": "K05X01",
+      "stationCode": "K05",
+      "location": "Elevator between mezzanine and platform",
+      "firstObserved": "2026-07-11T12:30:28.457677+00:00"
+    },
+    {
+      "unitName": "K06X04",
+      "stationCode": "K06",
+      "location": "Garage elevator",
+      "firstObserved": "2026-07-10T14:07:25.887678+00:00"
+    },
+    {
+      "unitName": "K08X03",
+      "stationCode": "K08",
+      "location": "Garage",
+      "firstObserved": "2026-07-12T15:03:52.790924+00:00"
+    },
+    {
+      "unitName": "K08X04",
+      "stationCode": "K08",
+      "location": "Garage",
+      "firstObserved": "2026-07-12T15:03:52.790924+00:00"
+    },
+    {
+      "unitName": "N01X01",
+      "stationCode": "N01",
+      "location": "Elevator - south entry pavilion",
+      "firstObserved": "2026-07-09T11:57:17.772448+00:00"
+    },
+    {
+      "unitName": "N02X02",
+      "stationCode": "N02",
+      "location": "Elevator - south entry pavilion",
+      "firstObserved": "2026-07-10T19:51:49.806514+00:00"
+    },
+    {
+      "unitName": "N02X03",
+      "stationCode": "N02",
+      "location": "Elevator between mezzanine to grade/street",
+      "firstObserved": "2026-07-10T19:51:49.806514+00:00"
+    },
+    {
+      "unitName": "N03X02",
+      "stationCode": "N03",
+      "location": "Elevator - north entry pavilion",
+      "firstObserved": "2026-07-10T19:46:27.714652+00:00"
+    },
+    {
+      "unitName": "N06X02",
+      "stationCode": "N06",
+      "location": "Elevator - south entry pavilion",
+      "firstObserved": "2026-07-11T00:36:36.021569+00:00"
+    }
+  ]
+}

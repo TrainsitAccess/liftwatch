@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-13T20:21:49.844Z",
+  "generatedAt": "2026-07-13T21:19:42.566Z",
   "note": "Stations NOT auto-modeled — complex/side-platform/non-standard, pending a human pass.",
   "stations": [
     {
@@ -68,6 +68,16 @@
       ]
     },
     {
+      "station": "A14",
+      "name": "Rockville",
+      "reason": "observed-unmappable",
+      "detail": "live unit A14X01 (\"Elevator between pedestrian bridge and mezzanine\") maps to 0 segments",
+      "levels": [
+        "Street/Mezzanine",
+        "Platform"
+      ]
+    },
+    {
       "station": "B01_F01",
       "name": "Gallery Place",
       "reason": "non-standard-levels",
@@ -97,6 +107,26 @@
         "Street/Mezzanine",
         "Lower Platform",
         "Upper Platform"
+      ]
+    },
+    {
+      "station": "B09",
+      "name": "Forest Glen",
+      "reason": "observed-undercount",
+      "detail": "3 distinct live units (B09X04, B09X05, B09X06) on Mezzanine→Platform vs 1 in GTFS",
+      "levels": [
+        "Mezzanine",
+        "Platform"
+      ]
+    },
+    {
+      "station": "B35",
+      "name": "NoMa-Gallaudet U",
+      "reason": "observed-unmappable",
+      "detail": "live unit B35N02 (\"Elevator between bike trail and mezzanine\") maps to 0 segments",
+      "levels": [
+        "Street/Mezzanine",
+        "Platform"
       ]
     },
     {
@@ -264,6 +294,17 @@
       ]
     },
     {
+      "station": "E01",
+      "name": "Mt Vernon Sq",
+      "reason": "observed-undercount",
+      "detail": "2 distinct live units (E01X04, E01X05) on Mezzanine→Platform vs 1 in GTFS",
+      "levels": [
+        "Street",
+        "Mezzanine",
+        "Platform"
+      ]
+    },
+    {
       "station": "E03",
       "name": "U St",
       "reason": "non-standard-levels",
@@ -331,6 +372,27 @@
       "detail": "Pedestrian Bridge",
       "levels": [
         "Pedestrian Bridge",
+        "Street/Mezzanine",
+        "Platform"
+      ]
+    },
+    {
+      "station": "G04",
+      "name": "Morgan Blvd",
+      "reason": "observed-undercount",
+      "detail": "2 distinct live units (G04X01, G04X02) on Street/Mezzanine→Platform vs 1 in GTFS",
+      "levels": [
+        "Street/Mezzanine",
+        "Platform"
+      ]
+    },
+    {
+      "station": "G05",
+      "name": "Downtown Largo",
+      "reason": "observed-unmappable",
+      "detail": "live unit G05X01 (\"Elevator between street and mezzanine\") maps to 0 segments",
+      "levels": [
+        "Street",
         "Street/Mezzanine",
         "Platform"
       ]

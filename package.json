@@ -48,7 +48,9 @@
     "rail:chains": "tsx scripts/rail-chains.mts",
     "check:rail-chains": "tsx src/checks/rail-chains-check.ts",
     "mbta:chains": "tsx scripts/mbta-chains.mts",
-    "check:mbta-chains": "tsx src/checks/mbta-chains-check.ts"
+    "check:mbta-chains": "tsx src/checks/mbta-chains-check.ts",
+    "wmata:observed": "tsx scripts/wmata-observed.mts",
+    "check:wmata": "tsx src/checks/wmata-check.ts"
   },
   "dependencies": {
     "@netlify/blobs": "^10.7.9",

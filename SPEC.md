@@ -767,9 +767,11 @@ tier; free Default Tier = 10 calls/sec, 50k/day). `data_quality: 'fair'`,
   **nowhere** in any GTFS file (grep-verified, 0 matches; garage elevators
   like B11X05 aren't modeled at all). So units are discovered as they break:
   `inventoryComplete: false` disables the `single_elevator` redundancy
-  inference (broken-unit counts are not fleet counts). GTFS pathway-graph
-  redundancy (Tier B) remains possible per-station someday, but is blocked on
-  a manual UnitName↔pathway crosswalk — future curation.
+  inference (broken-unit counts are not fleet counts). The GTFS pathway-graph
+  redundancy build shipped 2026-07-13 (next section) — the crosswalk turned
+  out to be the *level pair* in `LocationDescription` plus progressive
+  observed-UnitName binding, not a UnitName↔node mapping (which truly doesn't
+  exist).
   - **No API, dataset, or GIS layer publishes a real elevator inventory**
     anywhere (exhaustively verified: WMATA's full API surface via its own
     published definition, its ArcGIS Online org — 108 datasets enumerated —
@@ -787,6 +789,79 @@ tier; free Default Tier = 10 calls/sec, 50k/day). `data_quality: 'fair'`,
     system row records `live` / `static` / `none` for this purpose. This is
     the general mechanism — any future discovered-inventory system reuses the
     same field.
+
+### WMATA per-elevator build (2026-07-13) — GTFS pathways chains, observed binding, fail-safe
+
+56 stations now carry per-elevator access-chain models (55 generated + Rockville
+hand-curated, 57 chains) with topology-derived redundancy — while
+`inventoryComplete` stays `false` and `staticFleetReference` (320) stays the %
+denominator, because ~⅓ of the fleet is garage/parking elevators absent from
+the rail GTFS (live-confirmed: "Garage elevator" outages at B11/C15/D13/K06…).
+The chains are an ADDITIVE accessibility layer (TfL-chains style), not a fleet
+claim. **Universal policy (Bryce, 2026-07-13): every elevator an agency reports
+is tracked** — garage/parking/bridge included — **but an elevator enters an
+access chain only when the agency's guidance or a human confirms the route.**
+
+- **Extraction** (`scripts/wmata-pathways.mts`): a physical elevator = a
+  CONNECTED COMPONENT of the mode-5 pathway subgraph — robust to WMATA's
+  inconsistent node naming (a name regex missed ~25%) and structurally unable
+  to split a 3-level shaft into a false redundant pair. Levels from stops.txt
+  (entrances → Street; a node with a direct walkway to a `PLF_` stop is forced
+  to Platform — WMATA mislabels the platform end at K07/D05/E02). All 206
+  in-station elevators captured across 98 stations.
+- **Conservative gates** exclude 43 stations to `chains-excluded.json` (reason
+  per station): non-standard levels (15, the big transfers), side platforms
+  (16 — step-free platform-reachability tracing proves their two
+  mezz→platform elevators serve DISJOINT directions, so level-pair grouping
+  would mint false redundancy; e.g. Dupont's PF_1/PF_2 each with a sole
+  elevator), 3-level shafts (3), corrupt GTFS levels (A02 → points at A03's),
+  unorderable levels (2), plus the observed gates below.
+- **Observed-units gate** (`scripts/wmata-observed.mts` →
+  `wmata-data/observed-units.json`, grows only): every UnitName ever seen in
+  the feed (archive + live, 78 as of 2026-07-13) must map onto exactly one
+  modeled segment, and no segment may show more distinct observed units than
+  GTFS elevators. Caught real GTFS undercounts: **Forest Glen B09** (elevator
+  BANK drawn as one pathway — 3 observed vs 1), **Mt Vernon Sq E01** (2
+  platform elevators vs 1), **Morgan Blvd G04** (2 vs 1); and unmappable
+  vocabulary: **Rockville A14** (pedestrian-bridge pair absent from GTFS),
+  **NoMa B35** (bike-trail elevator), **Downtown Largo G05**.
+- **Observed-name binding**: model slot ids are REAL live UnitNames wherever
+  the unit has ever appeared (slots within a segment are interchangeable, so
+  sorted-order assignment is exact); never-observed slots keep synthetic
+  `WMATA-<node>` ids until their UnitName first shows up (then regenerate).
+  31 of 105 modeled elevators bound so far — live outages match models BY ID.
+- **Curated tier** (`src/catalog/wmata-models.ts`): Rockville A14 — mezzanine
+  at street grade, sole mezz→platform elevator (core chain), plus the
+  human-confirmed (2026-07-13) pedestrian-bridge pair A14X01/A14X02 as its own
+  chain (BART Warm Springs precedent). `check:wmata` guards tier non-overlap.
+- **Adapter attribution** (`attributeWmataIncident`, pure):
+  id-in-model → modeled (segment + model-derived redundancy, source
+  `pathways`/`curated`); unknown UnitName at a modeled station → level-pair
+  fallback (`parseWmataLocation`, the ONE vocabulary shared with the
+  generator) attaches `unit.segment` + flags `needsReview`; unparseable →
+  `needsReview`, no segment; garage → plain tracked unit, never flagged,
+  never a chain member. Un-modeled stations unchanged.
+- **Site fail-safe** (`build-site-data`, generic): an OPEN `needs_review`
+  elevator outage at a modeled station whose id matches no chain elevator
+  there (a) counts as one extra distinct down unit on its `unit.segment` if
+  the adapter placed it, else (b) makes every chain at the station read
+  UNKNOWN — never accessible. Deliberately `unknown`, not `no_access`:
+  hard-severing would claim knowledge we don't have (the unknown unit may be
+  one of a redundant pair); `unknown` = "can't verify before you go" and the
+  station stops reading clean. Also covers BART's `-UNSPECIFIED` outages,
+  which previously didn't surface on the access board at all.
+- **Regression**: `npm run check:wmata` (offline, ~50 asserts) — tier
+  separation, all gate exclusions, binding completeness (every observed
+  non-garage unit at a modeled station matches by id), redundancy
+  spot-checks, the full location vocabulary, and the attribution crosswalk.
+- **Refresh loop**: a new UnitName fires the ntfy needsReview push → run
+  `npm run wmata:observed`, re-download the GTFS zip, re-run
+  `scripts/wmata-pathways.mts`, `npm run check:wmata` — the unit binds (or
+  its station auto-excludes if it broke the model).
+- Live cross-validation at build time: Rockville's bridge pair (both out) →
+  bridge chain NO ACCESS listing A14X01+A14X02; King St C13N01 out → REDUCED
+  via bound partner C13N02; Columbia Heights E04X02 (sole) → NO ACCESS;
+  4 garage outages tracked with zero chain effect.
 
 ### TfL feeds (in use) — real per-lift inventory, real topology-derived redundancy
 

@@ -3,16 +3,16 @@
   "name": "BART",
   "label": "BART (San Francisco)",
   "timezone": "America/Los_Angeles",
-  "generatedAt": "2026-07-11T00:50:44.646Z",
+  "generatedAt": "2026-07-13T21:28:27.356Z",
   "currentlyBroken": [
     {
       "station": "Richmond",
       "unitId": "RICH-PLAT",
       "unit": "Platform elevator",
-      "days": 6,
+      "days": 9,
       "since": "2026-07-04T02:54:57.211+00:00",
       "planned": false,
-      "reason": "Station (unspecified elevator — conservative)",
+      "reason": "Station (station-level advisory → platform elevator)",
       "estimatedReturn": null,
       "soleAccess": true,
       "severs": [
@@ -26,25 +26,29 @@
     },
     {
       "station": "Powell St.",
-      "unitId": "POWL-UNSPECIFIED",
-      "unit": "Station (unspecified elevator — conservative)",
-      "days": 0,
-      "since": "2026-07-10T20:35:15.299+00:00",
+      "unitId": "POWL-PLAT",
+      "unit": "Platform Elevator",
+      "days": 1,
+      "since": "2026-07-12T02:06:24.642+00:00",
       "planned": false,
-      "reason": "Station (unspecified elevator — conservative)",
+      "reason": "Station (station-level advisory → platform elevator)",
       "estimatedReturn": null,
-      "soleAccess": false,
-      "severs": [],
+      "soleAccess": true,
+      "severs": [
+        "Powell St."
+      ],
       "backups": [],
       "rampAlternative": false,
-      "chainNotes": []
+      "chainNotes": [
+        "Street and platform elevators are each a single point of failure — BART's own guidance routes the street elevator to the Union Square/Market St. Muni elevators (0.2 mi) and the platform elevator to Civic Center's street elevator (0.5 mi) then onward to Montgomery St. — not an in-station alternative. Confirmed against TransitAccess's independent Muni field survey of this shared station (same 2-elevator, non-redundant structure)."
+      ]
     },
     {
       "station": "12th St. Oakland City Center",
       "unitId": "12TH-ST-11TH",
       "unit": "11th St street elevator",
       "days": 0,
-      "since": "2026-07-10T15:55:53.146+00:00",
+      "since": "2026-07-13T15:43:37.736+00:00",
       "planned": false,
       "reason": "Station - Convention Center",
       "estimatedReturn": null,
@@ -59,43 +63,84 @@
       ]
     },
     {
-      "station": "Milpitas (Millbrae/SFO/Daly City/Richmond direction)",
-      "unitId": "MLPT-PLAT-2",
-      "unit": "Platform 2 elevator (Millbrae/SFO/Daly City/Richmond direction)",
+      "station": "16th St. Mission",
+      "unitId": "16TH-PLAT",
+      "unit": "Platform elevator",
       "days": 0,
-      "since": "2026-07-10T15:05:59.512+00:00",
+      "since": "2026-07-13T20:49:18.674+00:00",
       "planned": false,
-      "reason": "Station - SF/East Bay",
+      "reason": "Station (station-level advisory → platform elevator)",
       "estimatedReturn": null,
       "soleAccess": true,
       "severs": [
-        "Milpitas (Millbrae/SFO/Daly City/Richmond direction)"
+        "16th St. Mission"
       ],
       "backups": [],
       "rampAlternative": false,
       "chainNotes": [
-        "Platform 2 (Millbrae/SFO/Daly City/Richmond direction) has no in-station backup — BART's own guidance is to use the opposite platform's elevator only after riding to Berryessa/North San Jose and back."
+        "Street and platform elevators are each a single point of failure — BART's own guidance for either is to use Muni to 24th St. Mission instead, not an in-station alternative."
+      ]
+    },
+    {
+      "station": "24th St. Mission",
+      "unitId": "24TH-PLAT",
+      "unit": "Platform elevator",
+      "days": 0,
+      "since": "2026-07-13T14:43:09.895+00:00",
+      "planned": false,
+      "reason": "Station (station-level advisory → platform elevator)",
+      "estimatedReturn": null,
+      "soleAccess": true,
+      "severs": [
+        "24th St. Mission"
+      ],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": [
+        "Street and platform elevators are each a single point of failure — BART's own guidance for either is to use Muni to 16th St. Mission instead, not an in-station alternative."
       ]
     }
   ],
+  "needsReview": {
+    "current": 0,
+    "rows": []
+  },
   "offline": {
     "current": 0,
     "log": []
   },
-  "accessIssues": {
+  "otherEquipment": {
     "current": 0,
     "log": []
   },
   "stationAccess": {
     "rows": [
       {
-        "name": "Milpitas (Millbrae/SFO/Daly City/Richmond direction)",
+        "name": "16th St. Mission",
         "state": "no_access",
         "downUnits": [
-          "MLPT-PLAT-2"
+          "16TH-PLAT"
         ],
         "offlineUnits": [],
-        "note": "Platform 2 (Millbrae/SFO/Daly City/Richmond direction) has no in-station backup — BART's own guidance is to use the opposite platform's elevator only after riding to Berryessa/North San Jose and back."
+        "note": "Street and platform elevators are each a single point of failure — BART's own guidance for either is to use Muni to 24th St. Mission instead, not an in-station alternative."
+      },
+      {
+        "name": "24th St. Mission",
+        "state": "no_access",
+        "downUnits": [
+          "24TH-PLAT"
+        ],
+        "offlineUnits": [],
+        "note": "Street and platform elevators are each a single point of failure — BART's own guidance for either is to use Muni to 16th St. Mission instead, not an in-station alternative."
+      },
+      {
+        "name": "Powell St.",
+        "state": "no_access",
+        "downUnits": [
+          "POWL-PLAT"
+        ],
+        "offlineUnits": [],
+        "note": "Street and platform elevators are each a single point of failure — BART's own guidance routes the street elevator to the Union Square/Market St. Muni elevators (0.2 mi) and the platform elevator to Civic Center's street elevator (0.5 mi) then onward to Montgomery St. — not an in-station alternative. Confirmed against TransitAccess's independent Muni field survey of this shared station (same 2-elevator, non-redundant structure)."
       },
       {
         "name": "Richmond",
@@ -116,7 +161,7 @@
         "note": "Two street elevators (14th St and 11th St) back each other up, but a single platform elevator is a single point of failure. Accessible only if a street elevator AND the platform elevator work."
       }
     ],
-    "chainsModeled": 66
+    "chainsModeled": 68
   },
   "scheduledWork": [
     {
@@ -130,70 +175,99 @@
   "accessibilityBlackouts": [
     {
       "name": "Richmond",
-      "hours": 165.92984305555555
+      "hours": 234.5583736111111
+    },
+    {
+      "name": "Powell St.",
+      "hours": 43.367420555555555
     },
     {
       "name": "Milpitas (Millbrae/SFO/Daly City/Richmond direction)",
-      "hours": 26.030368888888887
+      "hours": 38.16322972222222
     },
     {
       "name": "El Cerrito Plaza (Berryessa/SFO/Millbrae/Daly City direction)",
-      "hours": 6.317168055555555
+      "hours": 27.335109166666665
+    },
+    {
+      "name": "16th St. Mission",
+      "hours": 10.038260833333334
+    },
+    {
+      "name": "Embarcadero",
+      "hours": 7.460270555555556
+    },
+    {
+      "name": "24th St. Mission",
+      "hours": 6.754850277777778
+    },
+    {
+      "name": "MacArthur (Antioch, Richmond direction)",
+      "hours": 3.1732744444444445
+    },
+    {
+      "name": "Coliseum",
+      "hours": 2.5635255555555556
     }
   ],
   "stepFreeStreak": [
     {
       "name": "Ashby",
-      "days": 6,
+      "days": 9,
       "blackedOutNow": false
     },
     {
       "name": "12th St. Oakland City Center",
-      "days": 6,
+      "days": 9,
       "blackedOutNow": false
     },
     {
       "name": "19th St. Oakland",
-      "days": 6,
+      "days": 9,
       "blackedOutNow": false
     },
     {
       "name": "San Francisco International Airport",
-      "days": 6,
+      "days": 9,
       "blackedOutNow": false
     },
     {
       "name": "Warm Springs/South Fremont",
-      "days": 6,
+      "days": 9,
       "blackedOutNow": false
     },
     {
       "name": "Warm Springs/South Fremont (pedestrian bridge)",
-      "days": 2,
+      "days": 5,
       "blackedOutNow": false
     },
     {
       "name": "West Dublin/Pleasanton (North/Dublin side)",
-      "days": 2,
+      "days": 5,
       "blackedOutNow": false
     },
     {
       "name": "West Dublin/Pleasanton (South/Pleasanton side)",
-      "days": 2,
-      "blackedOutNow": false
-    },
-    {
-      "name": "Embarcadero",
-      "days": 2,
+      "days": 5,
       "blackedOutNow": false
     },
     {
       "name": "Montgomery St.",
-      "days": 2,
+      "days": 5,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Civic Center/UN Plaza",
+      "days": 5,
       "blackedOutNow": false
     }
   ],
   "mostBrokenUnits": [
+    {
+      "unit": "11th St street elevator",
+      "station": "12th St. Oakland City Center",
+      "count": 5
+    },
     {
       "unit": "Station - Convention Center (unspecified elevator — conservative)",
       "station": "12th St. Oakland City Center",
@@ -202,130 +276,109 @@
     {
       "unit": "Platform 2 elevator (Millbrae/SFO/Daly City/Richmond direction)",
       "station": "Milpitas (Millbrae/SFO/Daly City/Richmond direction)",
-      "count": 2
+      "count": 4
     },
     {
-      "unit": "11th St street elevator",
-      "station": "12th St. Oakland City Center",
+      "unit": "Platform elevator",
+      "station": "16th St. Mission",
       "count": 2
     },
     {
       "unit": "Platform 2 elevator (Berryessa/SFO/Millbrae/Daly City direction)",
       "station": "El Cerrito Plaza (Berryessa/SFO/Millbrae/Daly City direction)",
+      "count": 2
+    },
+    {
+      "unit": "Station elevator",
+      "station": "Coliseum",
+      "count": 2
+    },
+    {
+      "unit": "- Terminal/Station (unspecified elevator — conservative)",
+      "station": "Coliseum",
+      "count": 2
+    },
+    {
+      "unit": "Platforms 1 & 3 elevator",
+      "station": "MacArthur (Antioch, Richmond direction)",
+      "count": 1
+    },
+    {
+      "unit": "Platform Elevator",
+      "station": "Powell St.",
       "count": 1
     },
     {
       "unit": "Station (unspecified elevator — conservative)",
       "station": "Powell St.",
       "count": 1
-    },
-    {
-      "unit": "Station (unspecified elevator — conservative)",
-      "station": "Fremont",
-      "count": 1
-    },
-    {
-      "unit": "Station - SF/East Bay (unspecified elevator — conservative)",
-      "station": "Milpitas",
-      "count": 1
-    },
-    {
-      "unit": "Station (unspecified elevator — conservative)",
-      "station": "16th St. Mission",
-      "count": 1
-    },
-    {
-      "unit": "Station - Tunnel (unspecified elevator — conservative)",
-      "station": "Coliseum",
-      "count": 1
-    },
-    {
-      "unit": "Platform elevator",
-      "station": "Richmond",
-      "count": 1
     }
   ],
   "uptimeStreak": [
     {
-      "unit": "Platform Elevator 2",
-      "station": "19th St. Oakland",
-      "days": 6,
-      "downNow": false
-    },
-    {
-      "unit": "Platform Elevator 1",
-      "station": "Ashby",
-      "days": 6,
-      "downNow": false
-    },
-    {
-      "unit": "Platform Elevator 2",
-      "station": "Ashby",
-      "days": 6,
-      "downNow": false
-    },
-    {
-      "unit": "Street elevator 2",
+      "unit": "Street elevator 1",
       "station": "Richmond",
-      "days": 6,
-      "downNow": false
-    },
-    {
-      "unit": "Platforms 1 & 2 Elevator",
-      "station": "San Francisco International Airport",
-      "days": 6,
+      "days": 9,
       "downNow": false
     },
     {
       "unit": "Platform elevator",
       "station": "12th St. Oakland City Center",
-      "days": 6,
+      "days": 9,
       "downNow": false
     },
     {
       "unit": "Platform Elevator 1",
       "station": "19th St. Oakland",
-      "days": 6,
+      "days": 9,
+      "downNow": false
+    },
+    {
+      "unit": "Platform Elevator 2",
+      "station": "19th St. Oakland",
+      "days": 9,
+      "downNow": false
+    },
+    {
+      "unit": "Platform Elevator 1",
+      "station": "Ashby",
+      "days": 9,
+      "downNow": false
+    },
+    {
+      "unit": "Platform Elevator 2",
+      "station": "Ashby",
+      "days": 9,
+      "downNow": false
+    },
+    {
+      "unit": "Street elevator 2",
+      "station": "Richmond",
+      "days": 9,
+      "downNow": false
+    },
+    {
+      "unit": "Platforms 1 & 2 Elevator",
+      "station": "San Francisco International Airport",
+      "days": 9,
       "downNow": false
     },
     {
       "unit": "Platform Elevator 2",
       "station": "Warm Springs/South Fremont",
-      "days": 6,
+      "days": 9,
       "downNow": false
     },
     {
       "unit": "Station (unspecified elevator — conservative)",
       "station": "Richmond",
-      "days": 6,
-      "downNow": false
-    },
-    {
-      "unit": "Street elevator 1",
-      "station": "Richmond",
-      "days": 6,
+      "days": 9,
       "downNow": false
     }
   ],
   "singlePointsOfFailure": [
     {
-      "name": "Daly City",
-      "count": 3
-    },
-    {
-      "name": "El Cerrito del Norte",
-      "count": 2
-    },
-    {
-      "name": "24th St. Mission",
-      "count": 2
-    },
-    {
-      "name": "Antioch",
-      "count": 2
-    },
-    {
-      "name": "El Cerrito Plaza",
+      "name": "Fruitvale",
       "count": 2
     },
     {
@@ -333,19 +386,7 @@
       "count": 2
     },
     {
-      "name": "Lake Merritt",
-      "count": 2
-    },
-    {
       "name": "MacArthur",
-      "count": 2
-    },
-    {
-      "name": "San Leandro",
-      "count": 2
-    },
-    {
-      "name": "South Hayward",
       "count": 2
     },
     {
@@ -353,7 +394,27 @@
       "count": 2
     },
     {
+      "name": "Montgomery St.",
+      "count": 2
+    },
+    {
+      "name": "Powell St.",
+      "count": 2
+    },
+    {
       "name": "16th St. Mission",
+      "count": 2
+    },
+    {
+      "name": "Daly City",
+      "count": 2
+    },
+    {
+      "name": "San Leandro",
+      "count": 2
+    },
+    {
+      "name": "Lake Merritt",
       "count": 2
     },
     {
@@ -362,6 +423,14 @@
     },
     {
       "name": "Walnut Creek",
+      "count": 2
+    },
+    {
+      "name": "West Oakland",
+      "count": 2
+    },
+    {
+      "name": "24th St. Mission",
       "count": 2
     },
     {

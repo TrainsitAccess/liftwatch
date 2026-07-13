@@ -2,6 +2,7 @@ import type { StationModel } from "../lib/accessibility.js";
 import { MTA_RAIL_STATION_MODELS } from "./mta-rail-models.js";
 import { BART_STATION_MODELS } from "./bart-station-models.js";
 import { MBTA_STATION_MODELS } from "./mbta-models.js";
+import { WMATA_STATION_MODELS } from "./wmata-models.js";
 // STATIC json imports, deliberately NOT readFileSync(new URL(import.meta.url))
 // — the Netlify function bundler compiles its whole import graph into one
 // poll.mjs, so runtime-relative file paths break in production (live-confirmed
@@ -12,6 +13,7 @@ import mtaChainsJson from "./mta-data/station-chains.json" with { type: "json" }
 import tflChainsJson from "./tfl-data/chains.json" with { type: "json" };
 import railChainsJson from "./mta-rail-data/chains.json" with { type: "json" };
 import mbtaChainsJson from "./mbta-data/chains.json" with { type: "json" };
+import wmataChainsJson from "./wmata-data/chains.json" with { type: "json" };
 
 // MTA multi-chain models, generated from the live elevator inventory by
 // scripts/mta-chains.mjs (self-checked against MTA's own ADA + redundant flags).
@@ -47,6 +49,15 @@ const railChains: StationModel[] = (railChainsJson as { models: StationModel[] }
 // `npm run check:mbta-chains`. Regenerate with `npm run mbta:chains` — do not
 // hand-edit the JSON.
 const mbtaChains: StationModel[] = (mbtaChainsJson as { models: StationModel[] }).models;
+
+// WMATA auto-generated ladder chains, derived from the GTFS pathways graph by
+// scripts/wmata-pathways.mts (mode-5 connected components; conservative gates:
+// standard Street→Mezzanine→Platform ladders only, side-platform and
+// observed-undercount stations excluded — see wmata-data/chains-excluded.json).
+// Elevator ids are synthetic GTFS slots (WMATA-<node>); live outages attach by
+// LocationDescription level pair in the adapter, never by unit id. Regenerate
+// with the GTFS zip + `npx tsx scripts/wmata-pathways.mts` — do not hand-edit.
+const wmataChains: StationModel[] = (wmataChainsJson as { models: StationModel[] }).models;
 
 // Curated per-station accessibility structure — the source of truth for stations
 // whose feed doesn't expose per-elevator data (BART). Each station's step-free
@@ -250,6 +261,11 @@ export const STATION_MODELS: StationModel[] = [
   ...mbtaChains,
   // TfL's auto-generated multi-chain models (see tflChains above).
   ...tflChains,
+  // WMATA hand-curated models (stations the observed-units gate excluded from
+  // the generator, human-confirmed; see wmata-models.ts) — curated tier first.
+  ...WMATA_STATION_MODELS,
+  // WMATA auto-generated ladder chains (see wmataChains above).
+  ...wmataChains,
 ];
 
 // A physical station can have more than one entry (multiple independent

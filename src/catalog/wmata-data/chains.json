@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-13T20:21:49.844Z",
+  "generatedAt": "2026-07-13T21:19:42.566Z",
   "source": "WMATA GTFS pathways topology (conservative single-platform Street→Mezzanine→Platform ladders)",
   "models": [
     {
@@ -64,8 +64,8 @@
           "label": "Street to Mezzanine",
           "elevators": [
             {
-              "externalId": "WMATA-A09_ELE1",
-              "label": "Bethesda elevator (Street to Mezzanine)"
+              "externalId": "A09X01",
+              "label": "Bethesda elevator A09X01 (Street to Mezzanine)"
             }
           ]
         },
@@ -91,8 +91,8 @@
           "label": "Street to Mezzanine",
           "elevators": [
             {
-              "externalId": "WMATA-A10_ELE1",
-              "label": "Medical Center elevator (Street to Mezzanine)"
+              "externalId": "A10X01",
+              "label": "Medical Center elevator A10X01 (Street to Mezzanine)"
             }
           ]
         },
@@ -154,23 +154,6 @@
             {
               "externalId": "WMATA-A13_ELE",
               "label": "Twinbrook elevator (Street/Mezzanine to Platform)"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "systemId": "wmata-dc",
-      "stationExternalId": "A14",
-      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street/Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
-      "segments": [
-        {
-          "id": "street-mezzanine-platform",
-          "label": "Street/Mezzanine to Platform",
-          "elevators": [
-            {
-              "externalId": "WMATA-A14_ELE",
-              "label": "Rockville elevator (Street/Mezzanine to Platform)"
             }
           ]
         }
@@ -310,23 +293,6 @@
     },
     {
       "systemId": "wmata-dc",
-      "stationExternalId": "B09",
-      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
-      "segments": [
-        {
-          "id": "mezzanine-platform",
-          "label": "Mezzanine to Platform",
-          "elevators": [
-            {
-              "externalId": "WMATA-B09_ELE",
-              "label": "Forest Glen elevator (Mezzanine to Platform)"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "systemId": "wmata-dc",
       "stationExternalId": "B10",
       "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 1 elevator, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
       "segments": [
@@ -345,8 +311,8 @@
           "label": "Mezzanine to Platform",
           "elevators": [
             {
-              "externalId": "WMATA-B10_MZ_ELE",
-              "label": "Wheaton elevator (Mezzanine to Platform)"
+              "externalId": "B10X01",
+              "label": "Wheaton elevator B10X01 (Mezzanine to Platform)"
             }
           ]
         }
@@ -362,8 +328,8 @@
           "label": "Street to Mezzanine",
           "elevators": [
             {
-              "externalId": "WMATA-B11_E_ELE",
-              "label": "Glenmont elevator (Street to Mezzanine)"
+              "externalId": "B11X01",
+              "label": "Glenmont elevator B11X01 (Street to Mezzanine)"
             },
             {
               "externalId": "WMATA-B11_W_ELE",
@@ -376,25 +342,8 @@
           "label": "Mezzanine to Platform",
           "elevators": [
             {
-              "externalId": "WMATA-B11_MZ_ELE",
-              "label": "Glenmont elevator (Mezzanine to Platform)"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "systemId": "wmata-dc",
-      "stationExternalId": "B35",
-      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street/Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
-      "segments": [
-        {
-          "id": "street-mezzanine-platform",
-          "label": "Street/Mezzanine to Platform",
-          "elevators": [
-            {
-              "externalId": "WMATA-B35_ELE",
-              "label": "NoMa-Gallaudet U elevator (Street/Mezzanine to Platform)"
+              "externalId": "B11X03",
+              "label": "Glenmont elevator B11X03 (Mezzanine to Platform)"
             }
           ]
         }
@@ -454,12 +403,12 @@
           "label": "Street/Mezzanine to Platform",
           "elevators": [
             {
-              "externalId": "WMATA-C13_MID_ELE1",
-              "label": "King St-Old Town elevator (Street/Mezzanine to Platform)"
+              "externalId": "C13N01",
+              "label": "King St-Old Town elevator C13N01 (Street/Mezzanine to Platform)"
             },
             {
-              "externalId": "WMATA-C13_N_ELE1",
-              "label": "King St-Old Town elevator (Street/Mezzanine to Platform)"
+              "externalId": "C13N02",
+              "label": "King St-Old Town elevator C13N02 (Street/Mezzanine to Platform)"
             }
           ]
         }
@@ -475,8 +424,8 @@
           "label": "Street to Mezzanine",
           "elevators": [
             {
-              "externalId": "WMATA-D01_ELE1",
-              "label": "Federal Triangle elevator (Street to Mezzanine)"
+              "externalId": "D01X01",
+              "label": "Federal Triangle elevator D01X01 (Street to Mezzanine)"
             }
           ]
         },
@@ -539,8 +488,8 @@
           "label": "Mezzanine to Platform",
           "elevators": [
             {
-              "externalId": "WMATA-D05_ELE2",
-              "label": "Capitol South elevator (Mezzanine to Platform)"
+              "externalId": "D05X02",
+              "label": "Capitol South elevator D05X02 (Mezzanine to Platform)"
             }
           ]
         }
@@ -556,8 +505,8 @@
           "label": "Street to Mezzanine",
           "elevators": [
             {
-              "externalId": "WMATA-D06_ELE1",
-              "label": "Eastern Market elevator (Street to Mezzanine)"
+              "externalId": "D06X01",
+              "label": "Eastern Market elevator D06X01 (Street to Mezzanine)"
             }
           ]
         },
@@ -593,8 +542,8 @@
           "label": "Mezzanine to Platform",
           "elevators": [
             {
-              "externalId": "WMATA-D07_ELE2",
-              "label": "Potomac Av elevator (Mezzanine to Platform)"
+              "externalId": "D07X02",
+              "label": "Potomac Av elevator D07X02 (Mezzanine to Platform)"
             }
           ]
         }
@@ -674,8 +623,8 @@
           "label": "Mezzanine to Platform",
           "elevators": [
             {
-              "externalId": "WMATA-D10_MZ_ELE2",
-              "label": "Deanwood elevator (Mezzanine to Platform)"
+              "externalId": "D10X02",
+              "label": "Deanwood elevator D10X02 (Mezzanine to Platform)"
             }
           ]
         }
@@ -691,39 +640,8 @@
           "label": "Street/Mezzanine to Platform",
           "elevators": [
             {
-              "externalId": "WMATA-D12_ELE",
-              "label": "Landover elevator (Street/Mezzanine to Platform)"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "systemId": "wmata-dc",
-      "stationExternalId": "E01",
-      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 2 elevators, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
-      "segments": [
-        {
-          "id": "street-mezzanine",
-          "label": "Street to Mezzanine",
-          "elevators": [
-            {
-              "externalId": "WMATA-E01_M_ELE",
-              "label": "Mt Vernon Sq elevator (Street to Mezzanine)"
-            },
-            {
-              "externalId": "WMATA-E01_N_ELE",
-              "label": "Mt Vernon Sq elevator (Street to Mezzanine)"
-            }
-          ]
-        },
-        {
-          "id": "mezzanine-platform",
-          "label": "Mezzanine to Platform",
-          "elevators": [
-            {
-              "externalId": "WMATA-E01_ELE",
-              "label": "Mt Vernon Sq elevator (Mezzanine to Platform)"
+              "externalId": "D12X01",
+              "label": "Landover elevator D12X01 (Street/Mezzanine to Platform)"
             }
           ]
         }
@@ -766,8 +684,8 @@
           "label": "Street to Mezzanine",
           "elevators": [
             {
-              "externalId": "WMATA-E04_ELV1",
-              "label": "Columbia Heights elevator (Street to Mezzanine)"
+              "externalId": "E04X01",
+              "label": "Columbia Heights elevator E04X01 (Street to Mezzanine)"
             }
           ]
         },
@@ -776,8 +694,8 @@
           "label": "Mezzanine to Platform",
           "elevators": [
             {
-              "externalId": "WMATA-E04_ELV2",
-              "label": "Columbia Heights elevator (Mezzanine to Platform)"
+              "externalId": "E04X02",
+              "label": "Columbia Heights elevator E04X02 (Mezzanine to Platform)"
             }
           ]
         }
@@ -793,8 +711,8 @@
           "label": "Street to Mezzanine",
           "elevators": [
             {
-              "externalId": "WMATA-E05_W_ELV",
-              "label": "Georgia Av-Petworth elevator (Street to Mezzanine)"
+              "externalId": "E05X01",
+              "label": "Georgia Av-Petworth elevator E05X01 (Street to Mezzanine)"
             }
           ]
         },
@@ -851,8 +769,8 @@
           "label": "Street to Mezzanine",
           "elevators": [
             {
-              "externalId": "WMATA-F02_ELE1",
-              "label": "Archives elevator (Street to Mezzanine)"
+              "externalId": "F02X01",
+              "label": "Archives elevator F02X01 (Street to Mezzanine)"
             }
           ]
         },
@@ -861,8 +779,8 @@
           "label": "Mezzanine to Platform",
           "elevators": [
             {
-              "externalId": "WMATA-F02_MZ_ELE2",
-              "label": "Archives elevator (Mezzanine to Platform)"
+              "externalId": "F02X02",
+              "label": "Archives elevator F02X02 (Mezzanine to Platform)"
             }
           ]
         }
@@ -878,8 +796,8 @@
           "label": "Street to Mezzanine",
           "elevators": [
             {
-              "externalId": "WMATA-F04_ELV1",
-              "label": "Waterfront elevator (Street to Mezzanine)"
+              "externalId": "F04X01",
+              "label": "Waterfront elevator F04X01 (Street to Mezzanine)"
             }
           ]
         },
@@ -888,8 +806,8 @@
           "label": "Mezzanine to Platform",
           "elevators": [
             {
-              "externalId": "WMATA-F04_MZ_ELV2",
-              "label": "Waterfront elevator (Mezzanine to Platform)"
+              "externalId": "F04X02",
+              "label": "Waterfront elevator F04X02 (Mezzanine to Platform)"
             }
           ]
         }
@@ -926,8 +844,8 @@
           "label": "Street to Mezzanine",
           "elevators": [
             {
-              "externalId": "WMATA-F07_ELE1",
-              "label": "Congress Heights elevator (Street to Mezzanine)"
+              "externalId": "F07X01",
+              "label": "Congress Heights elevator F07X01 (Street to Mezzanine)"
             }
           ]
         },
@@ -936,8 +854,8 @@
           "label": "Mezzanine to Platform",
           "elevators": [
             {
-              "externalId": "WMATA-F07_ELE2",
-              "label": "Congress Heights elevator (Mezzanine to Platform)"
+              "externalId": "F07X02",
+              "label": "Congress Heights elevator F07X02 (Mezzanine to Platform)"
             }
           ]
         }
@@ -987,8 +905,8 @@
           "label": "Street to Mezzanine",
           "elevators": [
             {
-              "externalId": "WMATA-G01_MZ_ELV1",
-              "label": "Benning Rd elevator (Street to Mezzanine)"
+              "externalId": "G01X01",
+              "label": "Benning Rd elevator G01X01 (Street to Mezzanine)"
             }
           ]
         },
@@ -997,8 +915,8 @@
           "label": "Mezzanine to Platform",
           "elevators": [
             {
-              "externalId": "WMATA-G01_MZ_ELV2",
-              "label": "Benning Rd elevator (Mezzanine to Platform)"
+              "externalId": "G01X02",
+              "label": "Benning Rd elevator G01X02 (Mezzanine to Platform)"
             }
           ]
         }
@@ -1014,8 +932,8 @@
           "label": "Street to Mezzanine",
           "elevators": [
             {
-              "externalId": "WMATA-G02_MZ_ELV1",
-              "label": "Capitol Heights elevator (Street to Mezzanine)"
+              "externalId": "G02X01",
+              "label": "Capitol Heights elevator G02X01 (Street to Mezzanine)"
             }
           ]
         },
@@ -1043,50 +961,6 @@
             {
               "externalId": "WMATA-G03_MZ_ELV",
               "label": "Addison Rd elevator (Street/Mezzanine to Platform)"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "systemId": "wmata-dc",
-      "stationExternalId": "G04",
-      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street/Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
-      "segments": [
-        {
-          "id": "street-mezzanine-platform",
-          "label": "Street/Mezzanine to Platform",
-          "elevators": [
-            {
-              "externalId": "WMATA-G04_MZ_ELV",
-              "label": "Morgan Blvd elevator (Street/Mezzanine to Platform)"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "systemId": "wmata-dc",
-      "stationExternalId": "G05",
-      "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Street/Mezzanine: 1 elevator, Street/Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS.",
-      "segments": [
-        {
-          "id": "street-street-mezzanine",
-          "label": "Street to Street/Mezzanine",
-          "elevators": [
-            {
-              "externalId": "WMATA-G05_MZ_ELV1",
-              "label": "Downtown Largo elevator (Street to Street/Mezzanine)"
-            }
-          ]
-        },
-        {
-          "id": "street-mezzanine-platform",
-          "label": "Street/Mezzanine to Platform",
-          "elevators": [
-            {
-              "externalId": "WMATA-G05_MZ_ELV2",
-              "label": "Downtown Largo elevator (Street/Mezzanine to Platform)"
             }
           ]
         }
@@ -1146,8 +1020,8 @@
           "label": "Street/Mezzanine to Platform",
           "elevators": [
             {
-              "externalId": "WMATA-K05_ELE",
-              "label": "East Falls Church elevator (Street/Mezzanine to Platform)"
+              "externalId": "K05X01",
+              "label": "East Falls Church elevator K05X01 (Street/Mezzanine to Platform)"
             }
           ]
         }
@@ -1201,8 +1075,8 @@
               "label": "McLean elevator (Street to Mezzanine)"
             },
             {
-              "externalId": "WMATA-N01_E_PAV_ELE",
-              "label": "McLean elevator (Street to Mezzanine)"
+              "externalId": "N01X01",
+              "label": "McLean elevator N01X01 (Street to Mezzanine)"
             }
           ]
         },
@@ -1228,12 +1102,12 @@
           "label": "Street to Mezzanine",
           "elevators": [
             {
-              "externalId": "WMATA-N02_S_PAV_ELE",
-              "label": "Tysons elevator (Street to Mezzanine)"
+              "externalId": "N02X02",
+              "label": "Tysons elevator N02X02 (Street to Mezzanine)"
             },
             {
-              "externalId": "WMATA-N02_W_ELE",
-              "label": "Tysons elevator (Street to Mezzanine)"
+              "externalId": "N02X03",
+              "label": "Tysons elevator N02X03 (Street to Mezzanine)"
             }
           ]
         },
@@ -1263,8 +1137,8 @@
               "label": "Greensboro elevator (Street to Mezzanine)"
             },
             {
-              "externalId": "WMATA-N03_N_PAV_ELV",
-              "label": "Greensboro elevator (Street to Mezzanine)"
+              "externalId": "N03X02",
+              "label": "Greensboro elevator N03X02 (Street to Mezzanine)"
             }
           ]
         },
@@ -1321,8 +1195,8 @@
           "label": "Street to Mezzanine",
           "elevators": [
             {
-              "externalId": "WMATA-N06_S_PAV_ELV",
-              "label": "Wiehle-Reston East elevator (Street to Mezzanine)"
+              "externalId": "N06X02",
+              "label": "Wiehle-Reston East elevator N06X02 (Street to Mezzanine)"
             }
           ]
         },

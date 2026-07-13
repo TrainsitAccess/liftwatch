@@ -1,7 +1,348 @@
 {
-  "generatedAt": "2026-07-13T20:21:49.844Z",
+  "generatedAt": "2026-07-13T21:19:42.566Z",
   "source": "WMATA GTFS rail pathways.txt mode-5 connected components (in-station elevators only)",
   "units": [
+    {
+      "externalId": "A09X01",
+      "station": "A09",
+      "stationName": "Bethesda",
+      "description": "Elevator between street and mezzanine",
+      "levelFrom": "Street",
+      "levelTo": "Mezzanine",
+      "segment": "street-mezzanine",
+      "modeled": true,
+      "isRedundant": false
+    },
+    {
+      "externalId": "A10X01",
+      "station": "A10",
+      "stationName": "Medical Center",
+      "description": "Elevator between street and mezzanine",
+      "levelFrom": "Street",
+      "levelTo": "Mezzanine",
+      "segment": "street-mezzanine",
+      "modeled": true,
+      "isRedundant": false
+    },
+    {
+      "externalId": "B10X01",
+      "station": "B10",
+      "stationName": "Wheaton",
+      "description": "Elevator between mezzanine and platform",
+      "levelFrom": "Mezzanine",
+      "levelTo": "Platform",
+      "segment": "mezzanine-platform",
+      "modeled": true,
+      "isRedundant": false
+    },
+    {
+      "externalId": "B11X01",
+      "station": "B11",
+      "stationName": "Glenmont",
+      "description": "Elevator between street and mezzanine",
+      "levelFrom": "Street",
+      "levelTo": "Mezzanine",
+      "segment": "street-mezzanine",
+      "modeled": true,
+      "isRedundant": true
+    },
+    {
+      "externalId": "B11X03",
+      "station": "B11",
+      "stationName": "Glenmont",
+      "description": "Elevator between mezzanine and platform",
+      "levelFrom": "Mezzanine",
+      "levelTo": "Platform",
+      "segment": "mezzanine-platform",
+      "modeled": true,
+      "isRedundant": false
+    },
+    {
+      "externalId": "C13N01",
+      "station": "C13",
+      "stationName": "King St-Old Town",
+      "description": "Elevator between street/mezzanine and platform",
+      "levelFrom": "Street/Mezzanine",
+      "levelTo": "Platform",
+      "segment": "street-mezzanine-platform",
+      "modeled": true,
+      "isRedundant": true
+    },
+    {
+      "externalId": "C13N02",
+      "station": "C13",
+      "stationName": "King St-Old Town",
+      "description": "Elevator between street/mezzanine and platform",
+      "levelFrom": "Street/Mezzanine",
+      "levelTo": "Platform",
+      "segment": "street-mezzanine-platform",
+      "modeled": true,
+      "isRedundant": true
+    },
+    {
+      "externalId": "D01X01",
+      "station": "D01",
+      "stationName": "Federal Triangle",
+      "description": "Elevator between street and mezzanine",
+      "levelFrom": "Street",
+      "levelTo": "Mezzanine",
+      "segment": "street-mezzanine",
+      "modeled": true,
+      "isRedundant": false
+    },
+    {
+      "externalId": "D05X02",
+      "station": "D05",
+      "stationName": "Capitol South",
+      "description": "Elevator between mezzanine and platform",
+      "levelFrom": "Mezzanine",
+      "levelTo": "Platform",
+      "segment": "mezzanine-platform",
+      "modeled": true,
+      "isRedundant": false
+    },
+    {
+      "externalId": "D06X01",
+      "station": "D06",
+      "stationName": "Eastern Market",
+      "description": "Elevator between street and mezzanine",
+      "levelFrom": "Street",
+      "levelTo": "Mezzanine",
+      "segment": "street-mezzanine",
+      "modeled": true,
+      "isRedundant": false
+    },
+    {
+      "externalId": "D07X02",
+      "station": "D07",
+      "stationName": "Potomac Av",
+      "description": "Elevator between mezzanine and platform",
+      "levelFrom": "Mezzanine",
+      "levelTo": "Platform",
+      "segment": "mezzanine-platform",
+      "modeled": true,
+      "isRedundant": false
+    },
+    {
+      "externalId": "D10X02",
+      "station": "D10",
+      "stationName": "Deanwood",
+      "description": "Elevator between mezzanine and platform",
+      "levelFrom": "Mezzanine",
+      "levelTo": "Platform",
+      "segment": "mezzanine-platform",
+      "modeled": true,
+      "isRedundant": false
+    },
+    {
+      "externalId": "D12X01",
+      "station": "D12",
+      "stationName": "Landover",
+      "description": "Elevator between street/mezzanine and platform",
+      "levelFrom": "Street/Mezzanine",
+      "levelTo": "Platform",
+      "segment": "street-mezzanine-platform",
+      "modeled": true,
+      "isRedundant": false
+    },
+    {
+      "externalId": "E04X01",
+      "station": "E04",
+      "stationName": "Columbia Heights",
+      "description": "Elevator between street and mezzanine",
+      "levelFrom": "Street",
+      "levelTo": "Mezzanine",
+      "segment": "street-mezzanine",
+      "modeled": true,
+      "isRedundant": false
+    },
+    {
+      "externalId": "E04X02",
+      "station": "E04",
+      "stationName": "Columbia Heights",
+      "description": "Elevator between mezzanine and platform",
+      "levelFrom": "Mezzanine",
+      "levelTo": "Platform",
+      "segment": "mezzanine-platform",
+      "modeled": true,
+      "isRedundant": false
+    },
+    {
+      "externalId": "E05X01",
+      "station": "E05",
+      "stationName": "Georgia Av-Petworth",
+      "description": "Elevator between street and mezzanine",
+      "levelFrom": "Street",
+      "levelTo": "Mezzanine",
+      "segment": "street-mezzanine",
+      "modeled": true,
+      "isRedundant": false
+    },
+    {
+      "externalId": "F02X01",
+      "station": "F02",
+      "stationName": "Archives",
+      "description": "Elevator between street and mezzanine",
+      "levelFrom": "Street",
+      "levelTo": "Mezzanine",
+      "segment": "street-mezzanine",
+      "modeled": true,
+      "isRedundant": false
+    },
+    {
+      "externalId": "F02X02",
+      "station": "F02",
+      "stationName": "Archives",
+      "description": "Elevator between mezzanine and platform",
+      "levelFrom": "Mezzanine",
+      "levelTo": "Platform",
+      "segment": "mezzanine-platform",
+      "modeled": true,
+      "isRedundant": false
+    },
+    {
+      "externalId": "F04X01",
+      "station": "F04",
+      "stationName": "Waterfront",
+      "description": "Elevator between street and mezzanine",
+      "levelFrom": "Street",
+      "levelTo": "Mezzanine",
+      "segment": "street-mezzanine",
+      "modeled": true,
+      "isRedundant": false
+    },
+    {
+      "externalId": "F04X02",
+      "station": "F04",
+      "stationName": "Waterfront",
+      "description": "Elevator between mezzanine and platform",
+      "levelFrom": "Mezzanine",
+      "levelTo": "Platform",
+      "segment": "mezzanine-platform",
+      "modeled": true,
+      "isRedundant": false
+    },
+    {
+      "externalId": "F07X01",
+      "station": "F07",
+      "stationName": "Congress Heights",
+      "description": "Elevator between street and mezzanine",
+      "levelFrom": "Street",
+      "levelTo": "Mezzanine",
+      "segment": "street-mezzanine",
+      "modeled": true,
+      "isRedundant": false
+    },
+    {
+      "externalId": "F07X02",
+      "station": "F07",
+      "stationName": "Congress Heights",
+      "description": "Elevator between mezzanine and platform",
+      "levelFrom": "Mezzanine",
+      "levelTo": "Platform",
+      "segment": "mezzanine-platform",
+      "modeled": true,
+      "isRedundant": false
+    },
+    {
+      "externalId": "G01X01",
+      "station": "G01",
+      "stationName": "Benning Rd",
+      "description": "Elevator between street and mezzanine",
+      "levelFrom": "Street",
+      "levelTo": "Mezzanine",
+      "segment": "street-mezzanine",
+      "modeled": true,
+      "isRedundant": false
+    },
+    {
+      "externalId": "G01X02",
+      "station": "G01",
+      "stationName": "Benning Rd",
+      "description": "Elevator between mezzanine and platform",
+      "levelFrom": "Mezzanine",
+      "levelTo": "Platform",
+      "segment": "mezzanine-platform",
+      "modeled": true,
+      "isRedundant": false
+    },
+    {
+      "externalId": "G02X01",
+      "station": "G02",
+      "stationName": "Capitol Heights",
+      "description": "Elevator between street and mezzanine",
+      "levelFrom": "Street",
+      "levelTo": "Mezzanine",
+      "segment": "street-mezzanine",
+      "modeled": true,
+      "isRedundant": false
+    },
+    {
+      "externalId": "K05X01",
+      "station": "K05",
+      "stationName": "East Falls Church",
+      "description": "Elevator between street/mezzanine and platform",
+      "levelFrom": "Street/Mezzanine",
+      "levelTo": "Platform",
+      "segment": "street-mezzanine-platform",
+      "modeled": true,
+      "isRedundant": false
+    },
+    {
+      "externalId": "N01X01",
+      "station": "N01",
+      "stationName": "McLean",
+      "description": "Elevator between street and mezzanine",
+      "levelFrom": "Street",
+      "levelTo": "Mezzanine",
+      "segment": "street-mezzanine",
+      "modeled": true,
+      "isRedundant": true
+    },
+    {
+      "externalId": "N02X02",
+      "station": "N02",
+      "stationName": "Tysons",
+      "description": "Elevator between street and mezzanine",
+      "levelFrom": "Street",
+      "levelTo": "Mezzanine",
+      "segment": "street-mezzanine",
+      "modeled": true,
+      "isRedundant": true
+    },
+    {
+      "externalId": "N02X03",
+      "station": "N02",
+      "stationName": "Tysons",
+      "description": "Elevator between street and mezzanine",
+      "levelFrom": "Street",
+      "levelTo": "Mezzanine",
+      "segment": "street-mezzanine",
+      "modeled": true,
+      "isRedundant": true
+    },
+    {
+      "externalId": "N03X02",
+      "station": "N03",
+      "stationName": "Greensboro",
+      "description": "Elevator between street and mezzanine",
+      "levelFrom": "Street",
+      "levelTo": "Mezzanine",
+      "segment": "street-mezzanine",
+      "modeled": true,
+      "isRedundant": true
+    },
+    {
+      "externalId": "N06X02",
+      "station": "N06",
+      "stationName": "Wiehle-Reston East",
+      "description": "Elevator between street and mezzanine",
+      "levelFrom": "Street",
+      "levelTo": "Mezzanine",
+      "segment": "street-mezzanine",
+      "modeled": true,
+      "isRedundant": false
+    },
     {
       "externalId": "WMATA-A01_C01_N_ELE1",
       "station": "A01_C01",
@@ -212,17 +553,6 @@
       "isRedundant": true
     },
     {
-      "externalId": "WMATA-A09_ELE1",
-      "station": "A09",
-      "stationName": "Bethesda",
-      "description": "Elevator between street and mezzanine",
-      "levelFrom": "Street",
-      "levelTo": "Mezzanine",
-      "segment": "street-mezzanine",
-      "modeled": true,
-      "isRedundant": false
-    },
-    {
       "externalId": "WMATA-A09_ELE2",
       "station": "A09",
       "stationName": "Bethesda",
@@ -230,17 +560,6 @@
       "levelFrom": "Mezzanine",
       "levelTo": "Platform",
       "segment": "mezzanine-platform",
-      "modeled": true,
-      "isRedundant": false
-    },
-    {
-      "externalId": "WMATA-A10_ELE1",
-      "station": "A10",
-      "stationName": "Medical Center",
-      "description": "Elevator between street and mezzanine",
-      "levelFrom": "Street",
-      "levelTo": "Mezzanine",
-      "segment": "street-mezzanine",
       "modeled": true,
       "isRedundant": false
     },
@@ -292,11 +611,11 @@
       "externalId": "WMATA-A14_ELE",
       "station": "A14",
       "stationName": "Rockville",
-      "description": "Elevator between street/mezzanine and platform",
+      "description": "Street/Mezzanine ↔ Platform",
       "levelFrom": "Street/Mezzanine",
       "levelTo": "Platform",
-      "segment": "street-mezzanine-platform",
-      "modeled": true,
+      "segment": "",
+      "modeled": false,
       "isRedundant": false
     },
     {
@@ -468,11 +787,11 @@
       "externalId": "WMATA-B09_ELE",
       "station": "B09",
       "stationName": "Forest Glen",
-      "description": "Elevator between mezzanine and platform",
+      "description": "Mezzanine ↔ Platform",
       "levelFrom": "Mezzanine",
       "levelTo": "Platform",
-      "segment": "mezzanine-platform",
-      "modeled": true,
+      "segment": "",
+      "modeled": false,
       "isRedundant": false
     },
     {
@@ -483,39 +802,6 @@
       "levelFrom": "Street",
       "levelTo": "Mezzanine",
       "segment": "street-mezzanine",
-      "modeled": true,
-      "isRedundant": false
-    },
-    {
-      "externalId": "WMATA-B10_MZ_ELE",
-      "station": "B10",
-      "stationName": "Wheaton",
-      "description": "Elevator between mezzanine and platform",
-      "levelFrom": "Mezzanine",
-      "levelTo": "Platform",
-      "segment": "mezzanine-platform",
-      "modeled": true,
-      "isRedundant": false
-    },
-    {
-      "externalId": "WMATA-B11_E_ELE",
-      "station": "B11",
-      "stationName": "Glenmont",
-      "description": "Elevator between street and mezzanine",
-      "levelFrom": "Street",
-      "levelTo": "Mezzanine",
-      "segment": "street-mezzanine",
-      "modeled": true,
-      "isRedundant": true
-    },
-    {
-      "externalId": "WMATA-B11_MZ_ELE",
-      "station": "B11",
-      "stationName": "Glenmont",
-      "description": "Elevator between mezzanine and platform",
-      "levelFrom": "Mezzanine",
-      "levelTo": "Platform",
-      "segment": "mezzanine-platform",
       "modeled": true,
       "isRedundant": false
     },
@@ -534,11 +820,11 @@
       "externalId": "WMATA-B35_ELE",
       "station": "B35",
       "stationName": "NoMa-Gallaudet U",
-      "description": "Elevator between street/mezzanine and platform",
+      "description": "Street/Mezzanine ↔ Platform",
       "levelFrom": "Street/Mezzanine",
       "levelTo": "Platform",
-      "segment": "street-mezzanine-platform",
-      "modeled": true,
+      "segment": "",
+      "modeled": false,
       "isRedundant": false
     },
     {
@@ -850,28 +1136,6 @@
       "isRedundant": false
     },
     {
-      "externalId": "WMATA-C13_MID_ELE1",
-      "station": "C13",
-      "stationName": "King St-Old Town",
-      "description": "Elevator between street/mezzanine and platform",
-      "levelFrom": "Street/Mezzanine",
-      "levelTo": "Platform",
-      "segment": "street-mezzanine-platform",
-      "modeled": true,
-      "isRedundant": true
-    },
-    {
-      "externalId": "WMATA-C13_N_ELE1",
-      "station": "C13",
-      "stationName": "King St-Old Town",
-      "description": "Elevator between street/mezzanine and platform",
-      "levelFrom": "Street/Mezzanine",
-      "levelTo": "Platform",
-      "segment": "street-mezzanine-platform",
-      "modeled": true,
-      "isRedundant": true
-    },
-    {
       "externalId": "WMATA-C14_ELE1",
       "station": "C14",
       "stationName": "Eisenhower Av",
@@ -924,17 +1188,6 @@
       "levelTo": "Platform",
       "segment": "",
       "modeled": false,
-      "isRedundant": false
-    },
-    {
-      "externalId": "WMATA-D01_ELE1",
-      "station": "D01",
-      "stationName": "Federal Triangle",
-      "description": "Elevator between street and mezzanine",
-      "levelFrom": "Street",
-      "levelTo": "Mezzanine",
-      "segment": "street-mezzanine",
-      "modeled": true,
       "isRedundant": false
     },
     {
@@ -1048,28 +1301,6 @@
       "isRedundant": false
     },
     {
-      "externalId": "WMATA-D05_ELE2",
-      "station": "D05",
-      "stationName": "Capitol South",
-      "description": "Elevator between mezzanine and platform",
-      "levelFrom": "Mezzanine",
-      "levelTo": "Platform",
-      "segment": "mezzanine-platform",
-      "modeled": true,
-      "isRedundant": false
-    },
-    {
-      "externalId": "WMATA-D06_ELE1",
-      "station": "D06",
-      "stationName": "Eastern Market",
-      "description": "Elevator between street and mezzanine",
-      "levelFrom": "Street",
-      "levelTo": "Mezzanine",
-      "segment": "street-mezzanine",
-      "modeled": true,
-      "isRedundant": false
-    },
-    {
       "externalId": "WMATA-D06_ELE2",
       "station": "D06",
       "stationName": "Eastern Market",
@@ -1088,17 +1319,6 @@
       "levelFrom": "Street",
       "levelTo": "Mezzanine",
       "segment": "street-mezzanine",
-      "modeled": true,
-      "isRedundant": false
-    },
-    {
-      "externalId": "WMATA-D07_ELE2",
-      "station": "D07",
-      "stationName": "Potomac Av",
-      "description": "Elevator between mezzanine and platform",
-      "levelFrom": "Mezzanine",
-      "levelTo": "Platform",
-      "segment": "mezzanine-platform",
       "modeled": true,
       "isRedundant": false
     },
@@ -1158,17 +1378,6 @@
       "isRedundant": false
     },
     {
-      "externalId": "WMATA-D10_MZ_ELE2",
-      "station": "D10",
-      "stationName": "Deanwood",
-      "description": "Elevator between mezzanine and platform",
-      "levelFrom": "Mezzanine",
-      "levelTo": "Platform",
-      "segment": "mezzanine-platform",
-      "modeled": true,
-      "isRedundant": false
-    },
-    {
       "externalId": "WMATA-D11_MZ_ELE1",
       "station": "D11",
       "stationName": "Cheverly",
@@ -1202,17 +1411,6 @@
       "isRedundant": false
     },
     {
-      "externalId": "WMATA-D12_ELE",
-      "station": "D12",
-      "stationName": "Landover",
-      "description": "Elevator between street/mezzanine and platform",
-      "levelFrom": "Street/Mezzanine",
-      "levelTo": "Platform",
-      "segment": "street-mezzanine-platform",
-      "modeled": true,
-      "isRedundant": false
-    },
-    {
       "externalId": "WMATA-D13_MZ_ELV1",
       "station": "D13",
       "stationName": "New Carrollton",
@@ -1238,34 +1436,34 @@
       "externalId": "WMATA-E01_ELE",
       "station": "E01",
       "stationName": "Mt Vernon Sq",
-      "description": "Elevator between mezzanine and platform",
+      "description": "Mezzanine ↔ Platform",
       "levelFrom": "Mezzanine",
       "levelTo": "Platform",
-      "segment": "mezzanine-platform",
-      "modeled": true,
+      "segment": "",
+      "modeled": false,
       "isRedundant": false
     },
     {
       "externalId": "WMATA-E01_M_ELE",
       "station": "E01",
       "stationName": "Mt Vernon Sq",
-      "description": "Elevator between street and mezzanine",
+      "description": "Street ↔ Mezzanine",
       "levelFrom": "Street",
       "levelTo": "Mezzanine",
-      "segment": "street-mezzanine",
-      "modeled": true,
-      "isRedundant": true
+      "segment": "",
+      "modeled": false,
+      "isRedundant": false
     },
     {
       "externalId": "WMATA-E01_N_ELE",
       "station": "E01",
       "stationName": "Mt Vernon Sq",
-      "description": "Elevator between street and mezzanine",
+      "description": "Street ↔ Mezzanine",
       "levelFrom": "Street",
       "levelTo": "Mezzanine",
-      "segment": "street-mezzanine",
-      "modeled": true,
-      "isRedundant": true
+      "segment": "",
+      "modeled": false,
+      "isRedundant": false
     },
     {
       "externalId": "WMATA-E02_ELE_N",
@@ -1312,28 +1510,6 @@
       "isRedundant": false
     },
     {
-      "externalId": "WMATA-E04_ELV1",
-      "station": "E04",
-      "stationName": "Columbia Heights",
-      "description": "Elevator between street and mezzanine",
-      "levelFrom": "Street",
-      "levelTo": "Mezzanine",
-      "segment": "street-mezzanine",
-      "modeled": true,
-      "isRedundant": false
-    },
-    {
-      "externalId": "WMATA-E04_ELV2",
-      "station": "E04",
-      "stationName": "Columbia Heights",
-      "description": "Elevator between mezzanine and platform",
-      "levelFrom": "Mezzanine",
-      "levelTo": "Platform",
-      "segment": "mezzanine-platform",
-      "modeled": true,
-      "isRedundant": false
-    },
-    {
       "externalId": "WMATA-E05_MZ_ELV",
       "station": "E05",
       "stationName": "Georgia Av-Petworth",
@@ -1341,17 +1517,6 @@
       "levelFrom": "Mezzanine",
       "levelTo": "Platform",
       "segment": "mezzanine-platform",
-      "modeled": true,
-      "isRedundant": false
-    },
-    {
-      "externalId": "WMATA-E05_W_ELV",
-      "station": "E05",
-      "stationName": "Georgia Av-Petworth",
-      "description": "Elevator between street and mezzanine",
-      "levelFrom": "Street",
-      "levelTo": "Mezzanine",
-      "segment": "street-mezzanine",
       "modeled": true,
       "isRedundant": false
     },
@@ -1444,50 +1609,6 @@
       "isRedundant": false
     },
     {
-      "externalId": "WMATA-F02_ELE1",
-      "station": "F02",
-      "stationName": "Archives",
-      "description": "Elevator between street and mezzanine",
-      "levelFrom": "Street",
-      "levelTo": "Mezzanine",
-      "segment": "street-mezzanine",
-      "modeled": true,
-      "isRedundant": false
-    },
-    {
-      "externalId": "WMATA-F02_MZ_ELE2",
-      "station": "F02",
-      "stationName": "Archives",
-      "description": "Elevator between mezzanine and platform",
-      "levelFrom": "Mezzanine",
-      "levelTo": "Platform",
-      "segment": "mezzanine-platform",
-      "modeled": true,
-      "isRedundant": false
-    },
-    {
-      "externalId": "WMATA-F04_ELV1",
-      "station": "F04",
-      "stationName": "Waterfront",
-      "description": "Elevator between street and mezzanine",
-      "levelFrom": "Street",
-      "levelTo": "Mezzanine",
-      "segment": "street-mezzanine",
-      "modeled": true,
-      "isRedundant": false
-    },
-    {
-      "externalId": "WMATA-F04_MZ_ELV2",
-      "station": "F04",
-      "stationName": "Waterfront",
-      "description": "Elevator between mezzanine and platform",
-      "levelFrom": "Mezzanine",
-      "levelTo": "Platform",
-      "segment": "mezzanine-platform",
-      "modeled": true,
-      "isRedundant": false
-    },
-    {
       "externalId": "WMATA-F05_ELE1",
       "station": "F05",
       "stationName": "Navy Yard-Ballpark",
@@ -1552,28 +1673,6 @@
       "segment": "street-mezzanine-platform",
       "modeled": true,
       "isRedundant": true
-    },
-    {
-      "externalId": "WMATA-F07_ELE1",
-      "station": "F07",
-      "stationName": "Congress Heights",
-      "description": "Elevator between street and mezzanine",
-      "levelFrom": "Street",
-      "levelTo": "Mezzanine",
-      "segment": "street-mezzanine",
-      "modeled": true,
-      "isRedundant": false
-    },
-    {
-      "externalId": "WMATA-F07_ELE2",
-      "station": "F07",
-      "stationName": "Congress Heights",
-      "description": "Elevator between mezzanine and platform",
-      "levelFrom": "Mezzanine",
-      "levelTo": "Platform",
-      "segment": "mezzanine-platform",
-      "modeled": true,
-      "isRedundant": false
     },
     {
       "externalId": "WMATA-F08_MZ_ELE1",
@@ -1642,39 +1741,6 @@
       "isRedundant": false
     },
     {
-      "externalId": "WMATA-G01_MZ_ELV1",
-      "station": "G01",
-      "stationName": "Benning Rd",
-      "description": "Elevator between street and mezzanine",
-      "levelFrom": "Street",
-      "levelTo": "Mezzanine",
-      "segment": "street-mezzanine",
-      "modeled": true,
-      "isRedundant": false
-    },
-    {
-      "externalId": "WMATA-G01_MZ_ELV2",
-      "station": "G01",
-      "stationName": "Benning Rd",
-      "description": "Elevator between mezzanine and platform",
-      "levelFrom": "Mezzanine",
-      "levelTo": "Platform",
-      "segment": "mezzanine-platform",
-      "modeled": true,
-      "isRedundant": false
-    },
-    {
-      "externalId": "WMATA-G02_MZ_ELV1",
-      "station": "G02",
-      "stationName": "Capitol Heights",
-      "description": "Elevator between street and mezzanine",
-      "levelFrom": "Street",
-      "levelTo": "Mezzanine",
-      "segment": "street-mezzanine",
-      "modeled": true,
-      "isRedundant": false
-    },
-    {
       "externalId": "WMATA-G02_MZ_ELV2",
       "station": "G02",
       "stationName": "Capitol Heights",
@@ -1700,33 +1766,33 @@
       "externalId": "WMATA-G04_MZ_ELV",
       "station": "G04",
       "stationName": "Morgan Blvd",
-      "description": "Elevator between street/mezzanine and platform",
+      "description": "Street/Mezzanine ↔ Platform",
       "levelFrom": "Street/Mezzanine",
       "levelTo": "Platform",
-      "segment": "street-mezzanine-platform",
-      "modeled": true,
+      "segment": "",
+      "modeled": false,
       "isRedundant": false
     },
     {
       "externalId": "WMATA-G05_MZ_ELV1",
       "station": "G05",
       "stationName": "Downtown Largo",
-      "description": "Elevator between street and street/mezzanine",
+      "description": "Street ↔ Street/Mezzanine",
       "levelFrom": "Street",
       "levelTo": "Street/Mezzanine",
-      "segment": "street-street-mezzanine",
-      "modeled": true,
+      "segment": "",
+      "modeled": false,
       "isRedundant": false
     },
     {
       "externalId": "WMATA-G05_MZ_ELV2",
       "station": "G05",
       "stationName": "Downtown Largo",
-      "description": "Elevator between street/mezzanine and platform",
+      "description": "Street/Mezzanine ↔ Platform",
       "levelFrom": "Street/Mezzanine",
       "levelTo": "Platform",
-      "segment": "street-mezzanine-platform",
-      "modeled": true,
+      "segment": "",
+      "modeled": false,
       "isRedundant": false
     },
     {
@@ -1884,17 +1950,6 @@
       "isRedundant": false
     },
     {
-      "externalId": "WMATA-K05_ELE",
-      "station": "K05",
-      "stationName": "East Falls Church",
-      "description": "Elevator between street/mezzanine and platform",
-      "levelFrom": "Street/Mezzanine",
-      "levelTo": "Platform",
-      "segment": "street-mezzanine-platform",
-      "modeled": true,
-      "isRedundant": false
-    },
-    {
       "externalId": "WMATA-K06_ELE1",
       "station": "K06",
       "stationName": "West Falls Church",
@@ -1950,17 +2005,6 @@
       "isRedundant": false
     },
     {
-      "externalId": "WMATA-N01_E_PAV_ELE",
-      "station": "N01",
-      "stationName": "McLean",
-      "description": "Elevator between street and mezzanine",
-      "levelFrom": "Street",
-      "levelTo": "Mezzanine",
-      "segment": "street-mezzanine",
-      "modeled": true,
-      "isRedundant": true
-    },
-    {
       "externalId": "WMATA-N01_MZ_ELE",
       "station": "N01",
       "stationName": "McLean",
@@ -1994,28 +2038,6 @@
       "isRedundant": false
     },
     {
-      "externalId": "WMATA-N02_S_PAV_ELE",
-      "station": "N02",
-      "stationName": "Tysons",
-      "description": "Elevator between street and mezzanine",
-      "levelFrom": "Street",
-      "levelTo": "Mezzanine",
-      "segment": "street-mezzanine",
-      "modeled": true,
-      "isRedundant": true
-    },
-    {
-      "externalId": "WMATA-N02_W_ELE",
-      "station": "N02",
-      "stationName": "Tysons",
-      "description": "Elevator between street and mezzanine",
-      "levelFrom": "Street",
-      "levelTo": "Mezzanine",
-      "segment": "street-mezzanine",
-      "modeled": true,
-      "isRedundant": true
-    },
-    {
       "externalId": "WMATA-N03_MZ_ELE",
       "station": "N03",
       "stationName": "Greensboro",
@@ -2025,17 +2047,6 @@
       "segment": "mezzanine-platform",
       "modeled": true,
       "isRedundant": false
-    },
-    {
-      "externalId": "WMATA-N03_N_PAV_ELV",
-      "station": "N03",
-      "stationName": "Greensboro",
-      "description": "Elevator between street and mezzanine",
-      "levelFrom": "Street",
-      "levelTo": "Mezzanine",
-      "segment": "street-mezzanine",
-      "modeled": true,
-      "isRedundant": true
     },
     {
       "externalId": "WMATA-N03_S_PAV_ELE",
@@ -2089,17 +2100,6 @@
       "levelFrom": "Mezzanine",
       "levelTo": "Platform",
       "segment": "mezzanine-platform",
-      "modeled": true,
-      "isRedundant": false
-    },
-    {
-      "externalId": "WMATA-N06_S_PAV_ELV",
-      "station": "N06",
-      "stationName": "Wiehle-Reston East",
-      "description": "Elevator between street and mezzanine",
-      "levelFrom": "Street",
-      "levelTo": "Mezzanine",
-      "segment": "street-mezzanine",
       "modeled": true,
       "isRedundant": false
     },

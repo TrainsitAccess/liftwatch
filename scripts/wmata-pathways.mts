@@ -53,6 +53,29 @@ if (!gtfsDir) {
   process.exit(1);
 }
 
+// ── Observed-units gate (scripts/wmata-observed.mts) ─────────────────────────
+// Every UnitName the live feed has EVER shown us, with its LocationDescription.
+// WMATA's GTFS undercounts some stations (live-verified: Forest Glen B09 = one
+// mode-5 component but THREE real "mezzanine and platform" UnitNames — a bank
+// drawn as one pathway; Mt Vernon Sq E01 = 2 platform elevators vs 1 in GTFS;
+// Rockville A14's two pedestrian-bridge elevators absent entirely). A modeled
+// station whose observations exceed or can't map onto its GTFS segments would
+// under-warn, so it is EXCLUDED here — the static analog of the adapter's
+// unmapped-outage fail-safe. Garage/parking elevators are expected to be absent
+// from the rail GTFS and never gate anything (tracked units, never chain
+// members unless the agency or a human confirms the route).
+interface ObservedUnit { unitName: string; stationCode: string; location: string }
+let observed: ObservedUnit[] = [];
+try {
+  const p = fileURLToPath(new URL("../src/catalog/wmata-data/observed-units.json", import.meta.url));
+  observed = (JSON.parse(readFileSync(p, "utf8")) as { units: ObservedUnit[] }).units;
+} catch {
+  console.warn("WARN: no observed-units.json — undercount gate skipped (run scripts/wmata-observed.mts)");
+}
+
+// The SAME vocabulary the live adapter uses at poll time — never fork it.
+import { parseWmataLocation, segmentIdsForPair } from "../src/adapters/wmata/location.js";
+
 // --- minimal CSV (WMATA GTFS is simple; quoted fields with commas do occur) ---
 function parseCsv(text: string): Record<string, string>[] {
   const lines = text.split(/\r?\n/).filter((l) => l.length);
@@ -220,6 +243,19 @@ for (const [id] of node) if (id.startsWith("PLF_")) {
   (stationPlf.get(s) ?? stationPlf.set(s, new Set()).get(s)!).add(id);
 }
 
+// observed units keyed by GTFS station code (live codes are single — "C01" —
+// while GTFS transfer stations are compound — "A01_C01" — so alias the halves)
+const obsByStation = new Map<string, ObservedUnit[]>();
+{
+  const gtfsCodeFor = (live: string): string | undefined =>
+    byStation.has(live) ? live : [...byStation.keys()].find((k) => k.split("_").includes(live));
+  for (const o of observed) {
+    const code = gtfsCodeFor(o.stationCode);
+    if (!code) continue; // station has no GTFS elevators at all (nothing modeled to gate)
+    (obsByStation.get(code) ?? obsByStation.set(code, []).get(code)!).push(o);
+  }
+}
+
 const models: StationModel[] = [];
 interface Unit { externalId: string; station: string; stationName: string; description: string; levelFrom: string; levelTo: string; segment: string; modeled: boolean; isRedundant: boolean }
 const units: Unit[] = [];
@@ -305,6 +341,50 @@ for (const [st, els] of [...byStation.entries()].sort()) {
   }
   if (redunUnsafe) { exclude(st, "unsafe-platform-redundancy", "same-segment platform elevators reach differing platforms", [...allLevels]); continue; }
 
+  // (7) observed-units gate: every UnitName the live feed ever showed at this
+  //     station must map onto exactly one modeled segment (per the shared
+  //     vocabulary the adapter also uses), and no segment may have more distinct
+  //     observed units than GTFS elevators. Garage/parking units are exempt
+  //     (expected absent from the rail GTFS; roster-only per universal policy).
+  let obsProblem: { reason: string; detail: string } | null = null;
+  const obsPerSeg = new Map<string, Set<string>>();
+  for (const o of obsByStation.get(st) ?? []) {
+    const pair = parseWmataLocation(o.location);
+    if (pair === "garage") continue;
+    const cands = segs.filter((s) => segmentIdsForPair(pair).includes(segId(s.from, s.to)));
+    if (cands.length !== 1) {
+      obsProblem = { reason: "observed-unmappable", detail: `live unit ${o.unitName} ("${o.location}") maps to ${cands.length} segments` };
+      break;
+    }
+    const key = `${cands[0]!.from}|${cands[0]!.to}`;
+    (obsPerSeg.get(key) ?? obsPerSeg.set(key, new Set()).get(key)!).add(o.unitName);
+  }
+  if (!obsProblem) {
+    for (const [key, names] of obsPerSeg) {
+      const seg = segMap.get(key)!;
+      if (names.size > seg.els.length) {
+        obsProblem = { reason: "observed-undercount", detail: `${names.size} distinct live units (${[...names].sort().join(", ")}) on ${seg.from}→${seg.to} vs ${seg.els.length} in GTFS` };
+        break;
+      }
+    }
+  }
+  if (obsProblem) { exclude(st, obsProblem.reason, obsProblem.detail, [...allLevels]); continue; }
+
+  // (8) BIND observed real UnitNames onto this station's segment slots. Slots
+  //     within a segment are interchangeable (identical access role, identical
+  //     redundancy), so assigning sorted observed names to sorted slots is
+  //     exact for both access computation and per-unit redundancy. A slot with
+  //     no observed name yet keeps its synthetic GTFS id (WMATA-<node>) until
+  //     its real UnitName first appears in the feed and the model is
+  //     regenerated. This is what lets the live feed's ids match the model
+  //     directly — no runtime guessing.
+  const boundId = new Map<Elev, string>();
+  for (const [key, s] of segMap) {
+    const names = [...(obsPerSeg.get(key) ?? [])].sort();
+    const slots = s.els.slice().sort((a, b) => a.elevId.localeCompare(b.elevId));
+    slots.forEach((e, i) => boundId.set(e, names[i] ?? `WMATA-${e.elevId}`));
+  }
+
   // build the model
   const model: StationModel = {
     systemId: "wmata-dc",
@@ -313,16 +393,16 @@ for (const [st, els] of [...byStation.entries()].sort()) {
     segments: segs.map((s): AccessSegment => ({
       id: segId(s.from, s.to),
       label: segLabel(s.from, s.to),
-      elevators: s.els.map((e) => ({ externalId: `WMATA-${e.elevId}`, label: `${name} elevator (${segLabel(s.from, s.to)})` })),
+      elevators: s.els.map((e) => ({ externalId: boundId.get(e)!, label: `${name} elevator ${boundId.get(e)!.startsWith("WMATA-") ? "" : `${boundId.get(e)!} `}(${segLabel(s.from, s.to)})`.replace("  ", " ") })),
     })),
   };
   models.push(model);
   for (const s of segs) for (const e of s.els) {
     units.push({
-      externalId: `WMATA-${e.elevId}`, station: st, stationName: name,
+      externalId: boundId.get(e)!, station: st, stationName: name,
       description: `Elevator between ${s.from.toLowerCase()} and ${s.to.toLowerCase()}`,
       levelFrom: s.from, levelTo: s.to, segment: segId(s.from, s.to),
-      modeled: true, isRedundant: elevatorRedundant(model, `WMATA-${e.elevId}`),
+      modeled: true, isRedundant: elevatorRedundant(model, boundId.get(e)!),
     });
   }
 }

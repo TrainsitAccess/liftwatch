@@ -65,6 +65,8 @@ npm run check:rail-chains # prove the rail chain generator vs the 13 hand models
 npm run mta:chains       # regenerate MTA multi-chain models from the live feed
 npm run mbta:chains      # regenerate MBTA simple-station chains (validated vs MBTA's own guidance)
 npm run check:mbta-chains # prove the MBTA chain generator offline (full-feed fixture)
+npm run check:wmata       # prove the WMATA pathways chains + attribution crosswalk (offline)
+npm run wmata:observed    # refresh observed-units.json (archive + live feed; grows only)
 npm run typecheck        # tsc --noEmit — run after edits
 npm run db:status        # row counts + latest poll_runs, once Supabase is set up
 npm run site:data && npm run site:serve  # rebuild + preview the departure-board site
@@ -296,6 +298,34 @@ parking lot). A station is accessible only if **every** segment is up.
   the mapper: the feed abbreviates "Tk 3" — the first run's regex missed it
   and minted five FALSE redundant pairs; when touching the mapper, re-scan
   every multi-elevator segment in the output, not just the curated gate.
+- **WMATA per-elevator chains are GENERATED from GTFS pathways (2026-07-13),
+  with observed-UnitName binding and a fail-safe.** A physical elevator = a
+  CONNECTED COMPONENT of the mode-5 pathway subgraph (`scripts/
+  wmata-pathways.mts` — a node-name regex missed ~25%; components can't split
+  a 3-level shaft into a false redundant pair). 206 in-station elevators / 98
+  stations; 55 stations modeled + Rockville hand-curated
+  (`src/catalog/wmata-models.ts` — human-confirmed pedestrian-bridge pair
+  A14X01/X02 as its own chain), 43 excluded with reasons
+  (`wmata-data/chains-excluded.json`): side platforms (16 — reachability
+  tracing proves disjoint directions, never grouped by level name), big
+  transfers (15), 3-level shafts (3), corrupt A02 levels, and the
+  **observed-units gate** — every UnitName ever seen in the feed
+  (`wmata-data/observed-units.json`, `npm run wmata:observed`) must map onto
+  exactly one segment with no segment over-subscribed; this caught GTFS
+  UNDERCOUNTS (Forest Glen's 3-elevator bank drawn as one pathway, Mt Vernon
+  Sq, Morgan Blvd — all excluded). Model slot ids are REAL UnitNames wherever
+  observed (slots within a segment are interchangeable → sorted assignment is
+  exact), so live outages match models BY ID; unknown UnitNames fall back to
+  the LocationDescription level pair (`src/adapters/wmata/location.ts`, the
+  ONE vocabulary shared by generator + adapter) → `unit.segment` +
+  `needsReview`; unparseable → `needsReview` and the site's generic fail-safe
+  makes every chain at the station read UNKNOWN (never accessible) — also
+  fixed BART's `-UNSPECIFIED` outages not surfacing on the access board.
+  Garage elevators: tracked units, never chain members, never flagged
+  (universal policy above). `inventoryComplete` stays false + `*320` static
+  denominator — the chains are additive display-layer accessibility, NOT a
+  fleet claim. Offline: `npm run check:wmata`. Refresh: new-UnitName ntfy push
+  → `wmata:observed` + re-run the generator (binds it or auto-excludes).
 - **TfL multi-chain models are GENERATED from graph topology, not hand-typed**
   (2026-07-08). Unlike MTA, TfL has no line-served field — only `FromAreas`/
   `ToAreas` area codes. `npm run tfl:chains` (`scripts/tfl-chains.mjs`) treats
@@ -412,6 +442,12 @@ parking lot). A station is accessible only if **every** segment is up.
   but they aren't ingested. Non-elevator step-free facilities are tracked in a
   SEPARATE, walled-off access-issues layer — see the Access issues convention
   below; they never touch elevator counts/%/leaderboards.
+  **Universal inclusion (Bryce, 2026-07-13): every ELEVATOR an agency reports
+  is tracked** — garage, parking, pedestrian-bridge, whatever it serves; no
+  adapter may drop an elevator by location. But an elevator enters an ACCESS
+  CHAIN only when the agency's guidance or a human confirms the route (the
+  Millbrae/garage precedent) — a garage elevator is a first-class tracked
+  unit and leaderboard member that simply isn't a chain member.
 - **Planned vs unplanned** tracked separately; leaderboards **rank by
   unplanned** (share of active fleet); scheduled work has its own column/board.
   MTA: classified by `reason` (`ismaintenanceoutage` is vestigial — "N" on
@@ -436,6 +472,11 @@ parking lot). A station is accessible only if **every** segment is up.
   **WMATA** = per-elevator ids but the feed only lists broken units (`fair`,
   `inventoryComplete: false`, no single_elevator inference, units discovered
   as they break; station list IS complete via `NormalizedRead.stations`).
+  Since 2026-07-13 WMATA ALSO carries 56 modeled stations with
+  pathways-derived redundancy (see the WMATA bullet in the redundancy
+  section) — an additive accessibility layer that deliberately does NOT flip
+  inventoryComplete: ~⅓ of the fleet is garage/parking elevators absent from
+  the rail GTFS, so 320 stays the honest denominator.
   **CTA** = same `inventoryComplete: false` tier as WMATA, but with **no
   per-elevator id at all** — station-level only (like BART), no
   `NormalizedRead.stations` (station list not fetched in this MVP pass).

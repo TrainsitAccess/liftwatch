@@ -3,13 +3,13 @@
   "name": "LIRR",
   "label": "LIRR (New York)",
   "timezone": "America/New_York",
-  "generatedAt": "2026-07-11T00:50:44.646Z",
+  "generatedAt": "2026-07-13T21:28:27.356Z",
   "currentlyBroken": [
     {
       "station": "Grand Central",
       "unitId": "GCT-945",
       "unit": "EL21: Between LIRR Concourse and Metro-North Tracks 102-114 at 45th Street",
-      "days": 3,
+      "days": 6,
       "since": "2026-07-07T03:58:40.812+00:00",
       "planned": false,
       "reason": "Not Working",
@@ -21,38 +21,70 @@
       "chainNotes": []
     },
     {
-      "station": "Jamaica (Tks 4/5)",
-      "unitId": "JAM-342",
-      "unit": "Between eastern overpass and Tracks 4 & 5",
+      "station": "St. Albans",
+      "unitId": "SAB-1101",
+      "unit": "Between Tracks 1 & 2 and street level (middle of platform)",
       "days": 0,
-      "since": "2026-07-10T21:05:36.11+00:00",
+      "since": "2026-07-13T17:17:10.733+00:00",
       "planned": false,
       "reason": "Not Working",
       "estimatedReturn": null,
       "soleAccess": true,
       "severs": [
-        "Jamaica (Tks 4/5)"
+        "St. Albans"
       ],
       "backups": [],
       "rampAlternative": false,
-      "chainNotes": []
+      "chainNotes": [
+        "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      ]
     }
   ],
+  "needsReview": {
+    "current": 1,
+    "rows": [
+      {
+        "station": "Grand Central",
+        "unitId": "GCT-945",
+        "reason": "Not Working",
+        "since": "2026-07-07T03:58:40.812+00:00",
+        "days": 6
+      }
+    ]
+  },
   "offline": {
     "current": 0,
     "log": []
   },
-  "accessIssues": {
+  "otherEquipment": {
     "current": 0,
     "log": []
   },
   "stationAccess": {
     "rows": [
       {
-        "name": "Jamaica (Tks 4/5)",
+        "name": "St. Albans",
         "state": "no_access",
         "downUnits": [
-          "JAM-342"
+          "SAB-1101"
+        ],
+        "offlineUnits": [],
+        "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      },
+      {
+        "name": "Grand Central (Tks 201/202·301/302)",
+        "state": "unknown",
+        "downUnits": [
+          "GCT-945"
+        ],
+        "offlineUnits": [],
+        "note": "Grand Central Madison: three street elevators (44th/47th/48th St) back each other up into the LIRR concourse; EL01/EL02 pair concourse to mezzanine; each platform group has its own redundant elevator pair. EL21 is the Metro-North transfer connector, tracked separately outside these chains."
+      },
+      {
+        "name": "Grand Central (Tks 203/204·303/304)",
+        "state": "unknown",
+        "downUnits": [
+          "GCT-945"
         ],
         "offlineUnits": [],
         "note": null
@@ -64,7 +96,15 @@
   "accessibilityBlackouts": [
     {
       "name": "Jamaica (Tks 4/5)",
-      "hours": 16.75079861111111
+      "hours": 81.22076055555556
+    },
+    {
+      "name": "Jamaica (Tks 7/8)",
+      "hours": 28.22427611111111
+    },
+    {
+      "name": "Ronkonkoma (Tracks 1 & 2)",
+      "hours": 15.457340277777778
     },
     {
       "name": "Queens Village (Platform B)",
@@ -79,8 +119,8 @@
       "hours": 5.42221
     },
     {
-      "name": "Jamaica (Tks 7/8)",
-      "hours": 2.6569913888888887
+      "name": "St. Albans",
+      "hours": 4.187950833333334
     },
     {
       "name": "Penn Station (Tks 13/14)",
@@ -93,65 +133,57 @@
     {
       "name": "Penn Station (Tk 17)",
       "hours": 0.9566158333333333
-    },
-    {
-      "name": "Penn Station (Tks 18/19)",
-      "hours": 0.9566158333333333
-    },
-    {
-      "name": "Penn Station (Tks 20/21)",
-      "hours": 0.9566158333333333
     }
   ],
   "stepFreeStreak": [
     {
       "name": "Atlantic Terminal",
-      "days": 3,
+      "days": 6,
       "blackedOutNow": false
     },
     {
       "name": "Hicksville (Platform A)",
-      "days": 3,
+      "days": 6,
       "blackedOutNow": false
     },
     {
       "name": "Hicksville (Platform B)",
-      "days": 3,
+      "days": 6,
       "blackedOutNow": false
     },
     {
       "name": "Mineola (Track 2)",
-      "days": 3,
+      "days": 6,
       "blackedOutNow": false
     },
     {
       "name": "Mineola (Track 3)",
-      "days": 3,
+      "days": 6,
       "blackedOutNow": false
     },
     {
       "name": "Jamaica (Tks 1/2)",
-      "days": 3,
+      "days": 6,
       "blackedOutNow": false
     },
     {
       "name": "Jamaica (Tks 2/3)",
-      "days": 3,
+      "days": 6,
       "blackedOutNow": false
     },
     {
       "name": "Jamaica (Tks 6/7)",
-      "days": 3,
+      "days": 6,
       "blackedOutNow": false
     },
     {
       "name": "Jamaica (Tks 11/12)",
-      "days": 3,
+      "days": 6,
       "blackedOutNow": false
     },
     {
       "name": "Woodside (Platform A)",
-      "days": 3,
+      "days": 6,
       "blackedOutNow": false
     }
   ],
@@ -159,7 +191,7 @@
     {
       "unit": "Between eastern overpass and Tracks 4 & 5",
       "station": "Jamaica (Tks 4/5)",
-      "count": 2
+      "count": 3
     },
     {
       "unit": "Between eastern overpass, Track 2, and kiss-and-ride (south side)",
@@ -167,8 +199,18 @@
       "count": 2
     },
     {
-      "unit": "Garage Elevator 3",
-      "station": "Wyandanch",
+      "unit": "Between western overpass, Intermodal Center, and Track 2 (south side)",
+      "station": "Mineola (Track 2)",
+      "count": 2
+    },
+    {
+      "unit": "Between eastern overpass and Tracks 7 & 8",
+      "station": "Jamaica (Tks 7/8)",
+      "count": 2
+    },
+    {
+      "unit": "Between overpass and Tracks 1 & 2  (Platform B)",
+      "station": "Ronkonkoma (Tracks 1 & 2)",
       "count": 1
     },
     {
@@ -177,95 +219,85 @@
       "count": 1
     },
     {
-      "unit": "Between Platform B and street level (east end of platform)",
-      "station": "Queens Village (Platform B)",
-      "count": 1
-    },
-    {
       "unit": "Between Tracks 1 & 2 and street level (middle of platform)",
       "station": "Laurelton",
       "count": 1
     },
     {
-      "unit": "EL21: Between LIRR Concourse and Metro-North Tracks 102-114 at 45th Street",
-      "station": "Grand Central",
+      "unit": "Garage Elevator 3",
+      "station": "Wyandanch",
       "count": 1
     },
     {
-      "unit": "Unit P34, between 34th Street/7 Avenue and LIRR concourse level",
-      "station": "Penn Station",
+      "unit": "Between Platform B and street level (east end of platform)",
+      "station": "Queens Village (Platform B)",
       "count": 1
     },
     {
       "unit": "Between eastern overpass, Track 3, and street (north side)",
       "station": "Mineola (Track 3)",
       "count": 1
-    },
-    {
-      "unit": "Between western overpass, Intermodal Center, and Track 2 (south side)",
-      "station": "Mineola (Track 2)",
-      "count": 1
     }
   ],
   "uptimeStreak": [
     {
-      "unit": "EL12: Between 44th Street and LIRR Concourse",
-      "station": "Grand Central",
-      "days": 3,
+      "unit": "Between street level and Track 2 (west of overpass)",
+      "station": "Murray Hill (Track 2)",
+      "days": 6,
       "downNow": false
     },
     {
-      "unit": "EL13: Between 47th Street and LIRR Concourse",
-      "station": "Grand Central",
-      "days": 3,
+      "unit": "Between Tracks 1 & 2 and street level (east side of 192 St)",
+      "station": "Auburndale",
+      "days": 6,
       "downNow": false
     },
     {
-      "unit": "Between eastern overpass and Tracks 1 & 2",
-      "station": "Jamaica (Tks 1/2)",
-      "days": 3,
+      "unit": "Between street level and Platform A",
+      "station": "Great Neck (Platform A)",
+      "days": 6,
       "downNow": false
     },
     {
-      "unit": "Between Tracks 1 & 2 and street level (middle of platform)",
-      "station": "St. Albans",
-      "days": 3,
+      "unit": "Between street level and Platform B",
+      "station": "Great Neck (Platform B)",
+      "days": 6,
       "downNow": false
     },
     {
-      "unit": "Between tracks 1 & 2 and the street level east of the station building.",
-      "station": "Copiague",
-      "days": 3,
-      "downNow": false
-    },
-    {
-      "unit": "Located in the station plaza just west of the waiting room.",
-      "station": "Lindenhurst",
-      "days": 3,
-      "downNow": false
-    },
-    {
-      "unit": "Elevator A2 serves Platform A tracks 1&2  (located on street level west of station building)",
-      "station": "Babylon (Tracks 1 & 2)",
-      "days": 3,
-      "downNow": false
-    },
-    {
-      "unit": "Between overpass and Tracks 1 & 2  (Platform B)",
-      "station": "Ronkonkoma (Tracks 1 & 2)",
-      "days": 3,
+      "unit": "Between street level and Track 1 (east of overpass)",
+      "station": "Murray Hill (Track 1)",
+      "days": 6,
       "downNow": false
     },
     {
       "unit": "Garage Elevator 1",
       "station": "Ronkonkoma",
-      "days": 3,
+      "days": 6,
       "downNow": false
     },
     {
-      "unit": "Garage Elevator 2",
-      "station": "Ronkonkoma",
-      "days": 3,
+      "unit": "Between Tracks 1 & 2 and street level (east side of station building)",
+      "station": "Baldwin",
+      "days": 6,
+      "downNow": false
+    },
+    {
+      "unit": "Located in the station plaza just west of the waiting room.",
+      "station": "Amityville",
+      "days": 6,
+      "downNow": false
+    },
+    {
+      "unit": "Between Platform A and street level (east side of station building)",
+      "station": "Queens Village (Platform A)",
+      "days": 6,
+      "downNow": false
+    },
+    {
+      "unit": "Between Tracks 1 & 2 and street level (east of station building)",
+      "station": "Merrick",
+      "days": 6,
       "downNow": false
     }
   ],
@@ -291,6 +323,34 @@
       "count": 3
     },
     {
+      "name": "Murray Hill",
+      "count": 2
+    },
+    {
+      "name": "Great Neck",
+      "count": 2
+    },
+    {
+      "name": "Queens Village",
+      "count": 2
+    },
+    {
+      "name": "Locust Manor",
+      "count": 2
+    },
+    {
+      "name": "Lynbrook",
+      "count": 2
+    },
+    {
+      "name": "Nostrand Av",
+      "count": 2
+    },
+    {
+      "name": "Carle Place",
+      "count": 2
+    },
+    {
       "name": "Babylon",
       "count": 2
     },
@@ -299,35 +359,7 @@
       "count": 2
     },
     {
-      "name": "Locust Manor",
-      "count": 2
-    },
-    {
-      "name": "Carle Place",
-      "count": 2
-    },
-    {
-      "name": "Queens Village",
-      "count": 2
-    },
-    {
       "name": "Flushing Main Street",
-      "count": 2
-    },
-    {
-      "name": "Great Neck",
-      "count": 2
-    },
-    {
-      "name": "Nostrand Av",
-      "count": 2
-    },
-    {
-      "name": "Lynbrook",
-      "count": 2
-    },
-    {
-      "name": "Merillon Av",
       "count": 2
     }
   ]

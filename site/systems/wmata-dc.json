@@ -3,13 +3,13 @@
   "name": "DC Metro",
   "label": "DC Metro (Washington)",
   "timezone": "America/New_York",
-  "generatedAt": "2026-07-11T00:50:44.646Z",
+  "generatedAt": "2026-07-13T21:28:27.356Z",
   "currentlyBroken": [
     {
       "station": "Glenmont",
       "unitId": "B11X05",
       "unit": "Garage elevator",
-      "days": 128,
+      "days": 131,
       "since": "2026-03-04T15:28:00+00:00",
       "planned": true,
       "reason": "Modernization",
@@ -21,40 +21,48 @@
       "chainNotes": []
     },
     {
-      "station": "Rockville",
+      "station": "Rockville (pedestrian bridge)",
       "unitId": "A14X01",
       "unit": "Elevator between pedestrian bridge and mezzanine",
-      "days": 80,
+      "days": 83,
       "since": "2026-04-21T04:40:00+00:00",
       "planned": true,
       "reason": "Modernization",
-      "estimatedReturn": "2026-07-11T03:59:59+00:00",
+      "estimatedReturn": "2026-07-16T03:59:59+00:00",
       "soleAccess": false,
-      "severs": [],
+      "severs": [
+        "Rockville (pedestrian bridge)"
+      ],
       "backups": [],
       "rampAlternative": false,
-      "chainNotes": []
+      "chainNotes": [
+        "The pedestrian bridge over the tracks is a secondary entrance served by two elevators that back each other up on the bridge↔mezzanine leg (human-confirmed 2026-07-13; both live-observed in the Incidents feed)."
+      ]
     },
     {
       "station": "Columbia Heights",
       "unitId": "E04X02",
       "unit": "Elevator between mezzanine and platform",
-      "days": 33,
+      "days": 35,
       "since": "2026-06-08T00:15:00+00:00",
       "planned": false,
       "reason": "Minor Repair",
       "estimatedReturn": "2026-07-11T03:59:59+00:00",
       "soleAccess": false,
-      "severs": [],
+      "severs": [
+        "Columbia Heights"
+      ],
       "backups": [],
       "rampAlternative": false,
-      "chainNotes": []
+      "chainNotes": [
+        "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 1 elevator, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS."
+      ]
     },
     {
       "station": "Huntington",
       "unitId": "C15S03",
       "unit": "Garage #2 elevator",
-      "days": 10,
+      "days": 13,
       "since": "2026-06-30T17:00:00+00:00",
       "planned": false,
       "reason": "Inspection Repair",
@@ -69,7 +77,7 @@
       "station": "Mt Vernon Sq 7th St-Convention Center",
       "unitId": "E01X04",
       "unit": "Elevator between mezzanine and platform",
-      "days": 6,
+      "days": 9,
       "since": "2026-07-04T10:35:00+00:00",
       "planned": false,
       "reason": "Minor Repair",
@@ -84,7 +92,7 @@
       "station": "Mt Vernon Sq 7th St-Convention Center",
       "unitId": "E01X01",
       "unit": "Elevator between street and mezzanine",
-      "days": 3,
+      "days": 6,
       "since": "2026-07-07T11:10:00+00:00",
       "planned": false,
       "reason": "Minor Repair",
@@ -99,7 +107,7 @@
       "station": "Franconia-Springfield",
       "unitId": "J03X02",
       "unit": "Elevator between mezzanine and platform",
-      "days": 1,
+      "days": 4,
       "since": "2026-07-09T13:43:00+00:00",
       "planned": false,
       "reason": "Other",
@@ -111,29 +119,14 @@
       "chainNotes": []
     },
     {
-      "station": "Federal Triangle",
-      "unitId": "D01X01",
-      "unit": "Elevator between street and mezzanine",
-      "days": 0,
-      "since": "2026-07-10T15:15:00+00:00",
-      "planned": true,
-      "reason": "Safety Inspection",
-      "estimatedReturn": "2026-07-13T03:59:59+00:00",
-      "soleAccess": false,
-      "severs": [],
-      "backups": [],
-      "rampAlternative": false,
-      "chainNotes": []
-    },
-    {
       "station": "West Falls Church",
       "unitId": "K06X04",
       "unit": "Garage elevator",
-      "days": 0,
+      "days": 3,
       "since": "2026-07-10T16:25:00+00:00",
       "planned": false,
       "reason": "Inspection Repair",
-      "estimatedReturn": "2026-07-16T03:59:59+00:00",
+      "estimatedReturn": "2026-07-28T03:59:59+00:00",
       "soleAccess": false,
       "severs": [],
       "backups": [],
@@ -141,29 +134,33 @@
       "chainNotes": []
     },
     {
-      "station": "Wiehle-Reston East",
-      "unitId": "N06X02",
-      "unit": "Elevator - south entry pavilion",
-      "days": 0,
-      "since": "2026-07-11T00:29:00+00:00",
-      "planned": false,
-      "reason": "Service Call",
-      "estimatedReturn": "2026-07-13T03:59:59+00:00",
-      "soleAccess": false,
-      "severs": [],
-      "backups": [],
-      "rampAlternative": false,
-      "chainNotes": []
-    },
-    {
-      "station": "Benning Road",
-      "unitId": "G01X01",
-      "unit": "Elevator between street and mezzanine, north side of Benning Road at 45th Street",
-      "days": 0,
-      "since": "2026-07-10T22:45:00+00:00",
+      "station": "King St-Old Town",
+      "unitId": "C13N01",
+      "unit": "Elevator between mezzanine and platform",
+      "days": 1,
+      "since": "2026-07-11T22:38:00+00:00",
       "planned": false,
       "reason": "Minor Repair",
-      "estimatedReturn": "2026-07-13T03:59:59+00:00",
+      "estimatedReturn": "2026-07-14T03:59:59+00:00",
+      "soleAccess": false,
+      "severs": [],
+      "backups": [
+        "King St-Old Town elevator C13N02 (Street/Mezzanine to Platform)"
+      ],
+      "rampAlternative": false,
+      "chainNotes": [
+        "Topology from WMATA GTFS pathways (mode-5 elevator components). Street/Mezzanine→Platform: 2 elevators. In-station elevators only — garage/facility elevators are not in the rail GTFS."
+      ]
+    },
+    {
+      "station": "New Carrollton",
+      "unitId": "D13X05",
+      "unit": "Garage elevator",
+      "days": 0,
+      "since": "2026-07-12T21:46:00+00:00",
+      "planned": false,
+      "reason": "Other",
+      "estimatedReturn": "2026-07-15T03:59:59+00:00",
       "soleAccess": false,
       "severs": [],
       "backups": [],
@@ -171,58 +168,95 @@
       "chainNotes": []
     },
     {
-      "station": "NoMa-Gallaudet U",
-      "unitId": "B35N02",
-      "unit": "Elevator between bike trail and mezzanine",
+      "station": "Rockville (pedestrian bridge)",
+      "unitId": "A14X02",
+      "unit": "Elevator between pedestrian bridge and mezzanine",
       "days": 0,
-      "since": "2026-07-10T20:53:00+00:00",
+      "since": "2026-07-13T16:51:00+00:00",
       "planned": false,
-      "reason": "Service Call",
-      "estimatedReturn": "2026-07-13T03:59:59+00:00",
+      "reason": "Minor Repair",
+      "estimatedReturn": "2026-07-16T03:59:59+00:00",
       "soleAccess": false,
-      "severs": [],
+      "severs": [
+        "Rockville (pedestrian bridge)"
+      ],
       "backups": [],
       "rampAlternative": false,
-      "chainNotes": []
+      "chainNotes": [
+        "The pedestrian bridge over the tracks is a secondary entrance served by two elevators that back each other up on the bridge↔mezzanine leg (human-confirmed 2026-07-13; both live-observed in the Incidents feed)."
+      ]
     }
   ],
+  "needsReview": {
+    "current": 0,
+    "rows": []
+  },
   "offline": {
     "current": 0,
     "log": []
   },
-  "accessIssues": {
+  "otherEquipment": {
     "current": 0,
     "log": []
   },
   "stationAccess": {
-    "rows": [],
-    "chainsModeled": 0
+    "rows": [
+      {
+        "name": "Columbia Heights",
+        "state": "no_access",
+        "downUnits": [
+          "E04X02"
+        ],
+        "offlineUnits": [],
+        "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 1 elevator, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS."
+      },
+      {
+        "name": "Rockville (pedestrian bridge)",
+        "state": "no_access",
+        "downUnits": [
+          "A14X01",
+          "A14X02"
+        ],
+        "offlineUnits": [],
+        "note": "The pedestrian bridge over the tracks is a secondary entrance served by two elevators that back each other up on the bridge↔mezzanine leg (human-confirmed 2026-07-13; both live-observed in the Incidents feed)."
+      },
+      {
+        "name": "King St-Old Town",
+        "state": "reduced",
+        "downUnits": [
+          "C13N01"
+        ],
+        "offlineUnits": [],
+        "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street/Mezzanine→Platform: 2 elevators. In-station elevators only — garage/facility elevators are not in the rail GTFS."
+      }
+    ],
+    "chainsModeled": 57
   },
   "scheduledWork": [],
   "accessibilityBlackouts": [
     {
-      "name": "Glenmont",
-      "hours": 3081.379068333333
-    },
-    {
-      "name": "Rockville",
-      "hours": 1940.1790683333334
-    },
-    {
       "name": "Columbia Heights",
-      "hours": 792.595735
+      "hours": 861.2242655555556
     },
     {
       "name": "Huntington",
-      "hours": 247.845735
+      "hours": 316.4742655555556
     },
     {
       "name": "Mt Vernon Sq 7th St-Convention Center",
-      "hours": 158.26240166666668
+      "hours": 226.89093222222223
     },
     {
       "name": "Federal Triangle",
-      "hours": 57.79894
+      "hours": 122.62901583333333
+    },
+    {
+      "name": "Franconia-Springfield",
+      "hours": 103.7575988888889
+    },
+    {
+      "name": "West Falls Church",
+      "hours": 79.44093222222222
     },
     {
       "name": "L'Enfant Plaza",
@@ -230,83 +264,103 @@
     },
     {
       "name": "Gallery Pl-Chinatown",
-      "hours": 41.81525027777778
+      "hours": 43.25828555555555
     },
     {
-      "name": "Franconia-Springfield",
-      "hours": 35.129068333333336
+      "name": "Congress Heights",
+      "hours": 37.833129722222225
     },
     {
-      "name": "North Bethesda",
-      "hours": 28.470702777777777
+      "name": "NoMa-Gallaudet U",
+      "hours": 29.662076666666668
     }
   ],
   "stepFreeStreak": [
     {
-      "name": "Downtown Largo",
-      "days": 6,
-      "blackedOutNow": false
-    },
-    {
-      "name": "Waterfront",
-      "days": 5,
+      "name": "Glenmont",
+      "days": 8,
       "blackedOutNow": false
     },
     {
       "name": "Metro Center",
-      "days": 5,
+      "days": 8,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Downtown Largo",
+      "days": 8,
       "blackedOutNow": false
     },
     {
       "name": "Bethesda",
-      "days": 4,
-      "blackedOutNow": false
-    },
-    {
-      "name": "Potomac Ave",
-      "days": 4,
+      "days": 7,
       "blackedOutNow": false
     },
     {
       "name": "Medical Center",
-      "days": 4,
+      "days": 7,
       "blackedOutNow": false
     },
     {
       "name": "Capitol South",
-      "days": 4,
+      "days": 7,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Potomac Ave",
+      "days": 7,
       "blackedOutNow": false
     },
     {
       "name": "L'Enfant Plaza",
-      "days": 3,
+      "days": 5,
       "blackedOutNow": false
     },
     {
-      "name": "North Bethesda",
-      "days": 3,
+      "name": "Georgia Ave-Petworth",
+      "days": 4,
       "blackedOutNow": false
     },
     {
-      "name": "Congress Heights",
-      "days": 3,
+      "name": "McLean",
+      "days": 4,
       "blackedOutNow": false
     }
   ],
   "mostBrokenUnits": [
+    {
+      "unit": "Elevator between bike trail and mezzanine",
+      "station": "NoMa-Gallaudet U",
+      "count": 4
+    },
     {
       "unit": "Elevator between street and mezzanine",
       "station": "Federal Triangle",
       "count": 4
     },
     {
-      "unit": "Elevator between bike trail and mezzanine",
-      "station": "NoMa-Gallaudet U",
+      "unit": "Elevator between street and mezzanine on west side of Hayes street, at The Fashion Center",
+      "station": "Pentagon City",
       "count": 3
     },
     {
-      "unit": "Garage elevator",
-      "station": "West Falls Church",
+      "unit": "Elevator - south entry pavilion",
+      "station": "Tysons",
+      "count": 2
+    },
+    {
+      "unit": "Elevator between platform for Green/Yellow lines and platform to Glenmont",
+      "station": "Gallery Pl-Chinatown",
+      "count": 2
+    },
+    {
+      "unit": "Elevator between mezzanine and platform to Huntington/Franconia-Springfield",
+      "station": "Ronald Reagan Washington National Airport",
+      "count": 2
+    },
+    {
+      "unit": "Elevator between mezzanine and platform",
+      "station": "Deanwood",
       "count": 2
     },
     {
@@ -315,95 +369,75 @@
       "count": 2
     },
     {
-      "unit": "Elevator between street and mezzanine",
-      "station": "L'Enfant Plaza",
+      "unit": "Elevator between mezzanine and platform",
+      "station": "King St-Old Town",
       "count": 2
     },
     {
-      "unit": "Elevator between street and mezzanine",
-      "station": "Eastern Market",
+      "unit": "Garage elevator",
+      "station": "West Falls Church",
       "count": 2
-    },
-    {
-      "unit": "Elevator between street and mezzanine",
-      "station": "Capitol Heights",
-      "count": 2
-    },
-    {
-      "unit": "Elevator between mezzanine/upper platform to Branch Ave/Huntington and lower platform for Blue/Orange Lines",
-      "station": "L'Enfant Plaza",
-      "count": 2
-    },
-    {
-      "unit": "Elevator between street and mezzanine to Vienna",
-      "station": "Ballston-MU",
-      "count": 2
-    },
-    {
-      "unit": "Elevator - south entry pavilion",
-      "station": "Tysons",
-      "count": 1
     }
   ],
   "uptimeStreak": [
     {
-      "unit": "Elevator between street and mezzanine",
-      "station": "Downtown Largo",
-      "days": 6,
-      "downNow": false
-    },
-    {
       "unit": "Elevator between street and mezzanine, north side of M Street, S.W.",
       "station": "Waterfront",
-      "days": 5,
+      "days": 8,
       "downNow": false
     },
     {
       "unit": "Elevator between street and mezzanine, east side of station at bus bay/Kiss & Ride",
       "station": "Glenmont",
-      "days": 5,
+      "days": 8,
       "downNow": false
     },
     {
       "unit": "Elevator between mezzanine and platform",
       "station": "Glenmont",
-      "days": 5,
+      "days": 8,
       "downNow": false
     },
     {
       "unit": "Elevator between street and mezzanine",
       "station": "Metro Center",
-      "days": 5,
+      "days": 8,
+      "downNow": false
+    },
+    {
+      "unit": "Elevator between street and mezzanine",
+      "station": "Downtown Largo",
+      "days": 8,
       "downNow": false
     },
     {
       "unit": "Elevator between street and mezzanine, corner of Wisconsin Ave. and Montgomery Lane",
       "station": "Bethesda",
-      "days": 4,
+      "days": 7,
       "downNow": false
     },
     {
       "unit": "Elevator between mezzanine and platform",
       "station": "Potomac Ave",
-      "days": 4,
+      "days": 7,
       "downNow": false
     },
     {
       "unit": "Elevator between street and mezzanine",
       "station": "Medical Center",
-      "days": 4,
+      "days": 7,
       "downNow": false
     },
     {
       "unit": "Elevator between mezzanine and platform",
       "station": "Capitol South",
-      "days": 4,
+      "days": 7,
       "downNow": false
     },
     {
       "unit": " Elevator between street and mezzanine, 14 Street, Southbound Entrance",
       "station": "Columbia Heights",
-      "days": 4,
+      "days": 7,
       "downNow": false
     }
   ],

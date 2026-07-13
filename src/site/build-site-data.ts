@@ -90,7 +90,7 @@ const [systemsData, unitsData, stationsData, eventsData, upcomingData] = await P
     (from, to) =>
       db
         .from("units")
-        .select("id, system_id, station_id, external_id, description, is_active, is_redundant, redundancy_source, first_seen")
+        .select("id, system_id, station_id, external_id, description, is_active, is_redundant, redundancy_source, first_seen, unit_type, segment")
         .range(from, to),
     "units",
   ),
@@ -616,6 +616,34 @@ function buildSystemDetail(systemId: string) {
   // same source-gated rule as the ▮ marker). Chains with nothing down are
   // summarized by count, not listed.
   const stationAccess: { name: string; state: "reduced" | "no_access" | "unknown"; downUnits: string[]; offlineUnits: string[]; note: string | null }[] = [];
+
+  // FAIL-SAFE for modeled stations (WMATA precedent, but generic): an OPEN,
+  // flagged (needs_review) elevator outage at a modeled station whose unit id
+  // matches NO chain elevator there means the model is behind the real world —
+  // a new unit the observed-name binding hasn't absorbed yet, or an outage the
+  // adapter couldn't place (BART's -UNSPECIFIED). Never let the station read
+  // clean:
+  //   - if the adapter placed it on a SEGMENT (units.segment), it counts as one
+  //     more distinct down elevator on that segment — slots within a segment
+  //     are interchangeable, so marking any not-yet-down slot is exact math;
+  //   - if even the segment is unknown, every chain at the station reads
+  //     UNKNOWN ("can't verify before you go") — an elevator is out somewhere
+  //     in the station's access path and no chain may claim to be verified.
+  const unplacedByStation = new Map<string, { extId: string; segment: string | null }[]>();
+  for (const e of systemEvents) {
+    if (e.ended_at != null || !(e.needs_review as boolean | undefined)) continue;
+    const unit = unitById.get(e.unit_id as string);
+    if (((unit?.unit_type as string | undefined) ?? "elevator") !== "elevator") continue;
+    const sid = (e.station_id as string | null) ?? (unit?.station_id as string | null);
+    if (!sid || !modeledStationIds.has(sid)) continue;
+    const extId = unit?.external_id as string | undefined;
+    if (!extId || chainsList.some((m) => allElevators(m).some((el) => el.externalId === extId))) continue;
+    (unplacedByStation.get(sid) ?? unplacedByStation.set(sid, []).get(sid)!).push({
+      extId,
+      segment: (unit?.segment as string | null) ?? null,
+    });
+  }
+
   let chainsTotal = 0;
   for (const [bare, chains] of models) {
     const stName = stationName.get(`${systemId}:${bare}`) ?? bare;
@@ -624,19 +652,39 @@ function buildSystemDetail(systemId: string) {
       const ids = new Set(allElevators(model).map((el) => el.externalId));
       const down = [...openExtIds].filter((id) => ids.has(id));
       const offline = [...offlineExtIds].filter((id) => ids.has(id));
-      if (!down.length && !offline.length) continue;
-      // Severed beats everything; otherwise an offline member makes the
-      // route UNKNOWN — an offline elevator is neither up nor down, so the
-      // route's real state can't be verified before you go.
-      const state: "reduced" | "no_access" | "unknown" = down.length
-        ? stationAccessible(model, new Set(down))
-          ? offline.length ? "unknown" : "reduced"
+      const unplaced = coveredStationIds(model).flatMap((b) => unplacedByStation.get(`${systemId}:${b}`) ?? []);
+      // Segment-placed unplaced outages become synthetic extra down members
+      // (one distinct not-yet-down slot each); segmentless ones taint the
+      // whole chain as UNKNOWN. A segment id belonging to a SIBLING chain
+      // only affects that chain, not this one.
+      const extraDown: string[] = [];
+      let unknownUnplaced = false;
+      for (const u of unplaced) {
+        const seg = u.segment ? model.segments.find((s) => s.id === u.segment) : undefined;
+        if (seg) {
+          const free = seg.elevators.find((el) => !down.includes(el.externalId) && !extraDown.includes(el.externalId));
+          if (free) extraDown.push(free.externalId);
+        } else if (!u.segment) {
+          unknownUnplaced = true;
+        }
+      }
+      if (!down.length && !offline.length && !extraDown.length && !unknownUnplaced) continue;
+      // Severed beats everything; otherwise an offline member or an unplaced
+      // outage makes the route UNKNOWN — neither up nor down, so the route's
+      // real state can't be verified before you go.
+      const effDown = [...down, ...extraDown];
+      const state: "reduced" | "no_access" | "unknown" = effDown.length
+        ? stationAccessible(model, new Set(effDown))
+          ? offline.length || unknownUnplaced ? "unknown" : "reduced"
           : "no_access"
         : "unknown";
+      const shownUnplaced = unplaced
+        .filter((u) => !u.segment || model.segments.some((s) => s.id === u.segment))
+        .map((u) => u.extId);
       stationAccess.push({
         name: chainDisplayName(stName, model),
         state,
-        downUnits: down,
+        downUnits: [...down, ...shownUnplaced],
         offlineUnits: offline,
         note: model.note ?? null,
       });
