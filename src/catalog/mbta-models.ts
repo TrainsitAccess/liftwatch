@@ -105,6 +105,31 @@ export const MBTA_STATION_MODELS: StationModel[] = [
     ],
   },
 
+  // Lynn (Commuter Rail) — its only two elevators, 929/930, are an identical
+  // same-function pair (both "street ⇄ parking garage", each named as the
+  // other's backup); the elevated platform is reached via the garage level. No
+  // other elevator leg exists, so this pair is the station's step-free path.
+  {
+    systemId: SYSTEM,
+    stationExternalId: "place-ER-0115",
+    note: "Elevators 929/930 (Lynn's only two, both street ⇄ parking garage, reaching the platform via the garage level) are a same-function redundant pair per MBTA guidance.",
+    segments: [
+      { id: "street-garage", label: "Street to parking garage (to platform)", elevators: [{ externalId: "929", label: "Elevator 929 (Street to parking garage)" }, { externalId: "930", label: "Elevator 930 (Street to parking garage)" }] },
+    ],
+  },
+
+  // Beverly (Commuter Rail) — its only two elevators, 994/995, are an identical
+  // same-function pair (both "parking garage ⇄ platform walkway"), directly
+  // reaching the platform. A redundant pair.
+  {
+    systemId: SYSTEM,
+    stationExternalId: "place-ER-0183",
+    note: "Elevators 994/995 (Beverly's only two, both parking garage ⇄ platform walkway) are a same-function redundant pair per MBTA guidance.",
+    segments: [
+      { id: "garage-platform", label: "Parking garage to platform walkway", elevators: [{ externalId: "994", label: "Elevator 994 (Parking garage to platform walkway)" }, { externalId: "995", label: "Elevator 995 (Parking garage to platform walkway)" }] },
+    ],
+  },
+
   // Airport (Blue Line, elevated) — same layout as Orient Heights: each side
   // platform ⇄ paid pedestrian bridge by its own redundant pair; bridge→street
   // is step-free without an elevator (none listed, station is accessible).
