@@ -79,4 +79,51 @@ export const MBTA_STATION_MODELS: StationModel[] = [
       { id: "platform-lobby", label: "Platform to Medford Street lobby", elevators: [{ externalId: "765", label: "Elevator 765 (Platform to Medford Street lobby)" }, { externalId: "766", label: "Elevator 766 (Platform to Medford Street lobby)" }] },
     ],
   },
+
+  // Orient Heights (Blue Line, elevated) — each side platform reaches the paid
+  // pedestrian bridge (the exit) via its own redundant pair. The bridge→street
+  // leg has NO listed elevator, and MBTA marks the station accessible, so that
+  // leg is step-free without an elevator (ramp/level) — the pairs are the only
+  // elevator legs. Two independent per-direction chains (one platform's outage
+  // never severs the other).
+  {
+    systemId: SYSTEM,
+    stationExternalId: "place-orhte",
+    chainLabel: " (Bowdoin-bound platform)",
+    note: "Bowdoin-bound platform ⇄ paid pedestrian bridge via Elevators 712/713 (each backs the other). Bridge→street is step-free without an elevator.",
+    segments: [
+      { id: "platform-bridge", label: "Bowdoin-bound platform to pedestrian bridge", elevators: [{ externalId: "712", label: "Elevator 712 (Bowdoin platform to paid pedestrian bridge)" }, { externalId: "713", label: "Elevator 713 (Bowdoin platform to paid pedestrian bridge)" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "place-orhte",
+    chainLabel: " (Wonderland-bound platform)",
+    note: "Wonderland-bound platform ⇄ paid pedestrian bridge via Elevators 714/715 (each backs the other). Bridge→street is step-free without an elevator.",
+    segments: [
+      { id: "platform-bridge", label: "Wonderland-bound platform to pedestrian bridge", elevators: [{ externalId: "714", label: "Elevator 714 (Wonderland platform to paid pedestrian bridge)" }, { externalId: "715", label: "Elevator 715 (Wonderland platform to paid pedestrian bridge)" }] },
+    ],
+  },
+
+  // Airport (Blue Line, elevated) — same layout as Orient Heights: each side
+  // platform ⇄ paid pedestrian bridge by its own redundant pair; bridge→street
+  // is step-free without an elevator (none listed, station is accessible).
+  {
+    systemId: SYSTEM,
+    stationExternalId: "place-aport",
+    chainLabel: " (Wonderland-bound platform)",
+    note: "Wonderland-bound platform ⇄ paid pedestrian bridge via Elevators 931/956 (each backs the other). Bridge→street is step-free without an elevator.",
+    segments: [
+      { id: "platform-bridge", label: "Wonderland-bound platform to pedestrian bridge", elevators: [{ externalId: "931", label: "Elevator 931 (Wonderland platform to paid pedestrian bridge)" }, { externalId: "956", label: "Elevator 956 (Wonderland platform to paid pedestrian bridge)" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "place-aport",
+    chainLabel: " (Bowdoin-bound platform)",
+    note: "Bowdoin-bound platform ⇄ paid pedestrian bridge via Elevators 932/955 (each backs the other). Bridge→street is step-free without an elevator.",
+    segments: [
+      { id: "platform-bridge", label: "Bowdoin-bound platform to pedestrian bridge", elevators: [{ externalId: "932", label: "Elevator 932 (Bowdoin platform to paid pedestrian bridge)" }, { externalId: "955", label: "Elevator 955 (Bowdoin platform to paid pedestrian bridge)" }] },
+    ],
+  },
 ];
