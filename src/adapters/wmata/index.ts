@@ -60,6 +60,22 @@ export type WmataAttribution =
   | { kind: "unmappable" } // unknown unit at a modeled station, location unparseable
   | { kind: "unmodeled" }; // station has no models at all
 
+/** Rider/maintainer-facing context appended to the outage reason when the
+ * fail-safe fires (BART's "(unspecified elevator — conservative)" precedent).
+ * This text rides the outage boards, the needs-review board, AND the ntfy
+ * push — it is the actionable "run the WMATA refresh loop" signal, so
+ * check:wmata guards it. Empty for every non-fail-safe attribution. */
+export function failSafeReasonNote(attr: WmataAttribution): string {
+  switch (attr.kind) {
+    case "fallback-segment":
+      return " (new elevator not yet in the station model — placed by its described location; refresh the WMATA model)";
+    case "unmappable":
+      return " (unrecognized elevator at a modeled station — access shown as unknown; refresh the WMATA model)";
+    default:
+      return "";
+  }
+}
+
 /** Attribute one live incident against the station's models. Pure — offline-testable (check:wmata). */
 export function attributeWmataIncident(unitName: string, location: string, chains: StationModel[]): WmataAttribution {
   if (!chains.length) {
@@ -156,6 +172,7 @@ export function createWmataAdapter(config: WmataConfig = WMATA_CONFIG): Adapter 
           latitude: station && Number.isFinite(station.Lat) ? station.Lat : undefined,
           longitude: station && Number.isFinite(station.Lon) ? station.Lon : undefined,
         });
+        const failSafeNote = failSafeReasonNote(attr);
         outages.push({
           unitExternalId: i.UnitName,
           unitType: "elevator",
@@ -163,7 +180,9 @@ export function createWmataAdapter(config: WmataConfig = WMATA_CONFIG): Adapter 
           stationName: station?.Name ?? i.StationName.split(",")[0]!.trim(),
           isPlanned: PLANNED_SYMPTOM.test(i.SymptomDescription ?? ""),
           isUpcoming: false,
-          reason: i.SymptomDescription || undefined,
+          // Fail-safe outages carry their own context on the reason itself —
+          // it rides the boards and the ntfy push (the refresh-loop signal).
+          reason: failSafeNote ? `${i.SymptomDescription || "Out of service"}${failSafeNote}` : i.SymptomDescription || undefined,
           sourceStartedAt: parseIsoLocalToUtcIso(i.DateOutOfServ, WMATA_ZONE),
           estimatedReturn: parseIsoLocalToUtcIso(i.EstimatedReturnToService, WMATA_ZONE),
           attributed: attr.kind === "modeled" ? true : attr.kind === "fallback-segment" || attr.kind === "unmappable" ? false : undefined,

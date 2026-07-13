@@ -484,7 +484,11 @@ export async function ingest(
           ).error,
         );
         eventsOpened++;
-        if (o.needsReview) newlyFlagged.push({ unitExternalId: redirectTo ?? o.unitExternalId, stationName: o.stationName, reason: flagReasons.join("; ") || (o.reason ?? "") });
+        // Push line carries the flag category AND the outage's own reason —
+        // adapters bake actionable context into reason for fail-safe cases
+        // (WMATA's "refresh the WMATA model", BART's "(unspecified elevator —
+        // conservative)"), so the ntfy notification is self-describing.
+        if (o.needsReview) newlyFlagged.push({ unitExternalId: redirectTo ?? o.unitExternalId, stationName: o.stationName, reason: [flagReasons.join("; "), o.reason].filter(Boolean).join(" — ") });
       } else {
         fail(
           "refresh event",

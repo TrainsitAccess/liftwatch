@@ -9,7 +9,7 @@ import { readFileSync } from "node:fs";
 import { allElevators, elevatorRedundant, type StationModel } from "../lib/accessibility.js";
 import { WMATA_STATION_MODELS } from "../catalog/wmata-models.js";
 import { parseWmataLocation } from "../adapters/wmata/location.js";
-import { attributeWmataIncident } from "../adapters/wmata/index.js";
+import { attributeWmataIncident, failSafeReasonNote } from "../adapters/wmata/index.js";
 
 const chains = JSON.parse(readFileSync(new URL("../catalog/wmata-data/chains.json", import.meta.url), "utf8")) as { models: StationModel[] };
 const excluded = JSON.parse(readFileSync(new URL("../catalog/wmata-data/chains-excluded.json", import.meta.url), "utf8")) as {
@@ -125,6 +125,14 @@ console.log("\n  Adapter attribution crosswalk (pure, against the committed mode
   ok(f.kind === "unmappable", "NEW unit with unparseable location → unmappable (fail-safe: chains read UNKNOWN)");
   const g = attributeWmataIncident("B09X04", "Elevator between mezzanine and platform", []);
   ok(g.kind === "unmodeled", "unit at an un-modeled station → unmodeled (plain discovered unit, no flag)");
+
+  // The notification contract (Bryce, 2026-07-13): BOTH fail-safe kinds must
+  // carry an actionable refresh-the-model note on the outage reason — it rides
+  // the boards and the ntfy push. Every other kind stays clean.
+  ok(/refresh the WMATA model/.test(failSafeReasonNote(e)), "fallback-segment reason note names the refresh loop (rides ntfy)");
+  ok(/refresh the WMATA model/.test(failSafeReasonNote(f)), "unmappable reason note names the refresh loop (rides ntfy)");
+  ok(failSafeReasonNote(a) === "" && failSafeReasonNote(d) === "" && failSafeReasonNote(g) === "",
+    "modeled / garage / unmodeled attributions add no reason note");
 }
 
 console.log("\n  Model hygiene:");
