@@ -533,6 +533,21 @@ parking lot). A station is accessible only if **every** segment is up.
   outages only, so a standing one doesn't re-alert every poll). Any adapter may
   set `needsReview`; today BART does. Requires `NTFY_TOPIC` env (silent no-op
   without it).
+- **Missing-information flag (2026-07-12)** extends the same needs_review
+  channel: ingest also flags an outage that is missing a rider-facing field its
+  OWN system is expected to provide. Driven by a per-system CAPABILITY PROFILE
+  (`src/catalog/field-expectations.ts`, `missingExpectedFields()`) so it never
+  fires on an AGENCY LIMITATION (BART/TfL publish no cause/return, WMATA/CTA
+  aren't curated) — that distinction is the whole point, established by the
+  2026-07-12 data-integrity audit. It flags: an empty reason/location anywhere;
+  a missing `estimatedReturn` where the agency always provides one
+  (`expectsReturn`: MTA, WMATA); and an un-modeled unit (redundancy `assumed` /
+  no unit) at a system we DO curate (`curatedRoute`: MTA/BART/TfL/MBTA/rail) —
+  i.e. a curation gap. The flag reason ("missing predicted return",
+  "route/redundancy") rides the ntfy push + poll warning. Verified quiet where
+  data is complete (MTA/TfL/BART/CTA = 0) and firing only on real gaps
+  (un-modeled MBTA/LIRR/MNR stations). Update `field-expectations.ts` when a
+  system's real capability changes. Regressions in `demo:access` (now 61).
 
 ## Gotchas / deferred
 

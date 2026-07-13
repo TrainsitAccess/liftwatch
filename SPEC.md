@@ -705,6 +705,42 @@ re-alert every 5-minute poll). The mechanism is universal — any adapter may se
 push (silent no-op without it); `needs_review` is part of the `outage_events`
 DDL, so a fresh `db/schema.sql` apply picks it up.
 
+**Missing-information extension (2026-07-12).** The same `needs_review` channel
+also flags an outage MISSING a rider-facing field its own system is expected to
+provide. The distinction that makes this useful rather than noisy comes straight
+from the 2026-07-12 data-integrity audit (see below): most blank fields are
+AGENCY LIMITATIONS, not bugs. So a per-system CAPABILITY PROFILE
+(`src/catalog/field-expectations.ts`) declares, per system, `expectsReturn` (the
+agency always publishes an estimated return — MTA, WMATA) and `curatedRoute` (we
+model access chains, so a modeled unit knows where it goes and whether it's
+redundant — MTA/BART/TfL/MBTA/rail). `missingExpectedFields()` then flags: an
+empty reason/location anywhere; a missing return where `expectsReturn`; and an
+un-modeled unit (redundancy `assumed`, or no unit at all) where `curatedRoute` —
+a curation gap. It never flags an agency limitation (BART/TfL returns, WMATA/CTA
+redundancy). The flag reason ("missing predicted return", "route/redundancy")
+rides the push + poll warning. Verified quiet where data is complete
+(MTA/TfL/BART/CTA = 0 flags) and firing only on genuine gaps (un-modeled
+MBTA/LIRR/MNR stations). Update the profile when a system's real capability
+changes — it is the single source of truth for "what should this system be able
+to tell a rider?".
+
+### Data-integrity audit (2026-07-12)
+
+A full play-test of the live site cross-checked all 125 currently-shown
+elevator outages against each agency's own live feed. Result: **125/125 match,
+zero phantom, zero missing** — the site faithfully mirrors every agency, and no
+misattributions or wrong dates surfaced (NYC capital-replacement times, WMATA
+estimates, Richmond's 2024 and Grand Central NE-4's 2023 long-runners all
+matched to the minute). The audit's lasting output is the field-expectations
+profile above (it encodes which blanks are agency limits vs real gaps) and this
+finding on where "complete information" actually falls short: (1) WMATA + CTA
+carry no where-it-goes/redundancy because they aren't curated — the one real
+gap, closable only by BART-style hand-curation; (2) TfL and some rail alerts
+state a return in prose ("until Autumn 2026") that isn't mined into the
+structured field the way CTA's is; (3) rail "reason" is often just the raw
+status ("not working") because `eestatus` carries no cause. Everything else is
+as complete as the source allows.
+
 ### WMATA feeds (in use) — per-elevator ids, discovered inventory
 
 `https://api.wmata.com`, header `api_key` (**required** — no unauthenticated

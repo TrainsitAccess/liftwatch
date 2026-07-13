@@ -1,5 +1,7 @@
 import { stationModelsFor } from "../catalog/station-models.js";
 import { matchBartOtherEquipment } from "../catalog/bart-other-equipment.js";
+import { missingExpectedFields } from "../catalog/field-expectations.js";
+import type { NormalizedOutage, NormalizedUnit } from "../types.js";
 import {
   attributeOutage,
   attributeOutageAcrossChains,
@@ -180,7 +182,28 @@ check('COLS has auxiliary chains -> a platform default there is flagged needsRev
 check('RICH has no auxiliary chains -> its platform default is confident (no flag)',
   models.get("RICH")!.some((m) => m.auxiliary === true), false);
 
-const total = 53;
+console.log("\n  missing-information flag (per-system field expectations, 2026-07-12):");
+const mkO = (o: Partial<NormalizedOutage>): NormalizedOutage =>
+  ({ unitType: "elevator", stationName: "Test Station", isPlanned: false, isUpcoming: false, reason: "out of service", ...o } as NormalizedOutage);
+const mkU = (src?: string): NormalizedUnit => (src ? { redundancySource: src } : {}) as unknown as NormalizedUnit;
+check("MTA modeled outage with a return -> complete (no flag)",
+  missingExpectedFields("mta-nyct", mkO({ unitExternalId: "EL1", estimatedReturn: "2026-08-01T00:00:00Z" }), mkU("explicit")), []);
+check("MTA outage MISSING a return -> flagged (agency always provides one)",
+  missingExpectedFields("mta-nyct", mkO({ unitExternalId: "EL1" }), mkU("explicit")), ["predicted return"]);
+check("WMATA outage missing a return -> flagged (expectsReturn)",
+  missingExpectedFields("wmata-dc", mkO({ unitExternalId: "A1" }), mkU()), ["predicted return"]);
+check("CTA outage with no return/redundancy -> complete (both are agency limits)",
+  missingExpectedFields("cta-chicago", mkO({ unitExternalId: "1" }), undefined), []);
+check("BART curated unit -> complete (no return expected)",
+  missingExpectedFields("bart-bay-area", mkO({ unitExternalId: "RICH-PLAT" }), mkU("curated")), []);
+check("BART unspecified (unmodeled) -> route/redundancy flagged",
+  missingExpectedFields("bart-bay-area", mkO({ unitExternalId: "RICH-UNSPECIFIED" }), undefined), ["route/redundancy"]);
+check("MBTA un-modeled (assumed) unit -> route/redundancy flagged",
+  missingExpectedFields("mbta-boston", mkO({ unitExternalId: "929" }), mkU("assumed")), ["route/redundancy"]);
+check("empty reason anywhere -> reason flagged",
+  missingExpectedFields("tfl-london", mkO({ unitExternalId: "L1", reason: "" }), mkU("pathways")), ["reason"]);
+
+const total = 61;
 if (failures) {
   console.error(`\n  ${failures} check(s) FAILED\n`);
   process.exitCode = 1;

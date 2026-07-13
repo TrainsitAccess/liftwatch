@@ -1,5 +1,6 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { REDUNDANCY_PRECEDENCE, type NormalizedOutage, type NormalizedRead, type NormalizedUnit, type RedundancySource } from "./types.js";
+import { missingExpectedFields } from "./catalog/field-expectations.js";
 import type { SystemCatalogEntry } from "./catalog/systems.js";
 import { overridesFor, type RedundancyOverride } from "./catalog/redundancy-overrides.js";
 import { attributionOverridesFor } from "./catalog/attribution-overrides.js";
@@ -441,6 +442,9 @@ export async function ingest(
       console.warn(`  ⚠ ${system.id}: outage_events.needs_review column missing — flag not persisted (apply db/schema.sql). Poll continues.`);
     }
     const reviewCol = (o: NormalizedOutage) => (hasNeedsReview ? { needs_review: o.needsReview ?? false } : {});
+    // For the "missing information" flag: look up each outage's unit to judge
+    // whether its route/redundancy is modeled (see field-expectations.ts).
+    const unitByExt = new Map(read.units.map((u) => [u.externalId, u]));
     for (const o of read.outages) {
       const redirectTo = attributionOverrides.get(o.unitExternalId)?.toUnitExternalId;
       const uId = unitId(system.id, redirectTo ?? o.unitExternalId);
@@ -449,6 +453,17 @@ export async function ingest(
       // violate the one-open-outage-per-unit index.
       if (currentlyOut.has(uId)) continue;
       currentlyOut.add(uId);
+
+      // FLAG assembly: an outage needs review if the adapter couldn't confidently
+      // place it (o.needsReview) OR it is missing a field its system is expected
+      // to provide (missingExpectedFields — quiet unless something's actually
+      // wrong). Both feed the persisted flag + the poll warning + the ntfy push.
+      const flagReasons: string[] = [];
+      if (o.needsReview) flagReasons.push("unattributed");
+      const gaps = missingExpectedFields(system.id, o, unitByExt.get(redirectTo ?? o.unitExternalId));
+      if (gaps.length) flagReasons.push(`missing ${gaps.join(", ")}`);
+      if (flagReasons.length) o.needsReview = true;
+
       const existing = openByUnit.get(uId);
       if (existing === undefined) {
         fail(
@@ -469,7 +484,7 @@ export async function ingest(
           ).error,
         );
         eventsOpened++;
-        if (o.needsReview) newlyFlagged.push({ unitExternalId: redirectTo ?? o.unitExternalId, stationName: o.stationName, reason: o.reason ?? "" });
+        if (o.needsReview) newlyFlagged.push({ unitExternalId: redirectTo ?? o.unitExternalId, stationName: o.stationName, reason: flagReasons.join("; ") || (o.reason ?? "") });
       } else {
         fail(
           "refresh event",
