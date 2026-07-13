@@ -1,6 +1,7 @@
 import type { StationModel } from "../lib/accessibility.js";
 import { MTA_RAIL_STATION_MODELS } from "./mta-rail-models.js";
 import { BART_STATION_MODELS } from "./bart-station-models.js";
+import { MBTA_STATION_MODELS } from "./mbta-models.js";
 // STATIC json imports, deliberately NOT readFileSync(new URL(import.meta.url))
 // — the Netlify function bundler compiles its whole import graph into one
 // poll.mjs, so runtime-relative file paths break in production (live-confirmed
@@ -242,6 +243,9 @@ export const STATION_MODELS: StationModel[] = [
   ...MTA_RAIL_STATION_MODELS,
   // LIRR + Metro-North auto-generated simple-station chains (see railChains).
   ...railChains,
+  // MBTA hand-curated models (excluded stations the generator can't parse; see
+  // mbta-models.ts) — the curated tier, ahead of the generated set below.
+  ...MBTA_STATION_MODELS,
   // MBTA auto-generated simple-station chains (see mbtaChains).
   ...mbtaChains,
   // TfL's auto-generated multi-chain models (see tflChains above).

@@ -25,6 +25,8 @@ import { allElevators, stationAccessible, type StationModel } from "../lib/acces
 import fixtureJson from "../catalog/mbta-data/fixture.json" with { type: "json" };
 import chainsJson from "../catalog/mbta-data/chains.json" with { type: "json" };
 import reviewFlagsJson from "../catalog/mbta-data/review-flags.json" with { type: "json" };
+import excludedJson from "../catalog/mbta-data/chains-excluded.json" with { type: "json" };
+import { MBTA_STATION_MODELS } from "../catalog/mbta-models.js";
 
 // Locked counts — regenerate via `npm run mbta:chains`, then update here.
 const LOCKED = { chains: 60, stations: 39 };
@@ -190,6 +192,18 @@ check(`locked counts: ${LOCKED.stations} stations`,
   check("resolved review items no longer sit in the review queue",
     openFlags.every((f) => !RESOLVED.has(f.facilityId)),
     `still flagged: ${openFlags.filter((f) => RESOLVED.has(f.facilityId)).map((f) => f.facilityId).join(", ")}`);
+}
+{
+  // Curated (hand) models and generated chains must never share a station — an
+  // elevator would otherwise land in two tiers with conflicting redundancy.
+  const genStations = new Set(committed.map((m) => m.stationExternalId));
+  const curStations = new Set(MBTA_STATION_MODELS.map((m) => m.stationExternalId));
+  const overlap = [...curStations].filter((s) => genStations.has(s));
+  check("hand-curated MBTA models never overlap the generated set", overlap.length === 0, `overlap: ${overlap.join(", ")}`);
+  // Every curated station is one the generator EXCLUDED (that's why it's hand-done).
+  const excludedIds = new Set((excludedJson as { stations: { stopId: string }[] }).stations.map((s) => s.stopId));
+  const notExcluded = [...curStations].filter((s) => !excludedIds.has(s));
+  check("every hand-curated MBTA station is one the generator excluded", notExcluded.length === 0, `unexpected: ${notExcluded.join(", ")}`);
 }
 check("Wellington stays excluded (center-platform subtlety — human review)",
   regenExcluded.get("place-welln") === "declared-alternate-mismatch" && !committed.some((m) => m.stationExternalId === "place-welln"),

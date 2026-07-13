@@ -1,6 +1,7 @@
 import { stationModelsFor } from "../catalog/station-models.js";
 import { matchBartOtherEquipment } from "../catalog/bart-other-equipment.js";
 import { missingExpectedFields } from "../catalog/field-expectations.js";
+import { MBTA_STATION_MODELS } from "../catalog/mbta-models.js";
 import type { NormalizedOutage, NormalizedUnit } from "../types.js";
 import {
   attributeOutage,
@@ -203,7 +204,13 @@ check("MBTA un-modeled (assumed) unit -> route/redundancy flagged",
 check("empty reason anywhere -> reason flagged",
   missingExpectedFields("tfl-london", mkO({ unitExternalId: "L1", reason: "" }), mkU("pathways")), ["reason"]);
 
-const total = 61;
+console.log("\n  hand-curated MBTA models (2026-07-12): reciprocal pairs => fully redundant:");
+check("every hand-curated MBTA model is single-fault-tolerant (no sole access)",
+  MBTA_STATION_MODELS.every((m) => isSingleFaultTolerant(m)), true);
+check("Government Center Blue-Line chain: 722 out is covered by 723 (redundant)",
+  MBTA_STATION_MODELS.some((m) => m.stationExternalId === "place-gover" && m.chainLabel === " (Blue Line)" && stationAccessible(m, new Set(["722"]))), true);
+
+const total = 63;
 if (failures) {
   console.error(`\n  ${failures} check(s) FAILED\n`);
   process.exitCode = 1;

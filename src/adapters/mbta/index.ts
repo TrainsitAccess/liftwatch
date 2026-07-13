@@ -12,6 +12,7 @@ import { allElevators, elevatorRedundant, type StationModel } from "../../lib/ac
 // Static json import, NOT readFileSync — the Netlify function bundler inlines
 // the whole import graph (see station-models.ts for the live-confirmed 502).
 import mbtaChainsJson from "../../catalog/mbta-data/chains.json" with { type: "json" };
+import { MBTA_STATION_MODELS } from "../../catalog/mbta-models.js";
 import type {
   MbtaAlertRaw,
   MbtaFacilityRaw,
@@ -26,14 +27,23 @@ import type {
 // stored curated value flag instead of clobbering). Same two-tier pattern as
 // the rail adapter, minus a curated tier (no hand-curated MBTA models exist).
 const MBTA_GENERATED_MODELS = (mbtaChainsJson as { models: StationModel[] }).models;
-const generatedChainsByElevator = new Map<string, StationModel[]>();
-for (const model of MBTA_GENERATED_MODELS) {
-  for (const el of allElevators(model)) {
-    const list = generatedChainsByElevator.get(el.externalId) ?? [];
-    list.push(model);
-    generatedChainsByElevator.set(el.externalId, list);
+const chainsByElevator = (models: StationModel[]): Map<string, StationModel[]> => {
+  const m = new Map<string, StationModel[]>();
+  for (const model of models) {
+    for (const el of allElevators(model)) {
+      const list = m.get(el.externalId) ?? [];
+      list.push(model);
+      m.set(el.externalId, list);
+    }
   }
-}
+  return m;
+};
+// Two tiers, same pattern as the rail adapter: hand-curated models (mbta-
+// models.ts) enter as `curated`, generated models as `serving_text`. Curated
+// wins — but the two sets never share a station (asserted by check:mbta-chains),
+// so an elevator is in at most one tier.
+const curatedChainsByElevator = chainsByElevator(MBTA_STATION_MODELS);
+const generatedChainsByElevator = chainsByElevator(MBTA_GENERATED_MODELS);
 
 // MBTA (Boston) — JSON:API, genuinely per-elevator, and unlike MTA/BART its
 // alert timestamps are already ISO-8601 with a UTC offset (no local-time
@@ -167,11 +177,13 @@ export function createMbtaAdapter(config: MbtaConfig = MBTA_CONFIG): Adapter {
       const units: NormalizedUnit[] = facilitiesRes.data.map((f) => {
         const stopId = f.relationships.stop.data?.id ?? f.id;
         const stop = stopById.get(stopId);
-        // A unit in a generated chain carries its model-derived redundancy as
-        // serving_text (aggregated across every chain it sits in — redundant
-        // only if its own outage severs none). Un-modeled units stay
+        // A unit in a modeled chain carries its model-derived redundancy
+        // (aggregated across every chain it sits in — redundant only if its own
+        // outage severs none). Curated (hand) models win over generated ones and
+        // enter as `curated`; generated as `serving_text`. Un-modeled units stay
         // undefined; ingest applies single_elevator/assumed as before.
-        const memberOf = generatedChainsByElevator.get(f.id);
+        const curatedOf = curatedChainsByElevator.get(f.id);
+        const memberOf = curatedOf ?? generatedChainsByElevator.get(f.id);
         return {
           externalId: f.id,
           unitType: "elevator",
@@ -183,7 +195,7 @@ export function createMbtaAdapter(config: MbtaConfig = MBTA_CONFIG): Adapter {
           ...(memberOf
             ? {
                 isRedundant: memberOf.every((m) => elevatorRedundant(m, f.id)),
-                redundancySource: "serving_text" as const,
+                redundancySource: curatedOf ? ("curated" as const) : ("serving_text" as const),
               }
             : {}),
           isActive: true,
