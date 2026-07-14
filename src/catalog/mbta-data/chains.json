@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-12T01:39:17.595Z",
+  "generatedAt": "2026-07-14T02:25:52.197Z",
   "source": "MBTA facilities long_name route text, validated against alternate-service-text",
   "models": [
     {
@@ -29,7 +29,8 @@
           "stepFreeAlternative": true
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn. Elevator-free alternative per the agency's own guidance (human-approved 2026-07-10, walk disclosed): MBTA: “Please proceed to Concord street to cross over to the outbound platform.” Elevator-free alternative per the agency's own guidance (human-approved 2026-07-10, walk disclosed): MBTA: “Please proceed to Concord street to cross over to the outbound platform.”"
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn. Street alternate human-approved 2026-07-10 (APPROVED_STREET_ALTERNATES), ≤0.3-mile rule.",
+      "note": "Street/parking to pedestrian bridge: step-free even without an elevator (a non-elevator route exists). Pedestrian bridge to Track 1: step-free even without an elevator (a non-elevator route exists). No single elevator outage removes step-free access on this route. Elevator-free alternative per MBTA's own guidance (a walk is required): MBTA: “Please proceed to Concord street to cross over to the outbound platform.”"
     },
     {
       "systemId": "mbta-boston",
@@ -47,7 +48,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn. A step-free route exists but is beyond the 0.3-mile limit, so it is not counted as an accessible backup — this platform still shows no step-free access when the elevator is out. Riders able to make the longer walk can follow MBTA's routing: To travel from the Fitchburg platform to the North Station platform, travel to the east end of the platform and proceed down the ramp to the small parking lot. Continue east on Railroad St to Main St. At Main St, turn right and continue to Maple St. At Maple St, turn right and continue to the walkway that leads to the platform. To travel from the North Station platform to the Fitchburg platform, travel east on Maple St towards Main St. At Main St, turn left and continue to Railroad St. At Railroad St, turn left and continue to the station, where a ramp to the Fitchburg platform is located next the small parking lot."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn. Note-only disclosure (DISCLOSED_ALTERNATES, human-approved 2026-07-12): real route beyond the 0.3-mile limit, no step-free credit.",
+      "note": "Pedestrian bridge to Track 1: one elevator, no backup. If that elevator is out of service, this route is not step-free. A step-free route exists but is longer than 0.3 miles, so it is not counted as an accessible backup — this platform still shows no step-free access when the elevator is out. Riders able to make the longer walk can follow MBTA's routing: To travel from the Fitchburg platform to the North Station platform, travel to the east end of the platform and proceed down the ramp to the small parking lot. Continue east on Railroad St to Main St. At Main St, turn right and continue to Maple St. At Maple St, turn right and continue to the walkway that leads to the platform. To travel from the North Station platform to the Fitchburg platform, travel east on Maple St towards Main St. At Main St, turn left and continue to Railroad St. At Railroad St, turn left and continue to the station, where a ramp to the Fitchburg platform is located next the small parking lot."
     },
     {
       "systemId": "mbta-boston",
@@ -65,7 +67,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn. A step-free route exists but is beyond the 0.3-mile limit, so it is not counted as an accessible backup — this platform still shows no step-free access when the elevator is out. Riders able to make the longer walk can follow MBTA's routing: To travel from the North Station platform to the Fitchburg platform, travel east on Maple St towards Main St. At Main St, turn left and continue to Railroad St. At Railroad St, turn left and continue to the station, where a ramp to the Fitchburg platform is located next the small parking lot. To travel from the Fitchburg platform to the North Station platform, travel to the east end of the platform and proceed down the ramp to the small parking lot. Continue east on Railroad St to Main St. At Main St, turn right and continue to Maple St. At Maple St, turn right and continue to the walkway that leads to the platform."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn. Note-only disclosure (DISCLOSED_ALTERNATES, human-approved 2026-07-12): real route beyond the 0.3-mile limit, no step-free credit.",
+      "note": "Pedestrian bridge to Track 2: one elevator, no backup. If that elevator is out of service, this route is not step-free. A step-free route exists but is longer than 0.3 miles, so it is not counted as an accessible backup — this platform still shows no step-free access when the elevator is out. Riders able to make the longer walk can follow MBTA's routing: To travel from the North Station platform to the Fitchburg platform, travel east on Maple St towards Main St. At Main St, turn left and continue to Railroad St. At Railroad St, turn left and continue to the station, where a ramp to the Fitchburg platform is located next the small parking lot. To travel from the Fitchburg platform to the North Station platform, travel to the east end of the platform and proceed down the ramp to the small parking lot. Continue east on Railroad St to Main St. At Main St, turn right and continue to Maple St. At Maple St, turn right and continue to the walkway that leads to the platform."
     },
     {
       "systemId": "mbta-boston",
@@ -87,7 +90,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Commuter Rail platform: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route."
     },
     {
       "systemId": "mbta-boston",
@@ -105,7 +109,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Lobby to Red Line platform: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mbta-boston",
@@ -126,7 +131,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Lobby to Platform: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route."
     },
     {
       "systemId": "mbta-boston",
@@ -148,7 +154,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Track 1: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route."
     },
     {
       "systemId": "mbta-boston",
@@ -166,7 +173,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Track 2: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mbta-boston",
@@ -185,7 +193,8 @@
           "stepFreeAlternative": true
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn. Elevator-free alternative per the agency's own guidance (human-approved 2026-07-10, walk disclosed): MBTA: “Go to the east end of the platform. Take the ramp to Washington St.”"
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn. Street alternate human-approved 2026-07-10 (APPROVED_STREET_ALTERNATES), ≤0.3-mile rule.",
+      "note": "Street to Track 1: step-free even without an elevator (a non-elevator route exists). No single elevator outage removes step-free access on this route. Elevator-free alternative per MBTA's own guidance (a walk is required): MBTA: “Go to the east end of the platform. Take the ramp to Washington St.”"
     },
     {
       "systemId": "mbta-boston",
@@ -204,7 +213,8 @@
           "stepFreeAlternative": true
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn. Elevator-free alternative per the agency's own guidance (human-approved 2026-07-10, walk disclosed): MBTA: “Go to the east end of the platform. Take the ramp to Washington St.”"
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn. Street alternate human-approved 2026-07-10 (APPROVED_STREET_ALTERNATES), ≤0.3-mile rule.",
+      "note": "Street to Track 2: step-free even without an elevator (a non-elevator route exists). No single elevator outage removes step-free access on this route. Elevator-free alternative per MBTA's own guidance (a walk is required): MBTA: “Go to the east end of the platform. Take the ramp to Washington St.”"
     },
     {
       "systemId": "mbta-boston",
@@ -226,7 +236,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Alewife platform: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route."
     },
     {
       "systemId": "mbta-boston",
@@ -248,7 +259,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Ashmont/Braintree platform: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route."
     },
     {
       "systemId": "mbta-boston",
@@ -269,7 +281,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Lobby to Platform: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route."
     },
     {
       "systemId": "mbta-boston",
@@ -287,7 +300,8 @@
           "stepFreeAlternative": true
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn. Elevator-free alternative per the agency's own guidance (human-approved 2026-07-10, walk disclosed): MBTA: “proceed to the track crossing located at the south end of the platform … use the Boston Ave entrance”"
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn. Street alternate human-approved 2026-07-10 (APPROVED_STREET_ALTERNATES), ≤0.3-mile rule.",
+      "note": "Broadway lobby to Platform: step-free even without an elevator (a non-elevator route exists). No single elevator outage removes step-free access on this route. Elevator-free alternative per MBTA's own guidance (a walk is required): MBTA: “proceed to the track crossing located at the south end of the platform … use the Boston Ave entrance”"
     },
     {
       "systemId": "mbta-boston",
@@ -308,7 +322,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Lobby to Platform: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route."
     },
     {
       "systemId": "mbta-boston",
@@ -326,7 +341,8 @@
           "stepFreeAlternative": true
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn. Elevator-free alternative per the agency's own guidance (human-approved 2026-07-10, walk disclosed): MBTA: “use the accessible walkway that connects the station entrance with Prospect St.”"
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn. Street alternate human-approved 2026-07-10 (APPROVED_STREET_ALTERNATES), ≤0.3-mile rule.",
+      "note": "Street to Platform: step-free even without an elevator (a non-elevator route exists). No single elevator outage removes step-free access on this route. Elevator-free alternative per MBTA's own guidance (a walk is required): MBTA: “use the accessible walkway that connects the station entrance with Prospect St.”"
     },
     {
       "systemId": "mbta-boston",
@@ -355,7 +371,8 @@
           "stepFreeAlternative": true
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn. Elevator-free alternative per the agency's own guidance (human-approved 2026-07-10, walk disclosed): MBTA: “Take the ramp to the parking lot … Take the path near the accessible drop-off/pick-up area.” Elevator-free alternative per the agency's own guidance (human-approved 2026-07-10, walk disclosed): MBTA: “Take the ramp to the parking lot … Take the path near the accessible drop-off/pick-up area.”"
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn. Street alternate human-approved 2026-07-10 (APPROVED_STREET_ALTERNATES), ≤0.3-mile rule.",
+      "note": "Street/parking to pedestrian bridge: step-free even without an elevator (a non-elevator route exists). Pedestrian bridge to Platform: step-free even without an elevator (a non-elevator route exists). No single elevator outage removes step-free access on this route. Elevator-free alternative per MBTA's own guidance (a walk is required): MBTA: “Take the ramp to the parking lot … Take the path near the accessible drop-off/pick-up area.”"
     },
     {
       "systemId": "mbta-boston",
@@ -373,7 +390,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Lobby to Commuter Rail platform: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mbta-boston",
@@ -391,7 +409,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Lobby to Red Line platform: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mbta-boston",
@@ -418,7 +437,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street/parking to lobby: one elevator, no backup. Lobby to Platform: one elevator, no backup. None of these legs has a backup — if any one of these elevators is out of service, this route is not step-free."
     },
     {
       "systemId": "mbta-boston",
@@ -436,7 +456,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Lobby to Ashmont branch platform: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mbta-boston",
@@ -454,7 +475,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Lobby to Braintree branch platform: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mbta-boston",
@@ -471,7 +493,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Paid lobby to Platform: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mbta-boston",
@@ -488,7 +511,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Paid lobby to Platform: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mbta-boston",
@@ -505,7 +529,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Paid lobby to Platform: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mbta-boston",
@@ -522,7 +547,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Paid lobby to Platform: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mbta-boston",
@@ -539,7 +565,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Paid lobby to Platform: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mbta-boston",
@@ -557,7 +584,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Alewife platform: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mbta-boston",
@@ -575,7 +603,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Ashmont/Braintree platform: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mbta-boston",
@@ -602,7 +631,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street/parking to lobby: one elevator, no backup. Lobby to Platform: one elevator, no backup. None of these legs has a backup — if any one of these elevators is out of service, this route is not step-free."
     },
     {
       "systemId": "mbta-boston",
@@ -630,7 +660,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street/parking to lobby: one elevator, no backup. Lobby to Alewife platform: one elevator, no backup. None of these legs has a backup — if any one of these elevators is out of service, this route is not step-free."
     },
     {
       "systemId": "mbta-boston",
@@ -658,7 +689,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street/parking to lobby: one elevator, no backup. Lobby to Ashmont/Braintree platform: one elevator, no backup. None of these legs has a backup — if any one of these elevators is out of service, this route is not step-free."
     },
     {
       "systemId": "mbta-boston",
@@ -676,7 +708,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Forest Hills platform: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mbta-boston",
@@ -694,7 +727,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Oak Grove platform: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mbta-boston",
@@ -712,7 +746,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Lobby to Bowdoin platform: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mbta-boston",
@@ -730,7 +765,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Lobby to Wonderland platform: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mbta-boston",
@@ -748,7 +784,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Lobby to Bowdoin platform: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mbta-boston",
@@ -766,7 +803,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Lobby to Wonderland platform: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mbta-boston",
@@ -784,7 +822,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Pedestrian bridge to Bowdoin platform: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mbta-boston",
@@ -802,7 +841,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Pedestrian bridge to Wonderland platform: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mbta-boston",
@@ -830,7 +870,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street/parking to lobby: one elevator, no backup. Lobby to Heath Street platform: one elevator, no backup. None of these legs has a backup — if any one of these elevators is out of service, this route is not step-free."
     },
     {
       "systemId": "mbta-boston",
@@ -858,7 +899,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street/parking to lobby: one elevator, no backup. Lobby to Lechmere platform: one elevator, no backup. None of these legs has a backup — if any one of these elevators is out of service, this route is not step-free."
     },
     {
       "systemId": "mbta-boston",
@@ -875,7 +917,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Paid lobby to Platform: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mbta-boston",
@@ -903,7 +946,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street/parking to lobby: one elevator, no backup. Lobby to Airport/Design Center/Chelsea platform: one elevator, no backup. None of these legs has a backup — if any one of these elevators is out of service, this route is not step-free."
     },
     {
       "systemId": "mbta-boston",
@@ -931,7 +975,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street/parking to lobby: one elevator, no backup. Lobby to South Station platform: one elevator, no backup. None of these legs has a backup — if any one of these elevators is out of service, this route is not step-free."
     },
     {
       "systemId": "mbta-boston",
@@ -949,7 +994,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Lobby to Commuter Rail platform: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mbta-boston",
@@ -967,7 +1013,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Lobby to Orange Line platform: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mbta-boston",
@@ -985,7 +1032,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to North platform: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mbta-boston",
@@ -1017,7 +1065,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street/parking to lobby: 2 elevators — either one keeps this leg open. Lobby to Westbound platform: one elevator, no backup. A leg with a single elevator has no backup — an outage there makes this route not step-free."
     },
     {
       "systemId": "mbta-boston",
@@ -1035,7 +1084,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Lobby to Alewife platform: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mbta-boston",
@@ -1053,7 +1103,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Lobby to Ashmont/Braintree platform: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mbta-boston",
@@ -1071,7 +1122,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Lobby to Alewife platform: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mbta-boston",
@@ -1089,7 +1141,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Lobby to Ashmont platform: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mbta-boston",
@@ -1107,7 +1160,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Paid lobby to Alewife platform: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mbta-boston",
@@ -1125,7 +1179,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Paid lobby to Ashmont platform: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mbta-boston",
@@ -1157,7 +1212,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street/parking to lobby: 2 elevators — either one keeps this leg open. Lobby to Commuter Rail platform: one elevator, no backup. A leg with a single elevator has no backup — an outage there makes this route not step-free."
     },
     {
       "systemId": "mbta-boston",
@@ -1193,7 +1249,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street/parking to lobby: 2 elevators — either one keeps this leg open. Lobby to Red Line platforms: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route."
     },
     {
       "systemId": "mbta-boston",
@@ -1214,7 +1271,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Platforms: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route."
     },
     {
       "systemId": "mbta-boston",
@@ -1235,7 +1293,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Walkway to Platform: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route."
     },
     {
       "systemId": "mbta-boston",
@@ -1256,7 +1315,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Track 1: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route."
     }
   ],
   "nonChainUnits": [

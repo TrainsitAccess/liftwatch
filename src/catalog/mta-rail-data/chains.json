@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-10T19:24:14.450Z",
+  "generatedAt": "2026-07-14T02:24:24.462Z",
   "source": "backend-unified.mylirr.org/eestatus location text",
   "models": [
     {
@@ -18,7 +18,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Platform A: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -36,7 +37,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Platform B: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -54,7 +56,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Platform A: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -72,7 +75,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Platform B: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -90,7 +94,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Track 1: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -108,7 +113,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Track 2: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -125,7 +131,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Tracks 1 & 2: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -143,7 +150,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Platform A: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -161,7 +169,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Platform B: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -179,7 +188,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Platform A: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -197,7 +207,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Platform B: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -215,7 +226,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Tracks 1 & 2: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -233,7 +245,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Track 3: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -251,7 +264,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Track 4: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -269,7 +283,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Track 2: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -287,7 +302,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Track 3: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -305,7 +321,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Track 2: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -333,7 +350,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street/parking to overpass: one elevator, no backup. Overpass to Track 3: one elevator, no backup. None of these legs has a backup — if any one of these elevators is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -351,7 +369,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Track 2: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -369,7 +388,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Track 3: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -387,7 +407,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Overpass to Platform A: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -405,7 +426,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Overpass to Platform B: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -423,7 +445,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Track 1: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -455,7 +478,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street/parking to overpass: 2 elevators — either one keeps this leg open. Overpass to Tracks 1 & 2: one elevator, no backup. A leg with a single elevator has no backup — an outage there makes this route not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -473,7 +497,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Track 2: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -490,7 +515,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Tracks 1 & 2: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -508,7 +534,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Platform A: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -526,7 +553,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Platform B: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -543,7 +571,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Tracks 1 & 2: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -560,7 +589,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Tracks 1 & 2: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -577,7 +607,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Tracks 1 & 2: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -595,7 +626,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Tracks A1 & A2: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -613,7 +645,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Tracks B1 & B2: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -630,7 +663,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Tracks 1 & 2: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -647,7 +681,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Tracks 1 & 2: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -664,7 +699,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Tracks 1 & 2: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -681,7 +717,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Tracks 1 & 2: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -698,7 +735,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Tracks 1 & 2: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -715,7 +753,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Tracks 1 & 2: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -732,7 +771,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Tracks 1 & 2: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -749,7 +789,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Tracks 1 & 2: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -766,7 +807,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Tracks 1 & 2: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -783,7 +825,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Tracks 1 & 2: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -801,7 +844,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Tracks 1 & 2: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -819,7 +863,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Tracks 2 & 3: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -837,7 +882,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Overpass to Track 3: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-lirr",
@@ -855,7 +901,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Overpass to Track 4: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -873,7 +920,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Overpass to Track 3: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -891,7 +939,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Overpass to Track 4: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -908,7 +957,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Underpass to platform: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -935,7 +985,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street/parking to overpass: one elevator, no backup. Overpass to Tracks 1 & 2: one elevator, no backup. None of these legs has a backup — if any one of these elevators is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -962,7 +1013,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street/parking to overpass: one elevator, no backup. Overpass to Tracks 1 & 2: one elevator, no backup. None of these legs has a backup — if any one of these elevators is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -989,7 +1041,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street/parking to overpass: one elevator, no backup. Overpass to Tracks 1 & 2: one elevator, no backup. None of these legs has a backup — if any one of these elevators is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1007,7 +1060,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Overpass to Track 1: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1025,7 +1079,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Overpass to Track 2: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1053,7 +1108,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street/parking to overpass: one elevator, no backup. Overpass to Track 1: one elevator, no backup. None of these legs has a backup — if any one of these elevators is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1081,7 +1137,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street/parking to overpass: one elevator, no backup. Overpass to Tracks 2 & 4: one elevator, no backup. None of these legs has a backup — if any one of these elevators is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1108,7 +1165,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street/parking to overpass: one elevator, no backup. Overpass to Tracks 1 & 2: one elevator, no backup. None of these legs has a backup — if any one of these elevators is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1126,7 +1184,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Track 3: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1144,7 +1203,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Track 4: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1162,7 +1222,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Track 3: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1190,7 +1251,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street/parking to overpass: one elevator, no backup. Overpass to Track 4: one elevator, no backup. None of these legs has a backup — if any one of these elevators is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1208,7 +1270,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Overpass to Track 1: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1226,7 +1289,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Overpass to Tracks 2 & 4: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1244,7 +1308,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Track 3: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1262,7 +1327,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Track 4: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1280,7 +1346,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Overpass to Track 1: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1298,7 +1365,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Overpass to Track 2: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1316,7 +1384,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Track 3: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1344,7 +1413,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street/parking to overpass: one elevator, no backup. Overpass to Track 4: one elevator, no backup. None of these legs has a backup — if any one of these elevators is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1371,7 +1441,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street/parking to overpass: one elevator, no backup. Overpass to Tracks 1 & 2: one elevator, no backup. None of these legs has a backup — if any one of these elevators is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1389,7 +1460,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Overpass to Track 3: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1407,7 +1479,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Overpass to Track 4: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1425,7 +1498,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Overpass to Track 3: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1443,7 +1517,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Track 4: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1461,7 +1536,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Track 1: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1479,7 +1555,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Track 2: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1497,7 +1574,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Overpass to Track 3: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1515,7 +1593,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Overpass to Track 4: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1542,7 +1621,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street/parking to overpass: one elevator, no backup. Overpass to Tracks 1 & 2: one elevator, no backup. None of these legs has a backup — if any one of these elevators is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1569,7 +1649,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street/parking to overpass: one elevator, no backup. Overpass to Track 2: one elevator, no backup. None of these legs has a backup — if any one of these elevators is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1587,7 +1668,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Track 3: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1605,7 +1687,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Track 4: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1622,7 +1705,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to platform: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1639,7 +1723,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Track 1: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1666,7 +1751,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street/parking to overpass: one elevator, no backup. Overpass to Tracks 1 & 2: one elevator, no backup. None of these legs has a backup — if any one of these elevators is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1684,7 +1770,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Track 3: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1702,7 +1789,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Track 4: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1720,7 +1808,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Tracks 1 & 3: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1748,7 +1837,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street/parking to station concourse: one elevator, no backup. Station concourse to Tracks 2 & 4: one elevator, no backup. None of these legs has a backup — if any one of these elevators is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1766,7 +1856,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Track 1: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1784,7 +1875,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Tracks 4 & 6: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1812,7 +1904,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street/parking to underpass: one elevator, no backup. Underpass to Tracks 1 & 3: one elevator, no backup. None of these legs has a backup — if any one of these elevators is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1840,7 +1933,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street/parking to underpass: one elevator, no backup. Underpass to Tracks 12 & 14: one elevator, no backup. None of these legs has a backup — if any one of these elevators is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1868,7 +1962,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street/parking to underpass: one elevator, no backup. Underpass to Tracks 2 & 4: one elevator, no backup. None of these legs has a backup — if any one of these elevators is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1896,7 +1991,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street/parking to underpass: one elevator, no backup. Underpass to Tracks 8 & 10: one elevator, no backup. None of these legs has a backup — if any one of these elevators is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1924,7 +2020,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street/parking to overpass: one elevator, no backup. Overpass to Tracks 1 & 2: one elevator, no backup. None of these legs has a backup — if any one of these elevators is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1952,7 +2049,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street/parking to overpass: one elevator, no backup. Overpass to Tracks 1 & 3: one elevator, no backup. None of these legs has a backup — if any one of these elevators is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1969,7 +2067,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Tracks 1 & 2: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -1986,7 +2085,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Track 4: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -2004,7 +2104,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Main station overpass to Tracks 1 & 3: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -2022,7 +2123,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Station overpass to Track 2: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -2040,7 +2142,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Overpass to Track 3: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -2058,7 +2161,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Overpass to Track 4: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -2076,7 +2180,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Track 3: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -2094,7 +2199,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Track 4: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -2121,7 +2227,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street/parking to overpass: one elevator, no backup. Overpass to Track 4: one elevator, no backup. None of these legs has a backup — if any one of these elevators is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -2139,7 +2246,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Track 1: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -2157,7 +2265,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Track 2: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -2184,7 +2293,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street/parking to overpass: one elevator, no backup. Overpass to Tracks 1 & 2: one elevator, no backup. None of these legs has a backup — if any one of these elevators is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -2205,7 +2315,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Track 1: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route."
     },
     {
       "systemId": "mta-mnr",
@@ -2222,7 +2333,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to platform: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -2249,7 +2361,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street/parking to overpass: one elevator, no backup. Overpass to Tracks 1 & 2: one elevator, no backup. None of these legs has a backup — if any one of these elevators is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -2267,7 +2380,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Track 3: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     },
     {
       "systemId": "mta-mnr",
@@ -2285,7 +2399,8 @@
           ]
         }
       ],
-      "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+      "internalNote": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn.",
+      "note": "Street to Track 4: one elevator, no backup. If that elevator is out of service, this route is not step-free."
     }
   ],
   "nonChainUnits": [

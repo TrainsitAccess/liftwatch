@@ -3,7 +3,7 @@
   "name": "LIRR",
   "label": "LIRR (New York)",
   "timezone": "America/New_York",
-  "generatedAt": "2026-07-14T02:11:34.313Z",
+  "generatedAt": "2026-07-14T02:33:35.270Z",
   "currentlyBroken": [
     {
       "station": "Grand Central",
@@ -36,7 +36,7 @@
       "backups": [],
       "rampAlternative": false,
       "chainNotes": [
-        "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+        "Street to Tracks 1 & 2: one elevator, no backup. If that elevator is out of service, this route is not step-free."
       ]
     }
   ],
@@ -69,7 +69,7 @@
           "SAB-1101"
         ],
         "offlineUnits": [],
-        "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+        "note": "Street to Tracks 1 & 2: one elevator, no backup. If that elevator is out of service, this route is not step-free."
       },
       {
         "name": "Grand Central (Tks 201/202·301/302)",
@@ -116,7 +116,7 @@
     },
     {
       "name": "St. Albans",
-      "hours": 8.90655
+      "hours": 9.2734825
     },
     {
       "name": "Locust Manor (Platform A)",
@@ -295,8 +295,8 @@
       "downNow": false
     },
     {
-      "unit": "Between Platform A and street level (north side of Atlantic Av)",
-      "station": "Nostrand Av (Platform A)",
+      "unit": "Between mezzanine, Track 4 (Platform A), and street level",
+      "station": "Woodside",
       "days": 6,
       "downNow": false
     }

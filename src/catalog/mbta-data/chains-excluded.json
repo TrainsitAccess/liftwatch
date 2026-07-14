@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-12T01:39:17.595Z",
+  "generatedAt": "2026-07-14T02:25:52.197Z",
   "note": "Stations the MBTA chain generator refuses to model — pending human review.",
   "stations": [
     {
@@ -491,7 +491,7 @@
         {
           "id": "803",
           "longName": "State Elevator 803 (Forest Hills platform to Washington Street, Milk Street)",
-          "altText": "To exit, proceed to the end of the Forest Hills platform and continue down the hallway (follow signs for Oak Grove and Blue Line) to the Wonderland platform. At the Wonderland platform, proceed to the 53 State St lobby and use State Elevator 975. To board a Forest Hills-bound train, cross Milk St and proceed south on Washington St for one-tenth of a mile to the intersection of Washington St and Winter St, and use Downtown Crossing Elevator 892. To board an Oak Grove-bound train, cross Milk St and proceed south on Washington St for one block to the intersection of Washington St and Franklin St, and use Downtown Crossing Elevator 891 to access the Oak Grove platform."
+          "altText": "To exit,Â proceedÂ to the end of the Forest Hills platform and continue down the hallway (follow signs for Oak Grove and Blue Line) to the Wonderland platform. At the Wonderland platform,Â proceedÂ to the 53Â StateÂ St lobby and useÂ StateÂ Elevator 975. To board a Forest Hills-bound train, cross Milk St andÂ proceedÂ south on Washington St for one-tenth of a mile to the intersection of Washington St andÂ Winter St, andÂ use Downtown CrossingÂ ElevatorÂ 892. To board an Oak Grove-bound train,Â turn down Water st, take a left onÂ DevonshireÂ andÂ proceedÂ toÂ State ElevatorÂ 975 in the 53Â StateÂ St lobby, then follow signs for the Orange Line to Oak Grove."
         },
         {
           "id": "967",

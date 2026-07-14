@@ -38,6 +38,9 @@
 import { writeFileSync, mkdirSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+// Runs via tsx (see package.json) so the canonical public-note composer is
+// shared with every other generator.
+import { composePublicNote } from "../src/lib/accessibility.js";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const OUT_DIR = join(ROOT, "src", "catalog", "mta-data");
@@ -72,12 +75,12 @@ const OVERRIDES = [
     // 4 chain's structure can't be reliably auto-derived from text.
     canonicalId: "604", name: "161 St-Yankee Stadium", covers: ["604"],
     chains: [
-      { label: " (4)", note: "EL132/EL133 gate the 4 platform by direction and are NOT redundant with each other (EL132 = Bronx-bound, EL133 = Manhattan-bound; verified directly — the feed's text for EL132, 'B/D mezzanine to 4 train', omits the direction). EL131 (street to mezzanine) is a shared prerequisite with the (B/D) chain. EL132/EL133 are mid capital-replacement (expected summer 2026), marked inactive in MTA's feed despite the real ongoing outage.", segments: [
+      { label: " (4)", note: "Each direction of the 4 platform has its own elevator — EL132 for Bronx-bound, EL133 for Manhattan-bound — and they do not back each other up. Both routes also depend on EL131 (street to mezzanine), which is shared with the B/D side: if EL131 is out, the whole station loses step-free access. EL132 and EL133 are being replaced and are expected back in summer 2026.", internalNote: "Hand-authored interchange override (human-verified walk-through). Direction labels verified directly — the feed's text for EL132 ('B/D mezzanine to 4 train') omits the direction, so this chain can't be auto-derived. EL132/EL133 are marked inactive in MTA's feed despite the real ongoing capital-replacement outage.", segments: [
         ["street", "Street to mezzanine", ["EL131"]],
         ["bronx-4", "Mezzanine to Bronx-bound 4", ["EL132"]],
         ["manhattan-4", "Mezzanine to Manhattan-bound 4", ["EL133"]],
       ]},
-      { label: " (B/D)", note: "EL134/EL135 gate the B/D platform by direction and are NOT redundant with each other (EL134 = Manhattan-bound, EL135 = Bronx-bound). EL131 (street to mezzanine) is a shared prerequisite with the (4) chain — if it fails, both chains go down together.", segments: [
+      { label: " (B/D)", note: "Each direction of the B/D platform has its own elevator — EL134 for Manhattan-bound, EL135 for Bronx-bound — and they do not back each other up. Both routes also depend on EL131 (street to mezzanine), which is shared with the 4 side: if EL131 is out, the whole station loses step-free access.", internalNote: "Hand-authored interchange override (human-verified walk-through).", segments: [
         ["street", "Street to mezzanine", ["EL131"]],
         ["manhattan-bd", "Mezzanine to Manhattan-bound B/D", ["EL134"]],
         ["bronx-bd", "Mezzanine to Bronx-bound B/D", ["EL135"]],
@@ -161,7 +164,7 @@ const OVERRIDES = [
         ["street", "Street to Penn concourse", ["EL34X", "EL618"]],
         ["platform", "Concourse to 2/3 platform", ["EL215"]],
       ]},
-      { label: " (LIRR)", note: "Subway-side street access to the LIRR concourse. EL34X is physically the same elevator as the LIRR feed's NYK-861 (Unit P34) — the LIRR platform elevators themselves are tracked in the mta-lirr system.", segments: [
+      { label: " (LIRR)", note: "Street access to the LIRR concourse from the subway side of Penn Station. The LIRR's own platform elevators are tracked separately under LIRR.", internalNote: "Hand-authored interchange override. EL34X is physically the same elevator as the LIRR feed's NYK-861 (Unit P34) — deliberately tracked in both systems.", segments: [
         ["concourse", "Street to Penn concourse (8th & 7th Av entrances)", ["EL34X", "EL618", "EL225"]],
       ]},
     ],
@@ -222,7 +225,7 @@ const OVERRIDES = [
         ["access", "Mezzanine access to B/Q", ["EL306", "EL304"]],
         ["platform", "Mezzanine to B/Q platform", ["EL307"]],
       ]},
-      { label: " (LIRR)", note: "Subway-side street access to the LIRR's Atlantic Terminal concourse (EL300X/EL737X both serve '…& LIRR' per the feed). The terminal's own elevators (a redundant pair) are tracked in the mta-lirr system.", segments: [
+      { label: " (LIRR)", note: "Street access to the LIRR's Atlantic Terminal concourse from the subway side. The terminal's own elevators (a redundant pair) are tracked separately under LIRR.", internalNote: "Hand-authored interchange override. EL300X/EL737X both serve '…& LIRR' per the feed.", segments: [
         ["access", "Street to LIRR concourse", ["EL300X", "EL737X"]],
       ]},
     ],
@@ -339,18 +342,25 @@ const chainAccessible = (chain, down) => chain.segments.every((s) => segmentUp(s
 // works on ids). The emitted StationModel needs CuratedElevator objects, so
 // convert here, labelling each elevator with its feed description.
 function toModel(canonicalId, name, covers, chains, descById) {
-  return chains.map((c) => ({
-    systemId: SYSTEM_ID,
-    stationExternalId: canonicalId,
-    chainLabel: c.label,
-    ...(covers.length > 1 ? { coveredStationExternalIds: covers } : {}),
-    ...(c.note ? { note: c.note } : {}),
-    segments: c.segments.map((s) => ({
+  return chains.map((c) => {
+    const segments = c.segments.map((s) => ({
       id: s.id,
       label: s.label,
       elevators: s.elevators.map((id) => ({ externalId: id, label: descById.get(id) ?? id })),
-    })),
-  }));
+    }));
+    return {
+      systemId: SYSTEM_ID,
+      stationExternalId: canonicalId,
+      chainLabel: c.label,
+      ...(covers.length > 1 ? { coveredStationExternalIds: covers } : {}),
+      // PUBLIC note: hand-written where an override provides one (already
+      // rider-focused after the note split), composed from the segments
+      // otherwise. INTERNAL note: provenance — never shipped to the site.
+      note: c.note ?? composePublicNote(segments),
+      ...(c.internalNote ? { internalNote: c.internalNote } : {}),
+      segments,
+    };
+  });
 }
 
 // ---------------------------------------------------------------------------
@@ -393,6 +403,10 @@ async function main() {
     if (overrideIds.has(id)) continue;
     const chains = inferChains(els);
     if (!chains) continue;
+    for (const c of chains) {
+      c.internalNote =
+        "Generated by scripts/mta-chains.mjs from MTA's live elevator inventory (one chain per platform line-group; self-checked against MTA's own declared redundancy flags).";
+    }
     chainsByStation.set(id, chains);
     models.push(...toModel(id, nameOf.get(id), [id], chains, descById));
   }
@@ -401,6 +415,7 @@ async function main() {
     const chains = o.chains.map((c) => ({
       label: c.label,
       note: c.note,
+      internalNote: c.internalNote ?? "Hand-authored interchange override (human-verified walk-through) — not auto-derived.",
       segments: c.segments.map(([id, label, elevators]) => ({ id, label, elevators })),
     }));
     chainsByStation.set(o.canonicalId, chains);

@@ -27,6 +27,7 @@ import { writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { classifyRailUnit } from "../src/adapters/mta-rail/chain-mapper.js";
 import { compareStationSemantics, inferStationChains } from "../src/lib/chain-inference.js";
+import { composePublicNote } from "../src/lib/accessibility.js";
 import { MTA_RAIL_STATION_MODELS } from "../src/catalog/mta-rail-models.js";
 import type { StationModel } from "../src/lib/accessibility.js";
 
@@ -122,7 +123,9 @@ for (const [code, entry] of Object.entries(eestatus)) {
   }
 
   if (inference.ok) {
-    for (const m of inference.result.models) generated.push({ systemId, ...m });
+    // Public note composed here (rail has no post-inference enrichment that
+    // changes what it must say); chain-inference set the provenance internalNote.
+    for (const m of inference.result.models) generated.push({ systemId, ...m, note: composePublicNote(m.segments) });
     for (const u of inference.result.nonChainUnits) nonChain.push({ code, unitId: u.externalId, location: u.raw });
   } else {
     excluded.push({

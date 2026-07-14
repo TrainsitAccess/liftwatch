@@ -3,7 +3,7 @@
   "name": "BART",
   "label": "BART (San Francisco)",
   "timezone": "America/Los_Angeles",
-  "generatedAt": "2026-07-14T02:11:34.313Z",
+  "generatedAt": "2026-07-14T02:33:35.270Z",
   "currentlyBroken": [
     {
       "station": "Richmond",
@@ -40,7 +40,7 @@
       "backups": [],
       "rampAlternative": false,
       "chainNotes": [
-        "Street and platform elevators are each a single point of failure — BART's own guidance routes the street elevator to the Union Square/Market St. Muni elevators (0.2 mi) and the platform elevator to Civic Center's street elevator (0.5 mi) then onward to Montgomery St. — not an in-station alternative. Confirmed against TransitAccess's independent Muni field survey of this shared station (same 2-elevator, non-redundant structure)."
+        "Street and platform elevators are each a single point of failure — BART's own guidance routes the street elevator to the Union Square/Market St. Muni elevators (0.2 mi) and the platform elevator to Civic Center's street elevator (0.5 mi) then onward to Montgomery St. — not an in-station alternative."
       ]
     },
     {
@@ -112,7 +112,7 @@
           "POWL-PLAT"
         ],
         "offlineUnits": [],
-        "note": "Street and platform elevators are each a single point of failure — BART's own guidance routes the street elevator to the Union Square/Market St. Muni elevators (0.2 mi) and the platform elevator to Civic Center's street elevator (0.5 mi) then onward to Montgomery St. — not an in-station alternative. Confirmed against TransitAccess's independent Muni field survey of this shared station (same 2-elevator, non-redundant structure)."
+        "note": "Street and platform elevators are each a single point of failure — BART's own guidance routes the street elevator to the Union Square/Market St. Muni elevators (0.2 mi) and the platform elevator to Civic Center's street elevator (0.5 mi) then onward to Montgomery St. — not an in-station alternative."
       },
       {
         "name": "Richmond",
@@ -147,11 +147,11 @@
   "accessibilityBlackouts": [
     {
       "name": "Richmond",
-      "hours": 239.2769727777778
+      "hours": 239.64390527777778
     },
     {
       "name": "Powell St.",
-      "hours": 48.086019722222225
+      "hours": 48.45295222222222
     },
     {
       "name": "Milpitas (Millbrae/SFO/Daly City/Richmond direction)",
@@ -167,7 +167,7 @@
     },
     {
       "name": "24th St. Mission",
-      "hours": 11.473449444444444
+      "hours": 11.840381944444445
     },
     {
       "name": "Embarcadero",
@@ -276,13 +276,13 @@
       "count": 1
     },
     {
-      "unit": "Platform Elevator",
-      "station": "Embarcadero",
+      "unit": "Station (unspecified elevator — conservative)",
+      "station": "Powell St.",
       "count": 1
     },
     {
-      "unit": "Station (unspecified elevator — conservative)",
-      "station": "Powell St.",
+      "unit": "Platform Elevator",
+      "station": "Embarcadero",
       "count": 1
     }
   ],

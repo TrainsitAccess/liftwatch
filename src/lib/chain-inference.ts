@@ -219,7 +219,11 @@ export function inferStationChains(
       stationExternalId: station.stationExternalId,
       ...(sortedKeys.length > 1 ? { chainLabel: ` (${display})` } : {}),
       segments,
-      note:
+      // The PUBLIC note is composed by each generator AFTER its enrichment
+      // passes (stepFreeAlternative/disclosures change what it must say) —
+      // see composePublicNote in accessibility.ts. Only the provenance
+      // boilerplate is set here.
+      internalNote:
         "Auto-modeled from the agency's own per-elevator location text (rail chain generator, " +
         "conservative rules). Only listed elevators count as step-free access — an unlisted ramp " +
         "or grade path would make this over-warn, never under-warn.",

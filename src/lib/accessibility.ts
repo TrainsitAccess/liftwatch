@@ -69,6 +69,35 @@ export function coveredStationIds(model: StationModel): string[] {
   return model.coveredStationExternalIds ?? [model.stationExternalId];
 }
 
+/** Compose the PUBLIC rider-facing note for a chain from its segments — plain
+ * English for a general audience, leg by leg, ending with what an outage means.
+ * The canonical composer for every generated model (rail/MBTA via
+ * chain-inference callers, TfL, MTA; WMATA's generator has a bespoke variant
+ * phrased around its level names). Call AFTER any enrichment that sets
+ * stepFreeAlternative — the tail sentence depends on it. Provenance and
+ * engineering caveats belong in internalNote, never here. */
+export function composePublicNote(segments: AccessSegment[], term: "elevator" | "lift" = "elevator"): string {
+  const parts = segments.map((s) => {
+    const n = s.elevators.length;
+    if (s.stepFreeAlternative) {
+      return `${s.label}: step-free even without ${term === "lift" ? "a lift" : "an elevator"} (a non-${term} route exists)`;
+    }
+    return n === 1
+      ? `${s.label}: one ${term}, no backup`
+      : `${s.label}: ${n} ${term}s — ${n === 2 ? "either" : "any"} one keeps this leg open`;
+  });
+  const sole = segments.filter((s) => !s.stepFreeAlternative && s.elevators.length === 1).length;
+  const tail =
+    sole === 0
+      ? `No single ${term} outage removes step-free access on this route.`
+      : sole === segments.length
+        ? segments.length === 1
+          ? `If that ${term} is out of service, this route is not step-free.`
+          : `None of these legs has a backup — if any one of these ${term}s is out of service, this route is not step-free.`
+        : `A leg with a single ${term} has no backup — an outage there makes this route not step-free.`;
+  return `${parts.join(". ")}. ${tail}`;
+}
+
 /** A segment is up if it has a non-elevator alternative or any working elevator. */
 export function segmentUp(seg: AccessSegment, downIds: Set<string>): boolean {
   if (seg.stepFreeAlternative) return true;

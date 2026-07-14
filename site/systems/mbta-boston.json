@@ -3,7 +3,7 @@
   "name": "MBTA",
   "label": "MBTA (Boston)",
   "timezone": "America/New_York",
-  "generatedAt": "2026-07-14T02:11:34.313Z",
+  "generatedAt": "2026-07-14T02:33:35.270Z",
   "currentlyBroken": [
     {
       "station": "Winchester Center (Track 1)",
@@ -21,7 +21,7 @@
       ],
       "rampAlternative": false,
       "chainNotes": [
-        "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+        "Street to Track 1: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route."
       ]
     },
     {
@@ -76,7 +76,7 @@
       "backups": [],
       "rampAlternative": true,
       "chainNotes": [
-        "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn. Elevator-free alternative per the agency's own guidance (human-approved 2026-07-10, walk disclosed): MBTA: “Please proceed to Concord street to cross over to the outbound platform.” Elevator-free alternative per the agency's own guidance (human-approved 2026-07-10, walk disclosed): MBTA: “Please proceed to Concord street to cross over to the outbound platform.”"
+        "Street/parking to pedestrian bridge: step-free even without an elevator (a non-elevator route exists). Pedestrian bridge to Track 1: step-free even without an elevator (a non-elevator route exists). No single elevator outage removes step-free access on this route. Elevator-free alternative per MBTA's own guidance (a walk is required): MBTA: “Please proceed to Concord street to cross over to the outbound platform.”"
       ]
     },
     {
@@ -93,7 +93,7 @@
       "backups": [],
       "rampAlternative": true,
       "chainNotes": [
-        "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn. Elevator-free alternative per the agency's own guidance (human-approved 2026-07-10, walk disclosed): MBTA: “Go to the east end of the platform. Take the ramp to Washington St.”"
+        "Street to Track 1: step-free even without an elevator (a non-elevator route exists). No single elevator outage removes step-free access on this route. Elevator-free alternative per MBTA's own guidance (a walk is required): MBTA: “Go to the east end of the platform. Take the ramp to Washington St.”"
       ]
     },
     {
@@ -110,7 +110,7 @@
       "backups": [],
       "rampAlternative": true,
       "chainNotes": [
-        "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn. Elevator-free alternative per the agency's own guidance (human-approved 2026-07-10, walk disclosed): MBTA: “Go to the east end of the platform. Take the ramp to Washington St.”"
+        "Street to Track 2: step-free even without an elevator (a non-elevator route exists). No single elevator outage removes step-free access on this route. Elevator-free alternative per MBTA's own guidance (a walk is required): MBTA: “Go to the east end of the platform. Take the ramp to Washington St.”"
       ]
     },
     {
@@ -159,7 +159,7 @@
       ],
       "rampAlternative": false,
       "chainNotes": [
-        "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+        "Street to Alewife platform: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route."
       ]
     },
     {
@@ -171,6 +171,21 @@
       "planned": true,
       "reason": "Haymarket Elevator 908 (Green Line lobby to busway, Sudbury Street, New Chardon Street) is unavailable due to maintenance.",
       "estimatedReturn": null,
+      "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
+    },
+    {
+      "station": "Downtown Crossing",
+      "unitId": "870",
+      "unit": "Downtown Crossing Elevator 870 (Ashmont/Braintree platform to Summer Street Concourse)",
+      "days": 0,
+      "since": "2026-07-13T07:00:00+00:00",
+      "planned": true,
+      "reason": "Beginning Monday, July 13, Downtown Crossing Elevator 870 (Ashmont/Braintree platform to Summer Street Concourse) will be closed for maintenance through Monday, September 21.",
+      "estimatedReturn": "2026-09-22T07:00:00+00:00",
       "soleAccess": false,
       "severs": [],
       "backups": [],
@@ -194,27 +209,12 @@
     },
     {
       "station": "Park Street",
-      "unitId": "812",
-      "unit": "Park Street Elevator 812 (Green Line underpass to Government Center & North platform)",
+      "unitId": "823",
+      "unit": "Park Street Elevator 823 (Green Line underpass to Copley & West platform)",
       "days": 0,
       "since": "2026-07-13T07:00:00+00:00",
       "planned": true,
-      "reason": "Beginning Monday, July 13, Park Street Elevator 812 (Green Line underpass to Government Center & North platform) will be closed for maintenance through Monday, September 21.",
-      "estimatedReturn": "2026-09-22T07:00:00+00:00",
-      "soleAccess": false,
-      "severs": [],
-      "backups": [],
-      "rampAlternative": false,
-      "chainNotes": []
-    },
-    {
-      "station": "Downtown Crossing",
-      "unitId": "870",
-      "unit": "Downtown Crossing Elevator 870 (Ashmont/Braintree platform to Summer Street Concourse)",
-      "days": 0,
-      "since": "2026-07-13T07:00:00+00:00",
-      "planned": true,
-      "reason": "Beginning Monday, July 13, Downtown Crossing Elevator 870 (Ashmont/Braintree platform to Summer Street Concourse) will be closed for maintenance through Monday, September 21.",
+      "reason": "Beginning Monday, July 13, Park Street Elevator 823 (Green Line underpass to Copley & West platform) will be closed for maintenance through Monday, September 21.",
       "estimatedReturn": "2026-09-22T07:00:00+00:00",
       "soleAccess": false,
       "severs": [],
@@ -224,12 +224,12 @@
     },
     {
       "station": "Park Street",
-      "unitId": "823",
-      "unit": "Park Street Elevator 823 (Green Line underpass to Copley & West platform)",
+      "unitId": "812",
+      "unit": "Park Street Elevator 812 (Green Line underpass to Government Center & North platform)",
       "days": 0,
       "since": "2026-07-13T07:00:00+00:00",
       "planned": true,
-      "reason": "Beginning Monday, July 13, Park Street Elevator 823 (Green Line underpass to Copley & West platform) will be closed for maintenance through Monday, September 21.",
+      "reason": "Beginning Monday, July 13, Park Street Elevator 812 (Green Line underpass to Government Center & North platform) will be closed for maintenance through Monday, September 21.",
       "estimatedReturn": "2026-09-22T07:00:00+00:00",
       "soleAccess": false,
       "severs": [],
@@ -278,6 +278,13 @@
         "days": 1
       },
       {
+        "station": "Downtown Crossing",
+        "unitId": "870",
+        "reason": "Beginning Monday, July 13, Downtown Crossing Elevator 870 (Ashmont/Braintree platform to Summer Street Concourse) will be closed for maintenance through Monday, September 21.",
+        "since": "2026-07-13T07:00:00+00:00",
+        "days": 0
+      },
+      {
         "station": "Aquarium",
         "unitId": "914",
         "reason": "Aquarium Elevator 914 (Bowdoin platform to State Street lobby) is unavailable due to maintenance.",
@@ -286,22 +293,15 @@
       },
       {
         "station": "Park Street",
-        "unitId": "812",
-        "reason": "Beginning Monday, July 13, Park Street Elevator 812 (Green Line underpass to Government Center & North platform) will be closed for maintenance through Monday, September 21.",
-        "since": "2026-07-13T07:00:00+00:00",
-        "days": 0
-      },
-      {
-        "station": "Downtown Crossing",
-        "unitId": "870",
-        "reason": "Beginning Monday, July 13, Downtown Crossing Elevator 870 (Ashmont/Braintree platform to Summer Street Concourse) will be closed for maintenance through Monday, September 21.",
+        "unitId": "823",
+        "reason": "Beginning Monday, July 13, Park Street Elevator 823 (Green Line underpass to Copley & West platform) will be closed for maintenance through Monday, September 21.",
         "since": "2026-07-13T07:00:00+00:00",
         "days": 0
       },
       {
         "station": "Park Street",
-        "unitId": "823",
-        "reason": "Beginning Monday, July 13, Park Street Elevator 823 (Green Line underpass to Copley & West platform) will be closed for maintenance through Monday, September 21.",
+        "unitId": "812",
+        "reason": "Beginning Monday, July 13, Park Street Elevator 812 (Green Line underpass to Government Center & North platform) will be closed for maintenance through Monday, September 21.",
         "since": "2026-07-13T07:00:00+00:00",
         "days": 0
       },
@@ -341,7 +341,7 @@
           "51"
         ],
         "offlineUnits": [],
-        "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn. Elevator-free alternative per the agency's own guidance (human-approved 2026-07-10, walk disclosed): MBTA: “Please proceed to Concord street to cross over to the outbound platform.” Elevator-free alternative per the agency's own guidance (human-approved 2026-07-10, walk disclosed): MBTA: “Please proceed to Concord street to cross over to the outbound platform.”"
+        "note": "Street/parking to pedestrian bridge: step-free even without an elevator (a non-elevator route exists). Pedestrian bridge to Track 1: step-free even without an elevator (a non-elevator route exists). No single elevator outage removes step-free access on this route. Elevator-free alternative per MBTA's own guidance (a walk is required): MBTA: “Please proceed to Concord street to cross over to the outbound platform.”"
       },
       {
         "name": "Kendall/MIT (Alewife platform)",
@@ -350,7 +350,7 @@
           "777"
         ],
         "offlineUnits": [],
-        "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+        "note": "Street to Alewife platform: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route."
       },
       {
         "name": "Natick Center (Track 1)",
@@ -359,7 +359,7 @@
           "750"
         ],
         "offlineUnits": [],
-        "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn. Elevator-free alternative per the agency's own guidance (human-approved 2026-07-10, walk disclosed): MBTA: “Go to the east end of the platform. Take the ramp to Washington St.”"
+        "note": "Street to Track 1: step-free even without an elevator (a non-elevator route exists). No single elevator outage removes step-free access on this route. Elevator-free alternative per MBTA's own guidance (a walk is required): MBTA: “Go to the east end of the platform. Take the ramp to Washington St.”"
       },
       {
         "name": "Natick Center (Track 2)",
@@ -368,7 +368,7 @@
           "751"
         ],
         "offlineUnits": [],
-        "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn. Elevator-free alternative per the agency's own guidance (human-approved 2026-07-10, walk disclosed): MBTA: “Go to the east end of the platform. Take the ramp to Washington St.”"
+        "note": "Street to Track 2: step-free even without an elevator (a non-elevator route exists). No single elevator outage removes step-free access on this route. Elevator-free alternative per MBTA's own guidance (a walk is required): MBTA: “Go to the east end of the platform. Take the ramp to Washington St.”"
       },
       {
         "name": "Winchester Center (Track 1)",
@@ -377,7 +377,7 @@
           "749"
         ],
         "offlineUnits": [],
-        "note": "Auto-modeled from the agency's own per-elevator location text (rail chain generator, conservative rules). Only listed elevators count as step-free access — an unlisted ramp or grade path would make this over-warn, never under-warn."
+        "note": "Street to Track 1: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route."
       }
     ],
     "chainsModeled": 71
@@ -386,7 +386,7 @@
   "accessibilityBlackouts": [
     {
       "name": "Downtown Crossing",
-      "hours": 495554.1928647222
+      "hours": 495554.5597972222
     },
     {
       "name": "South Station",
@@ -394,11 +394,11 @@
     },
     {
       "name": "Lynn",
-      "hours": 1832.1864758333334
+      "hours": 1832.5534083333334
     },
     {
       "name": "Worcester",
-      "hours": 178.86508694444444
+      "hours": 179.23201944444443
     },
     {
       "name": "Wonderland",
@@ -406,11 +406,11 @@
     },
     {
       "name": "Haymarket",
-      "hours": 35.25987833333333
+      "hours": 35.62681083333333
     },
     {
       "name": "Aquarium",
-      "hours": 32.72338694444444
+      "hours": 33.09031944444445
     },
     {
       "name": "Sullivan Square",
@@ -555,12 +555,6 @@
       "downNow": false
     },
     {
-      "unit": "Gilman Square Elevator 765 (Platform to Medford Street lobby)",
-      "station": "Gilman Square",
-      "days": 9,
-      "downNow": false
-    },
-    {
       "unit": "Tufts Medical Center Elevator 859 (Forest Hills platform to Washington Street lobby)",
       "station": "Tufts Medical Center",
       "days": 9,
@@ -569,6 +563,12 @@
     {
       "unit": "Central Elevator 860 (Alewife platform to Massachusetts Avenue)",
       "station": "Central (Alewife platform)",
+      "days": 9,
+      "downNow": false
+    },
+    {
+      "unit": "Gilman Square Elevator 765 (Platform to Medford Street lobby)",
+      "station": "Gilman Square",
       "days": 9,
       "downNow": false
     },
@@ -629,11 +629,11 @@
       "count": 2
     },
     {
-      "name": "Davis",
+      "name": "JFK/UMass",
       "count": 2
     },
     {
-      "name": "JFK/UMass",
+      "name": "Davis",
       "count": 2
     },
     {

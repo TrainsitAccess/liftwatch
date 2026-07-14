@@ -70,7 +70,8 @@ export const STATION_MODELS: StationModel[] = [
   {
     systemId: "bart-bay-area",
     stationExternalId: "ASHB",
-    note: "Two platform elevators give redundant platform access. The street elevator is not required: the concourse is also step-free from the sunken parking lot, and bart.gov's own outage-options page (2026-07-08) additionally names the Ed Roberts Campus elevator (open during its hours) as a further alternative. No single outage severs access.",
+    note: "Two platform elevators back each other up. The street elevator is not required: the concourse is also step-free from the sunken parking lot, and BART additionally names the Ed Roberts Campus elevator (open during its hours) as a further alternative. No single outage removes step-free access.",
+    internalNote: "Verified against bart.gov's own outage-options page (2026-07-08).",
     segments: [
       {
         id: "street-concourse",
@@ -161,7 +162,8 @@ export const STATION_MODELS: StationModel[] = [
   {
     systemId: "bart-bay-area",
     stationExternalId: "SFIA",
-    note: "Two redundant platform elevators (confirmed against bart.gov's own outage-options page 2026-07-08: each explicitly names 'the other platform elevator' as its backup, no detour to another station); the station connects directly to the airport at concourse level, so no street elevator is needed. Only both platform elevators failing severs access.",
+    note: "Two platform elevators back each other up — BART names 'the other platform elevator' as the backup for each. The station connects directly to the airport at concourse level, so no street elevator is needed. Only both platform elevators failing removes step-free access.",
+    internalNote: "Confirmed against bart.gov's own outage-options page 2026-07-08 (in-station backup named explicitly, no cross-station detour).",
     segments: [
       {
         id: "concourse-platform",
@@ -176,7 +178,8 @@ export const STATION_MODELS: StationModel[] = [
   {
     systemId: "bart-bay-area",
     stationExternalId: "WARM",
-    note: "Two street elevators and two platform elevators — every leg has a backup, so any single outage (or one per leg) keeps the station accessible. A fifth, separate pedestrian-bridge elevator (verified against bart.gov's own outage-options page 2026-07-08) is a secondary entrance with no backup of its own for ENTERING that way — BART's guidance is a 0.8 mi walk/roll to the main Warm Springs Blvd. entrance; exiting via the bridge is already covered by the main platform elevators.",
+    note: "Two street elevators and two platform elevators — every leg has a backup, so any single outage keeps the station accessible. A fifth, separate pedestrian-bridge elevator is a secondary entrance with no backup of its own for entering that way — BART's guidance is a 0.8-mile walk/roll to the main Warm Springs Blvd. entrance; exiting via the bridge is already covered by the main platform elevators.",
+    internalNote: "Verified against bart.gov's own outage-options page 2026-07-08 (the bridge elevator was missing from the original model and added then).",
     segments: [
       {
         id: "street-concourse",

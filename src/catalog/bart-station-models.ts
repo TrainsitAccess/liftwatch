@@ -57,7 +57,8 @@ export const BART_STATION_MODELS: StationModel[] = [
   {
     systemId: "bart-bay-area",
     stationExternalId: "EMBR",
-    note: "Street and platform elevators are each a single point of failure — BART's own guidance for either is the Montgomery St. street elevator (0.3 mi), not an in-station alternative. Confirmed against TransitAccess's independent Muni field survey of this shared station (same 2-elevator, non-redundant structure).",
+    note: "Street and platform elevators are each a single point of failure — BART's own guidance for either is the Montgomery St. street elevator (0.3 mi), not an in-station alternative.",
+    internalNote: "Confirmed against TransitAccess's independent Muni field survey of this shared station (same 2-elevator, non-redundant structure).",
     segments: [
       { id: "street-mezzanine", label: "Street to mezzanine", elevators: [{ externalId: "EMBR-ST-MARKET-DRUMM", label: "Market and Drumm — Street Elevator", matchHints: ["street"] }] },
       { id: "mezzanine-platform", label: "Mezzanine to platform", elevators: [{ externalId: "EMBR-PLAT", label: "Platform Elevator", matchHints: ["platform"] }] },
@@ -66,7 +67,8 @@ export const BART_STATION_MODELS: StationModel[] = [
   {
     systemId: "bart-bay-area",
     stationExternalId: "MONT",
-    note: "Street and platform elevators are each a single point of failure — BART's own guidance for either is the Embarcadero St. street elevator (0.3 mi) or Powell St. (0.4 mi), not an in-station alternative. Confirmed against TransitAccess's independent Muni field survey of this shared station (same 2-elevator, non-redundant structure).",
+    note: "Street and platform elevators are each a single point of failure — BART's own guidance for either is the Embarcadero St. street elevator (0.3 mi) or Powell St. (0.4 mi), not an in-station alternative.",
+    internalNote: "Confirmed against TransitAccess's independent Muni field survey of this shared station (same 2-elevator, non-redundant structure).",
     segments: [
       { id: "street-mezzanine", label: "Street to mezzanine", elevators: [{ externalId: "MONT-ST-MARKET-SUTTER", label: "Market and Sutter — Street Elevator", matchHints: ["street"] }] },
       { id: "mezzanine-platform", label: "Mezzanine to platform", elevators: [{ externalId: "MONT-PLAT", label: "Platform Elevator", matchHints: ["platform"] }] },
@@ -75,7 +77,8 @@ export const BART_STATION_MODELS: StationModel[] = [
   {
     systemId: "bart-bay-area",
     stationExternalId: "POWL",
-    note: "Street and platform elevators are each a single point of failure — BART's own guidance routes the street elevator to the Union Square/Market St. Muni elevators (0.2 mi) and the platform elevator to Civic Center's street elevator (0.5 mi) then onward to Montgomery St. — not an in-station alternative. Confirmed against TransitAccess's independent Muni field survey of this shared station (same 2-elevator, non-redundant structure).",
+    note: "Street and platform elevators are each a single point of failure — BART's own guidance routes the street elevator to the Union Square/Market St. Muni elevators (0.2 mi) and the platform elevator to Civic Center's street elevator (0.5 mi) then onward to Montgomery St. — not an in-station alternative.",
+    internalNote: "Confirmed against TransitAccess's independent Muni field survey of this shared station (same 2-elevator, non-redundant structure).",
     segments: [
       { id: "street-mezzanine", label: "Street to mezzanine", elevators: [{ externalId: "POWL-ST-MARKET-ELLIS", label: "Market and Ellis — Street Elevator", matchHints: ["street"] }] },
       { id: "mezzanine-platform", label: "Mezzanine to platform", elevators: [{ externalId: "POWL-PLAT", label: "Platform Elevator", matchHints: ["platform"] }] },
@@ -84,7 +87,8 @@ export const BART_STATION_MODELS: StationModel[] = [
   {
     systemId: "bart-bay-area",
     stationExternalId: "CIVC",
-    note: "Street and platform elevators are each a single point of failure — BART's own guidance for either is the Powell St. street elevator at Market and Ellis (0.5 mi), not an in-station alternative. Confirmed against TransitAccess's independent Muni field survey of this shared station (same 2-elevator, non-redundant structure).",
+    note: "Street and platform elevators are each a single point of failure — BART's own guidance for either is the Powell St. street elevator at Market and Ellis (0.5 mi), not an in-station alternative.",
+    internalNote: "Confirmed against TransitAccess's independent Muni field survey of this shared station (same 2-elevator, non-redundant structure).",
     segments: [
       { id: "street-mezzanine", label: "Street to mezzanine", elevators: [{ externalId: "CIVC-ST-UN-PLAZA", label: "U.N. Plaza — Street Elevator", matchHints: ["street"] }] },
       { id: "mezzanine-platform", label: "Mezzanine to platform", elevators: [{ externalId: "CIVC-PLAT", label: "Platform Elevator", matchHints: ["platform"] }] },

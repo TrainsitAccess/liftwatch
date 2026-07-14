@@ -3,7 +3,7 @@
   "name": "NYC Subway",
   "label": "NYC Subway (New York)",
   "timezone": "America/New_York",
-  "generatedAt": "2026-07-14T02:11:34.313Z",
+  "generatedAt": "2026-07-14T02:33:35.270Z",
   "currentlyBroken": [
     {
       "station": "42St/Port Authority-Bus Terminal (A/C/E)",
@@ -21,7 +21,9 @@
         "Street to intermediate landing"
       ],
       "rampAlternative": false,
-      "chainNotes": []
+      "chainNotes": [
+        "Port Authority / 8th Av entrances to A/C/E (ramp to platform): 4 elevators — any one keeps this leg open. No single elevator outage removes step-free access on this route."
+      ]
     },
     {
       "station": "161 St-Yankee Stadium (4)",
@@ -39,7 +41,7 @@
       "backups": [],
       "rampAlternative": false,
       "chainNotes": [
-        "EL132/EL133 gate the 4 platform by direction and are NOT redundant with each other (EL132 = Bronx-bound, EL133 = Manhattan-bound; verified directly — the feed's text for EL132, 'B/D mezzanine to 4 train', omits the direction). EL131 (street to mezzanine) is a shared prerequisite with the (B/D) chain. EL132/EL133 are mid capital-replacement (expected summer 2026), marked inactive in MTA's feed despite the real ongoing outage."
+        "Each direction of the 4 platform has its own elevator — EL132 for Bronx-bound, EL133 for Manhattan-bound — and they do not back each other up. Both routes also depend on EL131 (street to mezzanine), which is shared with the B/D side: if EL131 is out, the whole station loses step-free access. EL132 and EL133 are being replaced and are expected back in summer 2026."
       ],
       "note": "This elevator is likely being replaced."
     },
@@ -59,14 +61,14 @@
       "backups": [],
       "rampAlternative": false,
       "chainNotes": [
-        "EL132/EL133 gate the 4 platform by direction and are NOT redundant with each other (EL132 = Bronx-bound, EL133 = Manhattan-bound; verified directly — the feed's text for EL132, 'B/D mezzanine to 4 train', omits the direction). EL131 (street to mezzanine) is a shared prerequisite with the (B/D) chain. EL132/EL133 are mid capital-replacement (expected summer 2026), marked inactive in MTA's feed despite the real ongoing outage."
+        "Each direction of the 4 platform has its own elevator — EL132 for Bronx-bound, EL133 for Manhattan-bound — and they do not back each other up. Both routes also depend on EL131 (street to mezzanine), which is shared with the B/D side: if EL131 is out, the whole station loses step-free access. EL132 and EL133 are being replaced and are expected back in summer 2026."
       ],
       "note": "This elevator is likely being replaced."
     },
     {
       "station": "Jamaica-179 St",
-      "unitId": "EL431",
-      "unit": "Street to mezzanine",
+      "unitId": "EL432",
+      "unit": "Mezzanine to Manhattan-bound platform",
       "days": 233,
       "since": "2025-11-22T04:40:00+00:00",
       "planned": true,
@@ -81,8 +83,8 @@
     },
     {
       "station": "Jamaica-179 St",
-      "unitId": "EL432",
-      "unit": "Mezzanine to Manhattan-bound platform",
+      "unitId": "EL431",
+      "unit": "Street to mezzanine",
       "days": 233,
       "since": "2025-11-22T04:40:00+00:00",
       "planned": true,
@@ -113,10 +115,10 @@
     },
     {
       "station": "Crown Hts-Utica Av",
-      "unitId": "EL323",
-      "unit": "Mezzanine to platforms",
+      "unitId": "EL322",
+      "unit": "Street to mezzanine",
       "days": 223,
-      "since": "2025-12-02T03:14:00+00:00",
+      "since": "2025-12-02T03:50:00+00:00",
       "planned": true,
       "reason": "Capital Replacement",
       "estimatedReturn": "2026-09-01T03:59:00+00:00",
@@ -129,10 +131,10 @@
     },
     {
       "station": "Crown Hts-Utica Av",
-      "unitId": "EL322",
-      "unit": "Street to mezzanine",
+      "unitId": "EL323",
+      "unit": "Mezzanine to platforms",
       "days": 223,
-      "since": "2025-12-02T03:50:00+00:00",
+      "since": "2025-12-02T03:14:00+00:00",
       "planned": true,
       "reason": "Capital Replacement",
       "estimatedReturn": "2026-09-01T03:59:00+00:00",
@@ -193,10 +195,10 @@
     },
     {
       "station": "72 St",
-      "unitId": "EL239",
-      "unit": "Street to uptown platform",
+      "unitId": "EL240",
+      "unit": "Street to downtown platform",
       "days": 207,
-      "since": "2025-12-18T07:00:00+00:00",
+      "since": "2025-12-18T03:45:00+00:00",
       "planned": true,
       "reason": "Capital Replacement",
       "estimatedReturn": "2026-08-01T03:59:00+00:00",
@@ -209,10 +211,10 @@
     },
     {
       "station": "72 St",
-      "unitId": "EL240",
-      "unit": "Street to downtown platform",
+      "unitId": "EL239",
+      "unit": "Street to uptown platform",
       "days": 207,
-      "since": "2025-12-18T03:45:00+00:00",
+      "since": "2025-12-18T07:00:00+00:00",
       "planned": true,
       "reason": "Capital Replacement",
       "estimatedReturn": "2026-08-01T03:59:00+00:00",
@@ -241,6 +243,26 @@
     },
     {
       "station": "Atlantic Av-Barclays Ctr (B/Q)",
+      "unitId": "EL307",
+      "unit": "Mezzanine to B/Q platform",
+      "days": 100,
+      "since": "2026-04-04T11:30:00+00:00",
+      "planned": true,
+      "reason": "Capital Replacement",
+      "estimatedReturn": "2026-10-01T03:59:00+00:00",
+      "soleAccess": true,
+      "severs": [
+        "Atlantic Av-Barclays Ctr (B/Q)"
+      ],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": [
+        "Mezzanine access to B/Q: 2 elevators — either one keeps this leg open. Mezzanine to B/Q platform: one elevator, no backup. A leg with a single elevator has no backup — an outage there makes this route not step-free."
+      ],
+      "note": "This elevator is likely being replaced."
+    },
+    {
+      "station": "Atlantic Av-Barclays Ctr (B/Q)",
       "unitId": "EL306",
       "unit": "Mezzanine to Manhattan-bound 2/3",
       "days": 100,
@@ -256,25 +278,9 @@
         "Southbound 2,3, and local night time 4 train Platform level (Front), Mezz level"
       ],
       "rampAlternative": false,
-      "chainNotes": [],
-      "note": "This elevator is likely being replaced."
-    },
-    {
-      "station": "Atlantic Av-Barclays Ctr (B/Q)",
-      "unitId": "EL307",
-      "unit": "Mezzanine to B/Q platform",
-      "days": 100,
-      "since": "2026-04-04T11:30:00+00:00",
-      "planned": true,
-      "reason": "Capital Replacement",
-      "estimatedReturn": "2026-10-01T03:59:00+00:00",
-      "soleAccess": true,
-      "severs": [
-        "Atlantic Av-Barclays Ctr (B/Q)"
+      "chainNotes": [
+        "Mezzanine access to B/Q: 2 elevators — either one keeps this leg open. Mezzanine to B/Q platform: one elevator, no backup. A leg with a single elevator has no backup — an outage there makes this route not step-free."
       ],
-      "backups": [],
-      "rampAlternative": false,
-      "chainNotes": [],
       "note": "This elevator is likely being replaced."
     },
     {
@@ -296,25 +302,8 @@
         "Street to downtown 4/5 & mezzanines"
       ],
       "rampAlternative": false,
-      "chainNotes": []
-    },
-    {
-      "station": "161 St-Yankee Stadium (B/D)",
-      "unitId": "EL134",
-      "unit": "Mezzanine to Manhattan-bound B/D",
-      "days": 14,
-      "since": "2026-06-29T20:36:00+00:00",
-      "planned": false,
-      "reason": "Con Edison Power Issue",
-      "estimatedReturn": "2026-07-14T03:00:00+00:00",
-      "soleAccess": true,
-      "severs": [
-        "161 St-Yankee Stadium (B/D)"
-      ],
-      "backups": [],
-      "rampAlternative": false,
       "chainNotes": [
-        "EL134/EL135 gate the B/D platform by direction and are NOT redundant with each other (EL134 = Manhattan-bound, EL135 = Bronx-bound). EL131 (street to mezzanine) is a shared prerequisite with the (4) chain — if it fails, both chains go down together."
+        "Downtown R/W (street, Oculus & Fulton Center accesses): 7 elevators — any one keeps this leg open. Fulton Center to uptown R/W platform: one elevator, no backup. A leg with a single elevator has no backup — an outage there makes this route not step-free."
       ]
     },
     {
@@ -325,7 +314,7 @@
       "since": "2026-06-29T13:57:00+00:00",
       "planned": false,
       "reason": "Con Edison Power Issue",
-      "estimatedReturn": "2026-07-14T03:00:00+00:00",
+      "estimatedReturn": "2026-07-16T03:00:00+00:00",
       "soleAccess": true,
       "severs": [
         "161 St-Yankee Stadium (B/D)"
@@ -333,7 +322,26 @@
       "backups": [],
       "rampAlternative": false,
       "chainNotes": [
-        "EL134/EL135 gate the B/D platform by direction and are NOT redundant with each other (EL134 = Manhattan-bound, EL135 = Bronx-bound). EL131 (street to mezzanine) is a shared prerequisite with the (4) chain — if it fails, both chains go down together."
+        "Each direction of the B/D platform has its own elevator — EL134 for Manhattan-bound, EL135 for Bronx-bound — and they do not back each other up. Both routes also depend on EL131 (street to mezzanine), which is shared with the 4 side: if EL131 is out, the whole station loses step-free access."
+      ]
+    },
+    {
+      "station": "161 St-Yankee Stadium (B/D)",
+      "unitId": "EL134",
+      "unit": "Mezzanine to Manhattan-bound B/D",
+      "days": 14,
+      "since": "2026-06-29T20:36:00+00:00",
+      "planned": false,
+      "reason": "Con Edison Power Issue",
+      "estimatedReturn": "2026-07-16T03:00:00+00:00",
+      "soleAccess": true,
+      "severs": [
+        "161 St-Yankee Stadium (B/D)"
+      ],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": [
+        "Each direction of the B/D platform has its own elevator — EL134 for Manhattan-bound, EL135 for Bronx-bound — and they do not back each other up. Both routes also depend on EL131 (street to mezzanine), which is shared with the 4 side: if EL131 is out, the whole station loses step-free access."
       ]
     },
     {
@@ -353,8 +361,8 @@
       "backups": [],
       "rampAlternative": false,
       "chainNotes": [
-        "EL132/EL133 gate the 4 platform by direction and are NOT redundant with each other (EL132 = Bronx-bound, EL133 = Manhattan-bound; verified directly — the feed's text for EL132, 'B/D mezzanine to 4 train', omits the direction). EL131 (street to mezzanine) is a shared prerequisite with the (B/D) chain. EL132/EL133 are mid capital-replacement (expected summer 2026), marked inactive in MTA's feed despite the real ongoing outage.",
-        "EL134/EL135 gate the B/D platform by direction and are NOT redundant with each other (EL134 = Manhattan-bound, EL135 = Bronx-bound). EL131 (street to mezzanine) is a shared prerequisite with the (4) chain — if it fails, both chains go down together."
+        "Each direction of the 4 platform has its own elevator — EL132 for Bronx-bound, EL133 for Manhattan-bound — and they do not back each other up. Both routes also depend on EL131 (street to mezzanine), which is shared with the B/D side: if EL131 is out, the whole station loses step-free access. EL132 and EL133 are being replaced and are expected back in summer 2026.",
+        "Each direction of the B/D platform has its own elevator — EL134 for Manhattan-bound, EL135 for Bronx-bound — and they do not back each other up. Both routes also depend on EL131 (street to mezzanine), which is shared with the 4 side: if EL131 is out, the whole station loses step-free access."
       ]
     },
     {
@@ -433,21 +441,6 @@
       "chainNotes": []
     },
     {
-      "station": "175 St",
-      "unitId": "EL124",
-      "unit": "Mezzanine to platform",
-      "days": 0,
-      "since": "2026-07-14T02:00:00+00:00",
-      "planned": true,
-      "reason": "Maintenance",
-      "estimatedReturn": "2026-07-14T10:00:00+00:00",
-      "soleAccess": true,
-      "severs": [],
-      "backups": [],
-      "rampAlternative": false,
-      "chainNotes": []
-    },
-    {
       "station": "Borough Hall",
       "unitId": "EL773",
       "unit": "Joralemon St to 4/5 mezzanine. Transfer to 2/3 via Manhattan-bound 4/5 platform.",
@@ -457,6 +450,21 @@
       "reason": "Maintenance",
       "estimatedReturn": "2026-07-14T10:00:00+00:00",
       "soleAccess": false,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
+    },
+    {
+      "station": "175 St",
+      "unitId": "EL124",
+      "unit": "Mezzanine to platform",
+      "days": 0,
+      "since": "2026-07-14T02:00:00+00:00",
+      "planned": true,
+      "reason": "Maintenance",
+      "estimatedReturn": "2026-07-14T10:00:00+00:00",
+      "soleAccess": true,
       "severs": [],
       "backups": [],
       "rampAlternative": false,
@@ -507,7 +515,9 @@
         "Mezzanine to platform."
       ],
       "rampAlternative": false,
-      "chainNotes": []
+      "chainNotes": [
+        "Street to L mezzanine: 2 elevators — either one keeps this leg open. Mezzanine to L platform: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route."
+      ]
     },
     {
       "station": "Sutphin Blvd-Archer Av-JFK Airport",
@@ -524,24 +534,10 @@
         "Street to mezzanine"
       ],
       "rampAlternative": false,
-      "chainNotes": []
-    },
-    {
-      "station": "Sutphin Blvd-Archer Av-JFK Airport",
-      "unitId": "EL449X",
-      "unit": "Street to mezzanine",
-      "days": 0,
-      "since": "2026-07-14T00:48:00+00:00",
-      "planned": false,
-      "reason": "Repair",
-      "estimatedReturn": "2026-07-16T01:00:00+00:00",
-      "soleAccess": false,
-      "severs": [],
-      "backups": [
-        "Street to mezzanine"
-      ],
-      "rampAlternative": false,
-      "chainNotes": []
+      "chainNotes": [
+        "Street to mezzanine: 3 elevators — any one keeps this leg open. Mezzanine to E/J/Z platforms (both directions): one elevator, no backup. A leg with a single elevator has no backup — an outage there makes this route not step-free.",
+        "Street to mezzanine (LIRR Jamaica hub): 3 elevators — any one keeps this leg open. No single elevator outage removes step-free access on this route."
+      ]
     },
     {
       "station": "3 Av-149 St",
@@ -572,6 +568,26 @@
       "backups": [],
       "rampAlternative": false,
       "chainNotes": []
+    },
+    {
+      "station": "Sutphin Blvd-Archer Av-JFK Airport",
+      "unitId": "EL449X",
+      "unit": "Street to mezzanine",
+      "days": 0,
+      "since": "2026-07-14T00:48:00+00:00",
+      "planned": false,
+      "reason": "Repair",
+      "estimatedReturn": "2026-07-16T01:00:00+00:00",
+      "soleAccess": false,
+      "severs": [],
+      "backups": [
+        "Street to mezzanine"
+      ],
+      "rampAlternative": false,
+      "chainNotes": [
+        "Street to mezzanine: 3 elevators — any one keeps this leg open. Mezzanine to E/J/Z platforms (both directions): one elevator, no backup. A leg with a single elevator has no backup — an outage there makes this route not step-free.",
+        "Street to mezzanine (LIRR Jamaica hub): 3 elevators — any one keeps this leg open. No single elevator outage removes step-free access on this route."
+      ]
     },
     {
       "station": "190 St",
@@ -625,7 +641,7 @@
           "EL142"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "125 St",
@@ -634,7 +650,7 @@
           "EL143"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "161 St-Yankee Stadium (4)",
@@ -645,18 +661,18 @@
           "EL131"
         ],
         "offlineUnits": [],
-        "note": "EL132/EL133 gate the 4 platform by direction and are NOT redundant with each other (EL132 = Bronx-bound, EL133 = Manhattan-bound; verified directly — the feed's text for EL132, 'B/D mezzanine to 4 train', omits the direction). EL131 (street to mezzanine) is a shared prerequisite with the (B/D) chain. EL132/EL133 are mid capital-replacement (expected summer 2026), marked inactive in MTA's feed despite the real ongoing outage."
+        "note": "Each direction of the 4 platform has its own elevator — EL132 for Bronx-bound, EL133 for Manhattan-bound — and they do not back each other up. Both routes also depend on EL131 (street to mezzanine), which is shared with the B/D side: if EL131 is out, the whole station loses step-free access. EL132 and EL133 are being replaced and are expected back in summer 2026."
       },
       {
         "name": "161 St-Yankee Stadium (B/D)",
         "state": "no_access",
         "downUnits": [
-          "EL134",
           "EL135",
+          "EL134",
           "EL131"
         ],
         "offlineUnits": [],
-        "note": "EL134/EL135 gate the B/D platform by direction and are NOT redundant with each other (EL134 = Manhattan-bound, EL135 = Bronx-bound). EL131 (street to mezzanine) is a shared prerequisite with the (4) chain — if it fails, both chains go down together."
+        "note": "Each direction of the B/D platform has its own elevator — EL134 for Manhattan-bound, EL135 for Bronx-bound — and they do not back each other up. Both routes also depend on EL131 (street to mezzanine), which is shared with the 4 side: if EL131 is out, the whole station loses step-free access."
       },
       {
         "name": "175 St",
@@ -665,7 +681,7 @@
           "EL124"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "175 St",
@@ -674,7 +690,7 @@
           "EL123"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "3 Av-149 St",
@@ -683,16 +699,7 @@
           "EL130"
         ],
         "offlineUnits": [],
-        "note": null
-      },
-      {
-        "name": "72 St",
-        "state": "no_access",
-        "downUnits": [
-          "EL239"
-        ],
-        "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "72 St",
@@ -701,17 +708,26 @@
           "EL240"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
+      },
+      {
+        "name": "72 St",
+        "state": "no_access",
+        "downUnits": [
+          "EL239"
+        ],
+        "offlineUnits": [],
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "Atlantic Av-Barclays Ctr (B/Q)",
         "state": "no_access",
         "downUnits": [
-          "EL306",
-          "EL307"
+          "EL307",
+          "EL306"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "Mezzanine access to B/Q: 2 elevators — either one keeps this leg open. Mezzanine to B/Q platform: one elevator, no backup. A leg with a single elevator has no backup — an outage there makes this route not step-free."
       },
       {
         "name": "Borough Hall",
@@ -720,7 +736,7 @@
           "EL774"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "Borough Hall",
@@ -729,7 +745,7 @@
           "EL775"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "Coney Island-Stillwell Av",
@@ -738,16 +754,7 @@
           "EL701"
         ],
         "offlineUnits": [],
-        "note": null
-      },
-      {
-        "name": "Crown Hts-Utica Av",
-        "state": "no_access",
-        "downUnits": [
-          "EL323"
-        ],
-        "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "Crown Hts-Utica Av",
@@ -756,7 +763,16 @@
           "EL322"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
+      },
+      {
+        "name": "Crown Hts-Utica Av",
+        "state": "no_access",
+        "downUnits": [
+          "EL323"
+        ],
+        "offlineUnits": [],
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "E 149 St",
@@ -765,7 +781,7 @@
           "EL515"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "E 149 St",
@@ -774,7 +790,7 @@
           "EL516"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "Flushing-Main St",
@@ -783,16 +799,7 @@
           "EL414"
         ],
         "offlineUnits": [],
-        "note": null
-      },
-      {
-        "name": "Jamaica-179 St",
-        "state": "no_access",
-        "downUnits": [
-          "EL431"
-        ],
-        "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "Jamaica-179 St",
@@ -801,7 +808,16 @@
           "EL432"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
+      },
+      {
+        "name": "Jamaica-179 St",
+        "state": "no_access",
+        "downUnits": [
+          "EL431"
+        ],
+        "offlineUnits": [],
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "Jamaica-179 St",
@@ -810,7 +826,7 @@
           "EL433"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "Prospect Park",
@@ -819,7 +835,7 @@
           "EL383"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "Prospect Park",
@@ -828,7 +844,7 @@
           "EL382"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "14 St (L)",
@@ -837,7 +853,7 @@
           "EL609"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "Street to L mezzanine: 2 elevators — either one keeps this leg open. Mezzanine to L platform: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route."
       },
       {
         "name": "42St/Port Authority-Bus Terminal (A/C/E)",
@@ -846,7 +862,7 @@
           "EL290X"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "Port Authority / 8th Av entrances to A/C/E (ramp to platform): 4 elevators — any one keeps this leg open. No single elevator outage removes step-free access on this route."
       },
       {
         "name": "Fulton St (R/W)",
@@ -855,7 +871,7 @@
           "EL18X"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "Downtown R/W (street, Oculus & Fulton Center accesses): 7 elevators — any one keeps this leg open. Fulton Center to uptown R/W platform: one elevator, no backup. A leg with a single elevator has no backup — an outage there makes this route not step-free."
       },
       {
         "name": "Sutphin Blvd-Archer Av-JFK Airport (E/J/Z)",
@@ -865,7 +881,7 @@
           "EL449X"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "Street to mezzanine: 3 elevators — any one keeps this leg open. Mezzanine to E/J/Z platforms (both directions): one elevator, no backup. A leg with a single elevator has no backup — an outage there makes this route not step-free."
       },
       {
         "name": "Sutphin Blvd-Archer Av-JFK Airport (LIRR)",
@@ -875,7 +891,7 @@
           "EL449X"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "Street to mezzanine (LIRR Jamaica hub): 3 elevators — any one keeps this leg open. No single elevator outage removes step-free access on this route."
       }
     ],
     "chainsModeled": 51
@@ -884,6 +900,27 @@
     {
       "unitId": "EL516",
       "station": "E 149 St",
+      "starts": "2026-07-14T02:00:00+00:00",
+      "until": "2026-07-14T10:00:00+00:00",
+      "reason": "Maintenance"
+    },
+    {
+      "unitId": "EL775",
+      "station": "Borough Hall",
+      "starts": "2026-07-14T02:00:00+00:00",
+      "until": "2026-07-14T10:00:00+00:00",
+      "reason": "Maintenance"
+    },
+    {
+      "unitId": "EL609",
+      "station": "14 St",
+      "starts": "2026-07-14T02:00:00+00:00",
+      "until": "2026-07-14T10:00:00+00:00",
+      "reason": "Maintenance"
+    },
+    {
+      "unitId": "EL143",
+      "station": "125 St",
       "starts": "2026-07-14T02:00:00+00:00",
       "until": "2026-07-14T10:00:00+00:00",
       "reason": "Maintenance"
@@ -919,41 +956,6 @@
     {
       "unitId": "EL142",
       "station": "125 St",
-      "starts": "2026-07-14T02:00:00+00:00",
-      "until": "2026-07-14T10:00:00+00:00",
-      "reason": "Maintenance"
-    },
-    {
-      "unitId": "EL522",
-      "station": "Parkchester",
-      "starts": "2026-07-14T02:00:00+00:00",
-      "until": "2026-07-14T10:00:00+00:00",
-      "reason": "Inspection"
-    },
-    {
-      "unitId": "EL143",
-      "station": "125 St",
-      "starts": "2026-07-14T02:00:00+00:00",
-      "until": "2026-07-14T10:00:00+00:00",
-      "reason": "Maintenance"
-    },
-    {
-      "unitId": "EL773",
-      "station": "Borough Hall",
-      "starts": "2026-07-14T02:00:00+00:00",
-      "until": "2026-07-14T10:00:00+00:00",
-      "reason": "Maintenance"
-    },
-    {
-      "unitId": "EL775",
-      "station": "Borough Hall",
-      "starts": "2026-07-14T02:00:00+00:00",
-      "until": "2026-07-14T10:00:00+00:00",
-      "reason": "Maintenance"
-    },
-    {
-      "unitId": "EL609",
-      "station": "14 St",
       "starts": "2026-07-14T02:00:00+00:00",
       "until": "2026-07-14T10:00:00+00:00",
       "reason": "Maintenance"
@@ -1160,40 +1162,54 @@
       "starts": "2026-07-18T02:00:00+00:00",
       "until": "2026-07-18T04:00:00+00:00",
       "reason": "Maintenance"
+    },
+    {
+      "unitId": "EL617",
+      "station": "14 St",
+      "starts": "2026-07-18T02:00:00+00:00",
+      "until": "2026-07-18T10:00:00+00:00",
+      "reason": "Maintenance"
+    },
+    {
+      "unitId": "EL238",
+      "station": "66 St-Lincoln Center",
+      "starts": "2026-07-18T02:00:00+00:00",
+      "until": "2026-07-18T10:00:00+00:00",
+      "reason": "Maintenance"
     }
   ],
   "accessibilityBlackouts": [
     {
       "name": "161 St-Yankee Stadium (4)",
-      "hours": 14748.192864722223
+      "hours": 14748.559797222222
     },
     {
       "name": "Jamaica-179 St",
-      "hours": 5613.526198055555
+      "hours": 5613.893130555555
     },
     {
       "name": "Crown Hts-Utica Av",
-      "hours": 5374.9595313888885
+      "hours": 5375.326463888889
     },
     {
       "name": "Prospect Park",
-      "hours": 5350.059531388889
+      "hours": 5350.426463888889
     },
     {
       "name": "Coney Island-Stillwell Av",
-      "hours": 5206.0428647222225
+      "hours": 5206.409797222223
     },
     {
       "name": "72 St",
-      "hours": 4990.442864722222
+      "hours": 4990.809797222222
     },
     {
       "name": "Flushing-Main St",
-      "hours": 3861.7261980555554
+      "hours": 3862.0931305555555
     },
     {
       "name": "Atlantic Av-Barclays Ctr (B/Q)",
-      "hours": 2414.692864722222
+      "hours": 2415.059797222222
     },
     {
       "name": "51 St (6)",
@@ -1201,7 +1217,7 @@
     },
     {
       "name": "161 St-Yankee Stadium (B/D)",
-      "hours": 348.24286472222224
+      "hours": 348.6097972222222
     }
   ],
   "stepFreeStreak": [

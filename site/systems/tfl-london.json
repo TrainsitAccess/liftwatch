@@ -3,7 +3,7 @@
   "name": "TfL",
   "label": "TfL (London)",
   "timezone": "Europe/London",
-  "generatedAt": "2026-07-14T02:11:34.313Z",
+  "generatedAt": "2026-07-14T02:33:35.270Z",
   "currentlyBroken": [
     {
       "station": "Gospel Oak",
@@ -20,7 +20,9 @@
       ],
       "backups": [],
       "rampAlternative": false,
-      "chainNotes": []
+      "chainNotes": [
+        "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free."
+      ]
     },
     {
       "station": "East India",
@@ -52,7 +54,9 @@
       ],
       "backups": [],
       "rampAlternative": false,
-      "chainNotes": []
+      "chainNotes": [
+        "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free."
+      ]
     },
     {
       "station": "Finchley Central",
@@ -69,27 +73,14 @@
       ],
       "backups": [],
       "rampAlternative": false,
-      "chainNotes": []
+      "chainNotes": [
+        "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free."
+      ]
     },
     {
       "station": "King's Cross St Pancras",
       "unitId": "HUBKGX-Lift-A",
       "unit": "Lift A",
-      "days": 9,
-      "since": "2026-07-05T00:42:21.892+00:00",
-      "planned": false,
-      "reason": "ST PANCRAS INTERNATIONAL STATION: From Monday 15 June until mid September, there will be no step-free access lift available between the ticket hall and THAMESLINK platforms A & B. Please use London Underground connections via Farringdon for step-free access to THAMESLINK, or EAST MIDLANDS RAILWAY services for Luton Airport Parkway and Bedford.",
-      "estimatedReturn": null,
-      "soleAccess": true,
-      "severs": [],
-      "backups": [],
-      "rampAlternative": false,
-      "chainNotes": []
-    },
-    {
-      "station": "King's Cross St Pancras",
-      "unitId": "HUBKGX-Lift-B",
-      "unit": "Lift B",
       "days": 9,
       "since": "2026-07-05T00:42:21.892+00:00",
       "planned": false,
@@ -117,6 +108,21 @@
       "chainNotes": []
     },
     {
+      "station": "King's Cross St Pancras",
+      "unitId": "HUBKGX-Lift-B",
+      "unit": "Lift B",
+      "days": 9,
+      "since": "2026-07-05T00:42:21.892+00:00",
+      "planned": false,
+      "reason": "ST PANCRAS INTERNATIONAL STATION: From Monday 15 June until mid September, there will be no step-free access lift available between the ticket hall and THAMESLINK platforms A & B. Please use London Underground connections via Farringdon for step-free access to THAMESLINK, or EAST MIDLANDS RAILWAY services for Luton Airport Parkway and Bedford.",
+      "estimatedReturn": null,
+      "soleAccess": true,
+      "severs": [],
+      "backups": [],
+      "rampAlternative": false,
+      "chainNotes": []
+    },
+    {
       "station": "Willesden Junction (Route 1)",
       "unitId": "HUBWIJ-Lift-1",
       "unit": "Lift 1",
@@ -131,7 +137,9 @@
       ],
       "backups": [],
       "rampAlternative": false,
-      "chainNotes": []
+      "chainNotes": [
+        "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free."
+      ]
     },
     {
       "station": "Hackney Wick (Route 1)",
@@ -147,7 +155,7 @@
       "backups": [],
       "rampAlternative": true,
       "chainNotes": [
-        "TfL alert confirms a step-free alternative for Lift 1 (910GHACKNYW-Lift-1): the ramp on Hepscott Road."
+        "Leg 1: step-free even without a lift (a non-lift route exists). No single lift outage removes step-free access on this route. TfL has confirmed a step-free alternative for Lift 1: the ramp on Hepscott Road."
       ]
     },
     {
@@ -210,7 +218,9 @@
       ],
       "backups": [],
       "rampAlternative": false,
-      "chainNotes": []
+      "chainNotes": [
+        "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free."
+      ]
     },
     {
       "station": "Brixton",
@@ -272,7 +282,9 @@
       ],
       "backups": [],
       "rampAlternative": false,
-      "chainNotes": []
+      "chainNotes": [
+        "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free."
+      ]
     },
     {
       "station": "West Drayton",
@@ -304,7 +316,9 @@
       ],
       "backups": [],
       "rampAlternative": false,
-      "chainNotes": []
+      "chainNotes": [
+        "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free."
+      ]
     },
     {
       "station": "Denmark Hill",
@@ -487,21 +501,6 @@
       "chainNotes": []
     },
     {
-      "station": "Harrow-on-the-Hill",
-      "unitId": "HUBHOH-Lift-3",
-      "unit": "Lift 3",
-      "days": 0,
-      "since": "2026-07-13T08:57:07.033+00:00",
-      "planned": false,
-      "reason": "Harrow-on-the-Hill: No Step Free Access - Step free access is not available to platforms 3 and 4 (northbound Metropolitan line) due to a faulty lift. Call us on 0343 222 1234 if you need help planning your journey.",
-      "estimatedReturn": null,
-      "soleAccess": true,
-      "severs": [],
-      "backups": [],
-      "rampAlternative": false,
-      "chainNotes": []
-    },
-    {
       "station": "West Ham",
       "unitId": "HUBWEH-Lift-5",
       "unit": "Lift 5",
@@ -553,7 +552,7 @@
           "HUBBRX-Lift-2"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "Brixton",
@@ -562,7 +561,7 @@
           "HUBBRX-Lift-1"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "Canada Water",
@@ -571,7 +570,7 @@
           "HUBZCW-Lift-2"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "Canning Town",
@@ -580,7 +579,7 @@
           "HUBCAN-Lift-4"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "Canonbury",
@@ -589,7 +588,7 @@
           "910GCNNB-Lift-2"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "Chadwell Heath",
@@ -598,7 +597,7 @@
           "910GCHDWLHT-Lift-2"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "Clapham Junction",
@@ -607,7 +606,7 @@
           "HUBCLJ-Lift-1"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "Crystal Palace",
@@ -616,7 +615,7 @@
           "HUBCYP-Lift-1"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "Crystal Palace",
@@ -625,7 +624,7 @@
           "HUBCYP-Lift-3"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "Denmark Hill",
@@ -634,7 +633,7 @@
           "910GDENMRKH-Lift-2"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "East India",
@@ -643,7 +642,7 @@
           "940GZZDLEIN-Lift-3"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "Finchley Central",
@@ -652,7 +651,7 @@
           "940GZZLUFYC-Lift-2"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free."
       },
       {
         "name": "Gidea Park",
@@ -661,7 +660,7 @@
           "910GGIDEAPK-Lift-1"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "Gospel Oak",
@@ -670,7 +669,7 @@
           "910GGOSPLOK-Lift-2"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free."
       },
       {
         "name": "Highbury & Islington",
@@ -679,7 +678,7 @@
           "HUBHHY-Lift-3"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "Imperial Wharf",
@@ -688,7 +687,7 @@
           "HUBIMP-Lift-1"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free."
       },
       {
         "name": "King's Cross St Pancras",
@@ -697,7 +696,7 @@
           "HUBKGX-Lift-A"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "King's Cross St Pancras",
@@ -706,7 +705,7 @@
           "HUBKGX-Lift-B"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "Liverpool Street (Route 1)",
@@ -715,7 +714,7 @@
           "HUBLST-Lift-1"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free."
       },
       {
         "name": "Moorgate (Route 2)",
@@ -724,7 +723,7 @@
           "HUBZMG-Lift-5"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free."
       },
       {
         "name": "New Cross Gate",
@@ -733,7 +732,7 @@
           "HUBNXG-Lift-1"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "Victoria",
@@ -742,7 +741,7 @@
           "HUBVIC-Lift-E5"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "Victoria",
@@ -751,7 +750,7 @@
           "HUBVIC-Lift-C3"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "Wembley Park",
@@ -760,7 +759,7 @@
           "940GZZLUWYP-Lift-5"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "West Brompton",
@@ -769,7 +768,7 @@
           "HUBWBP-Lift-4"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free."
       },
       {
         "name": "West Drayton",
@@ -778,7 +777,7 @@
           "910GWDRYTON-Lift-D"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "West Ham",
@@ -787,7 +786,7 @@
           "HUBWEH-Lift-6"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "West Ham",
@@ -796,7 +795,7 @@
           "HUBWEH-Lift-4"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "West Ham",
@@ -805,7 +804,7 @@
           "HUBWEH-Lift-1"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "West Ham",
@@ -814,7 +813,7 @@
           "HUBWEH-Lift-5"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "West Ham",
@@ -823,7 +822,7 @@
           "HUBWEH-Lift-2"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg."
       },
       {
         "name": "Willesden Junction (Route 1)",
@@ -832,7 +831,7 @@
           "HUBWIJ-Lift-1"
         ],
         "offlineUnits": [],
-        "note": null
+        "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free."
       },
       {
         "name": "Hackney Wick (Route 1)",
@@ -841,7 +840,7 @@
           "910GHACKNYW-Lift-1"
         ],
         "offlineUnits": [],
-        "note": "TfL alert confirms a step-free alternative for Lift 1 (910GHACKNYW-Lift-1): the ramp on Hepscott Road."
+        "note": "Leg 1: step-free even without a lift (a non-lift route exists). No single lift outage removes step-free access on this route. TfL has confirmed a step-free alternative for Lift 1: the ramp on Hepscott Road."
       }
     ],
     "chainsModeled": 151
@@ -850,35 +849,35 @@
   "accessibilityBlackouts": [
     {
       "name": "Gospel Oak",
-      "hours": 217.48678361111112
+      "hours": 217.8537161111111
     },
     {
       "name": "Finchley Central",
-      "hours": 217.48678361111112
+      "hours": 217.8537161111111
     },
     {
       "name": "Willesden Junction (Route 1)",
-      "hours": 217.48678361111112
+      "hours": 217.8537161111111
     },
     {
       "name": "Moorgate (Route 2)",
-      "hours": 217.48678361111112
+      "hours": 217.8537161111111
     },
     {
       "name": "Wembley Park",
-      "hours": 217.48678361111112
+      "hours": 217.8537161111111
     },
     {
       "name": "East India",
-      "hours": 217.48678361111112
+      "hours": 217.8537161111111
     },
     {
       "name": "King's Cross St Pancras",
-      "hours": 217.48678361111112
+      "hours": 217.8537161111111
     },
     {
       "name": "Imperial Wharf",
-      "hours": 205.22109583333332
+      "hours": 205.58802833333334
     },
     {
       "name": "Hackney Central",
@@ -996,18 +995,6 @@
   "uptimeStreak": [
     {
       "unit": "Lift 1",
-      "station": "Hammersmith",
-      "days": 9,
-      "downNow": false
-    },
-    {
-      "unit": "Lift 2",
-      "station": "Hammersmith",
-      "days": 9,
-      "downNow": false
-    },
-    {
-      "unit": "Lift 1",
       "station": "Camden Road",
       "days": 9,
       "downNow": false
@@ -1025,14 +1012,26 @@
       "downNow": false
     },
     {
+      "unit": "Lift 1",
+      "station": "Hammersmith",
+      "days": 9,
+      "downNow": false
+    },
+    {
       "unit": "Lift 2",
-      "station": "Dartford",
+      "station": "Hammersmith",
       "days": 9,
       "downNow": false
     },
     {
       "unit": "Lift 1",
       "station": "Forest Hill",
+      "days": 9,
+      "downNow": false
+    },
+    {
+      "unit": "Lift 2",
+      "station": "Dartford",
       "days": 9,
       "downNow": false
     },

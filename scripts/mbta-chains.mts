@@ -26,7 +26,7 @@ import { writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { classifyMbtaUnit } from "../src/adapters/mbta/chain-mapper.js";
 import { inferStationChains } from "../src/lib/chain-inference.js";
-import { allElevators, stationAccessible, type StationModel } from "../src/lib/accessibility.js";
+import { allElevators, composePublicNote, stationAccessible, type StationModel } from "../src/lib/accessibility.js";
 
 const FACILITIES_URL =
   "https://api-v3.mbta.com/facilities?filter%5Btype%5D=ELEVATOR&sort=id&page%5Blimit%5D=500&include=stop";
@@ -262,14 +262,21 @@ for (const [stopId, facilities] of byStop) {
   // Apply the HUMAN-APPROVED street alternates (after validation, which is
   // about elevator topology only): every segment containing an approved
   // facility gets stepFreeAlternative + the agency's own words in the note —
-  // the walk is always disclosed to the rider.
+  // the walk is always disclosed to the rider. Disclosures are collected in
+  // SETS (deduped — Framingham's two approved segments used to append the
+  // same sentence twice) and joined into the notes at the end, because the
+  // composed public note depends on stepFreeAlternative being final.
+  const publicDisclosures = new Map<StationModel, Set<string>>();
+  const internalDisclosures = new Map<StationModel, Set<string>>();
+  const addTo = (map: Map<StationModel, Set<string>>, m: StationModel, s: string) =>
+    (map.get(m) ?? map.set(m, new Set()).get(m)!).add(s);
   for (const m of stationModels) {
     for (const seg of m.segments) {
       const approved = seg.elevators.map((e) => APPROVED_STREET_ALTERNATES.get(e.externalId)).find(Boolean);
       if (!approved) continue;
       seg.stepFreeAlternative = true;
-      const disclosure = `Elevator-free alternative per the agency's own guidance (human-approved 2026-07-10, walk disclosed): ${approved}`;
-      m.note = m.note ? `${m.note} ${disclosure}` : disclosure;
+      addTo(publicDisclosures, m, `Elevator-free alternative per MBTA's own guidance (a walk is required): ${approved}`);
+      addTo(internalDisclosures, m, "Street alternate human-approved 2026-07-10 (APPROVED_STREET_ALTERNATES), ≤0.3-mile rule.");
     }
   }
 
@@ -281,9 +288,18 @@ for (const [stopId, facilities] of byStop) {
       const disclosedId = seg.elevators.map((e) => e.externalId).find((id) => DISCLOSED_ALTERNATES.has(id));
       if (!disclosedId) continue;
       const routing = (altById.get(disclosedId) ?? "").replace(/\s+/g, " ").trim();
-      const disclosure = `A step-free route exists but is beyond the 0.3-mile limit, so it is not counted as an accessible backup — this platform still shows no step-free access when the elevator is out. Riders able to make the longer walk can follow MBTA's routing: ${routing}`;
-      m.note = m.note ? `${m.note} ${disclosure}` : disclosure;
+      addTo(publicDisclosures, m, `A step-free route exists but is longer than 0.3 miles, so it is not counted as an accessible backup — this platform still shows no step-free access when the elevator is out. Riders able to make the longer walk can follow MBTA's routing: ${routing}`);
+      addTo(internalDisclosures, m, "Note-only disclosure (DISCLOSED_ALTERNATES, human-approved 2026-07-12): real route beyond the 0.3-mile limit, no step-free credit.");
     }
+  }
+
+  // Compose the notes LAST — stepFreeAlternative is final now. `note` =
+  // composed rider-facing text + the agency's own disclosures (public);
+  // `internalNote` = chain-inference provenance + approval bookkeeping.
+  for (const m of stationModels) {
+    m.note = [composePublicNote(m.segments), ...(publicDisclosures.get(m) ?? [])].join(" ");
+    const internals = internalDisclosures.get(m);
+    if (internals) m.internalNote = [m.internalNote, ...internals].filter(Boolean).join(" ");
   }
 
   models.push(...stationModels);

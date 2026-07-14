@@ -701,7 +701,9 @@ function buildSystemDetail(systemId: string) {
       state: "no_access",
       downUnits: [unit?.external_id as string],
       offlineUnits: [],
-      note: null,
+      // Un-modeled stations get an honest generic note (their full elevator
+      // layout isn't broken into legs yet) instead of a blank.
+      note: "This elevator is the station's only step-free access (confirmed), and it is out of service — the station has no step-free route. This station's full elevator layout is not yet modeled leg by leg.",
     });
   }
   // Un-modeled stations where a confirmed SOLE-ACCESS unit is offline: the
@@ -716,7 +718,7 @@ function buildSystemDetail(systemId: string) {
       state: "unknown",
       downUnits: [],
       offlineUnits: [unit?.external_id as string],
-      note: null,
+      note: "This elevator is the station's only step-free access (confirmed), and it is not reporting — its condition can't be verified before you go. This station's full elevator layout is not yet modeled leg by leg.",
     });
   }
   const stateRank = { no_access: 0, unknown: 1, reduced: 2 };

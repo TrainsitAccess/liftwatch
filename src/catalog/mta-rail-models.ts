@@ -361,7 +361,8 @@ export const MTA_RAIL_STATION_MODELS: StationModel[] = [
     systemId: "mta-mnr",
     stationExternalId: "2GN",
     chainLabel: " (New Haven-bound)",
-    note: "Greenwich: the overpass is reachable at grade, and elevator 218E is the sole step-free access to the New Haven-bound platform (Track 4) — no ramp, no backup (human-verified 2026-07-10). 218T serves the street-to-ticket-office trip only and is not part of any platform's access chain.",
+    note: "The overpass is reachable at street level, and elevator 218E is the only step-free way down to the New Haven-bound platform (Track 4) — no ramp, no backup. Elevator 218T serves the street-to-ticket-office trip only and is not part of any platform's route.",
+    internalNote: "Human-verified 2026-07-10 (added after a live 218E outage surfaced Greenwich in the generator's review queue). Curated notes outrank the feed's location strings here.",
     segments: [
       {
         id: "nh-bound",
@@ -374,7 +375,8 @@ export const MTA_RAIL_STATION_MODELS: StationModel[] = [
     systemId: "mta-mnr",
     stationExternalId: "2GN",
     chainLabel: " (New York-bound)",
-    note: "Greenwich New York-bound platform (Track 3) has a RAMP off Greenwich Plaza — always step-free; elevator 218W is a convenience (human-verified 2026-07-10).",
+    note: "The New York-bound platform (Track 3) has a ramp off Greenwich Plaza — always step-free; elevator 218W is a convenience, not a requirement.",
+    internalNote: "Human-verified 2026-07-10.",
     segments: [
       {
         id: "ny-bound",
@@ -402,7 +404,8 @@ export const MTA_RAIL_STATION_MODELS: StationModel[] = [
     systemId: "mta-mnr",
     stationExternalId: "0YS",
     chainLabel: " (Tks 1/2)",
-    note: "Yankees-E 153 St: street leg modeled through PE1 (mezzanine to west parking/ferries) only; PE4's overpass-to-mezzanine relationship is unverified and conservatively omitted — the station may have more street redundancy than shown.",
+    note: "Street access is shown through elevator PE1 (mezzanine to the west parking lot and ferries) only — the station may have more street routes than listed here, so this can over-warn but never under-warn.",
+    internalNote: "PE4's overpass-to-mezzanine relationship is unverified and conservatively omitted (curation caveat).",
     segments: [
       { id: "street", label: "West parking/ferries to mezzanine", elevators: [{ externalId: "0YS-003W", label: "PE1 — mezzanine to west parking & ferries" }] },
       { id: "platform-1-2", label: "Mezzanine to Tracks 2 & 1 platform", elevators: [{ externalId: "0YS-00321", label: "PE3 — Tracks 2 & 1 platform" }] },
@@ -444,7 +447,8 @@ export const MTA_RAIL_STATION_MODELS: StationModel[] = [
     systemId: "mta-mnr",
     stationExternalId: "2SM",
     chainLabel: " (Track 4)",
-    note: "Stamford Track 4 has a RAMP from Station Place — always step-free. The ramp and Elevator 04 land on a Track-4-only section, not the 2/4 island (human-verified).",
+    note: "Track 4 has a ramp from Station Place — always step-free. The ramp and Elevator 04 reach a Track-4-only section of the platform, not the Tracks 2/4 island.",
+    internalNote: "Human-verified walk-through (Stamford paired-segment review).",
     segments: [
       {
         id: "track-4",
@@ -483,7 +487,8 @@ export const MTA_RAIL_STATION_MODELS: StationModel[] = [
     systemId: "mta-mnr",
     stationExternalId: "2SM",
     chainLabel: " (Track 2)",
-    note: "Stamford Track 2: street to concourse (Elevator 01 or 04), then Elevator 03 down to the 2/4 island — Elevator 03 is a single point of failure. Elevator 04 and the Station Place ramp land on a Track-4-only section, not this island (human-verified); the bridge's Elevator 07 likewise lands Track-4-only and is conservatively omitted.",
+    note: "Track 2: take Elevator 01 or 04 from the street to the concourse, then Elevator 03 down to the Tracks 2/4 island — Elevator 03 has no backup, so if it is out this platform is not step-free. The Station Place ramp and Elevator 04 reach a Track-4-only section, not this island.",
+    internalNote: "Human-verified walk-through; the bridge's Elevator 07 likewise lands Track-4-only and is conservatively omitted.",
     segments: [
       {
         id: "street-concourse",
@@ -541,7 +546,8 @@ export const MTA_RAIL_STATION_MODELS: StationModel[] = [
     systemId: "mta-mnr",
     stationExternalId: "0NY",
     chainLabel: " (North End: Tks 34/35/116)",
-    note: "Grand Central's 45th St cross passage: NE-4 is the sole elevator to the Track 116 and Tracks 34 & 35 platforms from this passage. It has been out of service since March 2023 (long-term outage). The other North End units (NE-1/2/3/5/6) are tracked but not yet modeled — passage topology unverified.",
+    note: "From the 45th St cross passage, NE-4 is the only elevator to the Track 116 and Tracks 34 & 35 platforms — no backup. It has been out of service since March 2023 (a long-term outage).",
+    internalNote: "The other North End units (NE-1/2/3/5/6) are tracked but not yet modeled — passage topology unverified.",
     segments: [
       {
         id: "ne-45th-platforms",

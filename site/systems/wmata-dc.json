@@ -3,7 +3,7 @@
   "name": "DC Metro",
   "label": "DC Metro (Washington)",
   "timezone": "America/New_York",
-  "generatedAt": "2026-07-14T02:11:34.313Z",
+  "generatedAt": "2026-07-14T02:33:35.270Z",
   "currentlyBroken": [
     {
       "station": "Glenmont",
@@ -153,21 +153,6 @@
       ]
     },
     {
-      "station": "New Carrollton",
-      "unitId": "D13X05",
-      "unit": "Garage elevator",
-      "days": 1,
-      "since": "2026-07-12T21:46:00+00:00",
-      "planned": false,
-      "reason": "Other",
-      "estimatedReturn": "2026-07-15T03:59:59+00:00",
-      "soleAccess": false,
-      "severs": [],
-      "backups": [],
-      "rampAlternative": false,
-      "chainNotes": []
-    },
-    {
       "station": "Rockville (pedestrian bridge)",
       "unitId": "A14X02",
       "unit": "Elevator between pedestrian bridge and mezzanine",
@@ -236,15 +221,15 @@
   "accessibilityBlackouts": [
     {
       "name": "Columbia Heights",
-      "hours": 865.9428647222222
+      "hours": 866.3097972222222
     },
     {
       "name": "Huntington",
-      "hours": 321.1928647222222
+      "hours": 321.55979722222224
     },
     {
       "name": "Mt Vernon Sq 7th St-Convention Center",
-      "hours": 231.60953138888888
+      "hours": 231.9764638888889
     },
     {
       "name": "Federal Triangle",
@@ -252,11 +237,11 @@
     },
     {
       "name": "Franconia-Springfield",
-      "hours": 108.47619805555556
+      "hours": 108.84313055555556
     },
     {
       "name": "West Falls Church",
-      "hours": 84.1595313888889
+      "hours": 84.52646388888888
     },
     {
       "name": "L'Enfant Plaza",

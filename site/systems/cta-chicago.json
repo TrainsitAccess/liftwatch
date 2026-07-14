@@ -3,7 +3,7 @@
   "name": "CTA",
   "label": "CTA (Chicago)",
   "timezone": "America/Chicago",
-  "generatedAt": "2026-07-14T02:11:34.313Z",
+  "generatedAt": "2026-07-14T02:33:35.270Z",
   "currentlyBroken": [
     {
       "station": "Western",
@@ -146,7 +146,7 @@
   "accessibilityBlackouts": [
     {
       "name": "Western",
-      "hours": 1497.192864722222
+      "hours": 1497.5597972222222
     },
     {
       "name": "Lake",
@@ -154,11 +154,11 @@
     },
     {
       "name": "King Drive",
-      "hours": 611.6839836111111
+      "hours": 612.0509161111111
     },
     {
       "name": "Clark/Lake",
-      "hours": 378.79844833333334
+      "hours": 379.16538083333336
     },
     {
       "name": "Loyola",
@@ -170,7 +170,7 @@
     },
     {
       "name": "Wilson",
-      "hours": 242.54409
+      "hours": 242.9110225
     },
     {
       "name": "35th-Bronzeville-IIT",
@@ -182,7 +182,7 @@
     },
     {
       "name": "Cottage Grove",
-      "hours": 168.18315611111112
+      "hours": 168.5500886111111
     }
   ],
   "stepFreeStreak": [

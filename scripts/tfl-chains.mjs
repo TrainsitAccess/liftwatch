@@ -45,6 +45,9 @@
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+// Runs via tsx (see package.json) so the canonical public-note composer is
+// shared with every other generator instead of forked per script.
+import { composePublicNote } from "../src/lib/accessibility.js";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const DATA_DIR = join(ROOT, "src", "catalog", "tfl-data");
@@ -252,6 +255,8 @@ try {
 // the same pattern as MTA's REDUNDANCY_EXCEPTIONS.
 const evidenceExceptions = new Map(); // externalId -> reason
 
+const publicEvidence = new Map(); // model -> rider-facing evidence sentences
+const internalEvidence = new Map(); // model -> provenance detail
 if (evidence) {
   for (const m of models) {
     for (const seg of m.segments) {
@@ -259,12 +264,27 @@ if (evidence) {
         const mention = evidence.byLift[el.externalId]?.alternativeMentions?.[0];
         if (!mention || seg.stepFreeAlternative) continue;
         seg.stepFreeAlternative = true;
-        const noteText = `TfL alert confirms a step-free alternative for ${el.label} (${el.externalId}): ${mention.phrase}.`;
-        m.note = m.note ? `${m.note} ${noteText}` : noteText;
+        (publicEvidence.get(m) ?? publicEvidence.set(m, []).get(m)).push(
+          `TfL has confirmed a step-free alternative for ${el.label}: ${mention.phrase}.`,
+        );
+        (internalEvidence.get(m) ?? internalEvidence.set(m, []).get(m)).push(
+          `Alert-evidence enrichment: ${el.externalId} pattern "${mention.pattern}" — "${mention.phrase}".`,
+        );
         evidenceExceptions.set(el.externalId, `TfL alert-confirmed alternative (${mention.pattern}): "${mention.phrase}"`);
       }
     }
   }
+}
+
+// Compose the notes LAST — the public text depends on stepFreeAlternative set
+// above. `note` = rider-facing plain English (British riders say "lift");
+// `internalNote` = provenance, never shipped to the site.
+for (const m of models) {
+  m.note = [composePublicNote(m.segments, "lift"), ...(publicEvidence.get(m) ?? [])].join(" ");
+  m.internalNote = [
+    "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal.",
+    ...(internalEvidence.get(m) ?? []),
+  ].join(" ");
 }
 
 // ---- SELF-CHECK ----

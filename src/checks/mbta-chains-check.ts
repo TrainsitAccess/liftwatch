@@ -169,7 +169,7 @@ check(`locked counts: ${LOCKED.stations} stations`,
       sa.every((m) => m.segments.every((s) => !s.stepFreeAlternative)) &&
       sa.every((m) => allElevators(m).length === 1 && !stationAccessible(m, new Set(allElevators(m).map((e) => e.externalId)))));
   check("South Acton surfaces the disclosed walk in its note",
-    sa.length === 2 && sa.every((m) => /beyond the 0\.3-mile limit/i.test(m.note ?? "") && /MBTA's routing/i.test(m.note ?? "")));
+    sa.length === 2 && sa.every((m) => /longer than 0\.3 miles/i.test(m.note ?? "") && /MBTA's routing/i.test(m.note ?? "")));
 
   // TF Green Airport: human-confirmed redundant pair with NO feed guidance —
   // one segment holding both elevators, so either outage still leaves access.

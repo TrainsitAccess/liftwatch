@@ -460,14 +460,22 @@ parking lot). A station is accessible only if **every** segment is up.
   all real-time = unplanned.
 - **Curated data lives in version-controlled files**, not just the DB — reviewable,
   survives rebuilds, re-asserted every poll.
-- **Two note tiers on StationModel (Bryce, 2026-07-13)**: `note` is PUBLIC,
-  rider-facing plain English (what the route is, which legs have a backup,
-  what an outage means — no GTFS/feed/generator jargon); `internalNote` holds
-  provenance and engineering caveats ("Topology from WMATA GTFS pathways…",
-  verification dates) and NEVER ships to the site (build-site-data only reads
-  `note`). WMATA (generator + curated) migrated; MBTA/rail/TfL generated
-  notes still carry "Auto-modeled from…" boilerplate in `note` — move it to
-  `internalNote` in each generator at that system's next regeneration.
+- **Two note tiers on StationModel (Bryce, 2026-07-13), migrated EVERYWHERE**:
+  `note` is PUBLIC, rider-facing plain English (what the route is, which legs
+  have a backup, what an outage means — no GTFS/feed/generator jargon);
+  `internalNote` holds provenance and engineering caveats ("Topology from
+  WMATA GTFS pathways…", verification dates, feed quirks) and NEVER ships to
+  the site (build-site-data only reads `note`; leakage grep-verified 0).
+  Every generator composes the public note via `composePublicNote()`
+  (accessibility.ts — leg by leg + a consequence sentence; "lift" for TfL)
+  AFTER its enrichment passes (stepFreeAlternative changes what it must say),
+  and appends rider-relevant agency quotes/disclosures; provenance goes to
+  internalNote. All 4 generators (MTA, rail, MBTA, TfL — the .mjs ones now
+  run via tsx to import the composer) + all curated catalogs (BART, rail,
+  MBTA, WMATA, inline) migrated 2026-07-13; the un-modeled-station fallback
+  rows on the access board also carry an honest generic note. When writing a
+  NEW curated model: rider guidance in `note`, verification dates/sources in
+  `internalNote`.
 - **Timezones**: feeds report local wall-clock; parse to UTC (`src/lib/time.ts`,
   Luxon). Store UTC everywhere.
 - Nine adapters, deliberately different fidelity (TMB currently `hidden`):
