@@ -509,6 +509,10 @@ parking lot). A station is accessible only if **every** segment is up.
   ASAP plan tables are graphical, no per-station roster exists; ASAP's "163
   existing elevators" (2018) corroborates the 173 staticFleetReference). No
   `NormalizedRead.stations` (station list not fetched in this MVP pass).
+  Layout research for a future curated-chains pass:
+  `src/catalog/cta-data/STATION-RESEARCH.md` (chicago-L.org, all 42 observed
+  stations, archetype-grouped with a verification order) — walk it with
+  Bryce before modeling anything.
   WMATA has no live fleet total anywhere (exhaustively verified), so its %
   ranking uses `staticFleetReference` — WMATA's own published "320 elevators"
   figure — as the denominator. It **does** rank (currently ~1.9%\*), but every

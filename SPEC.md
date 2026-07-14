@@ -1041,8 +1041,13 @@ claim). `npm run cta:observed` snapshots the growing corpus
 (`src/catalog/cta-data/observed-units.json`); `npm run check:cta` re-parses
 every observed text and fails if any recorded unit id would change (the
 re-slug guard), plus the hardcoded trap cases. Curated chains remain possible
-later via chicago-L.org/Wikipedia layout research + human verification per
-station (the interchange precedent) — that pass needs Bryce.
+later via layout research + human verification per station (the interchange
+precedent) — the research is DONE (`src/catalog/cta-data/STATION-RESEARCH.md`,
+chicago-L.org pass 2026-07-14: all 42 observed stations grouped by archetype,
+redundancy candidates flagged — Cermak's bookend pair first — plus the King
+Drive/Cottage Grove exit-only-rotogate policy question and a suggested
+verification order); the walkthrough with Bryce is deliberately parked until
+he's ready.
 
 ### CTA feeds (in use) — station-level, discovered inventory
 
