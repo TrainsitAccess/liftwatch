@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-14T07:09:33.169Z",
+  "generatedAt": "2026-07-14T18:49:13.466Z",
   "source": "WMATA GTFS rail pathways.txt mode-5 connected components (in-station elevators only)",
   "units": [
     {
@@ -102,6 +102,17 @@
       "isRedundant": false
     },
     {
+      "externalId": "D01X02",
+      "station": "D01",
+      "stationName": "Federal Triangle",
+      "description": "Elevator between mezzanine and platform",
+      "levelFrom": "Mezzanine",
+      "levelTo": "Platform",
+      "segment": "mezzanine-platform",
+      "modeled": true,
+      "isRedundant": false
+    },
+    {
       "externalId": "D05X02",
       "station": "D05",
       "stationName": "Capitol South",
@@ -131,6 +142,17 @@
       "levelFrom": "Mezzanine",
       "levelTo": "Platform",
       "segment": "mezzanine-platform",
+      "modeled": true,
+      "isRedundant": false
+    },
+    {
+      "externalId": "D08S01",
+      "station": "D08",
+      "stationName": "Stadium-Armory",
+      "description": "Elevator between street and mezzanine",
+      "levelFrom": "Street",
+      "levelTo": "Mezzanine",
+      "segment": "street-mezzanine",
       "modeled": true,
       "isRedundant": false
     },
@@ -1191,17 +1213,6 @@
       "isRedundant": false
     },
     {
-      "externalId": "WMATA-D01_ELE2",
-      "station": "D01",
-      "stationName": "Federal Triangle",
-      "description": "Elevator between mezzanine and platform",
-      "levelFrom": "Mezzanine",
-      "levelTo": "Platform",
-      "segment": "mezzanine-platform",
-      "modeled": true,
-      "isRedundant": false
-    },
-    {
       "externalId": "WMATA-D02_S_ELE1",
       "station": "D02",
       "stationName": "Smithsonian",
@@ -1315,17 +1326,6 @@
       "externalId": "WMATA-D07_ELE1",
       "station": "D07",
       "stationName": "Potomac Av",
-      "description": "Elevator between street and mezzanine",
-      "levelFrom": "Street",
-      "levelTo": "Mezzanine",
-      "segment": "street-mezzanine",
-      "modeled": true,
-      "isRedundant": false
-    },
-    {
-      "externalId": "WMATA-D08_ELE1_S",
-      "station": "D08",
-      "stationName": "Stadium-Armory",
       "description": "Elevator between street and mezzanine",
       "levelFrom": "Street",
       "levelTo": "Mezzanine",

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-14T07:09:33.169Z",
+  "generatedAt": "2026-07-14T18:49:13.466Z",
   "source": "WMATA GTFS pathways topology (conservative single-platform Street→Mezzanine→Platform ladders)",
   "models": [
     {
@@ -453,8 +453,8 @@
           "label": "Mezzanine to Platform",
           "elevators": [
             {
-              "externalId": "WMATA-D01_ELE2",
-              "label": "Federal Triangle elevator (Mezzanine to Platform)"
+              "externalId": "D01X02",
+              "label": "Federal Triangle elevator D01X02 (Mezzanine to Platform)"
             }
           ]
         }
@@ -583,8 +583,8 @@
           "label": "Street to Mezzanine",
           "elevators": [
             {
-              "externalId": "WMATA-D08_ELE1_S",
-              "label": "Stadium-Armory elevator (Street to Mezzanine)"
+              "externalId": "D08S01",
+              "label": "Stadium-Armory elevator D08S01 (Street to Mezzanine)"
             }
           ]
         },

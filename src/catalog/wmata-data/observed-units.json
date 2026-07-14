@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-14T07:09:32.006Z",
+  "updatedAt": "2026-07-14T18:49:12.015Z",
   "note": "Every WMATA elevator UnitName ever observed (archive + live feed). Grows only. Consumed by scripts/wmata-pathways.mts as an undercount/vocabulary gate.",
   "units": [
     {
@@ -141,6 +141,18 @@
       "firstObserved": "2026-07-05T00:16:15.96259+00:00"
     },
     {
+      "unitName": "C05E01",
+      "stationCode": "C05",
+      "location": "Elevator between street, and upper platform",
+      "firstObserved": "2026-07-14T12:12:49.590219+00:00"
+    },
+    {
+      "unitName": "C05E02",
+      "stationCode": "C05",
+      "location": "Elevator between street, and upper platform",
+      "firstObserved": "2026-07-14T15:07:45.279822+00:00"
+    },
+    {
       "unitName": "C05E03",
       "stationCode": "C05",
       "location": "Elevator between street, and upper platform",
@@ -177,6 +189,12 @@
       "firstObserved": "2026-07-10T01:18:56.361437+00:00"
     },
     {
+      "unitName": "C14X02",
+      "stationCode": "C14",
+      "location": "Elevator between mezzanine and platform to Huntington",
+      "firstObserved": "2026-07-14T13:16:09.143894+00:00"
+    },
+    {
       "unitName": "C15S01",
       "stationCode": "C15",
       "location": "Garage #1 elevator",
@@ -193,6 +211,12 @@
       "stationCode": "D01",
       "location": "Elevator between street and mezzanine",
       "firstObserved": "2026-07-06T14:33:23.297451+00:00"
+    },
+    {
+      "unitName": "D01X02",
+      "stationCode": "D01",
+      "location": "Elevator between mezzanine and platform",
+      "firstObserved": "2026-07-14T17:42:33.798239+00:00"
     },
     {
       "unitName": "D02S01",
@@ -231,6 +255,12 @@
       "firstObserved": "2026-07-05T23:48:09.578667+00:00"
     },
     {
+      "unitName": "D08S01",
+      "stationCode": "D08",
+      "location": "Elevator between street and mezzanine",
+      "firstObserved": "2026-07-14T13:55:44.678409+00:00"
+    },
+    {
       "unitName": "D09X04",
       "stationCode": "D09",
       "location": "Garage Elevator",
@@ -241,6 +271,18 @@
       "stationCode": "D10",
       "location": "Elevator between mezzanine and platform",
       "firstObserved": "2026-07-10T18:23:02.490365+00:00"
+    },
+    {
+      "unitName": "D11X02",
+      "stationCode": "D11",
+      "location": "Elevator between mezzanine and platform to New Carrollton",
+      "firstObserved": "2026-07-14T12:56:37.329328+00:00"
+    },
+    {
+      "unitName": "D11X03",
+      "stationCode": "D11",
+      "location": "Elevator between mezzanine and platform Vienna",
+      "firstObserved": "2026-07-14T13:05:29.744784+00:00"
     },
     {
       "unitName": "D12X01",
@@ -331,6 +373,12 @@
       "stationCode": "F03",
       "location": "Elevator between street and mezzanine",
       "firstObserved": "2026-07-05T17:09:41.228717+00:00"
+    },
+    {
+      "unitName": "F03N02",
+      "stationCode": "F03",
+      "location": "Elevator between mezzanine and platform to Branch Ave/Huntington",
+      "firstObserved": "2026-07-14T14:02:27.383374+00:00"
     },
     {
       "unitName": "F04X01",
