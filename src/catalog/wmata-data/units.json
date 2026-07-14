@@ -1,7 +1,18 @@
 {
-  "generatedAt": "2026-07-14T02:11:29.937Z",
+  "generatedAt": "2026-07-14T07:09:33.169Z",
   "source": "WMATA GTFS rail pathways.txt mode-5 connected components (in-station elevators only)",
   "units": [
+    {
+      "externalId": "A07X01",
+      "station": "A07",
+      "stationName": "Tenleytown-AU",
+      "description": "Elevator between street and platform",
+      "levelFrom": "Street",
+      "levelTo": "Platform",
+      "segment": "street-platform",
+      "modeled": true,
+      "isRedundant": false
+    },
     {
       "externalId": "A09X01",
       "station": "A09",
@@ -495,17 +506,6 @@
       "levelTo": "Platform",
       "segment": "",
       "modeled": false,
-      "isRedundant": false
-    },
-    {
-      "externalId": "WMATA-A07_ELE",
-      "station": "A07",
-      "stationName": "Tenleytown-AU",
-      "description": "Elevator between street and platform",
-      "levelFrom": "Street",
-      "levelTo": "Platform",
-      "segment": "street-platform",
-      "modeled": true,
       "isRedundant": false
     },
     {

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-14T02:11:29.937Z",
+  "generatedAt": "2026-07-14T07:09:33.169Z",
   "source": "WMATA GTFS pathways topology (conservative single-platform Street→Mezzanine→Platform ladders)",
   "models": [
     {
@@ -13,8 +13,8 @@
           "label": "Street to Platform",
           "elevators": [
             {
-              "externalId": "WMATA-A07_ELE",
-              "label": "Tenleytown-AU elevator (Street to Platform)"
+              "externalId": "A07X01",
+              "label": "Tenleytown-AU elevator A07X01 (Street to Platform)"
             }
           ]
         }
