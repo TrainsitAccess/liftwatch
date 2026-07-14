@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-14T07:31:21.142Z",
+  "updatedAt": "2026-07-14T19:00:08.488Z",
   "note": "Every CTA elevator identity ever observed (archive + live alert texts, parsed by src/adapters/cta/location.ts). Grows only. Regression fixture for check:cta and the curation aid for a future chains pass.",
   "units": [
     {
@@ -68,6 +68,14 @@
         "Elevator at Cumberland Temporarily Out-of-Service — The elevator to/from platform at Cumberland (Blue Line) is temporarily out-of-service."
       ],
       "firstObserved": "2026-07-10T17:40:35.267+00:00"
+    },
+    {
+      "unitId": "40230-STREET",
+      "stationId": "40230",
+      "texts": [
+        "Elevator at Cumberland Temporarily Out-of-Service — The elevator to/from street at the south pedestrian bridge to Cumberland (Blue Line) is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-07-14T12:02:45.491+00:00"
     },
     {
       "unitId": "40280",
@@ -313,6 +321,14 @@
       "firstObserved": "2026-07-05T00:57:40.161+00:00"
     },
     {
+      "unitId": "41360",
+      "stationId": "41360",
+      "texts": [
+        "Elevator at California Temporarily Out-of-Service — An elevator needed to access the Harlem-bound platform at California (Green Line) is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-07-14T15:07:44.554+00:00"
+    },
+    {
       "unitId": "41360-STREET",
       "stationId": "41360",
       "texts": [
@@ -377,6 +393,14 @@
         "The Loop- bound platform elevator at Montrose (Brown Line) is temporarily out-of-service."
       ],
       "firstObserved": "2026-07-06T14:33:33.788+00:00"
+    },
+    {
+      "unitId": "41510-63RD-BOUND",
+      "stationId": "41510",
+      "texts": [
+        "Elevator at Morgan Temporarily Out-of-Service — The Loop- and 63rd-bound platform elevator at Morgan (Green, Pink Lines) is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-07-14T17:35:47.96+00:00"
     },
     {
       "unitId": "41660-WASHINGTON-RANDOLPH-PLATFORM",
