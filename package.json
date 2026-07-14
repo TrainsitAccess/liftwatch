@@ -52,7 +52,9 @@
     "wmata:observed": "tsx scripts/wmata-observed.mts",
     "check:wmata": "tsx src/checks/wmata-check.ts",
     "cta:observed": "tsx scripts/cta-observed.mts",
-    "check:cta": "tsx src/checks/cta-check.ts"
+    "check:cta": "tsx src/checks/cta-check.ts",
+    "review:queue": "tsx scripts/review-queue.mts",
+    "review:status": "tsx scripts/review-queue.mts --status"
   },
   "dependencies": {
     "@netlify/blobs": "^10.7.9",
