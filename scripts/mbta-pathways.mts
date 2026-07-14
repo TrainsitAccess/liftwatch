@@ -114,6 +114,19 @@ let skippedEdges = 0;
   }
 }
 
+// agency serves/not-serves declarations: facilities_properties.txt
+// `excludes-stop` lists the child stops a facility does NOT service. Used as a
+// weak consistency gate: if our graph math says elevator e ALONE severs
+// platform s, but MBTA declares e doesn't even serve s, the graph and the
+// declaration disagree — exclude for review rather than ship either story.
+const excludesStop = new Map<string, Set<string>>();
+try {
+  for (const p of readCsv("facilities_properties.txt")) {
+    if (p.property_id !== "excludes-stop") continue;
+    (excludesStop.get(p.facility_id!) ?? excludesStop.set(p.facility_id!, new Set()).get(p.facility_id!)!).add(p.value!);
+  }
+} catch { console.warn("  (no facilities_properties.txt — excludes-stop gate skipped)"); }
+
 // answer key: alternate-service-text per facility from the committed fixture
 const fixture = JSON.parse(readFileSync(fileURLToPath(new URL("../src/catalog/mbta-data/fixture.json", import.meta.url)), "utf8")) as {
   stations: Record<string, { name: string; facilities: { id: string; altText?: string }[] }>;
@@ -280,6 +293,20 @@ for (const sid of allStationIds) {
     if (detour && derivedRedundant(id)) { gateFail = `${id}: guidance prescribes a ride-a-train detour but topology derives redundancy`; break; }
   }
   if (gateFail) { excluded.push({ stationId: sid, name, reason: "guidance-contradiction", detail: gateFail }); continue; }
+
+  // EXCLUDES-STOP GATE: e alone severing sink s requires that every minimal
+  // path-set for s contains e — then MBTA must not declare e excludes s.
+  let impactFail: string | null = null;
+  for (const [s, { paths }] of sinkCuts) {
+    for (const e of new Set(paths.flat())) {
+      if (paths.every((p) => p.includes(e)) && excludesStop.get(e)?.has(s)) {
+        impactFail = `elevator ${e} alone severs platform ${s} (${stops.get(s)?.platformName || s}) per the graph, but facilities_properties declares it does not serve that stop`;
+        break;
+      }
+    }
+    if (impactFail) break;
+  }
+  if (impactFail) { excluded.push({ stationId: sid, name, reason: "impact-contradiction", detail: impactFail }); continue; }
 
   // TIER SEPARATION: existing tiers keep the station; we cross-check instead.
   const tier = curatedStations.has(sid) ? "curated" : generatedStations.has(sid) ? "serving-text" : null;

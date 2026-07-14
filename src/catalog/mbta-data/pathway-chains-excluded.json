@@ -1,7 +1,13 @@
 {
-  "generatedAt": "2026-07-14T22:17:04.129Z",
+  "generatedAt": "2026-07-14T22:21:54.261Z",
   "note": "Stations the pathways generator refuses to model — pending human review.",
   "stations": [
+    {
+      "stationId": "place-chmnl",
+      "name": "Charles/MGH",
+      "reason": "impact-contradiction",
+      "detail": "elevator 951 alone severs platform 70073 (Ashmont/Braintree) per the graph, but facilities_properties declares it does not serve that stop"
+    },
     {
       "stationId": "place-crtst",
       "name": "Courthouse",
@@ -15,6 +21,12 @@
       "detail": "platform 70077 (Ashmont/Braintree) unreachable step-free even with all elevators"
     },
     {
+      "stationId": "place-jfk",
+      "name": "JFK/UMass",
+      "reason": "impact-contradiction",
+      "detail": "elevator 831 alone severs platform 70085 (Ashmont) per the graph, but facilities_properties declares it does not serve that stop"
+    },
+    {
       "stationId": "place-ogmnl",
       "name": "Oak Grove",
       "reason": "analysis-anomaly",
@@ -25,6 +37,12 @@
       "name": "Quincy Adams",
       "reason": "guidance-contradiction",
       "detail": "736: guidance names same-station backup (805) but topology derives sole-access"
+    },
+    {
+      "stationId": "place-smmnl",
+      "name": "Shawmut",
+      "reason": "impact-contradiction",
+      "detail": "elevator 953 alone severs platform 70092 (Alewife) per the graph, but facilities_properties declares it does not serve that stop"
     },
     {
       "stationId": "place-sstat",

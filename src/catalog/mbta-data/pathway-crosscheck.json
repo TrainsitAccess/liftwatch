@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-14T22:17:04.129Z",
+  "generatedAt": "2026-07-14T22:21:54.261Z",
   "note": "Pathways-derived models vs the already-trusted tiers (curated + serving-text) — validation report, nothing shipped for these stations.",
   "results": [
     {
@@ -40,13 +40,6 @@
     {
       "stationId": "place-ccmnl",
       "name": "Community College",
-      "tier": "serving-text",
-      "agrees": true,
-      "detail": "semantics match"
-    },
-    {
-      "stationId": "place-chmnl",
-      "name": "Charles/MGH",
       "tier": "serving-text",
       "agrees": true,
       "detail": "semantics match"
@@ -103,13 +96,6 @@
     {
       "stationId": "place-jaksn",
       "name": "Jackson Square",
-      "tier": "serving-text",
-      "agrees": true,
-      "detail": "semantics match"
-    },
-    {
-      "stationId": "place-jfk",
-      "name": "JFK/UMass",
       "tier": "serving-text",
       "agrees": true,
       "detail": "semantics match"
@@ -201,13 +187,6 @@
     {
       "stationId": "place-sbmnl",
       "name": "Stony Brook",
-      "tier": "serving-text",
-      "agrees": true,
-      "detail": "semantics match"
-    },
-    {
-      "stationId": "place-smmnl",
-      "name": "Shawmut",
       "tier": "serving-text",
       "agrees": true,
       "detail": "semantics match"

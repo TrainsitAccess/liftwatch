@@ -44,11 +44,16 @@ console.log("\n  Tier separation (proposals never overlap shipped tiers):");
 console.log("\n  Cross-tier validation (the generator must keep reproducing the trusted tiers):");
 {
   const agree = crossCheck.results.filter((r) => r.agrees).length;
-  ok(agree >= 28 && crossCheck.results.length - agree <= 2,
-    `${agree}/${crossCheck.results.length} trusted-tier stations reproduced semantically (only Alewife/Braintree may differ — both are extra-garage-elevator cases pinned for the walkthrough)`);
   const disagreeIds = crossCheck.results.filter((r) => !r.agrees).map((r) => r.stationId).sort();
   ok(disagreeIds.every((id) => ["place-alfcl", "place-brntn"].includes(id)),
-    "no NEW cross-tier disagreements beyond the two known ones");
+    `no NEW cross-tier disagreements beyond the two known garage-elevator cases (${agree}/${crossCheck.results.length} agree; diffs: ${disagreeIds.join(", ") || "none"})`);
+  ok(crossCheck.results.length >= 25, "cross-check still covers the trusted tiers broadly");
+}
+
+console.log("\n  Agency-declaration gate (excludes-stop):");
+for (const id of ["place-chmnl", "place-jfk", "place-smmnl"]) {
+  ok(excluded.stations.some((s) => s.stationId === id && s.reason === "impact-contradiction"),
+    `${id} excluded via impact-contradiction (graph vs facilities_properties serves-declaration — walkthrough item)`);
 }
 
 console.log("\n  Known regressions:");
