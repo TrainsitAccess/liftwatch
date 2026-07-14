@@ -260,6 +260,19 @@ parking lot). A station is accessible only if **every** segment is up.
   units keep single_elevator/assumed. Offline: `npm run check:mbta-chains`
   (full-feed fixture reproduction + Fields Corner detour + Wellington
   exclusion regressions).
+- **MBTA GTFS pathways DISCOVERED, build pending (2026-07-14 audit)**: MBTA's
+  GTFS (cdn.mbta.com/MBTA_GTFS.zip) carries `pathways.txt` (480 mode-5
+  elevator pathways with a REAL `facility_id` column matching the live
+  facilities API/our unit ids — the direct crosswalk WMATA never had),
+  `levels.txt`, `facilities_properties.txt`, and a full mode-1 walking graph
+  (doors/nodes). A WMATA-style topology generator here could auto-resolve
+  much of the 41-station review queue INCLUDING interchanges (Aquarium's
+  layout reads straight out of it — e.g. its Atlantic-lobby street door is
+  elevator-925-only, answering the field question conservatively), validated
+  against alternate-service-text (the existing answer key) and gated against
+  the existing generated+curated tiers. Same-audit result elsewhere:
+  LIRR/MNR/NYCT GTFS have NO pathways/levels; BART/CTA re-verified none.
+  This is the next big build — see the review-queue/handoff notes.
 - **MBTA joint review pass COMPLETE (2026-07-12): `review-flags.json` is now
   empty.** Every flagged street-alternate and no-guidance elevator was walked
   through with Bryce and resolved into one of four HUMAN-approved lists in

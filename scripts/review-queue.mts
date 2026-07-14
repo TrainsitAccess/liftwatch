@@ -126,7 +126,10 @@ const add = (e: Entry) => entries.set(e.key, e);
     ];
     if (s.stopId === "place-aqucl") ev.push({
       source: "prior session (2026-07-13, topology decoded — see memory/curation todo)",
-      text: "Structure decoded from MBTA guidance: 2 side platforms × 2 lobbies. State St side: 915 street↔lobby, 913 lobby↔Wonderland plat, 914 lobby↔Bowdoin plat. Atlantic side: 925 lobby↔Long Wharf, 924 lobby↔Wonderland, 923 lobby↔Bowdoin. BLOCKED ON ONE FIELD QUESTION: is the Atlantic Ave lobby at street grade (925 only serves Long Wharf plaza) or does street entry require 925? Reading A (925 required, conservative): per direction CNF (915∨925)∧(915∨92x)∧(914/913∨925)∧(914/913∨92x). Reading B: 923/924 alone are complete backup paths.",
+      text: "Structure decoded from MBTA guidance: 2 side platforms × 2 lobbies. State St side: 915 street↔lobby, 913 lobby↔Wonderland plat, 914 lobby↔Bowdoin plat. Atlantic side: 925 lobby↔Long Wharf, 924 lobby↔Wonderland, 923 lobby↔Bowdoin. FIELD QUESTION (was blocking): is the Atlantic Ave lobby at street grade, or does street entry require 925? Reading A (925 required, conservative): per direction CNF (915∨925)∧(915∨92x)∧(914/913∨925)∧(914/913∨92x). Reading B: 923/924 alone are complete backup paths.",
+    }, {
+      source: "MBTA GTFS pathways.txt (2026-07-14 audit — agency's own topology, facility ids match the live API)",
+      text: "READING A SUPPORTED BY MBTA'S OWN DATA: pathway aqucl-000/001 connects node-925-lobby ↔ door-aqucl-atlanticelev (the Atlantic/Waterfront street door) as a mode-5 ELEVATOR pathway (facility 925); the only parallel street↔lobby verticals on that side are escalators (facilities 405/406) and stairs — no ramp found. Confirm with a full step-free graph trace at review time, but the field trip is likely unnecessary.",
     });
     add({ key: `mbta:${s.stopId}`, system: "mbta-boston", stationId: s.stopId, name: s.name,
       status: "pending", priority: prio[s.stopId] ?? 34, reason: s.reason, evidence: ev });
