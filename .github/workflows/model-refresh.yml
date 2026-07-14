@@ -1,0 +1,155 @@
+# Automated model refresh, ALL SYSTEMS — the mechanical half of elevator-
+# notification triage ("fix what it can, park what it can't").
+#
+# FIXES automatically (what a human previously did by hand):
+#   - WMATA: sweep newly-observed UnitNames (archive + live) → regenerate the
+#     chain models from fresh GTFS → new names BIND into their slots; a station
+#     whose observations contradict its GTFS topology AUTO-EXCLUDES.
+#   - CTA: sweep newly-observed alert texts into the identity corpus.
+#   - TfL: mine newly-archived alert text for confirmed step-free alternatives
+#     (tfl:alert-evidence, progressive by design) → regenerate chains to absorb.
+#   - MTA subway: regenerate line-group chains from the live inventory (picks
+#     up newly-ADA elevators automatically; self-checked against MTA's own
+#     declared redundancy flags).
+#   - LIRR/MNR: regenerate simple-station chains (hard ground-truth gate vs the
+#     hand-curated models — the run ABORTS on any semantic disagreement).
+#   - MBTA: regenerate simple-station chains (validated against MBTA's own
+#     alternate-service guidance; contradictions exclude, never ship).
+#   - BART: re-mine archived advisory text for attribution evidence (report
+#     data for the curation queue).
+#
+# PARKS automatically (never guesses):
+#   - Every generator's conservative gate excludes rather than models —
+#     exclusions land in the chains-excluded/review-flags files and surface on
+#     the needs-review board → the human verification-walkthrough backlog.
+#   - Any generator abort or check failure fails the run WITHOUT committing and
+#     sends a high-priority ntfy push ("needs review") instead.
+#
+# Ships ONLY when the ENTIRE cross-system check suite is green, and only when
+# the diff is substantive (pure generatedAt/updatedAt timestamp churn is
+# discarded). A push auto-deploys via Netlify, so fixes go live unattended.
+#
+# ntfy steps are silent no-ops until the NTFY_TOPIC repo secret is set (the
+# topic name is the channel's only access control and the repo is public, so
+# it must never appear in this file). Enable with: gh secret set NTFY_TOPIC
+#
+# Cron caveat: GitHub schedules can fire late or stall (see poll.yml history —
+# that's why live polling moved to Netlify). For a DAILY bookkeeping job that
+# is acceptable; the manual per-system loops in CLAUDE.md work anytime.
+
+name: model-refresh
+
+on:
+  schedule:
+    - cron: "23 10 * * *" # daily ~6:23am ET
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency: model-refresh
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Sweep observed data + mine archived evidence (WMATA, CTA, TfL, BART)
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          WMATA_API_KEY: ${{ secrets.WMATA_API_KEY }}
+        run: |
+          npm run wmata:observed
+          npm run cta:observed
+          npm run tfl:alert-evidence
+          npm run bart:attribution-evidence
+
+      - name: Regenerate WMATA chains from fresh GTFS
+        env:
+          WMATA_API_KEY: ${{ secrets.WMATA_API_KEY }}
+        run: |
+          curl -sf -o /tmp/rail.zip "https://api.wmata.com/gtfs/rail-gtfs-static.zip?api_key=${WMATA_API_KEY}"
+          unzip -oq /tmp/rail.zip -d /tmp/gtfs
+          npx tsx scripts/wmata-pathways.mts /tmp/gtfs "$(pwd)/src/catalog/wmata-data" | tee /tmp/gen-wmata.txt
+
+      - name: Regenerate MTA subway chains (live inventory, self-checked)
+        run: npm run mta:chains
+
+      - name: Regenerate LIRR/MNR chains (ground-truth-gated)
+        run: npm run rail:chains
+
+      - name: Regenerate MBTA chains (agency-guidance-validated)
+        env:
+          MBTA_API_KEY: ${{ secrets.MBTA_API_KEY }}
+        run: npm run mbta:chains
+
+      - name: Regenerate TfL chains (absorb fresh alert evidence)
+        run: npm run tfl:chains
+
+      - name: Full cross-system check suite (nothing ships unless green)
+        run: |
+          npm run typecheck
+          npm run demo:access
+          npm run check:wmata
+          npm run check:cta
+          npm run check:mta
+          npm run check:rail
+          npm run check:rail-chains
+          npm run check:mbta-chains
+          npm run check:tfl
+          npm run check:tfl-chains
+          npm run check:tmb
+
+      - name: Commit + push if the change is substantive
+        id: commit
+        run: |
+          # Ignore pure timestamp churn — if that's ALL that changed, discard.
+          if git diff --quiet -I '"generatedAt"' -I '"updatedAt"'; then
+            git checkout -- .
+            echo "changed=no" >> "$GITHUB_OUTPUT"
+            echo "No substantive model changes — nothing to ship."
+            exit 0
+          fi
+          git config user.name "liftwatch model-refresh"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          stat=$(git diff --cached --stat | tail -1)
+          wmata=$(head -2 /tmp/gen-wmata.txt | tr '\n' ' ')
+          git commit -m "Auto model refresh: sweep, rebind, re-gate (all systems)" \
+                     -m "Automated daily refresh (model-refresh.yml). ${stat}" \
+                     -m "WMATA: ${wmata}" \
+                     -m "Full cross-system check suite green."
+          git pull --rebase origin main
+          git push
+          echo "stat=${stat}" >> "$GITHUB_OUTPUT"
+          echo "changed=yes" >> "$GITHUB_OUTPUT"
+
+      - name: Notify — auto-fix shipped
+        if: success() && steps.commit.outputs.changed == 'yes'
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+        run: |
+          [ -z "$NTFY_TOPIC" ] && exit 0
+          curl -sf -H "Title: LiftWatch: model refresh shipped" -H "Tags: white_check_mark" \
+            -d "Daily refresh committed (${{ steps.commit.outputs.stat }}). Parked items, if any, are in the chains-excluded/review-flags diffs." \
+            "https://ntfy.sh/${NTFY_TOPIC}" || true
+
+      - name: Notify — needs human review
+        if: failure()
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+        run: |
+          [ -z "$NTFY_TOPIC" ] && exit 0
+          curl -sf -H "Title: LiftWatch: model refresh FAILED - needs review" -H "Priority: high" -H "Tags: rotating_light" \
+            -d "A generator gate or check refused to ship — a structural change probably needs human eyes. Nothing was committed. Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+            "https://ntfy.sh/${NTFY_TOPIC}" || true

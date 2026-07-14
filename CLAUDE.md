@@ -328,6 +328,19 @@ parking lot). A station is accessible only if **every** segment is up.
   denominator — the chains are additive display-layer accessibility, NOT a
   fleet claim. Offline: `npm run check:wmata`. Refresh: new-UnitName ntfy push
   → `wmata:observed` + re-run the generator (binds it or auto-excludes).
+  **The refresh loop is AUTOMATED daily FOR ALL SYSTEMS** by
+  `.github/workflows/model-refresh.yml` (2026-07-14): sweeps observed
+  units/evidence (WMATA, CTA, TfL alert-evidence, BART attribution-evidence),
+  regenerates every regenerable model set (WMATA from fresh GTFS, MTA
+  subway, LIRR/MNR ground-truth-gated, MBTA guidance-validated, TfL), runs
+  the FULL cross-system check suite, and commits+pushes ONLY if green and
+  substantive (timestamp-only churn is discarded; Netlify then deploys).
+  Conservative gates park anything unresolvable into
+  chains-excluded/review-flags files → the verification backlog; a generator
+  abort or check failure fails the run WITHOUT committing and (once the
+  NTFY_TOPIC repo secret is set — `gh secret set NTFY_TOPIC`, never hardcode
+  it, the repo is public) sends a high-priority "needs review" push. Manual
+  per-system loops still work anytime.
 - **TfL multi-chain models are GENERATED from graph topology, not hand-typed**
   (2026-07-08). Unlike MTA, TfL has no line-served field — only `FromAreas`/
   `ToAreas` area codes. `npm run tfl:chains` (`scripts/tfl-chains.mjs`) treats
