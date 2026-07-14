@@ -1,0 +1,216 @@
+{
+  "generatedAt": "2026-07-14T22:17:04.129Z",
+  "note": "Pathways-derived models vs the already-trusted tiers (curated + serving-text) — validation report, nothing shipped for these stations.",
+  "results": [
+    {
+      "stationId": "place-alfcl",
+      "name": "Alewife",
+      "tier": "curated",
+      "agrees": false,
+      "detail": "elevator 814: in curated chains but outside generated ones; elevator 815: in curated chains but outside generated ones"
+    },
+    {
+      "stationId": "place-andrw",
+      "name": "Andrew",
+      "tier": "serving-text",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-bmmnl",
+      "name": "Beachmont",
+      "tier": "serving-text",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-brdwy",
+      "name": "Broadway",
+      "tier": "serving-text",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-brntn",
+      "name": "Braintree",
+      "tier": "serving-text",
+      "agrees": false,
+      "detail": "chain count: generated 1, curated 2; elevator 729: in curated chains but outside generated ones; elevator 730: in curated chains but outside generated ones"
+    },
+    {
+      "stationId": "place-ccmnl",
+      "name": "Community College",
+      "tier": "serving-text",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-chmnl",
+      "name": "Charles/MGH",
+      "tier": "serving-text",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-chncl",
+      "name": "Chinatown",
+      "tier": "serving-text",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-cntsq",
+      "name": "Central",
+      "tier": "serving-text",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-davis",
+      "name": "Davis",
+      "tier": "serving-text",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-fldcr",
+      "name": "Fields Corner",
+      "tier": "serving-text",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-gilmn",
+      "name": "Gilman Square",
+      "tier": "curated",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-gover",
+      "name": "Government Center",
+      "tier": "curated",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-grnst",
+      "name": "Green Street",
+      "tier": "serving-text",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-jaksn",
+      "name": "Jackson Square",
+      "tier": "serving-text",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-jfk",
+      "name": "JFK/UMass",
+      "tier": "serving-text",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-kencl",
+      "name": "Kenmore",
+      "tier": "serving-text",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-knncl",
+      "name": "Kendall/MIT",
+      "tier": "serving-text",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-masta",
+      "name": "Massachusetts Avenue",
+      "tier": "serving-text",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-mdftf",
+      "name": "Medford/Tufts",
+      "tier": "serving-text",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-mgngl",
+      "name": "Magoun Square",
+      "tier": "serving-text",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-mlmnl",
+      "name": "Malden Center",
+      "tier": "serving-text",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-mvbcl",
+      "name": "Maverick",
+      "tier": "curated",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-portr",
+      "name": "Porter",
+      "tier": "serving-text",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-prmnl",
+      "name": "Prudential",
+      "tier": "serving-text",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-qnctr",
+      "name": "Quincy Center",
+      "tier": "serving-text",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-rbmnl",
+      "name": "Revere Beach",
+      "tier": "serving-text",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-rcmnl",
+      "name": "Roxbury Crossing",
+      "tier": "serving-text",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-sbmnl",
+      "name": "Stony Brook",
+      "tier": "serving-text",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-smmnl",
+      "name": "Shawmut",
+      "tier": "serving-text",
+      "agrees": true,
+      "detail": "semantics match"
+    }
+  ]
+}

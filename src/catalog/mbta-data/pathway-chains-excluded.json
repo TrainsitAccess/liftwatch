@@ -1,0 +1,60 @@
+{
+  "generatedAt": "2026-07-14T22:17:04.129Z",
+  "note": "Stations the pathways generator refuses to model — pending human review.",
+  "stations": [
+    {
+      "stationId": "place-crtst",
+      "name": "Courthouse",
+      "reason": "guidance-contradiction",
+      "detail": "938: guidance names same-station backup (937,937) but topology derives sole-access"
+    },
+    {
+      "stationId": "place-dwnxg",
+      "name": "Downtown Crossing",
+      "reason": "analysis-anomaly",
+      "detail": "platform 70077 (Ashmont/Braintree) unreachable step-free even with all elevators"
+    },
+    {
+      "stationId": "place-ogmnl",
+      "name": "Oak Grove",
+      "reason": "analysis-anomaly",
+      "detail": "platform WR-0053-S (Commuter Rail - Track 1 (All Trains)) unreachable step-free even with all elevators"
+    },
+    {
+      "stationId": "place-qamnl",
+      "name": "Quincy Adams",
+      "reason": "guidance-contradiction",
+      "detail": "736: guidance names same-station backup (805) but topology derives sole-access"
+    },
+    {
+      "stationId": "place-sstat",
+      "name": "South Station",
+      "reason": "untrackable-elevator",
+      "detail": "mode-5 pathway without facility_id — chain member could never match a live outage"
+    },
+    {
+      "stationId": "place-state",
+      "name": "State",
+      "reason": "guidance-contradiction",
+      "detail": "803: guidance prescribes a ride-a-train detour but topology derives redundancy"
+    },
+    {
+      "stationId": "place-sull",
+      "name": "Sullivan Square",
+      "reason": "guidance-contradiction",
+      "detail": "840: guidance prescribes a ride-a-train detour but topology derives redundancy"
+    },
+    {
+      "stationId": "place-welln",
+      "name": "Wellington",
+      "reason": "guidance-contradiction",
+      "detail": "865: guidance prescribes a ride-a-train detour but topology derives redundancy"
+    },
+    {
+      "stationId": "place-wtcst",
+      "name": "World Trade Center",
+      "reason": "guidance-contradiction",
+      "detail": "936: guidance names same-station backup (935,935) but topology derives sole-access"
+    }
+  ]
+}

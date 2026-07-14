@@ -1,0 +1,1484 @@
+{
+  "generatedAt": "2026-07-14T22:17:04.129Z",
+  "source": "MBTA GTFS pathways.txt (mode-5 facility_id crosswalk; exact step-free reachability, minimal-cut chains)",
+  "note": "REVIEW PROPOSALS, deliberately NOT wired into station-models.ts — interchanges ship only after Bryce's per-station verdict (/liftwatch-station-review presents these as the best guess). Machine gates already passed: answer-key (alternate-service-text) validation, round-trip cut verification, 28/30 cross-tier semantic agreement.",
+  "models": [
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-aqucl",
+      "chainLabel": " (Wonderland)",
+      "segments": [
+        {
+          "id": "cut-1",
+          "label": "Any of elevators 913/914/925",
+          "elevators": [
+            {
+              "externalId": "913",
+              "label": "Aquarium Elevator 913 (Wonderland platform to State Street lobby)"
+            },
+            {
+              "externalId": "914",
+              "label": "Aquarium Elevator 914 (Bowdoin platform to State Street lobby)"
+            },
+            {
+              "externalId": "925",
+              "label": "Aquarium Elevator 925 (Atlantic Avenue lobby to Long Wharf)"
+            }
+          ]
+        },
+        {
+          "id": "cut-2",
+          "label": "Any of elevators 913/923/925",
+          "elevators": [
+            {
+              "externalId": "913",
+              "label": "Aquarium Elevator 913 (Wonderland platform to State Street lobby)"
+            },
+            {
+              "externalId": "923",
+              "label": "Aquarium Elevator 923 (Bowdoin platform to Atlantic Avenue lobby)"
+            },
+            {
+              "externalId": "925",
+              "label": "Aquarium Elevator 925 (Atlantic Avenue lobby to Long Wharf)"
+            }
+          ]
+        },
+        {
+          "id": "cut-3",
+          "label": "Any of elevators 913/924",
+          "elevators": [
+            {
+              "externalId": "913",
+              "label": "Aquarium Elevator 913 (Wonderland platform to State Street lobby)"
+            },
+            {
+              "externalId": "924",
+              "label": "Aquarium Elevator 924 (Wonderland platform to Atlantic Avenue lobby)"
+            }
+          ]
+        },
+        {
+          "id": "cut-4",
+          "label": "Any of elevators 914/915/924",
+          "elevators": [
+            {
+              "externalId": "914",
+              "label": "Aquarium Elevator 914 (Bowdoin platform to State Street lobby)"
+            },
+            {
+              "externalId": "915",
+              "label": "Aquarium Elevator 915 (State Street lobby to street)"
+            },
+            {
+              "externalId": "924",
+              "label": "Aquarium Elevator 924 (Wonderland platform to Atlantic Avenue lobby)"
+            }
+          ]
+        },
+        {
+          "id": "cut-5",
+          "label": "Any of elevators 915/923/924",
+          "elevators": [
+            {
+              "externalId": "915",
+              "label": "Aquarium Elevator 915 (State Street lobby to street)"
+            },
+            {
+              "externalId": "923",
+              "label": "Aquarium Elevator 923 (Bowdoin platform to Atlantic Avenue lobby)"
+            },
+            {
+              "externalId": "924",
+              "label": "Aquarium Elevator 924 (Wonderland platform to Atlantic Avenue lobby)"
+            }
+          ]
+        },
+        {
+          "id": "cut-6",
+          "label": "Any of elevators 915/925",
+          "elevators": [
+            {
+              "externalId": "915",
+              "label": "Aquarium Elevator 915 (State Street lobby to street)"
+            },
+            {
+              "externalId": "925",
+              "label": "Aquarium Elevator 925 (Atlantic Avenue lobby to Long Wharf)"
+            }
+          ]
+        }
+      ],
+      "note": "Any of elevators 913/914/925: 3 elevators — any one keeps this leg open. Any of elevators 913/923/925: 3 elevators — any one keeps this leg open. Any of elevators 913/924: 2 elevators — either one keeps this leg open. Any of elevators 914/915/924: 3 elevators — any one keeps this leg open. Any of elevators 915/923/924: 3 elevators — any one keeps this leg open. Any of elevators 915/925: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route.",
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-aqucl",
+      "chainLabel": " (Bowdoin)",
+      "segments": [
+        {
+          "id": "cut-1",
+          "label": "Any of elevators 913/914/925",
+          "elevators": [
+            {
+              "externalId": "913",
+              "label": "Aquarium Elevator 913 (Wonderland platform to State Street lobby)"
+            },
+            {
+              "externalId": "914",
+              "label": "Aquarium Elevator 914 (Bowdoin platform to State Street lobby)"
+            },
+            {
+              "externalId": "925",
+              "label": "Aquarium Elevator 925 (Atlantic Avenue lobby to Long Wharf)"
+            }
+          ]
+        },
+        {
+          "id": "cut-2",
+          "label": "Any of elevators 913/915/923",
+          "elevators": [
+            {
+              "externalId": "913",
+              "label": "Aquarium Elevator 913 (Wonderland platform to State Street lobby)"
+            },
+            {
+              "externalId": "915",
+              "label": "Aquarium Elevator 915 (State Street lobby to street)"
+            },
+            {
+              "externalId": "923",
+              "label": "Aquarium Elevator 923 (Bowdoin platform to Atlantic Avenue lobby)"
+            }
+          ]
+        },
+        {
+          "id": "cut-3",
+          "label": "Any of elevators 914/923",
+          "elevators": [
+            {
+              "externalId": "914",
+              "label": "Aquarium Elevator 914 (Bowdoin platform to State Street lobby)"
+            },
+            {
+              "externalId": "923",
+              "label": "Aquarium Elevator 923 (Bowdoin platform to Atlantic Avenue lobby)"
+            }
+          ]
+        },
+        {
+          "id": "cut-4",
+          "label": "Any of elevators 914/924/925",
+          "elevators": [
+            {
+              "externalId": "914",
+              "label": "Aquarium Elevator 914 (Bowdoin platform to State Street lobby)"
+            },
+            {
+              "externalId": "924",
+              "label": "Aquarium Elevator 924 (Wonderland platform to Atlantic Avenue lobby)"
+            },
+            {
+              "externalId": "925",
+              "label": "Aquarium Elevator 925 (Atlantic Avenue lobby to Long Wharf)"
+            }
+          ]
+        },
+        {
+          "id": "cut-5",
+          "label": "Any of elevators 915/923/924",
+          "elevators": [
+            {
+              "externalId": "915",
+              "label": "Aquarium Elevator 915 (State Street lobby to street)"
+            },
+            {
+              "externalId": "923",
+              "label": "Aquarium Elevator 923 (Bowdoin platform to Atlantic Avenue lobby)"
+            },
+            {
+              "externalId": "924",
+              "label": "Aquarium Elevator 924 (Wonderland platform to Atlantic Avenue lobby)"
+            }
+          ]
+        },
+        {
+          "id": "cut-6",
+          "label": "Any of elevators 915/925",
+          "elevators": [
+            {
+              "externalId": "915",
+              "label": "Aquarium Elevator 915 (State Street lobby to street)"
+            },
+            {
+              "externalId": "925",
+              "label": "Aquarium Elevator 925 (Atlantic Avenue lobby to Long Wharf)"
+            }
+          ]
+        }
+      ],
+      "note": "Any of elevators 913/914/925: 3 elevators — any one keeps this leg open. Any of elevators 913/915/923: 3 elevators — any one keeps this leg open. Any of elevators 914/923: 2 elevators — either one keeps this leg open. Any of elevators 914/924/925: 3 elevators — any one keeps this leg open. Any of elevators 915/923/924: 3 elevators — any one keeps this leg open. Any of elevators 915/925: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route.",
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-armnl",
+      "chainLabel": " (Copley & West)",
+      "segments": [
+        {
+          "id": "cut-1",
+          "label": "Elevator 962",
+          "elevators": [
+            {
+              "externalId": "962",
+              "label": "Arlington Elevator 962 (Copley & West platform to lobby)"
+            }
+          ]
+        },
+        {
+          "id": "cut-2",
+          "label": "Elevator 964",
+          "elevators": [
+            {
+              "externalId": "964",
+              "label": "Arlington Elevator 964 (Lobby to Boylston Street)"
+            }
+          ]
+        }
+      ],
+      "note": "Elevator 962: one elevator, no backup. Elevator 964: one elevator, no backup. None of these legs has a backup — if any one of these elevators is out of service, this route is not step-free.",
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-armnl",
+      "chainLabel": " (Park Street & North)",
+      "segments": [
+        {
+          "id": "cut-1",
+          "label": "Elevator 963",
+          "elevators": [
+            {
+              "externalId": "963",
+              "label": "Arlington Elevator 963 (Park Street & North platform to lobby)"
+            }
+          ]
+        },
+        {
+          "id": "cut-2",
+          "label": "Elevator 964",
+          "elevators": [
+            {
+              "externalId": "964",
+              "label": "Arlington Elevator 964 (Lobby to Boylston Street)"
+            }
+          ]
+        }
+      ],
+      "note": "Elevator 963: one elevator, no backup. Elevator 964: one elevator, no backup. None of these legs has a backup — if any one of these elevators is out of service, this route is not step-free.",
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-astao",
+      "segments": [
+        {
+          "id": "cut-1",
+          "label": "Any of elevators 716/718",
+          "elevators": [
+            {
+              "externalId": "716",
+              "label": "Assembly Elevator 716 (Foley Street to unpaid lobby)"
+            },
+            {
+              "externalId": "718",
+              "label": "Assembly Elevator 718 (Revolution Drive to unpaid lobby)"
+            }
+          ]
+        },
+        {
+          "id": "cut-2",
+          "label": "Any of elevators 716/719",
+          "elevators": [
+            {
+              "externalId": "716",
+              "label": "Assembly Elevator 716 (Foley Street to unpaid lobby)"
+            },
+            {
+              "externalId": "719",
+              "label": "Assembly Elevator 719 (Platform to Revolution Drive paid lobby)"
+            }
+          ]
+        },
+        {
+          "id": "cut-3",
+          "label": "Any of elevators 717/718",
+          "elevators": [
+            {
+              "externalId": "717",
+              "label": "Assembly Elevator 717 (Platform to Foley Street paid lobby)"
+            },
+            {
+              "externalId": "718",
+              "label": "Assembly Elevator 718 (Revolution Drive to unpaid lobby)"
+            }
+          ]
+        },
+        {
+          "id": "cut-4",
+          "label": "Any of elevators 717/719",
+          "elevators": [
+            {
+              "externalId": "717",
+              "label": "Assembly Elevator 717 (Platform to Foley Street paid lobby)"
+            },
+            {
+              "externalId": "719",
+              "label": "Assembly Elevator 719 (Platform to Revolution Drive paid lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Any of elevators 716/718: 2 elevators — either one keeps this leg open. Any of elevators 716/719: 2 elevators — either one keeps this leg open. Any of elevators 717/718: 2 elevators — either one keeps this leg open. Any of elevators 717/719: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route.",
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-bbsta",
+      "chainLabel": " (Forest Hills / Oak Grove)",
+      "segments": [
+        {
+          "id": "cut-1",
+          "label": "Elevator 853",
+          "elevators": [
+            {
+              "externalId": "853",
+              "label": "Back Bay Elevator 853 (Orange Line platform to lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Elevator 853: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-bbsta",
+      "chainLabel": " (Commuter Rail - Track 5 / Commuter Rail - Track 7)",
+      "segments": [
+        {
+          "id": "cut-1",
+          "label": "Elevator 856",
+          "elevators": [
+            {
+              "externalId": "856",
+              "label": "Back Bay Elevator 856 (Commuter Rail tracks 5 and 7 to lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Elevator 856: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-bbsta",
+      "chainLabel": " (Commuter Rail - Track 1 / Commuter Rail - Track 3)",
+      "segments": [
+        {
+          "id": "cut-1",
+          "label": "Elevator 855",
+          "elevators": [
+            {
+              "externalId": "855",
+              "label": "Back Bay Elevator 855 (Commuter Rail tracks 1 and 3 to lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Elevator 855: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-bbsta",
+      "chainLabel": " (Commuter Rail - Track 2)",
+      "segments": [
+        {
+          "id": "cut-1",
+          "label": "Elevator 854",
+          "elevators": [
+            {
+              "externalId": "854",
+              "label": "Back Bay Elevator 854 (Commuter Rail track 2 to lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Elevator 854: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-coecl",
+      "chainLabel": " (Park Street & North)",
+      "segments": [
+        {
+          "id": "cut-1",
+          "label": "Elevator 976",
+          "elevators": [
+            {
+              "externalId": "976",
+              "label": "Copley Elevator 976 (Park Street & North platform to Boylston Street)"
+            }
+          ]
+        }
+      ],
+      "note": "Elevator 976: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-coecl",
+      "chainLabel": " (Kenmore & West, Heath Street)",
+      "segments": [
+        {
+          "id": "cut-1",
+          "label": "Elevator 977",
+          "elevators": [
+            {
+              "externalId": "977",
+              "label": "Copley Elevator 977 (Kenmore & West, Heath Street platform to Boylston Street)"
+            }
+          ]
+        }
+      ],
+      "note": "Elevator 977: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-forhl",
+      "chainLabel": " (Orange Line / Track 1 / Track 2)",
+      "segments": [
+        {
+          "id": "cut-1",
+          "label": "Any of elevators 724/842",
+          "elevators": [
+            {
+              "externalId": "724",
+              "label": "Forest Hills Elevator 724 (Orange Line platform to Southwest Corridor Park lobby)"
+            },
+            {
+              "externalId": "842",
+              "label": "Forest Hills Elevator 842 (Orange Line platform to main upper lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Any of elevators 724/842: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route.",
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-forhl",
+      "chainLabel": " (Commuter Rail / Commuter Rail - Track 3 / Commuter Rail - Tr)",
+      "segments": [
+        {
+          "id": "cut-1",
+          "label": "Elevator 841",
+          "elevators": [
+            {
+              "externalId": "841",
+              "label": "Forest Hills Elevator 841 (Commuter Rail platform to lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Elevator 841: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-haecl",
+      "chainLabel": " (Forest Hills)",
+      "segments": [
+        {
+          "id": "cut-1",
+          "label": "Any of elevators 903/904/906",
+          "elevators": [
+            {
+              "externalId": "903",
+              "label": "Haymarket Elevator 903 (Oak Grove platform to Congress Street lobby)"
+            },
+            {
+              "externalId": "904",
+              "label": "Haymarket Elevator 904 (Forest Hills platform to Congress Street lobby)"
+            },
+            {
+              "externalId": "906",
+              "label": "Haymarket Elevator 906 (Underpass to Green Line platforms, busway)"
+            }
+          ]
+        },
+        {
+          "id": "cut-2",
+          "label": "Any of elevators 903/904/908",
+          "elevators": [
+            {
+              "externalId": "903",
+              "label": "Haymarket Elevator 903 (Oak Grove platform to Congress Street lobby)"
+            },
+            {
+              "externalId": "904",
+              "label": "Haymarket Elevator 904 (Forest Hills platform to Congress Street lobby)"
+            },
+            {
+              "externalId": "908",
+              "label": "Haymarket Elevator 908 (Green Line lobby to busway, Sudbury Street, New Chardon Street)"
+            }
+          ]
+        },
+        {
+          "id": "cut-3",
+          "label": "Any of elevators 904/905",
+          "elevators": [
+            {
+              "externalId": "904",
+              "label": "Haymarket Elevator 904 (Forest Hills platform to Congress Street lobby)"
+            },
+            {
+              "externalId": "905",
+              "label": "Haymarket Elevator 905 (Underpass to Forest Hills platform)"
+            }
+          ]
+        },
+        {
+          "id": "cut-4",
+          "label": "Any of elevators 904/906/907",
+          "elevators": [
+            {
+              "externalId": "904",
+              "label": "Haymarket Elevator 904 (Forest Hills platform to Congress Street lobby)"
+            },
+            {
+              "externalId": "906",
+              "label": "Haymarket Elevator 906 (Underpass to Green Line platforms, busway)"
+            },
+            {
+              "externalId": "907",
+              "label": "Haymarket Elevator 907 (Underpass to Oak Grove platform)"
+            }
+          ]
+        },
+        {
+          "id": "cut-5",
+          "label": "Any of elevators 904/907/908",
+          "elevators": [
+            {
+              "externalId": "904",
+              "label": "Haymarket Elevator 904 (Forest Hills platform to Congress Street lobby)"
+            },
+            {
+              "externalId": "907",
+              "label": "Haymarket Elevator 907 (Underpass to Oak Grove platform)"
+            },
+            {
+              "externalId": "908",
+              "label": "Haymarket Elevator 908 (Green Line lobby to busway, Sudbury Street, New Chardon Street)"
+            }
+          ]
+        }
+      ],
+      "note": "Any of elevators 903/904/906: 3 elevators — any one keeps this leg open. Any of elevators 903/904/908: 3 elevators — any one keeps this leg open. Any of elevators 904/905: 2 elevators — either one keeps this leg open. Any of elevators 904/906/907: 3 elevators — any one keeps this leg open. Any of elevators 904/907/908: 3 elevators — any one keeps this leg open. No single elevator outage removes step-free access on this route.",
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-haecl",
+      "chainLabel": " (Oak Grove)",
+      "segments": [
+        {
+          "id": "cut-1",
+          "label": "Any of elevators 903/904/906",
+          "elevators": [
+            {
+              "externalId": "903",
+              "label": "Haymarket Elevator 903 (Oak Grove platform to Congress Street lobby)"
+            },
+            {
+              "externalId": "904",
+              "label": "Haymarket Elevator 904 (Forest Hills platform to Congress Street lobby)"
+            },
+            {
+              "externalId": "906",
+              "label": "Haymarket Elevator 906 (Underpass to Green Line platforms, busway)"
+            }
+          ]
+        },
+        {
+          "id": "cut-2",
+          "label": "Any of elevators 903/904/908",
+          "elevators": [
+            {
+              "externalId": "903",
+              "label": "Haymarket Elevator 903 (Oak Grove platform to Congress Street lobby)"
+            },
+            {
+              "externalId": "904",
+              "label": "Haymarket Elevator 904 (Forest Hills platform to Congress Street lobby)"
+            },
+            {
+              "externalId": "908",
+              "label": "Haymarket Elevator 908 (Green Line lobby to busway, Sudbury Street, New Chardon Street)"
+            }
+          ]
+        },
+        {
+          "id": "cut-3",
+          "label": "Any of elevators 903/905/906",
+          "elevators": [
+            {
+              "externalId": "903",
+              "label": "Haymarket Elevator 903 (Oak Grove platform to Congress Street lobby)"
+            },
+            {
+              "externalId": "905",
+              "label": "Haymarket Elevator 905 (Underpass to Forest Hills platform)"
+            },
+            {
+              "externalId": "906",
+              "label": "Haymarket Elevator 906 (Underpass to Green Line platforms, busway)"
+            }
+          ]
+        },
+        {
+          "id": "cut-4",
+          "label": "Any of elevators 903/905/908",
+          "elevators": [
+            {
+              "externalId": "903",
+              "label": "Haymarket Elevator 903 (Oak Grove platform to Congress Street lobby)"
+            },
+            {
+              "externalId": "905",
+              "label": "Haymarket Elevator 905 (Underpass to Forest Hills platform)"
+            },
+            {
+              "externalId": "908",
+              "label": "Haymarket Elevator 908 (Green Line lobby to busway, Sudbury Street, New Chardon Street)"
+            }
+          ]
+        },
+        {
+          "id": "cut-5",
+          "label": "Any of elevators 903/907",
+          "elevators": [
+            {
+              "externalId": "903",
+              "label": "Haymarket Elevator 903 (Oak Grove platform to Congress Street lobby)"
+            },
+            {
+              "externalId": "907",
+              "label": "Haymarket Elevator 907 (Underpass to Oak Grove platform)"
+            }
+          ]
+        }
+      ],
+      "note": "Any of elevators 903/904/906: 3 elevators — any one keeps this leg open. Any of elevators 903/904/908: 3 elevators — any one keeps this leg open. Any of elevators 903/905/906: 3 elevators — any one keeps this leg open. Any of elevators 903/905/908: 3 elevators — any one keeps this leg open. Any of elevators 903/907: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route.",
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-haecl",
+      "chainLabel": " (Copley & West / North Station & North)",
+      "segments": [
+        {
+          "id": "cut-1",
+          "label": "Any of elevators 903/904/908",
+          "elevators": [
+            {
+              "externalId": "903",
+              "label": "Haymarket Elevator 903 (Oak Grove platform to Congress Street lobby)"
+            },
+            {
+              "externalId": "904",
+              "label": "Haymarket Elevator 904 (Forest Hills platform to Congress Street lobby)"
+            },
+            {
+              "externalId": "908",
+              "label": "Haymarket Elevator 908 (Green Line lobby to busway, Sudbury Street, New Chardon Street)"
+            }
+          ]
+        },
+        {
+          "id": "cut-2",
+          "label": "Any of elevators 903/905/908",
+          "elevators": [
+            {
+              "externalId": "903",
+              "label": "Haymarket Elevator 903 (Oak Grove platform to Congress Street lobby)"
+            },
+            {
+              "externalId": "905",
+              "label": "Haymarket Elevator 905 (Underpass to Forest Hills platform)"
+            },
+            {
+              "externalId": "908",
+              "label": "Haymarket Elevator 908 (Green Line lobby to busway, Sudbury Street, New Chardon Street)"
+            }
+          ]
+        },
+        {
+          "id": "cut-3",
+          "label": "Any of elevators 904/907/908",
+          "elevators": [
+            {
+              "externalId": "904",
+              "label": "Haymarket Elevator 904 (Forest Hills platform to Congress Street lobby)"
+            },
+            {
+              "externalId": "907",
+              "label": "Haymarket Elevator 907 (Underpass to Oak Grove platform)"
+            },
+            {
+              "externalId": "908",
+              "label": "Haymarket Elevator 908 (Green Line lobby to busway, Sudbury Street, New Chardon Street)"
+            }
+          ]
+        },
+        {
+          "id": "cut-4",
+          "label": "Any of elevators 905/907/908",
+          "elevators": [
+            {
+              "externalId": "905",
+              "label": "Haymarket Elevator 905 (Underpass to Forest Hills platform)"
+            },
+            {
+              "externalId": "907",
+              "label": "Haymarket Elevator 907 (Underpass to Oak Grove platform)"
+            },
+            {
+              "externalId": "908",
+              "label": "Haymarket Elevator 908 (Green Line lobby to busway, Sudbury Street, New Chardon Street)"
+            }
+          ]
+        },
+        {
+          "id": "cut-5",
+          "label": "Any of elevators 906/908",
+          "elevators": [
+            {
+              "externalId": "906",
+              "label": "Haymarket Elevator 906 (Underpass to Green Line platforms, busway)"
+            },
+            {
+              "externalId": "908",
+              "label": "Haymarket Elevator 908 (Green Line lobby to busway, Sudbury Street, New Chardon Street)"
+            }
+          ]
+        }
+      ],
+      "note": "Any of elevators 903/904/908: 3 elevators — any one keeps this leg open. Any of elevators 903/905/908: 3 elevators — any one keeps this leg open. Any of elevators 904/907/908: 3 elevators — any one keeps this leg open. Any of elevators 905/907/908: 3 elevators — any one keeps this leg open. Any of elevators 906/908: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route.",
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-harsq",
+      "segments": [
+        {
+          "id": "cut-1",
+          "label": "Any of elevators 821/973",
+          "elevators": [
+            {
+              "externalId": "821",
+              "label": "Harvard Elevator 821 (Lobby to Harvard Square)"
+            },
+            {
+              "externalId": "973",
+              "label": "Harvard Elevator 973 (Upper busway to Brattle Square)"
+            }
+          ]
+        }
+      ],
+      "note": "Any of elevators 821/973: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route.",
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-lech",
+      "segments": [
+        {
+          "id": "cut-1",
+          "label": "Any of elevators 762/763/764",
+          "elevators": [
+            {
+              "externalId": "762",
+              "label": "Lechmere Elevator 762 (Platform to North First Street lobby)"
+            },
+            {
+              "externalId": "763",
+              "label": "Lechmere Elevator 763 (Platform to North First Street lobby)"
+            },
+            {
+              "externalId": "764",
+              "label": "Lechmere Elevator 764 (Platform to O'Brien Highway lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Any of elevators 762/763/764: 3 elevators — any one keeps this leg open. No single elevator outage removes step-free access on this route.",
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-north",
+      "chainLabel": " (Lechmere & North)",
+      "segments": [
+        {
+          "id": "cut-1",
+          "label": "Any of elevators 731/732/909/912",
+          "elevators": [
+            {
+              "externalId": "731",
+              "label": "North Station Elevator 731 (Passageway to Causeway Street)"
+            },
+            {
+              "externalId": "732",
+              "label": "North Station Elevator 732 (Passageway to Commuter Rail, TD Garden)"
+            },
+            {
+              "externalId": "909",
+              "label": "North Station Elevator 909 (Orange Line, Green Line lobby to Valenti Way)"
+            },
+            {
+              "externalId": "912",
+              "label": "North Station Elevator 912 (Orange Line, Green Line lobby to Causeway Street)"
+            }
+          ]
+        }
+      ],
+      "note": "Any of elevators 731/732/909/912: 4 elevators — any one keeps this leg open. No single elevator outage removes step-free access on this route.",
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-north",
+      "chainLabel": " (Oak Grove)",
+      "segments": [
+        {
+          "id": "cut-1",
+          "label": "Any of elevators 731/732/909/912",
+          "elevators": [
+            {
+              "externalId": "731",
+              "label": "North Station Elevator 731 (Passageway to Causeway Street)"
+            },
+            {
+              "externalId": "732",
+              "label": "North Station Elevator 732 (Passageway to Commuter Rail, TD Garden)"
+            },
+            {
+              "externalId": "909",
+              "label": "North Station Elevator 909 (Orange Line, Green Line lobby to Valenti Way)"
+            },
+            {
+              "externalId": "912",
+              "label": "North Station Elevator 912 (Orange Line, Green Line lobby to Causeway Street)"
+            }
+          ]
+        },
+        {
+          "id": "cut-2",
+          "label": "Elevator 911",
+          "elevators": [
+            {
+              "externalId": "911",
+              "label": "North Station Elevator 911 (Oak Grove platform to paid lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Any of elevators 731/732/909/912: 4 elevators — any one keeps this leg open. Elevator 911: one elevator, no backup. A leg with a single elevator has no backup — an outage there makes this route not step-free.",
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-north",
+      "chainLabel": " (Copley & West / Forest Hills)",
+      "segments": [
+        {
+          "id": "cut-1",
+          "label": "Any of elevators 731/732/909/912",
+          "elevators": [
+            {
+              "externalId": "731",
+              "label": "North Station Elevator 731 (Passageway to Causeway Street)"
+            },
+            {
+              "externalId": "732",
+              "label": "North Station Elevator 732 (Passageway to Commuter Rail, TD Garden)"
+            },
+            {
+              "externalId": "909",
+              "label": "North Station Elevator 909 (Orange Line, Green Line lobby to Valenti Way)"
+            },
+            {
+              "externalId": "912",
+              "label": "North Station Elevator 912 (Orange Line, Green Line lobby to Causeway Street)"
+            }
+          ]
+        },
+        {
+          "id": "cut-2",
+          "label": "Elevator 910",
+          "elevators": [
+            {
+              "externalId": "910",
+              "label": "North Station Elevator 910 (Lobby to Forest Hills, Copley & West platform)"
+            }
+          ]
+        }
+      ],
+      "note": "Any of elevators 731/732/909/912: 4 elevators — any one keeps this leg open. Elevator 910: one elevator, no backup. A leg with a single elevator has no backup — an outage there makes this route not step-free.",
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-nqncy",
+      "segments": [
+        {
+          "id": "cut-1",
+          "label": "Any of elevators 739/740/897/898/900",
+          "elevators": [
+            {
+              "externalId": "739",
+              "label": "North Quincy Elevator 739 (Pick-up/drop-off area and northern lobby to parking garage)"
+            },
+            {
+              "externalId": "740",
+              "label": "North Quincy Elevator 740 (Pick-up/drop-off area and northern lobby to parking garage)"
+            },
+            {
+              "externalId": "897",
+              "label": "North Quincy Elevator 897 (Hancock Street parking to northern lobby)"
+            },
+            {
+              "externalId": "898",
+              "label": "North Quincy Elevator 898 (Newport Avenue to northern lobby)"
+            },
+            {
+              "externalId": "900",
+              "label": "North Quincy Elevator 900 (Platform to main lobby, busway)"
+            }
+          ]
+        },
+        {
+          "id": "cut-2",
+          "label": "Any of elevators 899/900",
+          "elevators": [
+            {
+              "externalId": "899",
+              "label": "North Quincy Elevator 899 (Platform to northern lobby)"
+            },
+            {
+              "externalId": "900",
+              "label": "North Quincy Elevator 900 (Platform to main lobby, busway)"
+            }
+          ]
+        }
+      ],
+      "note": "Any of elevators 739/740/897/898/900: 5 elevators — any one keeps this leg open. Any of elevators 899/900: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route.",
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-pktrm",
+      "chainLabel": " (Ashmont/Braintree / Alewife)",
+      "segments": [
+        {
+          "id": "cut-1",
+          "label": "Any of elevators 804/812/979",
+          "elevators": [
+            {
+              "externalId": "804",
+              "label": "Park Street Elevator 804 (Government Center & North lobby to Tremont Street, Winter Street)"
+            },
+            {
+              "externalId": "812",
+              "label": "Park Street Elevator 812 (Green Line underpass to Government Center & North platform)"
+            },
+            {
+              "externalId": "979",
+              "label": "Park Street Elevator 979 (Red Line center platform to Copley & West platform)"
+            }
+          ]
+        },
+        {
+          "id": "cut-2",
+          "label": "Any of elevators 804/823/979",
+          "elevators": [
+            {
+              "externalId": "804",
+              "label": "Park Street Elevator 804 (Government Center & North lobby to Tremont Street, Winter Street)"
+            },
+            {
+              "externalId": "823",
+              "label": "Park Street Elevator 823 (Green Line underpass to Copley & West platform)"
+            },
+            {
+              "externalId": "979",
+              "label": "Park Street Elevator 979 (Red Line center platform to Copley & West platform)"
+            }
+          ]
+        },
+        {
+          "id": "cut-3",
+          "label": "Any of elevators 804/978",
+          "elevators": [
+            {
+              "externalId": "804",
+              "label": "Park Street Elevator 804 (Government Center & North lobby to Tremont Street, Winter Street)"
+            },
+            {
+              "externalId": "978",
+              "label": "Park Street Elevator 978 (Copley & West platform to Boston Common)"
+            }
+          ]
+        },
+        {
+          "id": "cut-4",
+          "label": "Any of elevators 808/812/978",
+          "elevators": [
+            {
+              "externalId": "808",
+              "label": "Park Street Elevator 808 (Red Line center platform to Government Center & North platform, Winter Street Concourse)"
+            },
+            {
+              "externalId": "812",
+              "label": "Park Street Elevator 812 (Green Line underpass to Government Center & North platform)"
+            },
+            {
+              "externalId": "978",
+              "label": "Park Street Elevator 978 (Copley & West platform to Boston Common)"
+            }
+          ]
+        },
+        {
+          "id": "cut-5",
+          "label": "Any of elevators 808/823/978",
+          "elevators": [
+            {
+              "externalId": "808",
+              "label": "Park Street Elevator 808 (Red Line center platform to Government Center & North platform, Winter Street Concourse)"
+            },
+            {
+              "externalId": "823",
+              "label": "Park Street Elevator 823 (Green Line underpass to Copley & West platform)"
+            },
+            {
+              "externalId": "978",
+              "label": "Park Street Elevator 978 (Copley & West platform to Boston Common)"
+            }
+          ]
+        },
+        {
+          "id": "cut-6",
+          "label": "Any of elevators 808/979",
+          "elevators": [
+            {
+              "externalId": "808",
+              "label": "Park Street Elevator 808 (Red Line center platform to Government Center & North platform, Winter Street Concourse)"
+            },
+            {
+              "externalId": "979",
+              "label": "Park Street Elevator 979 (Red Line center platform to Copley & West platform)"
+            }
+          ]
+        }
+      ],
+      "note": "Any of elevators 804/812/979: 3 elevators — any one keeps this leg open. Any of elevators 804/823/979: 3 elevators — any one keeps this leg open. Any of elevators 804/978: 2 elevators — either one keeps this leg open. Any of elevators 808/812/978: 3 elevators — any one keeps this leg open. Any of elevators 808/823/978: 3 elevators — any one keeps this leg open. Any of elevators 808/979: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route.",
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-pktrm",
+      "chainLabel": " (Government Center & North / Drop-off Only)",
+      "segments": [
+        {
+          "id": "cut-1",
+          "label": "Any of elevators 804/808/812",
+          "elevators": [
+            {
+              "externalId": "804",
+              "label": "Park Street Elevator 804 (Government Center & North lobby to Tremont Street, Winter Street)"
+            },
+            {
+              "externalId": "808",
+              "label": "Park Street Elevator 808 (Red Line center platform to Government Center & North platform, Winter Street Concourse)"
+            },
+            {
+              "externalId": "812",
+              "label": "Park Street Elevator 812 (Green Line underpass to Government Center & North platform)"
+            }
+          ]
+        },
+        {
+          "id": "cut-2",
+          "label": "Any of elevators 804/808/823",
+          "elevators": [
+            {
+              "externalId": "804",
+              "label": "Park Street Elevator 804 (Government Center & North lobby to Tremont Street, Winter Street)"
+            },
+            {
+              "externalId": "808",
+              "label": "Park Street Elevator 808 (Red Line center platform to Government Center & North platform, Winter Street Concourse)"
+            },
+            {
+              "externalId": "823",
+              "label": "Park Street Elevator 823 (Green Line underpass to Copley & West platform)"
+            }
+          ]
+        },
+        {
+          "id": "cut-3",
+          "label": "Any of elevators 804/812/979",
+          "elevators": [
+            {
+              "externalId": "804",
+              "label": "Park Street Elevator 804 (Government Center & North lobby to Tremont Street, Winter Street)"
+            },
+            {
+              "externalId": "812",
+              "label": "Park Street Elevator 812 (Green Line underpass to Government Center & North platform)"
+            },
+            {
+              "externalId": "979",
+              "label": "Park Street Elevator 979 (Red Line center platform to Copley & West platform)"
+            }
+          ]
+        },
+        {
+          "id": "cut-4",
+          "label": "Any of elevators 804/823/979",
+          "elevators": [
+            {
+              "externalId": "804",
+              "label": "Park Street Elevator 804 (Government Center & North lobby to Tremont Street, Winter Street)"
+            },
+            {
+              "externalId": "823",
+              "label": "Park Street Elevator 823 (Green Line underpass to Copley & West platform)"
+            },
+            {
+              "externalId": "979",
+              "label": "Park Street Elevator 979 (Red Line center platform to Copley & West platform)"
+            }
+          ]
+        },
+        {
+          "id": "cut-5",
+          "label": "Any of elevators 804/978",
+          "elevators": [
+            {
+              "externalId": "804",
+              "label": "Park Street Elevator 804 (Government Center & North lobby to Tremont Street, Winter Street)"
+            },
+            {
+              "externalId": "978",
+              "label": "Park Street Elevator 978 (Copley & West platform to Boston Common)"
+            }
+          ]
+        }
+      ],
+      "note": "Any of elevators 804/808/812: 3 elevators — any one keeps this leg open. Any of elevators 804/808/823: 3 elevators — any one keeps this leg open. Any of elevators 804/812/979: 3 elevators — any one keeps this leg open. Any of elevators 804/823/979: 3 elevators — any one keeps this leg open. Any of elevators 804/978: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route.",
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-pktrm",
+      "chainLabel": " (Boston College / Riverside / Cleveland Circle / Heath Street)",
+      "segments": [
+        {
+          "id": "cut-1",
+          "label": "Any of elevators 804/978",
+          "elevators": [
+            {
+              "externalId": "804",
+              "label": "Park Street Elevator 804 (Government Center & North lobby to Tremont Street, Winter Street)"
+            },
+            {
+              "externalId": "978",
+              "label": "Park Street Elevator 978 (Copley & West platform to Boston Common)"
+            }
+          ]
+        },
+        {
+          "id": "cut-2",
+          "label": "Any of elevators 808/812/978",
+          "elevators": [
+            {
+              "externalId": "808",
+              "label": "Park Street Elevator 808 (Red Line center platform to Government Center & North platform, Winter Street Concourse)"
+            },
+            {
+              "externalId": "812",
+              "label": "Park Street Elevator 812 (Green Line underpass to Government Center & North platform)"
+            },
+            {
+              "externalId": "978",
+              "label": "Park Street Elevator 978 (Copley & West platform to Boston Common)"
+            }
+          ]
+        },
+        {
+          "id": "cut-3",
+          "label": "Any of elevators 808/823/978",
+          "elevators": [
+            {
+              "externalId": "808",
+              "label": "Park Street Elevator 808 (Red Line center platform to Government Center & North platform, Winter Street Concourse)"
+            },
+            {
+              "externalId": "823",
+              "label": "Park Street Elevator 823 (Green Line underpass to Copley & West platform)"
+            },
+            {
+              "externalId": "978",
+              "label": "Park Street Elevator 978 (Copley & West platform to Boston Common)"
+            }
+          ]
+        },
+        {
+          "id": "cut-4",
+          "label": "Any of elevators 812/978/979",
+          "elevators": [
+            {
+              "externalId": "812",
+              "label": "Park Street Elevator 812 (Green Line underpass to Government Center & North platform)"
+            },
+            {
+              "externalId": "978",
+              "label": "Park Street Elevator 978 (Copley & West platform to Boston Common)"
+            },
+            {
+              "externalId": "979",
+              "label": "Park Street Elevator 979 (Red Line center platform to Copley & West platform)"
+            }
+          ]
+        },
+        {
+          "id": "cut-5",
+          "label": "Any of elevators 823/978/979",
+          "elevators": [
+            {
+              "externalId": "823",
+              "label": "Park Street Elevator 823 (Green Line underpass to Copley & West platform)"
+            },
+            {
+              "externalId": "978",
+              "label": "Park Street Elevator 978 (Copley & West platform to Boston Common)"
+            },
+            {
+              "externalId": "979",
+              "label": "Park Street Elevator 979 (Red Line center platform to Copley & West platform)"
+            }
+          ]
+        }
+      ],
+      "note": "Any of elevators 804/978: 2 elevators — either one keeps this leg open. Any of elevators 808/812/978: 3 elevators — any one keeps this leg open. Any of elevators 808/823/978: 3 elevators — any one keeps this leg open. Any of elevators 812/978/979: 3 elevators — any one keeps this leg open. Any of elevators 823/978/979: 3 elevators — any one keeps this leg open. No single elevator outage removes step-free access on this route.",
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-rugg",
+      "chainLabel": " (Forest Hills / Oak Grove)",
+      "segments": [
+        {
+          "id": "cut-1",
+          "label": "Elevator 850",
+          "elevators": [
+            {
+              "externalId": "850",
+              "label": "Ruggles Elevator 850 (Orange Line platform to upper lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Elevator 850: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-rugg",
+      "chainLabel": " (Commuter Rail - Track 1 / Commuter Rail - Track 3)",
+      "segments": [
+        {
+          "id": "cut-1",
+          "label": "Elevator 849",
+          "elevators": [
+            {
+              "externalId": "849",
+              "label": "Ruggles Elevator 849 (Commuter Rail tracks 1 and 3 to lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Elevator 849: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-shmnl",
+      "segments": [
+        {
+          "id": "cut-1",
+          "label": "Elevator 946",
+          "elevators": [
+            {
+              "externalId": "946",
+              "label": "Savin Hill Elevator 946 (Platform to paid lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Elevator 946: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-spmnl",
+      "chainLabel": " (Lechmere & North)",
+      "segments": [
+        {
+          "id": "cut-1",
+          "label": "Elevator 981",
+          "elevators": [
+            {
+              "externalId": "981",
+              "label": "Science Park/West End Elevator 981 (Lechmere & North platform to lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Elevator 981: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-spmnl",
+      "chainLabel": " (Copley & West)",
+      "segments": [
+        {
+          "id": "cut-1",
+          "label": "Elevator 980",
+          "elevators": [
+            {
+              "externalId": "980",
+              "label": "Science Park/West End Elevator 980 (Copley & West platform to lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Elevator 980: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-tumnl",
+      "chainLabel": " (Oak Grove)",
+      "segments": [
+        {
+          "id": "cut-1",
+          "label": "Elevator 857",
+          "elevators": [
+            {
+              "externalId": "857",
+              "label": "Tufts Medical Center Elevator 857 (Lobby to Washington Street)"
+            }
+          ]
+        },
+        {
+          "id": "cut-2",
+          "label": "Elevator 858",
+          "elevators": [
+            {
+              "externalId": "858",
+              "label": "Tufts Medical Center Elevator 858 (Oak Grove platform to Washington Street lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Elevator 857: one elevator, no backup. Elevator 858: one elevator, no backup. None of these legs has a backup — if any one of these elevators is out of service, this route is not step-free.",
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-tumnl",
+      "chainLabel": " (Forest Hills)",
+      "segments": [
+        {
+          "id": "cut-1",
+          "label": "Elevator 857",
+          "elevators": [
+            {
+              "externalId": "857",
+              "label": "Tufts Medical Center Elevator 857 (Lobby to Washington Street)"
+            }
+          ]
+        },
+        {
+          "id": "cut-2",
+          "label": "Elevator 859",
+          "elevators": [
+            {
+              "externalId": "859",
+              "label": "Tufts Medical Center Elevator 859 (Forest Hills platform to Washington Street lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Elevator 857: one elevator, no backup. Elevator 859: one elevator, no backup. None of these legs has a backup — if any one of these elevators is out of service, this route is not step-free.",
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-wlsta",
+      "segments": [
+        {
+          "id": "cut-1",
+          "label": "Any of elevators 733/734",
+          "elevators": [
+            {
+              "externalId": "733",
+              "label": "Wollaston Elevator 733 (Parking lot lobby to pedestrian bridge)"
+            },
+            {
+              "externalId": "734",
+              "label": "Wollaston Elevator 734 (Newport Ave lobby to platform)"
+            }
+          ]
+        },
+        {
+          "id": "cut-2",
+          "label": "Any of elevators 734/735",
+          "elevators": [
+            {
+              "externalId": "734",
+              "label": "Wollaston Elevator 734 (Newport Ave lobby to platform)"
+            },
+            {
+              "externalId": "735",
+              "label": "Wollaston Elevator 735 (Platform to pedestrian bridge)"
+            }
+          ]
+        }
+      ],
+      "note": "Any of elevators 733/734: 2 elevators — either one keeps this leg open. Any of elevators 734/735: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route.",
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+    }
+  ]
+}

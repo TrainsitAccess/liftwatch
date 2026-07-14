@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-14T22:01:42.074Z",
+ "updatedAt": "2026-07-14T22:17:04.756Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -70,6 +70,10 @@
     {
      "source": "MBTA GTFS pathways.txt (2026-07-14 audit — agency's own topology, facility ids match the live API)",
      "text": "READING A SUPPORTED BY MBTA'S OWN DATA: pathway aqucl-000/001 connects node-925-lobby ↔ door-aqucl-atlanticelev (the Atlantic/Waterfront street door) as a mode-5 ELEVATOR pathway (facility 925); the only parallel street↔lobby verticals on that side are escalators (facilities 405/406) and stairs — no ramp found. Confirm with a full step-free graph trace at review time, but the field trip is likely unnecessary."
+    },
+    {
+     "source": "GTFS-pathways generator PROPOSAL (gate-validated best guess — approve/adjust to ship)",
+     "text": "Segments are minimal cuts (AND of ORs), round-trip-verified against the agency's own walking graph, answer-key-validated:\n(Wonderland): 913∨914∨925  AND  913∨923∨925  AND  913∨924  AND  914∨915∨924  AND  915∨923∨924  AND  915∨925\n(Bowdoin): 913∨914∨925  AND  913∨915∨923  AND  914∨923  AND  914∨924∨925  AND  915∨923∨924  AND  915∨925"
     }
    ]
   },
@@ -133,6 +137,10 @@
     {
      "source": "MBTA alternate-service guidance",
      "text": "979: To exit, use Park Street Elevator 808 located at the end of the Red Line center platform to access the Winter St concourse. At the Winter St concourse, use Park Street Elevator 804 to access Tremont St. To board the Red Line, use Park Street Elevator 804 located at the corner of Tremont St and Winter St to access the Winter St concourse. At the Winter St concourse, use Park Street Elevator 808 to access the Red Line center platform."
+    },
+    {
+     "source": "GTFS-pathways generator PROPOSAL (gate-validated best guess — approve/adjust to ship)",
+     "text": "Segments are minimal cuts (AND of ORs), round-trip-verified against the agency's own walking graph, answer-key-validated:\n(Ashmont/Braintree / Alewife): 804∨812∨979  AND  804∨823∨979  AND  804∨978  AND  808∨812∨978  AND  808∨823∨978  AND  808∨979\n(Government Center & North / Drop-off Only): 804∨808∨812  AND  804∨808∨823  AND  804∨812∨979  AND  804∨823∨979  AND  804∨978\n(Boston College / Riverside / Cleveland Circle / Heath Street): 804∨978  AND  808∨812∨978  AND  808∨823∨978  AND  812∨978∨979  AND  823∨978∨979"
     }
    ]
   },
@@ -691,6 +699,10 @@
     {
      "source": "MBTA alternate-service guidance",
      "text": "908: To exit the Green Line, take Haymarket Elevator 906 to the Orange Line underpass, then proceed to Haymarket Elevator 905 to access the Forest Hills platform. At the Forest Hills platform, use Haymarket Elevator 904 for access the Congress St lobby. To board the Green Line, travel to the intersection of New Sudbury St and Congress St, and turn left on Congress St. Proceed on Congress St to the Congress St lobby and use Haymarket Elevator 903 to access the Oak Groves platform. At the Oak Grove platform, proceed to the end of platform and take Haymarket Elevator 907 to the Orange Line underpass, then proceed to the end of the hallway and use Haymarket Elevator 906 to access the Green Line platform. To board or exit the Orange Line, use Elevators 903 (Oak Grove platform) or 904 (Forest Hills platform) to access the Congress St lobby."
+    },
+    {
+     "source": "GTFS-pathways generator PROPOSAL (gate-validated best guess — approve/adjust to ship)",
+     "text": "Segments are minimal cuts (AND of ORs), round-trip-verified against the agency's own walking graph, answer-key-validated:\n(Forest Hills): 903∨904∨906  AND  903∨904∨908  AND  904∨905  AND  904∨906∨907  AND  904∨907∨908\n(Oak Grove): 903∨904∨906  AND  903∨904∨908  AND  903∨905∨906  AND  903∨905∨908  AND  903∨907\n(Copley & West / North Station & North): 903∨904∨908  AND  903∨905∨908  AND  904∨907∨908  AND  905∨907∨908  AND  906∨908"
     }
    ]
   },
@@ -754,6 +766,10 @@
     {
      "source": "MBTA alternate-service guidance",
      "text": "912: To exit, proceed up the passageway (to TD Garden) and use North Station Elevator 731 to access Causeway St. Alternatively, pass through the fare gates and walk the full length of the Green Line platform to reach the opposite lobby at Valenti Way. At this lobby, use North Station Elevator 909 (lobby to Valenti Way) to reach the street level. To board, cross Causeway St and use North Station Elevator 731 to access the passageway and lobby. Alternatively, enter the main TD Garden entrance, turn right and use North Station Elevator 732 to access the passageway."
+    },
+    {
+     "source": "GTFS-pathways generator PROPOSAL (gate-validated best guess — approve/adjust to ship)",
+     "text": "Segments are minimal cuts (AND of ORs), round-trip-verified against the agency's own walking graph, answer-key-validated:\n(Lechmere & North): 731∨732∨909∨912\n(Oak Grove): 731∨732∨909∨912  AND  911\n(Copley & West / Forest Hills): 731∨732∨909∨912  AND  910"
     }
    ]
   },
@@ -841,6 +857,10 @@
     {
      "source": "MBTA alternate-service guidance",
      "text": "949: To exit, use South Station Elevator 926 located on opposite side of the lobby, to the left of the subway monitoring office. Alternatively, travel up the ramp towards the Commuter Rail Concourse, and at the base of the escalator, turn left and continue down the hallway. At the end of the hallway, use South Station Elevator 6476 to access the Commuter Rail Concourse. To board, cross Atlantic Ave towards the South Station main entrance and Elevator 926 to access the subway lobby.  Alternatively, enter the South Station Commuter Rail Concourse and use Elevator 6476 located to the left of the information desk."
+    },
+    {
+     "source": "GTFS-pathways generator (refused to model)",
+     "text": "untrackable-elevator: mode-5 pathway without facility_id — chain member could never match a live outage"
     }
    ]
   },
@@ -896,6 +916,10 @@
     {
      "source": "MBTA alternate-service guidance",
      "text": "975: To exit, proceed to the end of the platform (follow signs for Orange Line and Government Center/Bowdoin) and use State Elevator 967 or 802 to access the Orange Line Oak Grove platform. At the Oak Grove platform, turn right, travel up the nearby ramp to the Blue Line Bowdoin platform, then proceed to the 60 State St lobby and use State Elevator 974. To board, cross State St, then proceed to the entrance at 60 State St and use State Elevator 974 to access the Bowdoin platform. At the Bowdoin platform, turn right and proceed down the ramp to the Oak Grove platform. At the Oak Grove platform, turn left, then use State Elevator 967 or 802 to access the Wonderland platform."
+    },
+    {
+     "source": "GTFS-pathways generator (refused to model)",
+     "text": "guidance-contradiction: 803: guidance prescribes a ride-a-train detour but topology derives redundancy"
     }
    ]
   },
@@ -943,6 +967,10 @@
     {
      "source": "MBTA alternate-service guidance",
      "text": "719: To exit, proceed to the north end of the platform and use Assembly Elevator 717, then use Assembly Elevator 716 to access Foley St. To board, travel to the Foley St entrance and use Assembly Elevator 716, then use Assembly Elevator 717 to access the platform."
+    },
+    {
+     "source": "GTFS-pathways generator PROPOSAL (gate-validated best guess — approve/adjust to ship)",
+     "text": "Segments are minimal cuts (AND of ORs), round-trip-verified against the agency's own walking graph, answer-key-validated:\n(single chain): 716∨718  AND  716∨719  AND  717∨718  AND  717∨719"
     }
    ]
   },
@@ -982,6 +1010,10 @@
     {
      "source": "MBTA alternate-service guidance",
      "text": "764: To exit, use Lechmere Elevator 762 or Elevator 763 located at the opposite end of the platform to access North First St. To board, travel to the North First St entrance and use Lechmere Elevator 762 or Elevator 763."
+    },
+    {
+     "source": "GTFS-pathways generator PROPOSAL (gate-validated best guess — approve/adjust to ship)",
+     "text": "Segments are minimal cuts (AND of ORs), round-trip-verified against the agency's own walking graph, answer-key-validated:\n(single chain): 762∨763∨764"
     }
    ]
   },
@@ -1021,6 +1053,10 @@
     {
      "source": "MBTA alternate-service guidance",
      "text": "735: To exit, use Wollaston Elevator 734 to access the Newport Ave lobby. At the lobby, proceed up the passageway ramp to the parking lot lobby. To board, proceed down the passageway ramp to the Newport Ave lobby and use Wollaston Elevator 734 to access the platform."
+    },
+    {
+     "source": "GTFS-pathways generator PROPOSAL (gate-validated best guess — approve/adjust to ship)",
+     "text": "Segments are minimal cuts (AND of ORs), round-trip-verified against the agency's own walking graph, answer-key-validated:\n(single chain): 733∨734  AND  734∨735"
     }
    ]
   },
@@ -1052,6 +1088,10 @@
     {
      "source": "MBTA alternate-service guidance",
      "text": "973: To exit, use Harvard Elevator 821 located in the main lobby. To board, use Harvard Elevator 821 located at the corner of JFK St, Brattle St and Mass Ave (Harvard Sq)."
+    },
+    {
+     "source": "GTFS-pathways generator PROPOSAL (gate-validated best guess — approve/adjust to ship)",
+     "text": "Segments are minimal cuts (AND of ORs), round-trip-verified against the agency's own walking graph, answer-key-validated:\n(single chain): 821∨973"
     }
    ]
   },
@@ -1083,6 +1123,10 @@
     {
      "source": "MBTA alternate-service guidance",
      "text": "865: To exit when traveling on a Forest Hills-bound train, exit onto the center platform and wait for an Oak Grove train to arrive. When the train arrives, cross through the train over to the opposite platform and use Wellington Elevator 864. To exit the train when traveling on an Oak Grove-bound train, exit the right side of the train onto the Oak Grove platform and use Wellington Elevator 864. To board a Forest Hills-bound train, use Wellington Elevator 864 to access the Oak Grove platform, then wait for an Oak Grove-bound train to arrive. When the train arrives, cross through the train over to the center platform."
+    },
+    {
+     "source": "GTFS-pathways generator (refused to model)",
+     "text": "guidance-contradiction: 865: guidance prescribes a ride-a-train detour but topology derives redundancy"
     }
    ]
   },
@@ -2018,6 +2062,10 @@
     {
      "source": "MBTA alternate-service guidance",
      "text": "964: A shuttle bus will be available to transport customers between Arlington and Copley. To exit, exit the train at Copley and find station personnel or use a station call box to request the shuttle bus to Arlington. To board, find station personnel or use a station call box at Arlington to request the shuttle bus to Copley."
+    },
+    {
+     "source": "GTFS-pathways generator PROPOSAL (gate-validated best guess — approve/adjust to ship)",
+     "text": "Segments are minimal cuts (AND of ORs), round-trip-verified against the agency's own walking graph, answer-key-validated:\n(Copley & West): 962  AND  964\n(Park Street & North): 963  AND  964"
     }
    ]
   },
@@ -2104,6 +2152,10 @@
     {
      "source": "MBTA alternate-service guidance",
      "text": "856: To exit, exit the train at Ruggles or Forest Hills, then take an Oak Grove-bound train to Back Bay and use Back Bay Elevator 853. To board the Commuter Rail, use Back Bay Elevator 853 to access the Orange Line platform, then take a Forest Hills-bound train to Ruggles or Forest Hills and transfer to the Commuter Rail. Alternatively, board or exit Commuter Rail trains at South Station. Please see station personnel or a train conductor for assistance. In addition, check the Commuter Rail train schedules for train arrival/departure times at Ruggles and Forest Hills by visiting mbta.com/schedules."
+    },
+    {
+     "source": "GTFS-pathways generator PROPOSAL (gate-validated best guess — approve/adjust to ship)",
+     "text": "Segments are minimal cuts (AND of ORs), round-trip-verified against the agency's own walking graph, answer-key-validated:\n(Forest Hills / Oak Grove): 853\n(Commuter Rail - Track 5 / Commuter Rail - Track 7): 856\n(Commuter Rail - Track 1 / Commuter Rail - Track 3): 855\n(Commuter Rail - Track 2): 854"
     }
    ]
   },
@@ -2135,6 +2187,10 @@
     {
      "source": "MBTA alternate-service guidance",
      "text": "977: To exit a Boston College, Cleveland Circle or Riverside-bound train, exit the train at Kenmore and proceed to the eastbound platform, then take an eastbound train to Copley and use Copley Elevator 976. To exit a Heath Street-bound train, exit the train at Prudential and proceed to the eastbound platform, then take an eastbound train to Copley and use Copley Elevator 976. To board, cross Boylston St and use Copley Elevator 976 to access the eastbound platform.  Take a eastbound train to Arlington, then proceed to the westbound platform and transfer to a westbound train."
+    },
+    {
+     "source": "GTFS-pathways generator PROPOSAL (gate-validated best guess — approve/adjust to ship)",
+     "text": "Segments are minimal cuts (AND of ORs), round-trip-verified against the agency's own walking graph, answer-key-validated:\n(Park Street & North): 976\n(Kenmore & West, Heath Street): 977"
     }
    ]
   },
@@ -2182,6 +2238,10 @@
     {
      "source": "MBTA alternate-service guidance",
      "text": "940: To exit, use Courthouse Elevator 939 located at the opposite side of the lobby. To board, cross Seaport Blvd at Fan Pier Blvd and use Courthouse Elevator 939."
+    },
+    {
+     "source": "GTFS-pathways generator (refused to model)",
+     "text": "guidance-contradiction: 938: guidance names same-station backup (937,937) but topology derives sole-access"
     }
    ]
   },
@@ -2245,6 +2305,10 @@
     {
      "source": "MBTA alternate-service guidance",
      "text": "999: Please use nearby Downtown Crossing Elevator 998."
+    },
+    {
+     "source": "GTFS-pathways generator (refused to model)",
+     "text": "analysis-anomaly: platform 70077 (Ashmont/Braintree) unreachable step-free even with all elevators"
     }
    ]
   },
@@ -2354,6 +2418,10 @@
     {
      "source": "MBTA alternate-service guidance",
      "text": "843: To exit, use the Arborway exit, turn right and travel across the plaza towards Hyde Park Ave. At Hyde Park Ave, turn right onto the pathway that leads to the Lower Busway. To board, exit the busway, turn left onto Hyde Park Ave and travel up the ramp towards Arborway. At Arborway, turn left and proceed across the plaza to the station entrance. Please find station personnel or use a station call box or for assistance navigating between the lobby and lower busway."
+    },
+    {
+     "source": "GTFS-pathways generator PROPOSAL (gate-validated best guess — approve/adjust to ship)",
+     "text": "Segments are minimal cuts (AND of ORs), round-trip-verified against the agency's own walking graph, answer-key-validated:\n(Orange Line / Track 1 / Track 2): 724∨842\n(Commuter Rail / Commuter Rail - Track 3 / Commuter Rail - Tr): 841"
     }
    ]
   },
@@ -2634,6 +2702,10 @@
     {
      "source": "MBTA alternate-service guidance",
      "text": "900: If exiting, use North Quincy Elevator 899 to the lobby and North Quincy Elevator 897 (lobby to Hancock Street). If boarding, travel across the parking lot to the north lobby."
+    },
+    {
+     "source": "GTFS-pathways generator PROPOSAL (gate-validated best guess — approve/adjust to ship)",
+     "text": "Segments are minimal cuts (AND of ORs), round-trip-verified against the agency's own walking graph, answer-key-validated:\n(single chain): 739∨740∨897∨898∨900  AND  899∨900"
     }
    ]
   },
@@ -2681,6 +2753,10 @@
     {
      "source": "MBTA alternate-service guidance",
      "text": "746: Please use nearby Oak Grove Elevator 743."
+    },
+    {
+     "source": "GTFS-pathways generator (refused to model)",
+     "text": "analysis-anomaly: platform WR-0053-S (Commuter Rail - Track 1 (All Trains)) unreachable step-free even with all elevators"
     }
    ]
   },
@@ -2783,6 +2859,10 @@
     {
      "source": "MBTA alternate-service guidance",
      "text": "851: A shuttle bus will be available to transport customers between Forsyth St entrance and the Ruggles upper busway (lobby). Please see station personnel or use a station call box to request the shuttle bus. Alternatively, upon request, assistance navigating between the Forsyth St entrance and the Ruggles upper busway can be provided."
+    },
+    {
+     "source": "GTFS-pathways generator PROPOSAL (gate-validated best guess — approve/adjust to ship)",
+     "text": "Segments are minimal cuts (AND of ORs), round-trip-verified against the agency's own walking graph, answer-key-validated:\n(Forest Hills / Oak Grove): 850\n(Commuter Rail - Track 1 / Commuter Rail - Track 3): 849"
     }
    ]
   },
@@ -2814,6 +2894,10 @@
     {
      "source": "MBTA alternate-service guidance",
      "text": "947: To exit, use the main station entrance at Savin Hill Ave. To board, exit the parking lot, turn right and travel up South Sydney St. At Savin Hill Ave, turn right, and travel a short distance to the Savin Hill main entrance. Please see station personnel or use a station call box if you require assistance."
+    },
+    {
+     "source": "GTFS-pathways generator PROPOSAL (gate-validated best guess — approve/adjust to ship)",
+     "text": "Segments are minimal cuts (AND of ORs), round-trip-verified against the agency's own walking graph, answer-key-validated:\n(single chain): 946"
     }
    ]
   },
@@ -2845,6 +2929,10 @@
     {
      "source": "MBTA alternate-service guidance",
      "text": "981: Science Park Elevator 981 (street to Lechmere & North platform) is out of service. Customers desiring to enter the station for Lechmere & North service must use the Copley & West elevator to North Station and transfer to Lechmere & North service to Lechmere. Customers desiring to exit at Science Park must continue to Lechmere and transfer to Copley & West service back to Science Park. "
+    },
+    {
+     "source": "GTFS-pathways generator PROPOSAL (gate-validated best guess — approve/adjust to ship)",
+     "text": "Segments are minimal cuts (AND of ORs), round-trip-verified against the agency's own walking graph, answer-key-validated:\n(Lechmere & North): 981\n(Copley & West): 980"
     }
    ]
   },
@@ -2876,6 +2964,10 @@
     {
      "source": "MBTA alternate-service guidance",
      "text": "881: To exit, exit the left side of the train onto the center platform and use Sullivan Elevator 840. To board, use Sullivan Elevator 840 to access the center platform."
+    },
+    {
+     "source": "GTFS-pathways generator (refused to model)",
+     "text": "guidance-contradiction: 840: guidance prescribes a ride-a-train detour but topology derives redundancy"
     }
    ]
   },
@@ -2915,6 +3007,10 @@
     {
      "source": "MBTA alternate-service guidance",
      "text": "859: A shuttle bus will be available to transport customers between Tufts Medical Center and Back Bay. To exit, exit the train at Back Bay and find station personnel or use a station call box to request the shuttle bus to Tufts Medical Center. To board, find station personnel or use a station call box at Tufts Medical Center to request the shuttle bus to Back Bay. Alternatively, cross Washington St, then take a Silver Line SL4 or SL5 bus to Washington St and Essex St (Chinatown Station)."
+    },
+    {
+     "source": "GTFS-pathways generator PROPOSAL (gate-validated best guess — approve/adjust to ship)",
+     "text": "Segments are minimal cuts (AND of ORs), round-trip-verified against the agency's own walking graph, answer-key-validated:\n(Oak Grove): 857  AND  858\n(Forest Hills): 857  AND  859"
     }
    ]
   },

@@ -260,19 +260,28 @@ parking lot). A station is accessible only if **every** segment is up.
   units keep single_elevator/assumed. Offline: `npm run check:mbta-chains`
   (full-feed fixture reproduction + Fields Corner detour + Wellington
   exclusion regressions).
-- **MBTA GTFS pathways DISCOVERED, build pending (2026-07-14 audit)**: MBTA's
-  GTFS (cdn.mbta.com/MBTA_GTFS.zip) carries `pathways.txt` (480 mode-5
-  elevator pathways with a REAL `facility_id` column matching the live
-  facilities API/our unit ids — the direct crosswalk WMATA never had),
-  `levels.txt`, `facilities_properties.txt`, and a full mode-1 walking graph
-  (doors/nodes). A WMATA-style topology generator here could auto-resolve
-  much of the 41-station review queue INCLUDING interchanges (Aquarium's
-  layout reads straight out of it — e.g. its Atlantic-lobby street door is
-  elevator-925-only, answering the field question conservatively), validated
-  against alternate-service-text (the existing answer key) and gated against
-  the existing generated+curated tiers. Same-audit result elsewhere:
-  LIRR/MNR/NYCT GTFS have NO pathways/levels; BART/CTA re-verified none.
-  This is the next big build — see the review-queue/handoff notes.
+- **MBTA GTFS pathways BUILT as REVIEW PROPOSALS (2026-07-14)**: MBTA's GTFS
+  (cdn.mbta.com/MBTA_GTFS.zip) carries `pathways.txt` — 480 mode-5 elevator
+  pathways with a REAL `facility_id` matching the live API (the direct
+  crosswalk WMATA never had) plus a full door/node walking graph.
+  `scripts/mbta-pathways.mts` computes EXACT step-free reachability per
+  boarding platform (antichain fixpoint → minimal elevator-sets), encodes
+  chains as MINIMAL CUTS (lossless AND-of-ORs, round-trip-verified over every
+  elevator subset), labels chains with real platform names, and gates on the
+  alternate-service-text answer key (contradiction → excluded; Wellington
+  lands there, matching its historical mismatch). Cross-check: 28/30
+  already-trusted tier stations reproduced semantically (only
+  Alewife/Braintree differ — extra garage elevators; walkthrough items).
+  Output `mbta-data/pathway-chains.json` = 17 stations / 33 chains covering
+  the interchange backlog (Aquarium, Park St, North Station, Haymarket,
+  Harvard, Wollaston, Assembly, Lechmere…) — **deliberately NOT wired into
+  station-models.ts**: interchanges ship one at a time via Bryce's
+  /liftwatch-station-review verdicts (the proposals are the queue's best
+  guesses). South Station refused (facility-less elevator pathway =
+  untrackable member = would under-warn). `npm run mbta:pathways -- <dir>` +
+  `npm run check:mbta-pathways`; regenerated daily by model-refresh.yml.
+  Same-audit result elsewhere: LIRR/MNR/NYCT GTFS have NO pathways/levels;
+  BART/CTA re-verified none.
 - **MBTA joint review pass COMPLETE (2026-07-12): `review-flags.json` is now
   empty.** Every flagged street-alternate and no-guidance elevator was walked
   through with Bryce and resolved into one of four HUMAN-approved lists in

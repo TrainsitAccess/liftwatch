@@ -54,7 +54,9 @@
     "cta:observed": "tsx scripts/cta-observed.mts",
     "check:cta": "tsx src/checks/cta-check.ts",
     "review:queue": "tsx scripts/review-queue.mts",
-    "review:status": "tsx scripts/review-queue.mts --status"
+    "review:status": "tsx scripts/review-queue.mts --status",
+    "mbta:pathways": "tsx scripts/mbta-pathways.mts",
+    "check:mbta-pathways": "tsx src/checks/mbta-pathways-check.ts"
   },
   "dependencies": {
     "@netlify/blobs": "^10.7.9",

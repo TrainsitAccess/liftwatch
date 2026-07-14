@@ -93,6 +93,15 @@ jobs:
           MBTA_API_KEY: ${{ secrets.MBTA_API_KEY }}
         run: npm run mbta:chains
 
+      - name: Regenerate MBTA pathway PROPOSALS (review best-guesses, never auto-shipped)
+        run: |
+          curl -sfL -o /tmp/mbta_gtfs.zip "https://cdn.mbta.com/MBTA_GTFS.zip"
+          unzip -oq /tmp/mbta_gtfs.zip pathways.txt stops.txt facilities.txt levels.txt -d /tmp/mbta_gtfs
+          npm run mbta:pathways -- /tmp/mbta_gtfs
+
+      - name: Refresh the station-review queue (evidence + auto-resolved drops)
+        run: npm run review:queue
+
       - name: Regenerate TfL chains (absorb fresh alert evidence)
         run: npm run tfl:chains
 
@@ -106,6 +115,7 @@ jobs:
           npm run check:rail
           npm run check:rail-chains
           npm run check:mbta-chains
+          npm run check:mbta-pathways
           npm run check:tfl
           npm run check:tfl-chains
           npm run check:tmb

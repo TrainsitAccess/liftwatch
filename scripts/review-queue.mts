@@ -115,6 +115,20 @@ const add = (e: Entry) => entries.set(e.key, e);
     stopId: string; name: string; reason: string; detail: string;
     units: { id: string; longName: string; altText?: string }[];
   }[];
+  // Machine-derived proposals from the GTFS pathways generator (2026-07-14) —
+  // gate-validated but deliberately unshipped: they are the reviewer's BEST
+  // GUESS, and go live only on Bryce's per-station verdict.
+  let pathwayProposals = new Map<string, string>();
+  let pathwayExcluded = new Map<string, string>();
+  try {
+    const pc = read("src/catalog/mbta-data/pathway-chains.json") as { models: { stationExternalId: string; chainLabel?: string; segments: { elevators: { externalId: string }[] }[] }[] };
+    for (const m of pc.models) {
+      const line = `${(m.chainLabel ?? "").trim() || "(single chain)"}: ${m.segments.map((s) => s.elevators.map((e) => e.externalId).join("∨")).join("  AND  ")}`;
+      pathwayProposals.set(m.stationExternalId, [pathwayProposals.get(m.stationExternalId), line].filter(Boolean).join("\n"));
+    }
+    const px = read("src/catalog/mbta-data/pathway-chains-excluded.json") as { stations: { stationId: string; reason: string; detail: string }[] };
+    for (const s of px.stations) pathwayExcluded.set(s.stationId, `${s.reason}: ${s.detail}`);
+  } catch { /* generator not run yet */ }
   const prio: Record<string, number> = { "place-aqucl": 5, "place-pktrm": 8, "place-sstat": 24, "place-north": 24, "place-state": 24, "place-haecl": 24, "place-astao": 26, "place-lech": 26, "place-wlsta": 26, "place-harsq": 28, "place-welln": 28 };
   for (const s of excluded) {
     const ev: Evidence[] = [
@@ -131,8 +145,17 @@ const add = (e: Entry) => entries.set(e.key, e);
       source: "MBTA GTFS pathways.txt (2026-07-14 audit — agency's own topology, facility ids match the live API)",
       text: "READING A SUPPORTED BY MBTA'S OWN DATA: pathway aqucl-000/001 connects node-925-lobby ↔ door-aqucl-atlanticelev (the Atlantic/Waterfront street door) as a mode-5 ELEVATOR pathway (facility 925); the only parallel street↔lobby verticals on that side are escalators (facilities 405/406) and stairs — no ramp found. Confirm with a full step-free graph trace at review time, but the field trip is likely unnecessary.",
     });
+    if (pathwayProposals.has(s.stopId)) ev.push({
+      source: "GTFS-pathways generator PROPOSAL (gate-validated best guess — approve/adjust to ship)",
+      text: `Segments are minimal cuts (AND of ORs), round-trip-verified against the agency's own walking graph, answer-key-validated:\n${pathwayProposals.get(s.stopId)!}`,
+    });
+    if (pathwayExcluded.has(s.stopId)) ev.push({
+      source: "GTFS-pathways generator (refused to model)",
+      text: pathwayExcluded.get(s.stopId)!,
+    });
     add({ key: `mbta:${s.stopId}`, system: "mbta-boston", stationId: s.stopId, name: s.name,
-      status: "pending", priority: prio[s.stopId] ?? 34, reason: s.reason, evidence: ev });
+      // pathway-proposal stations review FAST (best guess ready) — bump them up
+      status: "pending", priority: pathwayProposals.has(s.stopId) ? Math.min(prio[s.stopId] ?? 34, 15) : (prio[s.stopId] ?? 34), reason: s.reason, evidence: ev });
   }
 }
 
