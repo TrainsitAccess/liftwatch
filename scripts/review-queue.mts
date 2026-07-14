@@ -183,7 +183,13 @@ if (existsSync(outPath)) {
   const prev = read("src/catalog/review/queue.json") as { stations: Entry[] };
   for (const old of prev.stations) {
     const cur = entries.get(old.key);
-    if (!cur) { entries.set(old.key, old); continue; } // resolved stations may drop out of source files — keep them
+    if (!cur) {
+      // Gone from the source files. A PENDING entry that vanished was
+      // auto-resolved by better data (e.g. TfL's step-free paths freed it) —
+      // drop it, no human needed. Anything with human history stays.
+      if (old.status !== "pending") entries.set(old.key, old);
+      continue;
+    }
     cur.status = old.status;
     cur.priority = old.priority;
     if (old.resolution) cur.resolution = old.resolution;

@@ -4,6 +4,7 @@
     {
       "systemId": "tfl-london",
       "stationExternalId": "910GACTONML",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -14,10 +15,19 @@
               "label": "Lift A"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "910GACTONML",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "910GACTONML-Lift-2",
@@ -26,46 +36,7 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
-      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
-    },
-    {
-      "systemId": "tfl-london",
-      "stationExternalId": "910GBRENTX",
-      "chainLabel": " (Route 1)",
-      "segments": [
-        {
-          "id": "seg-1",
-          "label": "Leg 1",
-          "elevators": [
-            {
-              "externalId": "910GBRENTX-Lift-1",
-              "label": "Lift 1"
-            }
-          ]
-        },
-        {
-          "id": "seg-2",
-          "label": "Leg 2",
-          "elevators": [
-            {
-              "externalId": "910GBRENTX-Lift-5",
-              "label": "Lift 5"
-            }
-          ]
-        },
-        {
-          "id": "seg-3",
-          "label": "Leg 3",
-          "elevators": [
-            {
-              "externalId": "910GBRENTX-Lift-4",
-              "label": "Lift 4"
-            }
-          ]
-        }
-      ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. Leg 3: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
@@ -89,6 +60,7 @@
     {
       "systemId": "tfl-london",
       "stationExternalId": "910GBROMLYS",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -99,10 +71,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "910GBROMLYS",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "910GBROMLYS-Lift-2",
@@ -111,12 +92,13 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
       "systemId": "tfl-london",
       "stationExternalId": "910GBRTWOOD",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -127,10 +109,19 @@
               "label": "Lift B"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "910GBRTWOOD",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "910GBRTWOOD-Lift-2",
@@ -139,7 +130,7 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
@@ -163,6 +154,7 @@
     {
       "systemId": "tfl-london",
       "stationExternalId": "910GCATFORD",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -173,10 +165,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "910GCATFORD",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "910GCATFORD-Lift-2",
@@ -185,7 +186,7 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
@@ -209,6 +210,7 @@
     {
       "systemId": "tfl-london",
       "stationExternalId": "910GCMDNRD",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -219,10 +221,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "910GCMDNRD",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "910GCMDNRD-Lift-2",
@@ -231,7 +242,7 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
@@ -283,6 +294,7 @@
     {
       "systemId": "tfl-london",
       "stationExternalId": "910GCTMSLNK",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -293,10 +305,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "910GCTMSLNK",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "910GCTMSLNK-Lift-2",
@@ -305,7 +326,7 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
@@ -328,7 +349,46 @@
     },
     {
       "systemId": "tfl-london",
+      "stationExternalId": "910GDEPTFD",
+      "chainLabel": " (Route 1)",
+      "segments": [
+        {
+          "id": "seg-1",
+          "label": "Leg 1",
+          "elevators": [
+            {
+              "externalId": "910GDEPTFD-Lift-1",
+              "label": "Lift 1"
+            }
+          ]
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "910GDEPTFD",
+      "chainLabel": " (Route 2)",
+      "segments": [
+        {
+          "id": "seg-1",
+          "label": "Leg 1",
+          "elevators": [
+            {
+              "externalId": "910GDEPTFD-Lift-2",
+              "label": "Lift 2"
+            }
+          ]
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
       "stationExternalId": "910GEDMNGRN",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -339,10 +399,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "910GEDMNGRN",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "910GEDMNGRN-Lift-2",
@@ -351,7 +420,7 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
@@ -365,13 +434,7 @@
             {
               "externalId": "910GESTFLDS-Lift-1",
               "label": "Lift 1"
-            }
-          ]
-        },
-        {
-          "id": "seg-2",
-          "label": "Leg 2",
-          "elevators": [
+            },
             {
               "externalId": "910GESTFLDS-Lift-2",
               "label": "Lift 2"
@@ -379,8 +442,8 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
-      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+      "note": "Leg 1: 2 lifts — either one keeps this leg open. No single lift outage removes step-free access on this route.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal. Ramp/same-level step-free paths (step-free-paths.json, TfL's own published topology) applied — bypassed legs and contracted parallels come from that data."
     },
     {
       "systemId": "tfl-london",
@@ -412,55 +475,8 @@
     },
     {
       "systemId": "tfl-london",
-      "stationExternalId": "910GFRSTGT",
-      "chainLabel": " (Route 1)",
-      "segments": [
-        {
-          "id": "seg-1",
-          "label": "Leg 1",
-          "elevators": [
-            {
-              "externalId": "910GFRSTGT-Lift-1",
-              "label": "Lift A"
-            }
-          ]
-        },
-        {
-          "id": "seg-2",
-          "label": "Leg 2",
-          "elevators": [
-            {
-              "externalId": "910GFRSTGT-Lift-2",
-              "label": "Lift B"
-            }
-          ]
-        }
-      ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
-      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
-    },
-    {
-      "systemId": "tfl-london",
-      "stationExternalId": "910GFRSTGT",
-      "chainLabel": " (Route 2)",
-      "segments": [
-        {
-          "id": "seg-1",
-          "label": "Leg 1",
-          "elevators": [
-            {
-              "externalId": "910GFRSTGT-Lift-3",
-              "label": "Lift C"
-            }
-          ]
-        }
-      ],
-      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
-      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
-    },
-    {
-      "systemId": "tfl-london",
       "stationExternalId": "910GGODMAYS",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -471,10 +487,19 @@
               "label": "Lift A"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "910GGODMAYS",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "910GGODMAYS-Lift-2",
@@ -483,12 +508,13 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
       "systemId": "tfl-london",
       "stationExternalId": "910GGOSPLOK",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -499,10 +525,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "910GGOSPLOK",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "910GGOSPLOK-Lift-2",
@@ -511,7 +546,7 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
@@ -602,6 +637,7 @@
     {
       "systemId": "tfl-london",
       "stationExternalId": "910GHAGGERS",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -612,10 +648,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "910GHAGGERS",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "910GHAGGERS-Lift-2",
@@ -624,7 +669,7 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
@@ -668,6 +713,7 @@
     {
       "systemId": "tfl-london",
       "stationExternalId": "910GHERNEH",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -678,10 +724,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "910GHERNEH",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "910GHERNEH-Lift-2",
@@ -690,12 +745,13 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
       "systemId": "tfl-london",
       "stationExternalId": "910GHMPSTDH",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -706,10 +762,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "910GHMPSTDH",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "910GHMPSTDH-Lift-2",
@@ -718,12 +783,13 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
       "systemId": "tfl-london",
       "stationExternalId": "910GHONROPK",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -734,10 +800,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "910GHONROPK",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "910GHONROPK-Lift-2",
@@ -746,12 +821,13 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
       "systemId": "tfl-london",
       "stationExternalId": "910GHOXTON",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -762,10 +838,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "910GHOXTON",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "910GHOXTON-Lift-2",
@@ -774,7 +859,7 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
@@ -798,6 +883,7 @@
     {
       "systemId": "tfl-london",
       "stationExternalId": "910GMDNHEAD",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -808,10 +894,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "910GMDNHEAD",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "910GMDNHEAD-Lift-2",
@@ -820,21 +915,24 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
       "systemId": "tfl-london",
-      "stationExternalId": "910GMRYLAND",
-      "chainLabel": " (Route 1)",
+      "stationExternalId": "910GORPNGTN",
       "segments": [
         {
           "id": "seg-1",
           "label": "Leg 1",
           "elevators": [
             {
-              "externalId": "910GMRYLAND-Lift-2",
-              "label": "Lift C"
+              "externalId": "910GORPNGTN-Lift 1",
+              "label": "Lift 1"
+            },
+            {
+              "externalId": "910GORPNGTN-Lift 3",
+              "label": "Lift 3"
             }
           ]
         },
@@ -843,33 +941,14 @@
           "label": "Leg 2",
           "elevators": [
             {
-              "externalId": "910GMRYLAND-Lift-1",
-              "label": "Lift B"
+              "externalId": "910GORPNGTN-Lift 2",
+              "label": "Lift 2"
             }
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
-      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
-    },
-    {
-      "systemId": "tfl-london",
-      "stationExternalId": "910GMRYLAND",
-      "chainLabel": " (Route 2)",
-      "segments": [
-        {
-          "id": "seg-1",
-          "label": "Leg 1",
-          "elevators": [
-            {
-              "externalId": "910GMRYLAND-Lift-3",
-              "label": "Lift A"
-            }
-          ]
-        }
-      ],
-      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
-      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+      "note": "Leg 1: 2 lifts — either one keeps this leg open. Leg 2: one lift, no backup. A leg with a single lift has no backup — an outage there makes this route not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal. Ramp/same-level step-free paths (step-free-paths.json, TfL's own published topology) applied — bypassed legs and contracted parallels come from that data."
     },
     {
       "systemId": "tfl-london",
@@ -892,6 +971,7 @@
     {
       "systemId": "tfl-london",
       "stationExternalId": "910GSHRDHST",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -902,10 +982,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "910GSHRDHST",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "910GSHRDHST-Lift-2",
@@ -914,12 +1003,13 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
       "systemId": "tfl-london",
       "stationExternalId": "910GSTMRYC",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -930,10 +1020,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "910GSTMRYC",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "910GSTMRYC-Lift-2",
@@ -942,12 +1041,13 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
       "systemId": "tfl-london",
       "stationExternalId": "910GSTOTNHM",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -958,10 +1058,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "910GSTOTNHM",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "910GSTOTNHM-Lift-2",
@@ -970,12 +1079,13 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
       "systemId": "tfl-london",
       "stationExternalId": "910GSWLY",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -986,10 +1096,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "910GSWLY",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "910GSWLY-Lift-2",
@@ -998,12 +1117,13 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
       "systemId": "tfl-london",
       "stationExternalId": "910GWHHRTLA",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -1014,10 +1134,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "910GWHHRTLA",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "910GWHHRTLA-Lift-2",
@@ -1026,12 +1155,13 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
       "systemId": "tfl-london",
       "stationExternalId": "910GWHMDSTD",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -1042,10 +1172,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "910GWHMDSTD",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "910GWHMDSTD-Lift-2",
@@ -1054,7 +1193,7 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
@@ -1068,13 +1207,7 @@
             {
               "externalId": "940GZZDLABR-Lift-1",
               "label": "Lift 1"
-            }
-          ]
-        },
-        {
-          "id": "seg-2",
-          "label": "Leg 2",
-          "elevators": [
+            },
             {
               "externalId": "940GZZDLABR-Lift-2",
               "label": "Lift 2"
@@ -1082,12 +1215,13 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
-      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+      "note": "Leg 1: 2 lifts — either one keeps this leg open. No single lift outage removes step-free access on this route.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal. Ramp/same-level step-free paths (step-free-paths.json, TfL's own published topology) applied — bypassed legs and contracted parallels come from that data."
     },
     {
       "systemId": "tfl-london",
       "stationExternalId": "940GZZDLALL",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -1098,10 +1232,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "940GZZDLALL",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "940GZZDLALL-Lift-2",
@@ -1110,12 +1253,13 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
       "systemId": "tfl-london",
       "stationExternalId": "940GZZDLBLA",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -1126,10 +1270,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "940GZZDLBLA",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "940GZZDLBLA-Lift-2",
@@ -1138,12 +1291,13 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
       "systemId": "tfl-london",
       "stationExternalId": "940GZZDLBOW",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -1154,10 +1308,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "940GZZDLBOW",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "940GZZDLBOW-Lift-2",
@@ -1166,12 +1329,13 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
       "systemId": "tfl-london",
       "stationExternalId": "940GZZDLCLA",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -1182,35 +1346,6 @@
               "label": "Lift 1"
             }
           ]
-        },
-        {
-          "id": "seg-2",
-          "label": "Leg 2",
-          "elevators": [
-            {
-              "externalId": "940GZZDLCLA-Lift-2",
-              "label": "Lift 2"
-            }
-          ]
-        }
-      ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
-      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
-    },
-    {
-      "systemId": "tfl-london",
-      "stationExternalId": "HUBCUS",
-      "chainLabel": " (Route 1)",
-      "segments": [
-        {
-          "id": "seg-1",
-          "label": "Leg 1",
-          "elevators": [
-            {
-              "externalId": "HUBCUS-Lift-1",
-              "label": "Lift 1"
-            }
-          ]
         }
       ],
       "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
@@ -1218,7 +1353,7 @@
     },
     {
       "systemId": "tfl-london",
-      "stationExternalId": "HUBCUS",
+      "stationExternalId": "940GZZDLCLA",
       "chainLabel": " (Route 2)",
       "segments": [
         {
@@ -1226,8 +1361,8 @@
           "label": "Leg 1",
           "elevators": [
             {
-              "externalId": "HUBCUS-Lift-3",
-              "label": "Lift 3"
+              "externalId": "940GZZDLCLA-Lift-2",
+              "label": "Lift 2"
             }
           ]
         }
@@ -1238,6 +1373,7 @@
     {
       "systemId": "tfl-london",
       "stationExternalId": "940GZZDLDEP",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -1248,10 +1384,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "940GZZDLDEP",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "940GZZDLDEP-Lift-2",
@@ -1260,12 +1405,13 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
       "systemId": "tfl-london",
       "stationExternalId": "940GZZDLDEV",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -1276,10 +1422,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "940GZZDLDEV",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "940GZZDLDEV-Lift-2",
@@ -1288,12 +1443,13 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
       "systemId": "tfl-london",
       "stationExternalId": "940GZZDLGAL",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -1304,10 +1460,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "940GZZDLGAL",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "940GZZDLGAL-Lift-2",
@@ -1316,12 +1481,13 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
       "systemId": "tfl-london",
       "stationExternalId": "940GZZDLHEQ",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -1332,10 +1498,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "940GZZDLHEQ",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "940GZZDLHEQ-Lift-2",
@@ -1344,7 +1519,7 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
@@ -1367,14 +1542,14 @@
     },
     {
       "systemId": "tfl-london",
-      "stationExternalId": "940GZZDLLDP",
+      "stationExternalId": "940GZZDLKGV",
       "segments": [
         {
           "id": "seg-1",
           "label": "Leg 1",
           "elevators": [
             {
-              "externalId": "940GZZDLLDP-Lift-1",
+              "externalId": "940GZZDLKGV-Lift-1",
               "label": "Lift 1"
             }
           ]
@@ -1384,7 +1559,7 @@
           "label": "Leg 2",
           "elevators": [
             {
-              "externalId": "940GZZDLLDP-Lift-2",
+              "externalId": "940GZZDLKGV-Lift-2",
               "label": "Lift 2"
             }
           ]
@@ -1395,7 +1570,46 @@
     },
     {
       "systemId": "tfl-london",
+      "stationExternalId": "940GZZDLLDP",
+      "chainLabel": " (Route 1)",
+      "segments": [
+        {
+          "id": "seg-1",
+          "label": "Leg 1",
+          "elevators": [
+            {
+              "externalId": "940GZZDLLDP-Lift-1",
+              "label": "Lift 1"
+            }
+          ]
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "940GZZDLLDP",
+      "chainLabel": " (Route 2)",
+      "segments": [
+        {
+          "id": "seg-1",
+          "label": "Leg 1",
+          "elevators": [
+            {
+              "externalId": "940GZZDLLDP-Lift-2",
+              "label": "Lift 2"
+            }
+          ]
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
       "stationExternalId": "940GZZDLPDK",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -1406,10 +1620,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "940GZZDLPDK",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "940GZZDLPDK-Lift-2",
@@ -1418,7 +1641,7 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
@@ -1445,7 +1668,36 @@
     },
     {
       "systemId": "tfl-london",
+      "stationExternalId": "940GZZDLPRE",
+      "segments": [
+        {
+          "id": "seg-1",
+          "label": "Leg 1",
+          "elevators": [
+            {
+              "externalId": "940GZZDLPRE-Lift-1",
+              "label": "Lift 1"
+            }
+          ]
+        },
+        {
+          "id": "seg-2",
+          "label": "Leg 2",
+          "elevators": [
+            {
+              "externalId": "940GZZDLPRE-Lift-2",
+              "label": "Lift 2"
+            }
+          ]
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
       "stationExternalId": "940GZZDLPUD",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -1456,10 +1708,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "940GZZDLPUD",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "940GZZDLPUD-Lift-2",
@@ -1468,12 +1729,13 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
       "systemId": "tfl-london",
       "stationExternalId": "940GZZDLRAL",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -1484,10 +1746,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "940GZZDLRAL",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "940GZZDLRAL-Lift-2",
@@ -1496,8 +1767,40 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "940GZZDLRVC",
+      "segments": [
+        {
+          "id": "seg-1",
+          "label": "Leg 1",
+          "elevators": [
+            {
+              "externalId": "940GZZDLRVC-Lift-1",
+              "label": "Lift 1"
+            },
+            {
+              "externalId": "940GZZDLRVC-Lift-3",
+              "label": "Lift 3"
+            }
+          ]
+        },
+        {
+          "id": "seg-2",
+          "label": "Leg 2",
+          "elevators": [
+            {
+              "externalId": "940GZZDLRVC-Lift-2",
+              "label": "Lift 2"
+            }
+          ]
+        }
+      ],
+      "note": "Leg 1: 2 lifts — either one keeps this leg open. Leg 2: one lift, no backup. A leg with a single lift has no backup — an outage there makes this route not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal. Ramp/same-level step-free paths (step-free-paths.json, TfL's own published topology) applied — bypassed legs and contracted parallels come from that data."
     },
     {
       "systemId": "tfl-london",
@@ -1508,24 +1811,25 @@
           "label": "Leg 1",
           "elevators": [
             {
-              "externalId": "940GZZDLSHS-Lift-1",
-              "label": "Lift 1"
-            }
-          ]
-        },
-        {
-          "id": "seg-2",
-          "label": "Leg 2",
-          "elevators": [
-            {
               "externalId": "940GZZDLSHS-Lift-2",
               "label": "Lift 2"
             }
           ]
+        },
+        {
+          "id": "bypass-1",
+          "label": "Step-free-bypassed leg 1",
+          "stepFreeAlternative": true,
+          "elevators": [
+            {
+              "externalId": "940GZZDLSHS-Lift-1",
+              "label": "Lift 1"
+            }
+          ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
-      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+      "note": "Leg 1: one lift, no backup. Step-free-bypassed leg 1: step-free even without a lift (a non-lift route exists). A leg with a single lift has no backup — an outage there makes this route not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal. Ramp/same-level step-free paths (step-free-paths.json, TfL's own published topology) applied — bypassed legs and contracted parallels come from that data."
     },
     {
       "systemId": "tfl-london",
@@ -1556,6 +1860,7 @@
     {
       "systemId": "tfl-london",
       "stationExternalId": "940GZZDLSOQ",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -1566,10 +1871,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "940GZZDLSOQ",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "940GZZDLSOQ-Lift-2",
@@ -1578,12 +1892,13 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
       "systemId": "tfl-london",
       "stationExternalId": "940GZZDLWIQ",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -1594,10 +1909,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "940GZZDLWIQ",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "940GZZDLWIQ-Lift-2",
@@ -1606,12 +1930,13 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
       "systemId": "tfl-london",
       "stationExternalId": "940GZZDLWSV",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -1622,10 +1947,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "940GZZDLWSV",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "940GZZDLWSV-Lift-2",
@@ -1634,12 +1968,13 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
       "systemId": "tfl-london",
       "stationExternalId": "940GZZLUACT",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -1650,10 +1985,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "940GZZLUACT",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "940GZZLUACT-Lift-2",
@@ -1662,12 +2006,13 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
       "systemId": "tfl-london",
       "stationExternalId": "940GZZLUBBB",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -1678,10 +2023,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "940GZZLUBBB",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "940GZZLUBBB-Lift-2",
@@ -1690,7 +2044,7 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
@@ -1704,44 +2058,6 @@
             {
               "externalId": "940GZZLUBMY-Lift-1",
               "label": "Lift 1"
-            }
-          ]
-        }
-      ],
-      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
-      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
-    },
-    {
-      "systemId": "tfl-london",
-      "stationExternalId": "HUBBDS",
-      "chainLabel": " (Route 1)",
-      "segments": [
-        {
-          "id": "seg-1",
-          "label": "Leg 1",
-          "elevators": [
-            {
-              "externalId": "HUBBDS-Lift-5",
-              "label": "Lift E"
-            }
-          ]
-        }
-      ],
-      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
-      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
-    },
-    {
-      "systemId": "tfl-london",
-      "stationExternalId": "HUBBDS",
-      "chainLabel": " (Route 2)",
-      "segments": [
-        {
-          "id": "seg-1",
-          "label": "Leg 1",
-          "elevators": [
-            {
-              "externalId": "HUBBDS-Lift-6",
-              "label": "Lift F"
             }
           ]
         }
@@ -1841,59 +2157,8 @@
     },
     {
       "systemId": "tfl-london",
-      "stationExternalId": "940GZZLUECT",
-      "chainLabel": " (Route 1)",
-      "segments": [
-        {
-          "id": "seg-1",
-          "label": "Leg 1",
-          "elevators": [
-            {
-              "externalId": "940GZZLUECT-Lift-3",
-              "label": "Lift 3"
-            },
-            {
-              "externalId": "940GZZLUECT-Lift-4",
-              "label": "Lift 4"
-            }
-          ]
-        }
-      ],
-      "note": "Leg 1: 2 lifts — either one keeps this leg open. No single lift outage removes step-free access on this route.",
-      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
-    },
-    {
-      "systemId": "tfl-london",
-      "stationExternalId": "940GZZLUECT",
-      "chainLabel": " (Route 2)",
-      "segments": [
-        {
-          "id": "seg-1",
-          "label": "Leg 1",
-          "elevators": [
-            {
-              "externalId": "940GZZLUECT-Lift-5",
-              "label": "Lift 5"
-            }
-          ]
-        },
-        {
-          "id": "seg-2",
-          "label": "Leg 2",
-          "elevators": [
-            {
-              "externalId": "940GZZLUECT-Lift-6",
-              "label": "Lift 6"
-            }
-          ]
-        }
-      ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
-      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
-    },
-    {
-      "systemId": "tfl-london",
       "stationExternalId": "940GZZLUEGW",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -1904,10 +2169,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "940GZZLUEGW",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "940GZZLUEGW-Lift-2",
@@ -1916,12 +2190,13 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
       "systemId": "tfl-london",
       "stationExternalId": "940GZZLUEHM",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -1932,10 +2207,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "940GZZLUEHM",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "940GZZLUEHM-Lift-2",
@@ -1944,7 +2228,7 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
@@ -1978,6 +2262,7 @@
     {
       "systemId": "tfl-london",
       "stationExternalId": "940GZZLUFBY",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -1988,10 +2273,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "940GZZLUFBY",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "940GZZLUFBY-Lift-2",
@@ -2000,12 +2294,13 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
       "systemId": "tfl-london",
       "stationExternalId": "940GZZLUFYC",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -2016,10 +2311,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "940GZZLUFYC",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "940GZZLUFYC-Lift-2",
@@ -2028,12 +2332,13 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
       "systemId": "tfl-london",
       "stationExternalId": "940GZZLUGGN",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -2044,10 +2349,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "940GZZLUGGN",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "940GZZLUGGN-Lift-2",
@@ -2056,7 +2370,7 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
@@ -2080,6 +2394,7 @@
     {
       "systemId": "tfl-london",
       "stationExternalId": "940GZZLUHGD",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -2090,10 +2405,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "940GZZLUHGD",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "940GZZLUHGD-Lift-2",
@@ -2102,12 +2426,13 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
       "systemId": "tfl-london",
       "stationExternalId": "940GZZLUHWE",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -2118,10 +2443,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "940GZZLUHWE",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "940GZZLUHWE-Lift-2",
@@ -2130,7 +2464,7 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
@@ -2154,6 +2488,7 @@
     {
       "systemId": "tfl-london",
       "stationExternalId": "940GZZLUICK",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -2164,10 +2499,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "940GZZLUICK",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "940GZZLUICK-Lift-2",
@@ -2176,7 +2520,7 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
@@ -2200,6 +2544,7 @@
     {
       "systemId": "tfl-london",
       "stationExternalId": "940GZZLUKBY",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -2210,10 +2555,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "940GZZLUKBY",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "940GZZLUKBY-Lift-2",
@@ -2222,12 +2576,13 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
       "systemId": "tfl-london",
       "stationExternalId": "940GZZLUMDN",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -2238,10 +2593,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "940GZZLUMDN",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "940GZZLUMDN-Lift-2",
@@ -2250,7 +2614,7 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
@@ -2274,6 +2638,7 @@
     {
       "systemId": "tfl-london",
       "stationExternalId": "940GZZLUNBP",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -2284,10 +2649,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "940GZZLUNBP",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "940GZZLUNBP-Lift-2",
@@ -2296,7 +2670,7 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
@@ -2320,6 +2694,7 @@
     {
       "systemId": "tfl-london",
       "stationExternalId": "940GZZLUOSY",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -2330,10 +2705,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "940GZZLUOSY",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "940GZZLUOSY-Lift-2",
@@ -2342,7 +2726,7 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
@@ -2394,6 +2778,7 @@
     {
       "systemId": "tfl-london",
       "stationExternalId": "940GZZLUSUH",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -2404,10 +2789,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "940GZZLUSUH",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "940GZZLUSUH-Lift-2",
@@ -2416,21 +2810,20 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
       "systemId": "tfl-london",
-      "stationExternalId": "HUBTCR",
-      "chainLabel": " (Route 1)",
+      "stationExternalId": "940GZZLUSWK",
       "segments": [
         {
           "id": "seg-1",
           "label": "Leg 1",
           "elevators": [
             {
-              "externalId": "HUBTCR-Lift-7",
-              "label": "Lift J"
+              "externalId": "940GZZLUSWK-Lift-1",
+              "label": "Lift 1"
             }
           ]
         },
@@ -2439,8 +2832,8 @@
           "label": "Leg 2",
           "elevators": [
             {
-              "externalId": "HUBTCR-Lift-8",
-              "label": "Lift H"
+              "externalId": "940GZZLUSWK-Lift-2",
+              "label": "Lift 2"
             }
           ]
         }
@@ -2489,6 +2882,7 @@
     {
       "systemId": "tfl-london",
       "stationExternalId": "940GZZLUWLA",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -2503,10 +2897,19 @@
               "label": "Lift 2"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: 2 lifts — either one keeps this leg open. No single lift outage removes step-free access on this route.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "940GZZLUWLA",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "940GZZLUWLA-Lift-3",
@@ -2519,7 +2922,7 @@
           ]
         }
       ],
-      "note": "Leg 1: 2 lifts — either one keeps this leg open. Leg 2: 2 lifts — either one keeps this leg open. No single lift outage removes step-free access on this route.",
+      "note": "Leg 1: 2 lifts — either one keeps this leg open. No single lift outage removes step-free access on this route.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
@@ -2542,65 +2945,8 @@
     },
     {
       "systemId": "tfl-london",
-      "stationExternalId": "HUBBAN",
-      "chainLabel": " (Route 1)",
-      "segments": [
-        {
-          "id": "seg-1",
-          "label": "Leg 1",
-          "elevators": [
-            {
-              "externalId": "HUBBAN-Lift-8",
-              "label": "Lift 8"
-            }
-          ]
-        },
-        {
-          "id": "seg-2",
-          "label": "Leg 2",
-          "elevators": [
-            {
-              "externalId": "HUBBAN-Lift-9",
-              "label": "Lift 9"
-            }
-          ]
-        }
-      ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
-      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
-    },
-    {
-      "systemId": "tfl-london",
-      "stationExternalId": "HUBBFR",
-      "chainLabel": " (Route 1)",
-      "segments": [
-        {
-          "id": "seg-1",
-          "label": "Leg 1",
-          "elevators": [
-            {
-              "externalId": "HUBBFR-Lift-6",
-              "label": "Lift 6"
-            }
-          ]
-        },
-        {
-          "id": "seg-2",
-          "label": "Leg 2",
-          "elevators": [
-            {
-              "externalId": "HUBBFR-Lift-8",
-              "label": "Lift 8"
-            }
-          ]
-        }
-      ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
-      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
-    },
-    {
-      "systemId": "tfl-london",
       "stationExternalId": "HUBBHO",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -2611,10 +2957,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "HUBBHO",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "HUBBHO-Lift-2",
@@ -2623,7 +2978,7 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
@@ -2643,6 +2998,52 @@
       ],
       "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "HUBCLJ",
+      "chainLabel": " (Route 1)",
+      "segments": [
+        {
+          "id": "seg-1",
+          "label": "Leg 1",
+          "elevators": [
+            {
+              "externalId": "HUBCLJ-Lift-1",
+              "label": "Lift 1"
+            },
+            {
+              "externalId": "HUBCLJ-Lift-2",
+              "label": "Lift 2"
+            }
+          ]
+        }
+      ],
+      "note": "Leg 1: 2 lifts — either one keeps this leg open. No single lift outage removes step-free access on this route.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal. Ramp/same-level step-free paths (step-free-paths.json, TfL's own published topology) applied — bypassed legs and contracted parallels come from that data."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "HUBCLJ",
+      "chainLabel": " (Route 2)",
+      "segments": [
+        {
+          "id": "seg-1",
+          "label": "Leg 1",
+          "elevators": [
+            {
+              "externalId": "HUBCLJ-Lift-3",
+              "label": "Lift 3"
+            },
+            {
+              "externalId": "HUBCLJ-Lift-4",
+              "label": "Lift 4"
+            }
+          ]
+        }
+      ],
+      "note": "Leg 1: 2 lifts — either one keeps this leg open. No single lift outage removes step-free access on this route.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal. Ramp/same-level step-free paths (step-free-paths.json, TfL's own published topology) applied — bypassed legs and contracted parallels come from that data."
     },
     {
       "systemId": "tfl-london",
@@ -2702,6 +3103,42 @@
     },
     {
       "systemId": "tfl-london",
+      "stationExternalId": "HUBECY",
+      "segments": [
+        {
+          "id": "seg-1",
+          "label": "Leg 1",
+          "elevators": [
+            {
+              "externalId": "HUBECY-Lift-1",
+              "label": "Lift 1"
+            }
+          ]
+        },
+        {
+          "id": "seg-2",
+          "label": "Leg 2",
+          "elevators": [
+            {
+              "externalId": "HUBECY-Lift-2",
+              "label": "Lift 2"
+            },
+            {
+              "externalId": "HUBECY-Lift-3",
+              "label": "Lift 3"
+            },
+            {
+              "externalId": "HUBECY-Lift-4",
+              "label": "Lift 4"
+            }
+          ]
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. Leg 2: 3 lifts — any one keeps this leg open. A leg with a single lift has no backup — an outage there makes this route not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal. Ramp/same-level step-free paths (step-free-paths.json, TfL's own published topology) applied — bypassed legs and contracted parallels come from that data."
+    },
+    {
+      "systemId": "tfl-london",
       "stationExternalId": "HUBEPH",
       "segments": [
         {
@@ -2742,7 +3179,7 @@
     },
     {
       "systemId": "tfl-london",
-      "stationExternalId": "HUBHOH",
+      "stationExternalId": "HUBGNW",
       "chainLabel": " (Route 1)",
       "segments": [
         {
@@ -2750,8 +3187,27 @@
           "label": "Leg 1",
           "elevators": [
             {
-              "externalId": "HUBHOH-Lift-1",
+              "externalId": "HUBGNW-Lift-1",
               "label": "Lift 1"
+            }
+          ]
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "HUBGNW",
+      "chainLabel": " (Route 2)",
+      "segments": [
+        {
+          "id": "seg-1",
+          "label": "Leg 1",
+          "elevators": [
+            {
+              "externalId": "HUBGNW-Lift-2",
+              "label": "Lift 2"
             }
           ]
         }
@@ -2799,7 +3255,46 @@
     },
     {
       "systemId": "tfl-london",
+      "stationExternalId": "HUBHMS",
+      "chainLabel": " (Route 1)",
+      "segments": [
+        {
+          "id": "seg-1",
+          "label": "Leg 1",
+          "elevators": [
+            {
+              "externalId": "HUBHMS-Lift-1",
+              "label": "Lift 1"
+            }
+          ]
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "HUBHMS",
+      "chainLabel": " (Route 2)",
+      "segments": [
+        {
+          "id": "seg-1",
+          "label": "Leg 1",
+          "elevators": [
+            {
+              "externalId": "HUBHMS-Lift-2",
+              "label": "Lift 2"
+            }
+          ]
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
       "stationExternalId": "HUBHX4",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -2810,10 +3305,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "HUBHX4",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "HUBHX4-Lift-2",
@@ -2822,7 +3326,7 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
@@ -2836,13 +3340,7 @@
             {
               "externalId": "HUBHX5-Lift-1",
               "label": "Lift 1"
-            }
-          ]
-        },
-        {
-          "id": "seg-2",
-          "label": "Leg 2",
-          "elevators": [
+            },
             {
               "externalId": "HUBHX5-Lift-2",
               "label": "Lift 2"
@@ -2850,12 +3348,13 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
-      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+      "note": "Leg 1: 2 lifts — either one keeps this leg open. No single lift outage removes step-free access on this route.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal. Ramp/same-level step-free paths (step-free-paths.json, TfL's own published topology) applied — bypassed legs and contracted parallels come from that data."
     },
     {
       "systemId": "tfl-london",
       "stationExternalId": "HUBIMP",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -2866,10 +3365,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "HUBIMP",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "HUBIMP-Lift-2",
@@ -2878,55 +3386,7 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
-      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
-    },
-    {
-      "systemId": "tfl-london",
-      "stationExternalId": "HUBLBG",
-      "chainLabel": " (Route 1)",
-      "segments": [
-        {
-          "id": "seg-1",
-          "label": "Leg 1",
-          "elevators": [
-            {
-              "externalId": "HUBLBG-Lift-2",
-              "label": "Lift 2"
-            }
-          ]
-        }
-      ],
       "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
-      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
-    },
-    {
-      "systemId": "tfl-london",
-      "stationExternalId": "HUBLBG",
-      "chainLabel": " (Route 2)",
-      "segments": [
-        {
-          "id": "seg-1",
-          "label": "Leg 1",
-          "elevators": [
-            {
-              "externalId": "HUBLBG-Lift-5",
-              "label": "Lift 5"
-            }
-          ]
-        },
-        {
-          "id": "seg-2",
-          "label": "Leg 2",
-          "elevators": [
-            {
-              "externalId": "HUBLBG-Lift-6",
-              "label": "Lift 6"
-            }
-          ]
-        }
-      ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
@@ -2953,25 +3413,6 @@
     },
     {
       "systemId": "tfl-london",
-      "stationExternalId": "HUBLST",
-      "chainLabel": " (Route 1)",
-      "segments": [
-        {
-          "id": "seg-1",
-          "label": "Leg 1",
-          "elevators": [
-            {
-              "externalId": "HUBLST-Lift-1",
-              "label": "Lift 1"
-            }
-          ]
-        }
-      ],
-      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
-      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
-    },
-    {
-      "systemId": "tfl-london",
       "stationExternalId": "HUBPAD",
       "chainLabel": " (Route 1)",
       "segments": [
@@ -2984,9 +3425,29 @@
               "label": "Lift 2"
             }
           ]
+        },
+        {
+          "id": "seg-2",
+          "label": "Leg 2",
+          "elevators": [
+            {
+              "externalId": "HUBPAD-Lift-Z",
+              "label": "Lift Z"
+            }
+          ]
+        },
+        {
+          "id": "seg-3",
+          "label": "Leg 3",
+          "elevators": [
+            {
+              "externalId": "HUBPAD-Lift-X",
+              "label": "Lift X"
+            }
+          ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. Leg 3: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
@@ -3018,6 +3479,53 @@
           "label": "Leg 1",
           "elevators": [
             {
+              "externalId": "HUBPAD-Lift-6",
+              "label": "Lift 6"
+            },
+            {
+              "externalId": "HUBPAD-Lift-7",
+              "label": "Lift 7"
+            }
+          ]
+        },
+        {
+          "id": "seg-2",
+          "label": "Leg 2",
+          "elevators": [
+            {
+              "externalId": "HUBPAD-Lift-8",
+              "label": "Lift 8"
+            },
+            {
+              "externalId": "HUBPAD-Lift-9",
+              "label": "Lift 9"
+            }
+          ]
+        },
+        {
+          "id": "seg-3",
+          "label": "Leg 3",
+          "elevators": [
+            {
+              "externalId": "HUBPAD-Lift-12",
+              "label": "Lift 12"
+            }
+          ]
+        }
+      ],
+      "note": "Leg 1: 2 lifts — either one keeps this leg open. Leg 2: 2 lifts — either one keeps this leg open. Leg 3: one lift, no backup. A leg with a single lift has no backup — an outage there makes this route not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "HUBPAD",
+      "chainLabel": " (Route 4)",
+      "segments": [
+        {
+          "id": "seg-1",
+          "label": "Leg 1",
+          "elevators": [
+            {
               "externalId": "HUBPAD-Lift-Y",
               "label": "Lift Y"
             }
@@ -3026,6 +3534,35 @@
       ],
       "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "HUBRMD",
+      "segments": [
+        {
+          "id": "seg-1",
+          "label": "Leg 1",
+          "elevators": [
+            {
+              "externalId": "HUBRMD-Lift-1",
+              "label": "Lift 1"
+            }
+          ]
+        },
+        {
+          "id": "bypass-1",
+          "label": "Step-free-bypassed leg 1",
+          "stepFreeAlternative": true,
+          "elevators": [
+            {
+              "externalId": "HUBRMD-Lift-2",
+              "label": "Lift 2"
+            }
+          ]
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. Step-free-bypassed leg 1: step-free even without a lift (a non-lift route exists). A leg with a single lift has no backup — an outage there makes this route not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal. Ramp/same-level step-free paths (step-free-paths.json, TfL's own published topology) applied — bypassed legs and contracted parallels come from that data."
     },
     {
       "systemId": "tfl-london",
@@ -3140,7 +3677,7 @@
     },
     {
       "systemId": "tfl-london",
-      "stationExternalId": "HUBWAT",
+      "stationExternalId": "HUBUPM",
       "chainLabel": " (Route 1)",
       "segments": [
         {
@@ -3148,7 +3685,75 @@
           "label": "Leg 1",
           "elevators": [
             {
-              "externalId": "HUBWAT-Lift-2",
+              "externalId": "HUBUPM-Lift-2",
+              "label": "Lift 2"
+            }
+          ]
+        },
+        {
+          "id": "bypass-1",
+          "label": "Step-free-bypassed leg 1",
+          "stepFreeAlternative": true,
+          "elevators": [
+            {
+              "externalId": "HUBUPM-Lift-1",
+              "label": "Lift 1"
+            }
+          ]
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. Step-free-bypassed leg 1: step-free even without a lift (a non-lift route exists). A leg with a single lift has no backup — an outage there makes this route not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal. Ramp/same-level step-free paths (step-free-paths.json, TfL's own published topology) applied — bypassed legs and contracted parallels come from that data."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "HUBUPM",
+      "chainLabel": " (Route 2)",
+      "segments": [
+        {
+          "id": "seg-1",
+          "label": "Leg 1",
+          "elevators": [
+            {
+              "externalId": "HUBUPM-Lift-3",
+              "label": "Lift 3"
+            }
+          ]
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "HUBVXH",
+      "chainLabel": " (Route 1)",
+      "segments": [
+        {
+          "id": "seg-1",
+          "label": "Leg 1",
+          "elevators": [
+            {
+              "externalId": "HUBVXH-Lift-1",
+              "label": "Lift 1"
+            }
+          ]
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "HUBVXH",
+      "chainLabel": " (Route 2)",
+      "segments": [
+        {
+          "id": "seg-1",
+          "label": "Leg 1",
+          "elevators": [
+            {
+              "externalId": "HUBVXH-Lift-2",
               "label": "Lift 2"
             }
           ]
@@ -3160,6 +3765,7 @@
     {
       "systemId": "tfl-london",
       "stationExternalId": "HUBWBP",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -3170,10 +3776,19 @@
               "label": "Lift 3"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "HUBWBP",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "HUBWBP-Lift-4",
@@ -3182,7 +3797,49 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "HUBWFJ",
+      "chainLabel": " (Route 1)",
+      "segments": [
+        {
+          "id": "seg-1",
+          "label": "Leg 1",
+          "elevators": [
+            {
+              "externalId": "HUBWFJ-Lift-1",
+              "label": "Lift 1"
+            },
+            {
+              "externalId": "HUBWFJ-Lift-3",
+              "label": "Lift 3"
+            }
+          ]
+        }
+      ],
+      "note": "Leg 1: 2 lifts — either one keeps this leg open. No single lift outage removes step-free access on this route.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal. Ramp/same-level step-free paths (step-free-paths.json, TfL's own published topology) applied — bypassed legs and contracted parallels come from that data."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "HUBWFJ",
+      "chainLabel": " (Route 2)",
+      "segments": [
+        {
+          "id": "seg-1",
+          "label": "Leg 1",
+          "elevators": [
+            {
+              "externalId": "HUBWFJ-Lift-2",
+              "label": "Lift 2"
+            }
+          ]
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
@@ -3244,78 +3901,53 @@
     },
     {
       "systemId": "tfl-london",
-      "stationExternalId": "HUBZFD",
-      "chainLabel": " (Route 1)",
+      "stationExternalId": "HUBWWA",
+      "chainLabel": " (Route 2)",
       "segments": [
         {
           "id": "seg-1",
           "label": "Leg 1",
           "elevators": [
             {
-              "externalId": "HUBZFD-Lift-1",
+              "externalId": "HUBWWA-Lift-2",
+              "label": "Lift C"
+            },
+            {
+              "externalId": "HUBWWA-Lift-3",
               "label": "Lift A"
             }
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
-      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+      "note": "Leg 1: 2 lifts — either one keeps this leg open. No single lift outage removes step-free access on this route.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal. Ramp/same-level step-free paths (step-free-paths.json, TfL's own published topology) applied — bypassed legs and contracted parallels come from that data."
     },
     {
       "systemId": "tfl-london",
-      "stationExternalId": "HUBZFD",
-      "chainLabel": " (Route 2)",
+      "stationExternalId": "HUBAMR",
       "segments": [
         {
           "id": "seg-1",
           "label": "Leg 1",
           "elevators": [
             {
-              "externalId": "HUBZFD-Lift-2",
-              "label": "Lift B"
+              "externalId": "HUBAMR-Lift-1",
+              "label": "Lift 1"
             }
           ]
-        }
-      ],
-      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
-      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
-    },
-    {
-      "systemId": "tfl-london",
-      "stationExternalId": "HUBZMG",
-      "chainLabel": " (Route 1)",
-      "segments": [
+        },
         {
-          "id": "seg-1",
-          "label": "Leg 1",
+          "id": "seg-2",
+          "label": "Leg 2",
           "elevators": [
             {
-              "externalId": "HUBZMG-Lift-2",
-              "label": "Lift D"
+              "externalId": "HUBAMR-Lift-2",
+              "label": "Lift 2"
             }
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
-      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
-    },
-    {
-      "systemId": "tfl-london",
-      "stationExternalId": "HUBZMG",
-      "chainLabel": " (Route 2)",
-      "segments": [
-        {
-          "id": "seg-1",
-          "label": "Leg 1",
-          "elevators": [
-            {
-              "externalId": "HUBZMG-Lift-5",
-              "label": "Lift C"
-            }
-          ]
-        }
-      ],
-      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
@@ -3356,43 +3988,6 @@
     },
     {
       "systemId": "tfl-london",
-      "stationExternalId": "HUBABW",
-      "chainLabel": " (Route 1)",
-      "segments": [
-        {
-          "id": "seg-1",
-          "label": "Leg 1",
-          "elevators": [
-            {
-              "externalId": "HUBABW-Lift-1",
-              "label": "Lift A"
-            },
-            {
-              "externalId": "HUBABW-Lift-2",
-              "label": "Lift B"
-            }
-          ]
-        },
-        {
-          "id": "seg-2",
-          "label": "Leg 2",
-          "elevators": [
-            {
-              "externalId": "HUBABW-Lift-3",
-              "label": "Lift C"
-            },
-            {
-              "externalId": "HUBABW-Lift-4",
-              "label": "Lift D"
-            }
-          ]
-        }
-      ],
-      "note": "Leg 1: 2 lifts — either one keeps this leg open. Leg 2: 2 lifts — either one keeps this leg open. No single lift outage removes step-free access on this route.",
-      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
-    },
-    {
-      "systemId": "tfl-london",
       "stationExternalId": "940GZZLUBBN",
       "segments": [
         {
@@ -3418,6 +4013,29 @@
       ],
       "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "910GROMFORD",
+      "segments": [
+        {
+          "id": "bypass-1",
+          "label": "Step-free-bypassed leg 1",
+          "stepFreeAlternative": true,
+          "elevators": [
+            {
+              "externalId": "910GROMFORD-Lift-1 ",
+              "label": "Lift A"
+            },
+            {
+              "externalId": "910GROMFORD-Lift-2 ",
+              "label": "Lift B"
+            }
+          ]
+        }
+      ],
+      "note": "Step-free-bypassed leg 1: step-free even without a lift (a non-lift route exists). No single lift outage removes step-free access on this route.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal. Ramp/same-level step-free paths (step-free-paths.json, TfL's own published topology) applied — bypassed legs and contracted parallels come from that data."
     },
     {
       "systemId": "tfl-london",
@@ -3462,6 +4080,7 @@
     {
       "systemId": "tfl-london",
       "stationExternalId": "910GSTRETHM",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -3472,10 +4091,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "910GSTRETHM",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "910GSTRETHM-Lift-2",
@@ -3484,7 +4112,7 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
@@ -3528,6 +4156,7 @@
     {
       "systemId": "tfl-london",
       "stationExternalId": "910GTOOTING",
+      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -3538,10 +4167,19 @@
               "label": "Lift 1"
             }
           ]
-        },
+        }
+      ],
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+    },
+    {
+      "systemId": "tfl-london",
+      "stationExternalId": "910GTOOTING",
+      "chainLabel": " (Route 2)",
+      "segments": [
         {
-          "id": "seg-2",
-          "label": "Leg 2",
+          "id": "seg-1",
+          "label": "Leg 1",
           "elevators": [
             {
               "externalId": "910GTOOTING-Lift-2",
@@ -3550,13 +4188,12 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
+      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
       "systemId": "tfl-london",
       "stationExternalId": "940GZZLUKNB",
-      "chainLabel": " (Route 1)",
       "segments": [
         {
           "id": "seg-1",
@@ -3571,19 +4208,10 @@
               "label": "Lift A2"
             }
           ]
-        }
-      ],
-      "note": "Leg 1: 2 lifts — either one keeps this leg open. No single lift outage removes step-free access on this route.",
-      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
-    },
-    {
-      "systemId": "tfl-london",
-      "stationExternalId": "940GZZLUKNB",
-      "chainLabel": " (Route 2)",
-      "segments": [
+        },
         {
-          "id": "seg-1",
-          "label": "Leg 1",
+          "id": "seg-2",
+          "label": "Leg 2",
           "elevators": [
             {
               "externalId": "940GZZLUKNB-Lift-3",
@@ -3592,7 +4220,7 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. If that lift is out of service, this route is not step-free.",
+      "note": "Leg 1: 2 lifts — either one keeps this leg open. Leg 2: one lift, no backup. A leg with a single lift has no backup — an outage there makes this route not step-free.",
       "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
     },
     {
@@ -3643,6 +4271,46 @@
     }
   ],
   "evidenceExceptions": {
+    "940GZZDLSHS-Lift-1": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
+    "940GZZLUGPK-Lift-4": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
+    "940GZZLUWYP-Lift-5": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
+    "HUBRMD-Lift-2": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
+    "HUBUPM-Lift-1": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
+    "HUBABW-Lift-3": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
+    "HUBABW-Lift-4": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
+    "910GROMFORD-Lift-1 ": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
+    "910GROMFORD-Lift-2 ": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
+    "910GESTFLDS-Lift-1": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
+    "910GESTFLDS-Lift-2": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
+    "910GORPNGTN-Lift 1": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
+    "910GORPNGTN-Lift 3": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
+    "910GPURLEY-Lift-1": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
+    "910GPURLEY-Lift-4": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
+    "910GRDNGSTN-Lift-1": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
+    "910GRDNGSTN-Lift-5": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
+    "910GRDNGSTN-Lift-2": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
+    "910GRDNGSTN-Lift-3": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
+    "940GZZDLABR-Lift-1": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
+    "940GZZDLABR-Lift-2": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
+    "940GZZDLRVC-Lift-1": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
+    "940GZZDLRVC-Lift-3": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
+    "HUBTCR-Lift-1": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
+    "HUBTCR-Lift-3": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
+    "HUBCLJ-Lift-1": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
+    "HUBCLJ-Lift-2": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
+    "HUBCLJ-Lift-3": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
+    "HUBCLJ-Lift-4": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
+    "HUBECY-Lift-2": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
+    "HUBECY-Lift-3": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
+    "HUBECY-Lift-4": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
+    "HUBHX5-Lift-1": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
+    "HUBHX5-Lift-2": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
+    "HUBKGX-Lift-2": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
+    "HUBKGX-Lift-3": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
+    "HUBWFJ-Lift-1": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
+    "HUBWFJ-Lift-3": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
+    "HUBWWA-Lift-2": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
+    "HUBWWA-Lift-3": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
     "910GHACKNYW-Lift-1": "TfL alert-confirmed alternative (use-the-X): \"the ramp on Hepscott Road\""
   }
 }

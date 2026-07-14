@@ -60,7 +60,92 @@ const liftById = new Map(lifts.map((l) => [l.id, l]));
 
 const groupIdOf = (area) => area.split("|")[0].split("-")[1];
 const areasOf = (field) => field.split("|");
-const tupleKey = (l) => `${l.fromAreas}=>${l.toAreas}`;
+
+// ---- Permanent step-free connections (RampRoutes + SameLevelPaths) ----
+// TfL's own published non-lift topology (step-free-paths.json, built by
+// tfl-import.mjs from the same detailed export as Lifts.csv). Two areas
+// joined by a ramp or a same-level path are mutually reachable WITHOUT a
+// lift, so for access-chain purposes they are ONE place: we CONTRACT them
+// into a single canonical node. Consequences, both strictly bypass-adding
+// (they can only reduce false "no access" claims, never invent a lift):
+//   - a lift whose endpoints contract together is PARALLELED by a permanent
+//     step-free path → its leg gets stepFreeAlternative;
+//   - two lifts whose routes become identical after contraction are true
+//     parallels → one redundant logical edge;
+//   - a branching hub can collapse into a clean path → the station's chain
+//     becomes safely derivable where it was excluded before.
+// Contraction is applied ONLY within one station+area-group (an edge whose
+// endpoints live in different groups is skipped and counted — merging
+// sub-complexes is interchange-tier work for the human pass, not this
+// script). Missing file → no contraction (warn), identical to the old
+// behavior.
+let stepFreePaths = { ramps: [], sameLevel: [] };
+try {
+  stepFreePaths = JSON.parse(readFileSync(join(DATA_DIR, "step-free-paths.json"), "utf8"));
+} catch {
+  console.warn("WARN: no step-free-paths.json — ramp/same-level contraction skipped (re-run tfl-import.mjs)");
+}
+const ufParent = new Map();
+const ufFind = (n) => {
+  let r = n;
+  while (ufParent.get(r) !== undefined && ufParent.get(r) !== r) r = ufParent.get(r);
+  if (r !== n) ufParent.set(n, r);
+  return r;
+};
+const sgOf = (node) => node.split("-").slice(0, 2).join("-"); // station-group prefix
+let pathUnions = 0;
+let crossGroupSkipped = 0;
+for (const [a, b] of [...stepFreePaths.ramps, ...stepFreePaths.sameLevel]) {
+  if (sgOf(a) !== sgOf(b)) { crossGroupSkipped++; continue; }
+  const ra = ufFind(ufParent.has(a) ? a : (ufParent.set(a, a), a));
+  const rb = ufFind(ufParent.has(b) ? b : (ufParent.set(b, b), b));
+  if (ra !== rb) {
+    // deterministic representative: the lexicographically smaller root
+    if (ra < rb) ufParent.set(rb, ra);
+    else ufParent.set(ra, rb);
+    pathUnions++;
+  }
+}
+const canon = (node) => (ufParent.has(node) ? ufFind(node) : node);
+
+// STREET ANCHORS: every station in the paths data has an explicit
+// "<station>-Outside" node (312/312 — a literal marker, not a decoded
+// abbreviation). Outside edges are deliberately NOT contracted (contracting
+// through Outside would bridge a station's separate sub-complexes — that
+// merge is interchange-tier work for the human pass), but a node directly
+// path-connected to Outside marks its contracted group as STREET-CONNECTED.
+// A chain that passes THROUGH a street-connected node is really two
+// independent street→platform routes meeting at the street — splitting there
+// (see analyzeComponent) keeps per-route status accurate instead of chaining
+// unrelated lifts in series (found live: Willesden Junction's Bakerloo and
+// high-level lifts share a step-free street concourse; as one series chain
+// the station would read fully severed when either side's lift is down).
+const outsideAdjacent = new Set();
+for (const [a, b] of [...stepFreePaths.ramps, ...stepFreePaths.sameLevel]) {
+  if (/-Outside$/i.test(a)) outsideAdjacent.add(b);
+  if (/-Outside$/i.test(b)) outsideAdjacent.add(a);
+}
+const isStreetNode = (canonNode) => streetRoots.has(canonNode);
+let streetRoots = new Set(); // filled after contraction, once canon is stable
+const canonList = (field) => [...new Set(areasOf(field).map(canon))].sort().join("|");
+// Precompute canonical endpoints per lift; a canonical intermediate landing
+// that contracts into an endpoint is no longer a distinct third stop.
+for (const l of lifts) {
+  l._fromC = canonList(l.fromAreas);
+  l._toC = canonList(l.toAreas);
+  const ends = new Set([...l._fromC.split("|"), ...l._toC.split("|")]);
+  l._interC = [
+    ...(l.intermediateAreas ? areasOf(l.intermediateAreas) : []),
+    ...(l.intermediateAreas2 ? areasOf(l.intermediateAreas2) : []),
+  ].map(canon).filter((n) => !ends.has(n));
+  l._bypassed = l._fromC === l._toC; // endpoints step-free-connected without the lift
+}
+streetRoots = new Set([...outsideAdjacent].map(canon));
+if (pathUnions) {
+  console.log(`Step-free paths: ${pathUnions} node contraction(s) applied (${crossGroupSkipped} cross-group/Outside edge(s) not contracted); ${lifts.filter((l) => l._bypassed).length} lift(s) fully paralleled by a permanent step-free path; ${streetRoots.size} street-connected node group(s).`);
+}
+
+const tupleKey = (l) => `${l._fromC}=>${l._toC}`;
 // A multi-level lift ALSO stops at an intermediate landing (Lifts.csv models
 // it as one row, per SPEC.md) — that landing is a real physical node other
 // lifts can share, so it must count for CONNECTIVITY (which lifts merge into
@@ -73,10 +158,9 @@ const tupleKey = (l) => `${l.fromAreas}=>${l.toAreas}`;
 // TfL alert covering Lift-A and Lift-B together, which shouldn't happen for
 // two truly-independent routes — the discrepancy is what surfaced the bug).
 const allNodesOf = (l) => [
-  ...areasOf(l.fromAreas),
-  ...(l.intermediateAreas ? areasOf(l.intermediateAreas) : []),
-  ...(l.intermediateAreas2 ? areasOf(l.intermediateAreas2) : []),
-  ...areasOf(l.toAreas),
+  ...l._fromC.split("|"),
+  ...l._interC,
+  ...l._toC.split("|"),
 ];
 
 // --- Group lifts by (station, leading numeric area-group id) ---
@@ -118,10 +202,34 @@ function connectedComponents(els) {
 
 // --- Classify + order one component's edges into a chain, or exclude it ---
 function analyzeComponent(comp) {
-  // Dedupe by exact tuple -> logical edges (parallel lifts on the identical
-  // route are ONE edge — matches tfl-import.mjs's own redundancy grouping).
+  // Lifts fully paralleled by a permanent step-free path (endpoints
+  // contracted together) don't gate anything — set them aside; they rejoin
+  // the model as always-up stepFreeAlternative segments.
+  const bypassed = comp.filter((l) => l._bypassed);
+  const active = comp.filter((l) => !l._bypassed);
+  const bypassGroups = bypassed.length
+    ? [...Map.groupBy(bypassed, (l) => l._fromC).values()].map((g) => ({ node: g[0]._fromC, ids: g.map((l) => l.id) }))
+    : [];
+  // Distribute bypass groups onto the sub-chain whose nodes contain them;
+  // anything unmatched becomes its own always-accessible route.
+  const withBypass = (chains) => {
+    const out = chains.map((c) => ({ ...c, bypassed: [] }));
+    for (const g of bypassGroups) {
+      const host = out.find((c) => c.nodes?.has(g.node));
+      if (host) host.bypassed.push(g.ids);
+      else out.push({ segments: [], bypassed: [g.ids] });
+    }
+    return { excluded: false, chains: out };
+  };
+  if (!active.length) {
+    return withBypass([]);
+  }
+
+  // Dedupe by CANONICAL tuple -> logical edges (parallel lifts on the same
+  // step-free-equivalent route are ONE edge; matches tfl-import.mjs's own
+  // grouping for uncontracted routes).
   const edgesByTuple = new Map();
-  for (const l of comp) {
+  for (const l of active) {
     const k = tupleKey(l);
     (edgesByTuple.get(k) ?? edgesByTuple.set(k, []).get(k)).push(l);
   }
@@ -133,20 +241,26 @@ function analyzeComponent(comp) {
   // A single logical edge (however many parallel lifts share it, however
   // many pipe-separated destinations it has) needs no ordering — always safe.
   if (edges.length === 1) {
-    return { excluded: false, segments: [edges[0].lifts.map((l) => l.id)] };
+    return withBypass([{
+      segments: [edges[0].lifts.map((l) => l.id)],
+      nodes: new Set([...edges[0].from.split("|"), ...edges[0].to.split("|")]),
+    }]);
   }
 
   // Beyond one edge, a multi-destination (pipe) edge makes degree-counting
   // and path-ordering ambiguous — exclude conservatively rather than guess.
-  if (comp.some((l) => l.fromAreas.includes("|") || l.toAreas.includes("|"))) {
+  // (Judged on CANONICAL endpoints — a pipe list that contracts to one node
+  // is no longer multi-destination.)
+  if (active.some((l) => l._fromC.includes("|") || l._toC.includes("|"))) {
     return { excluded: true, reason: "multi-destination edge in a multi-edge component" };
   }
   // Same for a multi-level lift's intermediate landing: the simple 2-node
   // edge model (this script's path-ordering, and its endpoint/degree checks)
   // has no way to route THROUGH a 3rd stop, so exclude rather than guess at
   // an ordering. (A single-edge component's own intermediate stop is fine —
-  // there's nothing to order relative to; only matters once there's 2+ edges.)
-  if (comp.some((l) => l.intermediateAreas || l.intermediateAreas2)) {
+  // there's nothing to order relative to; only matters once there's 2+ edges.
+  // A landing that CONTRACTS into an endpoint no longer counts.)
+  if (active.some((l) => l._interC.length)) {
     return { excluded: true, reason: "multi-level lift (intermediate landing) in a multi-edge component" };
   }
 
@@ -169,6 +283,7 @@ function analyzeComponent(comp) {
   const ordered = [];
   const usedEdges = new Set();
   let cur = endpoints[0];
+  const nodeSeq = [cur];
   while (usedEdges.size < edges.length) {
     const candidates = (adj.get(cur) ?? []).filter((e) => !usedEdges.has(e));
     if (candidates.length !== 1) return { excluded: true, reason: "path traversal ambiguous" };
@@ -176,8 +291,27 @@ function analyzeComponent(comp) {
     usedEdges.add(e);
     ordered.push(e);
     cur = e.from === cur ? e.to : e.from;
+    nodeSeq.push(cur);
   }
-  return { excluded: false, segments: ordered.map((e) => e.lifts.map((l) => l.id)) };
+  // SPLIT at interior street-connected nodes: two legs meeting at the street
+  // are independent street→platform routes, not a series chain (a rider never
+  // needs both lifts for one trip — see the Willesden note above).
+  const chains = [];
+  let seg = [ordered[0]];
+  let nodes = new Set([nodeSeq[0].split("|"), nodeSeq[1].split("|")].flat());
+  for (let i = 1; i < ordered.length; i++) {
+    const joint = nodeSeq[i]; // node between ordered[i-1] and ordered[i]
+    if (isStreetNode(joint)) {
+      chains.push({ segments: seg.map((e) => e.lifts.map((l) => l.id)), nodes });
+      seg = [];
+      nodes = new Set(joint.split("|"));
+    }
+    seg.push(ordered[i]);
+    for (const n of nodeSeq[i + 1].split("|")) nodes.add(n);
+    for (const n of joint.split("|")) nodes.add(n);
+  }
+  chains.push({ segments: seg.map((e) => e.lifts.map((l) => l.id)), nodes });
+  return withBypass(chains);
 }
 
 // --- Assemble per-station models ---
@@ -198,7 +332,10 @@ for (const [key, els] of byGroup) {
       continue;
     }
     const list = perStationSafeComponents.get(sid) ?? [];
-    list.push(result.segments);
+    for (const chain of result.chains) {
+      if (!chain.segments.length && !chain.bypassed.length) continue;
+      list.push({ segments: chain.segments, bypassed: chain.bypassed });
+    }
     perStationSafeComponents.set(sid, list);
   }
 }
@@ -208,7 +345,8 @@ const excludedStationIds = new Set(excludedLog.map((e) => e.stationId));
 const models = [];
 for (const [sid, comps] of perStationSafeComponents) {
   // Deterministic ordering across a station's independent routes.
-  comps.sort((a, b) => a[0][0].localeCompare(b[0][0]));
+  const firstId = (c) => c.segments[0]?.[0] ?? c.bypassed[0]?.[0] ?? "";
+  comps.sort((a, b) => firstId(a).localeCompare(firstId(b)));
   // A station also needs a distinguishing label when it has excluded (unmodeled)
   // lifts sitting alongside a safe chain — otherwise the safe chain would show
   // under the bare station name, indistinguishable from a fallback row about one
@@ -216,18 +354,45 @@ for (const [sid, comps] of perStationSafeComponents) {
   // 2-lift chain while its other 8 lifts are excluded as too ambiguous; without
   // this, "Bank" could appear twice on the access board for unrelated reasons).
   const multi = comps.length > 1 || excludedStationIds.has(sid);
-  comps.forEach((segLiftIdGroups, idx) => {
+  comps.forEach((comp, idx) => {
     models.push({
       systemId: SYSTEM_ID,
       stationExternalId: sid,
       ...(multi ? { chainLabel: ` (Route ${idx + 1})` } : {}),
-      segments: segLiftIdGroups.map((liftIds, segIdx) => ({
-        id: `seg-${segIdx + 1}`,
-        label: `Leg ${segIdx + 1}`,
-        elevators: liftIds.map((id) => ({ externalId: id, label: liftById.get(id)?.friendlyName ?? id })),
-      })),
+      segments: [
+        ...comp.segments.map((liftIds, segIdx) => ({
+          id: `seg-${segIdx + 1}`,
+          label: `Leg ${segIdx + 1}`,
+          elevators: liftIds.map((id) => ({ externalId: id, label: liftById.get(id)?.friendlyName ?? id })),
+        })),
+        // Lifts fully paralleled by a TfL-published ramp/same-level path:
+        // always-up legs (the path is permanent), so their outage alone never
+        // severs the route — the bypass is the agency's own topology.
+        ...comp.bypassed.map((liftIds, bIdx) => ({
+          id: `bypass-${bIdx + 1}`,
+          label: `Step-free-bypassed leg ${bIdx + 1}`,
+          stepFreeAlternative: true,
+          elevators: liftIds.map((id) => ({ externalId: id, label: liftById.get(id)?.friendlyName ?? id })),
+        })),
+      ],
     });
   });
+}
+
+// Lifts whose derived redundancy may legitimately differ from lifts.json's
+// lift-only isRedundant because of the published step-free paths: bypassed
+// lifts, and lifts merged into a parallel group by node contraction.
+const pathAffected = new Set(lifts.filter((l) => l._bypassed).map((l) => l.id));
+{
+  const byCanon = new Map();
+  for (const l of lifts.filter((x) => !x._bypassed)) {
+    const k = `${l.stationId}::${tupleKey(l)}`;
+    (byCanon.get(k) ?? byCanon.set(k, []).get(k)).push(l);
+  }
+  for (const group of byCanon.values()) {
+    const rawTuples = new Set(group.map((l) => `${l.fromAreas}=>${l.toAreas}`));
+    if (rawTuples.size > 1) for (const l of group) pathAffected.add(l.id);
+  }
 }
 
 // ---- Alert-evidence enrichment ----
@@ -254,6 +419,13 @@ try {
 // not "a ramp"), so the self-check below documents them instead of failing,
 // the same pattern as MTA's REDUNDANCY_EXCEPTIONS.
 const evidenceExceptions = new Map(); // externalId -> reason
+// Pre-seed with step-free-path effects: these lifts' derived redundancy comes
+// from TfL's own published ramp/same-level topology, so a mismatch with
+// lifts.json's lift-only isRedundant flag is expected and documented, not a
+// failure (same pattern as the alert-evidence exceptions below).
+for (const id of pathAffected) {
+  evidenceExceptions.set(id, "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route");
+}
 
 const publicEvidence = new Map(); // model -> rider-facing evidence sentences
 const internalEvidence = new Map(); // model -> provenance detail
@@ -281,8 +453,10 @@ if (evidence) {
 // `internalNote` = provenance, never shipped to the site.
 for (const m of models) {
   m.note = [composePublicNote(m.segments, "lift"), ...(publicEvidence.get(m) ?? [])].join(" ");
+  const hasPathLift = m.segments.some((s) => s.elevators.some((e) => pathAffected.has(e.externalId)));
   m.internalNote = [
     "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal.",
+    ...(hasPathLift ? ["Ramp/same-level step-free paths (step-free-paths.json, TfL's own published topology) applied — bypassed legs and contracted parallels come from that data."] : []),
     ...(internalEvidence.get(m) ?? []),
   ].join(" ");
 }
@@ -317,7 +491,8 @@ console.log(
     `(${totalComponents} total access components examined, ${excludedLog.length} excluded pending human review).`,
 );
 if (evidenceExceptions.size) {
-  console.log(`Alert-evidence enrichment: ${evidenceExceptions.size} elevator(s) got a TfL-confirmed step-free alternative applied.`);
+  const fromPaths = [...evidenceExceptions.values()].filter((r) => r.includes("step-free-paths.json")).length;
+  console.log(`Documented exceptions: ${fromPaths} from published ramp/same-level paths, ${evidenceExceptions.size - fromPaths} from TfL alert evidence.`);
 }
 if (warnings.length) {
   console.error(`\nSELF-CHECK FAILED — ${warnings.length} warning(s):`);

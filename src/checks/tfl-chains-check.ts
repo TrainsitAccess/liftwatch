@@ -100,11 +100,23 @@ const excludedStationIds = new Set(excluded.excluded.map((e) => e.stationId));
 for (const [name, id] of [
   ["Bank", "HUBBAN"],
   ["King's Cross St Pancras", "HUBKGX"],
-  ["Paddington", "HUBPAD"],
   ["Stratford", "HUBSRA"],
   ["Tottenham Court Road", "HUBTCR"],
 ] as const) {
   ok(excludedStationIds.has(id), `${name} still has ambiguous topology excluded pending human review`);
+}
+
+// Paddington graduated from that list on 2026-07-14: TfL's published
+// ramp/same-level paths (step-free-paths.json) contracted its branching into
+// four clean routes — including the Elizabeth-line side's two genuine
+// redundant pairs (Lift-6/7 and Lift-8/9). Pin the shape so a future data or
+// generator change that silently degrades it fails loudly.
+{
+  const pad = chainsFor("HUBPAD");
+  ok(pad.length === 4 && !excludedStationIds.has("HUBPAD"), "Paddington fully auto-resolved into four routes (step-free paths, 2026-07-14)");
+  const pairSegs = pad.flatMap((m) => m.segments).filter((s) => s.elevators.length === 2).map((s) => s.elevators.map((e) => e.externalId).sort().join("+"));
+  ok(pairSegs.includes("HUBPAD-Lift-6+HUBPAD-Lift-7") && pairSegs.includes("HUBPAD-Lift-8+HUBPAD-Lift-9"),
+    "Paddington keeps its two genuine redundant pairs (6/7, 8/9)");
 }
 
 // Any station with excluded (unmodeled) lifts alongside a safe chain must

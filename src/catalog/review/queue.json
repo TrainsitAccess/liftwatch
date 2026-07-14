@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-14T19:12:35.389Z",
+ "updatedAt": "2026-07-14T21:54:28.607Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -4237,11 +4237,11 @@
    "name": "East India",
    "status": "pending",
    "priority": 70,
-   "reason": "multi-level lift (intermediate landing) in a multi-edge component",
+   "reason": "branching hub node (maxDeg=3)",
    "evidence": [
     {
      "source": "exclusion gate",
-     "text": "multi-level lift (intermediate landing) in a multi-edge component; lifts: 940GZZDLEIN-Lift-1, 940GZZDLEIN-Lift-2, 940GZZDLEIN-Lift-3"
+     "text": "branching hub node (maxDeg=3); lifts: 940GZZDLEIN-Lift-1, 940GZZDLEIN-Lift-2, 940GZZDLEIN-Lift-3"
     },
     {
      "source": "TfL alert evidence (hint)",
@@ -4256,11 +4256,11 @@
    "name": "Wembley Park",
    "status": "pending",
    "priority": 70,
-   "reason": "multi-destination edge in a multi-edge component",
+   "reason": "branching hub node (maxDeg=4)",
    "evidence": [
     {
      "source": "exclusion gate",
-     "text": "multi-destination edge in a multi-edge component; lifts: 940GZZLUWYP-Lift-1, 940GZZLUWYP-Lift-2, 940GZZLUWYP-Lift-3, 940GZZLUWYP-Lift-4, 940GZZLUWYP-Lift-5"
+     "text": "branching hub node (maxDeg=4); lifts: 940GZZLUWYP-Lift-1, 940GZZLUWYP-Lift-2, 940GZZLUWYP-Lift-3, 940GZZLUWYP-Lift-4, 940GZZLUWYP-Lift-5"
     },
     {
      "source": "TfL alert evidence (hint)",
@@ -4275,11 +4275,11 @@
    "name": "Brent Cross West Station",
    "status": "pending",
    "priority": 80,
-   "reason": "multi-destination edge in a multi-edge component",
+   "reason": "branching hub node (maxDeg=4)",
    "evidence": [
     {
      "source": "exclusion gate",
-     "text": "multi-destination edge in a multi-edge component; lifts: 910GBRENTX-Lift-2, 910GBRENTX-Lift-3"
+     "text": "branching hub node (maxDeg=4); lifts: 910GBRENTX-Lift-1, 910GBRENTX-Lift-2, 910GBRENTX-Lift-3, 910GBRENTX-Lift-4, 910GBRENTX-Lift-5"
     }
    ]
   },
@@ -4305,11 +4305,11 @@
    "name": "Canonbury",
    "status": "pending",
    "priority": 80,
-   "reason": "multi-destination edge in a multi-edge component",
+   "reason": "branching hub node (maxDeg=3)",
    "evidence": [
     {
      "source": "exclusion gate",
-     "text": "multi-destination edge in a multi-edge component; lifts: 910GCNNB-Lift-1, 910GCNNB-Lift-2, 910GCNNB-Lift-3"
+     "text": "branching hub node (maxDeg=3); lifts: 910GCNNB-Lift-1, 910GCNNB-Lift-2, 910GCNNB-Lift-3"
     }
    ]
   },
@@ -4359,21 +4359,6 @@
    ]
   },
   {
-   "key": "tfl:910GDEPTFD",
-   "system": "tfl-london",
-   "stationId": "910GDEPTFD",
-   "name": "Deptford",
-   "status": "pending",
-   "priority": 80,
-   "reason": "multi-destination edge in a multi-edge component",
-   "evidence": [
-    {
-     "source": "exclusion gate",
-     "text": "multi-destination edge in a multi-edge component; lifts: 910GDEPTFD-Lift-1, 910GDEPTFD-Lift-2"
-    }
-   ]
-  },
-  {
    "key": "tfl:910GELTR",
    "system": "tfl-london",
    "stationId": "910GELTR",
@@ -4385,6 +4370,21 @@
     {
      "source": "exclusion gate",
      "text": "branching hub node (maxDeg=3); lifts: 910GELTR-Lift-1, 910GELTR-Lift-2, 910GELTR-Lift-3"
+    }
+   ]
+  },
+  {
+   "key": "tfl:910GFRSTGT",
+   "system": "tfl-london",
+   "stationId": "910GFRSTGT",
+   "name": "Forest Gate",
+   "status": "pending",
+   "priority": 80,
+   "reason": "branching hub node (maxDeg=3)",
+   "evidence": [
+    {
+     "source": "exclusion gate",
+     "text": "branching hub node (maxDeg=3); lifts: 910GFRSTGT-Lift-1, 910GFRSTGT-Lift-2, 910GFRSTGT-Lift-3"
     }
    ]
   },
@@ -4494,17 +4494,17 @@
    ]
   },
   {
-   "key": "tfl:910GORPNGTN",
+   "key": "tfl:910GMRYLAND",
    "system": "tfl-london",
-   "stationId": "910GORPNGTN",
-   "name": "Orpington",
+   "stationId": "910GMRYLAND",
+   "name": "Maryland",
    "status": "pending",
    "priority": 80,
-   "reason": "branching hub node (maxDeg=3)",
+   "reason": "multi-level lift (intermediate landing) in a multi-edge component",
    "evidence": [
     {
      "source": "exclusion gate",
-     "text": "branching hub node (maxDeg=3); lifts: 910GORPNGTN-Lift 1, 910GORPNGTN-Lift 2, 910GORPNGTN-Lift 3"
+     "text": "multi-level lift (intermediate landing) in a multi-edge component; lifts: 910GMRYLAND-Lift-2, 910GMRYLAND-Lift-1, 910GMRYLAND-Lift-3"
     }
    ]
   },
@@ -4530,11 +4530,11 @@
    "name": "Purley",
    "status": "pending",
    "priority": 80,
-   "reason": "branching hub node (maxDeg=4)",
+   "reason": "branching hub node (maxDeg=3)",
    "evidence": [
     {
      "source": "exclusion gate",
-     "text": "branching hub node (maxDeg=4); lifts: 910GPURLEY-Lift-1, 910GPURLEY-Lift-2, 910GPURLEY-Lift-3, 910GPURLEY-Lift-4"
+     "text": "branching hub node (maxDeg=3); lifts: 910GPURLEY-Lift-1, 910GPURLEY-Lift-2, 910GPURLEY-Lift-3, 910GPURLEY-Lift-4"
     }
    ]
   },
@@ -4545,26 +4545,11 @@
    "name": "Reading",
    "status": "pending",
    "priority": 80,
-   "reason": "branching hub node (maxDeg=5)",
+   "reason": "branching hub node (maxDeg=3)",
    "evidence": [
     {
      "source": "exclusion gate",
-     "text": "branching hub node (maxDeg=5); lifts: 910GRDNGSTN-Lift-1, 910GRDNGSTN-Lift-2, 910GRDNGSTN-Lift-3, 910GRDNGSTN-Lift-4, 910GRDNGSTN-Lift-5"
-    }
-   ]
-  },
-  {
-   "key": "tfl:910GROMFORD",
-   "system": "tfl-london",
-   "stationId": "910GROMFORD",
-   "name": "Romford",
-   "status": "pending",
-   "priority": 80,
-   "reason": "multi-level lift (intermediate landing) in a multi-edge component",
-   "evidence": [
-    {
-     "source": "exclusion gate",
-     "text": "multi-level lift (intermediate landing) in a multi-edge component; lifts: 910GROMFORD-Lift-1 , 910GROMFORD-Lift-2 "
+     "text": "branching hub node (maxDeg=3); lifts: 910GRDNGSTN-Lift-1, 910GRDNGSTN-Lift-2, 910GRDNGSTN-Lift-3, 910GRDNGSTN-Lift-4, 910GRDNGSTN-Lift-5"
     }
    ]
   },
@@ -4734,62 +4719,17 @@
    ]
   },
   {
-   "key": "tfl:940GZZDLKGV",
-   "system": "tfl-london",
-   "stationId": "940GZZDLKGV",
-   "name": "King George V",
-   "status": "pending",
-   "priority": 80,
-   "reason": "multi-destination edge in a multi-edge component",
-   "evidence": [
-    {
-     "source": "exclusion gate",
-     "text": "multi-destination edge in a multi-edge component; lifts: 940GZZDLKGV-Lift-1, 940GZZDLKGV-Lift-2"
-    }
-   ]
-  },
-  {
-   "key": "tfl:940GZZDLPRE",
-   "system": "tfl-london",
-   "stationId": "940GZZDLPRE",
-   "name": "Prince Regent",
-   "status": "pending",
-   "priority": 80,
-   "reason": "multi-destination edge in a multi-edge component",
-   "evidence": [
-    {
-     "source": "exclusion gate",
-     "text": "multi-destination edge in a multi-edge component; lifts: 940GZZDLPRE-Lift-1, 940GZZDLPRE-Lift-2"
-    }
-   ]
-  },
-  {
-   "key": "tfl:940GZZDLRVC",
-   "system": "tfl-london",
-   "stationId": "940GZZDLRVC",
-   "name": "Royal Victoria",
-   "status": "pending",
-   "priority": 80,
-   "reason": "branching hub node (maxDeg=3)",
-   "evidence": [
-    {
-     "source": "exclusion gate",
-     "text": "branching hub node (maxDeg=3); lifts: 940GZZDLRVC-Lift-1, 940GZZDLRVC-Lift-2, 940GZZDLRVC-Lift-3"
-    }
-   ]
-  },
-  {
    "key": "tfl:940GZZDLSTL",
    "system": "tfl-london",
    "stationId": "940GZZDLSTL",
    "name": "Star Lane",
    "status": "pending",
    "priority": 80,
-   "reason": "multi-destination edge in a multi-edge component",
+   "reason": "branching hub node (maxDeg=3)",
    "evidence": [
     {
      "source": "exclusion gate",
-     "text": "multi-destination edge in a multi-edge component; lifts: 940GZZDLSTL-Lift-1, 940GZZDLSTL-Lift-2, 940GZZDLSTL-Lift-3"
+     "text": "branching hub node (maxDeg=3); lifts: 940GZZDLSTL-Lift-1, 940GZZDLSTL-Lift-2, 940GZZDLSTL-Lift-3"
     }
    ]
   },
@@ -4809,17 +4749,32 @@
    ]
   },
   {
+   "key": "tfl:940GZZLUECT",
+   "system": "tfl-london",
+   "stationId": "940GZZLUECT",
+   "name": "Earl's Court",
+   "status": "pending",
+   "priority": 80,
+   "reason": "branching hub node (maxDeg=3)",
+   "evidence": [
+    {
+     "source": "exclusion gate",
+     "text": "branching hub node (maxDeg=3); lifts: 940GZZLUECT-Lift-3, 940GZZLUECT-Lift-4, 940GZZLUECT-Lift-5, 940GZZLUECT-Lift-6"
+    }
+   ]
+  },
+  {
    "key": "tfl:940GZZLUGPK",
    "system": "tfl-london",
    "stationId": "940GZZLUGPK",
    "name": "Green Park",
    "status": "pending",
    "priority": 80,
-   "reason": "multi-destination edge in a multi-edge component",
+   "reason": "multi-level lift (intermediate landing) in a multi-edge component",
    "evidence": [
     {
      "source": "exclusion gate",
-     "text": "multi-destination edge in a multi-edge component; lifts: 940GZZLUGPK-Lift-1, 940GZZLUGPK-Lift-2, 940GZZLUGPK-Lift-4, 940GZZLUGPK-Lift-5, 940GZZLUGPK-Lift-6"
+     "text": "multi-level lift (intermediate landing) in a multi-edge component; lifts: 940GZZLUGPK-Lift-1, 940GZZLUGPK-Lift-2, 940GZZLUGPK-Lift-4, 940GZZLUGPK-Lift-5, 940GZZLUGPK-Lift-6"
     }
    ]
   },
@@ -4854,21 +4809,6 @@
    ]
   },
   {
-   "key": "tfl:940GZZLUSWK",
-   "system": "tfl-london",
-   "stationId": "940GZZLUSWK",
-   "name": "Southwark",
-   "status": "pending",
-   "priority": 80,
-   "reason": "multi-destination edge in a multi-edge component",
-   "evidence": [
-    {
-     "source": "exclusion gate",
-     "text": "multi-destination edge in a multi-edge component; lifts: 940GZZLUSWK-Lift-1, 940GZZLUSWK-Lift-2"
-    }
-   ]
-  },
-  {
    "key": "tfl:HUBABW",
    "system": "tfl-london",
    "stationId": "HUBABW",
@@ -4879,22 +4819,7 @@
    "evidence": [
     {
      "source": "exclusion gate",
-     "text": "multi-destination edge in a multi-edge component; lifts: HUBABW-Lift-6, HUBABW-Lift-5"
-    }
-   ]
-  },
-  {
-   "key": "tfl:HUBAMR",
-   "system": "tfl-london",
-   "stationId": "HUBAMR",
-   "name": "Amersham",
-   "status": "pending",
-   "priority": 80,
-   "reason": "multi-destination edge in a multi-edge component",
-   "evidence": [
-    {
-     "source": "exclusion gate",
-     "text": "multi-destination edge in a multi-edge component; lifts: HUBAMR-Lift-1, HUBAMR-Lift-2"
+     "text": "multi-destination edge in a multi-edge component; lifts: HUBABW-Lift-1, HUBABW-Lift-2, HUBABW-Lift-3, HUBABW-Lift-4, HUBABW-Lift-6, HUBABW-Lift-5"
     }
    ]
   },
@@ -4909,7 +4834,7 @@
    "evidence": [
     {
      "source": "exclusion gate",
-     "text": "multi-destination edge in a multi-edge component; lifts: HUBBAN-Lift-2, HUBBAN-Lift-3, HUBBAN-Lift-4, HUBBAN-Lift-5, HUBBAN-Lift-6, HUBBAN-Lift-7, HUBBAN-Lift 10, HUBBAN-Lift 11"
+     "text": "multi-destination edge in a multi-edge component; lifts: HUBBAN-Lift-2, HUBBAN-Lift-3, HUBBAN-Lift-4, HUBBAN-Lift-5, HUBBAN-Lift-6, HUBBAN-Lift-7, HUBBAN-Lift-8, HUBBAN-Lift-9, HUBBAN-Lift 10, HUBBAN-Lift 11"
     }
    ]
   },
@@ -4920,11 +4845,11 @@
    "name": "Bond Street",
    "status": "pending",
    "priority": 80,
-   "reason": "multi-destination edge in a multi-edge component",
+   "reason": "multi-level lift (intermediate landing) in a multi-edge component",
    "evidence": [
     {
      "source": "exclusion gate",
-     "text": "multi-destination edge in a multi-edge component; lifts: HUBBDS-Lift-1, HUBBDS-Lift-2, HUBBDS-Lift-3, HUBBDS-Lift-4"
+     "text": "multi-level lift (intermediate landing) in a multi-edge component; lifts: HUBBDS-Lift-1, HUBBDS-Lift-2, HUBBDS-Lift-3, HUBBDS-Lift-4, HUBBDS-Lift-5, HUBBDS-Lift-6"
     }
    ]
   },
@@ -4939,7 +4864,7 @@
    "evidence": [
     {
      "source": "exclusion gate",
-     "text": "multi-destination edge in a multi-edge component; lifts: HUBBFR-Lift-1, HUBBFR-Lift-2, HUBBFR-Lift-3, HUBBFR-Lift-4"
+     "text": "multi-destination edge in a multi-edge component; lifts: HUBBFR-Lift-6, HUBBFR-Lift-8, HUBBFR-Lift-1, HUBBFR-Lift-2, HUBBFR-Lift-3, HUBBFR-Lift-4"
     }
    ]
   },
@@ -4965,11 +4890,11 @@
    "name": "Canning Town",
    "status": "pending",
    "priority": 80,
-   "reason": "multi-destination edge in a multi-edge component",
+   "reason": "multi-level lift (intermediate landing) in a multi-edge component",
    "evidence": [
     {
      "source": "exclusion gate",
-     "text": "multi-destination edge in a multi-edge component; lifts: HUBCAN-Lift-1, HUBCAN-Lift-2, HUBCAN-Lift-3, HUBCAN-Lift-4"
+     "text": "multi-level lift (intermediate landing) in a multi-edge component; lifts: HUBCAN-Lift-1, HUBCAN-Lift-2, HUBCAN-Lift-3, HUBCAN-Lift-4"
     }
    ]
   },
@@ -4989,21 +4914,6 @@
    ]
   },
   {
-   "key": "tfl:HUBCLJ",
-   "system": "tfl-london",
-   "stationId": "HUBCLJ",
-   "name": "Clapham Junction",
-   "status": "pending",
-   "priority": 80,
-   "reason": "no clean path endpoints (possible cycle)",
-   "evidence": [
-    {
-     "source": "exclusion gate",
-     "text": "no clean path endpoints (possible cycle); lifts: HUBCLJ-Lift-1, HUBCLJ-Lift-2, HUBCLJ-Lift-3, HUBCLJ-Lift-4"
-    }
-   ]
-  },
-  {
    "key": "tfl:HUBCUS",
    "system": "tfl-london",
    "stationId": "HUBCUS",
@@ -5014,7 +4924,7 @@
    "evidence": [
     {
      "source": "exclusion gate",
-     "text": "multi-destination edge in a multi-edge component; lifts: HUBCUS-Lift-4, HUBCUS-Lift-2"
+     "text": "multi-destination edge in a multi-edge component; lifts: HUBCUS-Lift-4, HUBCUS-Lift-1, HUBCUS-Lift-2, HUBCUS-Lift-3"
     }
    ]
   },
@@ -5025,11 +4935,11 @@
    "name": "Crystal Palace",
    "status": "pending",
    "priority": 80,
-   "reason": "multi-destination edge in a multi-edge component",
+   "reason": "branching hub node (maxDeg=3)",
    "evidence": [
     {
      "source": "exclusion gate",
-     "text": "multi-destination edge in a multi-edge component; lifts: HUBCYP-Lift-1, HUBCYP-Lift-2, HUBCYP-Lift-3"
+     "text": "branching hub node (maxDeg=3); lifts: HUBCYP-Lift-1, HUBCYP-Lift-2, HUBCYP-Lift-3"
     }
    ]
   },
@@ -5049,47 +4959,17 @@
    ]
   },
   {
-   "key": "tfl:HUBECY",
-   "system": "tfl-london",
-   "stationId": "HUBECY",
-   "name": "East Croydon",
-   "status": "pending",
-   "priority": 80,
-   "reason": "branching hub node (maxDeg=4)",
-   "evidence": [
-    {
-     "source": "exclusion gate",
-     "text": "branching hub node (maxDeg=4); lifts: HUBECY-Lift-1, HUBECY-Lift-2, HUBECY-Lift-3, HUBECY-Lift-4"
-    }
-   ]
-  },
-  {
    "key": "tfl:HUBFPK",
    "system": "tfl-london",
    "stationId": "HUBFPK",
    "name": "Finsbury Park",
    "status": "pending",
    "priority": 80,
-   "reason": "multi-destination edge in a multi-edge component",
+   "reason": "branching hub node (maxDeg=5)",
    "evidence": [
     {
      "source": "exclusion gate",
-     "text": "multi-destination edge in a multi-edge component; lifts: HUBFPK-Lift-1, HUBFPK-Lift-3, HUBFPK-Lift1A, HUBFPK-Lift 2, HUBFPK-Lift 7"
-    }
-   ]
-  },
-  {
-   "key": "tfl:HUBGNW",
-   "system": "tfl-london",
-   "stationId": "HUBGNW",
-   "name": "Greenwich",
-   "status": "pending",
-   "priority": 80,
-   "reason": "multi-destination edge in a multi-edge component",
-   "evidence": [
-    {
-     "source": "exclusion gate",
-     "text": "multi-destination edge in a multi-edge component; lifts: HUBGNW-Lift-1, HUBGNW-Lift-2"
+     "text": "branching hub node (maxDeg=5); lifts: HUBFPK-Lift-1, HUBFPK-Lift-3, HUBFPK-Lift1A, HUBFPK-Lift 2, HUBFPK-Lift 7"
     }
    ]
   },
@@ -5109,32 +4989,17 @@
    ]
   },
   {
-   "key": "tfl:HUBHMS",
-   "system": "tfl-london",
-   "stationId": "HUBHMS",
-   "name": "Hammersmith",
-   "status": "pending",
-   "priority": 80,
-   "reason": "multi-destination edge in a multi-edge component",
-   "evidence": [
-    {
-     "source": "exclusion gate",
-     "text": "multi-destination edge in a multi-edge component; lifts: HUBHMS-Lift-1, HUBHMS-Lift-2"
-    }
-   ]
-  },
-  {
    "key": "tfl:HUBHOH",
    "system": "tfl-london",
    "stationId": "HUBHOH",
    "name": "Harrow-on-the-Hill",
    "status": "pending",
    "priority": 80,
-   "reason": "branching hub node (maxDeg=3)",
+   "reason": "branching hub node (maxDeg=4)",
    "evidence": [
     {
      "source": "exclusion gate",
-     "text": "branching hub node (maxDeg=3); lifts: HUBHOH-Lift-2, HUBHOH-Lift-3, HUBHOH-Lift-4"
+     "text": "branching hub node (maxDeg=4); lifts: HUBHOH-Lift-1, HUBHOH-Lift-2, HUBHOH-Lift-3, HUBHOH-Lift-4"
     }
    ]
   },
@@ -5145,11 +5010,11 @@
    "name": "Harrow & Wealdstone",
    "status": "pending",
    "priority": 80,
-   "reason": "multi-destination edge in a multi-edge component",
+   "reason": "branching hub node (maxDeg=4)",
    "evidence": [
     {
      "source": "exclusion gate",
-     "text": "multi-destination edge in a multi-edge component; lifts: HUBHRW-Lift-1, HUBHRW-Lift-2, HUBHRW-Lift-3, HUBHRW-Lift-4"
+     "text": "branching hub node (maxDeg=4); lifts: HUBHRW-Lift-1, HUBHRW-Lift-2, HUBHRW-Lift-3, HUBHRW-Lift-4"
     }
    ]
   },
@@ -5160,11 +5025,11 @@
    "name": "King's Cross St Pancras",
    "status": "pending",
    "priority": 80,
-   "reason": "multi-destination edge in a multi-edge component",
+   "reason": "branching hub node (maxDeg=6)",
    "evidence": [
     {
      "source": "exclusion gate",
-     "text": "multi-destination edge in a multi-edge component; lifts: HUBKGX-Lift-10, HUBKGX-Lift-11, HUBKGX-Lift-6, HUBKGX-Lift-7, HUBKGX-Lift-8"
+     "text": "branching hub node (maxDeg=6); lifts: HUBKGX-Lift-1, HUBKGX-Lift-10, HUBKGX-Lift-11, HUBKGX-Lift-2, HUBKGX-Lift-3, HUBKGX-Lift-5, HUBKGX-Lift-6, HUBKGX-Lift-7, HUBKGX-Lift-8"
     }
    ]
   },
@@ -5175,11 +5040,11 @@
    "name": "London Bridge",
    "status": "pending",
    "priority": 80,
-   "reason": "multi-destination edge in a multi-edge component",
+   "reason": "branching hub node (maxDeg=4)",
    "evidence": [
     {
      "source": "exclusion gate",
-     "text": "multi-destination edge in a multi-edge component; lifts: HUBLBG-Lift-3, HUBLBG-Lift-4"
+     "text": "branching hub node (maxDeg=4); lifts: HUBLBG-Lift-2, HUBLBG-Lift-3, HUBLBG-Lift-4, HUBLBG-Lift-5, HUBLBG-Lift-6"
     }
    ]
   },
@@ -5209,7 +5074,7 @@
    "evidence": [
     {
      "source": "exclusion gate",
-     "text": "multi-destination edge in a multi-edge component; lifts: HUBLST-Lift-C, HUBLST-Lift-B, HUBLST-Lift-A"
+     "text": "multi-destination edge in a multi-edge component; lifts: HUBLST-Lift-1, HUBLST-Lift-C, HUBLST-Lift-B, HUBLST-Lift-A"
     }
    ]
   },
@@ -5225,36 +5090,6 @@
     {
      "source": "exclusion gate",
      "text": "branching hub node (maxDeg=3); lifts: HUBNXG-Lift-1, HUBNXG-Lift-2, HUBNXG-Lift-3"
-    }
-   ]
-  },
-  {
-   "key": "tfl:HUBPAD",
-   "system": "tfl-london",
-   "stationId": "HUBPAD",
-   "name": "Paddington",
-   "status": "pending",
-   "priority": 80,
-   "reason": "multi-level lift (intermediate landing) in a multi-edge component",
-   "evidence": [
-    {
-     "source": "exclusion gate",
-     "text": "multi-level lift (intermediate landing) in a multi-edge component; lifts: HUBPAD-Lift-6, HUBPAD-Lift-7, HUBPAD-Lift-8, HUBPAD-Lift-9, HUBPAD-Lift-12"
-    }
-   ]
-  },
-  {
-   "key": "tfl:HUBRMD",
-   "system": "tfl-london",
-   "stationId": "HUBRMD",
-   "name": "Richmond",
-   "status": "pending",
-   "priority": 80,
-   "reason": "multi-destination edge in a multi-edge component",
-   "evidence": [
-    {
-     "source": "exclusion gate",
-     "text": "multi-destination edge in a multi-edge component; lifts: HUBRMD-Lift-1, HUBRMD-Lift-2"
     }
    ]
   },
@@ -5280,11 +5115,11 @@
    "name": "Stratford",
    "status": "pending",
    "priority": 80,
-   "reason": "multi-destination edge in a multi-edge component",
+   "reason": "branching hub node (maxDeg=6)",
    "evidence": [
     {
      "source": "exclusion gate",
-     "text": "multi-destination edge in a multi-edge component; lifts: HUBSRA-Lift-10, HUBSRA-Lift-12, HUBSRA-Lift-16, HUBSRA-Lift-17, HUBSRA-Lift-3, HUBSRA-Lift-2, HUBSRA-Lift-18, HUBSRA-Lift-4, HUBSRA-Lift-5, HUBSRA-Lift-6, HUBSRA-Lift-7, HUBSRA-Lift-8, HUBSRA-Lift-9, HUBSRA-Lift-1, HUBSRA-Lift-11"
+     "text": "branching hub node (maxDeg=6); lifts: HUBSRA-Lift-10, HUBSRA-Lift-12, HUBSRA-Lift-16, HUBSRA-Lift-17, HUBSRA-Lift-3, HUBSRA-Lift-2, HUBSRA-Lift-18, HUBSRA-Lift-4, HUBSRA-Lift-5, HUBSRA-Lift-6, HUBSRA-Lift-7, HUBSRA-Lift-8, HUBSRA-Lift-9, HUBSRA-Lift-1, HUBSRA-Lift-11"
     }
    ]
   },
@@ -5295,26 +5130,11 @@
    "name": "Tottenham Court Road",
    "status": "pending",
    "priority": 80,
-   "reason": "multi-destination edge in a multi-edge component",
+   "reason": "multi-level lift (intermediate landing) in a multi-edge component",
    "evidence": [
     {
      "source": "exclusion gate",
-     "text": "multi-destination edge in a multi-edge component; lifts: HUBTCR-Lift-1, HUBTCR-Lift-2, HUBTCR-Lift-3, HUBTCR-Lift-4, HUBTCR-Lift-5, HUBTCR-Lift-10, HUBTCR-Lift-12"
-    }
-   ]
-  },
-  {
-   "key": "tfl:HUBUPM",
-   "system": "tfl-london",
-   "stationId": "HUBUPM",
-   "name": "Upminster",
-   "status": "pending",
-   "priority": 80,
-   "reason": "multi-destination edge in a multi-edge component",
-   "evidence": [
-    {
-     "source": "exclusion gate",
-     "text": "multi-destination edge in a multi-edge component; lifts: HUBUPM-Lift-1, HUBUPM-Lift-2, HUBUPM-Lift-3"
+     "text": "multi-level lift (intermediate landing) in a multi-edge component; lifts: HUBTCR-Lift-1, HUBTCR-Lift-2, HUBTCR-Lift-3, HUBTCR-Lift-4, HUBTCR-Lift-5, HUBTCR-Lift-7, HUBTCR-Lift-8, HUBTCR-Lift-10, HUBTCR-Lift-12"
     }
    ]
   },
@@ -5329,7 +5149,7 @@
    "evidence": [
     {
      "source": "exclusion gate",
-     "text": "multi-destination edge in a multi-edge component; lifts: HUBVIC-Lift-C3, HUBVIC-Lift-E5, HUBVIC-Lift-F6, HUBVIC-Lift-G7"
+     "text": "multi-destination edge in a multi-edge component; lifts: HUBVIC-Lift-A1B2, HUBVIC-Lift-C3, HUBVIC-Lift-D4, HUBVIC-Lift-E5, HUBVIC-Lift-F6, HUBVIC-Lift-G7"
     }
    ]
   },
@@ -5340,11 +5160,11 @@
    "name": "Vauxhall",
    "status": "pending",
    "priority": 80,
-   "reason": "multi-destination edge in a multi-edge component",
+   "reason": "branching hub node (maxDeg=4)",
    "evidence": [
     {
      "source": "exclusion gate",
-     "text": "multi-destination edge in a multi-edge component; lifts: HUBVXH-Lift-3, HUBVXH-Lift-4, HUBVXH-Lift-5, HUBVXH-Lift-6"
+     "text": "branching hub node (maxDeg=4); lifts: HUBVXH-Lift-3, HUBVXH-Lift-4, HUBVXH-Lift-5, HUBVXH-Lift-6"
     }
    ]
   },
@@ -5355,11 +5175,11 @@
    "name": "Waterloo",
    "status": "pending",
    "priority": 80,
-   "reason": "multi-destination edge in a multi-edge component",
+   "reason": "multi-level lift (intermediate landing) in a multi-edge component",
    "evidence": [
     {
      "source": "exclusion gate",
-     "text": "multi-destination edge in a multi-edge component; lifts: HUBWAT-Lift-1, HUBWAT-Lift-3, HUBWAT-Lift-4"
+     "text": "multi-level lift (intermediate landing) in a multi-edge component; lifts: HUBWAT-Lift-1, HUBWAT-Lift-2, HUBWAT-Lift-3, HUBWAT-Lift-4"
     }
    ]
   },
@@ -5370,26 +5190,11 @@
    "name": "West Ham",
    "status": "pending",
    "priority": 80,
-   "reason": "multi-destination edge in a multi-edge component",
+   "reason": "branching hub node (maxDeg=3)",
    "evidence": [
     {
      "source": "exclusion gate",
-     "text": "multi-destination edge in a multi-edge component; lifts: HUBWEH-Lift-1, HUBWEH-Lift-2, HUBWEH-Lift-4, HUBWEH-Lift-5, HUBWEH-Lift-6"
-    }
-   ]
-  },
-  {
-   "key": "tfl:HUBWFJ",
-   "system": "tfl-london",
-   "stationId": "HUBWFJ",
-   "name": "Watford Junction",
-   "status": "pending",
-   "priority": 80,
-   "reason": "multi-destination edge in a multi-edge component",
-   "evidence": [
-    {
-     "source": "exclusion gate",
-     "text": "multi-destination edge in a multi-edge component; lifts: HUBWFJ-Lift-1, HUBWFJ-Lift-2, HUBWFJ-Lift-3"
+     "text": "branching hub node (maxDeg=3); lifts: HUBWEH-Lift-1, HUBWEH-Lift-2, HUBWEH-Lift-4, HUBWEH-Lift-5, HUBWEH-Lift-6"
     }
    ]
   },
@@ -5400,11 +5205,11 @@
    "name": "Wimbledon",
    "status": "pending",
    "priority": 80,
-   "reason": "multi-destination edge in a multi-edge component",
+   "reason": "branching hub node (maxDeg=4)",
    "evidence": [
     {
      "source": "exclusion gate",
-     "text": "multi-destination edge in a multi-edge component; lifts: HUBWIM-Lift-1, HUBWIM-Lift-2, HUBWIM-Lift-3, HUBWIM-Lift-4"
+     "text": "branching hub node (maxDeg=4); lifts: HUBWIM-Lift-1, HUBWIM-Lift-2, HUBWIM-Lift-3, HUBWIM-Lift-4"
     }
    ]
   },
@@ -5415,11 +5220,11 @@
    "name": "Wembley Central",
    "status": "pending",
    "priority": 80,
-   "reason": "multi-destination edge in a multi-edge component",
+   "reason": "branching hub node (maxDeg=4)",
    "evidence": [
     {
      "source": "exclusion gate",
-     "text": "multi-destination edge in a multi-edge component; lifts: HUBWMB-Lift-1, HUBWMB-Lift-2, HUBWMB-Lift-3, HUBWMB-Lift-4"
+     "text": "branching hub node (maxDeg=4); lifts: HUBWMB-Lift-1, HUBWMB-Lift-2, HUBWMB-Lift-3, HUBWMB-Lift-4"
     }
    ]
   },
@@ -5439,32 +5244,17 @@
    ]
   },
   {
-   "key": "tfl:HUBWWA",
-   "system": "tfl-london",
-   "stationId": "HUBWWA",
-   "name": "Woolwich Arsenal",
-   "status": "pending",
-   "priority": 80,
-   "reason": "multi-level lift (intermediate landing) in a multi-edge component",
-   "evidence": [
-    {
-     "source": "exclusion gate",
-     "text": "multi-level lift (intermediate landing) in a multi-edge component; lifts: HUBWWA-Lift-2, HUBWWA-Lift-3"
-    }
-   ]
-  },
-  {
    "key": "tfl:HUBZCW",
    "system": "tfl-london",
    "stationId": "HUBZCW",
    "name": "Canada Water",
    "status": "pending",
    "priority": 80,
-   "reason": "multi-destination edge in a multi-edge component",
+   "reason": "multi-level lift (intermediate landing) in a multi-edge component",
    "evidence": [
     {
      "source": "exclusion gate",
-     "text": "multi-destination edge in a multi-edge component; lifts: HUBZCW-Lift-1, HUBZCW-Lift-2, HUBZCW-Lift-4"
+     "text": "multi-level lift (intermediate landing) in a multi-edge component; lifts: HUBZCW-Lift-1, HUBZCW-Lift-2, HUBZCW-Lift-4"
     }
    ]
   },
@@ -5475,11 +5265,11 @@
    "name": "Farringdon",
    "status": "pending",
    "priority": 80,
-   "reason": "branching hub node (maxDeg=3)",
+   "reason": "multi-level lift (intermediate landing) in a multi-edge component",
    "evidence": [
     {
      "source": "exclusion gate",
-     "text": "branching hub node (maxDeg=3); lifts: HUBZFD-Lift-7, HUBZFD-Lift-6, HUBZFD-Lift-8"
+     "text": "multi-level lift (intermediate landing) in a multi-edge component; lifts: HUBZFD-Lift-1, HUBZFD-Lift-2, HUBZFD-Lift-3, HUBZFD-Lift-4, HUBZFD-Lift-5, HUBZFD-Lift-7, HUBZFD-Lift-6, HUBZFD-Lift-8"
     }
    ]
   },
@@ -5494,7 +5284,7 @@
    "evidence": [
     {
      "source": "exclusion gate",
-     "text": "multi-level lift (intermediate landing) in a multi-edge component; lifts: HUBZMG-Lift-1, HUBZMG-Lift-4"
+     "text": "multi-level lift (intermediate landing) in a multi-edge component; lifts: HUBZMG-Lift-1, HUBZMG-Lift-4, HUBZMG-Lift-5, HUBZMG-Lift-2"
     }
    ]
   },

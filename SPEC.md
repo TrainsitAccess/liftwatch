@@ -994,10 +994,28 @@ and the live disruptions endpoint.
   design**: re-running this after more polls/outages naturally absorbs more
   evidence as the archive grows — no new capture mechanism, no manual
   per-outage audit needed going forward.
-- **Deferred**: `RampRoutes.csv`/`SameLevelPaths.csv` (non-lift step-free
-  paths — largely superseded in spirit by alert-evidence enrichment above,
-  though that only covers routes that have actually gone down at least once;
-  the static CSVs would give full coverage upfront); `Toilets.csv`/
+- **`RampRoutes.csv`/`SameLevelPaths.csv` WIRED (2026-07-14)** — full-coverage
+  non-lift step-free topology from TfL's own detailed export (211 ramp + 4101
+  same-level undirected edges → `step-free-paths.json` via tfl-import).
+  tfl-chains CONTRACTS path-joined areas into one canonical node (union-find,
+  same station+area-group only; Outside/cross-group edges deliberately not
+  contracted — bridging sub-complexes is human-pass work). Effects, all
+  bypass-adding and self-check-guarded: lifts fully paralleled by a permanent
+  path become always-up `stepFreeAlternative` legs; lifts whose routes merge
+  under contraction become true parallel groups; collapsed branching freed 17
+  formerly-excluded stations (incl. Paddington — 4 clean chains; Clapham
+  Junction, East Croydon, Richmond, Hammersmith, Woolwich Arsenal…), 93→74
+  excluded components. CHAINS SPLIT at street-connected interior nodes —
+  nodes path-adjacent to the literal `<station>-Outside` marker (312/312
+  stations have one; an explicit marker, not a decoded abbreviation) — so two
+  platform legs meeting at a shared street concourse remain independent
+  routes instead of a false series (live counter-example: Willesden
+  Junction, whose Bakerloo and high-level lifts share a step-free street
+  concourse per the paths data but gate different platforms). Path-caused
+  derived-vs-catalog redundancy differences are documented via the same
+  `evidenceExceptions` channel as alert evidence (the alert-evidence
+  mechanism stays valuable for routes the static data can't see, e.g.
+  temporary or operational alternatives). Still deferred: `Toilets.csv`/
   `Platforms.csv`/`PlatformServices.csv` (out of scope, elevators-only); a
   live re-fetch URL for topology, if one is ever found, would let the static
   snapshot self-refresh instead of manual re-import; a human review pass over

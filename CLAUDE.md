@@ -659,9 +659,18 @@ parking lot). A station is accessible only if **every** segment is up.
   `(StationUniqueId, FromAreas, ToAreas)` match — see `check:tfl` for the
   locked-in regression cases before touching `tfl-import.mjs`. `LiftUniqueId`
   must be used verbatim (never reconstruct from station+number — ~5% of real
-  ids break that pattern). Deferred: `RampRoutes.csv`/`SameLevelPaths.csv`
-  (non-lift step-free bypass paths, a stronger redundancy signal than
-  lift-to-lift matching); re-running `tfl-import.mjs` when TfL republishes.
+  ids break that pattern). `RampRoutes.csv`/`SameLevelPaths.csv` are WIRED
+  (2026-07-14): tfl-import emits `step-free-paths.json`; tfl-chains CONTRACTS
+  path-joined areas into one node (same station+area-group only — Outside and
+  cross-group edges are never contracted), which marks path-paralleled lifts'
+  legs `stepFreeAlternative`, merges true parallels, and collapsed enough
+  branching to free 17 formerly-excluded stations (incl. Paddington; 93→74
+  excluded components). Chains SPLIT at street-connected interior nodes
+  (nodes path-adjacent to the literal `<station>-Outside` marker) so two legs
+  meeting at the street stay independent routes, never a false series
+  (Willesden Junction regression). Derived-vs-catalog redundancy mismatches
+  caused by paths are documented in the same `evidenceExceptions` channel as
+  alert evidence. Re-run `tfl-import.mjs` when TfL republishes the export.
 - **CTA text-classification trap**: never classify planned-vs-unplanned
   against `FullDescription` — it carries a boilerplate "...repair and
   upgrade elevators" footer link on nearly every alert regardless of cause
