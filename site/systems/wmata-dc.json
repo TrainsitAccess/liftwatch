@@ -3,7 +3,7 @@
   "name": "DC Metro",
   "label": "DC Metro (Washington)",
   "timezone": "America/New_York",
-  "generatedAt": "2026-07-13T21:28:27.356Z",
+  "generatedAt": "2026-07-14T02:11:34.313Z",
   "currentlyBroken": [
     {
       "station": "Glenmont",
@@ -36,26 +36,26 @@
       "backups": [],
       "rampAlternative": false,
       "chainNotes": [
-        "The pedestrian bridge over the tracks is a secondary entrance served by two elevators that back each other up on the bridge↔mezzanine leg (human-confirmed 2026-07-13; both live-observed in the Incidents feed)."
+        "The pedestrian bridge over the tracks is a secondary entrance. Two elevators connect the bridge to the mezzanine — either one keeps this entrance step-free."
       ]
     },
     {
       "station": "Columbia Heights",
       "unitId": "E04X02",
       "unit": "Elevator between mezzanine and platform",
-      "days": 35,
+      "days": 36,
       "since": "2026-06-08T00:15:00+00:00",
       "planned": false,
       "reason": "Minor Repair",
       "estimatedReturn": "2026-07-11T03:59:59+00:00",
-      "soleAccess": false,
+      "soleAccess": true,
       "severs": [
         "Columbia Heights"
       ],
       "backups": [],
       "rampAlternative": false,
       "chainNotes": [
-        "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 1 elevator, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS."
+        "One elevator connects the street to the mezzanine. One elevator connects the mezzanine to the platform. None of these elevators has a backup — if any one is out of service, the station has no step-free route."
       ]
     },
     {
@@ -137,7 +137,7 @@
       "station": "King St-Old Town",
       "unitId": "C13N01",
       "unit": "Elevator between mezzanine and platform",
-      "days": 1,
+      "days": 2,
       "since": "2026-07-11T22:38:00+00:00",
       "planned": false,
       "reason": "Minor Repair",
@@ -149,14 +149,14 @@
       ],
       "rampAlternative": false,
       "chainNotes": [
-        "Topology from WMATA GTFS pathways (mode-5 elevator components). Street/Mezzanine→Platform: 2 elevators. In-station elevators only — garage/facility elevators are not in the rail GTFS."
+        "Two elevators connect the street-level mezzanine to the platform — either one keeps this leg open. No single elevator outage removes step-free access."
       ]
     },
     {
       "station": "New Carrollton",
       "unitId": "D13X05",
       "unit": "Garage elevator",
-      "days": 0,
+      "days": 1,
       "since": "2026-07-12T21:46:00+00:00",
       "planned": false,
       "reason": "Other",
@@ -183,7 +183,7 @@
       "backups": [],
       "rampAlternative": false,
       "chainNotes": [
-        "The pedestrian bridge over the tracks is a secondary entrance served by two elevators that back each other up on the bridge↔mezzanine leg (human-confirmed 2026-07-13; both live-observed in the Incidents feed)."
+        "The pedestrian bridge over the tracks is a secondary entrance. Two elevators connect the bridge to the mezzanine — either one keeps this entrance step-free."
       ]
     }
   ],
@@ -208,7 +208,7 @@
           "E04X02"
         ],
         "offlineUnits": [],
-        "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street→Mezzanine: 1 elevator, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS."
+        "note": "One elevator connects the street to the mezzanine. One elevator connects the mezzanine to the platform. None of these elevators has a backup — if any one is out of service, the station has no step-free route."
       },
       {
         "name": "Rockville (pedestrian bridge)",
@@ -218,7 +218,7 @@
           "A14X02"
         ],
         "offlineUnits": [],
-        "note": "The pedestrian bridge over the tracks is a secondary entrance served by two elevators that back each other up on the bridge↔mezzanine leg (human-confirmed 2026-07-13; both live-observed in the Incidents feed)."
+        "note": "The pedestrian bridge over the tracks is a secondary entrance. Two elevators connect the bridge to the mezzanine — either one keeps this entrance step-free."
       },
       {
         "name": "King St-Old Town",
@@ -227,7 +227,7 @@
           "C13N01"
         ],
         "offlineUnits": [],
-        "note": "Topology from WMATA GTFS pathways (mode-5 elevator components). Street/Mezzanine→Platform: 2 elevators. In-station elevators only — garage/facility elevators are not in the rail GTFS."
+        "note": "Two elevators connect the street-level mezzanine to the platform — either one keeps this leg open. No single elevator outage removes step-free access."
       }
     ],
     "chainsModeled": 57
@@ -236,15 +236,15 @@
   "accessibilityBlackouts": [
     {
       "name": "Columbia Heights",
-      "hours": 861.2242655555556
+      "hours": 865.9428647222222
     },
     {
       "name": "Huntington",
-      "hours": 316.4742655555556
+      "hours": 321.1928647222222
     },
     {
       "name": "Mt Vernon Sq 7th St-Convention Center",
-      "hours": 226.89093222222223
+      "hours": 231.60953138888888
     },
     {
       "name": "Federal Triangle",
@@ -252,11 +252,11 @@
     },
     {
       "name": "Franconia-Springfield",
-      "hours": 103.7575988888889
+      "hours": 108.47619805555556
     },
     {
       "name": "West Falls Church",
-      "hours": 79.44093222222222
+      "hours": 84.1595313888889
     },
     {
       "name": "L'Enfant Plaza",
@@ -277,17 +277,17 @@
   ],
   "stepFreeStreak": [
     {
+      "name": "Downtown Largo",
+      "days": 9,
+      "blackedOutNow": false
+    },
+    {
       "name": "Glenmont",
       "days": 8,
       "blackedOutNow": false
     },
     {
       "name": "Metro Center",
-      "days": 8,
-      "blackedOutNow": false
-    },
-    {
-      "name": "Downtown Largo",
       "days": 8,
       "blackedOutNow": false
     },
@@ -313,17 +313,17 @@
     },
     {
       "name": "L'Enfant Plaza",
+      "days": 6,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Judiciary Square",
       "days": 5,
       "blackedOutNow": false
     },
     {
-      "name": "Georgia Ave-Petworth",
-      "days": 4,
-      "blackedOutNow": false
-    },
-    {
-      "name": "McLean",
-      "days": 4,
+      "name": "L'Enfant Plaza",
+      "days": 5,
       "blackedOutNow": false
     }
   ],
@@ -381,6 +381,12 @@
   ],
   "uptimeStreak": [
     {
+      "unit": "Elevator between street and mezzanine",
+      "station": "Downtown Largo",
+      "days": 9,
+      "downNow": false
+    },
+    {
       "unit": "Elevator between street and mezzanine, north side of M Street, S.W.",
       "station": "Waterfront",
       "days": 8,
@@ -401,12 +407,6 @@
     {
       "unit": "Elevator between street and mezzanine",
       "station": "Metro Center",
-      "days": 8,
-      "downNow": false
-    },
-    {
-      "unit": "Elevator between street and mezzanine",
-      "station": "Downtown Largo",
       "days": 8,
       "downNow": false
     },
@@ -441,5 +441,10 @@
       "downNow": false
     }
   ],
-  "singlePointsOfFailure": []
+  "singlePointsOfFailure": [
+    {
+      "name": "Columbia Heights",
+      "count": 1
+    }
+  ]
 }

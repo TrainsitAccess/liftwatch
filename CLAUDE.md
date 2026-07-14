@@ -460,6 +460,14 @@ parking lot). A station is accessible only if **every** segment is up.
   all real-time = unplanned.
 - **Curated data lives in version-controlled files**, not just the DB — reviewable,
   survives rebuilds, re-asserted every poll.
+- **Two note tiers on StationModel (Bryce, 2026-07-13)**: `note` is PUBLIC,
+  rider-facing plain English (what the route is, which legs have a backup,
+  what an outage means — no GTFS/feed/generator jargon); `internalNote` holds
+  provenance and engineering caveats ("Topology from WMATA GTFS pathways…",
+  verification dates) and NEVER ships to the site (build-site-data only reads
+  `note`). WMATA (generator + curated) migrated; MBTA/rail/TfL generated
+  notes still carry "Auto-modeled from…" boilerplate in `note` — move it to
+  `internalNote` in each generator at that system's next regeneration.
 - **Timezones**: feeds report local wall-clock; parse to UTC (`src/lib/time.ts`,
   Luxon). Store UTC everywhere.
 - Nine adapters, deliberately different fidelity (TMB currently `hidden`):

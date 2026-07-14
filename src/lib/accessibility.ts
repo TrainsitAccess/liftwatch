@@ -45,7 +45,16 @@ export interface StationModel {
   // Defaults to [stationExternalId] when omitted. System-agnostic.
   coveredStationExternalIds?: string[];
   segments: AccessSegment[];
+  // PUBLIC, rider-facing note — shipped to the site (station access board,
+  // outage impact panels). Plain English for a general audience: what the
+  // route is, which legs have a backup, what an outage means. No GTFS/feed/
+  // generator jargon — that belongs in internalNote.
   note?: string;
+  // INTERNAL provenance/engineering note — how the model was derived, data
+  // caveats, verification dates ("Topology from WMATA GTFS pathways…",
+  // "human-confirmed 2026-07-13"). Stays in the repo catalog for maintainers;
+  // never shipped to the site.
+  internalNote?: string;
   // An AUXILIARY chain is a tracked access path at the station that is NOT the
   // core transit-platform route — e.g. Coliseum's elevators to the Oakland
   // Airport Connector, the arena footbridge, or the parking lot. It gets its

@@ -3,7 +3,7 @@
   "name": "BART",
   "label": "BART (San Francisco)",
   "timezone": "America/Los_Angeles",
-  "generatedAt": "2026-07-13T21:28:27.356Z",
+  "generatedAt": "2026-07-14T02:11:34.313Z",
   "currentlyBroken": [
     {
       "station": "Richmond",
@@ -28,7 +28,7 @@
       "station": "Powell St.",
       "unitId": "POWL-PLAT",
       "unit": "Platform Elevator",
-      "days": 1,
+      "days": 2,
       "since": "2026-07-12T02:06:24.642+00:00",
       "planned": false,
       "reason": "Station (station-level advisory → platform elevator)",
@@ -60,25 +60,6 @@
       "rampAlternative": false,
       "chainNotes": [
         "Two street elevators (14th St and 11th St) back each other up, but a single platform elevator is a single point of failure. Accessible only if a street elevator AND the platform elevator work."
-      ]
-    },
-    {
-      "station": "16th St. Mission",
-      "unitId": "16TH-PLAT",
-      "unit": "Platform elevator",
-      "days": 0,
-      "since": "2026-07-13T20:49:18.674+00:00",
-      "planned": false,
-      "reason": "Station (station-level advisory → platform elevator)",
-      "estimatedReturn": null,
-      "soleAccess": true,
-      "severs": [
-        "16th St. Mission"
-      ],
-      "backups": [],
-      "rampAlternative": false,
-      "chainNotes": [
-        "Street and platform elevators are each a single point of failure — BART's own guidance for either is to use Muni to 24th St. Mission instead, not an in-station alternative."
       ]
     },
     {
@@ -115,15 +96,6 @@
   },
   "stationAccess": {
     "rows": [
-      {
-        "name": "16th St. Mission",
-        "state": "no_access",
-        "downUnits": [
-          "16TH-PLAT"
-        ],
-        "offlineUnits": [],
-        "note": "Street and platform elevators are each a single point of failure — BART's own guidance for either is to use Muni to 24th St. Mission instead, not an in-station alternative."
-      },
       {
         "name": "24th St. Mission",
         "state": "no_access",
@@ -175,11 +147,11 @@
   "accessibilityBlackouts": [
     {
       "name": "Richmond",
-      "hours": 234.5583736111111
+      "hours": 239.2769727777778
     },
     {
       "name": "Powell St.",
-      "hours": 43.367420555555555
+      "hours": 48.086019722222225
     },
     {
       "name": "Milpitas (Millbrae/SFO/Daly City/Richmond direction)",
@@ -191,15 +163,15 @@
     },
     {
       "name": "16th St. Mission",
-      "hours": 10.038260833333334
+      "hours": 14.677104722222222
+    },
+    {
+      "name": "24th St. Mission",
+      "hours": 11.473449444444444
     },
     {
       "name": "Embarcadero",
       "hours": 7.460270555555556
-    },
-    {
-      "name": "24th St. Mission",
-      "hours": 6.754850277777778
     },
     {
       "name": "MacArthur (Antioch, Richmond direction)",
@@ -305,7 +277,7 @@
     },
     {
       "unit": "Platform Elevator",
-      "station": "Powell St.",
+      "station": "Embarcadero",
       "count": 1
     },
     {
@@ -316,14 +288,14 @@
   ],
   "uptimeStreak": [
     {
-      "unit": "Street elevator 1",
-      "station": "Richmond",
+      "unit": "Platform elevator",
+      "station": "12th St. Oakland City Center",
       "days": 9,
       "downNow": false
     },
     {
-      "unit": "Platform elevator",
-      "station": "12th St. Oakland City Center",
+      "unit": "Street elevator 1",
+      "station": "Richmond",
       "days": 9,
       "downNow": false
     },
@@ -378,6 +350,14 @@
   ],
   "singlePointsOfFailure": [
     {
+      "name": "MacArthur",
+      "count": 2
+    },
+    {
+      "name": "Daly City",
+      "count": 2
+    },
+    {
       "name": "Fruitvale",
       "count": 2
     },
@@ -386,11 +366,23 @@
       "count": 2
     },
     {
-      "name": "MacArthur",
+      "name": "Milpitas",
       "count": 2
     },
     {
-      "name": "Milpitas",
+      "name": "West Oakland",
+      "count": 2
+    },
+    {
+      "name": "16th St. Mission",
+      "count": 2
+    },
+    {
+      "name": "Embarcadero",
+      "count": 2
+    },
+    {
+      "name": "Lake Merritt",
       "count": 2
     },
     {
@@ -402,19 +394,7 @@
       "count": 2
     },
     {
-      "name": "16th St. Mission",
-      "count": 2
-    },
-    {
-      "name": "Daly City",
-      "count": 2
-    },
-    {
       "name": "San Leandro",
-      "count": 2
-    },
-    {
-      "name": "Lake Merritt",
       "count": 2
     },
     {
@@ -426,15 +406,7 @@
       "count": 2
     },
     {
-      "name": "West Oakland",
-      "count": 2
-    },
-    {
       "name": "24th St. Mission",
-      "count": 2
-    },
-    {
-      "name": "Civic Center/UN Plaza",
       "count": 2
     }
   ]

@@ -3,7 +3,7 @@
   "name": "CTA",
   "label": "CTA (Chicago)",
   "timezone": "America/Chicago",
-  "generatedAt": "2026-07-13T21:28:27.356Z",
+  "generatedAt": "2026-07-14T02:11:34.313Z",
   "currentlyBroken": [
     {
       "station": "Western",
@@ -21,25 +21,10 @@
       "chainNotes": []
     },
     {
-      "station": "Lake",
-      "unitId": "41660",
-      "unit": "41660",
-      "days": 52,
-      "since": "2026-05-22T14:00:00+00:00",
-      "planned": true,
-      "reason": "Elevator at Lake (Washington/Randolph Entrance) Temporarily Out-of-Service — The elevator to/from platform at Lake (Red Line) is temporarily out-of-service due to upgrades.",
-      "estimatedReturn": "2026-07-31T05:00:00+00:00",
-      "soleAccess": false,
-      "severs": [],
-      "backups": [],
-      "rampAlternative": false,
-      "chainNotes": []
-    },
-    {
       "station": "Jackson",
       "unitId": "40560",
       "unit": "40560",
-      "days": 5,
+      "days": 6,
       "since": "2026-07-07T23:18:00+00:00",
       "planned": false,
       "reason": "Elevator at Jackson Temporarily Out-of-Service — The elevator to/from platform at the Adams-Jackson entrance to Jackson (Red Line) is temporarily out-of-service.",
@@ -96,21 +81,6 @@
       "chainNotes": []
     },
     {
-      "station": "Jackson",
-      "unitId": "40070",
-      "unit": "40070",
-      "days": 1,
-      "since": "2026-07-12T21:15:00+00:00",
-      "planned": false,
-      "reason": "Elevator at Jackson Temporarily Out-of-Service — The elevator to/from street at Jackson (Blue Line)is temporarily out-of-service.",
-      "estimatedReturn": null,
-      "soleAccess": false,
-      "severs": [],
-      "backups": [],
-      "rampAlternative": false,
-      "chainNotes": []
-    },
-    {
       "station": "Cumberland",
       "unitId": "40230",
       "unit": "40230",
@@ -126,13 +96,13 @@
       "chainNotes": []
     },
     {
-      "station": "Wilson",
-      "unitId": "40540",
-      "unit": "40540",
+      "station": "King Drive",
+      "unitId": "41140",
+      "unit": "41140",
       "days": 0,
-      "since": "2026-07-13T18:36:00+00:00",
+      "since": "2026-07-14T00:25:00+00:00",
       "planned": false,
-      "reason": "Elevator at Wilson Temporarily Out-of-Service — The 95th-bound and Loop-bound platform elevator at Wilson (Red, Purple Lines) is temporarily out-of-service.",
+      "reason": "Elevator at King Drive Temporarily Out-of-Service — The Harlem-bound elevator at King Drive (Green Line) is temporarily out-of-service.",
       "estimatedReturn": null,
       "soleAccess": false,
       "severs": [],
@@ -141,13 +111,13 @@
       "chainNotes": []
     },
     {
-      "station": "Chicago",
-      "unitId": "40710",
-      "unit": "40710",
+      "station": "Wilson",
+      "unitId": "40540",
+      "unit": "40540",
       "days": 0,
-      "since": "2026-07-13T21:15:00+00:00",
+      "since": "2026-07-13T18:36:00+00:00",
       "planned": false,
-      "reason": "Elevator at Chicago Temporarily Out-of-Service — The Loop-bound platform elevator at Chicago (Brown, Purple Lines) is temporarily out-of-service.",
+      "reason": "Elevator at Wilson Temporarily Out-of-Service — The 95th-bound and Loop-bound platform elevator at Wilson (Red, Purple Lines) is temporarily out-of-service.",
       "estimatedReturn": null,
       "soleAccess": false,
       "severs": [],
@@ -176,19 +146,19 @@
   "accessibilityBlackouts": [
     {
       "name": "Western",
-      "hours": 1492.4742655555556
+      "hours": 1497.192864722222
     },
     {
       "name": "Lake",
-      "hours": 1255.4742655555556
+      "hours": 1259.4461541666667
     },
     {
       "name": "King Drive",
-      "hours": 609.9077855555555
+      "hours": 611.6839836111111
     },
     {
       "name": "Clark/Lake",
-      "hours": 374.0798491666667
+      "hours": 378.79844833333334
     },
     {
       "name": "Loyola",
@@ -200,7 +170,7 @@
     },
     {
       "name": "Wilson",
-      "hours": 237.82549083333333
+      "hours": 242.54409
     },
     {
       "name": "35th-Bronzeville-IIT",
@@ -212,7 +182,7 @@
     },
     {
       "name": "Cottage Grove",
-      "hours": 163.46455694444444
+      "hours": 168.18315611111112
     }
   ],
   "stepFreeStreak": [
@@ -242,17 +212,17 @@
       "blackedOutNow": false
     },
     {
-      "name": "California",
-      "days": 7,
-      "blackedOutNow": false
-    },
-    {
       "name": "Forest Park",
       "days": 6,
       "blackedOutNow": false
     },
     {
       "name": "Grand",
+      "days": 6,
+      "blackedOutNow": false
+    },
+    {
+      "name": "Addison",
       "days": 6,
       "blackedOutNow": false
     },
@@ -351,12 +321,6 @@
       "downNow": false
     },
     {
-      "unit": "41360",
-      "station": "California",
-      "days": 7,
-      "downNow": false
-    },
-    {
       "unit": "40390",
       "station": "Forest Park",
       "days": 6,
@@ -365,6 +329,12 @@
     {
       "unit": "40330",
       "station": "Grand",
+      "days": 6,
+      "downNow": false
+    },
+    {
+      "unit": "41440",
+      "station": "Addison",
       "days": 6,
       "downNow": false
     },

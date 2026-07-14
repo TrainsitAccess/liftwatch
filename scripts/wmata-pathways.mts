@@ -385,11 +385,30 @@ for (const [st, els] of [...byStation.entries()].sort()) {
     slots.forEach((e, i) => boundId.set(e, names[i] ?? `WMATA-${e.elevId}`));
   }
 
-  // build the model
+  // build the model. Two note tiers (per Bryce, 2026-07-13): `note` is the
+  // PUBLIC rider-facing text — plain English, no GTFS/generator jargon;
+  // `internalNote` carries the provenance and data caveats for maintainers.
+  const humanLevel = (l: string) => (l === "Street/Mezzanine" ? "the street-level mezzanine" : `the ${l.toLowerCase()}`);
+  const countWord = (n: number) => ["No", "One", "Two", "Three", "Four", "Five"][n] ?? String(n);
+  const segSentences = segs.map((s) =>
+    s.els.length === 1
+      ? `One elevator connects ${humanLevel(s.from)} to ${humanLevel(s.to)}`
+      : `${countWord(s.els.length)} elevators connect ${humanLevel(s.from)} to ${humanLevel(s.to)} — ${s.els.length === 2 ? "either" : "any"} one keeps this leg open`,
+  );
+  const soleCount = segs.filter((s) => s.els.length === 1).length;
+  const tail =
+    soleCount === 0
+      ? "No single elevator outage removes step-free access."
+      : soleCount === segs.length
+        ? segs.length === 1
+          ? "It has no backup — if it is out of service, the station has no step-free route."
+          : "None of these elevators has a backup — if any one is out of service, the station has no step-free route."
+        : "A leg served by a single elevator has no backup — an outage there removes the station's step-free route.";
   const model: StationModel = {
     systemId: "wmata-dc",
     stationExternalId: st,
-    note: `Topology from WMATA GTFS pathways (mode-5 elevator components). ${segs.map((s) => `${s.from}→${s.to}: ${s.els.length} elevator${s.els.length > 1 ? "s" : ""}`).join(", ")}. In-station elevators only — garage/facility elevators are not in the rail GTFS.`,
+    note: `${segSentences.join(". ")}. ${tail}`,
+    internalNote: `Topology from WMATA GTFS pathways (mode-5 elevator components): ${segs.map((s) => `${s.from}→${s.to}: ${s.els.length} elevator${s.els.length > 1 ? "s" : ""}`).join(", ")}. In-station elevators only — garage/facility elevators are not in the rail GTFS. Slot ids are live UnitNames where observed, synthetic WMATA-<node> otherwise.`,
     segments: segs.map((s): AccessSegment => ({
       id: segId(s.from, s.to),
       label: segLabel(s.from, s.to),

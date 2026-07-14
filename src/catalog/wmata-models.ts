@@ -29,7 +29,8 @@ export const WMATA_STATION_MODELS: StationModel[] = [
   {
     systemId: SYSTEM,
     stationExternalId: "A14",
-    note: "Mezzanine is at street grade; the single mezzanine→platform elevator is the only step-free path to trains (no backup). Topology from WMATA GTFS pathways; bridge pair human-confirmed 2026-07-13.",
+    note: "The mezzanine is at street level. One elevator connects the mezzanine to the platform, and it has no backup — if it is out of service, the station has no step-free route to trains.",
+    internalNote: "Topology from WMATA GTFS pathways (mezzanine-at-grade confirmed by entrance walkway edges); platform elevator not yet observed in the live feed, so its slot id is synthetic. Bridge pair human-confirmed 2026-07-13.",
     segments: [
       {
         id: "mezzanine-platform",
@@ -42,7 +43,8 @@ export const WMATA_STATION_MODELS: StationModel[] = [
     systemId: SYSTEM,
     stationExternalId: "A14",
     chainLabel: " (pedestrian bridge)",
-    note: "The pedestrian bridge over the tracks is a secondary entrance served by two elevators that back each other up on the bridge↔mezzanine leg (human-confirmed 2026-07-13; both live-observed in the Incidents feed).",
+    note: "The pedestrian bridge over the tracks is a secondary entrance. Two elevators connect the bridge to the mezzanine — either one keeps this entrance step-free.",
+    internalNote: "Bridge pair absent from the rail GTFS (the observed-units gate excluded A14 from the generator). Human-confirmed 2026-07-13; both units live-observed as A14X01/A14X02.",
     segments: [
       {
         id: "bridge-mezzanine",

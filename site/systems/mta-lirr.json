@@ -3,7 +3,7 @@
   "name": "LIRR",
   "label": "LIRR (New York)",
   "timezone": "America/New_York",
-  "generatedAt": "2026-07-13T21:28:27.356Z",
+  "generatedAt": "2026-07-14T02:11:34.313Z",
   "currentlyBroken": [
     {
       "station": "Grand Central",
@@ -115,12 +115,12 @@
       "hours": 10.565690555555555
     },
     {
-      "name": "Locust Manor (Platform A)",
-      "hours": 5.42221
+      "name": "St. Albans",
+      "hours": 8.90655
     },
     {
-      "name": "St. Albans",
-      "hours": 4.187950833333334
+      "name": "Locust Manor (Platform A)",
+      "hours": 5.42221
     },
     {
       "name": "Penn Station (Tks 13/14)",
@@ -209,6 +209,11 @@
       "count": 2
     },
     {
+      "unit": "Garage Elevator 3",
+      "station": "Wyandanch",
+      "count": 1
+    },
+    {
       "unit": "Between overpass and Tracks 1 & 2  (Platform B)",
       "station": "Ronkonkoma (Tracks 1 & 2)",
       "count": 1
@@ -224,11 +229,6 @@
       "count": 1
     },
     {
-      "unit": "Garage Elevator 3",
-      "station": "Wyandanch",
-      "count": 1
-    },
-    {
       "unit": "Between Platform B and street level (east end of platform)",
       "station": "Queens Village (Platform B)",
       "count": 1
@@ -241,14 +241,26 @@
   ],
   "uptimeStreak": [
     {
+      "unit": "Between Tracks 1 & 2 and street level (east side of station building)",
+      "station": "Massapequa",
+      "days": 6,
+      "downNow": false
+    },
+    {
       "unit": "Between street level and Track 2 (west of overpass)",
       "station": "Murray Hill (Track 2)",
       "days": 6,
       "downNow": false
     },
     {
-      "unit": "Between Tracks 1 & 2 and street level (east side of 192 St)",
-      "station": "Auburndale",
+      "unit": "Garage Elevator 1",
+      "station": "Ronkonkoma",
+      "days": 6,
+      "downNow": false
+    },
+    {
+      "unit": "Garage Elevator 2",
+      "station": "Ronkonkoma",
       "days": 6,
       "downNow": false
     },
@@ -265,38 +277,26 @@
       "downNow": false
     },
     {
-      "unit": "Between street level and Track 1 (east of overpass)",
-      "station": "Murray Hill (Track 1)",
-      "days": 6,
-      "downNow": false
-    },
-    {
-      "unit": "Garage Elevator 1",
-      "station": "Ronkonkoma",
-      "days": 6,
-      "downNow": false
-    },
-    {
-      "unit": "Between Tracks 1 & 2 and street level (east side of station building)",
-      "station": "Baldwin",
-      "days": 6,
-      "downNow": false
-    },
-    {
-      "unit": "Located in the station plaza just west of the waiting room.",
-      "station": "Amityville",
-      "days": 6,
-      "downNow": false
-    },
-    {
       "unit": "Between Platform A and street level (east side of station building)",
       "station": "Queens Village (Platform A)",
       "days": 6,
       "downNow": false
     },
     {
-      "unit": "Between Tracks 1 & 2 and street level (east of station building)",
-      "station": "Merrick",
+      "unit": "Between Platform B and street level (west end of platform)",
+      "station": "Locust Manor (Platform B)",
+      "days": 6,
+      "downNow": false
+    },
+    {
+      "unit": "Between Tracks 1 & 2 and street level (east side of station building)",
+      "station": "Massapequa Park",
+      "days": 6,
+      "downNow": false
+    },
+    {
+      "unit": "Between Platform A and street level (north side of Atlantic Av)",
+      "station": "Nostrand Av (Platform A)",
       "days": 6,
       "downNow": false
     }
@@ -327,6 +327,10 @@
       "count": 2
     },
     {
+      "name": "Locust Manor",
+      "count": 2
+    },
+    {
       "name": "Great Neck",
       "count": 2
     },
@@ -335,7 +339,7 @@
       "count": 2
     },
     {
-      "name": "Locust Manor",
+      "name": "Nostrand Av",
       "count": 2
     },
     {
@@ -343,7 +347,7 @@
       "count": 2
     },
     {
-      "name": "Nostrand Av",
+      "name": "Elmont-UBS Arena",
       "count": 2
     },
     {
@@ -352,10 +356,6 @@
     },
     {
       "name": "Babylon",
-      "count": 2
-    },
-    {
-      "name": "Elmont-UBS Arena",
       "count": 2
     },
     {
