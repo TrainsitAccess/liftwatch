@@ -67,6 +67,8 @@ npm run mbta:chains      # regenerate MBTA simple-station chains (validated vs M
 npm run check:mbta-chains # prove the MBTA chain generator offline (full-feed fixture)
 npm run check:wmata       # prove the WMATA pathways chains + attribution crosswalk (offline)
 npm run wmata:observed    # refresh observed-units.json (archive + live feed; grows only)
+npm run check:cta         # prove the CTA text-identity parser vs the observed corpus (offline)
+npm run cta:observed      # refresh CTA observed-units.json (archive + live alert texts; grows only)
 npm run typecheck        # tsc --noEmit — run after edits
 npm run db:status        # row counts + latest poll_runs, once Supabase is set up
 npm run site:data && npm run site:serve  # rebuild + preview the departure-board site
@@ -493,8 +495,19 @@ parking lot). A station is accessible only if **every** segment is up.
   section) — an additive accessibility layer that deliberately does NOT flip
   inventoryComplete: ~⅓ of the fleet is garage/parking elevators absent from
   the rail GTFS, so 320 stays the honest denominator.
-  **CTA** = same `inventoryComplete: false` tier as WMATA, but with **no
-  per-elevator id at all** — station-level only (like BART), no
+  **CTA** = same `inventoryComplete: false` tier as WMATA. The feed has no
+  elevator ids, but since 2026-07-14 the adapter mints STABLE per-elevator
+  unit ids from the alert text's persistent location identity
+  ("The Harlem-bound platform elevator at Pulaski" → `40030-HARLEM-BOUND`,
+  parsed by `src/adapters/cta/location.ts` — tolerant of CTA's hyphen-space
+  explosions, headline station names, and consequence clauses; the full
+  observed corpus is the regression fixture, `npm run check:cta`, snapshot
+  via `npm run cta:observed`). A vague alert ("The elevator at Central")
+  falls back to the BARE station id — the pre-identity unit id, so archive
+  history continues unbroken and nothing is guessed. NO chains/redundancy
+  (CTA publishes no inventory or backup guidance — re-verified 2026-07-13:
+  ASAP plan tables are graphical, no per-station roster exists; ASAP's "163
+  existing elevators" (2018) corroborates the 173 staticFleetReference). No
   `NormalizedRead.stations` (station list not fetched in this MVP pass).
   WMATA has no live fleet total anywhere (exhaustively verified), so its %
   ranking uses `staticFleetReference` — WMATA's own published "320 elevators"

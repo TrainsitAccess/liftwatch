@@ -1,18 +1,33 @@
 import { DateTime } from "luxon";
 import type { Adapter, NormalizedOutage, NormalizedRead, NormalizedUnit } from "../../types.js";
 import { nowUtcIso, parseIsoLocalToUtcIso } from "../../lib/time.js";
+import { parseCtaElevatorIdentity } from "./location.js";
 import type { CtaAlertRaw, CtaAlertsResponse, CtaServiceRaw } from "./raw.js";
 
 // CTA (Chicago) — Customer Alerts API (alerts.aspx), no API key needed. Like
 // WMATA, this only reports elevators that are CURRENTLY broken — there is no
 // full elevator inventory feed (CTA's GTFS is a standard 10-table schedule
-// feed, no pathways/levels extension), so units are discovered as they break
-// (inventoryComplete: false, same mechanism as WMATA). Unlike WMATA there is
-// no per-elevator id at all — only a station-level identifier — so each
-// "unit" here is a whole station's elevator access, same modeling tier as
-// BART's un-modeled stations. A station with several simultaneous elevator
-// alerts (live-observed 2026-07-10: Pulaski, both platforms) merges onto its
-// one unit with every distinct reason kept — see mergeStationAlerts below.
+// feed, no pathways/levels extension; re-verified 2026-07-13 that no agency
+// per-station elevator roster exists anywhere — the ASAP plan's tables are
+// graphical), so units are discovered as they break (inventoryComplete:
+// false, same mechanism as WMATA).
+//
+// PER-ELEVATOR IDENTITY FROM ALERT TEXT (2026-07-14): CTA's feed has no
+// elevator ids, but its alert prose names each elevator by a persistent
+// location identity ("The Harlem-bound platform elevator at Pulaski", "The
+// elevator to/from street at Ashland") — the same phrase recurs for the same
+// physical elevator across outages (verified against the full archive
+// corpus). parseCtaElevatorIdentity (location.ts) turns that into a stable
+// slug, so an identified alert gets a REAL per-elevator unit id
+// ("40030-HARLEM-BOUND") with genuine MTTR/chronic-offender stats. A vague
+// alert ("The elevator at Central") falls back to the BARE station id — the
+// exact pre-2026-07-14 unit id, so existing archive history continues
+// unbroken and nothing is ever guessed. NO redundancy or chain claims are
+// made (no inventory signal exists); redundancy stays assumed.
+// Two simultaneous alerts for the SAME identified elevator still merge (see
+// mergeSameUnitAlerts); different elevators at one station are now distinct
+// units — the old whole-station lumping (Pulaski, both platforms,
+// 2026-07-10) is gone for identified alerts.
 
 export interface CtaConfig {
   systemId: string;
@@ -96,13 +111,18 @@ export function createCtaAdapter(config: CtaConfig = CTA_CONFIG): Adapter {
         const station = services.find((s) => s.ServiceType === "T");
         if (!station) continue; // no station in this alert — nothing to attribute the outage to
 
-        const unitExternalId = station.ServiceId;
+        // Identified alert → stable per-elevator id; vague alert → the bare
+        // station id (identical to the pre-identity unit id — history continues).
+        const reasonText = combinedReason(a) ?? "";
+        const slug = parseCtaElevatorIdentity(reasonText);
+        const unitExternalId = slug ? `${station.ServiceId}-${slug}` : station.ServiceId;
         if (!units.has(unitExternalId)) {
           units.set(unitExternalId, {
             externalId: unitExternalId,
             unitType: "elevator",
-            stationExternalId: unitExternalId,
+            stationExternalId: station.ServiceId,
             stationName: station.ServiceName,
+            description: (a.ShortDescription ?? "").trim() || undefined,
             isAda: true,
             isActive: true,
           });
@@ -114,11 +134,11 @@ export function createCtaAdapter(config: CtaConfig = CTA_CONFIG): Adapter {
         const outage: NormalizedOutage = {
           unitExternalId,
           unitType: "elevator",
-          stationExternalId: unitExternalId,
+          stationExternalId: station.ServiceId,
           stationName: station.ServiceName,
           isPlanned: PLANNED_TEXT.test(`${a.Headline} ${a.ShortDescription}`),
           isUpcoming,
-          reason: combinedReason(a),
+          reason: reasonText || undefined,
           sourceStartedAt: startIso,
           estimatedReturn:
             parseIsoLocalToUtcIso(a.EventEnd, CTA_ZONE) ?? returnEstimateFromProse(cdata(a.FullDescription)),
@@ -130,20 +150,21 @@ export function createCtaAdapter(config: CtaConfig = CTA_CONFIG): Adapter {
         systemId: config.systemId,
         fetchedAt: nowUtcIso(),
         units: [...units.values()],
-        outages: mergeStationAlerts(outages),
-        upcoming: mergeStationAlerts(upcoming),
+        outages: mergeSameUnitAlerts(outages),
+        upcoming: mergeSameUnitAlerts(upcoming),
       };
     },
   };
 }
 
-// A CTA station can have SEVERAL simultaneous elevator alerts (live-observed
-// 2026-07-10: Pulaski's 63rd-bound AND Harlem-bound platform elevators out at
-// once, in separate alerts — plus an exact-duplicate alert of one of them).
-// With no per-elevator id, all of them land on the one station-level unit,
-// and ingest keeps one open event per unit — so without merging, every alert
-// after the first silently vanishes. Merge same-unit alerts into ONE outage
-// that keeps every distinct reason visible. Conservative merge rules:
+// Two simultaneous alerts can resolve to the SAME unit — an exact-duplicate
+// alert of one elevator (live-observed 2026-07-10 at Pulaski), or two vague
+// alerts sharing a station's fallback id. Ingest keeps one open event per
+// unit, so without merging every alert after the first silently vanishes.
+// Merge same-unit alerts into ONE outage that keeps every distinct reason
+// visible. (Since the 2026-07-14 identity upgrade, DIFFERENT identified
+// elevators at one station are distinct units and no longer merge — the old
+// whole-station lumping is gone.) Conservative merge rules:
 //   - reasons: deduped verbatim, joined with " · " (riders see both outages);
 //   - isPlanned: only if EVERY alert is planned — a mix means at least one
 //     real breakdown, which must stay in the unplanned rankings;
@@ -151,7 +172,7 @@ export function createCtaAdapter(config: CtaConfig = CTA_CONFIG): Adapter {
 //   - estimatedReturn: latest, and only when every alert has one (the station
 //     isn't fully restored until the last elevator returns; a missing
 //     estimate anywhere makes the whole thing unknown).
-function mergeStationAlerts(list: NormalizedOutage[]): NormalizedOutage[] {
+function mergeSameUnitAlerts(list: NormalizedOutage[]): NormalizedOutage[] {
   const byUnit = new Map<string, NormalizedOutage[]>();
   for (const o of list) {
     const group = byUnit.get(o.unitExternalId) ?? [];

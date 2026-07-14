@@ -1006,6 +1006,44 @@ and the live disruptions endpoint.
   mirroring MTA's interchange walkthrough — likely including real line-name
   labels once a human confirms the area-code semantics station by station.
 
+### CTA per-elevator identity from alert text (2026-07-14)
+
+CTA's feed has no elevator ids and no inventory (re-verified 2026-07-13:
+station pages don't describe elevators, the ASAP Strategic Plan's per-station
+tables are graphical icons — text-extraction empty — and no dataset exists on
+the city portal; ASAP does state "163 existing passenger elevators" (2018),
+corroborating the 173 `staticFleetReference`). But the alert PROSE names each
+elevator by a persistent location identity — "The Harlem-bound platform
+elevator at Pulaski", "The elevator to/from street at Ashland", "The transfer
+tunnel elevator at Roosevelt" — the same phrase recurring for the same
+physical elevator across outages (verified against the full archive corpus).
+
+`src/adapters/cta/location.ts` parses that identity into a stable slug and the
+adapter mints per-elevator unit ids (`40030-HARLEM-BOUND`), giving CTA genuine
+per-elevator archiving (MTTR, chronic offenders, streaks) instead of
+one-lump-per-station. Corpus-hardened against CTA's real copywriting mess:
+hyphen-space explosions ("Harlem- bound", "95th- and- Loop- bound" — three
+variants of Wilson's island elevator all collapse to `95TH-LOOP-BOUND`),
+headline station names ("Western Kimball-bound Platform Elevator" — the
+station never leaks), consequence clauses ("elevator to/from street and
+elevators needed to access the Harlem-bound platforms" → `STREET`, direction
+never leaks), named streets ("to/from 23rd street" ≠ generic street),
+entrance qualifiers carried only by the headline (Lake's Washington/Randolph).
+A VAGUE alert ("The elevator at Central") falls back to the bare station id —
+the pre-identity unit id, so archive history continues unbroken; nothing is
+ever guessed. Deliberately NO chains/redundancy claims: without an agency
+inventory, a leg-complete station model could under-warn (the WMATA A14
+lesson); redundancy stays `assumed`. Known ambiguity: 43rd has two observed
+descriptions ("Harlem-bound platform elevator" / "elevator to/from street,
+platforms and bridge") that may be one physical elevator — tracked as two
+units pending curation (worst case is split stats, never a false access
+claim). `npm run cta:observed` snapshots the growing corpus
+(`src/catalog/cta-data/observed-units.json`); `npm run check:cta` re-parses
+every observed text and fails if any recorded unit id would change (the
+re-slug guard), plus the hardcoded trap cases. Curated chains remain possible
+later via chicago-L.org/Wikipedia layout research + human verification per
+station (the interchange precedent) — that pass needs Bryce.
+
 ### CTA feeds (in use) — station-level, discovered inventory
 
 `http://lapi.transitchicago.com/api/1.0/alerts.aspx` (Customer Alerts API),
