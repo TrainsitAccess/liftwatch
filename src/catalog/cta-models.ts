@@ -110,4 +110,242 @@ export const CTA_STATION_MODELS: StationModel[] = [
       },
     ],
   },
+  // Sox-35th (40190, Red Line) — Batch 2, single island-platform elevator,
+  // never individually identified in a live alert (vague only). No redundancy
+  // claimed, so the bare station id is safe here: a vague alert unambiguously
+  // means this one elevator — there is no OR to silently resolve behind.
+  {
+    systemId: SYSTEM,
+    stationExternalId: "40190",
+    note: "One elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Island platform; elevator added 2000 (chicago-L.org). Human-approved as Batch 2 via /liftwatch-station-review 2026-07-15 (confidence 8/10 collectively — no redundancy claimed anywhere in this batch).",
+    segments: [
+      { id: "street-platform", label: "Street to platform", elevators: [{ externalId: "40190", label: "Sox-35th platform elevator (only step-free access, never individually identified)" }] },
+    ],
+  },
+  // Central (40280, Green Line) — Batch 2, single island-platform elevator,
+  // never individually identified in a live alert (vague only). No redundancy
+  // claimed, so the bare station id is safe here: a vague alert unambiguously
+  // means this one elevator — there is no OR to silently resolve behind.
+  {
+    systemId: SYSTEM,
+    stationExternalId: "40280",
+    note: "One elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Island platform on embankment; elevator added 1994-96 (chicago-L.org). Human-approved as Batch 2 via /liftwatch-station-review 2026-07-15 (confidence 8/10 collectively — no redundancy claimed anywhere in this batch).",
+    segments: [
+      { id: "street-platform", label: "Street to platform", elevators: [{ externalId: "40280", label: "Central platform elevator (only step-free access, never individually identified)" }] },
+    ],
+  },
+  // Forest Park (40390, Blue Line) — Batch 2, single island-platform elevator,
+  // never individually identified in a live alert (vague only). No redundancy
+  // claimed, so the bare station id is safe here: a vague alert unambiguously
+  // means this one elevator — there is no OR to silently resolve behind.
+  {
+    systemId: SYSTEM,
+    stationExternalId: "40390",
+    note: "One elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Island platform; elevator in service since Dec 1982, transit center (chicago-L.org). Human-approved as Batch 2 via /liftwatch-station-review 2026-07-15 (confidence 8/10 collectively — no redundancy claimed anywhere in this batch).",
+    segments: [
+      { id: "street-platform", label: "Street to platform", elevators: [{ externalId: "40390", label: "Forest Park platform elevator (only step-free access, never individually identified)" }] },
+    ],
+  },
+  // Central Park (40780, Pink Line) — Batch 2, single island-platform elevator,
+  // never individually identified in a live alert (vague only). No redundancy
+  // claimed, so the bare station id is safe here: a vague alert unambiguously
+  // means this one elevator — there is no OR to silently resolve behind.
+  {
+    systemId: SYSTEM,
+    stationExternalId: "40780",
+    note: "One elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Island platform; one elevator tower, Douglas rehab (chicago-L.org). Human-approved as Batch 2 via /liftwatch-station-review 2026-07-15 (confidence 8/10 collectively — no redundancy claimed anywhere in this batch).",
+    segments: [
+      { id: "street-platform", label: "Street to platform", elevators: [{ externalId: "40780", label: "Central Park platform elevator (only step-free access, never individually identified)" }] },
+    ],
+  },
+  // 63rd (40910, Red Line) — Batch 2, single island-platform elevator,
+  // never individually identified in a live alert (vague only). No redundancy
+  // claimed, so the bare station id is safe here: a vague alert unambiguously
+  // means this one elevator — there is no OR to silently resolve behind.
+  {
+    systemId: SYSTEM,
+    stationExternalId: "40910",
+    note: "One elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Island platform, fare control on platform; elevator added in south Red upgrades (chicago-L.org). Human-approved as Batch 2 via /liftwatch-station-review 2026-07-15 (confidence 8/10 collectively — no redundancy claimed anywhere in this batch).",
+    segments: [
+      { id: "street-platform", label: "Street to platform", elevators: [{ externalId: "40910", label: "63rd platform elevator (only step-free access, never individually identified)" }] },
+    ],
+  },
+  // 35th-Bronzeville-IIT (41120, Green Line) — Batch 2, single island-platform elevator,
+  // never individually identified in a live alert (vague only). No redundancy
+  // claimed, so the bare station id is safe here: a vague alert unambiguously
+  // means this one elevator — there is no OR to silently resolve behind.
+  {
+    systemId: SYSTEM,
+    stationExternalId: "41120",
+    note: "One elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Center island platform (1960s config); one elevator added in rehab (chicago-L.org). Human-approved as Batch 2 via /liftwatch-station-review 2026-07-15 (confidence 8/10 collectively — no redundancy claimed anywhere in this batch).",
+    segments: [
+      { id: "street-platform", label: "Street to platform", elevators: [{ externalId: "41120", label: "35th-Bronzeville-IIT platform elevator (only step-free access, never individually identified)" }] },
+    ],
+  },
+  // Halsted (41130, Orange Line) — Batch 2, single island-platform elevator,
+  // never individually identified in a live alert (vague only). No redundancy
+  // claimed, so the bare station id is safe here: a vague alert unambiguously
+  // means this one elevator — there is no OR to silently resolve behind.
+  {
+    systemId: SYSTEM,
+    stationExternalId: "41130",
+    note: "One elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Island platform; one elevator (chicago-L.org). Human-approved as Batch 2 via /liftwatch-station-review 2026-07-15 (confidence 8/10 collectively — no redundancy claimed anywhere in this batch).",
+    segments: [
+      { id: "street-platform", label: "Street to platform", elevators: [{ externalId: "41130", label: "Halsted platform elevator (only step-free access, never individually identified)" }] },
+    ],
+  },
+  // Loyola (41300, Red Line) — Batch 2, single island-platform elevator,
+  // never individually identified in a live alert (vague only). No redundancy
+  // claimed, so the bare station id is safe here: a vague alert unambiguously
+  // means this one elevator — there is no OR to silently resolve behind.
+  {
+    systemId: SYSTEM,
+    stationExternalId: "41300",
+    note: "One elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Elongated island platform; the elevator bisects the platform (still one elevator) (chicago-L.org). Human-approved as Batch 2 via /liftwatch-station-review 2026-07-15 (confidence 8/10 collectively — no redundancy claimed anywhere in this batch).",
+    segments: [
+      { id: "street-platform", label: "Street to platform", elevators: [{ externalId: "41300", label: "Loyola platform elevator (only step-free access, never individually identified)" }] },
+    ],
+  },
+  // 87th (41430, Red Line) — Batch 2, single island-platform elevator,
+  // never individually identified in a live alert (vague only). No redundancy
+  // claimed, so the bare station id is safe here: a vague alert unambiguously
+  // means this one elevator — there is no OR to silently resolve behind.
+  {
+    systemId: SYSTEM,
+    stationExternalId: "41430",
+    note: "One elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Island platform; elevator added in south Red upgrades (chicago-L.org). Human-approved as Batch 2 via /liftwatch-station-review 2026-07-15 (confidence 8/10 collectively — no redundancy claimed anywhere in this batch).",
+    segments: [
+      { id: "street-platform", label: "Street to platform", elevators: [{ externalId: "41430", label: "87th platform elevator (only step-free access, never individually identified)" }] },
+    ],
+  },
+  // Morgan (41510, Green/Pink Lines) — Batch 2, single island-platform
+  // elevator. CTA's own alert text names both directions on one elevator
+  // ("The Loop- and 63rd-bound platform elevator at Morgan"); the identity
+  // parser currently collapses this specific phrasing order to "63RD-BOUND"
+  // only (a labeling quirk, not a tracking risk — the id is stable; see
+  // spawned task to fix the parser's reversed-order handling). No redundancy
+  // claimed; single elevator serves the whole (single) platform.
+  {
+    systemId: SYSTEM,
+    stationExternalId: "41510",
+    note: "One elevator serves the platform in both directions — no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Human-approved as Batch 2 via /liftwatch-station-review 2026-07-15 (confidence 8/10 collectively — no redundancy claimed anywhere in this batch).",
+    segments: [
+      { id: "street-platform", label: "Street to platform", elevators: [{ externalId: "41510-63RD-BOUND", label: "Morgan platform elevator (serves both Loop-bound and 63rd-bound platforms)" }] },
+    ],
+  },
+  // Chicago (40710, Brown, Purple Lines) — Batch 2, Diversey-pattern per-direction chains.
+  {
+    systemId: SYSTEM,
+    stationExternalId: "40710",
+    chainLabel: " (Loop-bound)",
+    note: "Street to the Loop-bound platform: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Side platforms; separate station houses, fare controls, and elevator per platform along Chicago Ave (chicago-L.org). Human-approved as Batch 2 via /liftwatch-station-review 2026-07-15 (confidence 8/10 collectively — no redundancy claimed anywhere in this batch).",
+    segments: [
+      { id: "street-platform", label: "Street to Loop-bound platform", elevators: [{ externalId: "40710-LOOP-BOUND", label: "Chicago Loop-bound platform elevator" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "40710",
+    chainLabel: " (Kimball-bound)",
+    note: "Street to the Kimball-bound platform: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Never yet observed live; synthetic placeholder id, promotable once observed. Human-approved as Batch 2 via /liftwatch-station-review 2026-07-15 (confidence 8/10 collectively — no redundancy claimed anywhere in this batch).",
+    segments: [
+      { id: "street-platform", label: "Street to Kimball-bound platform", elevators: [{ externalId: "CTA-SYNTH-40710-KIMBALL-BOUND", label: "Chicago Kimball-bound platform elevator — never yet observed live, synthetic id" }] },
+    ],
+  },
+  // Western (41480, Brown Line) — Batch 2, Diversey-pattern per-direction chains.
+  {
+    systemId: SYSTEM,
+    stationExternalId: "41480",
+    chainLabel: " (Kimball-bound)",
+    note: "Street to the Kimball-bound platform: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Side platforms; ADA since 1981, among CTA's first elevator stations (chicago-L.org). Human-approved as Batch 2 via /liftwatch-station-review 2026-07-15 (confidence 8/10 collectively — no redundancy claimed anywhere in this batch).",
+    segments: [
+      { id: "street-platform", label: "Street to Kimball-bound platform", elevators: [{ externalId: "41480-KIMBALL-BOUND", label: "Western Kimball-bound platform elevator" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "41480",
+    chainLabel: " (Loop-bound)",
+    note: "Street to the Loop-bound platform: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Never yet observed live; synthetic placeholder id, promotable once observed. Human-approved as Batch 2 via /liftwatch-station-review 2026-07-15 (confidence 8/10 collectively — no redundancy claimed anywhere in this batch).",
+    segments: [
+      { id: "street-platform", label: "Street to Loop-bound platform", elevators: [{ externalId: "CTA-SYNTH-41480-LOOP-BOUND", label: "Western Loop-bound platform elevator — never yet observed live, synthetic id" }] },
+    ],
+  },
+  // Conservatory (41670, Green Line) — Batch 2, Diversey-pattern per-direction chains.
+  {
+    systemId: SYSTEM,
+    stationExternalId: "41670",
+    chainLabel: " (63rd-bound)",
+    note: "Street to the 63rd-bound platform: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Twin station houses, side platforms, elevator towers (2001, Homan relocation) (chicago-L.org). Opposite direction inferred as Harlem-bound by system-wide Green Line convention (confirmed at King Drive, same branch) — verify on first observation. Human-approved as Batch 2 via /liftwatch-station-review 2026-07-15 (confidence 8/10 collectively — no redundancy claimed anywhere in this batch).",
+    segments: [
+      { id: "street-platform", label: "Street to 63rd-bound platform", elevators: [{ externalId: "41670-63RD-BOUND", label: "Conservatory 63rd-bound platform elevator" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "41670",
+    chainLabel: " (Harlem-bound)",
+    note: "Street to the Harlem-bound platform: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Never yet observed live; synthetic placeholder id, promotable once observed. Human-approved as Batch 2 via /liftwatch-station-review 2026-07-15 (confidence 8/10 collectively — no redundancy claimed anywhere in this batch).",
+    segments: [
+      { id: "street-platform", label: "Street to Harlem-bound platform", elevators: [{ externalId: "CTA-SYNTH-41670-HARLEM-BOUND", label: "Conservatory Harlem-bound platform elevator — never yet observed live, synthetic id" }] },
+    ],
+  },
+  // 47th (41080, Green Line) — Batch 2, Diversey-pattern per-direction chains.
+  {
+    systemId: SYSTEM,
+    stationExternalId: "41080",
+    chainLabel: " (Harlem-bound)",
+    note: "Street to the Harlem-bound platform: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Dual side platforms; \"elevators, one to each platform\" (1994-96 rehab) (chicago-L.org). Opposite direction inferred as 63rd-bound by system-wide Green Line convention — verify on first observation. Human-approved as Batch 2 via /liftwatch-station-review 2026-07-15 (confidence 8/10 collectively — no redundancy claimed anywhere in this batch).",
+    segments: [
+      { id: "street-platform", label: "Street to Harlem-bound platform", elevators: [{ externalId: "41080-HARLEM-BOUND", label: "47th Harlem-bound platform elevator" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "41080",
+    chainLabel: " (63rd-bound)",
+    note: "Street to the 63rd-bound platform: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Never yet observed live; synthetic placeholder id, promotable once observed. Human-approved as Batch 2 via /liftwatch-station-review 2026-07-15 (confidence 8/10 collectively — no redundancy claimed anywhere in this batch).",
+    segments: [
+      { id: "street-platform", label: "Street to 63rd-bound platform", elevators: [{ externalId: "CTA-SYNTH-41080-63RD-BOUND", label: "47th 63rd-bound platform elevator — never yet observed live, synthetic id" }] },
+    ],
+  },
+  // Polk (41030, Pink Line) — Batch 2, Diversey-pattern per-direction chains.
+  {
+    systemId: SYSTEM,
+    stationExternalId: "41030",
+    chainLabel: " (54th-bound)",
+    note: "Street to the 54th-bound platform: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Side platforms; \"dual elevators provide ADA accessibility\", one per platform (chicago-L.org). Opposite direction inferred as Loop-bound (Pink Line's Loop terminus) — verify on first observation. Human-approved as Batch 2 via /liftwatch-station-review 2026-07-15 (confidence 8/10 collectively — no redundancy claimed anywhere in this batch).",
+    segments: [
+      { id: "street-platform", label: "Street to 54th-bound platform", elevators: [{ externalId: "41030-54TH-BOUND", label: "Polk 54th-bound platform elevator" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "41030",
+    chainLabel: " (Loop-bound)",
+    note: "Street to the Loop-bound platform: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Never yet observed live; synthetic placeholder id, promotable once observed. Human-approved as Batch 2 via /liftwatch-station-review 2026-07-15 (confidence 8/10 collectively — no redundancy claimed anywhere in this batch).",
+    segments: [
+      { id: "street-platform", label: "Street to Loop-bound platform", elevators: [{ externalId: "CTA-SYNTH-41030-LOOP-BOUND", label: "Polk Loop-bound platform elevator — never yet observed live, synthetic id" }] },
+    ],
+  },
 ];

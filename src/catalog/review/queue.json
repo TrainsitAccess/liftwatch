@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-15T08:10:58.160Z",
+ "updatedAt": "2026-07-15T08:25:17.434Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -211,7 +211,7 @@
    "system": "cta-chicago",
    "stationId": "40710",
    "name": "Chicago",
-   "status": "pending",
+   "status": "modeled",
    "priority": 12,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
@@ -223,7 +223,12 @@
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **40710 Chicago (Brown)** — side platforms; SEPARATE station houses, fare controls, and elevator per platform along Chicago Ave. observed: LOOP-BOUND."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 2 (15 CTA single/no-redundancy stations), approved by Bryce as a group 2026-07-15. Bucket A: single island-platform elevator, never individually identified (bare station id — safe since no OR to hide behind). Bucket B (Morgan): single island elevator, agency-identified, serves both directions. Bucket C: Diversey-pattern per-direction chains (one real observed elevator, one synthetic placeholder for the never-observed opposite direction). Confidence 8/10 collectively. Implemented in src/catalog/cta-models.ts.",
+    "date": "2026-07-15"
+   }
   },
   {
    "key": "cta:41440",
@@ -253,7 +258,7 @@
    "system": "cta-chicago",
    "stationId": "41480",
    "name": "41480",
-   "status": "pending",
+   "status": "modeled",
    "priority": 12,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
@@ -265,7 +270,12 @@
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **41480 Western (Brown)** — side platforms; ADA since 1981 (among CTA's first elevator stations); elevator cabs being replaced 2024-26 (explains the long planned outage). observed: KIMBALL-BOUND."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 2 (15 CTA single/no-redundancy stations), approved by Bryce as a group 2026-07-15. Bucket A: single island-platform elevator, never individually identified (bare station id — safe since no OR to hide behind). Bucket B (Morgan): single island elevator, agency-identified, serves both directions. Bucket C: Diversey-pattern per-direction chains (one real observed elevator, one synthetic placeholder for the never-observed opposite direction). Confidence 8/10 collectively. Implemented in src/catalog/cta-models.ts.",
+    "date": "2026-07-15"
+   }
   },
   {
    "key": "cta:41500",
@@ -448,7 +458,7 @@
    "system": "cta-chicago",
    "stationId": "41670",
    "name": "Conservatory",
-   "status": "pending",
+   "status": "modeled",
    "priority": 16,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
@@ -460,7 +470,12 @@
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **41670 Conservatory (Green/Lake)** — twin station houses, side platforms, elevator towers + overhead transfer bridge (2001, Homan relocation). observed: 63RD-BOUND."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 2 (15 CTA single/no-redundancy stations), approved by Bryce as a group 2026-07-15. Bucket A: single island-platform elevator, never individually identified (bare station id — safe since no OR to hide behind). Bucket B (Morgan): single island elevator, agency-identified, serves both directions. Bucket C: Diversey-pattern per-direction chains (one real observed elevator, one synthetic placeholder for the never-observed opposite direction). Confidence 8/10 collectively. Implemented in src/catalog/cta-models.ts.",
+    "date": "2026-07-15"
+   }
   },
   {
    "key": "cta:40720",
@@ -3916,7 +3931,7 @@
    "system": "cta-chicago",
    "stationId": "40190",
    "name": "Sox-35th",
-   "status": "pending",
+   "status": "modeled",
    "priority": 50,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
@@ -3928,7 +3943,12 @@
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **40190 Sox-35th (Red)** — island; elevator added 2000. observed: vague only."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 2 (15 CTA single/no-redundancy stations), approved by Bryce as a group 2026-07-15. Bucket A: single island-platform elevator, never individually identified (bare station id — safe since no OR to hide behind). Bucket B (Morgan): single island elevator, agency-identified, serves both directions. Bucket C: Diversey-pattern per-direction chains (one real observed elevator, one synthetic placeholder for the never-observed opposite direction). Confidence 8/10 collectively. Implemented in src/catalog/cta-models.ts.",
+    "date": "2026-07-15"
+   }
   },
   {
    "key": "cta:40230",
@@ -3962,7 +3982,7 @@
    "system": "cta-chicago",
    "stationId": "40280",
    "name": "Central",
-   "status": "pending",
+   "status": "modeled",
    "priority": 50,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
@@ -3974,7 +3994,12 @@
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **40280 Central (Green/Lake)** — island on embankment; one elevator added 1994-96 from street-level station house. observed: vague."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 2 (15 CTA single/no-redundancy stations), approved by Bryce as a group 2026-07-15. Bucket A: single island-platform elevator, never individually identified (bare station id — safe since no OR to hide behind). Bucket B (Morgan): single island elevator, agency-identified, serves both directions. Bucket C: Diversey-pattern per-direction chains (one real observed elevator, one synthetic placeholder for the never-observed opposite direction). Confidence 8/10 collectively. Implemented in src/catalog/cta-models.ts.",
+    "date": "2026-07-15"
+   }
   },
   {
    "key": "cta:40380",
@@ -4004,7 +4029,7 @@
    "system": "cta-chicago",
    "stationId": "40390",
    "name": "Forest Park",
-   "status": "pending",
+   "status": "modeled",
    "priority": 50,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
@@ -4016,7 +4041,12 @@
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **40390 Forest Park (Blue)** — island; one elevator, in service Dec 1982 (transit center). observed: vague."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 2 (15 CTA single/no-redundancy stations), approved by Bryce as a group 2026-07-15. Bucket A: single island-platform elevator, never individually identified (bare station id — safe since no OR to hide behind). Bucket B (Morgan): single island elevator, agency-identified, serves both directions. Bucket C: Diversey-pattern per-direction chains (one real observed elevator, one synthetic placeholder for the never-observed opposite direction). Confidence 8/10 collectively. Implemented in src/catalog/cta-models.ts.",
+    "date": "2026-07-15"
+   }
   },
   {
    "key": "cta:40450",
@@ -4149,7 +4179,7 @@
    "system": "cta-chicago",
    "stationId": "40780",
    "name": "Central Park",
-   "status": "pending",
+   "status": "modeled",
    "priority": 50,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
@@ -4161,7 +4191,12 @@
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **40780 Central Park (Pink)** — island; one elevator tower (Douglas rehab). observed: vague."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 2 (15 CTA single/no-redundancy stations), approved by Bryce as a group 2026-07-15. Bucket A: single island-platform elevator, never individually identified (bare station id — safe since no OR to hide behind). Bucket B (Morgan): single island elevator, agency-identified, serves both directions. Bucket C: Diversey-pattern per-direction chains (one real observed elevator, one synthetic placeholder for the never-observed opposite direction). Confidence 8/10 collectively. Implemented in src/catalog/cta-models.ts.",
+    "date": "2026-07-15"
+   }
   },
   {
    "key": "cta:40900",
@@ -4187,7 +4222,7 @@
    "system": "cta-chicago",
    "stationId": "40910",
    "name": "63rd",
-   "status": "pending",
+   "status": "modeled",
    "priority": 50,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
@@ -4203,7 +4238,12 @@
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **40910 63rd (Red)** — island, fare controls ON the platform; elevator added in south Red upgrades. observed: vague."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 2 (15 CTA single/no-redundancy stations), approved by Bryce as a group 2026-07-15. Bucket A: single island-platform elevator, never individually identified (bare station id — safe since no OR to hide behind). Bucket B (Morgan): single island elevator, agency-identified, serves both directions. Bucket C: Diversey-pattern per-direction chains (one real observed elevator, one synthetic placeholder for the never-observed opposite direction). Confidence 8/10 collectively. Implemented in src/catalog/cta-models.ts.",
+    "date": "2026-07-15"
+   }
   },
   {
    "key": "cta:40990",
@@ -4229,7 +4269,7 @@
    "system": "cta-chicago",
    "stationId": "41030",
    "name": "Polk",
-   "status": "pending",
+   "status": "modeled",
    "priority": 50,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
@@ -4245,14 +4285,19 @@
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **41030 Polk (Pink)** — side platforms; \"dual elevators provide ADA accessibility\" — one per platform. observed: 54TH-BOUND."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 2 (15 CTA single/no-redundancy stations), approved by Bryce as a group 2026-07-15. Bucket A: single island-platform elevator, never individually identified (bare station id — safe since no OR to hide behind). Bucket B (Morgan): single island elevator, agency-identified, serves both directions. Bucket C: Diversey-pattern per-direction chains (one real observed elevator, one synthetic placeholder for the never-observed opposite direction). Confidence 8/10 collectively. Implemented in src/catalog/cta-models.ts.",
+    "date": "2026-07-15"
+   }
   },
   {
    "key": "cta:41080",
    "system": "cta-chicago",
    "stationId": "41080",
    "name": "47th",
-   "status": "pending",
+   "status": "modeled",
    "priority": 50,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
@@ -4268,14 +4313,19 @@
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **41080 47th (Green)** — dual side platforms; \"elevators, one to each platform\" (1994-96). observed: HARLEM-BOUND."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 2 (15 CTA single/no-redundancy stations), approved by Bryce as a group 2026-07-15. Bucket A: single island-platform elevator, never individually identified (bare station id — safe since no OR to hide behind). Bucket B (Morgan): single island elevator, agency-identified, serves both directions. Bucket C: Diversey-pattern per-direction chains (one real observed elevator, one synthetic placeholder for the never-observed opposite direction). Confidence 8/10 collectively. Implemented in src/catalog/cta-models.ts.",
+    "date": "2026-07-15"
+   }
   },
   {
    "key": "cta:41120",
    "system": "cta-chicago",
    "stationId": "41120",
    "name": "35th-Bronzeville-IIT",
-   "status": "pending",
+   "status": "modeled",
    "priority": 50,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
@@ -4291,14 +4341,19 @@
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **41120 35th-Bronzeville-IIT (Green)** — center island (1960s config); one elevator added in rehab. observed: vague."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 2 (15 CTA single/no-redundancy stations), approved by Bryce as a group 2026-07-15. Bucket A: single island-platform elevator, never individually identified (bare station id — safe since no OR to hide behind). Bucket B (Morgan): single island elevator, agency-identified, serves both directions. Bucket C: Diversey-pattern per-direction chains (one real observed elevator, one synthetic placeholder for the never-observed opposite direction). Confidence 8/10 collectively. Implemented in src/catalog/cta-models.ts.",
+    "date": "2026-07-15"
+   }
   },
   {
    "key": "cta:41130",
    "system": "cta-chicago",
    "stationId": "41130",
    "name": "Halsted",
-   "status": "pending",
+   "status": "modeled",
    "priority": 50,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
@@ -4314,7 +4369,12 @@
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **41130 Halsted (Orange)** — island; one elevator. observed: vague."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 2 (15 CTA single/no-redundancy stations), approved by Bryce as a group 2026-07-15. Bucket A: single island-platform elevator, never individually identified (bare station id — safe since no OR to hide behind). Bucket B (Morgan): single island elevator, agency-identified, serves both directions. Bucket C: Diversey-pattern per-direction chains (one real observed elevator, one synthetic placeholder for the never-observed opposite direction). Confidence 8/10 collectively. Implemented in src/catalog/cta-models.ts.",
+    "date": "2026-07-15"
+   }
   },
   {
    "key": "cta:41200",
@@ -4359,7 +4419,7 @@
    "system": "cta-chicago",
    "stationId": "41300",
    "name": "Loyola",
-   "status": "pending",
+   "status": "modeled",
    "priority": 50,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
@@ -4375,14 +4435,19 @@
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **41300 Loyola (Red)** — island, elongated; the elevator BISECTS the platform (opens both sides, north/south berths separated around it) — still ONE elevator. observed: vague."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 2 (15 CTA single/no-redundancy stations), approved by Bryce as a group 2026-07-15. Bucket A: single island-platform elevator, never individually identified (bare station id — safe since no OR to hide behind). Bucket B (Morgan): single island elevator, agency-identified, serves both directions. Bucket C: Diversey-pattern per-direction chains (one real observed elevator, one synthetic placeholder for the never-observed opposite direction). Confidence 8/10 collectively. Implemented in src/catalog/cta-models.ts.",
+    "date": "2026-07-15"
+   }
   },
   {
    "key": "cta:41430",
    "system": "cta-chicago",
    "stationId": "41430",
    "name": "87th",
-   "status": "pending",
+   "status": "modeled",
    "priority": 50,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
@@ -4394,14 +4459,19 @@
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **41430 87th (Red)** — island; elevator added in south Red upgrades. observed: vague."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 2 (15 CTA single/no-redundancy stations), approved by Bryce as a group 2026-07-15. Bucket A: single island-platform elevator, never individually identified (bare station id — safe since no OR to hide behind). Bucket B (Morgan): single island elevator, agency-identified, serves both directions. Bucket C: Diversey-pattern per-direction chains (one real observed elevator, one synthetic placeholder for the never-observed opposite direction). Confidence 8/10 collectively. Implemented in src/catalog/cta-models.ts.",
+    "date": "2026-07-15"
+   }
   },
   {
    "key": "cta:41510",
    "system": "cta-chicago",
    "stationId": "41510",
    "name": "Morgan",
-   "status": "pending",
+   "status": "modeled",
    "priority": 50,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
@@ -4409,7 +4479,12 @@
      "source": "live feed (alert text)",
      "text": "Elevator at Morgan Temporarily Out-of-Service — The Loop- and 63rd-bound platform elevator at Morgan (Green, Pink Lines) is temporarily out-of-service."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 2 (15 CTA single/no-redundancy stations), approved by Bryce as a group 2026-07-15. Bucket A: single island-platform elevator, never individually identified (bare station id — safe since no OR to hide behind). Bucket B (Morgan): single island elevator, agency-identified, serves both directions. Bucket C: Diversey-pattern per-direction chains (one real observed elevator, one synthetic placeholder for the never-observed opposite direction). Confidence 8/10 collectively. Implemented in src/catalog/cta-models.ts.",
+    "date": "2026-07-15"
+   }
   },
   {
    "key": "cta:41660",
