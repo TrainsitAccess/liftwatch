@@ -594,11 +594,11 @@ const DISCLAIMERS = {
     personal: `I know this system well — familiarity tier 2 of 4 — and the interchange models were verified in a personal walk-through.`,
   },
   "mta-lirr": {
-    data: `Per-elevator inventory and live status (the same data behind MTA's own status page), but <strong>no redundancy signal from the agency</strong> — the station models are LiftWatch's own: 14 stations hand-verified in a walk-through, the simpler stations auto-generated from the feed's own elevator descriptions and accepted only after exactly reproducing the hand-verified ground truth. Ambiguous stations stay unmodeled rather than guessed.`,
+    data: `Per-elevator inventory and live status (the same data behind MTA's own status page), but <strong>no redundancy signal from the agency</strong> — the station models are LiftWatch's own: 14 stations hand-verified in a walk-through, the simpler stations auto-generated from the feed's own elevator descriptions and accepted only after exactly reproducing the hand-verified ground truth. Ambiguous stations stay unmodeled rather than guessed. This is a ground-level railroad — some at-grade stations may have a ramp providing step-free platform access that isn't in this elevator inventory. An unmodeled ramp can only make a station falsely read <em>NO&nbsp;ACCESS</em> or <em>UNKNOWN</em>, never falsely accessible.`,
     personal: `I know this railroad well — familiarity tier 2 of 4.`,
   },
   "mta-mnr": {
-    data: `Per-elevator inventory and live status (the same data behind MTA's own status page), but <strong>no redundancy signal from the agency</strong> — the station models are LiftWatch's own: 14 stations hand-verified in a walk-through, the simpler stations auto-generated from the feed's own elevator descriptions and accepted only after exactly reproducing the hand-verified ground truth. Ambiguous stations stay unmodeled rather than guessed.`,
+    data: `Per-elevator inventory and live status (the same data behind MTA's own status page), but <strong>no redundancy signal from the agency</strong> — the station models are LiftWatch's own: 14 stations hand-verified in a walk-through, the simpler stations auto-generated from the feed's own elevator descriptions and accepted only after exactly reproducing the hand-verified ground truth. Ambiguous stations stay unmodeled rather than guessed. This is a ground-level railroad — some at-grade stations may have a ramp providing step-free platform access that isn't in this elevator inventory. An unmodeled ramp can only make a station falsely read <em>NO&nbsp;ACCESS</em> or <em>UNKNOWN</em>, never falsely accessible.`,
     personal: `I know this railroad well — familiarity tier 2 of 4.`,
   },
   "bart-bay-area": {
@@ -610,7 +610,7 @@ const DISCLAIMERS = {
     personal: `Familiarity tier 1 of 4 — one of the two systems I know best, which is exactly why I'm comfortable saying the feed can't support access claims yet.`,
   },
   "mbta-boston": {
-    data: `A good per-elevator feed with a full inventory, plus <strong>other accessibility equipment tracking</strong> (mini-high platforms, portable lifts, ramps). No station structure models exist — a sole-access marker appears only where a station has exactly one elevator.`,
+    data: `A good per-elevator feed with a full inventory, plus <strong>other accessibility equipment tracking</strong> (mini-high platforms, portable lifts, ramps). No station structure models exist — a sole-access marker appears only where a station has exactly one elevator. Its ground-level <strong>Commuter Rail</strong> stations in particular may have a ramp providing platform access that isn't captured anywhere in this data — an unmodeled ramp can only make a station falsely read <em>NO&nbsp;ACCESS</em> or <em>UNKNOWN</em>, never falsely accessible.`,
     personal: `<strong>I have never been on the MBTA.</strong> Nothing here is personally verified — the conservative machinery is doing all the work.`,
   },
   "cta-chicago": {
