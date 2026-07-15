@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-15T05:46:58.657Z",
+ "updatedAt": "2026-07-15T08:10:58.160Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -664,7 +664,7 @@
    "system": "mbta-boston",
    "stationId": "place-haecl",
    "name": "Haymarket",
-   "status": "pending",
+   "status": "modeled",
    "priority": 24,
    "reason": "street-leg-hub-mismatch",
    "evidence": [
@@ -724,14 +724,19 @@
      "source": "GTFS-pathways generator PROPOSAL (gate-validated best guess — approve/adjust to ship)",
      "text": "Segments are minimal cuts (AND of ORs), round-trip-verified against the agency's own walking graph, answer-key-validated:\n(Forest Hills): 903∨904∨906  AND  903∨904∨908  AND  904∨905  AND  904∨906∨907  AND  904∨907∨908\n(Oak Grove): 903∨904∨906  AND  903∨904∨908  AND  903∨905∨906  AND  903∨905∨908  AND  903∨907\n(Copley & West / North Station & North): 903∨904∨908  AND  903∨905∨908  AND  904∨907∨908  AND  905∨907∨908  AND  906∨908"
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 1 (16 MBTA machine-validated pathways proposals), approved by Bryce as a group 2026-07-14 on the same answer-key + round-trip validation basis as Aquarium and Park Street. Structure lifted verbatim from the validated pathways proposal into src/catalog/mbta-models.ts.",
+    "date": "2026-07-14"
+   }
   },
   {
    "key": "mbta:place-north",
    "system": "mbta-boston",
    "stationId": "place-north",
    "name": "North Station",
-   "status": "pending",
+   "status": "modeled",
    "priority": 24,
    "reason": "unknown-landing",
    "evidence": [
@@ -791,14 +796,19 @@
      "source": "GTFS-pathways generator PROPOSAL (gate-validated best guess — approve/adjust to ship)",
      "text": "Segments are minimal cuts (AND of ORs), round-trip-verified against the agency's own walking graph, answer-key-validated:\n(Lechmere & North): 731∨732∨909∨912\n(Oak Grove): 731∨732∨909∨912  AND  911\n(Copley & West / Forest Hills): 731∨732∨909∨912  AND  910"
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 1 (16 MBTA machine-validated pathways proposals), approved by Bryce as a group 2026-07-14 on the same answer-key + round-trip validation basis as Aquarium and Park Street. Structure lifted verbatim from the validated pathways proposal into src/catalog/mbta-models.ts.",
+    "date": "2026-07-14"
+   }
   },
   {
    "key": "mbta:place-sstat",
    "system": "mbta-boston",
    "stationId": "place-sstat",
    "name": "South Station",
-   "status": "pending",
+   "status": "modeled",
    "priority": 24,
    "reason": "unknown-landing",
    "evidence": [
@@ -882,7 +892,12 @@
      "source": "GTFS-pathways generator PROPOSAL (gate-validated best guess — approve/adjust to ship)",
      "text": "Segments are minimal cuts (AND of ORs), round-trip-verified against the agency's own walking graph, answer-key-validated:\n(Airport / SL3 Design Center/Chelsea): 6476∨926∨949  AND  901∨918  AND  918∨919  AND  918∨927\n(Ashmont/Braintree): 6476∨926∨949  AND  901∨918\n(Alewife): 6476∨926∨949  AND  901∨918  AND  901∨919  AND  918∨927  AND  919∨927\n(Exit Only): 6476∨926∨949  AND  901∨918  AND  901∨919  AND  901∨927"
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 1 (16 MBTA machine-validated pathways proposals), approved by Bryce as a group 2026-07-14 on the same answer-key + round-trip validation basis as Aquarium and Park Street. Structure lifted verbatim from the validated pathways proposal into src/catalog/mbta-models.ts.",
+    "date": "2026-07-14"
+   }
   },
   {
    "key": "mbta:place-state",
@@ -948,7 +963,7 @@
    "system": "mbta-boston",
    "stationId": "place-astao",
    "name": "Assembly",
-   "status": "pending",
+   "status": "modeled",
    "priority": 26,
    "reason": "street-leg-hub-mismatch",
    "evidence": [
@@ -992,14 +1007,19 @@
      "source": "GTFS-pathways generator PROPOSAL (gate-validated best guess — approve/adjust to ship)",
      "text": "Segments are minimal cuts (AND of ORs), round-trip-verified against the agency's own walking graph, answer-key-validated:\n(single chain): 716∨718  AND  716∨719  AND  717∨718  AND  717∨719"
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 1 (16 MBTA machine-validated pathways proposals), approved by Bryce as a group 2026-07-14 on the same answer-key + round-trip validation basis as Aquarium and Park Street. Structure lifted verbatim from the validated pathways proposal into src/catalog/mbta-models.ts.",
+    "date": "2026-07-14"
+   }
   },
   {
    "key": "mbta:place-lech",
    "system": "mbta-boston",
    "stationId": "place-lech",
    "name": "Lechmere",
-   "status": "pending",
+   "status": "modeled",
    "priority": 26,
    "reason": "multi-hub-platform",
    "evidence": [
@@ -1035,14 +1055,19 @@
      "source": "GTFS-pathways generator PROPOSAL (gate-validated best guess — approve/adjust to ship)",
      "text": "Segments are minimal cuts (AND of ORs), round-trip-verified against the agency's own walking graph, answer-key-validated:\n(single chain): 762∨763∨764"
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 1 (16 MBTA machine-validated pathways proposals), approved by Bryce as a group 2026-07-14 on the same answer-key + round-trip validation basis as Aquarium and Park Street. Structure lifted verbatim from the validated pathways proposal into src/catalog/mbta-models.ts.",
+    "date": "2026-07-14"
+   }
   },
   {
    "key": "mbta:place-wlsta",
    "system": "mbta-boston",
    "stationId": "place-wlsta",
    "name": "Wollaston",
-   "status": "pending",
+   "status": "modeled",
    "priority": 26,
    "reason": "multi-level-hub",
    "evidence": [
@@ -1078,14 +1103,19 @@
      "source": "GTFS-pathways generator PROPOSAL (gate-validated best guess — approve/adjust to ship)",
      "text": "Segments are minimal cuts (AND of ORs), round-trip-verified against the agency's own walking graph, answer-key-validated:\n(single chain): 733∨734  AND  734∨735"
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 1 (16 MBTA machine-validated pathways proposals), approved by Bryce as a group 2026-07-14 on the same answer-key + round-trip validation basis as Aquarium and Park Street. Structure lifted verbatim from the validated pathways proposal into src/catalog/mbta-models.ts.",
+    "date": "2026-07-14"
+   }
   },
   {
    "key": "mbta:place-harsq",
    "system": "mbta-boston",
    "stationId": "place-harsq",
    "name": "Harvard",
-   "status": "pending",
+   "status": "modeled",
    "priority": 28,
    "reason": "unparseable-unit",
    "evidence": [
@@ -1113,7 +1143,12 @@
      "source": "GTFS-pathways generator PROPOSAL (gate-validated best guess — approve/adjust to ship)",
      "text": "Segments are minimal cuts (AND of ORs), round-trip-verified against the agency's own walking graph, answer-key-validated:\n(single chain): 821∨973"
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 1 (16 MBTA machine-validated pathways proposals), approved by Bryce as a group 2026-07-14 on the same answer-key + round-trip validation basis as Aquarium and Park Street. Structure lifted verbatim from the validated pathways proposal into src/catalog/mbta-models.ts.",
+    "date": "2026-07-14"
+   }
   },
   {
    "key": "mbta:place-welln",
@@ -2051,7 +2086,7 @@
    "system": "mbta-boston",
    "stationId": "place-armnl",
    "name": "Arlington",
-   "status": "pending",
+   "status": "modeled",
    "priority": 34,
    "reason": "unknown-landing",
    "evidence": [
@@ -2087,7 +2122,12 @@
      "source": "GTFS-pathways generator PROPOSAL (gate-validated best guess — approve/adjust to ship)",
      "text": "Segments are minimal cuts (AND of ORs), round-trip-verified against the agency's own walking graph, answer-key-validated:\n(Copley & West): 962  AND  964\n(Park Street & North): 963  AND  964"
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 1 (16 MBTA machine-validated pathways proposals), approved by Bryce as a group 2026-07-14 on the same answer-key + round-trip validation basis as Aquarium and Park Street. Structure lifted verbatim from the validated pathways proposal into src/catalog/mbta-models.ts.",
+    "date": "2026-07-14"
+   }
   },
   {
    "key": "mbta:place-asmnl",
@@ -2133,7 +2173,7 @@
    "system": "mbta-boston",
    "stationId": "place-bbsta",
    "name": "Back Bay",
-   "status": "pending",
+   "status": "modeled",
    "priority": 34,
    "reason": "unknown-landing",
    "evidence": [
@@ -2177,14 +2217,19 @@
      "source": "GTFS-pathways generator PROPOSAL (gate-validated best guess — approve/adjust to ship)",
      "text": "Segments are minimal cuts (AND of ORs), round-trip-verified against the agency's own walking graph, answer-key-validated:\n(Forest Hills / Oak Grove): 853\n(Commuter Rail - Track 5 / Commuter Rail - Track 7): 856\n(Commuter Rail - Track 1 / Commuter Rail - Track 3): 855\n(Commuter Rail - Track 2): 854"
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 1 (16 MBTA machine-validated pathways proposals), approved by Bryce as a group 2026-07-14 on the same answer-key + round-trip validation basis as Aquarium and Park Street. Structure lifted verbatim from the validated pathways proposal into src/catalog/mbta-models.ts.",
+    "date": "2026-07-14"
+   }
   },
   {
    "key": "mbta:place-coecl",
    "system": "mbta-boston",
    "stationId": "place-coecl",
    "name": "Copley",
-   "status": "pending",
+   "status": "modeled",
    "priority": 34,
    "reason": "unknown-landing",
    "evidence": [
@@ -2212,7 +2257,12 @@
      "source": "GTFS-pathways generator PROPOSAL (gate-validated best guess — approve/adjust to ship)",
      "text": "Segments are minimal cuts (AND of ORs), round-trip-verified against the agency's own walking graph, answer-key-validated:\n(Park Street & North): 976\n(Kenmore & West, Heath Street): 977"
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 1 (16 MBTA machine-validated pathways proposals), approved by Bryce as a group 2026-07-14 on the same answer-key + round-trip validation basis as Aquarium and Park Street. Structure lifted verbatim from the validated pathways proposal into src/catalog/mbta-models.ts.",
+    "date": "2026-07-14"
+   }
   },
   {
    "key": "mbta:place-crtst",
@@ -2399,7 +2449,7 @@
    "system": "mbta-boston",
    "stationId": "place-forhl",
    "name": "Forest Hills",
-   "status": "pending",
+   "status": "modeled",
    "priority": 34,
    "reason": "street-leg-hub-mismatch",
    "evidence": [
@@ -2443,7 +2493,12 @@
      "source": "GTFS-pathways generator PROPOSAL (gate-validated best guess — approve/adjust to ship)",
      "text": "Segments are minimal cuts (AND of ORs), round-trip-verified against the agency's own walking graph, answer-key-validated:\n(Orange Line / Track 1 / Track 2): 724∨842\n(Commuter Rail / Commuter Rail - Track 3 / Commuter Rail - Tr): 841"
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 1 (16 MBTA machine-validated pathways proposals), approved by Bryce as a group 2026-07-14 on the same answer-key + round-trip validation basis as Aquarium and Park Street. Structure lifted verbatim from the validated pathways proposal into src/catalog/mbta-models.ts.",
+    "date": "2026-07-14"
+   }
   },
   {
    "key": "mbta:place-gilmn",
@@ -2667,7 +2722,7 @@
    "system": "mbta-boston",
    "stationId": "place-nqncy",
    "name": "North Quincy",
-   "status": "pending",
+   "status": "modeled",
    "priority": 34,
    "reason": "mixed-route-platform",
    "evidence": [
@@ -2727,7 +2782,12 @@
      "source": "GTFS-pathways generator PROPOSAL (gate-validated best guess — approve/adjust to ship)",
      "text": "Segments are minimal cuts (AND of ORs), round-trip-verified against the agency's own walking graph, answer-key-validated:\n(single chain): 739∨740∨897∨898∨900  AND  899∨900"
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 1 (16 MBTA machine-validated pathways proposals), approved by Bryce as a group 2026-07-14 on the same answer-key + round-trip validation basis as Aquarium and Park Street. Structure lifted verbatim from the validated pathways proposal into src/catalog/mbta-models.ts.",
+    "date": "2026-07-14"
+   }
   },
   {
    "key": "mbta:place-ogmnl",
@@ -2832,7 +2892,7 @@
    "system": "mbta-boston",
    "stationId": "place-rugg",
    "name": "Ruggles",
-   "status": "pending",
+   "status": "modeled",
    "priority": 34,
    "reason": "unknown-landing",
    "evidence": [
@@ -2884,14 +2944,19 @@
      "source": "GTFS-pathways generator PROPOSAL (gate-validated best guess — approve/adjust to ship)",
      "text": "Segments are minimal cuts (AND of ORs), round-trip-verified against the agency's own walking graph, answer-key-validated:\n(Forest Hills / Oak Grove): 850\n(Commuter Rail - Track 1 / Commuter Rail - Track 3): 849"
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 1 (16 MBTA machine-validated pathways proposals), approved by Bryce as a group 2026-07-14 on the same answer-key + round-trip validation basis as Aquarium and Park Street. Structure lifted verbatim from the validated pathways proposal into src/catalog/mbta-models.ts.",
+    "date": "2026-07-14"
+   }
   },
   {
    "key": "mbta:place-shmnl",
    "system": "mbta-boston",
    "stationId": "place-shmnl",
    "name": "Savin Hill",
-   "status": "pending",
+   "status": "modeled",
    "priority": 34,
    "reason": "street-leg-hub-mismatch",
    "evidence": [
@@ -2919,14 +2984,19 @@
      "source": "GTFS-pathways generator PROPOSAL (gate-validated best guess — approve/adjust to ship)",
      "text": "Segments are minimal cuts (AND of ORs), round-trip-verified against the agency's own walking graph, answer-key-validated:\n(single chain): 946"
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 1 (16 MBTA machine-validated pathways proposals), approved by Bryce as a group 2026-07-14 on the same answer-key + round-trip validation basis as Aquarium and Park Street. Structure lifted verbatim from the validated pathways proposal into src/catalog/mbta-models.ts.",
+    "date": "2026-07-14"
+   }
   },
   {
    "key": "mbta:place-spmnl",
    "system": "mbta-boston",
    "stationId": "place-spmnl",
    "name": "Science Park/West End",
-   "status": "pending",
+   "status": "modeled",
    "priority": 34,
    "reason": "unknown-landing",
    "evidence": [
@@ -2954,7 +3024,12 @@
      "source": "GTFS-pathways generator PROPOSAL (gate-validated best guess — approve/adjust to ship)",
      "text": "Segments are minimal cuts (AND of ORs), round-trip-verified against the agency's own walking graph, answer-key-validated:\n(Lechmere & North): 981\n(Copley & West): 980"
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 1 (16 MBTA machine-validated pathways proposals), approved by Bryce as a group 2026-07-14 on the same answer-key + round-trip validation basis as Aquarium and Park Street. Structure lifted verbatim from the validated pathways proposal into src/catalog/mbta-models.ts.",
+    "date": "2026-07-14"
+   }
   },
   {
    "key": "mbta:place-sull",
@@ -2996,7 +3071,7 @@
    "system": "mbta-boston",
    "stationId": "place-tumnl",
    "name": "Tufts Medical Center",
-   "status": "pending",
+   "status": "modeled",
    "priority": 34,
    "reason": "street-leg-hub-mismatch",
    "evidence": [
@@ -3032,7 +3107,12 @@
      "source": "GTFS-pathways generator PROPOSAL (gate-validated best guess — approve/adjust to ship)",
      "text": "Segments are minimal cuts (AND of ORs), round-trip-verified against the agency's own walking graph, answer-key-validated:\n(Oak Grove): 857  AND  858\n(Forest Hills): 857  AND  859"
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 1 (16 MBTA machine-validated pathways proposals), approved by Bryce as a group 2026-07-14 on the same answer-key + round-trip validation basis as Aquarium and Park Street. Structure lifted verbatim from the validated pathways proposal into src/catalog/mbta-models.ts.",
+    "date": "2026-07-14"
+   }
   },
   {
    "key": "mbta:place-WML-0025",

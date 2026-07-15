@@ -204,13 +204,28 @@ check("MBTA un-modeled (assumed) unit -> route/redundancy flagged",
 check("empty reason anywhere -> reason flagged",
   missingExpectedFields("tfl-london", mkO({ unitExternalId: "L1", reason: "" }), mkU("pathways")), ["reason"]);
 
-console.log("\n  hand-curated MBTA models (2026-07-12): reciprocal pairs => fully redundant:");
-check("every hand-curated MBTA model is single-fault-tolerant (no sole access)",
-  MBTA_STATION_MODELS.every((m) => isSingleFaultTolerant(m)), true);
+// The reciprocal-PAIR curated models (each leg names a same-station backup in
+// MBTA's guidance) must stay single-fault-tolerant. The machine-validated
+// pathways-proposal models added later (Aquarium, Park St, and Batch 1 —
+// 2026-07-14) faithfully mirror the real MBTA layout, which at many stations
+// includes genuine single-elevator legs (e.g. Arlington's lone street
+// elevator 964): those are legitimately NOT single-fault-tolerant, and a
+// single-fault model is the conservative, over-warn-safe representation. So
+// the redundancy assertion is scoped to the pair models; ALL curated models
+// are still checked for structural validity.
+console.log("\n  hand-curated MBTA models: reciprocal pairs stay redundant; all are structurally valid:");
+const MBTA_RECIPROCAL_PAIR_STATIONS = new Set([
+  "place-gover", "place-alfcl", "place-mvbcl", "place-gilmn",
+  "place-orhte", "place-ER-0115", "place-ER-0183", "place-aport",
+]);
+check("every reciprocal-pair curated MBTA model is single-fault-tolerant (no sole access)",
+  MBTA_STATION_MODELS.filter((m) => MBTA_RECIPROCAL_PAIR_STATIONS.has(m.stationExternalId)).every((m) => isSingleFaultTolerant(m)), true);
+check("every curated MBTA model is structurally valid (>=1 segment, every segment >=1 elevator)",
+  MBTA_STATION_MODELS.every((m) => m.segments.length >= 1 && m.segments.every((s) => s.elevators.length >= 1)), true);
 check("Government Center Blue-Line chain: 722 out is covered by 723 (redundant)",
   MBTA_STATION_MODELS.some((m) => m.stationExternalId === "place-gover" && m.chainLabel === " (Blue Line)" && stationAccessible(m, new Set(["722"]))), true);
 
-const total = 63;
+const total = 64;
 if (failures) {
   console.error(`\n  ${failures} check(s) FAILED\n`);
   process.exitCode = 1;
