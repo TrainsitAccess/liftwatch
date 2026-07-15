@@ -834,6 +834,23 @@ access chain only when the agency's guidance or a human confirms the route.**
   at street grade, sole mezz→platform elevator (core chain), plus the
   human-confirmed (2026-07-13) pedestrian-bridge pair A14X01/A14X02 as its own
   chain (BART Warm Springs precedent). `check:wmata` guards tier non-overlap.
+  **+21 stations from the excluded set, via `/liftwatch-station-review`
+  batching (2026-07-15)**: the 43 originally-excluded stations split cleanly
+  by risk — no-redundancy ladder-chain shapes (a shared street↔mezzanine
+  prerequisite feeding one or two per-direction platform legs, or a straight
+  street→platform run with unusual level names) batch safely since nothing
+  in them CLAIMS a backup; genuine ambiguity (Potomac Yard's 3 street
+  entrances, West Falls Church's unlabeled roster) stays individual. Shipped
+  in 4 structural groups (Judiciary Sq/Arlington Cemetery; Reagan National
+  Airport/Eisenhower Ave/West Hyattsville/Hyattsville Crossing;
+  Dupont Circle/McPherson Sq/Farragut West/Pentagon City/Crystal City/
+  Cheverly/Clarendon/Virginia Sq-GMU; Woodley Park/Cleveland Park/Van Ness-
+  UDC/New Carrollton/Southern Ave/Suitland/Franconia-Springfield). Several
+  elevators upgraded from synthetic `WMATA-<node>` slots to real observed
+  `UnitName`s during this pass by cross-checking `observed-units.json`
+  (Reagan National Airport ships fully real; Cheverly's both platform legs
+  are real). 77 stations now carry per-elevator access-chain models total
+  (55 generated + 22 hand-curated); 22 stations remain excluded.
 - **Adapter attribution** (`attributeWmataIncident`, pure):
   id-in-model → modeled (segment + model-derived redundancy, source
   `pathways`/`curated`); unknown UnitName at a modeled station → level-pair
@@ -1360,8 +1377,12 @@ railroad. Facts below verified live 2026-07-06.
 
 ### Rail chain generator — auto-modeled simple stations (2026-07-10)
 
-Only 13 railroad stations were hand-curated; the other ~86 elevator-equipped
-LIRR/MNR stations fell to `assumed` redundancy — so a real severing outage
+Only 13 railroad stations were hand-curated at first (now 18 — Amityville,
+Lindenhurst, Purdy's, and Cortlandt added 2026-07-15 via
+`/liftwatch-station-review`, all single-elevator or straight 2-elevator
+chains with zero redundancy claimed, confidence 8-9/10); the other
+elevator-equipped LIRR/MNR stations fell to `assumed` redundancy — so a real
+severing outage
 (the motivating case: Chappaqua's 148I, the sole overpass→island elevator,
 broken with LiftWatch showing nothing) carried no access claim at all. The
 subway solved this with a generator because `nyct_ene` ships a structured
@@ -1399,11 +1420,17 @@ generator's answer key is the hand-curated models themselves.
   single-outage simulation via the production `stationAccessible()`. Any
   mismatch aborts with nothing written (per the project owner: "if what you
   generate disagrees with what I've told you, then your generator is
-  broken"). Result: **9 of 13 curated stations reproduced exactly** (incl.
+  broken"). Result: **9 of the 18 curated stations reproduced exactly** (incl.
   Penn's five chains sharing P34, Jamaica's six sharing 521, Woodside's
-  triple-role 449, New Rochelle's per-direction split); the 4 complex ones
-  (GCT ×2, Stamford, Yankees) self-exclude — Yankees even trips on the same
-  PE4 ambiguity the hand model deliberately omits.
+  triple-role 449, New Rochelle's per-direction split); **9 conservatively
+  self-exclude** — the original 4 complex ones (GCT ×2, Stamford, Yankees;
+  Yankees even trips on the same PE4 ambiguity the hand model deliberately
+  omits), Greenwich (2GN — its 218T "Ticket Office" landing is unplaceable
+  from text), and the 4 stations added 2026-07-15 (Amityville/Lindenhurst:
+  unknown-landing, "station plaza" isn't a recognized keyword; Purdy's:
+  unknown-landing, the ambiguous 158B unit; Cortlandt: unparseable-unit, the
+  045PW parking elevator) — the engine's own parser still can't place these,
+  same conservative shape as the original four.
 - **The gate caught a real bug before ship**: the first run's track regex
   missed the feed's "Tk 3" abbreviation, collapsing the Hudson line's
   per-side platforms into one unnamed platform and generating FIVE false
@@ -1505,5 +1532,78 @@ station models — despite the richest untapped inputs of any system:
   exact reproduction of the committed chains, plus the Fields Corner detour
   and Wellington exclusion regressions. First live effect: Kendall/MIT's 777
   outage reads REDUCED (866 backs it up, per MBTA's own guidance); Winchester
-  Center stays ACCESSIBLE on 748 with 749 out; Natick Center reads NO ACCESS
-  per platform; the MBTA access board went from 0 to 60 modeled routes.
+  Center stays ACCESSIBLE on 748 with 749 out; Natick Center ALSO stays
+  ACCESSIBLE on either 750 or 751 out — MBTA's own guidance names a ramp as
+  the elevator-free route on both, so both are in `APPROVED_STREET_ALTERNATES`
+  (`stepFreeAlternative: true`, see the joint-review list two paragraphs up;
+  this line previously said Natick reads NO ACCESS per platform, which
+  contradicted that same list — corrected 2026-07-16); the MBTA access board
+  went from 0 to 60 modeled routes.
+
+### CTA's first curated tier + a redundant-pair pre-model from RPM research (2026-07-15/16)
+
+CTA had no station structure models at all until this pass (the identity
+work above only gives per-elevator ARCHIVING, never a redundancy claim) —
+`src/catalog/cta-models.ts` is the first curated tier for this system, built
+via the `/liftwatch-station-review` walkthrough with Bryce.
+
+- **Batching, not purely one-at-a-time**: the walkthrough started station-by-
+  station (Cermak-McCormick Place's confirmed bookend pair, then Diversey's
+  per-direction pair) but scaled to risk-bucketed BATCHES once the backlog's
+  actual risk profile became clear: single-elevator stations (no redundancy
+  claimed, so structurally can't under-warn) and confirmed per-direction
+  pairs batch safely; only genuine redundancy claims need one-at-a-time
+  scrutiny. Two CTA batches shipped this way (Batch 1 not used for CTA;
+  "Batch 2" = 15 stations: 9 single-elevator islands on a bare-station-id
+  vague match, 1 agency-both-directions island (Morgan), 5 Diversey-pattern
+  per-direction pairs), same risk-bucketing approach used for MBTA's 16-
+  station machine-validated batch and WMATA's 21-station ladder-chain batch
+  below.
+- **SYNTHETIC ids** (`CTA-SYNTH-<station>-<slot>`, never colliding with a
+  real `<station>-<slug>` unit id) for an elevator the station is known to
+  have but that has never appeared in a CTA alert — same pattern as WMATA's
+  `WMATA-<node>` slots; promote to the real id the first time it's observed.
+- **Vague-alert fail-safe, and a same-day bug in it**: a CTA alert with no
+  parseable location falls back to the bare station id. At a station with a
+  REDUNDANT pair (Cermak, later Bryn Mawr), that bare id can never match
+  either synthetic/real member, so the adapter flags `needsReview` and the
+  generic build-site-data fail-safe forces the whole chain to UNKNOWN —
+  closing a real gap (two simultaneous vague alerts at one station can merge
+  into a single outage; without this, a scenario where BOTH elevators of a
+  pair break but only one vague alert fires would read as accessible). BUT
+  the first implementation checked "vague alert at ANY modeled station"
+  without checking whether the resulting id actually failed to match — for
+  the 9 single-elevator stations (whose bare station id IS deliberately their
+  one real elevator's id, since there's no OR to hide behind), every ordinary
+  outage tripped the same fail-safe meant for genuine mismatches, sending
+  three false "needs review" pushes (Loyola, 87th, Central Park) before being
+  caught and fixed same-day (checks actual model-elevator membership now).
+- **Bryn Mawr (41380), pre-modeled from research, zero live signal**: Bryce
+  asked whether CTA's Red-Purple Modernization project installed any
+  redundant elevator pairs at its rebuilt stations. Researched all 4 RPM
+  Phase One stations (Lawrence, Argyle, Berwyn, Bryn Mawr, reopened
+  2025-07-20): only Bryn Mawr got one — a third entrance (Hollywood Ave,
+  added in the rebuild) got its own elevator, separate from the main
+  entrance's, both reaching the same single island platform. Neither
+  elevator has ever appeared in a CTA alert, so both ids are synthetic —
+  this is the first CTA station modeled entirely from external research
+  ahead of any outage, specifically to avoid a false NO_ACCESS on its
+  first-ever break. Station id found via CTA's public GTFS `stops.txt`
+  (parent station, `location_type=1`).
+- **Ramp/other-access research, system-wide standing rule**: while
+  documenting the LIRR/MNR/MBTA-Commuter-Rail ramp blind spot on the site's
+  disclaimer pages, found that MBTA's own `facilities?filter[type]=RAMP`
+  endpoint (already polled every cycle for the other-equipment layer) exposes
+  a live 58-ramp roster never cross-referenced against any model — snapshotted
+  via `scripts/mbta-ramps.mts` (`mbta-data/ramps.json`). Audited it station by
+  station: MBTA's auto-generated tier already handles every ramp mention in
+  its own alternate-service-text correctly (zero pending `review-flags.json`
+  entries); the remaining gap is stations where a ramp exists outside that
+  per-elevator mechanism entirely (State/Wellington/Sullivan Square/JFK-UMass
+  — genuine interchange-anomaly territory, not a quick win). Checked WMATA and
+  CTA for the same kind of feed: neither exposes any ramp/facility data at
+  all (WMATA's own accessibility page states its design standard is
+  elevator-only; its GTFS pathway spec has no ramp mode to signal one even if
+  it existed). Locked as a standing rule in CLAUDE.md: check every system's
+  own feed/API for ramp or other non-elevator step-free data before
+  finalizing ANY station model, not just when the question happens to come up.
