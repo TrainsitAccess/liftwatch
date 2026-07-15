@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-15T04:20:49.015Z",
+ "updatedAt": "2026-07-15T05:10:49.532Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -87,7 +87,7 @@
    "system": "mbta-boston",
    "stationId": "place-pktrm",
    "name": "Park Street",
-   "status": "pending",
+   "status": "modeled",
    "priority": 8,
    "reason": "unknown-landing",
    "evidence": [
@@ -147,7 +147,12 @@
      "source": "GTFS-pathways generator PROPOSAL (gate-validated best guess — approve/adjust to ship)",
      "text": "Segments are minimal cuts (AND of ORs), round-trip-verified against the agency's own walking graph, answer-key-validated:\n(Ashmont/Braintree / Alewife): 804∨812∨979  AND  804∨823∨979  AND  804∨978  AND  808∨812∨978  AND  808∨823∨978  AND  808∨979\n(Government Center & North / Drop-off Only): 804∨808∨812  AND  804∨808∨823  AND  804∨812∨979  AND  804∨823∨979  AND  804∨978\n(Boston College / Riverside / Cleveland Circle / Heath Street): 804∨978  AND  808∨812∨978  AND  808∨823∨978  AND  812∨978∨979  AND  823∨978∨979"
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Bryce approved all three independent chains (Red Line island platform; Green Line Government Center & North; Green Line Copley & West) exactly as the gate-validated proposal, with chainLabels as I framed them. Confidence 8/10 (no independent GTFS-pathways-graph audit like Aquarium's, but all six elevators' alternate-service texts cross-reference each other consistently). Shipped without a field check. Implemented in src/catalog/mbta-models.ts.",
+    "date": "2026-07-14"
+   }
   },
   {
    "key": "cta:41690",

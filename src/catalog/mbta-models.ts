@@ -198,4 +198,59 @@ export const MBTA_STATION_MODELS: StationModel[] = [
       { id: "cut-6", label: "Any of elevators 915/925", elevators: [{ externalId: "915", label: "Aquarium Elevator 915 (State Street lobby to street)" }, { externalId: "925", label: "Aquarium Elevator 925 (Atlantic Avenue lobby to Long Wharf)" }] },
     ],
   },
+
+  // Park Street — Red Line / Green Line interchange. Red Line has a single
+  // island platform (both directions share the same elevators), while the
+  // Green Line has two separate side platforms (Government Center & North
+  // bound, and Copley/Boston College/Riverside/Cleveland Circle/Heath St
+  // bound), linked to each other via an underpass and to the Red Line via a
+  // shared concourse. Reviewed with Bryce 2026-07-14 (/liftwatch-station-review,
+  // confidence 8/10): topology decoded from MBTA's per-elevator
+  // alternate-service guidance, all six elevators' texts cross-reference each
+  // other consistently. Three independent chains (one per platform/direction,
+  // same pattern as Government Center's Green/Blue split above) — an outage
+  // on one platform's elevators says nothing about the other two.
+  {
+    systemId: SYSTEM,
+    stationExternalId: "place-pktrm",
+    chainLabel: " (Red Line)",
+    note: "Any of elevators 804/812/979: 3 elevators — any one keeps this leg open. Any of elevators 804/823/979: 3 elevators — any one keeps this leg open. Any of elevators 804/978: 2 elevators — either one keeps this leg open. Any of elevators 808/812/978: 3 elevators — any one keeps this leg open. Any of elevators 808/823/978: 3 elevators — any one keeps this leg open. Any of elevators 808/979: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route.",
+    internalNote: "Derived from MBTA's per-elevator alternate-service guidance (round-trip cut verification against the agency's own walking graph; answer-key-validated). Human-approved via /liftwatch-station-review 2026-07-14 at confidence 8/10 — no independent GTFS-pathways-graph audit was run for this station (unlike Aquarium); approval rests on the internal consistency of all six elevators' cross-referencing guidance texts.",
+    segments: [
+      { id: "cut-1", label: "Any of elevators 804/812/979", elevators: [{ externalId: "804", label: "Park Street Elevator 804 (Government Center & North lobby to Tremont Street, Winter Street)" }, { externalId: "812", label: "Park Street Elevator 812 (Green Line underpass to Government Center & North platform)" }, { externalId: "979", label: "Park Street Elevator 979 (Red Line center platform to Copley & West platform)" }] },
+      { id: "cut-2", label: "Any of elevators 804/823/979", elevators: [{ externalId: "804", label: "Park Street Elevator 804 (Government Center & North lobby to Tremont Street, Winter Street)" }, { externalId: "823", label: "Park Street Elevator 823 (Green Line underpass to Copley & West platform)" }, { externalId: "979", label: "Park Street Elevator 979 (Red Line center platform to Copley & West platform)" }] },
+      { id: "cut-3", label: "Any of elevators 804/978", elevators: [{ externalId: "804", label: "Park Street Elevator 804 (Government Center & North lobby to Tremont Street, Winter Street)" }, { externalId: "978", label: "Park Street Elevator 978 (Copley & West platform to Boston Common)" }] },
+      { id: "cut-4", label: "Any of elevators 808/812/978", elevators: [{ externalId: "808", label: "Park Street Elevator 808 (Red Line center platform to Government Center & North platform, Winter Street Concourse)" }, { externalId: "812", label: "Park Street Elevator 812 (Green Line underpass to Government Center & North platform)" }, { externalId: "978", label: "Park Street Elevator 978 (Copley & West platform to Boston Common)" }] },
+      { id: "cut-5", label: "Any of elevators 808/823/978", elevators: [{ externalId: "808", label: "Park Street Elevator 808 (Red Line center platform to Government Center & North platform, Winter Street Concourse)" }, { externalId: "823", label: "Park Street Elevator 823 (Green Line underpass to Copley & West platform)" }, { externalId: "978", label: "Park Street Elevator 978 (Copley & West platform to Boston Common)" }] },
+      { id: "cut-6", label: "Any of elevators 808/979", elevators: [{ externalId: "808", label: "Park Street Elevator 808 (Red Line center platform to Government Center & North platform, Winter Street Concourse)" }, { externalId: "979", label: "Park Street Elevator 979 (Red Line center platform to Copley & West platform)" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "place-pktrm",
+    chainLabel: " (Green Line, Government Center & North)",
+    note: "Any of elevators 804/808/812: 3 elevators — any one keeps this leg open. Any of elevators 804/808/823: 3 elevators — any one keeps this leg open. Any of elevators 804/812/979: 3 elevators — any one keeps this leg open. Any of elevators 804/823/979: 3 elevators — any one keeps this leg open. Any of elevators 804/978: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route.",
+    internalNote: "Derived from MBTA's per-elevator alternate-service guidance (round-trip cut verification against the agency's own walking graph; answer-key-validated). Human-approved via /liftwatch-station-review 2026-07-14 at confidence 8/10 — no independent GTFS-pathways-graph audit was run for this station (unlike Aquarium); approval rests on the internal consistency of all six elevators' cross-referencing guidance texts.",
+    segments: [
+      { id: "cut-1", label: "Any of elevators 804/808/812", elevators: [{ externalId: "804", label: "Park Street Elevator 804 (Government Center & North lobby to Tremont Street, Winter Street)" }, { externalId: "808", label: "Park Street Elevator 808 (Red Line center platform to Government Center & North platform, Winter Street Concourse)" }, { externalId: "812", label: "Park Street Elevator 812 (Green Line underpass to Government Center & North platform)" }] },
+      { id: "cut-2", label: "Any of elevators 804/808/823", elevators: [{ externalId: "804", label: "Park Street Elevator 804 (Government Center & North lobby to Tremont Street, Winter Street)" }, { externalId: "808", label: "Park Street Elevator 808 (Red Line center platform to Government Center & North platform, Winter Street Concourse)" }, { externalId: "823", label: "Park Street Elevator 823 (Green Line underpass to Copley & West platform)" }] },
+      { id: "cut-3", label: "Any of elevators 804/812/979", elevators: [{ externalId: "804", label: "Park Street Elevator 804 (Government Center & North lobby to Tremont Street, Winter Street)" }, { externalId: "812", label: "Park Street Elevator 812 (Green Line underpass to Government Center & North platform)" }, { externalId: "979", label: "Park Street Elevator 979 (Red Line center platform to Copley & West platform)" }] },
+      { id: "cut-4", label: "Any of elevators 804/823/979", elevators: [{ externalId: "804", label: "Park Street Elevator 804 (Government Center & North lobby to Tremont Street, Winter Street)" }, { externalId: "823", label: "Park Street Elevator 823 (Green Line underpass to Copley & West platform)" }, { externalId: "979", label: "Park Street Elevator 979 (Red Line center platform to Copley & West platform)" }] },
+      { id: "cut-5", label: "Any of elevators 804/978", elevators: [{ externalId: "804", label: "Park Street Elevator 804 (Government Center & North lobby to Tremont Street, Winter Street)" }, { externalId: "978", label: "Park Street Elevator 978 (Copley & West platform to Boston Common)" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "place-pktrm",
+    chainLabel: " (Green Line, Copley & West)",
+    note: "Any of elevators 804/978: 2 elevators — either one keeps this leg open. Any of elevators 808/812/978: 3 elevators — any one keeps this leg open. Any of elevators 808/823/978: 3 elevators — any one keeps this leg open. Any of elevators 812/978/979: 3 elevators — any one keeps this leg open. Any of elevators 823/978/979: 3 elevators — any one keeps this leg open. No single elevator outage removes step-free access on this route.",
+    internalNote: "Derived from MBTA's per-elevator alternate-service guidance (round-trip cut verification against the agency's own walking graph; answer-key-validated). Human-approved via /liftwatch-station-review 2026-07-14 at confidence 8/10 — no independent GTFS-pathways-graph audit was run for this station (unlike Aquarium); approval rests on the internal consistency of all six elevators' cross-referencing guidance texts.",
+    segments: [
+      { id: "cut-1", label: "Any of elevators 804/978", elevators: [{ externalId: "804", label: "Park Street Elevator 804 (Government Center & North lobby to Tremont Street, Winter Street)" }, { externalId: "978", label: "Park Street Elevator 978 (Copley & West platform to Boston Common)" }] },
+      { id: "cut-2", label: "Any of elevators 808/812/978", elevators: [{ externalId: "808", label: "Park Street Elevator 808 (Red Line center platform to Government Center & North platform, Winter Street Concourse)" }, { externalId: "812", label: "Park Street Elevator 812 (Green Line underpass to Government Center & North platform)" }, { externalId: "978", label: "Park Street Elevator 978 (Copley & West platform to Boston Common)" }] },
+      { id: "cut-3", label: "Any of elevators 808/823/978", elevators: [{ externalId: "808", label: "Park Street Elevator 808 (Red Line center platform to Government Center & North platform, Winter Street Concourse)" }, { externalId: "823", label: "Park Street Elevator 823 (Green Line underpass to Copley & West platform)" }, { externalId: "978", label: "Park Street Elevator 978 (Copley & West platform to Boston Common)" }] },
+      { id: "cut-4", label: "Any of elevators 812/978/979", elevators: [{ externalId: "812", label: "Park Street Elevator 812 (Green Line underpass to Government Center & North platform)" }, { externalId: "978", label: "Park Street Elevator 978 (Copley & West platform to Boston Common)" }, { externalId: "979", label: "Park Street Elevator 979 (Red Line center platform to Copley & West platform)" }] },
+      { id: "cut-5", label: "Any of elevators 823/978/979", elevators: [{ externalId: "823", label: "Park Street Elevator 823 (Green Line underpass to Copley & West platform)" }, { externalId: "978", label: "Park Street Elevator 978 (Copley & West platform to Boston Common)" }, { externalId: "979", label: "Park Street Elevator 979 (Red Line center platform to Copley & West platform)" }] },
+    ],
+  },
 ];
