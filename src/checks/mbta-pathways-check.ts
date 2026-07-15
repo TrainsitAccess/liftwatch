@@ -58,17 +58,20 @@ for (const id of ["place-chmnl", "place-jfk", "place-smmnl"]) {
 
 console.log("\n  Known regressions:");
 {
-  const aq = proposals.models.filter((m) => m.stationExternalId === "place-aqucl");
-  ok(aq.length === 2, "Aquarium proposes two per-direction chains");
-  const cuts = aq.flatMap((m) => m.segments.map((s) => s.elevators.map((e) => e.externalId).sort().join("+")));
-  ok(cuts.includes("915+925"), "Aquarium: both street legs form a cut (915|925) — Reading A from the agency's own graph");
   const wl = excluded.stations.find((s) => s.stationId === "place-welln");
   ok(wl?.reason === "guidance-contradiction",
     "Wellington stays excluded via guidance-contradiction (matches the serving-text tier's historical declared-alternate-mismatch)");
-  const ss = proposals.models.filter((m) => m.stationExternalId === "place-sstat");
-  ok(ss.length === 4 && ss.every((m) => !/bus/i.test(m.chainLabel ?? "")),
-    "South Station proposes 4 RAIL chains (bus-terminal gates excluded — their elevators are facility-less/privately run)");
-  ok(proposals.models.some((m) => m.stationExternalId === "place-pktrm"), "Park Street has a proposal");
+}
+
+// Graduated proposals (2026-07-14/15, /liftwatch-station-review): Aquarium,
+// Park Street, and South Station — plus the rest of Batch 1 — were approved
+// and shipped verbatim into MBTA_STATION_MODELS. The "Tier separation" check
+// above already asserts a graduated station never reappears as a proposal;
+// this just documents WHY these three specific ones vanished from the set,
+// so a future reader isn't surprised.
+console.log("\n  Graduated to curated tier (should NOT appear as proposals anymore):");
+for (const id of ["place-aqucl", "place-pktrm", "place-sstat"]) {
+  ok(!proposals.models.some((m) => m.stationExternalId === id), `${id} graduated — absent from the regenerated proposal set`);
 }
 
 if (failures) {

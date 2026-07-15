@@ -96,7 +96,7 @@ jobs:
       - name: Regenerate MBTA pathway PROPOSALS (review best-guesses, never auto-shipped)
         run: |
           curl -sfL -o /tmp/mbta_gtfs.zip "https://cdn.mbta.com/MBTA_GTFS.zip"
-          unzip -oq /tmp/mbta_gtfs.zip pathways.txt stops.txt facilities.txt levels.txt -d /tmp/mbta_gtfs
+          unzip -oq /tmp/mbta_gtfs.zip pathways.txt stops.txt facilities.txt facilities_properties.txt levels.txt -d /tmp/mbta_gtfs
           npm run mbta:pathways -- /tmp/mbta_gtfs
 
       - name: Refresh the station-review queue (evidence + auto-resolved drops)

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-15T03:14:21.898Z",
+  "generatedAt": "2026-07-15T18:09:35.245Z",
   "note": "Pathways-derived models vs the already-trusted tiers (curated + serving-text) — validation report, nothing shipped for these stations.",
   "results": [
     {
@@ -13,6 +13,34 @@
       "stationId": "place-andrw",
       "name": "Andrew",
       "tier": "serving-text",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-aqucl",
+      "name": "Aquarium",
+      "tier": "curated",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-armnl",
+      "name": "Arlington",
+      "tier": "curated",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-astao",
+      "name": "Assembly",
+      "tier": "curated",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-bbsta",
+      "name": "Back Bay",
+      "tier": "curated",
       "agrees": true,
       "detail": "semantics match"
     },
@@ -59,6 +87,13 @@
       "detail": "semantics match"
     },
     {
+      "stationId": "place-coecl",
+      "name": "Copley",
+      "tier": "curated",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
       "stationId": "place-davis",
       "name": "Davis",
       "tier": "serving-text",
@@ -69,6 +104,13 @@
       "stationId": "place-fldcr",
       "name": "Fields Corner",
       "tier": "serving-text",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-forhl",
+      "name": "Forest Hills",
+      "tier": "curated",
       "agrees": true,
       "detail": "semantics match"
     },
@@ -94,6 +136,20 @@
       "detail": "semantics match"
     },
     {
+      "stationId": "place-haecl",
+      "name": "Haymarket",
+      "tier": "curated",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-harsq",
+      "name": "Harvard",
+      "tier": "curated",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
       "stationId": "place-jaksn",
       "name": "Jackson Square",
       "tier": "serving-text",
@@ -111,6 +167,13 @@
       "stationId": "place-knncl",
       "name": "Kendall/MIT",
       "tier": "serving-text",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-lech",
+      "name": "Lechmere",
+      "tier": "curated",
       "agrees": true,
       "detail": "semantics match"
     },
@@ -145,6 +208,27 @@
     {
       "stationId": "place-mvbcl",
       "name": "Maverick",
+      "tier": "curated",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-north",
+      "name": "North Station",
+      "tier": "curated",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-nqncy",
+      "name": "North Quincy",
+      "tier": "curated",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-pktrm",
+      "name": "Park Street",
       "tier": "curated",
       "agrees": true,
       "detail": "semantics match"
@@ -185,9 +269,51 @@
       "detail": "semantics match"
     },
     {
+      "stationId": "place-rugg",
+      "name": "Ruggles",
+      "tier": "curated",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
       "stationId": "place-sbmnl",
       "name": "Stony Brook",
       "tier": "serving-text",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-shmnl",
+      "name": "Savin Hill",
+      "tier": "curated",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-spmnl",
+      "name": "Science Park/West End",
+      "tier": "curated",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-sstat",
+      "name": "South Station",
+      "tier": "curated",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-tumnl",
+      "name": "Tufts Medical Center",
+      "tier": "curated",
+      "agrees": true,
+      "detail": "semantics match"
+    },
+    {
+      "stationId": "place-wlsta",
+      "name": "Wollaston",
+      "tier": "curated",
       "agrees": true,
       "detail": "semantics match"
     }
