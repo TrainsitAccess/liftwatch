@@ -151,4 +151,51 @@ export const MBTA_STATION_MODELS: StationModel[] = [
       { id: "platform-bridge", label: "Bowdoin-bound platform to pedestrian bridge", elevators: [{ externalId: "932", label: "Elevator 932 (Bowdoin platform to paid pedestrian bridge)" }, { externalId: "955", label: "Elevator 955 (Bowdoin platform to paid pedestrian bridge)" }] },
     ],
   },
+
+  // Aquarium — Blue Line interchange with two side platforms (Wonderland-bound,
+  // Bowdoin-bound), two street lobbies (State St, Atlantic Ave/Long Wharf), and
+  // six elevators (913-915, 923-925) linking them in a mesh. Reviewed with Bryce
+  // 2026-07-14 (/liftwatch-station-review): topology decoded from MBTA's
+  // per-elevator alternate-service guidance, then independently confirmed by
+  // MBTA's own GTFS pathways graph, which resolved the one open field question
+  // (does the Atlantic Ave lobby sit at street grade, or does street access
+  // require Elevator 925?) — the pathways graph shows 925 is the ONLY vertical
+  // (elevator, escalator, or ramp) connecting the Atlantic/Waterfront street
+  // door to the lobby other than stairs, so 925 is structurally required.
+  // Two independent per-direction chains: elevators 923/924 both land in the
+  // Atlantic lobby but serve different platforms (923 = Bowdoin-bound only,
+  // 924 = Wonderland-bound only), so one is never a backup for the other — see
+  // 161 St-Yankee Stadium for the same pattern. Segments are minimal cuts
+  // (AND of ORs) derived from the pathways graph and round-trip-verified
+  // against the alternate-service text.
+  {
+    systemId: SYSTEM,
+    stationExternalId: "place-aqucl",
+    chainLabel: " (Wonderland-bound platform)",
+    note: "Any of elevators 913/914/925: 3 elevators — any one keeps this leg open. Any of elevators 913/923/925: 3 elevators — any one keeps this leg open. Any of elevators 913/924: 2 elevators — either one keeps this leg open. Any of elevators 914/915/924: 3 elevators — any one keeps this leg open. Any of elevators 915/923/924: 3 elevators — any one keeps this leg open. Any of elevators 915/925: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route.",
+    internalNote: "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability -> minimal cuts, round-trip-verified) and validated against MBTA's alternate-service guidance. Field question (Atlantic Ave lobby grade) resolved by the pathways graph itself (925 is the only elevator/escalator/ramp on that leg) — human-approved to ship without a physical field check, 2026-07-14.",
+    segments: [
+      { id: "cut-1", label: "Any of elevators 913/914/925", elevators: [{ externalId: "913", label: "Aquarium Elevator 913 (Wonderland platform to State Street lobby)" }, { externalId: "914", label: "Aquarium Elevator 914 (Bowdoin platform to State Street lobby)" }, { externalId: "925", label: "Aquarium Elevator 925 (Atlantic Avenue lobby to Long Wharf)" }] },
+      { id: "cut-2", label: "Any of elevators 913/923/925", elevators: [{ externalId: "913", label: "Aquarium Elevator 913 (Wonderland platform to State Street lobby)" }, { externalId: "923", label: "Aquarium Elevator 923 (Bowdoin platform to Atlantic Avenue lobby)" }, { externalId: "925", label: "Aquarium Elevator 925 (Atlantic Avenue lobby to Long Wharf)" }] },
+      { id: "cut-3", label: "Any of elevators 913/924", elevators: [{ externalId: "913", label: "Aquarium Elevator 913 (Wonderland platform to State Street lobby)" }, { externalId: "924", label: "Aquarium Elevator 924 (Wonderland platform to Atlantic Avenue lobby)" }] },
+      { id: "cut-4", label: "Any of elevators 914/915/924", elevators: [{ externalId: "914", label: "Aquarium Elevator 914 (Bowdoin platform to State Street lobby)" }, { externalId: "915", label: "Aquarium Elevator 915 (State Street lobby to street)" }, { externalId: "924", label: "Aquarium Elevator 924 (Wonderland platform to Atlantic Avenue lobby)" }] },
+      { id: "cut-5", label: "Any of elevators 915/923/924", elevators: [{ externalId: "915", label: "Aquarium Elevator 915 (State Street lobby to street)" }, { externalId: "923", label: "Aquarium Elevator 923 (Bowdoin platform to Atlantic Avenue lobby)" }, { externalId: "924", label: "Aquarium Elevator 924 (Wonderland platform to Atlantic Avenue lobby)" }] },
+      { id: "cut-6", label: "Any of elevators 915/925", elevators: [{ externalId: "915", label: "Aquarium Elevator 915 (State Street lobby to street)" }, { externalId: "925", label: "Aquarium Elevator 925 (Atlantic Avenue lobby to Long Wharf)" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "place-aqucl",
+    chainLabel: " (Bowdoin-bound platform)",
+    note: "Any of elevators 913/914/925: 3 elevators — any one keeps this leg open. Any of elevators 913/915/923: 3 elevators — any one keeps this leg open. Any of elevators 914/923: 2 elevators — either one keeps this leg open. Any of elevators 914/924/925: 3 elevators — any one keeps this leg open. Any of elevators 915/923/924: 3 elevators — any one keeps this leg open. Any of elevators 915/925: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route.",
+    internalNote: "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability -> minimal cuts, round-trip-verified) and validated against MBTA's alternate-service guidance. Field question (Atlantic Ave lobby grade) resolved by the pathways graph itself (925 is the only elevator/escalator/ramp on that leg) — human-approved to ship without a physical field check, 2026-07-14.",
+    segments: [
+      { id: "cut-1", label: "Any of elevators 913/914/925", elevators: [{ externalId: "913", label: "Aquarium Elevator 913 (Wonderland platform to State Street lobby)" }, { externalId: "914", label: "Aquarium Elevator 914 (Bowdoin platform to State Street lobby)" }, { externalId: "925", label: "Aquarium Elevator 925 (Atlantic Avenue lobby to Long Wharf)" }] },
+      { id: "cut-2", label: "Any of elevators 913/915/923", elevators: [{ externalId: "913", label: "Aquarium Elevator 913 (Wonderland platform to State Street lobby)" }, { externalId: "915", label: "Aquarium Elevator 915 (State Street lobby to street)" }, { externalId: "923", label: "Aquarium Elevator 923 (Bowdoin platform to Atlantic Avenue lobby)" }] },
+      { id: "cut-3", label: "Any of elevators 914/923", elevators: [{ externalId: "914", label: "Aquarium Elevator 914 (Bowdoin platform to State Street lobby)" }, { externalId: "923", label: "Aquarium Elevator 923 (Bowdoin platform to Atlantic Avenue lobby)" }] },
+      { id: "cut-4", label: "Any of elevators 914/924/925", elevators: [{ externalId: "914", label: "Aquarium Elevator 914 (Bowdoin platform to State Street lobby)" }, { externalId: "924", label: "Aquarium Elevator 924 (Wonderland platform to Atlantic Avenue lobby)" }, { externalId: "925", label: "Aquarium Elevator 925 (Atlantic Avenue lobby to Long Wharf)" }] },
+      { id: "cut-5", label: "Any of elevators 915/923/924", elevators: [{ externalId: "915", label: "Aquarium Elevator 915 (State Street lobby to street)" }, { externalId: "923", label: "Aquarium Elevator 923 (Bowdoin platform to Atlantic Avenue lobby)" }, { externalId: "924", label: "Aquarium Elevator 924 (Wonderland platform to Atlantic Avenue lobby)" }] },
+      { id: "cut-6", label: "Any of elevators 915/925", elevators: [{ externalId: "915", label: "Aquarium Elevator 915 (State Street lobby to street)" }, { externalId: "925", label: "Aquarium Elevator 925 (Atlantic Avenue lobby to Long Wharf)" }] },
+    ],
+  },
 ];

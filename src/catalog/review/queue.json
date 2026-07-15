@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-15T03:14:46.808Z",
+ "updatedAt": "2026-07-15T04:20:49.015Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -7,7 +7,7 @@
    "system": "mbta-boston",
    "stationId": "place-aqucl",
    "name": "Aquarium",
-   "status": "pending",
+   "status": "modeled",
    "priority": 5,
    "reason": "unknown-landing",
    "evidence": [
@@ -75,7 +75,12 @@
      "source": "GTFS-pathways generator PROPOSAL (gate-validated best guess — approve/adjust to ship)",
      "text": "Segments are minimal cuts (AND of ORs), round-trip-verified against the agency's own walking graph, answer-key-validated:\n(Wonderland): 913∨914∨925  AND  913∨923∨925  AND  913∨924  AND  914∨915∨924  AND  915∨923∨924  AND  915∨925\n(Bowdoin): 913∨914∨925  AND  913∨915∨923  AND  914∨923  AND  914∨924∨925  AND  915∨923∨924  AND  915∨925"
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Bryce approved both direction-specific chains (Wonderland-bound, Bowdoin-bound) exactly as the gate-validated GTFS-pathways proposal, and confirmed shipping without an additional physical field check — the 2026-07-14 GTFS pathways audit independently corroborated the alternate-service-guidance topology and resolved the prior open field question (Atlantic Ave lobby requires elevator 925 for street access; no ramp). Implemented in src/catalog/mbta-models.ts.",
+    "date": "2026-07-14"
+   }
   },
   {
    "key": "mbta:place-pktrm",
