@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-14T22:21:55.391Z",
+ "updatedAt": "2026-07-15T03:14:46.808Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -859,8 +859,8 @@
      "text": "949: To exit, use South Station Elevator 926 located on opposite side of the lobby, to the left of the subway monitoring office. Alternatively, travel up the ramp towards the Commuter Rail Concourse, and at the base of the escalator, turn left and continue down the hallway. At the end of the hallway, use South Station Elevator 6476 to access the Commuter Rail Concourse. To board, cross Atlantic Ave towards the South Station main entrance and Elevator 926 to access the subway lobby.  Alternatively, enter the South Station Commuter Rail Concourse and use Elevator 6476 located to the left of the information desk."
     },
     {
-     "source": "GTFS-pathways generator (refused to model)",
-     "text": "untrackable-elevator: mode-5 pathway without facility_id — chain member could never match a live outage"
+     "source": "GTFS-pathways generator PROPOSAL (gate-validated best guess — approve/adjust to ship)",
+     "text": "Segments are minimal cuts (AND of ORs), round-trip-verified against the agency's own walking graph, answer-key-validated:\n(Airport / SL3 Design Center/Chelsea): 6476∨926∨949  AND  901∨918  AND  918∨919  AND  918∨927\n(Ashmont/Braintree): 6476∨926∨949  AND  901∨918\n(Alewife): 6476∨926∨949  AND  901∨918  AND  901∨919  AND  918∨927  AND  919∨927\n(Exit Only): 6476∨926∨949  AND  901∨918  AND  901∨919  AND  901∨927"
     }
    ]
   },

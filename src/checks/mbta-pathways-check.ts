@@ -65,8 +65,9 @@ console.log("\n  Known regressions:");
   const wl = excluded.stations.find((s) => s.stationId === "place-welln");
   ok(wl?.reason === "guidance-contradiction",
     "Wellington stays excluded via guidance-contradiction (matches the serving-text tier's historical declared-alternate-mismatch)");
-  ok(excluded.stations.some((s) => s.stationId === "place-sstat" && s.reason === "untrackable-elevator"),
-    "South Station refused (facility-less elevator pathway)");
+  const ss = proposals.models.filter((m) => m.stationExternalId === "place-sstat");
+  ok(ss.length === 4 && ss.every((m) => !/bus/i.test(m.chainLabel ?? "")),
+    "South Station proposes 4 RAIL chains (bus-terminal gates excluded — their elevators are facility-less/privately run)");
   ok(proposals.models.some((m) => m.stationExternalId === "place-pktrm"), "Park Street has a proposal");
 }
 

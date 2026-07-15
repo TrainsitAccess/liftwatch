@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-14T22:21:54.261Z",
+  "generatedAt": "2026-07-15T03:14:21.898Z",
   "note": "Stations the pathways generator refuses to model — pending human review.",
   "stations": [
     {
@@ -43,12 +43,6 @@
       "name": "Shawmut",
       "reason": "impact-contradiction",
       "detail": "elevator 953 alone severs platform 70092 (Alewife) per the graph, but facilities_properties declares it does not serve that stop"
-    },
-    {
-      "stationId": "place-sstat",
-      "name": "South Station",
-      "reason": "untrackable-elevator",
-      "detail": "mode-5 pathway without facility_id — chain member could never match a live outage"
     },
     {
       "stationId": "place-state",

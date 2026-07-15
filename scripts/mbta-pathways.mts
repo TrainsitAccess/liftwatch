@@ -187,21 +187,20 @@ for (const sid of allStationIds) {
   const stationElevators = [...new Set(edges.map((e) => e.facility).filter((f): f is string => !!f))];
   if (!stationElevators.length) continue; // no elevators in this station's graph — nothing to model
 
-  // A mode-5 pathway with NO facility_id (6 exist system-wide) would become an
-  // untrackable chain member — a live outage could never match it, so an
-  // OR-cut containing it would read UP forever: an under-warn. Exclude.
-  if (edges.some((e) => e.facility?.startsWith("pathway:"))) {
-    excluded.push({ stationId: sid, name, reason: "untrackable-elevator", detail: "mode-5 pathway without facility_id — chain member could never match a live outage" });
-    continue;
-  }
-
   // graph
   const adj = new Map<string, { to: string; facility?: string }[]>();
   const link = (a: string, b: string, facility?: string) => (adj.get(a) ?? adj.set(a, []).get(a)!).push({ to: b, facility });
   for (const e of edges) { link(e.a, e.b, e.facility); link(e.b, e.a, e.facility); }
   const nodesHere = [...adj.keys()];
   const doors = nodesHere.filter((n) => stops.get(n)?.locType === "2");
-  const sinks = nodesHere.filter((n) => stops.get(n)?.locType === "0");
+  // Boarding platforms only, RAIL scope: bus-terminal gates (South Station's
+  // privately-run terminal, busways at Haymarket/Wellington/…) are outside
+  // LiftWatch's elevator tracking — their elevators aren't MBTA facilities
+  // (no facility_id → untrackable) and bus access isn't what the board claims.
+  const sinks = nodesHere.filter((n) => {
+    const s = stops.get(n);
+    return s?.locType === "0" && !/\bbus\b|busway/i.test(`${s.platformName} ${s.name}`);
+  });
   if (!doors.length || !sinks.length) { excluded.push({ stationId: sid, name, reason: "graph-anomaly", detail: `doors=${doors.length} platforms=${sinks.length} in pathway graph` }); continue; }
   if (stationElevators.length > 12) { excluded.push({ stationId: sid, name, reason: "too-complex", detail: `${stationElevators.length} elevators — over the exact-analysis cap` }); continue; }
 
@@ -307,6 +306,15 @@ for (const sid of allStationIds) {
     if (impactFail) break;
   }
   if (impactFail) { excluded.push({ stationId: sid, name, reason: "impact-contradiction", detail: impactFail }); continue; }
+
+  // UNTRACKABLE-MEMBER GATE: a chain member with no real facility id (a
+  // facility-less mode-5 pathway, e.g. a privately-run bus-terminal elevator
+  // that leaked onto a rail path) could never match a live outage — its
+  // OR-cut would read UP forever, an under-warn. Refuse the station.
+  if (stationModels.some((m) => m.segments.some((s) => s.elevators.some((e) => e.externalId.startsWith("pathway:"))))) {
+    excluded.push({ stationId: sid, name, reason: "untrackable-elevator", detail: "a rail chain includes a facility-less elevator pathway — member could never match a live outage" });
+    continue;
+  }
 
   // TIER SEPARATION: existing tiers keep the station; we cross-check instead.
   const tier = curatedStations.has(sid) ? "curated" : generatedStations.has(sid) ? "serving-text" : null;

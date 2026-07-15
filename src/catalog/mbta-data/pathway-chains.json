@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-14T22:21:54.261Z",
+  "generatedAt": "2026-07-15T03:14:21.898Z",
   "source": "MBTA GTFS pathways.txt (mode-5 facility_id crosswalk; exact step-free reachability, minimal-cut chains)",
   "note": "REVIEW PROPOSALS, deliberately NOT wired into station-models.ts — interchanges ship only after Bryce's per-station verdict (/liftwatch-station-review presents these as the best guess). Machine gates already passed: answer-key (alternate-service-text) validation, round-trip cut verification, 28/30 cross-tier semantic agreement.",
   "models": [
@@ -110,7 +110,7 @@
         }
       ],
       "note": "Any of elevators 913/914/925: 3 elevators — any one keeps this leg open. Any of elevators 913/923/925: 3 elevators — any one keeps this leg open. Any of elevators 913/924: 2 elevators — either one keeps this leg open. Any of elevators 914/915/924: 3 elevators — any one keeps this leg open. Any of elevators 915/923/924: 3 elevators — any one keeps this leg open. Any of elevators 915/925: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route.",
-      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-15."
     },
     {
       "systemId": "mbta-boston",
@@ -219,7 +219,7 @@
         }
       ],
       "note": "Any of elevators 913/914/925: 3 elevators — any one keeps this leg open. Any of elevators 913/915/923: 3 elevators — any one keeps this leg open. Any of elevators 914/923: 2 elevators — either one keeps this leg open. Any of elevators 914/924/925: 3 elevators — any one keeps this leg open. Any of elevators 915/923/924: 3 elevators — any one keeps this leg open. Any of elevators 915/925: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route.",
-      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-15."
     },
     {
       "systemId": "mbta-boston",
@@ -248,7 +248,7 @@
         }
       ],
       "note": "Elevator 962: one elevator, no backup. Elevator 964: one elevator, no backup. None of these legs has a backup — if any one of these elevators is out of service, this route is not step-free.",
-      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-15."
     },
     {
       "systemId": "mbta-boston",
@@ -277,7 +277,7 @@
         }
       ],
       "note": "Elevator 963: one elevator, no backup. Elevator 964: one elevator, no backup. None of these legs has a backup — if any one of these elevators is out of service, this route is not step-free.",
-      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-15."
     },
     {
       "systemId": "mbta-boston",
@@ -341,7 +341,7 @@
         }
       ],
       "note": "Any of elevators 716/718: 2 elevators — either one keeps this leg open. Any of elevators 716/719: 2 elevators — either one keeps this leg open. Any of elevators 717/718: 2 elevators — either one keeps this leg open. Any of elevators 717/719: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route.",
-      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-15."
     },
     {
       "systemId": "mbta-boston",
@@ -360,7 +360,7 @@
         }
       ],
       "note": "Elevator 853: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
-      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-15."
     },
     {
       "systemId": "mbta-boston",
@@ -379,7 +379,7 @@
         }
       ],
       "note": "Elevator 856: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
-      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-15."
     },
     {
       "systemId": "mbta-boston",
@@ -398,7 +398,7 @@
         }
       ],
       "note": "Elevator 855: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
-      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-15."
     },
     {
       "systemId": "mbta-boston",
@@ -417,7 +417,7 @@
         }
       ],
       "note": "Elevator 854: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
-      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-15."
     },
     {
       "systemId": "mbta-boston",
@@ -436,7 +436,7 @@
         }
       ],
       "note": "Elevator 976: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
-      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-15."
     },
     {
       "systemId": "mbta-boston",
@@ -455,7 +455,7 @@
         }
       ],
       "note": "Elevator 977: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
-      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-15."
     },
     {
       "systemId": "mbta-boston",
@@ -478,7 +478,7 @@
         }
       ],
       "note": "Any of elevators 724/842: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route.",
-      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-15."
     },
     {
       "systemId": "mbta-boston",
@@ -497,7 +497,7 @@
         }
       ],
       "note": "Elevator 841: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
-      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-15."
     },
     {
       "systemId": "mbta-boston",
@@ -592,7 +592,7 @@
         }
       ],
       "note": "Any of elevators 903/904/906: 3 elevators — any one keeps this leg open. Any of elevators 903/904/908: 3 elevators — any one keeps this leg open. Any of elevators 904/905: 2 elevators — either one keeps this leg open. Any of elevators 904/906/907: 3 elevators — any one keeps this leg open. Any of elevators 904/907/908: 3 elevators — any one keeps this leg open. No single elevator outage removes step-free access on this route.",
-      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-15."
     },
     {
       "systemId": "mbta-boston",
@@ -687,7 +687,7 @@
         }
       ],
       "note": "Any of elevators 903/904/906: 3 elevators — any one keeps this leg open. Any of elevators 903/904/908: 3 elevators — any one keeps this leg open. Any of elevators 903/905/906: 3 elevators — any one keeps this leg open. Any of elevators 903/905/908: 3 elevators — any one keeps this leg open. Any of elevators 903/907: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route.",
-      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-15."
     },
     {
       "systemId": "mbta-boston",
@@ -782,7 +782,7 @@
         }
       ],
       "note": "Any of elevators 903/904/908: 3 elevators — any one keeps this leg open. Any of elevators 903/905/908: 3 elevators — any one keeps this leg open. Any of elevators 904/907/908: 3 elevators — any one keeps this leg open. Any of elevators 905/907/908: 3 elevators — any one keeps this leg open. Any of elevators 906/908: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route.",
-      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-15."
     },
     {
       "systemId": "mbta-boston",
@@ -804,7 +804,7 @@
         }
       ],
       "note": "Any of elevators 821/973: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route.",
-      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-15."
     },
     {
       "systemId": "mbta-boston",
@@ -830,7 +830,7 @@
         }
       ],
       "note": "Any of elevators 762/763/764: 3 elevators — any one keeps this leg open. No single elevator outage removes step-free access on this route.",
-      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-15."
     },
     {
       "systemId": "mbta-boston",
@@ -861,7 +861,7 @@
         }
       ],
       "note": "Any of elevators 731/732/909/912: 4 elevators — any one keeps this leg open. No single elevator outage removes step-free access on this route.",
-      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-15."
     },
     {
       "systemId": "mbta-boston",
@@ -902,7 +902,7 @@
         }
       ],
       "note": "Any of elevators 731/732/909/912: 4 elevators — any one keeps this leg open. Elevator 911: one elevator, no backup. A leg with a single elevator has no backup — an outage there makes this route not step-free.",
-      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-15."
     },
     {
       "systemId": "mbta-boston",
@@ -943,7 +943,7 @@
         }
       ],
       "note": "Any of elevators 731/732/909/912: 4 elevators — any one keeps this leg open. Elevator 910: one elevator, no backup. A leg with a single elevator has no backup — an outage there makes this route not step-free.",
-      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-15."
     },
     {
       "systemId": "mbta-boston",
@@ -991,7 +991,7 @@
         }
       ],
       "note": "Any of elevators 739/740/897/898/900: 5 elevators — any one keeps this leg open. Any of elevators 899/900: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route.",
-      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-15."
     },
     {
       "systemId": "mbta-boston",
@@ -1100,7 +1100,7 @@
         }
       ],
       "note": "Any of elevators 804/812/979: 3 elevators — any one keeps this leg open. Any of elevators 804/823/979: 3 elevators — any one keeps this leg open. Any of elevators 804/978: 2 elevators — either one keeps this leg open. Any of elevators 808/812/978: 3 elevators — any one keeps this leg open. Any of elevators 808/823/978: 3 elevators — any one keeps this leg open. Any of elevators 808/979: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route.",
-      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-15."
     },
     {
       "systemId": "mbta-boston",
@@ -1195,7 +1195,7 @@
         }
       ],
       "note": "Any of elevators 804/808/812: 3 elevators — any one keeps this leg open. Any of elevators 804/808/823: 3 elevators — any one keeps this leg open. Any of elevators 804/812/979: 3 elevators — any one keeps this leg open. Any of elevators 804/823/979: 3 elevators — any one keeps this leg open. Any of elevators 804/978: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route.",
-      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-15."
     },
     {
       "systemId": "mbta-boston",
@@ -1290,7 +1290,7 @@
         }
       ],
       "note": "Any of elevators 804/978: 2 elevators — either one keeps this leg open. Any of elevators 808/812/978: 3 elevators — any one keeps this leg open. Any of elevators 808/823/978: 3 elevators — any one keeps this leg open. Any of elevators 812/978/979: 3 elevators — any one keeps this leg open. Any of elevators 823/978/979: 3 elevators — any one keeps this leg open. No single elevator outage removes step-free access on this route.",
-      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-15."
     },
     {
       "systemId": "mbta-boston",
@@ -1309,7 +1309,7 @@
         }
       ],
       "note": "Elevator 850: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
-      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-15."
     },
     {
       "systemId": "mbta-boston",
@@ -1328,7 +1328,7 @@
         }
       ],
       "note": "Elevator 849: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
-      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-15."
     },
     {
       "systemId": "mbta-boston",
@@ -1346,7 +1346,7 @@
         }
       ],
       "note": "Elevator 946: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
-      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-15."
     },
     {
       "systemId": "mbta-boston",
@@ -1365,7 +1365,7 @@
         }
       ],
       "note": "Elevator 981: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
-      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-15."
     },
     {
       "systemId": "mbta-boston",
@@ -1384,7 +1384,269 @@
         }
       ],
       "note": "Elevator 980: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
-      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-15."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-sstat",
+      "chainLabel": " (Airport / SL3 Design Center/Chelsea)",
+      "segments": [
+        {
+          "id": "cut-1",
+          "label": "Any of elevators 6476/926/949",
+          "elevators": [
+            {
+              "externalId": "6476",
+              "label": "South Station Elevator 6476 (Red Line, Silver Line SL1/SL2/SL3 lobby to Commuter Rail lobby)"
+            },
+            {
+              "externalId": "926",
+              "label": "South Station Elevator 926 (Subway Lobby to Atlantic Avenue, Summer Street)"
+            },
+            {
+              "externalId": "949",
+              "label": "South Station Elevator 949 (Lobby to Dewey Square)"
+            }
+          ]
+        },
+        {
+          "id": "cut-2",
+          "label": "Any of elevators 901/918",
+          "elevators": [
+            {
+              "externalId": "901",
+              "label": "South Station Elevator 901 (Ashmont/Braintree platform to Silver Line drop-off platform and lobby)"
+            },
+            {
+              "externalId": "918",
+              "label": "South Station Elevator 918 (Ashmont/Braintree platform to Airport/Design Center/Chelsea platform and lobby)"
+            }
+          ]
+        },
+        {
+          "id": "cut-3",
+          "label": "Any of elevators 918/919",
+          "elevators": [
+            {
+              "externalId": "918",
+              "label": "South Station Elevator 918 (Ashmont/Braintree platform to Airport/Design Center/Chelsea platform and lobby)"
+            },
+            {
+              "externalId": "919",
+              "label": "South Station Elevator 919 (Alewife platform to Airport/Design Center/Chelsea platform)"
+            }
+          ]
+        },
+        {
+          "id": "cut-4",
+          "label": "Any of elevators 918/927",
+          "elevators": [
+            {
+              "externalId": "918",
+              "label": "South Station Elevator 918 (Ashmont/Braintree platform to Airport/Design Center/Chelsea platform and lobby)"
+            },
+            {
+              "externalId": "927",
+              "label": "South Station Elevator 927 (Alewife platform to Silver Line Drop-off platform)"
+            }
+          ]
+        }
+      ],
+      "note": "Any of elevators 6476/926/949: 3 elevators — any one keeps this leg open. Any of elevators 901/918: 2 elevators — either one keeps this leg open. Any of elevators 918/919: 2 elevators — either one keeps this leg open. Any of elevators 918/927: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route.",
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-15."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-sstat",
+      "chainLabel": " (Ashmont/Braintree)",
+      "segments": [
+        {
+          "id": "cut-1",
+          "label": "Any of elevators 6476/926/949",
+          "elevators": [
+            {
+              "externalId": "6476",
+              "label": "South Station Elevator 6476 (Red Line, Silver Line SL1/SL2/SL3 lobby to Commuter Rail lobby)"
+            },
+            {
+              "externalId": "926",
+              "label": "South Station Elevator 926 (Subway Lobby to Atlantic Avenue, Summer Street)"
+            },
+            {
+              "externalId": "949",
+              "label": "South Station Elevator 949 (Lobby to Dewey Square)"
+            }
+          ]
+        },
+        {
+          "id": "cut-2",
+          "label": "Any of elevators 901/918",
+          "elevators": [
+            {
+              "externalId": "901",
+              "label": "South Station Elevator 901 (Ashmont/Braintree platform to Silver Line drop-off platform and lobby)"
+            },
+            {
+              "externalId": "918",
+              "label": "South Station Elevator 918 (Ashmont/Braintree platform to Airport/Design Center/Chelsea platform and lobby)"
+            }
+          ]
+        }
+      ],
+      "note": "Any of elevators 6476/926/949: 3 elevators — any one keeps this leg open. Any of elevators 901/918: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route.",
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-15."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-sstat",
+      "chainLabel": " (Alewife)",
+      "segments": [
+        {
+          "id": "cut-1",
+          "label": "Any of elevators 6476/926/949",
+          "elevators": [
+            {
+              "externalId": "6476",
+              "label": "South Station Elevator 6476 (Red Line, Silver Line SL1/SL2/SL3 lobby to Commuter Rail lobby)"
+            },
+            {
+              "externalId": "926",
+              "label": "South Station Elevator 926 (Subway Lobby to Atlantic Avenue, Summer Street)"
+            },
+            {
+              "externalId": "949",
+              "label": "South Station Elevator 949 (Lobby to Dewey Square)"
+            }
+          ]
+        },
+        {
+          "id": "cut-2",
+          "label": "Any of elevators 901/918",
+          "elevators": [
+            {
+              "externalId": "901",
+              "label": "South Station Elevator 901 (Ashmont/Braintree platform to Silver Line drop-off platform and lobby)"
+            },
+            {
+              "externalId": "918",
+              "label": "South Station Elevator 918 (Ashmont/Braintree platform to Airport/Design Center/Chelsea platform and lobby)"
+            }
+          ]
+        },
+        {
+          "id": "cut-3",
+          "label": "Any of elevators 901/919",
+          "elevators": [
+            {
+              "externalId": "901",
+              "label": "South Station Elevator 901 (Ashmont/Braintree platform to Silver Line drop-off platform and lobby)"
+            },
+            {
+              "externalId": "919",
+              "label": "South Station Elevator 919 (Alewife platform to Airport/Design Center/Chelsea platform)"
+            }
+          ]
+        },
+        {
+          "id": "cut-4",
+          "label": "Any of elevators 918/927",
+          "elevators": [
+            {
+              "externalId": "918",
+              "label": "South Station Elevator 918 (Ashmont/Braintree platform to Airport/Design Center/Chelsea platform and lobby)"
+            },
+            {
+              "externalId": "927",
+              "label": "South Station Elevator 927 (Alewife platform to Silver Line Drop-off platform)"
+            }
+          ]
+        },
+        {
+          "id": "cut-5",
+          "label": "Any of elevators 919/927",
+          "elevators": [
+            {
+              "externalId": "919",
+              "label": "South Station Elevator 919 (Alewife platform to Airport/Design Center/Chelsea platform)"
+            },
+            {
+              "externalId": "927",
+              "label": "South Station Elevator 927 (Alewife platform to Silver Line Drop-off platform)"
+            }
+          ]
+        }
+      ],
+      "note": "Any of elevators 6476/926/949: 3 elevators — any one keeps this leg open. Any of elevators 901/918: 2 elevators — either one keeps this leg open. Any of elevators 901/919: 2 elevators — either one keeps this leg open. Any of elevators 918/927: 2 elevators — either one keeps this leg open. Any of elevators 919/927: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route.",
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-15."
+    },
+    {
+      "systemId": "mbta-boston",
+      "stationExternalId": "place-sstat",
+      "chainLabel": " (Exit Only)",
+      "segments": [
+        {
+          "id": "cut-1",
+          "label": "Any of elevators 6476/926/949",
+          "elevators": [
+            {
+              "externalId": "6476",
+              "label": "South Station Elevator 6476 (Red Line, Silver Line SL1/SL2/SL3 lobby to Commuter Rail lobby)"
+            },
+            {
+              "externalId": "926",
+              "label": "South Station Elevator 926 (Subway Lobby to Atlantic Avenue, Summer Street)"
+            },
+            {
+              "externalId": "949",
+              "label": "South Station Elevator 949 (Lobby to Dewey Square)"
+            }
+          ]
+        },
+        {
+          "id": "cut-2",
+          "label": "Any of elevators 901/918",
+          "elevators": [
+            {
+              "externalId": "901",
+              "label": "South Station Elevator 901 (Ashmont/Braintree platform to Silver Line drop-off platform and lobby)"
+            },
+            {
+              "externalId": "918",
+              "label": "South Station Elevator 918 (Ashmont/Braintree platform to Airport/Design Center/Chelsea platform and lobby)"
+            }
+          ]
+        },
+        {
+          "id": "cut-3",
+          "label": "Any of elevators 901/919",
+          "elevators": [
+            {
+              "externalId": "901",
+              "label": "South Station Elevator 901 (Ashmont/Braintree platform to Silver Line drop-off platform and lobby)"
+            },
+            {
+              "externalId": "919",
+              "label": "South Station Elevator 919 (Alewife platform to Airport/Design Center/Chelsea platform)"
+            }
+          ]
+        },
+        {
+          "id": "cut-4",
+          "label": "Any of elevators 901/927",
+          "elevators": [
+            {
+              "externalId": "901",
+              "label": "South Station Elevator 901 (Ashmont/Braintree platform to Silver Line drop-off platform and lobby)"
+            },
+            {
+              "externalId": "927",
+              "label": "South Station Elevator 927 (Alewife platform to Silver Line Drop-off platform)"
+            }
+          ]
+        }
+      ],
+      "note": "Any of elevators 6476/926/949: 3 elevators — any one keeps this leg open. Any of elevators 901/918: 2 elevators — either one keeps this leg open. Any of elevators 901/919: 2 elevators — either one keeps this leg open. Any of elevators 901/927: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route.",
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-15."
     },
     {
       "systemId": "mbta-boston",
@@ -1413,7 +1675,7 @@
         }
       ],
       "note": "Elevator 857: one elevator, no backup. Elevator 858: one elevator, no backup. None of these legs has a backup — if any one of these elevators is out of service, this route is not step-free.",
-      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-15."
     },
     {
       "systemId": "mbta-boston",
@@ -1442,7 +1704,7 @@
         }
       ],
       "note": "Elevator 857: one elevator, no backup. Elevator 859: one elevator, no backup. None of these legs has a backup — if any one of these elevators is out of service, this route is not step-free.",
-      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-15."
     },
     {
       "systemId": "mbta-boston",
@@ -1478,7 +1740,7 @@
         }
       ],
       "note": "Any of elevators 733/734: 2 elevators — either one keeps this leg open. Any of elevators 734/735: 2 elevators — either one keeps this leg open. No single elevator outage removes step-free access on this route.",
-      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-14."
+      "internalNote": "Derived from MBTA's GTFS pathways graph (mode-5 elevator pathways carry real facility ids; step-free reachability → minimal cuts, round-trip-verified). Validated against MBTA's alternate-service guidance where present. Generated 2026-07-15."
     }
   ]
 }
