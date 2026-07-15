@@ -3,6 +3,7 @@ import type { Adapter, NormalizedOutage, NormalizedRead, NormalizedUnit } from "
 import { nowUtcIso, parseIsoLocalToUtcIso } from "../../lib/time.js";
 import { parseCtaElevatorIdentity } from "./location.js";
 import { stationModelsFor } from "../../catalog/station-models.js";
+import { allElevators } from "../../lib/accessibility.js";
 import type { CtaAlertRaw, CtaAlertsResponse, CtaServiceRaw } from "./raw.js";
 
 // CTA (Chicago) — Customer Alerts API (alerts.aspx), no API key needed. Like
@@ -130,9 +131,16 @@ export function createCtaAdapter(config: CtaConfig = CTA_CONFIG): Adapter {
         const reasonText = combinedReason(a) ?? "";
         const slug = parseCtaElevatorIdentity(reasonText);
         const unitExternalId = slug ? `${station.ServiceId}-${slug}` : station.ServiceId;
-        // Vague alert at a modeled station — see the vague-alert fail-safe note
-        // above; this outage can never match a model elevator by id, so flag it.
-        const isUnmappableVague = !slug && modeledStations.has(station.ServiceId);
+        // Vague alert at a modeled station whose resulting bare-station-id unit
+        // does NOT match any of that station's modeled elevators — see the
+        // vague-alert fail-safe note above. A single-elevator station (e.g.
+        // Loyola, 87th — Batch 2's Bucket A) deliberately models its one
+        // elevator AS the bare station id, so a vague alert there correctly
+        // matches and must NOT be flagged; only a genuine mismatch (a
+        // redundant-pair station like Cermak, whose real elevators use
+        // observed/synthetic ids, never the bare station id) should trip this.
+        const stationChains = modeledStations.get(station.ServiceId) ?? [];
+        const isUnmappableVague = !slug && stationChains.length > 0 && !stationChains.some((c) => allElevators(c).some((e) => e.externalId === unitExternalId));
         if (!units.has(unitExternalId)) {
           units.set(unitExternalId, {
             externalId: unitExternalId,
