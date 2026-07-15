@@ -56,7 +56,8 @@
     "review:queue": "tsx scripts/review-queue.mts",
     "review:status": "tsx scripts/review-queue.mts --status",
     "mbta:pathways": "tsx scripts/mbta-pathways.mts",
-    "check:mbta-pathways": "tsx src/checks/mbta-pathways-check.ts"
+    "check:mbta-pathways": "tsx src/checks/mbta-pathways-check.ts",
+    "mbta:ramps": "tsx scripts/mbta-ramps.mts"
   },
   "dependencies": {
     "@netlify/blobs": "^10.7.9",

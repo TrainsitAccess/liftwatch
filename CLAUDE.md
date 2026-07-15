@@ -624,6 +624,19 @@ parking lot). A station is accessible only if **every** segment is up.
   (open/close like outages), `build-site-data` → `otherEquipment` board.
   `other_equipment_events` is a later schema addition (apply `db/schema.sql` +
   `NOTIFY pgrst, 'reload schema';`; degrades to empty until it exists).
+  **STANDING RULE (2026-07-15, locked)**: before finalizing ANY station model
+  (individual review, batch, or auto-generated), check whether the agency's own
+  data already exposes a ramp or other ADA facility that could satisfy
+  `stepFreeAlternative` — never limit this check to one system just because
+  that's where the current question came from. MBTA's own
+  `facilities?filter[type]=RAMP` endpoint (already fetched every poll for the
+  other-equipment layer, but not cross-checked against the model) turned up 58
+  ramps system-wide (subway, commuter rail, AND ferry) sitting unused for this
+  purpose — found 2026-07-15 while researching the commuter-rail disclaimer.
+  A ramp confirmed by the agency's OWN facility inventory meets the same
+  evidence bar as a human walk-through confirmation (see the step-free detour
+  policy above) — it is not a guess. Every system's adapter/API should be
+  checked for equivalent facility-type data, not only MBTA's.
   **BART's Coliseum parking-lot wheelchair lift** is the first non-MBTA member
   (2026-07-12): a curated `bart-other-equipment.ts` list + a `matchHint` on the
   advisory text (BART has no per-facility feed), split OUT of the elevator model
