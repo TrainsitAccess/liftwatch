@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-15T05:10:49.532Z",
+ "updatedAt": "2026-07-15T05:39:57.233Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -159,7 +159,7 @@
    "system": "cta-chicago",
    "stationId": "41690",
    "name": "Cermak-McCormick Place",
-   "status": "pending",
+   "status": "modeled",
    "priority": 10,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
@@ -175,7 +175,12 @@
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **41690 Cermak-McCormick Place (Green)** — rebuilt 2015: column-free ISLAND platform with \"elevators bookending each end\" ✚ + two entrances (Cermak main, 23rd St unstaffed HBG-only) connected by a ground-level walkway. If both end elevators reach the platform from connected fare areas, this is a REDUNDANT PAIR — would be CTA's clearest redundancy. observed: 23RD-STREET ✓ (the 23rd St end elevator). ⚠ verify both elevators are inside compatible fare paths (23rd is farecard-only HBG)."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Bryce approved the redundant-pair model (confidence 7/10 on structure) and chose Design B for the vague-alert fail-safe: the never-observed north elevator gets a synthetic id (CTA-SYNTH-41690-NORTH) that can never collide with a real live alert, so any vague alert at this station is guaranteed to fall through to the generic needsReview/unplaced-outage fail-safe (whole chain reads UNKNOWN) instead of silently resolving via the pair. Bryce also asked whether the synthetic id can later be promoted to a real one once the north elevator is ever observed live — confirmed yes, same pattern as WMATA's never-observed GTFS slots (see cta-models.ts header comment). Shipped now rather than waiting for that observation. First CTA station modeled; adapter fail-safe implemented in src/adapters/cta/index.ts, model in src/catalog/cta-models.ts.",
+    "date": "2026-07-14"
+   }
   },
   {
    "key": "cta:40530",

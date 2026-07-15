@@ -3,6 +3,7 @@ import { MTA_RAIL_STATION_MODELS } from "./mta-rail-models.js";
 import { BART_STATION_MODELS } from "./bart-station-models.js";
 import { MBTA_STATION_MODELS } from "./mbta-models.js";
 import { WMATA_STATION_MODELS } from "./wmata-models.js";
+import { CTA_STATION_MODELS } from "./cta-models.js";
 // STATIC json imports, deliberately NOT readFileSync(new URL(import.meta.url))
 // — the Netlify function bundler compiles its whole import graph into one
 // poll.mjs, so runtime-relative file paths break in production (live-confirmed
@@ -269,6 +270,9 @@ export const STATION_MODELS: StationModel[] = [
   ...WMATA_STATION_MODELS,
   // WMATA auto-generated ladder chains (see wmataChains above).
   ...wmataChains,
+  // CTA hand-curated models — the first (and only) curated tier for this
+  // system; no generator exists (no agency inventory feed). See cta-models.ts.
+  ...CTA_STATION_MODELS,
 ];
 
 // A physical station can have more than one entry (multiple independent

@@ -2,6 +2,7 @@ import { DateTime } from "luxon";
 import type { Adapter, NormalizedOutage, NormalizedRead, NormalizedUnit } from "../../types.js";
 import { nowUtcIso, parseIsoLocalToUtcIso } from "../../lib/time.js";
 import { parseCtaElevatorIdentity } from "./location.js";
+import { stationModelsFor } from "../../catalog/station-models.js";
 import type { CtaAlertRaw, CtaAlertsResponse, CtaServiceRaw } from "./raw.js";
 
 // CTA (Chicago) — Customer Alerts API (alerts.aspx), no API key needed. Like
@@ -28,6 +29,18 @@ import type { CtaAlertRaw, CtaAlertsResponse, CtaServiceRaw } from "./raw.js";
 // mergeSameUnitAlerts); different elevators at one station are now distinct
 // units — the old whole-station lumping (Pulaski, both platforms,
 // 2026-07-10) is gone for identified alerts.
+//
+// VAGUE-ALERT FAIL-SAFE AT MODELED STATIONS (2026-07-14, first CTA model —
+// Cermak-McCormick Place, see cta-models.ts): a vague alert's bare-station-id
+// unit can never match a curated model's elevator ids (those are either a
+// real observed slug or a synthetic CTA-SYNTH-* placeholder — see
+// cta-models.ts's header). Left unflagged, that would silently drop the
+// outage from the station's chain computation and the station would read
+// falsely accessible. So a vague alert AT A STATION WITH A CURATED MODEL is
+// flagged needsReview — the same generic "unplaced outage" fail-safe
+// WMATA's "unmappable" kind relies on (build-site-data.ts) forces the whole
+// chain to UNKNOWN instead. Un-modeled stations are unaffected (no models to
+// miss).
 
 export interface CtaConfig {
   systemId: string;
@@ -100,6 +113,7 @@ export function createCtaAdapter(config: CtaConfig = CTA_CONFIG): Adapter {
     async fetch(): Promise<NormalizedRead> {
       const alerts = await fetchAlerts(config.alertsUrl);
       const elevatorAlerts = alerts.filter((a) => a.Impact === "Elevator Status");
+      const modeledStations = stationModelsFor(config.systemId);
 
       const now = Date.now();
       const units = new Map<string, NormalizedUnit>();
@@ -116,6 +130,9 @@ export function createCtaAdapter(config: CtaConfig = CTA_CONFIG): Adapter {
         const reasonText = combinedReason(a) ?? "";
         const slug = parseCtaElevatorIdentity(reasonText);
         const unitExternalId = slug ? `${station.ServiceId}-${slug}` : station.ServiceId;
+        // Vague alert at a modeled station — see the vague-alert fail-safe note
+        // above; this outage can never match a model elevator by id, so flag it.
+        const isUnmappableVague = !slug && modeledStations.has(station.ServiceId);
         if (!units.has(unitExternalId)) {
           units.set(unitExternalId, {
             externalId: unitExternalId,
@@ -138,10 +155,13 @@ export function createCtaAdapter(config: CtaConfig = CTA_CONFIG): Adapter {
           stationName: station.ServiceName,
           isPlanned: PLANNED_TEXT.test(`${a.Headline} ${a.ShortDescription}`),
           isUpcoming,
-          reason: reasonText || undefined,
+          reason: isUnmappableVague
+            ? `${reasonText || "Out of service"} (unidentified elevator at a modeled station — access shown as unknown)`
+            : reasonText || undefined,
           sourceStartedAt: startIso,
           estimatedReturn:
             parseIsoLocalToUtcIso(a.EventEnd, CTA_ZONE) ?? returnEstimateFromProse(cdata(a.FullDescription)),
+          needsReview: isUnmappableVague || undefined,
         };
         (isUpcoming ? upcoming : outages).push(outage);
       }
