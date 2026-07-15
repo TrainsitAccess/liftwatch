@@ -229,18 +229,19 @@ export const CTA_STATION_MODELS: StationModel[] = [
   },
   // Morgan (41510, Green/Pink Lines) — Batch 2, single island-platform
   // elevator. CTA's own alert text names both directions on one elevator
-  // ("The Loop- and 63rd-bound platform elevator at Morgan"); the identity
-  // parser currently collapses this specific phrasing order to "63RD-BOUND"
-  // only (a labeling quirk, not a tracking risk — the id is stable; see
-  // spawned task to fix the parser's reversed-order handling). No redundancy
-  // claimed; single elevator serves the whole (single) platform.
+  // ("The Loop- and 63rd-bound platform elevator at Morgan"); the parser's
+  // multi-direction handling was order-dependent (a reversed direction order
+  // silently dropped "Loop-", producing "63RD-BOUND" instead of the full
+  // combined id) — fixed 2026-07-15, now "63RD-LOOP-BOUND" regardless of
+  // phrasing order. No redundancy claimed; single elevator serves the whole
+  // (single) platform.
   {
     systemId: SYSTEM,
     stationExternalId: "41510",
     note: "One elevator serves the platform in both directions — no backup. If that elevator is out of service, this route is not step-free.",
     internalNote: "Human-approved as Batch 2 via /liftwatch-station-review 2026-07-15 (confidence 8/10 collectively — no redundancy claimed anywhere in this batch).",
     segments: [
-      { id: "street-platform", label: "Street to platform", elevators: [{ externalId: "41510-63RD-BOUND", label: "Morgan platform elevator (serves both Loop-bound and 63rd-bound platforms)" }] },
+      { id: "street-platform", label: "Street to platform", elevators: [{ externalId: "41510-63RD-LOOP-BOUND", label: "Morgan platform elevator (serves both Loop-bound and 63rd-bound platforms)" }] },
     ],
   },
   // Chicago (40710, Brown, Purple Lines) — Batch 2, Diversey-pattern per-direction chains.

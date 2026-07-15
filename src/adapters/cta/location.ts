@@ -20,6 +20,7 @@
 //   "The Harlem- bound platform elevator…"           (space after hyphen)
 //   "The 95th- and- Loop- bound platform elevator…"  (fully exploded)
 //   "The 95th-bound and Loop-bound platform elevator…"
+//   "The Loop- and 63rd-bound platform elevator…"     (reversed order)
 //   "The Harlem-bound elevator at King Drive…"        (no "platform")
 //   "The elevator to/from street and elevators needed to access the
 //    Harlem-bound platforms at California…"           (consequence clause —
@@ -42,7 +43,9 @@ export function parseCtaElevatorIdentity(text: string): string | null {
   const t = text
     .replace(/-\s+/g, "-")
     .replace(/\s+/g, " ")
-    .replace(/-and-/gi, " and ")
+    // "-and-" (fully exploded) and "-and " (reversed order, e.g. "Loop- and
+    // 63rd-bound") both reduce to " and " so direction order never matters.
+    .replace(/-and[- ]/gi, " and ")
     // "95th-bound and Loop-bound…" → "95th and Loop-bound…" so every
     // multi-direction phrasing reduces to one and-list before "bound".
     .replace(/[- ]bound and /gi, " and ")

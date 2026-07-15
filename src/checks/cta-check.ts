@@ -47,6 +47,8 @@ ok(p("The 95th- and- Loop- bound platform elevator at Wilson (Red, Purple Lines)
   "fully-exploded multi-direction variant collapses to the same id");
 ok(p("The 95th- and- Loop bound platform elevator at Howard (Red, Purple, Yellow Lines) is temporarily out-of-service.") === "95TH-LOOP-BOUND",
   "half-exploded variant collapses to the same id");
+ok(p("The Loop- and 63rd-bound platform elevator at Morgan (Green, Pink Lines) is temporarily out-of-service.") === "63RD-LOOP-BOUND",
+  "reversed multi-direction order (second direction named first) collapses to the same canonical id");
 ok(p("Western Kimball-bound Platform Elevator Out of Service — The Kimball-bound platform elevator at Western Brown Line stn is temporarily out of service.") === "KIMBALL-BOUND",
   "station name in the headline ('Western') never leaks into the id");
 ok(p("The elevator to/from street and elevators needed to access the Harlem-bound platforms at California (Green Line) is temporarily out-of-service.") === "STREET",
