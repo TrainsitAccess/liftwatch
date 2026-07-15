@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-14T19:00:08.488Z",
+  "updatedAt": "2026-07-15T18:12:46.226Z",
   "note": "Every CTA elevator identity ever observed (archive + live alert texts, parsed by src/adapters/cta/location.ts). Grows only. Regression fixture for check:cta and the curation aid for a future chains pass.",
   "units": [
     {
@@ -94,6 +94,14 @@
       "firstObserved": "2026-07-06T19:18:24.687+00:00"
     },
     {
+      "unitId": "40360-LOOP-BOUND",
+      "stationId": "40360",
+      "texts": [
+        "Elevator at Southport Temporarily Out-of-Service — The Loop-bound elevator at Southport (Brown Line) is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-07-15T03:56:28.476+00:00"
+    },
+    {
       "unitId": "40380-203-N-LASALLE",
       "stationId": "40380",
       "texts": [
@@ -175,6 +183,14 @@
         "Elevator at Jackson Temporarily Out-of-Service — The elevator to/from platform at the Adams-Jackson entrance to Jackson (Red Line) is temporarily out-of-service."
       ],
       "firstObserved": "2026-07-08T00:15:48.099+00:00"
+    },
+    {
+      "unitId": "40560-ADAMS-JACKSON-STREET",
+      "stationId": "40560",
+      "texts": [
+        "Elevator at Jackson Temporarily Out-of-Service — The elevator to/from street at the Adams-Jackson entrance to Jackson (Red Line) is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-07-14T21:35:34.321+00:00"
     },
     {
       "unitId": "40710-LOOP-BOUND",
@@ -350,7 +366,8 @@
       "unitId": "41430",
       "stationId": "41430",
       "texts": [
-        "The elevator at 87th (Red Line) is temporarily out-of-service."
+        "The elevator at 87th (Red Line) is temporarily out-of-service.",
+        "Elevator at 87th Temporarily Out-of-Service — The elevator at 87th (Red Line) is temporarily out-of-service."
       ],
       "firstObserved": "2026-07-07T16:58:30.558+00:00"
     },
@@ -406,7 +423,8 @@
       "unitId": "41660-WASHINGTON-RANDOLPH-PLATFORM",
       "stationId": "41660",
       "texts": [
-        "Elevator at Lake (Washington/Randolph Entrance) Temporarily Out-of-Service — The elevator to/from platform at Lake (Red Line) is temporarily out-of-service due to upgrades."
+        "Elevator at Lake (Washington/Randolph Entrance) Temporarily Out-of-Service — The elevator to/from platform at Lake (Red Line) is temporarily out-of-service due to upgrades.",
+        "Elevator at Lake (Washington/Randolph Entrance) Temporarily Out-of-Service — The elevator to/from platform at Lake (Red Line) is temporarily out-of-service."
       ],
       "firstObserved": "2026-07-05T00:57:40.161+00:00"
     },

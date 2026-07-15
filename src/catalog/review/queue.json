@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-15T18:10:28.037Z",
+ "updatedAt": "2026-07-15T18:12:54.853Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -342,6 +342,10 @@
     {
      "source": "live feed (alert text)",
      "text": "Elevator at Jackson Temporarily Out-of-Service — The elevator to/from platform at the Adams-Jackson entrance to Jackson (Red Line) is temporarily out-of-service."
+    },
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Jackson Temporarily Out-of-Service — The elevator to/from street at the Adams-Jackson entrance to Jackson (Red Line) is temporarily out-of-service."
     },
     {
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
@@ -1267,6 +1271,10 @@
     {
      "source": "GTFS roster",
      "text": "WMATA-C02_E_MZ_ELE: Street ↔ Mezzanine"
+    },
+    {
+     "source": "live feed (observed)",
+     "text": "C02E02: \"Elevator between mezzanine and platform to New Carrollton/Largo Town Center\""
     }
    ],
    "resolution": {
@@ -1662,6 +1670,10 @@
     {
      "source": "GTFS roster",
      "text": "WMATA-K03_ELE3: Mezzanine ↔ Platform"
+    },
+    {
+     "source": "live feed (observed)",
+     "text": "K03X01: \"Elevator between street and to mezzanine\""
     }
    ],
    "resolution": {
@@ -3659,6 +3671,10 @@
     {
      "source": "live feed (observed)",
      "text": "F03N02: \"Elevator between mezzanine and platform to Branch Ave/Huntington\""
+    },
+    {
+     "source": "live feed (observed)",
+     "text": "F03N03: \"Elevator between mezzanine and platform to Greenbelt/Mt. Vernon Sq\""
     }
    ]
   },
@@ -3745,6 +3761,14 @@
     {
      "source": "GTFS roster",
      "text": "WMATA-F05_ELE4: Mezzanine/Intermediate Passageway ↔ Platform"
+    },
+    {
+     "source": "live feed (observed)",
+     "text": "F05E01: \"Elevator between street and mezzanine\""
+    },
+    {
+     "source": "live feed (observed)",
+     "text": "F05E02: \"Elevator between mezzanine and platform\""
     },
     {
      "source": "live feed (observed)",
@@ -4033,6 +4057,21 @@
     "notes": "Batch 2 (15 CTA single/no-redundancy stations), approved by Bryce as a group 2026-07-15. Bucket A: single island-platform elevator, never individually identified (bare station id — safe since no OR to hide behind). Bucket B (Morgan): single island elevator, agency-identified, serves both directions. Bucket C: Diversey-pattern per-direction chains (one real observed elevator, one synthetic placeholder for the never-observed opposite direction). Confidence 8/10 collectively. Implemented in src/catalog/cta-models.ts.",
     "date": "2026-07-15"
    }
+  },
+  {
+   "key": "cta:40360",
+   "system": "cta-chicago",
+   "stationId": "40360",
+   "name": "Southport",
+   "status": "pending",
+   "priority": 50,
+   "reason": "no chains modeled (no agency inventory — text-identity only)",
+   "evidence": [
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Southport Temporarily Out-of-Service — The Loop-bound elevator at Southport (Brown Line) is temporarily out-of-service."
+    }
+   ]
   },
   {
    "key": "cta:40380",
@@ -4489,6 +4528,10 @@
      "text": "The elevator at 87th (Red Line) is temporarily out-of-service."
     },
     {
+     "source": "live feed (alert text)",
+     "text": "Elevator at 87th Temporarily Out-of-Service — The elevator at 87th (Red Line) is temporarily out-of-service."
+    },
+    {
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **41430 87th (Red)** — island; elevator added in south Red upgrades. observed: vague."
     }
@@ -4531,6 +4574,10 @@
     {
      "source": "live feed (alert text)",
      "text": "Elevator at Lake (Washington/Randolph Entrance) Temporarily Out-of-Service — The elevator to/from platform at Lake (Red Line) is temporarily out-of-service due to upgrades."
+    },
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Lake (Washington/Randolph Entrance) Temporarily Out-of-Service — The elevator to/from platform at Lake (Red Line) is temporarily out-of-service."
     },
     {
      "source": "chicago-L.org research (STATION-RESEARCH.md)",

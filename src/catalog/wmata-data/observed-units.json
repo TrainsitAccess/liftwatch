@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-14T19:00:06.724Z",
+  "updatedAt": "2026-07-15T18:12:44.721Z",
   "note": "Every WMATA elevator UnitName ever observed (archive + live feed). Grows only. Consumed by scripts/wmata-pathways.mts as an undercount/vocabulary gate.",
   "units": [
     {
@@ -139,6 +139,12 @@
       "stationCode": "C01",
       "location": "Elevator between street and mezzanine",
       "firstObserved": "2026-07-05T00:16:15.96259+00:00"
+    },
+    {
+      "unitName": "C02E02",
+      "stationCode": "C02",
+      "location": "Elevator between mezzanine and platform to New Carrollton/Largo Town Center",
+      "firstObserved": "2026-07-15T13:27:22.051981+00:00"
     },
     {
       "unitName": "C05E01",
@@ -381,6 +387,12 @@
       "firstObserved": "2026-07-14T14:02:27.383374+00:00"
     },
     {
+      "unitName": "F03N03",
+      "stationCode": "F03",
+      "location": "Elevator between mezzanine and platform to Greenbelt/Mt. Vernon Sq",
+      "firstObserved": "2026-07-15T12:43:52.03415+00:00"
+    },
+    {
       "unitName": "F04X01",
       "stationCode": "F04",
       "location": "Elevator between street and mezzanine, north side of M Street, S.W.",
@@ -391,6 +403,18 @@
       "stationCode": "F04",
       "location": "Elevator between mezzanine AND platform",
       "firstObserved": "2026-07-12T14:46:10.115299+00:00"
+    },
+    {
+      "unitName": "F05E01",
+      "stationCode": "F05",
+      "location": "Elevator between street and mezzanine",
+      "firstObserved": "2026-07-15T09:06:37.393488+00:00"
+    },
+    {
+      "unitName": "F05E02",
+      "stationCode": "F05",
+      "location": "Elevator between mezzanine and platform",
+      "firstObserved": "2026-07-15T09:06:37.393488+00:00"
     },
     {
       "unitName": "F05W01",
@@ -457,6 +481,12 @@
       "stationCode": "J03",
       "location": "Elevator between mezzanine and platform",
       "firstObserved": "2026-07-09T15:19:05.190777+00:00"
+    },
+    {
+      "unitName": "K03X01",
+      "stationCode": "K03",
+      "location": "Elevator between street and to mezzanine",
+      "firstObserved": "2026-07-15T00:07:47.744915+00:00"
     },
     {
       "unitName": "K04X03",
