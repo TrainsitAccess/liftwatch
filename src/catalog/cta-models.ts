@@ -64,4 +64,50 @@ export const CTA_STATION_MODELS: StationModel[] = [
       },
     ],
   },
+
+  // Diversey (Brown Line; Purple Line Express rush hours) — elevated station,
+  // two SIDE platforms (one per direction, no cross-connection at platform
+  // level) reached from a single shared street-level paid fare-control area.
+  // chicago-L.org: "dual brick-clad elevator towers", "the elevators to each
+  // platform are located outboard of the stairs" — one dedicated elevator per
+  // platform, NOT a redundant pair (the shared fare area doesn't help a rider
+  // already through the gates whose platform elevator is down). Renovated
+  // 2007-08 (Brown Line Capacity Expansion, ADA rebuild). CTA's OWN live alert
+  // text confirms the direction-specific model ("The Loop-bound platform
+  // elevator at Diversey"); only Loop-bound has appeared so far. Two
+  // independent single-elevator chains (per-direction, same pattern as Park
+  // Street), neither with a backup. Reviewed with Bryce 2026-07-14
+  // (/liftwatch-station-review, confidence 8/10).
+  {
+    systemId: SYSTEM,
+    stationExternalId: "40530",
+    chainLabel: " (Loop-bound)",
+    note: "Street to the Loop-bound platform: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Direction-specific model confirmed by CTA's own live alert text ('The Loop-bound platform elevator at Diversey'); side-platform layout from chicago-L.org (fetched 2026-07-14, third-party). Loop-bound elevator observed live 2026-07-09 (40530-LOOP-BOUND). Human-approved 2026-07-14.",
+    segments: [
+      {
+        id: "street-platform",
+        label: "Street to Loop-bound platform",
+        elevators: [
+          { externalId: "40530-LOOP-BOUND", label: "Diversey Loop-bound platform elevator" },
+        ],
+      },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "40530",
+    chainLabel: " (Kimball-bound)",
+    note: "Street to the Kimball-bound platform: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Direction-specific model confirmed by CTA's own live alert text for the opposite direction; side-platform layout from chicago-L.org (fetched 2026-07-14). The Kimball-bound elevator has NEVER appeared in a CTA alert, so its id (CTA-SYNTH-40530-KIMBALL-BOUND) is a synthetic placeholder — promote to the real CTA unit id the first time it appears in observed-units.json (expected 'Kimball-bound', per Montrose's observed phrasing). Human-approved 2026-07-14.",
+    segments: [
+      {
+        id: "street-platform",
+        label: "Street to Kimball-bound platform",
+        elevators: [
+          { externalId: "CTA-SYNTH-40530-KIMBALL-BOUND", label: "Diversey Kimball-bound platform elevator — never yet observed live, synthetic id" },
+        ],
+      },
+    ],
+  },
 ];

@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-15T05:39:57.233Z",
+ "updatedAt": "2026-07-15T05:46:58.657Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -187,7 +187,7 @@
    "system": "cta-chicago",
    "stationId": "40530",
    "name": "Diversey",
-   "status": "pending",
+   "status": "modeled",
    "priority": 12,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
@@ -199,7 +199,12 @@
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **40530 Diversey (Brown)** — side platforms; \"elevators to each platform… outboard of the stairs\" (Brown Line expansion). observed: LOOP-BOUND."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Two independent single-elevator per-direction chains (Loop-bound / Kimball-bound), no redundancy claimed — side platforms with one dedicated elevator each, shared street-level fare area doesn't back either up. Direction-specific model confirmed by CTA's own live alert text; side-platform layout from chicago-L.org. Loop-bound observed live (40530-LOOP-BOUND); Kimball-bound uses synthetic placeholder id (CTA-SYNTH-40530-KIMBALL-BOUND), promotable once observed. Confidence 8/10. No adapter change needed — the vague-alert fail-safe wired for Cermak is generic across all modeled CTA stations. Implemented in src/catalog/cta-models.ts.",
+    "date": "2026-07-14"
+   }
   },
   {
    "key": "cta:40710",
