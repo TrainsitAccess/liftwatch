@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-15T18:30:20.103Z",
+ "updatedAt": "2026-07-15T19:45:05.082Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -4532,6 +4532,38 @@
     "verdict": "approved-as-proposed",
     "notes": "Batch 2 (15 CTA single/no-redundancy stations), approved by Bryce as a group 2026-07-15. Bucket A: single island-platform elevator, never individually identified (bare station id — safe since no OR to hide behind). Bucket B (Morgan): single island elevator, agency-identified, serves both directions. Bucket C: Diversey-pattern per-direction chains (one real observed elevator, one synthetic placeholder for the never-observed opposite direction). Confidence 8/10 collectively. Implemented in src/catalog/cta-models.ts.",
     "date": "2026-07-15"
+   }
+  },
+  {
+   "key": "cta:41380",
+   "system": "cta-chicago",
+   "stationId": "41380",
+   "name": "Bryn Mawr",
+   "status": "modeled",
+   "priority": 50,
+   "reason": "pre-modeled from research — never appeared in the live feed (station reopened 2025-07-20 as part of RPM Phase One, zero elevator outages recorded since)",
+   "evidence": [
+    {
+     "source": "chicago-L.org research (fetched 2026-07-16)",
+     "text": "Final permanent 2025 Bryn Mawr station: three entrances (main Bryn Mawr Ave, an auxiliary exit, and a newly-added Hollywood Ave entrance). The main entrance has \"an elevator, an 'up' escalator, and a wide set of stairs\"; the Hollywood entrance has \"no escalator... only stairs and an elevator\" — a SEPARATE elevator from the main entrance's. Both reach the same single island platform (\"The boarding platform is an island type, set between the two middle tracks which serve Red Line local trains.\")"
+    },
+    {
+     "source": "chicago-L.org cross-check (fetched 2026-07-16)",
+     "text": "Lawrence, Argyle, and Berwyn (the other 3 RPM Phase One stations, also reopened 2025-07-20) each also have an auxiliary exit, but every one of those is confirmed stairs-only — single elevator, no backup, at all three. Bryn Mawr is the only one of the four where the auxiliary/secondary entrance got its own elevator."
+    },
+    {
+     "source": "CTA public GTFS (stops.txt, fetched 2026-07-16)",
+     "text": "Bryn Mawr parent station id 41380 (location_type=1), child boarding stops 30267/30268."
+    },
+    {
+     "source": "cta-data/observed-units.json (checked 2026-07-16)",
+     "text": "Zero elevator alerts recorded for station 41380 since the station reopened 2025-07-20 — neither elevator has ever been individually observed."
+    }
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Bryce asked to research whether any Red-Purple Modernization (RPM) stations got redundant elevator pairs. Researched all 4 RPM Phase One stations (Lawrence, Argyle, Berwyn, Bryn Mawr); only Bryn Mawr has a genuine pair (Hollywood Ave entrance's own elevator, same island platform as the main entrance's). Confidence 9/10 on structure. Approved to pre-model ahead of any live outage (0/10 live confirmation of either specific unit id — both ids are synthetic placeholders, promotable once observed) so the station's first-ever elevator outage doesn't read as a false NO_ACCESS. Implemented in src/catalog/cta-models.ts. Lawrence/Argyle/Berwyn confirmed single-elevator, no change needed there.",
+    "date": "2026-07-16"
    }
   },
   {

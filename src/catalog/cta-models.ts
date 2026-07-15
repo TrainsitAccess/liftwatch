@@ -348,4 +348,35 @@ export const CTA_STATION_MODELS: StationModel[] = [
       { id: "street-platform", label: "Street to Loop-bound platform", elevators: [{ externalId: "CTA-SYNTH-41030-LOOP-BOUND", label: "Polk Loop-bound platform elevator — never yet observed live, synthetic id" }] },
     ],
   },
+
+  // Bryn Mawr (41380, Red Line) — rebuilt 2021-2025 as part of RPM Phase One
+  // (Lawrence/Argyle/Berwyn/Bryn Mawr, all reopened 2025-07-20). A genuine
+  // redundant PAIR — the ONE of the four RPM stations that got one: three
+  // entrances (main Bryn Mawr Ave, an auxiliary exit, and a newly-added
+  // Hollywood Ave entrance), and the Hollywood entrance got its own elevator,
+  // separate from the main entrance's, both reaching the SAME single island
+  // platform. (Lawrence/Argyle/Berwyn each also have an auxiliary exit, but
+  // it's stairs-only — single elevator, no backup, at those three.)
+  // Pre-modeled from research, not a live outage: NEITHER elevator has ever
+  // appeared in a CTA alert (station opened 2025-07-20; zero elevator
+  // outages recorded here since), so both ids are synthetic placeholders —
+  // promote each to its real id the first time it's individually observed.
+  // Station id 41380 found via CTA's public GTFS stops.txt (parent station,
+  // location_type=1; child boarding stops 30267/30268).
+  {
+    systemId: SYSTEM,
+    stationExternalId: "41380",
+    note: "Street to platform: 2 elevators (one at the main entrance, one at the Hollywood Ave entrance) — either one keeps this station step-free. No single elevator outage removes step-free access on this route.",
+    internalNote: "Structure from chicago-L.org (station design page, fetched 2026-07-16), verified against CTA's own RPM project pages (Lawrence/Argyle/Berwyn cross-checked the same way and confirmed single-elevator, ruling out the same pattern there). Confidence 9/10 on the structure; 0/10 live confirmation of either unit id — pre-modeled ahead of any outage per Bryce's approval 2026-07-16, so a false NO_ACCESS never happens on this station's first-ever elevator outage. Both ids are synthetic pending live observation.",
+    segments: [
+      {
+        id: "street-platform",
+        label: "Street to platform (either entrance's elevator)",
+        elevators: [
+          { externalId: "CTA-SYNTH-41380-MAIN", label: "Bryn Mawr main entrance elevator (Bryn Mawr Ave) — never yet observed live, synthetic id" },
+          { externalId: "CTA-SYNTH-41380-HOLLYWOOD", label: "Bryn Mawr Hollywood Ave entrance elevator — never yet observed live, synthetic id" },
+        ],
+      },
+    ],
+  },
 ];
