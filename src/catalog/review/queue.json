@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-15T18:12:54.853Z",
+ "updatedAt": "2026-07-15T18:30:20.103Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -1718,7 +1718,7 @@
    "system": "mta-mnr",
    "stationId": "0CT",
    "name": "Cortlandt",
-   "status": "pending",
+   "status": "modeled",
    "priority": 32,
    "reason": "unparseable-unit",
    "evidence": [
@@ -1738,7 +1738,12 @@
      "source": "eestatus location text",
      "text": "045PW: Elevator from West Side Parking Lot"
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "MTA rail batch (4 stations), approved by Bryce 2026-07-15. Straight 2-elevator chain (043P street-overpass, 043I overpass-platform), no redundancy, confidence 8/10. The parking-lot elevator 045PW is excluded per the garage-elevator policy. Implemented in src/catalog/mta-rail-models.ts. Ground-truth gate (rail:chains) confirms no semantic contradiction.",
+    "date": "2026-07-15"
+   }
   },
   {
    "key": "rail:0HM",
@@ -1911,7 +1916,7 @@
    "system": "mta-mnr",
    "stationId": "1PY",
    "name": "Purdy's",
-   "status": "pending",
+   "status": "modeled",
    "priority": 32,
    "reason": "unknown-landing",
    "evidence": [
@@ -1931,7 +1936,12 @@
      "source": "eestatus location text",
      "text": "158I: Elevator from the overpass to the island platform (Tracks 2 & 1)."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "MTA rail batch (4 stations), approved by Bryce 2026-07-15. Straight 2-elevator chain (158P street-overpass, 158I overpass-platform), no redundancy, confidence 8/10. The ambiguous 158B unit is left unmodeled. Implemented in src/catalog/mta-rail-models.ts. Ground-truth gate (rail:chains) confirms no semantic contradiction.",
+    "date": "2026-07-15"
+   }
   },
   {
    "key": "rail:2BP",
@@ -2015,7 +2025,7 @@
    "system": "mta-lirr",
    "stationId": "AVL",
    "name": "Amityville",
-   "status": "pending",
+   "status": "modeled",
    "priority": 32,
    "reason": "unknown-landing",
    "evidence": [
@@ -2027,14 +2037,19 @@
      "source": "eestatus location text",
      "text": "1061: Located in the station plaza just west of the waiting room."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "MTA rail batch (4 stations), approved by Bryce 2026-07-15. Single elevator (1061), no backup, confidence 9/10. Implemented in src/catalog/mta-rail-models.ts. Ground-truth gate (rail:chains) confirms the auto-engine still conservatively excludes it and no semantic contradiction was found.",
+    "date": "2026-07-15"
+   }
   },
   {
    "key": "rail:LHT",
    "system": "mta-lirr",
    "stationId": "LHT",
    "name": "Lindenhurst",
-   "status": "pending",
+   "status": "modeled",
    "priority": 32,
    "reason": "unknown-landing",
    "evidence": [
@@ -2046,7 +2061,12 @@
      "source": "eestatus location text",
      "text": "1062: Located in the station plaza just west of the waiting room."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "MTA rail batch (4 stations), approved by Bryce 2026-07-15. Single elevator (1062), no backup, confidence 9/10. Implemented in src/catalog/mta-rail-models.ts. Ground-truth gate (rail:chains) confirms the auto-engine still conservatively excludes it and no semantic contradiction was found.",
+    "date": "2026-07-15"
+   }
   },
   {
    "key": "mbta:place-alfcl",

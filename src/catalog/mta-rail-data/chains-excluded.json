@@ -1,33 +1,7 @@
 {
-  "generatedAt": "2026-07-15T18:12:51.789Z",
+  "generatedAt": "2026-07-15T18:28:51.876Z",
   "note": "Stations the chain generator refuses to model — pending human review (TfL precedent).",
   "stations": [
-    {
-      "code": "AVL",
-      "name": "Amityville",
-      "railroad": "LIRR",
-      "reason": "unknown-landing",
-      "detail": "AVL-1061: \"Located in the station plaza just west of the waiting room.\"",
-      "units": [
-        {
-          "unitId": "1061",
-          "location": "Located in the station plaza just west of the waiting room."
-        }
-      ]
-    },
-    {
-      "code": "LHT",
-      "name": "Lindenhurst",
-      "railroad": "LIRR",
-      "reason": "unknown-landing",
-      "detail": "LHT-1062: \"Located in the station plaza just west of the waiting room.\"",
-      "units": [
-        {
-          "unitId": "1062",
-          "location": "Located in the station plaza just west of the waiting room."
-        }
-      ]
-    },
     {
       "code": "1BG",
       "name": "Botanical Garden",
@@ -63,27 +37,6 @@
         {
           "unitId": "246W",
           "location": "Elevator from the underpass to the New York-bound platform and Ticket Office (Track 3 - Tower B)."
-        }
-      ]
-    },
-    {
-      "code": "0CT",
-      "name": "Cortlandt",
-      "railroad": "MNR",
-      "reason": "unparseable-unit",
-      "detail": "0CT-045PW: \"Elevator from West Side Parking Lot\"",
-      "units": [
-        {
-          "unitId": "043P",
-          "location": "Elevator from the street level entrance to the station overpass."
-        },
-        {
-          "unitId": "043I",
-          "location": "Elevator from the overpass to the platform."
-        },
-        {
-          "unitId": "045PW",
-          "location": "Elevator from West Side Parking Lot"
         }
       ]
     },
@@ -176,27 +129,6 @@
         {
           "unitId": "TK2",
           "location": ""
-        }
-      ]
-    },
-    {
-      "code": "1PY",
-      "name": "Purdy's",
-      "railroad": "MNR",
-      "reason": "unknown-landing",
-      "detail": "1PY-158B: \"Bridge to Platform and Parking Level\"",
-      "units": [
-        {
-          "unitId": "158B",
-          "location": "Bridge to Platform and Parking Level"
-        },
-        {
-          "unitId": "158P",
-          "location": "Elevator from the street level to the overpass."
-        },
-        {
-          "unitId": "158I",
-          "location": "Elevator from the overpass to the island platform (Tracks 2 & 1)."
         }
       ]
     },

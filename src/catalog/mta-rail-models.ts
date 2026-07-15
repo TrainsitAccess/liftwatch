@@ -316,6 +316,39 @@ export const MTA_RAIL_STATION_MODELS: StationModel[] = [
     ],
   },
 
+  // Amityville — one elevator, no backup. eestatus: "1061: Located in the
+  // station plaza just west of the waiting room." Approved via
+  // /liftwatch-station-review 2026-07-15, confidence 9/10.
+  {
+    systemId: "mta-lirr",
+    stationExternalId: "AVL",
+    note: "Station plaza to platform: one elevator, no backup. If it is out of service, this station has no step-free route to trains.",
+    internalNote: "eestatus location text: '1061: Located in the station plaza just west of the waiting room.' No redundancy claimed — the station's only elevator.",
+    segments: [
+      {
+        id: "plaza-platform",
+        label: "Station plaza to platform",
+        elevators: [{ externalId: "AVL-1061", label: "Elevator 1061 — station plaza to platform" }],
+      },
+    ],
+  },
+
+  // Lindenhurst — one elevator, no backup, identical structure to Amityville.
+  // Approved via /liftwatch-station-review 2026-07-15, confidence 9/10.
+  {
+    systemId: "mta-lirr",
+    stationExternalId: "LHT",
+    note: "Station plaza to platform: one elevator, no backup. If it is out of service, this station has no step-free route to trains.",
+    internalNote: "eestatus location text: '1062: Located in the station plaza just west of the waiting room.' No redundancy claimed — the station's only elevator.",
+    segments: [
+      {
+        id: "plaza-platform",
+        label: "Station plaza to platform",
+        elevators: [{ externalId: "LHT-1062", label: "Elevator 1062 — station plaza to platform" }],
+      },
+    ],
+  },
+
   // ------------------------------------------------------------------- MNR
   {
     systemId: "mta-mnr",
@@ -554,6 +587,41 @@ export const MTA_RAIL_STATION_MODELS: StationModel[] = [
         label: "45th St cross passage to Tk 116 / Tks 34-35 platforms",
         elevators: [{ externalId: "0NY-NE-4", label: "NE-4 — 45th St cross passage to Tk 116 & Tks 34/35" }],
       },
+    ],
+  },
+
+  // Purdy's — straight 2-elevator chain, single island platform (Tracks 2 &
+  // 1), no redundancy. eestatus explicitly confirms both legs: "158P:
+  // Elevator from the street level to the overpass" and "158I: Elevator from
+  // the overpass to the island platform (Tracks 2 & 1)." The third unit,
+  // 158B ("Bridge to Platform and Parking Level"), is left unclaimed — too
+  // ambiguous to model as a backup or a separate confirmed leg. Approved via
+  // /liftwatch-station-review 2026-07-15, confidence 8/10.
+  {
+    systemId: "mta-mnr",
+    stationExternalId: "1PY",
+    note: "Street to overpass: one elevator, no backup. Overpass to platform: one elevator, no backup. If either elevator is out of service, this route is not step-free.",
+    internalNote: "eestatus location text: 158P 'street level to the overpass', 158I 'overpass to the island platform (Tracks 2 & 1)'. 158B ('Bridge to Platform and Parking Level') is not modeled — too ambiguous to claim as backup or otherwise.",
+    segments: [
+      { id: "street-overpass", label: "Street to overpass", elevators: [{ externalId: "1PY-158P", label: "Elevator 158P — street to overpass" }] },
+      { id: "overpass-platform", label: "Overpass to island platform", elevators: [{ externalId: "1PY-158I", label: "Elevator 158I — overpass to island platform (Tracks 2 & 1)" }] },
+    ],
+  },
+
+  // Cortlandt — straight 2-elevator chain, no redundancy. eestatus
+  // explicitly confirms both legs: "043P: street level entrance to the
+  // station overpass" and "043I: overpass to the platform." The parking-lot
+  // elevator 045PW stays out per the garage-elevator policy (agency/human
+  // confirmation required before any garage leg counts). Approved via
+  // /liftwatch-station-review 2026-07-15, confidence 8/10.
+  {
+    systemId: "mta-mnr",
+    stationExternalId: "0CT",
+    note: "Street to overpass: one elevator, no backup. Overpass to platform: one elevator, no backup. If either elevator is out of service, this route is not step-free.",
+    internalNote: "eestatus location text: 043P 'street level entrance to the station overpass', 043I 'overpass to the platform'. 045PW ('West Side Parking Lot') is a garage elevator, not modeled per the garage-elevator policy.",
+    segments: [
+      { id: "street-overpass", label: "Street to overpass", elevators: [{ externalId: "0CT-043P", label: "Elevator 043P — street to overpass" }] },
+      { id: "overpass-platform", label: "Overpass to platform", elevators: [{ externalId: "0CT-043I", label: "Elevator 043I — overpass to platform" }] },
     ],
   },
 ];

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-15T18:12:51.789Z",
+  "generatedAt": "2026-07-15T18:28:51.876Z",
   "stations": {
     "ATL": {
       "name": "Atlantic Terminal",
@@ -191,6 +191,28 @@
         {
           "unitId": "945",
           "location": "EL21: Between LIRR Concourse and Metro-North Tracks 102-114 at 45th Street"
+        }
+      ]
+    },
+    "AVL": {
+      "name": "Amityville",
+      "railroad": "LIRR",
+      "accessibility": "FULL",
+      "elevators": [
+        {
+          "unitId": "1061",
+          "location": "Located in the station plaza just west of the waiting room."
+        }
+      ]
+    },
+    "LHT": {
+      "name": "Lindenhurst",
+      "railroad": "LIRR",
+      "accessibility": "FULL",
+      "elevators": [
+        {
+          "unitId": "1062",
+          "location": "Located in the station plaza just west of the waiting room."
         }
       ]
     },
@@ -416,6 +438,44 @@
         {
           "unitId": "WCL",
           "location": "ADA ACCESS TO TERMINAL:  Wheelchair Lift to elevator located at Vanderbilt Avenue next to Michael Jordan's Restaurant (Hall A)."
+        }
+      ]
+    },
+    "1PY": {
+      "name": "Purdy's",
+      "railroad": "MNR",
+      "accessibility": "FULL",
+      "elevators": [
+        {
+          "unitId": "158B",
+          "location": "Bridge to Platform and Parking Level"
+        },
+        {
+          "unitId": "158P",
+          "location": "Elevator from the street level to the overpass."
+        },
+        {
+          "unitId": "158I",
+          "location": "Elevator from the overpass to the island platform (Tracks 2 & 1)."
+        }
+      ]
+    },
+    "0CT": {
+      "name": "Cortlandt",
+      "railroad": "MNR",
+      "accessibility": "FULL",
+      "elevators": [
+        {
+          "unitId": "043P",
+          "location": "Elevator from the street level entrance to the station overpass."
+        },
+        {
+          "unitId": "043I",
+          "location": "Elevator from the overpass to the platform."
+        },
+        {
+          "unitId": "045PW",
+          "location": "Elevator from West Side Parking Lot"
         }
       ]
     },

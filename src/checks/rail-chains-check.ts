@@ -60,8 +60,13 @@ for (const m of MTA_RAIL_STATION_MODELS) {
 // plus Greenwich (2GN) — its 218T "Ticket Office" landing is unplaceable from
 // text, and the human-verified truth (overpass at grade, Track 3 ramp off
 // Greenwich Plaza, 218T outside the chains) is knowledge no text parse could
-// derive. Hand-curated 2026-07-10.
-const EXPECT_EXCLUDED = new Set(["GCT", "0NY", "2SM", "0YS", "2GN"]);
+// derive. Hand-curated 2026-07-10. Amityville/Lindenhurst (AVL/LHT,
+// unknown-landing — "station plaza" isn't a recognized landing keyword),
+// Purdy's (1PY, unknown-landing — the ambiguous 158B unit), and Cortlandt
+// (0CT, unparseable-unit — the 045PW parking-lot unit) added 2026-07-15 via
+// /liftwatch-station-review: the engine's own parser still can't place these,
+// same conservative-exclusion shape as the original five.
+const EXPECT_EXCLUDED = new Set(["GCT", "0NY", "2SM", "0YS", "2GN", "AVL", "LHT", "1PY", "0CT"]);
 for (const [code, curated] of curatedByCode) {
   const st = fixture[code];
   check(`fixture has curated station ${code}`, !!st);
