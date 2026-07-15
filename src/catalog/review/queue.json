@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-15T08:25:17.434Z",
+ "updatedAt": "2026-07-15T17:52:37.568Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -1220,7 +1220,7 @@
    "system": "wmata-dc",
    "stationId": "A03",
    "name": "Dupont Circle",
-   "status": "pending",
+   "status": "modeled",
    "priority": 30,
    "reason": "side-platforms",
    "evidence": [
@@ -1240,14 +1240,19 @@
      "source": "GTFS roster",
      "text": "WMATA-A03_N_ELE3: Mezzanine ↔ Platform"
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 3 (21 WMATA stations), approved by Bryce as a group 2026-07-15. Four structural groups: Group 1 (2 stations) direct street<->platform per direction, no mezzanine; Group 2 (4 stations) street/mezzanine combined + per-direction platform leg; Group 3 (8 stations) shared street<->mezzanine prerequisite + 2 per-direction mezzanine<->platform legs; Group 4 (7 stations) straight 2-elevator chain, single path (non-standard-levels was just unusual level naming). No redundancy claimed anywhere. Several elevators upgraded from synthetic GTFS slot ids to real observed UnitNames (checked against wmata-data/observed-units.json) during this pass. Confidence 8/10 (Groups 2-4) / 7/10 (Group 1). Implemented in src/catalog/wmata-models.ts.",
+    "date": "2026-07-15"
+   }
   },
   {
    "key": "wmata:B02",
    "system": "wmata-dc",
    "stationId": "B02",
    "name": "Judiciary Sq",
-   "status": "pending",
+   "status": "modeled",
    "priority": 30,
    "reason": "side-platforms",
    "evidence": [
@@ -1267,14 +1272,19 @@
      "source": "live feed (observed)",
      "text": "B02N01: \"Elevator between street and platform to Shady Grove\""
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 3 (21 WMATA stations), approved by Bryce as a group 2026-07-15. Four structural groups: Group 1 (2 stations) direct street<->platform per direction, no mezzanine; Group 2 (4 stations) street/mezzanine combined + per-direction platform leg; Group 3 (8 stations) shared street<->mezzanine prerequisite + 2 per-direction mezzanine<->platform legs; Group 4 (7 stations) straight 2-elevator chain, single path (non-standard-levels was just unusual level naming). No redundancy claimed anywhere. Several elevators upgraded from synthetic GTFS slot ids to real observed UnitNames (checked against wmata-data/observed-units.json) during this pass. Confidence 8/10 (Groups 2-4) / 7/10 (Group 1). Implemented in src/catalog/wmata-models.ts.",
+    "date": "2026-07-15"
+   }
   },
   {
    "key": "wmata:C02",
    "system": "wmata-dc",
    "stationId": "C02",
    "name": "McPherson Sq",
-   "status": "pending",
+   "status": "modeled",
    "priority": 30,
    "reason": "side-platforms",
    "evidence": [
@@ -1294,14 +1304,19 @@
      "source": "GTFS roster",
      "text": "WMATA-C02_E_MZ_ELE: Street ↔ Mezzanine"
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 3 (21 WMATA stations), approved by Bryce as a group 2026-07-15. Four structural groups: Group 1 (2 stations) direct street<->platform per direction, no mezzanine; Group 2 (4 stations) street/mezzanine combined + per-direction platform leg; Group 3 (8 stations) shared street<->mezzanine prerequisite + 2 per-direction mezzanine<->platform legs; Group 4 (7 stations) straight 2-elevator chain, single path (non-standard-levels was just unusual level naming). No redundancy claimed anywhere. Several elevators upgraded from synthetic GTFS slot ids to real observed UnitNames (checked against wmata-data/observed-units.json) during this pass. Confidence 8/10 (Groups 2-4) / 7/10 (Group 1). Implemented in src/catalog/wmata-models.ts.",
+    "date": "2026-07-15"
+   }
   },
   {
    "key": "wmata:C03",
    "system": "wmata-dc",
    "stationId": "C03",
    "name": "Farragut West",
-   "status": "pending",
+   "status": "modeled",
    "priority": 30,
    "reason": "side-platforms",
    "evidence": [
@@ -1321,14 +1336,19 @@
      "source": "GTFS roster",
      "text": "WMATA-C03_W_MZ_ELE: Street ↔ Mezzanine"
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 3 (21 WMATA stations), approved by Bryce as a group 2026-07-15. Four structural groups: Group 1 (2 stations) direct street<->platform per direction, no mezzanine; Group 2 (4 stations) street/mezzanine combined + per-direction platform leg; Group 3 (8 stations) shared street<->mezzanine prerequisite + 2 per-direction mezzanine<->platform legs; Group 4 (7 stations) straight 2-elevator chain, single path (non-standard-levels was just unusual level naming). No redundancy claimed anywhere. Several elevators upgraded from synthetic GTFS slot ids to real observed UnitNames (checked against wmata-data/observed-units.json) during this pass. Confidence 8/10 (Groups 2-4) / 7/10 (Group 1). Implemented in src/catalog/wmata-models.ts.",
+    "date": "2026-07-15"
+   }
   },
   {
    "key": "wmata:C06",
    "system": "wmata-dc",
    "stationId": "C06",
    "name": "Arlington Cemetery",
-   "status": "pending",
+   "status": "modeled",
    "priority": 30,
    "reason": "side-platforms",
    "evidence": [
@@ -1344,14 +1364,19 @@
      "source": "GTFS roster",
      "text": "WMATA-C06_W_ELE: Street ↔ Platform"
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 3 (21 WMATA stations), approved by Bryce as a group 2026-07-15. Four structural groups: Group 1 (2 stations) direct street<->platform per direction, no mezzanine; Group 2 (4 stations) street/mezzanine combined + per-direction platform leg; Group 3 (8 stations) shared street<->mezzanine prerequisite + 2 per-direction mezzanine<->platform legs; Group 4 (7 stations) straight 2-elevator chain, single path (non-standard-levels was just unusual level naming). No redundancy claimed anywhere. Several elevators upgraded from synthetic GTFS slot ids to real observed UnitNames (checked against wmata-data/observed-units.json) during this pass. Confidence 8/10 (Groups 2-4) / 7/10 (Group 1). Implemented in src/catalog/wmata-models.ts.",
+    "date": "2026-07-15"
+   }
   },
   {
    "key": "wmata:C08",
    "system": "wmata-dc",
    "stationId": "C08",
    "name": "Pentagon City",
-   "status": "pending",
+   "status": "modeled",
    "priority": 30,
    "reason": "side-platforms",
    "evidence": [
@@ -1375,14 +1400,19 @@
      "source": "live feed (observed)",
      "text": "C08X01: \"Elevator between street and mezzanine on west side of Hayes street, at The Fashion Center\""
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 3 (21 WMATA stations), approved by Bryce as a group 2026-07-15. Four structural groups: Group 1 (2 stations) direct street<->platform per direction, no mezzanine; Group 2 (4 stations) street/mezzanine combined + per-direction platform leg; Group 3 (8 stations) shared street<->mezzanine prerequisite + 2 per-direction mezzanine<->platform legs; Group 4 (7 stations) straight 2-elevator chain, single path (non-standard-levels was just unusual level naming). No redundancy claimed anywhere. Several elevators upgraded from synthetic GTFS slot ids to real observed UnitNames (checked against wmata-data/observed-units.json) during this pass. Confidence 8/10 (Groups 2-4) / 7/10 (Group 1). Implemented in src/catalog/wmata-models.ts.",
+    "date": "2026-07-15"
+   }
   },
   {
    "key": "wmata:C09",
    "system": "wmata-dc",
    "stationId": "C09",
    "name": "Crystal City",
-   "status": "pending",
+   "status": "modeled",
    "priority": 30,
    "reason": "side-platforms",
    "evidence": [
@@ -1402,14 +1432,19 @@
      "source": "GTFS roster",
      "text": "WMATA-C09_ELE3: Mezzanine ↔ Platform"
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 3 (21 WMATA stations), approved by Bryce as a group 2026-07-15. Four structural groups: Group 1 (2 stations) direct street<->platform per direction, no mezzanine; Group 2 (4 stations) street/mezzanine combined + per-direction platform leg; Group 3 (8 stations) shared street<->mezzanine prerequisite + 2 per-direction mezzanine<->platform legs; Group 4 (7 stations) straight 2-elevator chain, single path (non-standard-levels was just unusual level naming). No redundancy claimed anywhere. Several elevators upgraded from synthetic GTFS slot ids to real observed UnitNames (checked against wmata-data/observed-units.json) during this pass. Confidence 8/10 (Groups 2-4) / 7/10 (Group 1). Implemented in src/catalog/wmata-models.ts.",
+    "date": "2026-07-15"
+   }
   },
   {
    "key": "wmata:C10",
    "system": "wmata-dc",
    "stationId": "C10",
    "name": "Ronald Reagan Washington National Airport",
-   "status": "pending",
+   "status": "modeled",
    "priority": 30,
    "reason": "side-platforms",
    "evidence": [
@@ -1433,7 +1468,12 @@
      "source": "live feed (observed)",
      "text": "C10S02: \"Elevator between mezzanine and platform to Mt.Vernon Sq/Largo Town Center\""
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 3 (21 WMATA stations), approved by Bryce as a group 2026-07-15. Four structural groups: Group 1 (2 stations) direct street<->platform per direction, no mezzanine; Group 2 (4 stations) street/mezzanine combined + per-direction platform leg; Group 3 (8 stations) shared street<->mezzanine prerequisite + 2 per-direction mezzanine<->platform legs; Group 4 (7 stations) straight 2-elevator chain, single path (non-standard-levels was just unusual level naming). No redundancy claimed anywhere. Several elevators upgraded from synthetic GTFS slot ids to real observed UnitNames (checked against wmata-data/observed-units.json) during this pass. Confidence 8/10 (Groups 2-4) / 7/10 (Group 1). Implemented in src/catalog/wmata-models.ts.",
+    "date": "2026-07-15"
+   }
   },
   {
    "key": "wmata:C11",
@@ -1475,7 +1515,7 @@
    "system": "wmata-dc",
    "stationId": "C14",
    "name": "Eisenhower Av",
-   "status": "pending",
+   "status": "modeled",
    "priority": 30,
    "reason": "side-platforms",
    "evidence": [
@@ -1495,14 +1535,19 @@
      "source": "live feed (observed)",
      "text": "C14X02: \"Elevator between mezzanine and platform to Huntington\""
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 3 (21 WMATA stations), approved by Bryce as a group 2026-07-15. Four structural groups: Group 1 (2 stations) direct street<->platform per direction, no mezzanine; Group 2 (4 stations) street/mezzanine combined + per-direction platform leg; Group 3 (8 stations) shared street<->mezzanine prerequisite + 2 per-direction mezzanine<->platform legs; Group 4 (7 stations) straight 2-elevator chain, single path (non-standard-levels was just unusual level naming). No redundancy claimed anywhere. Several elevators upgraded from synthetic GTFS slot ids to real observed UnitNames (checked against wmata-data/observed-units.json) during this pass. Confidence 8/10 (Groups 2-4) / 7/10 (Group 1). Implemented in src/catalog/wmata-models.ts.",
+    "date": "2026-07-15"
+   }
   },
   {
    "key": "wmata:D11",
    "system": "wmata-dc",
    "stationId": "D11",
    "name": "Cheverly",
-   "status": "pending",
+   "status": "modeled",
    "priority": 30,
    "reason": "side-platforms",
    "evidence": [
@@ -1530,14 +1575,19 @@
      "source": "live feed (observed)",
      "text": "D11X03: \"Elevator between mezzanine and platform Vienna\""
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 3 (21 WMATA stations), approved by Bryce as a group 2026-07-15. Four structural groups: Group 1 (2 stations) direct street<->platform per direction, no mezzanine; Group 2 (4 stations) street/mezzanine combined + per-direction platform leg; Group 3 (8 stations) shared street<->mezzanine prerequisite + 2 per-direction mezzanine<->platform legs; Group 4 (7 stations) straight 2-elevator chain, single path (non-standard-levels was just unusual level naming). No redundancy claimed anywhere. Several elevators upgraded from synthetic GTFS slot ids to real observed UnitNames (checked against wmata-data/observed-units.json) during this pass. Confidence 8/10 (Groups 2-4) / 7/10 (Group 1). Implemented in src/catalog/wmata-models.ts.",
+    "date": "2026-07-15"
+   }
   },
   {
    "key": "wmata:E07",
    "system": "wmata-dc",
    "stationId": "E07",
    "name": "West Hyattsville",
-   "status": "pending",
+   "status": "modeled",
    "priority": 30,
    "reason": "side-platforms",
    "evidence": [
@@ -1557,14 +1607,19 @@
      "source": "live feed (observed)",
      "text": "E07X02: \"Elevator between mezzanine and platform to Branch Ave\""
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 3 (21 WMATA stations), approved by Bryce as a group 2026-07-15. Four structural groups: Group 1 (2 stations) direct street<->platform per direction, no mezzanine; Group 2 (4 stations) street/mezzanine combined + per-direction platform leg; Group 3 (8 stations) shared street<->mezzanine prerequisite + 2 per-direction mezzanine<->platform legs; Group 4 (7 stations) straight 2-elevator chain, single path (non-standard-levels was just unusual level naming). No redundancy claimed anywhere. Several elevators upgraded from synthetic GTFS slot ids to real observed UnitNames (checked against wmata-data/observed-units.json) during this pass. Confidence 8/10 (Groups 2-4) / 7/10 (Group 1). Implemented in src/catalog/wmata-models.ts.",
+    "date": "2026-07-15"
+   }
   },
   {
    "key": "wmata:E08",
    "system": "wmata-dc",
    "stationId": "E08",
    "name": "Hyattsville Crossing",
-   "status": "pending",
+   "status": "modeled",
    "priority": 30,
    "reason": "side-platforms",
    "evidence": [
@@ -1580,14 +1635,19 @@
      "source": "GTFS roster",
      "text": "WMATA-E08_MZ_S_ELV: Street/Mezzanine ↔ Platform"
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 3 (21 WMATA stations), approved by Bryce as a group 2026-07-15. Four structural groups: Group 1 (2 stations) direct street<->platform per direction, no mezzanine; Group 2 (4 stations) street/mezzanine combined + per-direction platform leg; Group 3 (8 stations) shared street<->mezzanine prerequisite + 2 per-direction mezzanine<->platform legs; Group 4 (7 stations) straight 2-elevator chain, single path (non-standard-levels was just unusual level naming). No redundancy claimed anywhere. Several elevators upgraded from synthetic GTFS slot ids to real observed UnitNames (checked against wmata-data/observed-units.json) during this pass. Confidence 8/10 (Groups 2-4) / 7/10 (Group 1). Implemented in src/catalog/wmata-models.ts.",
+    "date": "2026-07-15"
+   }
   },
   {
    "key": "wmata:K02",
    "system": "wmata-dc",
    "stationId": "K02",
    "name": "Clarendon",
-   "status": "pending",
+   "status": "modeled",
    "priority": 30,
    "reason": "side-platforms",
    "evidence": [
@@ -1607,14 +1667,19 @@
      "source": "GTFS roster",
      "text": "WMATA-K02_ELE3: Mezzanine ↔ Platform"
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 3 (21 WMATA stations), approved by Bryce as a group 2026-07-15. Four structural groups: Group 1 (2 stations) direct street<->platform per direction, no mezzanine; Group 2 (4 stations) street/mezzanine combined + per-direction platform leg; Group 3 (8 stations) shared street<->mezzanine prerequisite + 2 per-direction mezzanine<->platform legs; Group 4 (7 stations) straight 2-elevator chain, single path (non-standard-levels was just unusual level naming). No redundancy claimed anywhere. Several elevators upgraded from synthetic GTFS slot ids to real observed UnitNames (checked against wmata-data/observed-units.json) during this pass. Confidence 8/10 (Groups 2-4) / 7/10 (Group 1). Implemented in src/catalog/wmata-models.ts.",
+    "date": "2026-07-15"
+   }
   },
   {
    "key": "wmata:K03",
    "system": "wmata-dc",
    "stationId": "K03",
    "name": "Virginia Sq-GMU",
-   "status": "pending",
+   "status": "modeled",
    "priority": 30,
    "reason": "side-platforms",
    "evidence": [
@@ -1634,7 +1699,12 @@
      "source": "GTFS roster",
      "text": "WMATA-K03_ELE3: Mezzanine ↔ Platform"
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 3 (21 WMATA stations), approved by Bryce as a group 2026-07-15. Four structural groups: Group 1 (2 stations) direct street<->platform per direction, no mezzanine; Group 2 (4 stations) street/mezzanine combined + per-direction platform leg; Group 3 (8 stations) shared street<->mezzanine prerequisite + 2 per-direction mezzanine<->platform legs; Group 4 (7 stations) straight 2-elevator chain, single path (non-standard-levels was just unusual level naming). No redundancy claimed anywhere. Several elevators upgraded from synthetic GTFS slot ids to real observed UnitNames (checked against wmata-data/observed-units.json) during this pass. Confidence 8/10 (Groups 2-4) / 7/10 (Group 1). Implemented in src/catalog/wmata-models.ts.",
+    "date": "2026-07-15"
+   }
   },
   {
    "key": "wmata:K06",
@@ -3410,7 +3480,7 @@
    "system": "wmata-dc",
    "stationId": "A04",
    "name": "Woodley Park",
-   "status": "pending",
+   "status": "modeled",
    "priority": 40,
    "reason": "non-standard-levels",
    "evidence": [
@@ -3426,14 +3496,19 @@
      "source": "GTFS roster",
      "text": "WMATA-A04_N_ELE: Street ↔ Mezzanine/Intermediate Passageway"
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 3 (21 WMATA stations), approved by Bryce as a group 2026-07-15. Four structural groups: Group 1 (2 stations) direct street<->platform per direction, no mezzanine; Group 2 (4 stations) street/mezzanine combined + per-direction platform leg; Group 3 (8 stations) shared street<->mezzanine prerequisite + 2 per-direction mezzanine<->platform legs; Group 4 (7 stations) straight 2-elevator chain, single path (non-standard-levels was just unusual level naming). No redundancy claimed anywhere. Several elevators upgraded from synthetic GTFS slot ids to real observed UnitNames (checked against wmata-data/observed-units.json) during this pass. Confidence 8/10 (Groups 2-4) / 7/10 (Group 1). Implemented in src/catalog/wmata-models.ts.",
+    "date": "2026-07-15"
+   }
   },
   {
    "key": "wmata:A05",
    "system": "wmata-dc",
    "stationId": "A05",
    "name": "Cleveland Park",
-   "status": "pending",
+   "status": "modeled",
    "priority": 40,
    "reason": "non-standard-levels",
    "evidence": [
@@ -3449,14 +3524,19 @@
      "source": "GTFS roster",
      "text": "WMATA-A05_ELE2: Mezzanine/Intermediate Passageway ↔ Platform"
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 3 (21 WMATA stations), approved by Bryce as a group 2026-07-15. Four structural groups: Group 1 (2 stations) direct street<->platform per direction, no mezzanine; Group 2 (4 stations) street/mezzanine combined + per-direction platform leg; Group 3 (8 stations) shared street<->mezzanine prerequisite + 2 per-direction mezzanine<->platform legs; Group 4 (7 stations) straight 2-elevator chain, single path (non-standard-levels was just unusual level naming). No redundancy claimed anywhere. Several elevators upgraded from synthetic GTFS slot ids to real observed UnitNames (checked against wmata-data/observed-units.json) during this pass. Confidence 8/10 (Groups 2-4) / 7/10 (Group 1). Implemented in src/catalog/wmata-models.ts.",
+    "date": "2026-07-15"
+   }
   },
   {
    "key": "wmata:A06",
    "system": "wmata-dc",
    "stationId": "A06",
    "name": "Van Ness-UDC",
-   "status": "pending",
+   "status": "modeled",
    "priority": 40,
    "reason": "non-standard-levels",
    "evidence": [
@@ -3472,7 +3552,12 @@
      "source": "GTFS roster",
      "text": "WMATA-A06_ELE2: Mezzanine/Intermediate Passageway ↔ Platform"
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 3 (21 WMATA stations), approved by Bryce as a group 2026-07-15. Four structural groups: Group 1 (2 stations) direct street<->platform per direction, no mezzanine; Group 2 (4 stations) street/mezzanine combined + per-direction platform leg; Group 3 (8 stations) shared street<->mezzanine prerequisite + 2 per-direction mezzanine<->platform legs; Group 4 (7 stations) straight 2-elevator chain, single path (non-standard-levels was just unusual level naming). No redundancy claimed anywhere. Several elevators upgraded from synthetic GTFS slot ids to real observed UnitNames (checked against wmata-data/observed-units.json) during this pass. Confidence 8/10 (Groups 2-4) / 7/10 (Group 1). Implemented in src/catalog/wmata-models.ts.",
+    "date": "2026-07-15"
+   }
   },
   {
    "key": "wmata:B01_F01",
@@ -3654,7 +3739,7 @@
    "system": "wmata-dc",
    "stationId": "D13",
    "name": "New Carrollton",
-   "status": "pending",
+   "status": "modeled",
    "priority": 40,
    "reason": "non-standard-levels",
    "evidence": [
@@ -3674,7 +3759,12 @@
      "source": "live feed (observed)",
      "text": "D13X05: \"Garage elevator\""
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 3 (21 WMATA stations), approved by Bryce as a group 2026-07-15. Four structural groups: Group 1 (2 stations) direct street<->platform per direction, no mezzanine; Group 2 (4 stations) street/mezzanine combined + per-direction platform leg; Group 3 (8 stations) shared street<->mezzanine prerequisite + 2 per-direction mezzanine<->platform legs; Group 4 (7 stations) straight 2-elevator chain, single path (non-standard-levels was just unusual level naming). No redundancy claimed anywhere. Several elevators upgraded from synthetic GTFS slot ids to real observed UnitNames (checked against wmata-data/observed-units.json) during this pass. Confidence 8/10 (Groups 2-4) / 7/10 (Group 1). Implemented in src/catalog/wmata-models.ts.",
+    "date": "2026-07-15"
+   }
   },
   {
    "key": "wmata:E03",
@@ -3743,7 +3833,7 @@
    "system": "wmata-dc",
    "stationId": "F08",
    "name": "Southern Av",
-   "status": "pending",
+   "status": "modeled",
    "priority": 40,
    "reason": "non-standard-levels",
    "evidence": [
@@ -3759,14 +3849,19 @@
      "source": "GTFS roster",
      "text": "WMATA-F08_MZ_ELE2: Street/Mezzanine ↔ Platform"
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 3 (21 WMATA stations), approved by Bryce as a group 2026-07-15. Four structural groups: Group 1 (2 stations) direct street<->platform per direction, no mezzanine; Group 2 (4 stations) street/mezzanine combined + per-direction platform leg; Group 3 (8 stations) shared street<->mezzanine prerequisite + 2 per-direction mezzanine<->platform legs; Group 4 (7 stations) straight 2-elevator chain, single path (non-standard-levels was just unusual level naming). No redundancy claimed anywhere. Several elevators upgraded from synthetic GTFS slot ids to real observed UnitNames (checked against wmata-data/observed-units.json) during this pass. Confidence 8/10 (Groups 2-4) / 7/10 (Group 1). Implemented in src/catalog/wmata-models.ts.",
+    "date": "2026-07-15"
+   }
   },
   {
    "key": "wmata:F10",
    "system": "wmata-dc",
    "stationId": "F10",
    "name": "Suitland",
-   "status": "pending",
+   "status": "modeled",
    "priority": 40,
    "reason": "non-standard-levels",
    "evidence": [
@@ -3782,14 +3877,19 @@
      "source": "GTFS roster",
      "text": "WMATA-F10_MZ_ELE2: Street/Mezzanine ↔ Platform"
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 3 (21 WMATA stations), approved by Bryce as a group 2026-07-15. Four structural groups: Group 1 (2 stations) direct street<->platform per direction, no mezzanine; Group 2 (4 stations) street/mezzanine combined + per-direction platform leg; Group 3 (8 stations) shared street<->mezzanine prerequisite + 2 per-direction mezzanine<->platform legs; Group 4 (7 stations) straight 2-elevator chain, single path (non-standard-levels was just unusual level naming). No redundancy claimed anywhere. Several elevators upgraded from synthetic GTFS slot ids to real observed UnitNames (checked against wmata-data/observed-units.json) during this pass. Confidence 8/10 (Groups 2-4) / 7/10 (Group 1). Implemented in src/catalog/wmata-models.ts.",
+    "date": "2026-07-15"
+   }
   },
   {
    "key": "wmata:J03",
    "system": "wmata-dc",
    "stationId": "J03",
    "name": "Franconia-Springfield",
-   "status": "pending",
+   "status": "modeled",
    "priority": 40,
    "reason": "non-standard-levels",
    "evidence": [
@@ -3809,7 +3909,12 @@
      "source": "live feed (observed)",
      "text": "J03X02: \"Elevator between mezzanine and platform\""
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 3 (21 WMATA stations), approved by Bryce as a group 2026-07-15. Four structural groups: Group 1 (2 stations) direct street<->platform per direction, no mezzanine; Group 2 (4 stations) street/mezzanine combined + per-direction platform leg; Group 3 (8 stations) shared street<->mezzanine prerequisite + 2 per-direction mezzanine<->platform legs; Group 4 (7 stations) straight 2-elevator chain, single path (non-standard-levels was just unusual level naming). No redundancy claimed anywhere. Several elevators upgraded from synthetic GTFS slot ids to real observed UnitNames (checked against wmata-data/observed-units.json) during this pass. Confidence 8/10 (Groups 2-4) / 7/10 (Group 1). Implemented in src/catalog/wmata-models.ts.",
+    "date": "2026-07-15"
+   }
   },
   {
    "key": "wmata:E10",
