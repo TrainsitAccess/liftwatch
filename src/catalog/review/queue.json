@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-16T22:56:41.362Z",
+ "updatedAt": "2026-07-16T23:01:50.118Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -615,7 +615,7 @@
    "system": "wmata-dc",
    "stationId": "E01",
    "name": "Mt Vernon Sq",
-   "status": "deferred",
+   "status": "modeled",
    "priority": 20,
    "reason": "observed-undercount",
    "evidence": [
@@ -653,8 +653,8 @@
     }
    ],
    "resolution": {
-    "verdict": "deferred",
-    "notes": "Mezzanine<->platform leg (E01X04/E01X05) looks like a confirmed redundant pair, but the station has a genuine 3rd street<->mezzanine elevator Bryce just surfaced -- unclear yet whether all 3 street-level elevators reach the same mezzanine (redundant) or separate ones (would need per-entrance chains). Deferred pending Bryce's own investigation into the street-level layout.",
+    "verdict": "approved-as-proposed",
+    "notes": "Modeled as a 2-segment AND-of-ORs chain: street<->mezzanine (3-way OR -- SW-corner pair E01X01/E01X02 plus a separate NW-corner single elevator inside the Convention Center, synthetic id, all reaching the same paid-area mezzanine) AND mezzanine<->platform (2-way OR -- E01X04/E01X05, center-platform + far south side). Confirmed directly by Bryce with exact physical locations, 2026-07-16 (confidence 9/10). src/catalog/wmata-models.ts.",
     "date": "2026-07-16"
    }
   },

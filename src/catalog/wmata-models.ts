@@ -741,4 +741,52 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       },
     ],
   },
+  // Mt Vernon Sq (E01, Green/Yellow Lines) — excluded by the observed-units
+  // gate as an "observed-undercount": 2 distinct live units (E01X04, E01X05)
+  // on mezzanine<->platform vs GTFS's single edge; live feed also shows
+  // E01X01/E01X02 on street<->mezzanine, both segments identically worded
+  // per unit (the same shape already confirmed redundant at Rockville and
+  // on BART). WMATA's own quarterly Capital Improvement Program report
+  // independently corroborates E01X04 as real (cip-elevator-mentions.md) —
+  // a 3rd source alongside GTFS + live observation. Bryce walked the full
+  // layout with Claude 2026-07-16 and gave exact physical locations for
+  // every elevator (standing rule going forward: always record a given
+  // location, not just direction/id):
+  //   - Street<->mezzanine: TWO redundant elevators together at the
+  //     southwest corner of 7th & M St NW (E01X01, E01X02) PLUS a separate,
+  //     SINGLE elevator at the northwest corner of 7th & M St NW, inside the
+  //     Convention Center building — never yet observed live, synthetic id.
+  //     All three reach the same paid-area mezzanine, so any one keeps this
+  //     leg step-free (three-way OR, not per-entrance chains).
+  //   - Mezzanine<->platform: TWO elevators, one at the center of the
+  //     platform and one on the platform's far south side (E01X04, E01X05;
+  //     which id maps to which exact position is not yet confirmed).
+  // Approved by Bryce via /liftwatch-station-review 2026-07-16 (confidence
+  // 9/10 — both legs confirmed directly by Bryce, including physical
+  // locations, not just inferred from wording).
+  {
+    systemId: SYSTEM,
+    stationExternalId: "E01",
+    note: "Street to mezzanine: 3 elevators (two together at the southwest corner of 7th & M St NW, one at the northwest corner inside the Convention Center) — any one keeps this leg step-free. Mezzanine to platform: 2 elevators (one center-platform, one on the platform's far south side) — either one keeps this leg step-free. The station stays step-free as long as at least one elevator on each leg is working.",
+    internalNote: "GTFS models only 1 mezzanine<->platform edge + 2 street<->mezzanine edges, but the live feed observed 4 real distinct units (E01X01/E01X02 street<->mezz, E01X04/E01X05 mezz<->platform), each pair identically worded -- the same redundant shape as Rockville/BART. WMATA's own FY26 Capital Improvement Program report independently corroborates E01X04 as real (3rd source). Bryce confirmed full layout + exact locations 2026-07-16: street<->mezz is a 2-elevator group at the SW corner of 7th & M St NW plus a separate single elevator at the NW corner inside the Convention Center (never yet observed, synthetic id) -- all three reach the same mezzanine so modeled as one 3-way OR, not per-entrance chains. Mezz<->platform is E01X04 (center of platform) and E01X05 (far south side) -- exact id-to-position mapping not yet confirmed, but the pair itself is. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 9/10).",
+    segments: [
+      {
+        id: "street-mezzanine",
+        label: "Street to mezzanine",
+        elevators: [
+          { externalId: "E01X01", label: "Mt Vernon Sq elevator (street to mezzanine) — southwest corner of 7th & M St NW" },
+          { externalId: "E01X02", label: "Mt Vernon Sq elevator (street to mezzanine) — southwest corner of 7th & M St NW" },
+          { externalId: "WMATA-E01_NW_ELE", label: "Mt Vernon Sq elevator (street to mezzanine) — northwest corner of 7th & M St NW, inside the Convention Center — never yet observed live, synthetic id" },
+        ],
+      },
+      {
+        id: "mezzanine-platform",
+        label: "Mezzanine to platform",
+        elevators: [
+          { externalId: "E01X04", label: "Mt Vernon Sq elevator (mezzanine to platform) — center of platform or far south side (exact position unconfirmed)" },
+          { externalId: "E01X05", label: "Mt Vernon Sq elevator (mezzanine to platform) — center of platform or far south side (exact position unconfirmed)" },
+        ],
+      },
+    ],
+  },
 ];
