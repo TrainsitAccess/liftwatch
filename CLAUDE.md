@@ -401,6 +401,33 @@ parking lot). A station is accessible only if **every** segment is up.
   NTFY_TOPIC repo secret is set — `gh secret set NTFY_TOPIC`, never hardcode
   it, the repo is public) sends a high-priority "needs review" push. Manual
   per-system loops still work anytime.
+- **WMATA Capital Improvement Program report — a second ground-truth source
+  (2026-07-16, `src/catalog/wmata-data/cip-elevator-mentions.md`)**. WMATA's
+  own quarterly CIP progress report (241-page budget/contract PDF, NOT a
+  designed inventory) incidentally names real elevator equipment ids
+  (`UnitName` format, e.g. `A14X01`) in its narrative project updates —
+  found in the same BART/WMATA/MBTA-equivalent research pass as the BART
+  guide above. **One promotion shipped**: West Hyattsville's opposite-
+  direction elevator (previously synthetic `WMATA-E07_MZ_ELV_W`) —
+  `E07X01`, confirmed real by the report, following the same station-code +
+  X01/X02 pairing convention already confirmed at Rockville. **Two
+  ambiguous non-promotions** (McPherson Sq `C02E01`, New Carrollton
+  `D13X02`): both stations have multiple curated synthetic slots, and the
+  report names only one id per station with no disambiguating detail —
+  left unpromoted rather than guessing which slot; will resolve naturally
+  on first live observation. **One redundancy candidate strengthened, not
+  resolved**: Mount Vernon Sq (`E01`, already excluded/queued for
+  `observed-undercount` — our own live feed already found 4 real units
+  forming two identically-worded pairs, the same shape as confirmed-
+  redundant Rockville/19th-St-BART/Warm-Springs-BART) — this report
+  independently corroborates `E01X04` as a 3rd source, added as new
+  evidence to the `wmata:E01` review-queue entry, but NOT modeled — WMATA's
+  own text never uses BART's explicit "use the other elevator" backup
+  language, so this redundancy claim needs the `/liftwatch-station-review`
+  ritual, not a unilateral fix. Extraction technique (reusable for any
+  agency capital/budget PDF): `curl -A "<browser UA>"` to download + Node
+  `pdf-parse` for the text layer, then regex for the `[A-Z]\d{2}[EX]\d{2}`
+  unit-id pattern near a station name.
 - **CTA's FIRST curated tier (2026-07-15/16, `src/catalog/cta-models.ts`)**:
   CTA has no per-elevator inventory or topology feed at all (structural — see
   the identity-parsing note above), so before this pass every station sat at
@@ -599,6 +626,28 @@ parking lot). A station is accessible only if **every** segment is up.
   platform elevator there; the Caltrain NB elevator is its named backup, so the
   redundant station stays accessible). Mirrors the confirmed Milpitas pattern;
   locked in `demo:access`.
+- **BART elevator dimensions guide — ground truth, fact-checked (2026-07-16,
+  `src/catalog/bart-data/elevator-dimensions-guide.md`).** BART's own "Bikes
+  on BART" elevator dimensions guide (2022) is a genuine per-elevator
+  inventory with landing descriptions for every station — found while
+  searching for a BART/WMATA/MBTA equivalent to CTA's ASAP plan and MTA's
+  data.ny.gov inventory. **6 stations individually verified against BART's
+  live `bart.gov/stations/<code>/accessible` pages** (JS-rendered — use the
+  in-app Browser pane, not WebFetch/curl) where the guide appeared to
+  disagree with our curated model: Colma (duplicate PDF row, not a 2nd
+  elevator), Richmond (the guide's 4th row is a separate Amtrak-only
+  connector outside BART's scope), 19th St. and Milpitas (the guide
+  collapses same-dimension elevator pairs into one row), Millbrae (the
+  guide's extra "Platform 1-2" row doesn't exist in BART's CURRENT text —
+  likely stale, predating a platform reconfiguration), Warm Springs
+  (word-for-word match). **Every discrepancy resolved in our favor — no
+  model changes needed.** Enrichment pass (comparing every curated label
+  against the guide's landing descriptions) found minimal opportunity: our
+  labels, sourced from BART's own richer per-station outage-options text,
+  are already more specific than this guide's terse table phrasing. Its
+  real value was fact-checking, not new-bug detection (contrast CTA's ASAP
+  plan / Morgan, or MTA's data.ny.gov) — and it incidentally corroborates
+  all 16 single-elevator "Station elevator" BART stations by row count.
 - **MTA enrichment from data.ny.gov, four pieces (2026-07-16).** Bryce found
   `data.ny.gov/resource/94fv-bak7.json` ("MTA Elevators and Escalators") — an
   official per-equipment inventory RICHER than the live `nyct_ene` feed our

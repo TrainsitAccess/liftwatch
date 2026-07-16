@@ -36,14 +36,20 @@ Standing rules, all locked in CLAUDE.md — don't re-litigate:
   needs one-at-a-time scrutiny.
 - State a numeric confidence (0-10) on every proposal, up front, every time.
 - Before finalizing ANY station, check whether the agency's own feed/API/
-  official documents (elevator-count tables, settlement reports, etc.)
-  already answer the open question — don't assume only live-feed text and
-  chicago-L.org are available. This session found CTA's own ASAP Strategic
-  Plan (per-station elevator COUNTS) and, via a lead Bryce found, an old
-  ADA settlement-agreement monitor report — both PDFs, both extractable
-  with `curl -A "<browser UA>"` + Node `pdf-parse` (WebFetch chokes on
-  large/image-wrapped PDFs; a plain fetch/WebFetch call often 403s these
-  agency sites entirely — the in-app Browser pane or curl work instead).
+  official documents (elevator-count tables, settlement reports, budget/
+  capital-program reports, etc.) already answer the open question — don't
+  assume only live-feed text and chicago-L.org are available. This session
+  found CTA's own ASAP Strategic Plan (per-station elevator COUNTS), an old
+  ADA settlement-agreement monitor report (via a lead Bryce found), BART's
+  own "Bikes on BART" elevator dimensions guide (per-elevator inventory),
+  and WMATA's own quarterly Capital Improvement Program report (incidental
+  real elevator ids) — all PDFs, all extractable with
+  `curl -A "<browser UA>"` + Node `pdf-parse` (WebFetch chokes on large/
+  image-wrapped PDFs; a plain fetch/WebFetch call often 403s these agency
+  sites entirely — the in-app Browser pane or curl work instead). MBTA was
+  checked too and came up empty (its PATI plan is policy-level only) — not
+  every system will have one of these, and that's a valid, documented
+  conclusion, not a reason to keep digging indefinitely.
 - transit.wiki is a valid fallback research source but OPEN-SOURCED —
   corroboration-tier only, same as chicago-L.org, never sole ground truth.
 - Commit per station/batch, but PUSH only every ~5 station updates (each
@@ -136,10 +142,25 @@ batching methodology).
   complexes crosswalked, 452-check regression suite, verified against real
   production data. MTA's own official display-guidance doc saved and used
   as the compliance checklist for all of this.
+- **BART and WMATA ground-truth sources found, fact-checked, enriched**:
+  BART's own "Bikes on BART" elevator dimensions guide (a genuine
+  per-elevator inventory) — 6 stations individually verified against
+  BART's live per-station pages, **all 6 confirmed our existing models
+  correct** (no bugs found; Millbrae's guide row appears stale, predating a
+  platform change). WMATA's quarterly Capital Improvement Program report —
+  named real elevator ids incidentally; **one promotion shipped**
+  (`E07X01`, West Hyattsville), **two left ambiguous on purpose**
+  (McPherson Sq, New Carrollton — multiple synthetic slots, no
+  disambiguating detail, would be a guess), and **one existing redundancy
+  candidate strengthened** (Mount Vernon Sq `E01` — already queued for
+  review; this report is a 3rd independent source confirming one of its
+  4 suspicious units; see "Modeling backlog" below). MBTA: no comparable
+  source found (checked; its PATI plan is policy-level only).
 
 Full check suite green throughout every step (`typecheck`, `demo:access` 69
 checks, `check:cta`, `check:mta`, `check:mta-ny` 121, `check:mta-ada` 452,
-Netlify function bundle verified after every JSON-import change).
+`check:wmata`, Netlify function bundle verified after every JSON-import
+change).
 
 ## Standing rules now locked (see CLAUDE.md for full detail)
 
@@ -166,7 +187,14 @@ Netlify function bundle verified after every JSON-import change).
 ## Modeling backlog needing Bryce (not solo-shippable)
 
 MBTA's 6 anomaly stations (State, Wellington, Courthouse, Downtown Crossing,
-Oak Grove, Sullivan Square). WMATA's Potomac Yard + West Falls Church.
+Oak Grove, Sullivan Square). WMATA's Potomac Yard + West Falls Church, plus
+**Mount Vernon Sq (`E01`) — the strongest unshipped WMATA redundancy
+candidate found to date**: 4 live-observed real units forming two
+identically-worded pairs (street↔mezzanine, mezzanine↔platform), the same
+shape as 3 already-confirmed-redundant stations elsewhere, now with a 3rd
+independent source (WMATA's own CIP report) confirming one of the ids —
+but WMATA's text never uses BART-style explicit backup language, so this
+needs Bryce's verdict via the review ritual, not a unilateral model.
 MTA rail's ~10 remaining MNR stations. All 71 TfL stations. CTA's transfer-
 bridge cross-redundancy question (Ashland/43rd/California/Cottage Grove/
 King Drive) — one field-check or agency confirmation likely resolves all

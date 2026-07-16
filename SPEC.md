@@ -1824,3 +1824,90 @@ having a tracked elevator** — that elevator only reaches the mezzanine, with
 no step-free path onward to the platform, which is the EXACT example MTA's
 own display-guidance doc uses to illustrate why "has an elevator" and "is
 accessible" are different questions.
+
+### BART and WMATA ground-truth sources — fact-check pass, one WMATA fix (2026-07-16)
+
+Following the CTA-ASAP / MTA-data.ny.gov pattern, searched for a BART and
+WMATA equivalent. Found real sources for both; MBTA came up empty (its
+"Plan for Accessible Transit Infrastructure" is a policy slide deck with
+aggregate stats only, no per-station data — GTFS `pathways.txt` remains the
+best public MBTA source, already in use).
+
+**BART's own "Bikes on BART — Elevator Dimensions" guide** (2022,
+`src/catalog/bart-data/elevator-dimensions-guide.md`) is a genuine
+per-elevator inventory with landing descriptions for all 50 stations.
+**Every apparent discrepancy against our curated models was individually
+verified against BART's LIVE per-station page
+(`bart.gov/stations/<code>/accessible`, JS-rendered) and resolved in our
+favor — 6 stations checked, 0 model changes needed**: Colma (a duplicate
+PDF row, not a 2nd elevator), Richmond (the guide's 4th row is a separate
+Amtrak-only connector, outside BART's own accessibility scope), 19th St.
+and Milpitas (the guide collapses same-dimension elevator pairs into one
+row — BART's live text confirms both are genuinely separate, with 19th
+St.'s pair explicitly redundant and Milpitas's pair explicitly NOT), and
+Warm Springs (word-for-word match against our existing 5-elevator model).
+Millbrae is the one genuinely interesting case: the guide shows a
+"Concourse/Platform 1-2" elevator that simply does not exist in BART's
+CURRENT live text (which instead shows "Platform 3, ALL DESTINATIONS") —
+the guide most likely predates a platform reconfiguration and is stale for
+this one station, not a gap in our model. A parallel enrichment pass
+(comparing every curated elevator's label against the guide's landing
+description, the same `preferMtaNote()` principle used for MTA) found
+minimal opportunity: our labels were built from BART's own richer
+per-station outage-options advisory text, already more specific than this
+guide's terse table phrasing. The guide's genuine, durable value turned out
+to be fact-checking corroboration (including an incidental confirmation of
+all 16 single-elevator "Station elevator" BART stations by row count), not
+new-bug detection.
+
+**WMATA's own quarterly Capital Improvement Program report**
+(`src/catalog/wmata-data/cip-elevator-mentions.md`) is NOT a designed
+inventory — it's a 241-page budget/contract status document — but its
+narrative project updates incidentally name real elevator equipment ids
+tied to a station. Investigated every id found:
+- **`E07X01` (West Hyattsville) — promoted from synthetic to real.** The
+  station's opposite-direction elevator had been a synthetic placeholder
+  since Batch 3; the report confirms the real id, following the exact
+  station-code + X01/X02 pairing convention already confirmed at Rockville.
+- **`C02E01` (McPherson Sq) and `D13X02` (New Carrollton) — confirmed real,
+  deliberately NOT promoted.** Both stations already have curated synthetic
+  slots, but each has MULTIPLE slots (McPherson Sq has 3: one shared
+  street↔mezzanine plus two per-direction mezzanine↔platform legs; New
+  Carrollton has 2, in series) and the report names only one id per station
+  with no disambiguating detail. Assigning it to a specific slot would be a
+  guess, which this project never does for a structural claim — left as
+  synthetic, to resolve naturally the first time that id (or any of the
+  station's other slots) is observed in a live outage.
+- **`E01X04` (Mount Vernon Sq) — an already-flagged redundancy candidate,
+  strengthened, still not resolved.** This station is excluded from
+  modeling (`chains-excluded.json`, reason `observed-undercount`) and sits
+  in the review queue (`wmata:E01`, priority 20) precisely because our own
+  live-feed observation had already found FOUR real units forming two
+  identically-worded pairs: `E01X01`/`E01X02` (both "Elevator between
+  street and mezzanine") and `E01X04`/`E01X05` (both "Elevator between
+  mezzanine and platform") — the same shape (identical wording on both
+  legs, no directional qualifier) as three already-CONFIRMED-redundant
+  stations elsewhere in this project (Rockville A14X01/X02, 19th St. BART,
+  Warm Springs BART). The CIP report is a THIRD independent source
+  confirming `E01X04` exists (alongside GTFS and live-feed observation) —
+  added as new evidence to the queue entry. Deliberately NOT modeled as
+  redundant here: WMATA's own text never uses BART's explicit "use the
+  other elevator" backup language the way BART's outage-options pages do,
+  so declaring these two pairs redundant would be a claim this project's
+  evidence bar doesn't support without either stronger agency text or
+  Bryce's confirmation via the `/liftwatch-station-review` ritual. Flagged
+  as a high-priority candidate for the next review session given how
+  well-evidenced it now is — the strongest un-shipped WMATA redundancy
+  candidate found to date.
+- **`B11X05`/`B11X06` (Glenmont)** — confirmed real, but the station isn't
+  in our modeled OR excluded set at all (an ordinary untouched
+  `assumed`-redundancy station). No structural context yet to act on;
+  flagged for a future research pass.
+
+Extraction technique for both (documented for reuse on any future agency
+PDF): `curl -A "<browser UA>"` to download (bypasses WAFs that block
+WebFetch's crawler on some agency domains, e.g. bart.gov's 403) + Node
+`pdf-parse` for the text layer. For the WMATA report specifically, a simple
+regex for the `[A-Z]\d{2}[EX]\d{2}` unit-id pattern near a station name
+pulled every relevant mention out of 241 pages of otherwise-irrelevant
+budget tables.
