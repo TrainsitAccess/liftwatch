@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-15T18:12:46.226Z",
+  "updatedAt": "2026-07-16T11:56:47.055Z",
   "note": "Every CTA elevator identity ever observed (archive + live alert texts, parsed by src/adapters/cta/location.ts). Grows only. Regression fixture for check:cta and the curation aid for a future chains pass.",
   "units": [
     {
@@ -444,6 +444,14 @@
         "Elevator at Cermak-McCormick Place (Green Line) Temporarily Out-of-Service — The elevator to/from 23rd street at Cermak-McCormick Place (Green Line) is temporarily out-of-service."
       ],
       "firstObserved": "2026-07-06T21:05:52.004+00:00"
+    },
+    {
+      "unitId": "41700",
+      "stationId": "41700",
+      "texts": [
+        "Elevator at Washington/Wabash Temporarily Out-of-Service — The Orange, Pink, Purple and 63rd-bound Green Line platform elevator at Washington/Wabash is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-07-16T05:40:30.853+00:00"
     }
   ]
 }

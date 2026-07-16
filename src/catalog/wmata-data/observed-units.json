@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-15T18:12:44.721Z",
+  "updatedAt": "2026-07-16T11:56:45.352Z",
   "note": "Every WMATA elevator UnitName ever observed (archive + live feed). Grows only. Consumed by scripts/wmata-pathways.mts as an undercount/vocabulary gate.",
   "units": [
     {
@@ -19,6 +19,12 @@
       "stationCode": "A10",
       "location": "Elevator between street and mezzanine",
       "firstObserved": "2026-07-06T06:07:15.810503+00:00"
+    },
+    {
+      "unitName": "A12X02",
+      "stationCode": "A12",
+      "location": "Garage elevator",
+      "firstObserved": "2026-07-15T21:10:30.273439+00:00"
     },
     {
       "unitName": "A12X03",
@@ -169,6 +175,12 @@
       "stationCode": "C08",
       "location": "Elevator between street and mezzanine on west side of Hayes street, at The Fashion Center",
       "firstObserved": "2026-07-08T12:55:25.390463+00:00"
+    },
+    {
+      "unitName": "C09X01",
+      "stationCode": "C09",
+      "location": "Elevator between street and mezzanine",
+      "firstObserved": "2026-07-16T09:15:25.522914+00:00"
     },
     {
       "unitName": "C10S01",
@@ -493,6 +505,12 @@
       "stationCode": "K04",
       "location": "Elevator between street and mezzanine to Vienna",
       "firstObserved": "2026-07-05T20:42:58.696253+00:00"
+    },
+    {
+      "unitName": "K04X04",
+      "stationCode": "K04",
+      "location": "Elevator between street and mezzanine to New Carrollton",
+      "firstObserved": "2026-07-16T11:06:27.078523+00:00"
     },
     {
       "unitName": "K04X05",

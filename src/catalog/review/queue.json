@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-16T04:43:33.937Z",
+ "updatedAt": "2026-07-16T11:56:54.732Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -1423,6 +1423,10 @@
     {
      "source": "GTFS roster",
      "text": "WMATA-C09_ELE3: Mezzanine ↔ Platform"
+    },
+    {
+     "source": "live feed (observed)",
+     "text": "C09X01: \"Elevator between street and mezzanine\""
     }
    ],
    "resolution": {
@@ -3420,6 +3424,10 @@
     },
     {
      "source": "live feed (observed)",
+     "text": "K04X04: \"Elevator between street and mezzanine to New Carrollton\""
+    },
+    {
+     "source": "live feed (observed)",
      "text": "K04X05: \"Elevator between street and mezzanine to New Carrollton\""
     }
    ]
@@ -4704,6 +4712,21 @@
     {
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **41660 Lake (Red/State subway)** — island (the record-length State St platform); accessible via the Washington/Randolph mezzanine end. observed: WASHINGTON-RANDOLPH-PLATFORM. ⚠ is there ALSO a street→mezzanine elevator (subway stations usually need one per leg — see Grand)? If so this is a 2-in-series chain, not one elevator. ## Archetype B — side platforms, one elevator per platform (per-direction chains) The CTA norm for rebuilt elevated stations. Each direction is its own chain with a sole-access elevator — exactly the observed directional ids. The per-direction split is REAL (confirmed by the feed's own \"X-bound\" phrasing)."
+    }
+   ]
+  },
+  {
+   "key": "cta:41700",
+   "system": "cta-chicago",
+   "stationId": "41700",
+   "name": "41700",
+   "status": "pending",
+   "priority": 50,
+   "reason": "no chains modeled (no agency inventory — text-identity only)",
+   "evidence": [
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Washington/Wabash Temporarily Out-of-Service — The Orange, Pink, Purple and 63rd-bound Green Line platform elevator at Washington/Wabash is temporarily out-of-service."
     }
    ]
   },
