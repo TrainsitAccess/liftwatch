@@ -4640,8 +4640,8 @@
    ],
    "resolution": {
     "verdict": "approved-as-proposed",
-    "notes": "Batch 2 (15 CTA single/no-redundancy stations), approved by Bryce as a group 2026-07-15. Bucket A: single island-platform elevator, never individually identified (bare station id — safe since no OR to hide behind). Bucket B (Morgan): single island elevator, agency-identified, serves both directions. Bucket C: Diversey-pattern per-direction chains (one real observed elevator, one synthetic placeholder for the never-observed opposite direction). Confidence 8/10 collectively. Implemented in src/catalog/cta-models.ts.",
-    "date": "2026-07-15"
+    "notes": "Batch 2 (15 CTA single/no-redundancy stations), approved by Bryce as a group 2026-07-15. CORRECTED 2026-07-16 (CTA-site audit): Morgan is NOT a single island elevator — it has TWO SIDE platforms with one elevator each (chicago-L.org + Wikipedia), connected by a transfer-only bridge (no step-free cross-platform backup). The observed 'Loop- and 63rd-bound' id is the EASTBOUND platform elevator (Green Loop→63rd + Pink Loop-bound), not a both-directions elevator; the westbound (Harlem-bound) platform has its own, never-yet-observed elevator. Re-modeled as a Diversey-pattern per-direction pair (real eastbound id + synthetic westbound). Confidence 9/10. Implemented in src/catalog/cta-models.ts.",
+    "date": "2026-07-16"
    }
   },
   {

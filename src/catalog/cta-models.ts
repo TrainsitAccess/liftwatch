@@ -227,21 +227,37 @@ export const CTA_STATION_MODELS: StationModel[] = [
       { id: "street-platform", label: "Street to platform", elevators: [{ externalId: "41430", label: "87th platform elevator (only step-free access, never individually identified)" }] },
     ],
   },
-  // Morgan (41510, Green/Pink Lines) — Batch 2, single island-platform
-  // elevator. CTA's own alert text names both directions on one elevator
-  // ("The Loop- and 63rd-bound platform elevator at Morgan"); the parser's
-  // multi-direction handling was order-dependent (a reversed direction order
-  // silently dropped "Loop-", producing "63RD-BOUND" instead of the full
-  // combined id) — fixed 2026-07-15, now "63RD-LOOP-BOUND" regardless of
-  // phrasing order. No redundancy claimed; single elevator serves the whole
-  // (single) platform.
+  // Morgan (41510, Green + Pink Lines, Lake St elevated) — CORRECTED 2026-07-16
+  // (CTA-site audit). Batch 2 had modeled this as a SINGLE elevator "serving
+  // both directions," which is WRONG: Morgan has TWO SIDE platforms (one per
+  // direction) connected by an overhead transfer bridge, each reached by its
+  // OWN elevator (chicago-L.org: "dual 425-ft side platforms", two elevator
+  // towers; Wikipedia: "an elevator on either side of the tracks"). The bridge
+  // only lets riders transfer once up — reaching a given platform step-free
+  // still requires that platform's own elevator, so there is NO redundancy.
+  // The combined alert id resolved because CTA groups the EASTBOUND platform's
+  // destinations: "The Loop- and 63rd-bound platform elevator" = the eastbound
+  // platform (Green toward Loop→63rd/Cottage Grove + Pink Loop-bound), NOT both
+  // directions on one elevator. The opposite (westbound) platform has its own,
+  // never-yet-observed elevator. Now a per-direction pair like Diversey/Chicago.
   {
     systemId: SYSTEM,
     stationExternalId: "41510",
-    note: "One elevator serves the platform in both directions — no backup. If that elevator is out of service, this route is not step-free.",
-    internalNote: "Human-approved as Batch 2 via /liftwatch-station-review 2026-07-15 (confidence 8/10 collectively — no redundancy claimed anywhere in this batch).",
+    chainLabel: " (Loop/63rd-bound)",
+    note: "Street to the eastbound platform (toward the Loop and on to 63rd/Cottage Grove; Pink Line toward the Loop): one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Eastbound side platform of Morgan's per-direction pair; two side platforms + a transfer bridge, one elevator each (chicago-L.org + Wikipedia) — the bridge is transfer-only, not a step-free cross-platform backup. Real id observed live (41510-63RD-LOOP-BOUND ← 'The Loop- and 63rd-bound platform elevator at Morgan (Green, Pink Lines)'). Corrected from the Batch-2 single-elevator model 2026-07-16 via the CTA project/station-page audit. Confidence 9/10.",
     segments: [
-      { id: "street-platform", label: "Street to platform", elevators: [{ externalId: "41510-63RD-LOOP-BOUND", label: "Morgan platform elevator (serves both Loop-bound and 63rd-bound platforms)" }] },
+      { id: "street-platform", label: "Street to eastbound (Loop/63rd-bound) platform", elevators: [{ externalId: "41510-63RD-LOOP-BOUND", label: "Morgan eastbound (Loop-/63rd-bound) platform elevator" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "41510",
+    chainLabel: " (Harlem-bound)",
+    note: "Street to the westbound platform (Green Line toward Harlem; Pink Line toward 54th/Cermak): one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Westbound side platform of Morgan's per-direction pair. Never yet observed live; synthetic placeholder id (CTA-SYNTH-41510-HARLEM-BOUND) — promote to the real CTA unit id the first time it appears in observed-units.json (expected phrasing ~'The Harlem- and 54th/Cermak-bound platform elevator at Morgan'). Corrected from the Batch-2 single-elevator model 2026-07-16. Confidence 9/10.",
+    segments: [
+      { id: "street-platform", label: "Street to westbound (Harlem-bound) platform", elevators: [{ externalId: "CTA-SYNTH-41510-HARLEM-BOUND", label: "Morgan westbound (Harlem-/54th-/Cermak-bound) platform elevator — never yet observed live, synthetic id" }] },
     ],
   },
   // Chicago (40710, Brown, Purple Lines) — Batch 2, Diversey-pattern per-direction chains.
