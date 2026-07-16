@@ -789,4 +789,33 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       },
     ],
   },
+  // Morgan Blvd (G04, Blue Line) — excluded by the observed-units gate as an
+  // "observed-undercount": 2 distinct live units (G04X01, G04X02), both on
+  // street/mezzanine<->platform, identically worded ("Elevator between
+  // mezzanine and platform", no direction/segment distinction) vs GTFS's
+  // single edge. Same shape as Forest Glen/Mt Vernon Sq's redundant pairs,
+  // but weaker evidence -- Morgan Blvd is an ordinary elevated Blue Line
+  // station (2004 Largo extension), not one of WMATA's all-elevator
+  // stations, so there's no outside fact backing the redundancy the way
+  // Forest Glen had. Bryce confirmed the physical locations (2026-07-16):
+  // both elevators are in the center of the platform, on opposite sides of
+  // each other. Approved by Bryce via /liftwatch-station-review 2026-07-16
+  // (confidence 4/10 -- weakest of this identical-wording family so far,
+  // approved on the strength of the wording pattern alone).
+  {
+    systemId: SYSTEM,
+    stationExternalId: "G04",
+    note: "Street/mezzanine to platform: 2 elevators, either one keeps this route step-free. Only if both are out of service does this station lose step-free access.",
+    internalNote: "GTFS models only 1 elevator (WMATA-G04_MZ_ELV) but the live feed has observed 2 distinct units (G04X01, G04X02), identically worded with no direction/segment distinction -- the same redundant-pair shape as Forest Glen/Mt Vernon Sq, but without a strong outside fact (Morgan Blvd is an ordinary elevated station, not an all-elevator one). Bryce confirmed locations 2026-07-16: both elevators are in the center of the platform, on opposite sides of each other (exact id-to-side mapping not confirmed). Human-approved via /liftwatch-station-review 2026-07-16 (confidence 4/10).",
+    segments: [
+      {
+        id: "street-mezzanine-platform",
+        label: "Street/mezzanine to platform",
+        elevators: [
+          { externalId: "G04X01", label: "Morgan Blvd elevator (street/mezzanine to platform) — center of platform" },
+          { externalId: "G04X02", label: "Morgan Blvd elevator (street/mezzanine to platform) — center of platform, opposite side" },
+        ],
+      },
+    ],
+  },
 ];

@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-16T23:18:06.475Z",
+ "updatedAt": "2026-07-16T23:30:59.157Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -663,7 +663,7 @@
    "system": "wmata-dc",
    "stationId": "G04",
    "name": "Morgan Blvd",
-   "status": "pending",
+   "status": "modeled",
    "priority": 20,
    "reason": "observed-undercount",
    "evidence": [
@@ -683,7 +683,12 @@
      "source": "live feed (observed)",
      "text": "G04X02: \"Elevator between mezzanine and platform\""
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Modeled as a redundant pair (G04X01/G04X02), same identical-wording shape as Forest Glen/Mt Vernon Sq but with weaker outside evidence (Morgan Blvd is an ordinary elevated station, not an all-elevator one). Bryce confirmed both elevators sit in the center of the platform on opposite sides of each other. Confidence 4/10 -- approved on the strength of the identical-wording pattern alone. Approved by Bryce individually 2026-07-16.",
+    "date": "2026-07-16"
+   }
   },
   {
    "key": "wmata:B35",
