@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-16T23:56:47.842Z",
+ "updatedAt": "2026-07-16T23:59:38.166Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -3418,7 +3418,7 @@
    "system": "wmata-dc",
    "stationId": "B06_E06",
    "name": "Fort Totten",
-   "status": "pending",
+   "status": "modeled",
    "priority": 38,
    "reason": "multi-level-shaft",
    "evidence": [
@@ -3430,7 +3430,12 @@
      "source": "GTFS roster",
      "text": "WMATA-B06_E06_ELE: Street/Mezzanine ↔ Platform"
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Modeled as a single chain, one segment, one elevator (synthetic, never observed) serving all 3 levels -- sole access for the entire station. Confirmed directly by Bryce as a genuine single continuous shaft, not a naming quirk hiding multiple elevators. Confidence 9/10. Approved by Bryce individually 2026-07-16.",
+    "date": "2026-07-16"
+   }
   },
   {
    "key": "wmata:D02",

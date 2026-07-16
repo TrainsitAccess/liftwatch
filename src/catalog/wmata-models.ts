@@ -1094,4 +1094,25 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       { id: "garage-mezzanine", label: "Garage to mezzanine", elevators: [{ externalId: "WMATA-K06_GAR_ELV2", label: "West Falls Church garage elevator (2nd unit) — never yet observed live, synthetic id" }] },
     ],
   },
+  // Fort Totten (B06_E06, Red/Green/Yellow interchange) — excluded by the
+  // multi-level-shaft gate: the one GTFS-modeled elevator spans 3 named
+  // levels (Street/Mezzanine, Lower Platform, Upper Platform), and the
+  // auto-generator couldn't tell whether it's a genuine single shaft
+  // reaching all 3 or a naming quirk hiding 2+ separate elevators. Bryce
+  // confirmed 2026-07-16: it really is ONE elevator, one continuous shaft,
+  // reaching all 3 levels (both the Red Line level and the Green/Yellow
+  // platforms) — no other elevator is needed anywhere in the station, and
+  // this one is reachable without any other elevator (i.e. it's the
+  // station's sole point of step-free access, top to bottom). Approved by
+  // Bryce via /liftwatch-station-review 2026-07-16 (confidence 9/10 --
+  // confirmed directly).
+  {
+    systemId: SYSTEM,
+    stationExternalId: "B06_E06",
+    note: "One elevator serves the entire station — street/mezzanine, the Red Line level, and the Green/Yellow Line level — with no backup. If it is out of service, no part of this station is step-free.",
+    internalNote: "GTFS models one elevator (WMATA-B06_E06_ELE) spanning 3 named levels (Street/Mezzanine, Lower Platform, Upper Platform); auto-generator couldn't confirm whether it's a genuine single shaft or a naming quirk hiding multiple elevators. Bryce confirmed 2026-07-16 it's genuinely one continuous shaft serving all 3 levels, sole access for the whole station. Never yet observed live; synthetic placeholder id. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 9/10).",
+    segments: [
+      { id: "street-mezzanine-platform", label: "Street/mezzanine to platform (all levels)", elevators: [{ externalId: "WMATA-B06_E06_ELE", label: "Fort Totten elevator (serves all 3 levels: street/mezzanine, Red Line, Green/Yellow) — never yet observed live, synthetic id" }] },
+    ],
+  },
 ];
