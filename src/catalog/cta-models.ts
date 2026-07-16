@@ -914,17 +914,21 @@ export const CTA_STATION_MODELS: StationModel[] = [
   // 3 elevators). Bryce asked on Discord and got a full structural answer:
   // TWO independent chains, not one. Green/Orange riders reach the elevated
   // platform via ONE elevator straight from the street (never yet observed
-  // live). Red Line riders reach the underground platform via TWO elevators
-  // in series: street to the transfer tunnel, then transfer tunnel to the
-  // Red Line platform — different elevator from the one Green/Orange riders
-  // use to reach street. The transfer tunnel's real, live-observed id
-  // (41400-TRANSFER-TUNNEL) is the SECOND leg (tunnel-to-platform) — Bryce
-  // confirmed this mapping explains why the real alert text names "Red,
-  // Orange and Green Lines" together: that elevator is also the shared
-  // choke point for Orange/Green riders transferring down to the Red Line
-  // platform, not just for Red riders arriving from street. Confidence
-  // 8/10 — crowd-sourced via Discord rather than an agency document, but a
-  // complete, internally-consistent structural answer Bryce vetted himself.
+  // live). Red Line riders reach the underground platform via TWO SEGMENTS:
+  // street to a mezzanine/tunnel level, then that level down to the Red
+  // Line platform. Bryce later found a 4TH elevator (a genuinely separate
+  // entrance, not agency-counted in the original 3): street (1155 S State
+  // St) to the Red Line mezzanine, landing at a DIFFERENT physical space
+  // than the transfer-tunnel entrance but funneling into the SAME final
+  // elevator down to the platform — so the street-to-mezzanine leg is
+  // REDUNDANT (two independent entrances), while the mezzanine-to-platform
+  // leg stays sole-access. The mezzanine/tunnel-to-platform elevator's real,
+  // live-observed id (41400-TRANSFER-TUNNEL) is also the shared choke point
+  // for Orange/Green riders transferring down to the Red Line platform,
+  // which is why the live alert text names all 3 lines. Confidence 8/10 —
+  // crowd-sourced via Discord rather than an agency document, but a
+  // complete, internally-consistent structural answer Bryce vetted himself
+  // and refined with a follow-up correction (2026-07-16).
   {
     systemId: SYSTEM,
     stationExternalId: "41400",
@@ -939,11 +943,18 @@ export const CTA_STATION_MODELS: StationModel[] = [
     systemId: SYSTEM,
     stationExternalId: "41400",
     chainLabel: " (Red)",
-    note: "Street to the underground Red Line platform: 2 elevators in series (street to the transfer tunnel, then transfer tunnel to the platform), no backup on either leg. If either elevator is out of service, this route is not step-free. This station's layout was reconstructed from rider reports rather than an agency diagram, so confidence here is lower than most of the site — if you use this station and something looks off, feedback is welcome (a proper reporting channel is coming soon).",
-    internalNote: "Street-to-tunnel leg never yet observed live, synthetic placeholder id. Tunnel-to-platform leg is the real, live-observed 41400-TRANSFER-TUNNEL -- also the shared choke point for Orange/Green riders transferring down to the Red Line platform (explains the live alert naming all 3 lines). Structure confirmed by Bryce via Discord 2026-07-16 (confidence 8/10).",
+    note: "Street to the underground Red Line platform: 2 entrances reach the mezzanine/tunnel level (either keeps this leg step-free), then one elevator continues down to the platform with no backup. If both street entrances are out of service, or the platform elevator is out of service, this route is not step-free. This station's layout was reconstructed from rider reports rather than an agency diagram, so confidence here is lower than most of the site — if you use this station and something looks off, feedback is welcome (a proper reporting channel is coming soon).",
+    internalNote: "Two street entrances feed the mezzanine/tunnel level: the original transfer-tunnel entrance (never yet observed live, synthetic placeholder id) and a 2nd, separate entrance at 1155 S State St (found by Bryce 2026-07-16, also never yet observed live, synthetic id) -- different physical landing spaces, but Bryce confirmed both funnel into the SAME elevator down to the platform, so this leg is modeled as a 2-way OR. Mezzanine/tunnel-to-platform leg is the real, live-observed 41400-TRANSFER-TUNNEL -- also the shared choke point for Orange/Green riders transferring down to the Red Line platform (explains the live alert naming all 3 lines). Structure confirmed by Bryce via Discord 2026-07-16, refined with a follow-up correction the same day (confidence 8/10).",
     segments: [
-      { id: "street-tunnel", label: "Street to transfer tunnel", elevators: [{ externalId: "CTA-SYNTH-41400-STREET-TUNNEL", label: "Roosevelt street-to-transfer-tunnel elevator — never yet observed live, synthetic id" }] },
-      { id: "tunnel-platform", label: "Transfer tunnel to Red Line platform", elevators: [{ externalId: "41400-TRANSFER-TUNNEL", label: "Roosevelt transfer tunnel to Red Line platform elevator" }] },
+      {
+        id: "street-mezzanine",
+        label: "Street to mezzanine/tunnel level",
+        elevators: [
+          { externalId: "CTA-SYNTH-41400-STREET-TUNNEL", label: "Roosevelt street-to-transfer-tunnel elevator — never yet observed live, synthetic id" },
+          { externalId: "CTA-SYNTH-41400-STATE-ST", label: "Roosevelt street (1155 S State St) to Red Line mezzanine elevator — never yet observed live, synthetic id" },
+        ],
+      },
+      { id: "mezzanine-platform", label: "Mezzanine/tunnel level to Red Line platform", elevators: [{ externalId: "41400-TRANSFER-TUNNEL", label: "Roosevelt mezzanine/tunnel to Red Line platform elevator" }] },
     ],
   },
 ];

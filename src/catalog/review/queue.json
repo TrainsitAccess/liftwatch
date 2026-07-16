@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-16T23:05:16.375Z",
+ "updatedAt": "2026-07-16T23:18:06.475Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -402,7 +402,7 @@
    ],
    "resolution": {
     "verdict": "approved-as-proposed",
-    "notes": "Modeled as 2 independent chains: Orange/Green (1 elevator, street straight to elevated platform, synthetic id) and Red (2 elevators in series, street->transfer tunnel->platform; the tunnel->platform leg is the real observed id 41400-TRANSFER-TUNNEL, confirmed to be the shared choke point for Red street access AND Orange/Green transfers to Red -- explains why the live alert names all 3 lines). Sourced from a Discord crowd-sourced answer Bryce solicited and vetted himself, 2026-07-16 (confidence 8/10). src/catalog/cta-models.ts.",
+    "notes": "Modeled as 2 independent chains: Orange/Green (1 elevator, street straight to elevated platform, synthetic id) and Red (2 elevators in series, street->transfer tunnel->platform; the tunnel->platform leg is the real observed id 41400-TRANSFER-TUNNEL, confirmed to be the shared choke point for Red street access AND Orange/Green transfers to Red -- explains why the live alert names all 3 lines). Sourced from a Discord crowd-sourced answer Bryce solicited and vetted himself, 2026-07-16 (confidence 8/10). src/catalog/cta-models.ts. FOLLOW-UP 2026-07-16: Bryce found a 4th elevator (1155 S State St, to the Red Line mezzanine) -- a genuinely separate entrance funneling into the same platform elevator, making the Red chain's street-to-mezzanine leg a 2-way OR instead of sole access. Updated in src/catalog/cta-models.ts.",
     "date": "2026-07-16"
    }
   },

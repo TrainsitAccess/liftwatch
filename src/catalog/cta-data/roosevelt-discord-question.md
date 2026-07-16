@@ -59,10 +59,19 @@ Bryce got a full structural answer via Discord (2026-07-16):
 > street level
 
 Resolved: TWO independent chains, not one. Green/Orange = one elevator
-straight to street. Red Line = two elevators in series (street→tunnel,
-tunnel→platform). Bryce confirmed the real observed id
-(`41400-TRANSFER-TUNNEL`) maps to the tunnel→platform leg — the shared
-choke point for both Red riders arriving from street and Orange/Green
-riders transferring down to the Red platform, which is why the live alert
-text names all three lines. Modeled in `src/catalog/cta-models.ts`
-2026-07-16 (confidence 8/10).
+straight to street. Red Line = two segments (street→mezzanine/tunnel,
+mezzanine/tunnel→platform). Bryce confirmed the real observed id
+(`41400-TRANSFER-TUNNEL`) maps to the mezzanine/tunnel→platform leg — the
+shared choke point for both Red riders arriving from street and
+Orange/Green riders transferring down to the Red platform, which is why
+the live alert text names all three lines.
+
+**Follow-up correction (2026-07-16, same day):** Bryce found a 4th
+elevator, a genuinely separate entrance not in the original agency count
+of 3 — street (1155 S State St) to the Red Line mezzanine. It lands at a
+different physical space than the transfer-tunnel entrance, but both
+funnel into the same elevator down to the platform, making the
+street-to-mezzanine leg **redundant** (2 entrances) rather than sole
+access. The mezzanine-to-platform leg stays sole access.
+
+Modeled in `src/catalog/cta-models.ts` 2026-07-16 (confidence 8/10).
