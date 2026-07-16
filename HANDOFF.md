@@ -82,8 +82,9 @@ regenerations.
 | `ec3e54b` | Noted the ground-level-ramp blind spot (LIRR/MNR/MBTA Commuter Rail track elevators only) on the site's disclaimer + methodology pages. |
 | `b114764` | Built `scripts/mbta-ramps.mts` (58-ramp live roster snapshot); locked "check every system for ramp/other-access data before finalizing a model" as a standing CLAUDE.md policy after finding MBTA's own ramp feed was fetched every poll but never cross-checked against any model. |
 | `bf7aab9` | Pre-modeled Bryn Mawr (CTA) — the one CTA Red-Purple Modernization station with a genuine redundant elevator pair, found via external research (chicago-L.org + CTA's own project pages), modeled ahead of any live outage since it's never broken since reopening 2025-07-20. |
+| `33f4d27` | Resolved two recurring **needs-review pushes**: WMATA "missing predicted return" on symptom `"Other"` (an agency limit for the catch-all, now exempt via `returnExempt()`), and BART Millbrae's `"Station - SF/East Bay/SFO Airport"` (terminus → outbound platform; now attributes to the redundant `MLBR-PLAT-3` via directional hints, mirroring the confirmed Milpitas pattern). Tarrytown (MNR) left excluded per Bryce. |
 
-Full check suite green throughout (`typecheck`, `demo:access` 64 checks,
+Full check suite green throughout (`typecheck`, `demo:access` 69 checks,
 every system's `check:*` script) — verified after every batch before
 shipping, not just at the end.
 

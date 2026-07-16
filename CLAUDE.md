@@ -544,6 +544,14 @@ parking lot). A station is accessible only if **every** segment is up.
   auxiliary-elevator caveat is documented in SPEC.md as an accepted residual).
   The remaining OPEN part is the 10 unconfirmed per-direction `matchHints` —
   see `/liftwatch-bart-attribution` for the resume-work command.
+  **Millbrae resolved from a real advisory (2026-07-16)**: MLBR's live
+  `"Station - SF/East Bay/SFO Airport"` (a terminus → only the outbound platform
+  direction exists) was in the `structuralUnsolvable` bucket and pushing a
+  recurring needs-review alert; now attributed to `MLBR-PLAT-3` via
+  `"east bay"`/`"sfo airport"` hints on the Platform 3 elevator (BART's only
+  platform elevator there; the Caltrain NB elevator is its named backup, so the
+  redundant station stays accessible). Mirrors the confirmed Milpitas pattern;
+  locked in `demo:access`.
 
 ## Conventions
 
@@ -756,7 +764,12 @@ parking lot). A station is accessible only if **every** segment is up.
   "route/redundancy") rides the ntfy push + poll warning. Verified quiet where
   data is complete (MTA/TfL/BART/CTA = 0) and firing only on real gaps
   (un-modeled MBTA/LIRR/MNR stations). Update `field-expectations.ts` when a
-  system's real capability changes. Regressions in `demo:access` (now 61).
+  system's real capability changes. **Per-symptom exemption (2026-07-16)**:
+  `expectsReturn` supports a documented per-class carve-out via `returnExempt()`
+  — WMATA publishes a return for its categorized symptoms but NOT for the
+  open-ended `"Other"` catch-all, so a blank return on an `"Other"`-symptom WMATA
+  outage is no longer flagged (it was pushing a spurious "missing predicted
+  return", e.g. Waterfront F04X01). Regressions in `demo:access` (now 69).
 
 ## Gotchas / deferred
 
