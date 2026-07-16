@@ -481,6 +481,23 @@ phrases it the same way. They may already work, may need the same kind of
 regional-shorthand correction Milpitas needed, or may never match — unknown
 until a real example appears in `outage_events.reason`.
 
+*Millbrae directional attribution — resolved from a real advisory (2026-07-16)*:
+Millbrae is a special complex station (BART/Caltrain shared), NOT one of the 12
+templated per-direction stations. Its real live advisory `"Station - SF/East
+Bay/SFO Airport"` (archived 2026-07-04, previously in the `structuralUnsolvable`
+bucket and pushing a recurring needs-review alert) is now attributed to
+`MLBR-PLAT-3` via `"east bay"`/`"sfo airport"` `matchHints` on the Platform 3
+elevator. Basis: Millbrae is the southern TERMINUS, so all trains depart
+northbound and a directional "SF/East Bay/SFO Airport" advisory can only mean
+the outbound platform elevator — and BART's own advisories concern BART's own
+elevator, of which Platform 3 is the only one (the Caltrain NB elevator is
+tracked solely as its named backup). The advisory TEXT is confirmed real; the
+mapping mirrors the CONFIRMED Milpitas "SF/East Bay" pattern. Because
+`MLBR-PLAT-3` is redundant, the station correctly stays accessible when only it
+is out. Locked in `demo:access` (advisory→`MLBR-PLAT-3`, redundancy-keeps-
+accessible, and a disjointness check that a concourse "East Plaza" advisory is
+NOT dragged onto the platform elevator).
+
 *The bare-"Station" case — DIRECTED BY POLICY 2026-07-12 (Bryce)*: a bare
 "Station" advisory (no direction/destination that any `matchHint` catches)
 can never be attributed by text-matching — that's structural. Bryce's rule
@@ -722,7 +739,12 @@ rides the push + poll warning. Verified quiet where data is complete
 (MTA/TfL/BART/CTA = 0 flags) and firing only on genuine gaps (un-modeled
 MBTA/LIRR/MNR stations). Update the profile when a system's real capability
 changes — it is the single source of truth for "what should this system be able
-to tell a rider?".
+to tell a rider?". **Per-symptom refinement (2026-07-16):** `expectsReturn` can
+have a documented per-class exemption — WMATA publishes a return for its
+categorized symptoms but NOT for the open-ended `"Other"` catch-all, so
+`missingExpectedFields()` (`returnExempt()` helper) does not flag a blank return
+on an `"Other"`-symptom WMATA outage (it was pushing a spurious "missing
+predicted return", e.g. Waterfront F04X01). Regression-locked in `demo:access`.
 
 ### Data-integrity audit (2026-07-12)
 

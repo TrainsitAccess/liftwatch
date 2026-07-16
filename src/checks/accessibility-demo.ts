@@ -138,6 +138,23 @@ check('12TH "Station - Convention Center" (real historical phrasing) -> 11th St 
   elevatorExternalId: "12TH-ST-11TH",
   segmentId: "street-concourse",
 });
+// MLBR directional attribution (2026-07-16): Millbrae's real live advisory
+// "Station - SF/East Bay/SFO Airport" (a terminus → only the outbound platform
+// direction exists) must resolve to the BART Platform 3 elevator, not stay
+// -UNSPECIFIED. Mirrors the confirmed Milpitas "Station - SF/East Bay" pattern.
+check('MLBR "Station - SF/East Bay/SFO Airport" (real advisory) -> BART Platform 3 elevator', attributeOutage("Station - SF/East Bay/SFO Airport", m("MLBR")), {
+  elevatorExternalId: "MLBR-PLAT-3",
+  segmentId: "platform-3",
+});
+// MLBR-PLAT-3 is redundant (Caltrain NB backs it up) — so attributing this
+// advisory to it correctly keeps the station ACCESSIBLE, never a false blackout.
+check("MLBR Platform 3 elevator out alone -> still accessible (Caltrain NB backup)", accessible(m("MLBR"), ["MLBR-PLAT-3"]), true);
+// The directional hints must stay DISJOINT from the concourse elevators' hints:
+// a plaza/garage advisory must never be dragged onto the platform elevator.
+check('MLBR "Station - East Plaza" (concourse) -> East Plaza elevator, not the platform', attributeOutage("Station - East Plaza", m("MLBR")), {
+  elevatorExternalId: "MLBR-EAST-PLAZA",
+  segmentId: "concourse-access",
+});
 // Synthetic models isolate attributeOutageAcrossChains's own ambiguity rule
 // (matching >1 chain is exactly as ambiguous as 0) from any real station's
 // data, in case a future station's chains ever share hint vocabulary.
@@ -193,6 +210,10 @@ check("MTA outage MISSING a return -> flagged (agency always provides one)",
   missingExpectedFields("mta-nyct", mkO({ unitExternalId: "EL1" }), mkU("explicit")), ["predicted return"]);
 check("WMATA outage missing a return -> flagged (expectsReturn)",
   missingExpectedFields("wmata-dc", mkO({ unitExternalId: "A1" }), mkU()), ["predicted return"]);
+check("WMATA 'Other'-symptom outage missing a return -> NOT flagged (agency limit for the catch-all)",
+  missingExpectedFields("wmata-dc", mkO({ unitExternalId: "F04X01", reason: "Other" }), mkU()), []);
+check("WMATA 'Other'-symptom outage WITH a fail-safe note still exempt (symptom stripped of the ' (' note)",
+  missingExpectedFields("wmata-dc", mkO({ unitExternalId: "F04X01", reason: "Other (unrecognized elevator at a modeled station — access shown as unknown; refresh the WMATA model)" }), mkU()), []);
 check("CTA outage with no return/redundancy -> complete (both are agency limits)",
   missingExpectedFields("cta-chicago", mkO({ unitExternalId: "1" }), undefined), []);
 check("BART curated unit -> complete (no return expected)",
@@ -225,7 +246,7 @@ check("every curated MBTA model is structurally valid (>=1 segment, every segmen
 check("Government Center Blue-Line chain: 722 out is covered by 723 (redundant)",
   MBTA_STATION_MODELS.some((m) => m.stationExternalId === "place-gover" && m.chainLabel === " (Blue Line)" && stationAccessible(m, new Set(["722"]))), true);
 
-const total = 64;
+const total = 69;
 if (failures) {
   console.error(`\n  ${failures} check(s) FAILED\n`);
   process.exitCode = 1;

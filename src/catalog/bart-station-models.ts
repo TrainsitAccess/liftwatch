@@ -550,7 +550,20 @@ export const BART_STATION_MODELS: StationModel[] = [
     note: "BART's Platform 3 elevator and the Caltrain concourse-to-northbound-platform elevator explicitly back each other up per BART's own guidance (\"use the Caltrain Platform 4/Northbound elevator\" / \"use the BART Platform 3 elevator\") — a real cross-agency backup at this shared station, tracked here even though one elevator is nominally Caltrain's. Separately, the East Plaza street elevator and the parking-garage elevator explicitly back each other up too (\"take the elevator in the BART parking garage\"); the West Plaza (Caltrain) elevator's own guidance is \"access from the opposite (East Plaza) side\", so all three form one shared concourse-access group.",
     segments: [
       { id: "platform-3", label: "Platform access (BART Platform 3 / Caltrain Platform 4 Northbound)", elevators: [
-        { externalId: "MLBR-PLAT-3", label: "BART Platform 3 elevator", matchHints: ["platform 3"] },
+        // Directional hints ("east bay"/"sfo airport") added 2026-07-16: Millbrae's
+        // real live advisory is "Station - SF/East Bay/SFO Airport" (archived
+        // 2026-07-04, classed structuralUnsolvable in attribution-evidence.json).
+        // Millbrae is a southern TERMINUS — all trains depart northbound toward
+        // SF/SFO/East Bay, so a directional "SF/East Bay/SFO Airport" advisory can
+        // only mean the outbound PLATFORM elevator, i.e. BART's Platform 3 (the
+        // concourse/plaza elevators below carry non-directional location hints).
+        // The advisory TEXT is confirmed real; the mapping mirrors the CONFIRMED
+        // Milpitas pattern ("Station - SF/East Bay" → outbound platform elevator).
+        // BART advisories are about BART's own elevator, and MLBR-PLAT-3 is the
+        // only BART platform elevator here (the Caltrain NB elevator is tracked
+        // solely as its named backup), so this resolves to MLBR-PLAT-3 — which is
+        // redundant, so the station correctly stays accessible.
+        { externalId: "MLBR-PLAT-3", label: "BART Platform 3 elevator", matchHints: ["platform 3", "east bay", "sfo airport"] },
         { externalId: "MLBR-CALTRAIN-NB", label: "Caltrain concourse-to-northbound-platform elevator", matchHints: ["caltrain", "northbound"] },
       ] },
       { id: "concourse-access", label: "Street/plaza to concourse", elevators: [

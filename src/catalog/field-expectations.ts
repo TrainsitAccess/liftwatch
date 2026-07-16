@@ -41,6 +41,22 @@ export function systemFieldExpectations(systemId: string): SystemFieldExpectatio
 }
 
 /**
+ * A blank predicted return is EXPECTED (an agency limitation, not a gap) for
+ * certain outage classes even at a system that normally publishes one. WMATA
+ * commits to a return for its categorized symptoms (Service Call, Minor/Major
+ * Repair, Modernization, …) but NOT for the open-ended "Other" catch-all —
+ * flagging that class is constant noise (Bryce, 2026-07-16, after a Waterfront
+ * F04X01 "Other" outage with no return pushed a spurious "missing predicted
+ * return"). The `reason` field is the raw SymptomDescription, optionally with a
+ * fail-safe note appended that always begins " (" — strip it to read the symptom.
+ */
+function returnExempt(systemId: string, outage: NormalizedOutage): boolean {
+  if (systemId !== "wmata-dc") return false;
+  const symptom = (outage.reason ?? "").split(" (")[0]!.trim().toLowerCase();
+  return symptom === "other";
+}
+
+/**
  * The rider-facing fields an outage is EXPECTED to carry but doesn't. Empty
  * array = complete for what this system can provide. Universal safety checks
  * (reason, location) apply everywhere; return + route/redundancy apply only
@@ -59,7 +75,7 @@ export function missingExpectedFields(
   if (!outage.stationName || !outage.stationName.trim()) missing.push("location");
 
   // Expected-only fields.
-  if (exp.expectsReturn && !outage.estimatedReturn) missing.push("predicted return");
+  if (exp.expectsReturn && !outage.estimatedReturn && !returnExempt(systemId, outage)) missing.push("predicted return");
   if (exp.curatedRoute) {
     // A DETERMINED redundancy source (curated / explicit / pathways / serving_text
     // / single_elevator) means the unit is modeled — it knows where it goes and
