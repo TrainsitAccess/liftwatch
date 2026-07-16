@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-16T23:36:31.111Z",
+ "updatedAt": "2026-07-16T23:42:54.764Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -723,7 +723,7 @@
    "system": "wmata-dc",
    "stationId": "G05",
    "name": "Downtown Largo",
-   "status": "pending",
+   "status": "modeled",
    "priority": 22,
    "reason": "observed-unmappable",
    "evidence": [
@@ -743,7 +743,12 @@
      "source": "live feed (observed)",
      "text": "G05X01: \"Elevator between street and mezzanine\""
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "adjusted",
+    "notes": "Modeled as 4 chains: core (mezzanine<->platform, redundant pair, both synthetic -- the street leg is omitted entirely since the mezzanine is at street level via Harry Truman Drive, no elevator needed) plus 3 auxiliary secondary entrances (North Garage, 1 synthetic elevator; South Garage, 2 synthetic redundant elevators; Grand Boulevard, 1 real elevator G05X01) -- none of the auxiliary chains are required for core accessibility. Full layout confirmed directly by Bryce, including which elevator is the one already observed live. Confidence 9/10. Adjusted from the initial 2-elevator, no-mezzanine-detail proposal via /liftwatch-station-review 2026-07-16.",
+    "date": "2026-07-16"
+   }
   },
   {
    "key": "mbta:place-haecl",

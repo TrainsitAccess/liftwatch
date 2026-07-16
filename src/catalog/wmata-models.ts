@@ -866,4 +866,82 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       },
     ],
   },
+  // Downtown Largo (G05, Blue/Silver terminus) — excluded by the
+  // observed-units gate as an "observed-unmappable": live unit G05X01
+  // ("Elevator between street and mezzanine") didn't cleanly match either
+  // GTFS edge (Street<->Street/Mezzanine, Street/Mezzanine<->Platform),
+  // which excluded the whole station. Bryce walked the FULL layout
+  // 2026-07-16 -- 6 elevators total, only 2 of which gate core
+  // accessibility:
+  //   - CORE: mezzanine<->platform, a redundant pair on opposite sides of
+  //     the platform (both synthetic -- neither individually observed).
+  //   - The mezzanine itself needs NO elevator at all -- it's at street
+  //     level via the Harry Truman Drive entrance, so there is no
+  //     street<->mezzanine segment in the core chain.
+  //   - 4 more elevators are auxiliary secondary entrances, none required
+  //     for core accessibility (confirmed by Bryce: "every single elevator
+  //     other than one platform elevator could be out, and it would still
+  //     be usable"): 1 from the North Garage to mezzanine (synthetic), 2
+  //     redundant elevators from the South Garage to mezzanine (both
+  //     synthetic), and 1 from Grand Boulevard to mezzanine -- this last
+  //     one is the real, live-observed G05X01 (Bryce confirmed the mapping
+  //     2026-07-16).
+  // Approved by Bryce via /liftwatch-station-review 2026-07-16 (confidence
+  // 9/10 -- full layout confirmed directly by Bryce).
+  {
+    systemId: SYSTEM,
+    stationExternalId: "G05",
+    note: "Mezzanine to platform: 2 elevators, on opposite sides of the platform — either one keeps this route step-free. The mezzanine itself needs no elevator at all; it's reachable at street level via the Harry Truman Drive entrance. Only if both platform elevators are out of service does this station lose step-free access.",
+    internalNote: "GTFS models this as a 2-segment chain (street<->mezzanine, mezzanine<->platform), but Bryce confirmed 2026-07-16 the mezzanine is at street level via Harry Truman Drive -- no elevator gates that leg at all, so it's omitted from the core chain entirely (informational only, in the public note). The mezzanine<->platform leg is a redundant pair, both synthetic (never individually observed), on opposite sides of the platform. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 9/10).",
+    segments: [
+      {
+        id: "mezzanine-platform",
+        label: "Mezzanine to platform",
+        elevators: [
+          { externalId: "WMATA-G05_ELE1", label: "Downtown Largo elevator (mezzanine to platform) — one side of platform" },
+          { externalId: "WMATA-G05_ELE2", label: "Downtown Largo elevator (mezzanine to platform) — opposite side of platform" },
+        ],
+      },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "G05",
+    chainLabel: " (North Garage)",
+    auxiliary: true,
+    note: "North Garage entrance to the mezzanine: one elevator, no backup. This is a secondary entrance, not required for ordinary station access — the mezzanine is also reachable step-free via the Harry Truman Drive street entrance.",
+    internalNote: "Never yet observed live; synthetic placeholder id. Auxiliary secondary entrance, confirmed by Bryce 2026-07-16 not to be required for core accessibility. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 9/10).",
+    segments: [
+      { id: "north-garage-mezzanine", label: "North Garage to mezzanine", elevators: [{ externalId: "WMATA-G05_NG_ELE", label: "Downtown Largo North Garage to mezzanine elevator — never yet observed live, synthetic id" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "G05",
+    chainLabel: " (South Garage)",
+    auxiliary: true,
+    note: "South Garage entrance to the mezzanine: 2 elevators, either one keeps this entrance step-free. This is a secondary entrance, not required for ordinary station access — the mezzanine is also reachable step-free via the Harry Truman Drive street entrance.",
+    internalNote: "Neither ever observed live; both synthetic placeholder ids. Confirmed by Bryce 2026-07-16 as a redundant pair (either elevator gets you to the mezzanine). Auxiliary secondary entrance, not required for core accessibility. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 9/10).",
+    segments: [
+      {
+        id: "south-garage-mezzanine",
+        label: "South Garage to mezzanine",
+        elevators: [
+          { externalId: "WMATA-G05_SG_ELE1", label: "Downtown Largo South Garage to mezzanine elevator — never yet observed live, synthetic id" },
+          { externalId: "WMATA-G05_SG_ELE2", label: "Downtown Largo South Garage to mezzanine elevator — never yet observed live, synthetic id" },
+        ],
+      },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "G05",
+    chainLabel: " (Grand Boulevard)",
+    auxiliary: true,
+    note: "Grand Boulevard entrance to the mezzanine: one elevator, no backup. This is a secondary entrance, not required for ordinary station access — the mezzanine is also reachable step-free via the Harry Truman Drive street entrance.",
+    internalNote: "Real, live-observed id (G05X01, \"Elevator between street and mezzanine\") -- this is the unit that originally excluded the whole station from auto-generation (didn't cleanly match either GTFS edge). Bryce confirmed 2026-07-16 this is the Grand Boulevard entrance elevator. Auxiliary, not required for core accessibility. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 9/10).",
+    segments: [
+      { id: "grand-blvd-mezzanine", label: "Grand Boulevard to mezzanine", elevators: [{ externalId: "G05X01", label: "Downtown Largo Grand Boulevard to mezzanine elevator" }] },
+    ],
+  },
 ];
