@@ -714,15 +714,18 @@ export const WMATA_STATION_MODELS: StationModel[] = [
   // NO stairs or escalators at all — elevator-only access by design, due to
   // its depth — so a true parallel bank of elevators on the one mezzanine
   // <-> platform run is exactly the expected shape, unlike a per-direction
-  // split. Approved by Bryce via /liftwatch-station-review 2026-07-16
-  // (confidence 6/10 — the all-elevator/no-stairs fact is general public
-  // knowledge about this station, not sourced from a WMATA document in this
-  // repo).
+  // split. Bryce confirmed the real total is SIX elevators, all on this same
+  // run (2026-07-16) — only 3 have ever individually appeared in a live
+  // outage; the other 3 get synthetic placeholder ids, promotable to real
+  // UnitNames the first time each is individually observed. Approved by
+  // Bryce via /liftwatch-station-review 2026-07-16 (confidence 8/10 — the
+  // bank shape was already inferred from the all-elevator/no-stairs fact;
+  // the total count of 6 is now Bryce-confirmed directly).
   {
     systemId: SYSTEM,
     stationExternalId: "B09",
-    note: "Mezzanine to platform: 3 elevators, any one keeps this route step-free. Only if all 3 are out of service does this station lose step-free access — Forest Glen has no stairs or escalators, so the elevators are the only way to reach the platform at all.",
-    internalNote: "GTFS models only 1 elevator (WMATA-B09_ELE) but the live feed has observed 3 distinct units (B09X04, B09X05, B09X06), all identically worded with no direction/segment distinction -- a genuine redundant bank, not a per-direction split. Forest Glen + Wheaton are WMATA's only all-elevator (no stairs/escalators) stations, consistent with a deliberate redundant bank at this depth. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 6/10).",
+    note: "Mezzanine to platform: 6 elevators, any one keeps this route step-free. Only if all 6 are out of service does this station lose step-free access — Forest Glen has no stairs or escalators, so the elevators are the only way to reach the platform at all.",
+    internalNote: "GTFS models only 1 elevator (WMATA-B09_ELE) but the live feed has observed 3 distinct units (B09X04, B09X05, B09X06), all identically worded with no direction/segment distinction -- a genuine redundant bank, not a per-direction split. Bryce confirmed the real total is 6 elevators, all on this same mezzanine<->platform run (2026-07-16); the 3 never yet individually observed get synthetic placeholder ids. Forest Glen + Wheaton are WMATA's only all-elevator (no stairs/escalators) stations, consistent with a deliberate redundant bank at this depth. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 8/10).",
     segments: [
       {
         id: "mezzanine-platform",
@@ -731,6 +734,9 @@ export const WMATA_STATION_MODELS: StationModel[] = [
           { externalId: "B09X04", label: "Forest Glen elevator (mezzanine to platform)" },
           { externalId: "B09X05", label: "Forest Glen elevator (mezzanine to platform)" },
           { externalId: "B09X06", label: "Forest Glen elevator (mezzanine to platform)" },
+          { externalId: "WMATA-B09_ELE2", label: "Forest Glen elevator (mezzanine to platform) — never yet observed live, synthetic id" },
+          { externalId: "WMATA-B09_ELE3", label: "Forest Glen elevator (mezzanine to platform) — never yet observed live, synthetic id" },
+          { externalId: "WMATA-B09_ELE4", label: "Forest Glen elevator (mezzanine to platform) — never yet observed live, synthetic id" },
         ],
       },
     ],

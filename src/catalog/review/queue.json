@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-16T22:51:58.454Z",
+ "updatedAt": "2026-07-16T22:53:27.820Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -606,7 +606,7 @@
    ],
    "resolution": {
     "verdict": "approved-as-proposed",
-    "notes": "Modeled as a genuine redundant bank of 3 elevators (B09X04/X05/X06) on the one mezzanine<->platform run -- all 3 live-observed units are identically worded with no direction/segment distinction, and Forest Glen is one of only two WMATA stations (with Wheaton) built with no stairs/escalators at all, consistent with a deliberate redundant bank at this depth. Confidence 6/10 (the all-elevator fact is general knowledge, not sourced from a WMATA document in this repo). Approved by Bryce individually 2026-07-16.",
+    "notes": "Modeled as a genuine redundant bank of 6 elevators on the one mezzanine<->platform run -- Bryce confirmed the real total is 6 (2026-07-16, correcting the initial 3-observed guess); only B09X04/X05/X06 have individually appeared live, the other 3 are synthetic placeholders. Forest Glen is one of only two WMATA stations (with Wheaton) built with no stairs/escalators at all, consistent with a deliberate redundant bank at this depth. Confidence 8/10. Approved by Bryce individually 2026-07-16.",
     "date": "2026-07-16"
    }
   },
