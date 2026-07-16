@@ -14,16 +14,35 @@ import {
 } from "../lib/accessibility.js";
 import nyInventory from "../catalog/mta-data/ny-elevator-inventory.json" with { type: "json" };
 
-// MTA's OWN rider-facing reroute guidance, keyed by equipment code (= our MTA
-// external ids), from the data.ny.gov inventory (94fv-bak7 → `alternative_route`;
-// see scripts/mta-ny-inventory.mts). It reads "if this elevator is out, do X"
-// (cross to another entrance, use a named backup, ride to the next accessible
-// station and return…) — MTA's authoritative wayfinding, surfaced verbatim on
-// the site when the elevator is out. It assumes only THIS elevator is out (as
-// MTA's own signage does), so it's presented as MTA's guidance, not our claim.
+// MTA's OWN per-elevator text, keyed by equipment code (= our MTA external
+// ids), from the data.ny.gov inventory (94fv-bak7; see
+// scripts/mta-ny-inventory.mts):
+//  • `alternative_route` — rider-facing reroute ("if this elevator is out, do
+//    X"), surfaced verbatim when the elevator is out. It assumes only THIS
+//    elevator is out (as MTA's signage does), so it's shown as MTA's guidance.
+//  • `notes` — MTA's own description of what the elevator connects; we prefer
+//    it over our feed-derived description when it's equivalent or richer.
 const mtaReroute = new Map<string, string>();
-for (const e of (nyInventory as { elevators: { equipment_code: string; alternative_route?: string }[] }).elevators) {
+const mtaNote = new Map<string, string>();
+for (const e of (nyInventory as { elevators: { equipment_code: string; alternative_route?: string; notes?: string }[] }).elevators) {
   if (e.alternative_route) mtaReroute.set(e.equipment_code, e.alternative_route);
+  if (e.notes) mtaNote.set(e.equipment_code, e.notes);
+}
+
+// Data-quality artifacts in the inventory's `notes` (internal maintenance text,
+// duplicate-equipment bookkeeping) that must never replace our description.
+const MTA_NOTE_JUNK = /\b(unlink|withdraw|out of service|duplicate|superced|do not use|EQ\d{4,})\b/i;
+
+// Bryce (2026-07-16): use MTA's own elevator description when it essentially
+// says the same thing as ours or is richer; keep ours when MTA's is junk,
+// missing, or dramatically terser (ours richer). Capitalize MTA's (its text is
+// lowercase) for display consistency.
+function preferMtaNote(ours: string | null | undefined, code: string | undefined): string | null {
+  const our = (ours ?? "").trim();
+  const mta = code ? mtaNote.get(code)?.trim() : undefined;
+  if (!mta || MTA_NOTE_JUNK.test(mta)) return our || null;
+  if (our && our.length > mta.length * 1.3) return our; // ours materially richer
+  return mta.charAt(0).toUpperCase() + mta.slice(1);
 }
 
 // Snapshot the archive into the site's data payloads. Server-side (service
@@ -317,7 +336,7 @@ const allOpenOutages = (events.data ?? [])
       systemId: e.system_id as string,
       station: stationName.get((e.station_id ?? unit?.station_id) as string) ?? "Unknown",
       unit: (unit?.external_id as string) ?? "?",
-      unitDesc: (unit?.description as string | null) ?? null,
+      unitDesc: preferMtaNote((unit?.description as string | null) ?? null, unit?.external_id as string | undefined),
       soleAccess: confirmedSoleAccess(unit),
       reroute: (unit?.external_id && mtaReroute.get(unit.external_id as string)) ?? null,
       planned: e.is_planned as boolean,
@@ -550,7 +569,7 @@ function buildSystemDetail(systemId: string) {
       return {
         station: displayStationName(sid, ext),
         unitId: ext ?? "?",
-        unit: (unit?.description as string) || ext || "?",
+        unit: preferMtaNote((unit?.description as string) ?? null, ext) || ext || "?",
         days: daysSince(since),
         since,
         planned: e.is_planned as boolean,
