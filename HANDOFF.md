@@ -140,3 +140,62 @@ implement these 6 directly from this note rather than re-researching.
 Howard was checked too but stayed genuinely ambiguous (search results
 suggest its two elevators might reach all platforms via a shared mezzanine,
 which would mean real redundancy — don't guess, needs a real signal).
+
+---
+
+## Session update (2026-07-16, continued)
+
+### Shipped: the 6 "researched but not yet shipped" CTA stations (commit `1308db7`)
+All 6 from the note above are now modeled in `cta-models.ts` and marked
+`modeled` in the review queue — CTA 18→24, station review 61→67/213 (31.5%):
+- **Racine (40470), Pulaski/Pink (40150), 69th (40990), 47th/Red (41230),
+  Argyle (41200)** — single elevator, no backup (bare-station-id = real
+  elevator, the Batch 2 safe pattern). Confidence 9/10 each. Note: the
+  research's "Pulaski" is the **Pink Line** one (40150); Green Line Pulaski
+  (40030) has two per-direction elevators and stays pending.
+- **Wilson (40540)** — CORRECTED from the note's "no backup" claim. CTA's own
+  `/wilson/` reconstruction page + Bryce's confirmation: two direction-organized
+  islands (SB=95th/Loop, NB=Howard/Linden), EACH reachable by its own elevator
+  OR a Sunnyside Ave ADA ramp (two ramps, one per island, no mezzanine). So each
+  direction is REDUNDANT — modeled with `segment.stepFreeAlternative: true`.
+  The prior research had missed the ramps (exactly what the standing ramp rule
+  is for). Verified live: Wilson (95th/Loop-bound) reads ACCESSIBLE during its
+  current southbound-elevator outage instead of a false INACCESSIBLE.
+
+### Audit: shipped CTA models cross-checked vs CTA's own project pages
+Mined CTA's project index (`/projects/`) — the Wilson-style pages
+(`/95thterminal/`, `/westernbrown/`, `/fprebuild/`, `/redsouth/`, `/rpm/`,
+`/clarkdivision/`, `/quincy/`, `/washingtonwabash/`, `/imd/`, `/garfieldgateway/`,
+`/yournewblue/`, …). CTA's site 403s WebFetch — use the in-app **Browser pane**
+(`mcp__Claude_Browser__navigate` + `get_page_text`), not WebFetch. Findings: no
+harmful errors. Racine CONFIRMED single-elevator (Loomis ramp is "closing for
+reconstruction," not a current backup) via `/fprebuild/`; Western consistent
+("elevator cabs" plural, no ramp) via `/westernbrown/`; Bryn Mawr consistent via
+`/rpm/`. The 3 redundant claims (Cermak, Bryn Mawr, Wilson) are all the
+structurally-safe "one island platform, two independent elevators/ramp" kind.
+
+### DEFERRED / KNOWN GAP #2 — homepage doesn't render elevator/ramp backups
+**What:** `site/index.html`'s longest-current-outage boards annotate ONLY
+`soleAccess` (red "NO STEP-FREE" chip, `renderOutageRows` ~line 472/485/492).
+They do NOT show that an outage is still covered by a backup elevator or a
+step-free ramp. `site/system.html` DOES (green "BACKUP" chip + "STEP-FREE RAMP
+COVERS THIS ROUTE" + a "A step-free ramp covers this elevator's route." line in
+the expand, ~lines 656-664/681-685). So a redundant/ramp-covered outage that
+reaches the homepage top-10 longest board shows unannotated — inconsistent with
+the system page. (Low urgency: only bites when a backup/ramp-covered outage is
+among the 10 LONGEST current outages, e.g. a multi-year outage on one elevator
+of a redundant pair. Wilson at 2 days won't reach it.)
+**Root cause:** the homepage boards come from `longestUnplanned`/`longestPlanned`
+→ `allOpenOutages` (`build-site-data.ts` ~line 296-318), whose entries carry
+`soleAccess` but NOT `severs`/`backups`/`rampAlternative`. Those are computed by
+`accessImpactFor` (~line 447), a closure INSIDE `buildSystemDetail(systemId)` —
+per-system scope, unavailable at the cross-system `allOpenOutages` build point.
+**Fix plan (not started):** extract `accessImpactFor` into a top-level shared
+helper `accessImpact(systemId, extId, openExtIds)` (derive `chainsList` from
+`stationModelsFor(systemId)` inside it); call it from BOTH `buildSystemDetail`'s
+`currentlyBroken` AND the cross-system `allOpenOutages` map (build a per-system
+open-ext-id set for the latter); attach `severs/backups/rampAlternative` to the
+`allOpenOutages` entries; then mirror `system.html`'s chip/line rendering in
+`index.html`'s `renderOutageRows`. Keeps the two pages semantically in sync
+(the whole point). `demo:access` unaffected; verify with `site:data` +
+preview + a redundant-pair outage.
