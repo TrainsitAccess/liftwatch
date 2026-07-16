@@ -355,7 +355,7 @@
    "system": "cta-chicago",
    "stationId": "40560",
    "name": "the Adams-Jackson entrance to Jackson",
-   "status": "pending",
+   "status": "modeled",
    "priority": 14,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
@@ -371,7 +371,12 @@
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **40560 Jackson (Red/State)** — subway island; Adams-Jackson mezzanine got street→mezz + mezz→platform elevators; the Jackson-Van Buren mezzanine also had elevators installed (1996-2000) — ⚠ if BOTH mezzanines have full elevator pairs, this is a redundant-pair-of-series-chains ✚. observed: ADAMS-JACKSON-PLATFORM (the feed distinguishes the entrance!)."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Individual review 2026-07-16. REDUNDANT pair of 2-in-series chains, one per mezzanine (island platform, State St subway). Both mezzanines (Adams-Jackson + Jackson-Van Buren) have a street->mezz AND a mezz->platform elevator (4 total); station step-free iff both elevators on at least one route work. Encoded as a 4-clause CNF (Stamford paired-segment pattern), verified by an 11-case accessibility test. Adams pair observed live; Van Buren pair confirmed 2026-07-16 via chicago-L.org (2000 renovation, accessible from both mezzanines), a real CTA alert (elevator to/from platform at the Jackson Van Buren entrance), and Bryce (both street->mezz elevators). Van Buren ids are the deterministic parser output (real, not synthetic). Confidence 9/10. Implemented in src/catalog/cta-models.ts.",
+    "date": "2026-07-16"
+   }
   },
   {
    "key": "cta:41400",

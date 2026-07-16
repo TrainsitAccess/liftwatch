@@ -711,4 +711,53 @@ export const CTA_STATION_MODELS: StationModel[] = [
       },
     ],
   },
+
+  // Jackson (40560, Red Line — State St subway) — island platform with TWO
+  // full independent step-free routes, one per mezzanine (a Chicago subway
+  // first, 2000). The Adams-Jackson (north) mezzanine and the Jackson-Van
+  // Buren (south) mezzanine EACH have a street→mezzanine elevator AND a
+  // mezzanine→platform elevator — 4 elevators total. The station stays
+  // step-free as long as BOTH elevators on at least ONE route are working:
+  // a REDUNDANT PAIR OF 2-IN-SERIES CHAINS,
+  //   (Adams_street ∧ Adams_plat) ∨ (VanBuren_street ∧ VanBuren_plat).
+  // The segment model is AND-of-ORs (a station is accessible iff EVERY segment
+  // has a working elevator), so this OR-of-ANDs is encoded in CNF as the four
+  // pairwise clauses below (the Stamford paired-segment pattern) — exact, not
+  // an approximation: any single elevator outage leaves all four clauses
+  // covered (redundant), while losing both elevators on one route AND one on
+  // the other correctly severs access.
+  // EVIDENCE (2026-07-16 research): Adams-Jackson street+platform observed live
+  // (40560-ADAMS-JACKSON-STREET/-PLATFORM). Van Buren pair confirmed by
+  // chicago-L.org (the 2000 Jackson-Van Buren renovation added a platform
+  // elevator, "making Jackson/State accessible from both mezzanines, a Chicago
+  // subway first") + a REAL CTA alert naming "the elevator to/from platform at
+  // the Jackson Van Buren entrance" + Bryce (confident both street→mezz
+  // elevators exist). All four ids are REAL: the two Van Buren ids are the
+  // deterministic CTA parser's output for that alert text, so a future Van
+  // Buren outage matches by id (no synthetic placeholder needed). A vague
+  // "elevator at Jackson" alert matches no member → needsReview → UNKNOWN.
+  {
+    systemId: SYSTEM,
+    stationExternalId: "40560",
+    note: "Two independent step-free routes to the platform: the Adams-Jackson entrance (street elevator then platform elevator) or the Jackson-Van Buren entrance (street elevator then platform elevator). The station stays step-free as long as both elevators on at least one of the two routes are working — no single elevator outage removes step-free access.",
+    internalNote: "State St subway island platform. Redundant pair of 2-in-series chains, one per mezzanine, encoded as a 4-clause CNF (paired-segment / Stamford pattern) of (Adams_street ∧ Adams_plat) ∨ (VanBuren_street ∧ VanBuren_plat). Adams-Jackson street+platform observed live. Jackson-Van Buren pair confirmed 2026-07-16: chicago-L.org (2000 renovation, 'accessible from both mezzanines, a Chicago subway first'), a real CTA alert ('elevator to/from platform at the Jackson Van Buren entrance'), and Bryce (both street→mezz elevators confirmed). Van Buren ids are the deterministic parser output (40560-JACKSON-VAN-BUREN-STREET/-PLATFORM) — real, not synthetic. Approved by Bryce 2026-07-16 (individual review). Confidence 9/10.",
+    segments: [
+      { id: "cnf-street-street", label: "Step-free guard: an Adams-Jackson or Jackson-Van Buren STREET elevator", elevators: [
+        { externalId: "40560-ADAMS-JACKSON-STREET", label: "Adams-Jackson entrance street-to-mezzanine elevator" },
+        { externalId: "40560-JACKSON-VAN-BUREN-STREET", label: "Jackson-Van Buren entrance street-to-mezzanine elevator" },
+      ] },
+      { id: "cnf-street-plat", label: "Step-free guard: Adams-Jackson street or Jackson-Van Buren platform elevator", elevators: [
+        { externalId: "40560-ADAMS-JACKSON-STREET", label: "Adams-Jackson entrance street-to-mezzanine elevator" },
+        { externalId: "40560-JACKSON-VAN-BUREN-PLATFORM", label: "Jackson-Van Buren entrance mezzanine-to-platform elevator" },
+      ] },
+      { id: "cnf-plat-street", label: "Step-free guard: Adams-Jackson platform or Jackson-Van Buren street elevator", elevators: [
+        { externalId: "40560-ADAMS-JACKSON-PLATFORM", label: "Adams-Jackson entrance mezzanine-to-platform elevator" },
+        { externalId: "40560-JACKSON-VAN-BUREN-STREET", label: "Jackson-Van Buren entrance street-to-mezzanine elevator" },
+      ] },
+      { id: "cnf-plat-plat", label: "Step-free guard: an Adams-Jackson or Jackson-Van Buren PLATFORM elevator", elevators: [
+        { externalId: "40560-ADAMS-JACKSON-PLATFORM", label: "Adams-Jackson entrance mezzanine-to-platform elevator" },
+        { externalId: "40560-JACKSON-VAN-BUREN-PLATFORM", label: "Jackson-Van Buren entrance mezzanine-to-platform elevator" },
+      ] },
+    ],
+  },
 ];
