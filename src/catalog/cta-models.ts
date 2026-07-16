@@ -760,4 +760,152 @@ export const CTA_STATION_MODELS: StationModel[] = [
       ] },
     ],
   },
+
+  // ── Transfer-bridge / rotogate family, shipped 2026-07-16 (/liftwatch-station-review) ──
+  // Two archetypes from STATION-RESEARCH.md, both resolved the same way:
+  // B′ (Ashland, 43rd, California — side platforms linked by an overhead
+  // transfer bridge; open question was whether either tower reaches BOTH
+  // platforms, a possible cross-redundant pair) and B″ (King Drive, Cottage
+  // Grove — fare control only on the inbound platform, outbound platform's
+  // elevator is egress-only via wheelchair rotogates; open question was how
+  // to model the boarding-vs-exiting asymmetry). Neither question is
+  // resolved here — both are modeled the SAME conservative way as
+  // Conservatory (41670, Batch 2, also a B′ station): two INDEPENDENT,
+  // NON-REDUNDANT per-direction chains, using whichever id CTA's own alerts
+  // have actually reported and a synthetic placeholder for the unconfirmed
+  // side. This never claims a redundancy we can't back with a real signal
+  // (over-warn, never under-warn), and it sidesteps the boarding/egress
+  // schema question entirely — the model only tracks whether an elevator is
+  // up, not which direction a rider can enter fare control from. Approved by
+  // Bryce as a batch (confidence 7/10 collectively — matches Conservatory's
+  // already-shipped precedent exactly; the soft spot is unconfirmed
+  // direction naming at Ashland/California/Cottage Grove, cosmetic only).
+
+  // Ashland (40170, Green/Lake + Pink). "All entry via the inbound side,
+  // outbound reached by the overhead transfer bridge; two elevator towers on
+  // the paid side" (chicago-L.org). Only the street/inbound tower has ever
+  // been observed live; the bridge/outbound tower's id and direction name are
+  // unconfirmed.
+  {
+    systemId: SYSTEM,
+    stationExternalId: "40170",
+    chainLabel: " (street/inbound)",
+    note: "Street to the inbound platform: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Side platforms; all entry via the inbound side (chicago-L.org). Real observed id, alert text never names a direction ('the elevator to/from street'). Human-approved as part of the transfer-bridge/rotogate batch via /liftwatch-station-review 2026-07-16 (confidence 7/10 — no redundancy claimed).",
+    segments: [
+      { id: "street-platform", label: "Street to inbound platform", elevators: [{ externalId: "40170-STREET", label: "Ashland street/inbound platform elevator" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "40170",
+    chainLabel: " (outbound, via bridge)",
+    note: "Inbound platform (via the overhead transfer bridge) to the outbound platform: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Never yet observed live; synthetic placeholder id, promotable once observed. Direction name unconfirmed (no distinct alert text has ever named it). Human-approved as part of the transfer-bridge/rotogate batch via /liftwatch-station-review 2026-07-16 (confidence 7/10 — no redundancy claimed).",
+    segments: [
+      { id: "bridge-platform", label: "Transfer bridge to outbound platform", elevators: [{ externalId: "CTA-SYNTH-40170-OUTBOUND", label: "Ashland outbound platform elevator — never yet observed live, synthetic id" }] },
+    ],
+  },
+
+  // 43rd (41270, Green Line). "TWO stainless elevator towers + overhead
+  // bridge (1994-96)" (chicago-L.org) — the only one of this family where
+  // BOTH towers have independently appeared live: 41270-STREET-PLATFORMS-
+  // BRIDGE (one tower serving street+bridge+platform) and 41270-HARLEM-BOUND
+  // (the outbound tower). Strongest evidence of the five.
+  {
+    systemId: SYSTEM,
+    stationExternalId: "41270",
+    chainLabel: " (street/inbound)",
+    note: "Street to the inbound platform (and the transfer bridge): one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Dual side platforms, two stainless elevator towers + overhead bridge, 1994-96 (chicago-L.org). Real observed id; alert text ('elevator to/from street, platforms and bridge') reads as one tower serving all three functions. Human-approved as part of the transfer-bridge/rotogate batch via /liftwatch-station-review 2026-07-16 (confidence 7/10 — no redundancy claimed).",
+    segments: [
+      { id: "street-platform-bridge", label: "Street/bridge to inbound platform", elevators: [{ externalId: "41270-STREET-PLATFORMS-BRIDGE", label: "43rd street/platform/bridge elevator" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "41270",
+    chainLabel: " (Harlem-bound)",
+    note: "Transfer bridge to the Harlem-bound platform: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Real observed id (41270-HARLEM-BOUND), independently confirmed live — distinct from the street/platforms/bridge tower. Human-approved as part of the transfer-bridge/rotogate batch via /liftwatch-station-review 2026-07-16 (confidence 7/10 — no redundancy claimed).",
+    segments: [
+      { id: "bridge-platform", label: "Transfer bridge to Harlem-bound platform", elevators: [{ externalId: "41270-HARLEM-BOUND", label: "43rd Harlem-bound platform elevator" }] },
+    ],
+  },
+
+  // California (41360, Green/Lake). "Single fare control at track level on
+  // the INBOUND (south) side; street elevator at the corner + dual elevators
+  // flanking the platforms with crossbridge structures" (chicago-L.org).
+  // CTA's own alerts never gave the platform-side elevator distinct location
+  // text — it's always bundled with "street" in a compound alert, or falls
+  // to the bare station id (vague-alert fail-safe) — so it stays synthetic.
+  {
+    systemId: SYSTEM,
+    stationExternalId: "41360",
+    chainLabel: " (street/inbound)",
+    note: "Street to the inbound platform: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Side platforms, single fare control on the inbound side, street elevator at the corner (chicago-L.org). Real observed id. Human-approved as part of the transfer-bridge/rotogate batch via /liftwatch-station-review 2026-07-16 (confidence 7/10 — no redundancy claimed).",
+    segments: [
+      { id: "street-platform", label: "Street to inbound platform", elevators: [{ externalId: "41360-STREET", label: "California street/inbound platform elevator" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "41360",
+    chainLabel: " (Harlem-bound)",
+    note: "Inbound platform (via crossbridge) to the Harlem-bound platform: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Never independently observed live — CTA's compound alert ('elevator to/from street and elevators needed to access the Harlem-bound platforms') bundles it with the street elevator, and the vague form falls to the bare station id (41360). Synthetic placeholder id, promotable once individually observed. Human-approved as part of the transfer-bridge/rotogate batch via /liftwatch-station-review 2026-07-16 (confidence 7/10 — no redundancy claimed).",
+    segments: [
+      { id: "bridge-platform", label: "Crossbridge to Harlem-bound platform", elevators: [{ externalId: "CTA-SYNTH-41360-HARLEM-BOUND", label: "California Harlem-bound platform elevator — never yet observed live, synthetic id" }] },
+    ],
+  },
+
+  // Cottage Grove (40720, Green Line). B″ pattern — "same design" as King
+  // Drive (chicago-L.org): fare control only on the inbound platform, the
+  // outbound platform's elevator is egress-only via wheelchair rotogates.
+  // Only the street/inbound elevator has ever been observed live.
+  {
+    systemId: SYSTEM,
+    stationExternalId: "40720",
+    chainLabel: " (street/inbound)",
+    note: "Street to the inbound platform: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Fare-control platform + exit-only outbound elevator/rotogates, same design as King Drive (chicago-L.org). Real observed id. Human-approved as part of the transfer-bridge/rotogate batch via /liftwatch-station-review 2026-07-16 (confidence 7/10 — no redundancy claimed).",
+    segments: [
+      { id: "street-platform", label: "Street to inbound platform", elevators: [{ externalId: "40720-STREET", label: "Cottage Grove street/inbound platform elevator" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "40720",
+    chainLabel: " (outbound, egress via rotogates)",
+    note: "Outbound platform elevator (egress via wheelchair rotogates): one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Never yet observed live; synthetic placeholder id, promotable once observed. Fare control exists only on the inbound platform — this elevator is understood to be egress-only via high-barrier rotogates (chicago-L.org), not a boarding path; tracked here as an ordinary single-elevator chain regardless. Human-approved as part of the transfer-bridge/rotogate batch via /liftwatch-station-review 2026-07-16 (confidence 7/10 — no redundancy claimed).",
+    segments: [
+      { id: "rotogate-platform", label: "Outbound platform elevator (egress via rotogates)", elevators: [{ externalId: "CTA-SYNTH-40720-OUTBOUND", label: "Cottage Grove outbound platform elevator — never yet observed live, synthetic id" }] },
+    ],
+  },
+
+  // King Drive (41140, Green Line). B″ pattern, inverse of Cottage Grove:
+  // only the outbound (Harlem-bound)/rotogate elevator has ever been
+  // observed live; the street/inbound elevator's id is unconfirmed.
+  {
+    systemId: SYSTEM,
+    stationExternalId: "41140",
+    chainLabel: " (street/inbound)",
+    note: "Street to the inbound platform: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Never yet observed live; synthetic placeholder id, promotable once observed. Fare-control platform + exit-only outbound elevator/rotogates (chicago-L.org). Human-approved as part of the transfer-bridge/rotogate batch via /liftwatch-station-review 2026-07-16 (confidence 7/10 — no redundancy claimed).",
+    segments: [
+      { id: "street-platform", label: "Street to inbound platform", elevators: [{ externalId: "CTA-SYNTH-41140-STREET", label: "King Drive street/inbound platform elevator — never yet observed live, synthetic id" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "41140",
+    chainLabel: " (Harlem-bound, egress via rotogates)",
+    note: "Harlem-bound platform elevator (egress via wheelchair rotogates): one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Real observed id (41140-HARLEM-BOUND). Fare control exists only on the inbound platform — this elevator is understood to be egress-only via high-barrier rotogates (chicago-L.org), not a boarding path; tracked here as an ordinary single-elevator chain regardless. Human-approved as part of the transfer-bridge/rotogate batch via /liftwatch-station-review 2026-07-16 (confidence 7/10 — no redundancy claimed).",
+    segments: [
+      { id: "rotogate-platform", label: "Harlem-bound platform elevator (egress via rotogates)", elevators: [{ externalId: "41140-HARLEM-BOUND", label: "King Drive Harlem-bound platform elevator" }] },
+    ],
+  },
 ];

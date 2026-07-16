@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-16T22:10:53.547Z",
+ "updatedAt": "2026-07-16T22:41:12.087Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -383,7 +383,7 @@
    "system": "cta-chicago",
    "stationId": "41400",
    "name": "Roosevelt",
-   "status": "pending",
+   "status": "deferred",
    "priority": 14,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
@@ -399,14 +399,19 @@
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **41400 Roosevelt (Red)** — subway island: street→mezz elevator (main) plus the TRANSFER TUNNEL elevator to the elevated (Orange/Green). The tunnel elevator gates the accessible subway↔elevated transfer, not street access. observed: TRANSFER-TUNNEL ✓ distinct. Two chains (street access; transfer)."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "deferred",
+    "notes": "ASAP count says 3 elevators but chicago-L.org only names 2 (main street->mezz, transfer tunnel to elevated). Third elevator unconfirmed -- Bryce is asking online (Discord) for firsthand knowledge of the station layout before modeling.",
+    "date": "2026-07-16"
+   }
   },
   {
    "key": "cta:40170",
    "system": "cta-chicago",
    "stationId": "40170",
    "name": "Ashland",
-   "status": "pending",
+   "status": "modeled",
    "priority": 16,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
@@ -422,14 +427,19 @@
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **40170 Ashland (Green/Lake)** — side platforms; all entry via the inbound side, outbound reached by the overhead transfer bridge; two elevator towers on the paid side. observed: STREET. ⚠ same bridge question; also which tower the \"to/from street\" alert means."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Transfer-bridge/rotogate batch: modeled as 2 independent non-redundant per-direction chains (real observed id + synthetic placeholder for the unconfirmed side), same conservative treatment already shipped for Conservatory (41670, Batch 2). Neither the bridge-redundancy question (B′) nor the boarding-vs-exiting rotogate question (B″) was resolved -- both sidestepped by never claiming redundancy without a real signal. Approved by Bryce as a batch 2026-07-16.",
+    "date": "2026-07-16"
+   }
   },
   {
    "key": "cta:41270",
    "system": "cta-chicago",
    "stationId": "41270",
    "name": "43rd",
-   "status": "pending",
+   "status": "modeled",
    "priority": 16,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
@@ -445,14 +455,19 @@
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **41270 43rd (Green)** — dual side platforms; TWO stainless elevator towers + overhead bridge (1994-96). observed: HARLEM-BOUND *and* STREET-PLATFORMS-BRIDGE — the second alert text (\"elevator to/from street, platforms and bridge\") reads like one tower serving street+bridge+platform, which supports the cross-redundant reading. The two observed ids may be the same physical elevator described two ways, or the two towers. ⚠ resolve."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Transfer-bridge/rotogate batch: modeled as 2 independent non-redundant per-direction chains (real observed id + synthetic placeholder for the unconfirmed side), same conservative treatment already shipped for Conservatory (41670, Batch 2). Neither the bridge-redundancy question (B′) nor the boarding-vs-exiting rotogate question (B″) was resolved -- both sidestepped by never claiming redundancy without a real signal. Approved by Bryce as a batch 2026-07-16.",
+    "date": "2026-07-16"
+   }
   },
   {
    "key": "cta:41360",
    "system": "cta-chicago",
    "stationId": "41360",
    "name": "California",
-   "status": "pending",
+   "status": "modeled",
    "priority": 16,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
@@ -472,7 +487,12 @@
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **41360 California (Green/Lake)** — side platforms; single fare control at track level on the INBOUND (south) side; street elevator at the corner + dual elevators flanking the platforms with crossbridge structures. observed: STREET (incl. the compound alert confirming the street elevator gates the Harlem-bound platform). Likely 3 elevators: street + one per platform. ⚠ confirm outbound access path. ### B″ — side platforms with EXIT-ONLY outbound elevators (wheelchair rotogates) 63rd St corridor pattern (explicitly described for both): fare controls exist ONLY on one platform; the outbound platform's elevator is EGRESS-ONLY through wheelchair-accessible high-barrier rotogates — you cannot board there. ⚠ How does an accessible rider BOARD outbound? (Ride inbound to a crossover station and return?) This asymmetry (boarding vs exiting accessibility) doesn't fit the current segment model cleanly — needs a policy decision."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Transfer-bridge/rotogate batch: modeled as 2 independent non-redundant per-direction chains (real observed id + synthetic placeholder for the unconfirmed side), same conservative treatment already shipped for Conservatory (41670, Batch 2). Neither the bridge-redundancy question (B′) nor the boarding-vs-exiting rotogate question (B″) was resolved -- both sidestepped by never claiming redundancy without a real signal. Approved by Bryce as a batch 2026-07-16.",
+    "date": "2026-07-16"
+   }
   },
   {
    "key": "cta:41670",
@@ -503,7 +523,7 @@
    "system": "cta-chicago",
    "stationId": "40720",
    "name": "Cottage Grove",
-   "status": "pending",
+   "status": "modeled",
    "priority": 18,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
@@ -519,14 +539,19 @@
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **40720 Cottage Grove (Green)** — same design (\"installed here and at Cottage Grove\"). observed: STREET. ## Archetype C — multi-elevator complexes (interchange tier — model WITH Bryce)"
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Transfer-bridge/rotogate batch: modeled as 2 independent non-redundant per-direction chains (real observed id + synthetic placeholder for the unconfirmed side), same conservative treatment already shipped for Conservatory (41670, Batch 2). Neither the bridge-redundancy question (B′) nor the boarding-vs-exiting rotogate question (B″) was resolved -- both sidestepped by never claiming redundancy without a real signal. Approved by Bryce as a batch 2026-07-16.",
+    "date": "2026-07-16"
+   }
   },
   {
    "key": "cta:41140",
    "system": "cta-chicago",
    "stationId": "41140",
    "name": "King Drive",
-   "status": "pending",
+   "status": "modeled",
    "priority": 18,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
@@ -542,7 +567,12 @@
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **41140 King Drive (Green)** — fare-control platform + exit-only outbound elevator/rotogates. observed: HARLEM-BOUND."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Transfer-bridge/rotogate batch: modeled as 2 independent non-redundant per-direction chains (real observed id + synthetic placeholder for the unconfirmed side), same conservative treatment already shipped for Conservatory (41670, Batch 2). Neither the bridge-redundancy question (B′) nor the boarding-vs-exiting rotogate question (B″) was resolved -- both sidestepped by never claiming redundancy without a real signal. Approved by Bryce as a batch 2026-07-16.",
+    "date": "2026-07-16"
+   }
   },
   {
    "key": "wmata:B09",
