@@ -13,6 +13,7 @@ import {
   type StationModel,
 } from "../lib/accessibility.js";
 import nyInventory from "../catalog/mta-data/ny-elevator-inventory.json" with { type: "json" };
+import mtaStationAda from "../catalog/mta-data/mta-station-ada.json" with { type: "json" };
 
 // MTA's OWN per-elevator text, keyed by equipment code (= our MTA external
 // ids), from the data.ny.gov inventory (94fv-bak7; see
@@ -907,6 +908,32 @@ function buildSystemDetail(systemId: string) {
     .sort((a, b) => b.count - a.count)
     .slice(0, 15);
 
+  // MTA's own STATION-LEVEL ADA accessibility declaration (design-time, not
+  // live outage status — see MTA-DISPLAY-GUIDE.md / mta-station-ada.json).
+  // MTA-only; restricted to complexes our archive actually tracks elevators
+  // at (grounds the board in real, monitored stations, not the full network).
+  // Bryce (2026-07-16): never show a bare "partial" — always name the lines
+  // and directions, which mta-station-ada.json's `explanation` already does.
+  let stationAccessibility: {
+    complexId: string; name: string; ada: number; adaLabel: string; explanation: string;
+  }[] = [];
+  if (systemId === "mta-nyct") {
+    const trackedComplexIds = new Set(
+      systemUnits.map((u) => (u.station_id as string | null)?.split(":")[1]).filter(Boolean),
+    );
+    const adaEntries = (mtaStationAda as { stations: { complexId: string; name: string; ada: number; explanation: string | null }[] }).stations;
+    stationAccessibility = adaEntries
+      .filter((s) => s.ada !== 1 && trackedComplexIds.has(s.complexId))
+      .map((s) => ({
+        complexId: s.complexId,
+        name: s.name,
+        ada: s.ada,
+        adaLabel: s.ada === 0 ? "Not accessible" : "Partially accessible",
+        explanation: s.explanation ?? "",
+      }))
+      .sort((a, b) => a.ada - b.ada || a.name.localeCompare(b.name));
+  }
+
   // "Needs review" — currently-open outages we couldn't confidently place onto
   // a specific known elevator (needs_review). The universal human-flag surface.
   const needsReview = systemEvents
@@ -928,6 +955,7 @@ function buildSystemDetail(systemId: string) {
 
   return {
     currentlyBroken,
+    stationAccessibility,
     needsReview: { current: needsReview.length, rows: needsReview },
     offline: { current: offlineLog.filter((o) => o.restored === null).length, log: offlineLog },
     otherEquipment: { current: otherEquipment.filter((a) => a.restored === null).length, log: otherEquipment },

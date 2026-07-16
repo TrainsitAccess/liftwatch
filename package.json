@@ -59,7 +59,9 @@
     "check:mbta-pathways": "tsx src/checks/mbta-pathways-check.ts",
     "mbta:ramps": "tsx scripts/mbta-ramps.mts",
     "mta:ny-inventory": "tsx scripts/mta-ny-inventory.mts",
-    "check:mta-ny": "tsx scripts/check-mta-ny.mts"
+    "check:mta-ny": "tsx scripts/check-mta-ny.mts",
+    "mta:station-ada": "tsx scripts/mta-station-ada.mts",
+    "check:mta-ada": "tsx scripts/check-mta-ada.mts"
   },
   "dependencies": {
     "@netlify/blobs": "^10.7.9",

@@ -1,0 +1,6542 @@
+{
+ "note": "MTA's own STATION-LEVEL ADA accessibility declaration (design-time, not live outage status) — see src/catalog/mta-data/MTA-DISPLAY-GUIDE.md. Sources: data.ny.gov 4ta5-wz5s (interchange complexes, MTA-authored ada_notes) + 39hk-dx4f (per-line rows, all complexes). Refresh: npm run mta:station-ada. ada: 0=not accessible, 1=fully accessible, 2=partially accessible.",
+ "complexCount": 445,
+ "stations": [
+  {
+   "complexId": "1",
+   "name": "Astoria-Ditmars Blvd",
+   "ada": 0,
+   "explanation": "Astoria [N W]: not accessible.",
+   "lines": [
+    {
+     "line": "Astoria",
+     "routes": "N W",
+     "ada": 0,
+     "explanation": "Astoria [N W]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "2",
+   "name": "Astoria Blvd",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Astoria",
+     "routes": "N W",
+     "ada": 1,
+     "explanation": "Astoria [N W]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "3",
+   "name": "30 Av",
+   "ada": 0,
+   "explanation": "Astoria [N W]: not accessible.",
+   "lines": [
+    {
+     "line": "Astoria",
+     "routes": "N W",
+     "ada": 0,
+     "explanation": "Astoria [N W]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "4",
+   "name": "Broadway",
+   "ada": 0,
+   "explanation": "Astoria [N W]: not accessible.",
+   "lines": [
+    {
+     "line": "Astoria",
+     "routes": "N W",
+     "ada": 0,
+     "explanation": "Astoria [N W]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "5",
+   "name": "36 Av",
+   "ada": 0,
+   "explanation": "Astoria [N W]: not accessible.",
+   "lines": [
+    {
+     "line": "Astoria",
+     "routes": "N W",
+     "ada": 0,
+     "explanation": "Astoria [N W]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "6",
+   "name": "39 Av-Dutch Kills",
+   "ada": 0,
+   "explanation": "Astoria [N W]: not accessible.",
+   "lines": [
+    {
+     "line": "Astoria",
+     "routes": "N W",
+     "ada": 0,
+     "explanation": "Astoria [N W]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "8",
+   "name": "5 Av/59 St",
+   "ada": 0,
+   "explanation": "Astoria [N R W]: not accessible.",
+   "lines": [
+    {
+     "line": "Astoria",
+     "routes": "N R W",
+     "ada": 0,
+     "explanation": "Astoria [N R W]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "9",
+   "name": "57 St-7 Av",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Broadway - Brighton",
+     "routes": "N Q R W",
+     "ada": 1,
+     "explanation": "Broadway - Brighton [N Q R W]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "10",
+   "name": "49 St",
+   "ada": 2,
+   "explanation": "Broadway - Brighton [N R W]: Uptown only.",
+   "lines": [
+    {
+     "line": "Broadway - Brighton",
+     "routes": "N R W",
+     "ada": 2,
+     "explanation": "Broadway - Brighton [N R W]: Uptown only."
+    }
+   ]
+  },
+  {
+   "complexId": "13",
+   "name": "28 St",
+   "ada": 0,
+   "explanation": "Broadway - Brighton [R W]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway - Brighton",
+     "routes": "R W",
+     "ada": 0,
+     "explanation": "Broadway - Brighton [R W]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "14",
+   "name": "23 St",
+   "ada": 0,
+   "explanation": "Broadway - Brighton [R W]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway - Brighton",
+     "routes": "R W",
+     "ada": 0,
+     "explanation": "Broadway - Brighton [R W]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "16",
+   "name": "8 St-NYU",
+   "ada": 0,
+   "explanation": "Broadway - Brighton [R W]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway - Brighton",
+     "routes": "R W",
+     "ada": 0,
+     "explanation": "Broadway - Brighton [R W]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "17",
+   "name": "Prince St",
+   "ada": 0,
+   "explanation": "Broadway - Brighton [R W]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway - Brighton",
+     "routes": "R W",
+     "ada": 0,
+     "explanation": "Broadway - Brighton [R W]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "20",
+   "name": "City Hall",
+   "ada": 0,
+   "explanation": "Broadway [R W]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway",
+     "routes": "R W",
+     "ada": 0,
+     "explanation": "Broadway [R W]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "22",
+   "name": "Rector St",
+   "ada": 0,
+   "explanation": "Broadway [R W]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway",
+     "routes": "R W",
+     "ada": 0,
+     "explanation": "Broadway [R W]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "26",
+   "name": "DeKalb Av",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Broadway - Brighton",
+     "routes": "B Q R",
+     "ada": 1,
+     "explanation": "Broadway - Brighton [B Q R]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "28",
+   "name": "Union St",
+   "ada": 0,
+   "explanation": "4th Av [R]: not accessible.",
+   "lines": [
+    {
+     "line": "4th Av",
+     "routes": "R",
+     "ada": 0,
+     "explanation": "4th Av [R]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "30",
+   "name": "Prospect Av",
+   "ada": 0,
+   "explanation": "4th Av [R]: not accessible.",
+   "lines": [
+    {
+     "line": "4th Av",
+     "routes": "R",
+     "ada": 0,
+     "explanation": "4th Av [R]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "31",
+   "name": "25 St",
+   "ada": 0,
+   "explanation": "4th Av [R]: not accessible.",
+   "lines": [
+    {
+     "line": "4th Av",
+     "routes": "R",
+     "ada": 0,
+     "explanation": "4th Av [R]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "32",
+   "name": "36 St",
+   "ada": 0,
+   "explanation": "4th Av [D N R]: not accessible.",
+   "lines": [
+    {
+     "line": "4th Av",
+     "routes": "D N R",
+     "ada": 0,
+     "explanation": "4th Av [D N R]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "33",
+   "name": "45 St",
+   "ada": 0,
+   "explanation": "4th Av [R]: not accessible.",
+   "lines": [
+    {
+     "line": "4th Av",
+     "routes": "R",
+     "ada": 0,
+     "explanation": "4th Av [R]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "34",
+   "name": "53 St",
+   "ada": 0,
+   "explanation": "4th Av [R]: not accessible.",
+   "lines": [
+    {
+     "line": "4th Av",
+     "routes": "R",
+     "ada": 0,
+     "explanation": "4th Av [R]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "35",
+   "name": "59 St",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "4th Av",
+     "routes": "N R",
+     "ada": 1,
+     "explanation": "4th Av [N R]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "36",
+   "name": "Bay Ridge Av",
+   "ada": 0,
+   "explanation": "4th Av [R]: not accessible.",
+   "lines": [
+    {
+     "line": "4th Av",
+     "routes": "R",
+     "ada": 0,
+     "explanation": "4th Av [R]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "37",
+   "name": "77 St",
+   "ada": 0,
+   "explanation": "4th Av [R]: not accessible.",
+   "lines": [
+    {
+     "line": "4th Av",
+     "routes": "R",
+     "ada": 0,
+     "explanation": "4th Av [R]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "38",
+   "name": "86 St",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "4th Av",
+     "routes": "R",
+     "ada": 1,
+     "explanation": "4th Av [R]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "39",
+   "name": "Bay Ridge-95 St",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "4th Av",
+     "routes": "R",
+     "ada": 1,
+     "explanation": "4th Av [R]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "41",
+   "name": "7 Av",
+   "ada": 0,
+   "explanation": "Broadway - Brighton [B Q]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway - Brighton",
+     "routes": "B Q",
+     "ada": 0,
+     "explanation": "Broadway - Brighton [B Q]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "42",
+   "name": "Prospect Park",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Broadway - Brighton",
+     "routes": "B Q S",
+     "ada": 1,
+     "explanation": "Broadway - Brighton [B Q S]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "43",
+   "name": "Parkside Av",
+   "ada": 0,
+   "explanation": "Broadway - Brighton [Q]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway - Brighton",
+     "routes": "Q",
+     "ada": 0,
+     "explanation": "Broadway - Brighton [Q]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "44",
+   "name": "Church Av",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Broadway - Brighton",
+     "routes": "B Q",
+     "ada": 1,
+     "explanation": "Broadway - Brighton [B Q]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "45",
+   "name": "Beverley Rd",
+   "ada": 0,
+   "explanation": "Broadway - Brighton [Q]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway - Brighton",
+     "routes": "Q",
+     "ada": 0,
+     "explanation": "Broadway - Brighton [Q]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "46",
+   "name": "Cortelyou Rd",
+   "ada": 0,
+   "explanation": "Broadway - Brighton [Q]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway - Brighton",
+     "routes": "Q",
+     "ada": 0,
+     "explanation": "Broadway - Brighton [Q]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "47",
+   "name": "Newkirk Plaza",
+   "ada": 0,
+   "explanation": "Broadway - Brighton [B Q]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway - Brighton",
+     "routes": "B Q",
+     "ada": 0,
+     "explanation": "Broadway - Brighton [B Q]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "48",
+   "name": "Avenue H",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Broadway - Brighton",
+     "routes": "Q",
+     "ada": 1,
+     "explanation": "Broadway - Brighton [Q]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "49",
+   "name": "Avenue J",
+   "ada": 0,
+   "explanation": "Broadway - Brighton [Q]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway - Brighton",
+     "routes": "Q",
+     "ada": 0,
+     "explanation": "Broadway - Brighton [Q]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "50",
+   "name": "Avenue M",
+   "ada": 0,
+   "explanation": "Broadway - Brighton [Q]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway - Brighton",
+     "routes": "Q",
+     "ada": 0,
+     "explanation": "Broadway - Brighton [Q]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "51",
+   "name": "Kings Hwy",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Broadway - Brighton",
+     "routes": "B Q",
+     "ada": 1,
+     "explanation": "Broadway - Brighton [B Q]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "52",
+   "name": "Avenue U",
+   "ada": 0,
+   "explanation": "Broadway - Brighton [Q]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway - Brighton",
+     "routes": "Q",
+     "ada": 0,
+     "explanation": "Broadway - Brighton [Q]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "53",
+   "name": "Neck Rd",
+   "ada": 0,
+   "explanation": "Broadway - Brighton [Q]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway - Brighton",
+     "routes": "Q",
+     "ada": 0,
+     "explanation": "Broadway - Brighton [Q]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "54",
+   "name": "Sheepshead Bay",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Broadway - Brighton",
+     "routes": "B Q",
+     "ada": 1,
+     "explanation": "Broadway - Brighton [B Q]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "55",
+   "name": "Brighton Beach",
+   "ada": 0,
+   "explanation": "Broadway - Brighton [B Q]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway - Brighton",
+     "routes": "B Q",
+     "ada": 0,
+     "explanation": "Broadway - Brighton [B Q]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "56",
+   "name": "Ocean Pkwy",
+   "ada": 0,
+   "explanation": "Broadway - Brighton [Q]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway - Brighton",
+     "routes": "Q",
+     "ada": 0,
+     "explanation": "Broadway - Brighton [Q]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "57",
+   "name": "W 8 St-NY Aquarium",
+   "ada": 0,
+   "explanation": "Broadway - Brighton [F Q]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway - Brighton",
+     "routes": "F Q",
+     "ada": 0,
+     "explanation": "Broadway - Brighton [F Q]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "58",
+   "name": "Coney Island-Stillwell Av",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Sea Beach / West End / Culver / Brighton",
+     "routes": "D F N Q",
+     "ada": 1,
+     "explanation": "Sea Beach / West End / Culver / Brighton [D F N Q]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "59",
+   "name": "9 Av",
+   "ada": 0,
+   "explanation": "West End [D]: not accessible.",
+   "lines": [
+    {
+     "line": "West End",
+     "routes": "D",
+     "ada": 0,
+     "explanation": "West End [D]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "60",
+   "name": "Fort Hamilton Pkwy",
+   "ada": 0,
+   "explanation": "West End [D]: not accessible.",
+   "lines": [
+    {
+     "line": "West End",
+     "routes": "D",
+     "ada": 0,
+     "explanation": "West End [D]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "61",
+   "name": "50 St",
+   "ada": 0,
+   "explanation": "West End [D]: not accessible.",
+   "lines": [
+    {
+     "line": "West End",
+     "routes": "D",
+     "ada": 0,
+     "explanation": "West End [D]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "62",
+   "name": "55 St",
+   "ada": 0,
+   "explanation": "West End [D]: not accessible.",
+   "lines": [
+    {
+     "line": "West End",
+     "routes": "D",
+     "ada": 0,
+     "explanation": "West End [D]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "64",
+   "name": "71 St",
+   "ada": 0,
+   "explanation": "West End [D]: not accessible.",
+   "lines": [
+    {
+     "line": "West End",
+     "routes": "D",
+     "ada": 0,
+     "explanation": "West End [D]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "65",
+   "name": "79 St",
+   "ada": 0,
+   "explanation": "West End [D]: not accessible.",
+   "lines": [
+    {
+     "line": "West End",
+     "routes": "D",
+     "ada": 0,
+     "explanation": "West End [D]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "66",
+   "name": "18 Av",
+   "ada": 0,
+   "explanation": "West End [D]: not accessible.",
+   "lines": [
+    {
+     "line": "West End",
+     "routes": "D",
+     "ada": 0,
+     "explanation": "West End [D]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "67",
+   "name": "20 Av",
+   "ada": 0,
+   "explanation": "West End [D]: not accessible.",
+   "lines": [
+    {
+     "line": "West End",
+     "routes": "D",
+     "ada": 0,
+     "explanation": "West End [D]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "68",
+   "name": "Bay Pkwy",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "West End",
+     "routes": "D",
+     "ada": 1,
+     "explanation": "West End [D]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "69",
+   "name": "25 Av",
+   "ada": 0,
+   "explanation": "West End [D]: not accessible.",
+   "lines": [
+    {
+     "line": "West End",
+     "routes": "D",
+     "ada": 0,
+     "explanation": "West End [D]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "70",
+   "name": "Bay 50 St",
+   "ada": 0,
+   "explanation": "West End [D]: not accessible.",
+   "lines": [
+    {
+     "line": "West End",
+     "routes": "D",
+     "ada": 0,
+     "explanation": "West End [D]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "71",
+   "name": "8 Av",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Sea Beach",
+     "routes": "N",
+     "ada": 1,
+     "explanation": "Sea Beach [N]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "72",
+   "name": "Fort Hamilton Pkwy",
+   "ada": 0,
+   "explanation": "Sea Beach [N]: not accessible.",
+   "lines": [
+    {
+     "line": "Sea Beach",
+     "routes": "N",
+     "ada": 0,
+     "explanation": "Sea Beach [N]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "74",
+   "name": "18 Av",
+   "ada": 0,
+   "explanation": "Sea Beach [N]: not accessible.",
+   "lines": [
+    {
+     "line": "Sea Beach",
+     "routes": "N",
+     "ada": 0,
+     "explanation": "Sea Beach [N]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "75",
+   "name": "20 Av",
+   "ada": 0,
+   "explanation": "Sea Beach [N]: not accessible.",
+   "lines": [
+    {
+     "line": "Sea Beach",
+     "routes": "N",
+     "ada": 0,
+     "explanation": "Sea Beach [N]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "76",
+   "name": "Bay Pkwy",
+   "ada": 0,
+   "explanation": "Sea Beach [N]: not accessible.",
+   "lines": [
+    {
+     "line": "Sea Beach",
+     "routes": "N",
+     "ada": 0,
+     "explanation": "Sea Beach [N]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "77",
+   "name": "Kings Hwy",
+   "ada": 0,
+   "explanation": "Sea Beach [N]: not accessible.",
+   "lines": [
+    {
+     "line": "Sea Beach",
+     "routes": "N",
+     "ada": 0,
+     "explanation": "Sea Beach [N]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "78",
+   "name": "Avenue U",
+   "ada": 0,
+   "explanation": "Sea Beach [N]: not accessible.",
+   "lines": [
+    {
+     "line": "Sea Beach",
+     "routes": "N",
+     "ada": 0,
+     "explanation": "Sea Beach [N]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "79",
+   "name": "86 St",
+   "ada": 0,
+   "explanation": "Sea Beach [N]: not accessible.",
+   "lines": [
+    {
+     "line": "Sea Beach",
+     "routes": "N",
+     "ada": 0,
+     "explanation": "Sea Beach [N]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "80",
+   "name": "121 St",
+   "ada": 0,
+   "explanation": "Jamaica [J Z]: not accessible.",
+   "lines": [
+    {
+     "line": "Jamaica",
+     "routes": "J Z",
+     "ada": 0,
+     "explanation": "Jamaica [J Z]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "81",
+   "name": "111 St",
+   "ada": 0,
+   "explanation": "Jamaica [J]: not accessible.",
+   "lines": [
+    {
+     "line": "Jamaica",
+     "routes": "J",
+     "ada": 0,
+     "explanation": "Jamaica [J]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "82",
+   "name": "104 St",
+   "ada": 0,
+   "explanation": "Jamaica [J Z]: not accessible.",
+   "lines": [
+    {
+     "line": "Jamaica",
+     "routes": "J Z",
+     "ada": 0,
+     "explanation": "Jamaica [J Z]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "83",
+   "name": "Woodhaven Blvd",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Jamaica",
+     "routes": "J Z",
+     "ada": 1,
+     "explanation": "Jamaica [J Z]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "84",
+   "name": "85 St-Forest Pkwy",
+   "ada": 0,
+   "explanation": "Jamaica [J]: not accessible.",
+   "lines": [
+    {
+     "line": "Jamaica",
+     "routes": "J",
+     "ada": 0,
+     "explanation": "Jamaica [J]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "85",
+   "name": "75 St-Elderts Ln",
+   "ada": 0,
+   "explanation": "Jamaica [J Z]: not accessible.",
+   "lines": [
+    {
+     "line": "Jamaica",
+     "routes": "J Z",
+     "ada": 0,
+     "explanation": "Jamaica [J Z]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "86",
+   "name": "Cypress Hills",
+   "ada": 0,
+   "explanation": "Jamaica [J]: not accessible.",
+   "lines": [
+    {
+     "line": "Jamaica",
+     "routes": "J",
+     "ada": 0,
+     "explanation": "Jamaica [J]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "87",
+   "name": "Crescent St",
+   "ada": 0,
+   "explanation": "Jamaica [J Z]: not accessible.",
+   "lines": [
+    {
+     "line": "Jamaica",
+     "routes": "J Z",
+     "ada": 0,
+     "explanation": "Jamaica [J Z]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "88",
+   "name": "Norwood Av",
+   "ada": 0,
+   "explanation": "Jamaica [J Z]: not accessible.",
+   "lines": [
+    {
+     "line": "Jamaica",
+     "routes": "J Z",
+     "ada": 0,
+     "explanation": "Jamaica [J Z]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "89",
+   "name": "Cleveland St",
+   "ada": 0,
+   "explanation": "Jamaica [J]: not accessible.",
+   "lines": [
+    {
+     "line": "Jamaica",
+     "routes": "J",
+     "ada": 0,
+     "explanation": "Jamaica [J]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "90",
+   "name": "Van Siclen Av",
+   "ada": 0,
+   "explanation": "Jamaica [J Z]: not accessible.",
+   "lines": [
+    {
+     "line": "Jamaica",
+     "routes": "J Z",
+     "ada": 0,
+     "explanation": "Jamaica [J Z]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "91",
+   "name": "Alabama Av",
+   "ada": 0,
+   "explanation": "Jamaica [J Z]: not accessible.",
+   "lines": [
+    {
+     "line": "Jamaica",
+     "routes": "J Z",
+     "ada": 0,
+     "explanation": "Jamaica [J Z]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "93",
+   "name": "Chauncey St",
+   "ada": 0,
+   "explanation": "Jamaica [J Z]: not accessible.",
+   "lines": [
+    {
+     "line": "Jamaica",
+     "routes": "J Z",
+     "ada": 0,
+     "explanation": "Jamaica [J Z]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "94",
+   "name": "Halsey St",
+   "ada": 0,
+   "explanation": "Jamaica [J]: not accessible.",
+   "lines": [
+    {
+     "line": "Jamaica",
+     "routes": "J",
+     "ada": 0,
+     "explanation": "Jamaica [J]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "95",
+   "name": "Gates Av",
+   "ada": 0,
+   "explanation": "Jamaica [J Z]: not accessible.",
+   "lines": [
+    {
+     "line": "Jamaica",
+     "routes": "J Z",
+     "ada": 0,
+     "explanation": "Jamaica [J Z]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "96",
+   "name": "Kosciuszko St",
+   "ada": 0,
+   "explanation": "Jamaica [J]: not accessible.",
+   "lines": [
+    {
+     "line": "Jamaica",
+     "routes": "J",
+     "ada": 0,
+     "explanation": "Jamaica [J]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "97",
+   "name": "Myrtle Av",
+   "ada": 0,
+   "explanation": "Jamaica [M J Z]: not accessible.",
+   "lines": [
+    {
+     "line": "Jamaica",
+     "routes": "M J Z",
+     "ada": 0,
+     "explanation": "Jamaica [M J Z]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "98",
+   "name": "Flushing Av",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Jamaica",
+     "routes": "M J",
+     "ada": 1,
+     "explanation": "Jamaica [M J]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "99",
+   "name": "Lorimer St",
+   "ada": 0,
+   "explanation": "Jamaica [M J]: not accessible.",
+   "lines": [
+    {
+     "line": "Jamaica",
+     "routes": "M J",
+     "ada": 0,
+     "explanation": "Jamaica [M J]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "100",
+   "name": "Hewes St",
+   "ada": 0,
+   "explanation": "Jamaica [M J]: not accessible.",
+   "lines": [
+    {
+     "line": "Jamaica",
+     "routes": "M J",
+     "ada": 0,
+     "explanation": "Jamaica [M J]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "101",
+   "name": "Marcy Av",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Jamaica",
+     "routes": "M J Z",
+     "ada": 1,
+     "explanation": "Jamaica [M J Z]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "103",
+   "name": "Bowery",
+   "ada": 0,
+   "explanation": "Jamaica [J Z]: not accessible.",
+   "lines": [
+    {
+     "line": "Jamaica",
+     "routes": "J Z",
+     "ada": 0,
+     "explanation": "Jamaica [J Z]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "107",
+   "name": "Broad St",
+   "ada": 0,
+   "explanation": "Jamaica [J Z]: not accessible.",
+   "lines": [
+    {
+     "line": "Jamaica",
+     "routes": "J Z",
+     "ada": 0,
+     "explanation": "Jamaica [J Z]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "108",
+   "name": "Middle Village-Metropolitan Av",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Myrtle Av",
+     "routes": "M",
+     "ada": 1,
+     "explanation": "Myrtle Av [M]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "109",
+   "name": "Fresh Pond Rd",
+   "ada": 0,
+   "explanation": "Myrtle Av [M]: not accessible.",
+   "lines": [
+    {
+     "line": "Myrtle Av",
+     "routes": "M",
+     "ada": 0,
+     "explanation": "Myrtle Av [M]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "110",
+   "name": "Forest Av",
+   "ada": 0,
+   "explanation": "Myrtle Av [M]: not accessible.",
+   "lines": [
+    {
+     "line": "Myrtle Av",
+     "routes": "M",
+     "ada": 0,
+     "explanation": "Myrtle Av [M]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "111",
+   "name": "Seneca Av",
+   "ada": 0,
+   "explanation": "Myrtle Av [M]: not accessible.",
+   "lines": [
+    {
+     "line": "Myrtle Av",
+     "routes": "M",
+     "ada": 0,
+     "explanation": "Myrtle Av [M]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "113",
+   "name": "Knickerbocker Av",
+   "ada": 0,
+   "explanation": "Myrtle Av [M]: not accessible.",
+   "lines": [
+    {
+     "line": "Myrtle Av",
+     "routes": "M",
+     "ada": 0,
+     "explanation": "Myrtle Av [M]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "114",
+   "name": "Central Av",
+   "ada": 0,
+   "explanation": "Myrtle Av [M]: not accessible.",
+   "lines": [
+    {
+     "line": "Myrtle Av",
+     "routes": "M",
+     "ada": 0,
+     "explanation": "Myrtle Av [M]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "118",
+   "name": "3 Av",
+   "ada": 0,
+   "explanation": "Canarsie [L]: not accessible.",
+   "lines": [
+    {
+     "line": "Canarsie",
+     "routes": "L",
+     "ada": 0,
+     "explanation": "Canarsie [L]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "119",
+   "name": "1 Av",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Canarsie",
+     "routes": "L",
+     "ada": 1,
+     "explanation": "Canarsie [L]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "120",
+   "name": "Bedford Av",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Canarsie",
+     "routes": "L",
+     "ada": 1,
+     "explanation": "Canarsie [L]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "122",
+   "name": "Graham Av",
+   "ada": 0,
+   "explanation": "Canarsie [L]: not accessible.",
+   "lines": [
+    {
+     "line": "Canarsie",
+     "routes": "L",
+     "ada": 0,
+     "explanation": "Canarsie [L]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "123",
+   "name": "Grand St",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Canarsie",
+     "routes": "L",
+     "ada": 1,
+     "explanation": "Canarsie [L]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "124",
+   "name": "Montrose Av",
+   "ada": 0,
+   "explanation": "Canarsie [L]: not accessible.",
+   "lines": [
+    {
+     "line": "Canarsie",
+     "routes": "L",
+     "ada": 0,
+     "explanation": "Canarsie [L]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "125",
+   "name": "Morgan Av",
+   "ada": 0,
+   "explanation": "Canarsie [L]: not accessible.",
+   "lines": [
+    {
+     "line": "Canarsie",
+     "routes": "L",
+     "ada": 0,
+     "explanation": "Canarsie [L]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "126",
+   "name": "Jefferson St",
+   "ada": 0,
+   "explanation": "Canarsie [L]: not accessible.",
+   "lines": [
+    {
+     "line": "Canarsie",
+     "routes": "L",
+     "ada": 0,
+     "explanation": "Canarsie [L]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "127",
+   "name": "DeKalb Av",
+   "ada": 0,
+   "explanation": "Canarsie [L]: not accessible.",
+   "lines": [
+    {
+     "line": "Canarsie",
+     "routes": "L",
+     "ada": 0,
+     "explanation": "Canarsie [L]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "129",
+   "name": "Halsey St",
+   "ada": 0,
+   "explanation": "Canarsie [L]: not accessible.",
+   "lines": [
+    {
+     "line": "Canarsie",
+     "routes": "L",
+     "ada": 0,
+     "explanation": "Canarsie [L]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "130",
+   "name": "Wilson Av",
+   "ada": 2,
+   "explanation": "Canarsie [L]: Manhattan-bound only.",
+   "lines": [
+    {
+     "line": "Canarsie",
+     "routes": "L",
+     "ada": 2,
+     "explanation": "Canarsie [L]: Manhattan-bound only."
+    }
+   ]
+  },
+  {
+   "complexId": "131",
+   "name": "Bushwick Av-Aberdeen St",
+   "ada": 0,
+   "explanation": "Canarsie [L]: not accessible.",
+   "lines": [
+    {
+     "line": "Canarsie",
+     "routes": "L",
+     "ada": 0,
+     "explanation": "Canarsie [L]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "133",
+   "name": "Atlantic Av",
+   "ada": 0,
+   "explanation": "Canarsie [L]: not accessible.",
+   "lines": [
+    {
+     "line": "Canarsie",
+     "routes": "L",
+     "ada": 0,
+     "explanation": "Canarsie [L]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "134",
+   "name": "Sutter Av",
+   "ada": 0,
+   "explanation": "Canarsie [L]: not accessible.",
+   "lines": [
+    {
+     "line": "Canarsie",
+     "routes": "L",
+     "ada": 0,
+     "explanation": "Canarsie [L]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "135",
+   "name": "Livonia Av",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Canarsie",
+     "routes": "L",
+     "ada": 1,
+     "explanation": "Canarsie [L]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "136",
+   "name": "New Lots Av",
+   "ada": 0,
+   "explanation": "Canarsie [L]: not accessible.",
+   "lines": [
+    {
+     "line": "Canarsie",
+     "routes": "L",
+     "ada": 0,
+     "explanation": "Canarsie [L]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "137",
+   "name": "East 105 St",
+   "ada": 0,
+   "explanation": "Canarsie [L]: not accessible.",
+   "lines": [
+    {
+     "line": "Canarsie",
+     "routes": "L",
+     "ada": 0,
+     "explanation": "Canarsie [L]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "138",
+   "name": "Canarsie-Rockaway Pkwy",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Canarsie",
+     "routes": "L",
+     "ada": 1,
+     "explanation": "Canarsie [L]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "141",
+   "name": "Park Pl",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Franklin Shuttle",
+     "routes": "S",
+     "ada": 1,
+     "explanation": "Franklin Shuttle [S]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "143",
+   "name": "Inwood-207 St",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "A",
+     "ada": 1,
+     "explanation": "8th Av - Fulton St [A]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "144",
+   "name": "Dyckman St",
+   "ada": 0,
+   "explanation": "8th Av - Fulton St [A]: not accessible.",
+   "lines": [
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "A",
+     "ada": 0,
+     "explanation": "8th Av - Fulton St [A]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "145",
+   "name": "190 St",
+   "ada": 0,
+   "explanation": "8th Av - Fulton St [A]: not accessible.",
+   "lines": [
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "A",
+     "ada": 0,
+     "explanation": "8th Av - Fulton St [A]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "146",
+   "name": "181 St",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "A",
+     "ada": 1,
+     "explanation": "8th Av - Fulton St [A]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "147",
+   "name": "175 St",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "A",
+     "ada": 1,
+     "explanation": "8th Av - Fulton St [A]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "149",
+   "name": "163 St-Amsterdam Av",
+   "ada": 0,
+   "explanation": "8th Av - Fulton St [C]: not accessible.",
+   "lines": [
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "C",
+     "ada": 0,
+     "explanation": "8th Av - Fulton St [C]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "150",
+   "name": "155 St",
+   "ada": 0,
+   "explanation": "8th Av - Fulton St [C]: not accessible.",
+   "lines": [
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "C",
+     "ada": 0,
+     "explanation": "8th Av - Fulton St [C]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "151",
+   "name": "145 St",
+   "ada": 0,
+   "explanation": "8th Av - Fulton St [A C]: not accessible. Concourse [B D]: not accessible.",
+   "lines": [
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "A C",
+     "ada": 0,
+     "explanation": "8th Av - Fulton St [A C]: not accessible."
+    },
+    {
+     "line": "Concourse",
+     "routes": "B D",
+     "ada": 0,
+     "explanation": "Concourse [B D]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "152",
+   "name": "135 St",
+   "ada": 0,
+   "explanation": "8th Av - Fulton St [C B]: not accessible.",
+   "lines": [
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "C B",
+     "ada": 0,
+     "explanation": "8th Av - Fulton St [C B]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "153",
+   "name": "125 St",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "A C B D",
+     "ada": 1,
+     "explanation": "8th Av - Fulton St [A C B D]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "154",
+   "name": "116 St",
+   "ada": 0,
+   "explanation": "8th Av - Fulton St [C B]: not accessible.",
+   "lines": [
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "C B",
+     "ada": 0,
+     "explanation": "8th Av - Fulton St [C B]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "155",
+   "name": "Cathedral Pkwy (110 St)",
+   "ada": 0,
+   "explanation": "8th Av - Fulton St [C B]: not accessible.",
+   "lines": [
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "C B",
+     "ada": 0,
+     "explanation": "8th Av - Fulton St [C B]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "156",
+   "name": "103 St",
+   "ada": 0,
+   "explanation": "8th Av - Fulton St [C B]: not accessible.",
+   "lines": [
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "C B",
+     "ada": 0,
+     "explanation": "8th Av - Fulton St [C B]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "157",
+   "name": "96 St",
+   "ada": 0,
+   "explanation": "8th Av - Fulton St [C B]: not accessible.",
+   "lines": [
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "C B",
+     "ada": 0,
+     "explanation": "8th Av - Fulton St [C B]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "158",
+   "name": "86 St",
+   "ada": 0,
+   "explanation": "8th Av - Fulton St [C B]: not accessible.",
+   "lines": [
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "C B",
+     "ada": 0,
+     "explanation": "8th Av - Fulton St [C B]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "159",
+   "name": "81 St-Museum of Natural History",
+   "ada": 0,
+   "explanation": "8th Av - Fulton St [C B]: not accessible.",
+   "lines": [
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "C B",
+     "ada": 0,
+     "explanation": "8th Av - Fulton St [C B]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "160",
+   "name": "72 St",
+   "ada": 0,
+   "explanation": "8th Av - Fulton St [C B]: not accessible.",
+   "lines": [
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "C B",
+     "ada": 0,
+     "explanation": "8th Av - Fulton St [C B]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "162",
+   "name": "50 St",
+   "ada": 2,
+   "explanation": "8th Av - Fulton St [C E]: Downtown only.",
+   "lines": [
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "C E",
+     "ada": 2,
+     "explanation": "8th Av - Fulton St [C E]: Downtown only."
+    }
+   ]
+  },
+  {
+   "complexId": "164",
+   "name": "34 St-Penn Station",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "A C E",
+     "ada": 1,
+     "explanation": "8th Av - Fulton St [A C E]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "165",
+   "name": "23 St",
+   "ada": 0,
+   "explanation": "8th Av - Fulton St [C E]: not accessible.",
+   "lines": [
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "C E",
+     "ada": 0,
+     "explanation": "8th Av - Fulton St [C E]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "167",
+   "name": "W 4 St-Wash Sq",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "A C E",
+     "ada": 1,
+     "explanation": "8th Av - Fulton St [A C E]: accessible."
+    },
+    {
+     "line": "6th Av - Culver",
+     "routes": "B D F M",
+     "ada": 1,
+     "explanation": "6th Av - Culver [B D F M]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "168",
+   "name": "Spring St",
+   "ada": 2,
+   "explanation": "8th Av - Fulton St [C E]: Downtown only.",
+   "lines": [
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "C E",
+     "ada": 2,
+     "explanation": "8th Av - Fulton St [C E]: Downtown only."
+    }
+   ]
+  },
+  {
+   "complexId": "169",
+   "name": "Canal St",
+   "ada": 0,
+   "explanation": "8th Av - Fulton St [A C E]: not accessible.",
+   "lines": [
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "A C E",
+     "ada": 0,
+     "explanation": "8th Av - Fulton St [A C E]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "173",
+   "name": "High St",
+   "ada": 0,
+   "explanation": "8th Av - Fulton St [A C]: not accessible.",
+   "lines": [
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "A C",
+     "ada": 0,
+     "explanation": "8th Av - Fulton St [A C]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "175",
+   "name": "Hoyt-Schermerhorn Sts",
+   "ada": 0,
+   "explanation": "8th Av - Fulton St [A C G]: not accessible.",
+   "lines": [
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "A C G",
+     "ada": 0,
+     "explanation": "8th Av - Fulton St [A C G]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "176",
+   "name": "Lafayette Av",
+   "ada": 0,
+   "explanation": "8th Av - Fulton St [C]: not accessible.",
+   "lines": [
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "C",
+     "ada": 0,
+     "explanation": "8th Av - Fulton St [C]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "177",
+   "name": "Clinton-Washington Avs",
+   "ada": 0,
+   "explanation": "8th Av - Fulton St [C]: not accessible.",
+   "lines": [
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "C",
+     "ada": 0,
+     "explanation": "8th Av - Fulton St [C]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "179",
+   "name": "Nostrand Av",
+   "ada": 0,
+   "explanation": "8th Av - Fulton St [A C]: not accessible.",
+   "lines": [
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "A C",
+     "ada": 0,
+     "explanation": "8th Av - Fulton St [A C]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "180",
+   "name": "Kingston-Throop Avs",
+   "ada": 0,
+   "explanation": "8th Av - Fulton St [C]: not accessible.",
+   "lines": [
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "C",
+     "ada": 0,
+     "explanation": "8th Av - Fulton St [C]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "181",
+   "name": "Utica Av",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "A C",
+     "ada": 1,
+     "explanation": "8th Av - Fulton St [A C]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "182",
+   "name": "Ralph Av",
+   "ada": 0,
+   "explanation": "8th Av - Fulton St [C]: not accessible.",
+   "lines": [
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "C",
+     "ada": 0,
+     "explanation": "8th Av - Fulton St [C]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "183",
+   "name": "Rockaway Av",
+   "ada": 0,
+   "explanation": "8th Av - Fulton St [C]: not accessible.",
+   "lines": [
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "C",
+     "ada": 0,
+     "explanation": "8th Av - Fulton St [C]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "185",
+   "name": "Liberty Av",
+   "ada": 0,
+   "explanation": "8th Av - Fulton St [C]: not accessible.",
+   "lines": [
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "C",
+     "ada": 0,
+     "explanation": "8th Av - Fulton St [C]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "186",
+   "name": "Van Siclen Av",
+   "ada": 0,
+   "explanation": "8th Av - Fulton St [C]: not accessible.",
+   "lines": [
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "C",
+     "ada": 0,
+     "explanation": "8th Av - Fulton St [C]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "187",
+   "name": "Shepherd Av",
+   "ada": 0,
+   "explanation": "8th Av - Fulton St [C]: not accessible.",
+   "lines": [
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "C",
+     "ada": 0,
+     "explanation": "8th Av - Fulton St [C]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "188",
+   "name": "Euclid Av",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "A C",
+     "ada": 1,
+     "explanation": "8th Av - Fulton St [A C]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "189",
+   "name": "Grant Av",
+   "ada": 0,
+   "explanation": "Liberty Av [A]: not accessible.",
+   "lines": [
+    {
+     "line": "Liberty Av",
+     "routes": "A",
+     "ada": 0,
+     "explanation": "Liberty Av [A]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "190",
+   "name": "80 St",
+   "ada": 0,
+   "explanation": "Liberty Av [A]: not accessible.",
+   "lines": [
+    {
+     "line": "Liberty Av",
+     "routes": "A",
+     "ada": 0,
+     "explanation": "Liberty Av [A]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "191",
+   "name": "88 St",
+   "ada": 0,
+   "explanation": "Liberty Av [A]: not accessible.",
+   "lines": [
+    {
+     "line": "Liberty Av",
+     "routes": "A",
+     "ada": 0,
+     "explanation": "Liberty Av [A]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "192",
+   "name": "Rockaway Blvd",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Liberty Av",
+     "routes": "A",
+     "ada": 1,
+     "explanation": "Liberty Av [A]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "193",
+   "name": "104 St",
+   "ada": 0,
+   "explanation": "Liberty Av [A]: not accessible.",
+   "lines": [
+    {
+     "line": "Liberty Av",
+     "routes": "A",
+     "ada": 0,
+     "explanation": "Liberty Av [A]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "194",
+   "name": "111 St",
+   "ada": 0,
+   "explanation": "Liberty Av [A]: not accessible.",
+   "lines": [
+    {
+     "line": "Liberty Av",
+     "routes": "A",
+     "ada": 0,
+     "explanation": "Liberty Av [A]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "195",
+   "name": "Ozone Park-Lefferts Blvd",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Liberty Av",
+     "routes": "A",
+     "ada": 1,
+     "explanation": "Liberty Av [A]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "196",
+   "name": "Aqueduct Racetrack",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Rockaway",
+     "routes": "A",
+     "ada": 1,
+     "explanation": "Rockaway [A]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "197",
+   "name": "Aqueduct-N Conduit Av",
+   "ada": 0,
+   "explanation": "Rockaway [A]: not accessible.",
+   "lines": [
+    {
+     "line": "Rockaway",
+     "routes": "A",
+     "ada": 0,
+     "explanation": "Rockaway [A]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "198",
+   "name": "Howard Beach-JFK Airport",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Rockaway",
+     "routes": "A",
+     "ada": 1,
+     "explanation": "Rockaway [A]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "199",
+   "name": "Broad Channel",
+   "ada": 0,
+   "explanation": "Rockaway [A S]: not accessible.",
+   "lines": [
+    {
+     "line": "Rockaway",
+     "routes": "A S",
+     "ada": 0,
+     "explanation": "Rockaway [A S]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "200",
+   "name": "Beach 90 St",
+   "ada": 0,
+   "explanation": "Rockaway [A S]: not accessible.",
+   "lines": [
+    {
+     "line": "Rockaway",
+     "routes": "A S",
+     "ada": 0,
+     "explanation": "Rockaway [A S]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "201",
+   "name": "Beach 98 St",
+   "ada": 0,
+   "explanation": "Rockaway [A S]: not accessible.",
+   "lines": [
+    {
+     "line": "Rockaway",
+     "routes": "A S",
+     "ada": 0,
+     "explanation": "Rockaway [A S]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "202",
+   "name": "Beach 105 St",
+   "ada": 0,
+   "explanation": "Rockaway [A S]: not accessible.",
+   "lines": [
+    {
+     "line": "Rockaway",
+     "routes": "A S",
+     "ada": 0,
+     "explanation": "Rockaway [A S]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "203",
+   "name": "Rockaway Park-Beach 116 St",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Rockaway",
+     "routes": "A S",
+     "ada": 1,
+     "explanation": "Rockaway [A S]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "204",
+   "name": "Beach 67 St",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Rockaway",
+     "routes": "A",
+     "ada": 1,
+     "explanation": "Rockaway [A]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "205",
+   "name": "Beach 60 St",
+   "ada": 0,
+   "explanation": "Rockaway [A]: not accessible.",
+   "lines": [
+    {
+     "line": "Rockaway",
+     "routes": "A",
+     "ada": 0,
+     "explanation": "Rockaway [A]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "206",
+   "name": "Beach 44 St",
+   "ada": 0,
+   "explanation": "Rockaway [A]: not accessible.",
+   "lines": [
+    {
+     "line": "Rockaway",
+     "routes": "A",
+     "ada": 0,
+     "explanation": "Rockaway [A]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "207",
+   "name": "Beach 36 St",
+   "ada": 0,
+   "explanation": "Rockaway [A]: not accessible.",
+   "lines": [
+    {
+     "line": "Rockaway",
+     "routes": "A",
+     "ada": 0,
+     "explanation": "Rockaway [A]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "208",
+   "name": "Beach 25 St",
+   "ada": 0,
+   "explanation": "Rockaway [A]: not accessible.",
+   "lines": [
+    {
+     "line": "Rockaway",
+     "routes": "A",
+     "ada": 0,
+     "explanation": "Rockaway [A]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "209",
+   "name": "Far Rockaway-Mott Av",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Rockaway",
+     "routes": "A",
+     "ada": 1,
+     "explanation": "Rockaway [A]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "210",
+   "name": "Norwood-205 St",
+   "ada": 0,
+   "explanation": "Concourse [D]: not accessible.",
+   "lines": [
+    {
+     "line": "Concourse",
+     "routes": "D",
+     "ada": 0,
+     "explanation": "Concourse [D]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "211",
+   "name": "Bedford Park Blvd",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Concourse",
+     "routes": "B D",
+     "ada": 1,
+     "explanation": "Concourse [B D]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "212",
+   "name": "Kingsbridge Rd",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Concourse",
+     "routes": "B D",
+     "ada": 1,
+     "explanation": "Concourse [B D]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "213",
+   "name": "Fordham Rd",
+   "ada": 0,
+   "explanation": "Concourse [B D]: not accessible.",
+   "lines": [
+    {
+     "line": "Concourse",
+     "routes": "B D",
+     "ada": 0,
+     "explanation": "Concourse [B D]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "214",
+   "name": "182-183 Sts",
+   "ada": 0,
+   "explanation": "Concourse [B D]: not accessible.",
+   "lines": [
+    {
+     "line": "Concourse",
+     "routes": "B D",
+     "ada": 0,
+     "explanation": "Concourse [B D]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "215",
+   "name": "Tremont Av",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Concourse",
+     "routes": "B D",
+     "ada": 1,
+     "explanation": "Concourse [B D]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "216",
+   "name": "174-175 Sts",
+   "ada": 0,
+   "explanation": "Concourse [B D]: not accessible.",
+   "lines": [
+    {
+     "line": "Concourse",
+     "routes": "B D",
+     "ada": 0,
+     "explanation": "Concourse [B D]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "217",
+   "name": "170 St",
+   "ada": 0,
+   "explanation": "Concourse [B D]: not accessible.",
+   "lines": [
+    {
+     "line": "Concourse",
+     "routes": "B D",
+     "ada": 0,
+     "explanation": "Concourse [B D]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "218",
+   "name": "167 St",
+   "ada": 0,
+   "explanation": "Concourse [B D]: not accessible.",
+   "lines": [
+    {
+     "line": "Concourse",
+     "routes": "B D",
+     "ada": 0,
+     "explanation": "Concourse [B D]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "220",
+   "name": "155 St",
+   "ada": 0,
+   "explanation": "Concourse [B D]: not accessible.",
+   "lines": [
+    {
+     "line": "Concourse",
+     "routes": "B D",
+     "ada": 0,
+     "explanation": "Concourse [B D]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "221",
+   "name": "21 St-Queensbridge",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "63rd St",
+     "routes": "M",
+     "ada": 1,
+     "explanation": "63rd St [M]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "222",
+   "name": "Roosevelt Island",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "63rd St",
+     "routes": "M",
+     "ada": 1,
+     "explanation": "63rd St [M]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "223",
+   "name": "Lexington Av/63 St",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "63rd St",
+     "routes": "M Q",
+     "ada": 1,
+     "explanation": "63rd St [M Q]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "224",
+   "name": "57 St",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "6th Av - Culver",
+     "routes": "M",
+     "ada": 1,
+     "explanation": "6th Av - Culver [M]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "225",
+   "name": "47-50 Sts-Rockefeller Ctr",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "6th Av - Culver",
+     "routes": "B D F M",
+     "ada": 1,
+     "explanation": "6th Av - Culver [B D F M]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "228",
+   "name": "23 St",
+   "ada": 0,
+   "explanation": "6th Av - Culver [F M]: not accessible.",
+   "lines": [
+    {
+     "line": "6th Av - Culver",
+     "routes": "F M",
+     "ada": 0,
+     "explanation": "6th Av - Culver [F M]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "231",
+   "name": "Grand St",
+   "ada": 0,
+   "explanation": "6th Av - Culver [B D]: not accessible.",
+   "lines": [
+    {
+     "line": "6th Av - Culver",
+     "routes": "B D",
+     "ada": 0,
+     "explanation": "6th Av - Culver [B D]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "232",
+   "name": "2 Av",
+   "ada": 0,
+   "explanation": "6th Av - Culver [F]: not accessible.",
+   "lines": [
+    {
+     "line": "6th Av - Culver",
+     "routes": "F",
+     "ada": 0,
+     "explanation": "6th Av - Culver [F]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "234",
+   "name": "East Broadway",
+   "ada": 0,
+   "explanation": "6th Av - Culver [F]: not accessible.",
+   "lines": [
+    {
+     "line": "6th Av - Culver",
+     "routes": "F",
+     "ada": 0,
+     "explanation": "6th Av - Culver [F]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "235",
+   "name": "York St",
+   "ada": 0,
+   "explanation": "6th Av - Culver [F]: not accessible.",
+   "lines": [
+    {
+     "line": "6th Av - Culver",
+     "routes": "F",
+     "ada": 0,
+     "explanation": "6th Av - Culver [F]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "236",
+   "name": "Bergen St",
+   "ada": 0,
+   "explanation": "6th Av - Culver [F G]: not accessible.",
+   "lines": [
+    {
+     "line": "6th Av - Culver",
+     "routes": "F G",
+     "ada": 0,
+     "explanation": "6th Av - Culver [F G]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "237",
+   "name": "Carroll St",
+   "ada": 0,
+   "explanation": "6th Av - Culver [F G]: not accessible.",
+   "lines": [
+    {
+     "line": "6th Av - Culver",
+     "routes": "F G",
+     "ada": 0,
+     "explanation": "6th Av - Culver [F G]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "238",
+   "name": "Smith-9 Sts",
+   "ada": 0,
+   "explanation": "6th Av - Culver [F G]: not accessible.",
+   "lines": [
+    {
+     "line": "6th Av - Culver",
+     "routes": "F G",
+     "ada": 0,
+     "explanation": "6th Av - Culver [F G]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "240",
+   "name": "7 Av",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "6th Av - Culver",
+     "routes": "F G",
+     "ada": 1,
+     "explanation": "6th Av - Culver [F G]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "241",
+   "name": "15 St-Prospect Park",
+   "ada": 0,
+   "explanation": "6th Av - Culver [F G]: not accessible.",
+   "lines": [
+    {
+     "line": "6th Av - Culver",
+     "routes": "F G",
+     "ada": 0,
+     "explanation": "6th Av - Culver [F G]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "242",
+   "name": "Fort Hamilton Pkwy",
+   "ada": 0,
+   "explanation": "6th Av - Culver [F G]: not accessible.",
+   "lines": [
+    {
+     "line": "6th Av - Culver",
+     "routes": "F G",
+     "ada": 0,
+     "explanation": "6th Av - Culver [F G]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "243",
+   "name": "Church Av",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "6th Av - Culver",
+     "routes": "F G",
+     "ada": 1,
+     "explanation": "6th Av - Culver [F G]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "244",
+   "name": "Ditmas Av",
+   "ada": 0,
+   "explanation": "6th Av - Culver [F]: not accessible.",
+   "lines": [
+    {
+     "line": "6th Av - Culver",
+     "routes": "F",
+     "ada": 0,
+     "explanation": "6th Av - Culver [F]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "245",
+   "name": "18 Av",
+   "ada": 0,
+   "explanation": "6th Av - Culver [F]: not accessible.",
+   "lines": [
+    {
+     "line": "6th Av - Culver",
+     "routes": "F",
+     "ada": 0,
+     "explanation": "6th Av - Culver [F]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "246",
+   "name": "Avenue I",
+   "ada": 0,
+   "explanation": "6th Av - Culver [F]: not accessible.",
+   "lines": [
+    {
+     "line": "6th Av - Culver",
+     "routes": "F",
+     "ada": 0,
+     "explanation": "6th Av - Culver [F]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "247",
+   "name": "Bay Pkwy",
+   "ada": 0,
+   "explanation": "6th Av - Culver [F]: not accessible.",
+   "lines": [
+    {
+     "line": "6th Av - Culver",
+     "routes": "F",
+     "ada": 0,
+     "explanation": "6th Av - Culver [F]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "248",
+   "name": "Avenue N",
+   "ada": 0,
+   "explanation": "6th Av - Culver [F]: not accessible.",
+   "lines": [
+    {
+     "line": "6th Av - Culver",
+     "routes": "F",
+     "ada": 0,
+     "explanation": "6th Av - Culver [F]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "249",
+   "name": "Avenue P",
+   "ada": 0,
+   "explanation": "6th Av - Culver [F]: not accessible.",
+   "lines": [
+    {
+     "line": "6th Av - Culver",
+     "routes": "F",
+     "ada": 0,
+     "explanation": "6th Av - Culver [F]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "250",
+   "name": "Kings Hwy",
+   "ada": 0,
+   "explanation": "6th Av - Culver [F]: not accessible.",
+   "lines": [
+    {
+     "line": "6th Av - Culver",
+     "routes": "F",
+     "ada": 0,
+     "explanation": "6th Av - Culver [F]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "251",
+   "name": "Avenue U",
+   "ada": 0,
+   "explanation": "6th Av - Culver [F]: not accessible.",
+   "lines": [
+    {
+     "line": "6th Av - Culver",
+     "routes": "F",
+     "ada": 0,
+     "explanation": "6th Av - Culver [F]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "252",
+   "name": "Avenue X",
+   "ada": 0,
+   "explanation": "6th Av - Culver [F]: not accessible.",
+   "lines": [
+    {
+     "line": "6th Av - Culver",
+     "routes": "F",
+     "ada": 0,
+     "explanation": "6th Av - Culver [F]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "253",
+   "name": "Neptune Av",
+   "ada": 0,
+   "explanation": "6th Av - Culver [F]: not accessible.",
+   "lines": [
+    {
+     "line": "6th Av - Culver",
+     "routes": "F",
+     "ada": 0,
+     "explanation": "6th Av - Culver [F]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "254",
+   "name": "Jamaica-179 St",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Queens Blvd",
+     "routes": "F",
+     "ada": 1,
+     "explanation": "Queens Blvd [F]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "255",
+   "name": "169 St",
+   "ada": 0,
+   "explanation": "Queens Blvd [F]: not accessible.",
+   "lines": [
+    {
+     "line": "Queens Blvd",
+     "routes": "F",
+     "ada": 0,
+     "explanation": "Queens Blvd [F]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "256",
+   "name": "Parsons Blvd",
+   "ada": 0,
+   "explanation": "Queens Blvd [F]: not accessible.",
+   "lines": [
+    {
+     "line": "Queens Blvd",
+     "routes": "F",
+     "ada": 0,
+     "explanation": "Queens Blvd [F]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "257",
+   "name": "Sutphin Blvd",
+   "ada": 0,
+   "explanation": "Queens Blvd [F]: not accessible.",
+   "lines": [
+    {
+     "line": "Queens Blvd",
+     "routes": "F",
+     "ada": 0,
+     "explanation": "Queens Blvd [F]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "258",
+   "name": "Briarwood",
+   "ada": 0,
+   "explanation": "Queens Blvd [E F]: not accessible.",
+   "lines": [
+    {
+     "line": "Queens Blvd",
+     "routes": "E F",
+     "ada": 0,
+     "explanation": "Queens Blvd [E F]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "259",
+   "name": "Kew Gardens-Union Tpke",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Queens Blvd",
+     "routes": "E F",
+     "ada": 1,
+     "explanation": "Queens Blvd [E F]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "260",
+   "name": "75 Av",
+   "ada": 0,
+   "explanation": "Queens Blvd [E F]: not accessible.",
+   "lines": [
+    {
+     "line": "Queens Blvd",
+     "routes": "E F",
+     "ada": 0,
+     "explanation": "Queens Blvd [E F]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "261",
+   "name": "Forest Hills-71 Av",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Queens Blvd",
+     "routes": "E F M R",
+     "ada": 1,
+     "explanation": "Queens Blvd [E F M R]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "262",
+   "name": "67 Av",
+   "ada": 0,
+   "explanation": "Queens Blvd [M R]: not accessible.",
+   "lines": [
+    {
+     "line": "Queens Blvd",
+     "routes": "M R",
+     "ada": 0,
+     "explanation": "Queens Blvd [M R]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "263",
+   "name": "63 Dr-Rego Park",
+   "ada": 0,
+   "explanation": "Queens Blvd [M R]: not accessible.",
+   "lines": [
+    {
+     "line": "Queens Blvd",
+     "routes": "M R",
+     "ada": 0,
+     "explanation": "Queens Blvd [M R]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "264",
+   "name": "Woodhaven Blvd",
+   "ada": 0,
+   "explanation": "Queens Blvd [M R]: not accessible.",
+   "lines": [
+    {
+     "line": "Queens Blvd",
+     "routes": "M R",
+     "ada": 0,
+     "explanation": "Queens Blvd [M R]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "265",
+   "name": "Grand Av-Newtown",
+   "ada": 0,
+   "explanation": "Queens Blvd [M R]: not accessible.",
+   "lines": [
+    {
+     "line": "Queens Blvd",
+     "routes": "M R",
+     "ada": 0,
+     "explanation": "Queens Blvd [M R]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "266",
+   "name": "Elmhurst Av",
+   "ada": 0,
+   "explanation": "Queens Blvd [M R]: not accessible.",
+   "lines": [
+    {
+     "line": "Queens Blvd",
+     "routes": "M R",
+     "ada": 0,
+     "explanation": "Queens Blvd [M R]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "268",
+   "name": "65 St",
+   "ada": 0,
+   "explanation": "Queens Blvd [M R]: not accessible.",
+   "lines": [
+    {
+     "line": "Queens Blvd",
+     "routes": "M R",
+     "ada": 0,
+     "explanation": "Queens Blvd [M R]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "269",
+   "name": "Northern Blvd",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Queens Blvd",
+     "routes": "M R",
+     "ada": 1,
+     "explanation": "Queens Blvd [M R]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "270",
+   "name": "46 St",
+   "ada": 0,
+   "explanation": "Queens Blvd [M R]: not accessible.",
+   "lines": [
+    {
+     "line": "Queens Blvd",
+     "routes": "M R",
+     "ada": 0,
+     "explanation": "Queens Blvd [M R]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "271",
+   "name": "Steinway St",
+   "ada": 0,
+   "explanation": "Queens Blvd [M R]: not accessible.",
+   "lines": [
+    {
+     "line": "Queens Blvd",
+     "routes": "M R",
+     "ada": 0,
+     "explanation": "Queens Blvd [M R]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "272",
+   "name": "36 St",
+   "ada": 0,
+   "explanation": "Queens Blvd [M R]: not accessible.",
+   "lines": [
+    {
+     "line": "Queens Blvd",
+     "routes": "M R",
+     "ada": 0,
+     "explanation": "Queens Blvd [M R]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "273",
+   "name": "Queens Plaza",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Queens Blvd",
+     "routes": "E F R",
+     "ada": 1,
+     "explanation": "Queens Blvd [E F R]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "276",
+   "name": "5 Av/53 St",
+   "ada": 0,
+   "explanation": "Queens Blvd [E F]: not accessible.",
+   "lines": [
+    {
+     "line": "Queens Blvd",
+     "routes": "E F",
+     "ada": 0,
+     "explanation": "Queens Blvd [E F]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "277",
+   "name": "7 Av",
+   "ada": 0,
+   "explanation": "Queens Blvd [E B D]: not accessible.",
+   "lines": [
+    {
+     "line": "Queens Blvd",
+     "routes": "E B D",
+     "ada": 0,
+     "explanation": "Queens Blvd [E B D]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "278",
+   "name": "Jamaica Center-Parsons/Archer",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Queens - Archer",
+     "routes": "E J Z",
+     "ada": 1,
+     "explanation": "Queens - Archer [E J Z]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "279",
+   "name": "Sutphin Blvd-Archer Av-JFK Airport",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Queens - Archer",
+     "routes": "E J Z",
+     "ada": 1,
+     "explanation": "Queens - Archer [E J Z]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "280",
+   "name": "Jamaica-Van Wyck",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Queens - Archer",
+     "routes": "E",
+     "ada": 1,
+     "explanation": "Queens - Archer [E]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "282",
+   "name": "21 St",
+   "ada": 0,
+   "explanation": "Crosstown [G]: not accessible.",
+   "lines": [
+    {
+     "line": "Crosstown",
+     "routes": "G",
+     "ada": 0,
+     "explanation": "Crosstown [G]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "283",
+   "name": "Greenpoint Av",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Crosstown",
+     "routes": "G",
+     "ada": 1,
+     "explanation": "Crosstown [G]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "284",
+   "name": "Nassau Av",
+   "ada": 0,
+   "explanation": "Crosstown [G]: not accessible.",
+   "lines": [
+    {
+     "line": "Crosstown",
+     "routes": "G",
+     "ada": 0,
+     "explanation": "Crosstown [G]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "286",
+   "name": "Broadway",
+   "ada": 0,
+   "explanation": "Crosstown [G]: not accessible.",
+   "lines": [
+    {
+     "line": "Crosstown",
+     "routes": "G",
+     "ada": 0,
+     "explanation": "Crosstown [G]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "287",
+   "name": "Flushing Av",
+   "ada": 0,
+   "explanation": "Crosstown [G]: not accessible.",
+   "lines": [
+    {
+     "line": "Crosstown",
+     "routes": "G",
+     "ada": 0,
+     "explanation": "Crosstown [G]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "288",
+   "name": "Myrtle-Willoughby Avs",
+   "ada": 0,
+   "explanation": "Crosstown [G]: not accessible.",
+   "lines": [
+    {
+     "line": "Crosstown",
+     "routes": "G",
+     "ada": 0,
+     "explanation": "Crosstown [G]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "289",
+   "name": "Bedford-Nostrand Avs",
+   "ada": 0,
+   "explanation": "Crosstown [G]: not accessible.",
+   "lines": [
+    {
+     "line": "Crosstown",
+     "routes": "G",
+     "ada": 0,
+     "explanation": "Crosstown [G]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "290",
+   "name": "Classon Av",
+   "ada": 0,
+   "explanation": "Crosstown [G]: not accessible.",
+   "lines": [
+    {
+     "line": "Crosstown",
+     "routes": "G",
+     "ada": 0,
+     "explanation": "Crosstown [G]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "291",
+   "name": "Clinton-Washington Avs",
+   "ada": 0,
+   "explanation": "Crosstown [G]: not accessible.",
+   "lines": [
+    {
+     "line": "Crosstown",
+     "routes": "G",
+     "ada": 0,
+     "explanation": "Crosstown [G]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "292",
+   "name": "Fulton St",
+   "ada": 0,
+   "explanation": "Crosstown [G]: not accessible.",
+   "lines": [
+    {
+     "line": "Crosstown",
+     "routes": "G",
+     "ada": 0,
+     "explanation": "Crosstown [G]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "293",
+   "name": "Van Cortlandt Park-242 St",
+   "ada": 0,
+   "explanation": "Broadway - 7Av [1]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway - 7Av",
+     "routes": "1",
+     "ada": 0,
+     "explanation": "Broadway - 7Av [1]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "294",
+   "name": "238 St",
+   "ada": 0,
+   "explanation": "Broadway - 7Av [1]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway - 7Av",
+     "routes": "1",
+     "ada": 0,
+     "explanation": "Broadway - 7Av [1]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "295",
+   "name": "231 St",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Broadway - 7Av",
+     "routes": "1",
+     "ada": 1,
+     "explanation": "Broadway - 7Av [1]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "296",
+   "name": "Marble Hill-225 St",
+   "ada": 0,
+   "explanation": "Broadway - 7Av [1]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway - 7Av",
+     "routes": "1",
+     "ada": 0,
+     "explanation": "Broadway - 7Av [1]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "297",
+   "name": "215 St",
+   "ada": 0,
+   "explanation": "Broadway - 7Av [1]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway - 7Av",
+     "routes": "1",
+     "ada": 0,
+     "explanation": "Broadway - 7Av [1]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "298",
+   "name": "207 St",
+   "ada": 0,
+   "explanation": "Broadway - 7Av [1]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway - 7Av",
+     "routes": "1",
+     "ada": 0,
+     "explanation": "Broadway - 7Av [1]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "299",
+   "name": "Dyckman St",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Broadway - 7Av",
+     "routes": "1",
+     "ada": 1,
+     "explanation": "Broadway - 7Av [1]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "300",
+   "name": "191 St",
+   "ada": 0,
+   "explanation": "Broadway - 7Av [1]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway - 7Av",
+     "routes": "1",
+     "ada": 0,
+     "explanation": "Broadway - 7Av [1]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "301",
+   "name": "181 St",
+   "ada": 0,
+   "explanation": "Broadway - 7Av [1]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway - 7Av",
+     "routes": "1",
+     "ada": 0,
+     "explanation": "Broadway - 7Av [1]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "303",
+   "name": "157 St",
+   "ada": 0,
+   "explanation": "Broadway - 7Av [1]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway - 7Av",
+     "routes": "1",
+     "ada": 0,
+     "explanation": "Broadway - 7Av [1]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "304",
+   "name": "145 St",
+   "ada": 0,
+   "explanation": "Broadway - 7Av [1]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway - 7Av",
+     "routes": "1",
+     "ada": 0,
+     "explanation": "Broadway - 7Av [1]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "305",
+   "name": "137 St-City College",
+   "ada": 2,
+   "explanation": "Broadway - 7Av [1]: Uptown only.",
+   "lines": [
+    {
+     "line": "Broadway - 7Av",
+     "routes": "1",
+     "ada": 2,
+     "explanation": "Broadway - 7Av [1]: Uptown only."
+    }
+   ]
+  },
+  {
+   "complexId": "306",
+   "name": "125 St",
+   "ada": 0,
+   "explanation": "Broadway - 7Av [1]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway - 7Av",
+     "routes": "1",
+     "ada": 0,
+     "explanation": "Broadway - 7Av [1]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "307",
+   "name": "116 St-Columbia University",
+   "ada": 0,
+   "explanation": "Broadway - 7Av [1]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway - 7Av",
+     "routes": "1",
+     "ada": 0,
+     "explanation": "Broadway - 7Av [1]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "308",
+   "name": "Cathedral Pkwy (110 St)",
+   "ada": 0,
+   "explanation": "Broadway - 7Av [1]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway - 7Av",
+     "routes": "1",
+     "ada": 0,
+     "explanation": "Broadway - 7Av [1]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "309",
+   "name": "103 St",
+   "ada": 0,
+   "explanation": "Broadway - 7Av [1]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway - 7Av",
+     "routes": "1",
+     "ada": 0,
+     "explanation": "Broadway - 7Av [1]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "310",
+   "name": "96 St",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Broadway - 7Av",
+     "routes": "1 2 3",
+     "ada": 1,
+     "explanation": "Broadway - 7Av [1 2 3]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "311",
+   "name": "86 St",
+   "ada": 0,
+   "explanation": "Broadway - 7Av [1]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway - 7Av",
+     "routes": "1",
+     "ada": 0,
+     "explanation": "Broadway - 7Av [1]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "312",
+   "name": "79 St",
+   "ada": 0,
+   "explanation": "Broadway - 7Av [1]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway - 7Av",
+     "routes": "1",
+     "ada": 0,
+     "explanation": "Broadway - 7Av [1]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "313",
+   "name": "72 St",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Broadway - 7Av",
+     "routes": "1 2 3",
+     "ada": 1,
+     "explanation": "Broadway - 7Av [1 2 3]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "314",
+   "name": "66 St-Lincoln Center",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Broadway - 7Av",
+     "routes": "1",
+     "ada": 1,
+     "explanation": "Broadway - 7Av [1]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "316",
+   "name": "50 St",
+   "ada": 0,
+   "explanation": "Broadway - 7Av [1]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway - 7Av",
+     "routes": "1",
+     "ada": 0,
+     "explanation": "Broadway - 7Av [1]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "318",
+   "name": "34 St-Penn Station",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Broadway - 7Av",
+     "routes": "1 2 3",
+     "ada": 1,
+     "explanation": "Broadway - 7Av [1 2 3]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "319",
+   "name": "28 St",
+   "ada": 0,
+   "explanation": "Broadway - 7Av [1]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway - 7Av",
+     "routes": "1",
+     "ada": 0,
+     "explanation": "Broadway - 7Av [1]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "320",
+   "name": "23 St",
+   "ada": 0,
+   "explanation": "Broadway - 7Av [1]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway - 7Av",
+     "routes": "1",
+     "ada": 0,
+     "explanation": "Broadway - 7Av [1]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "321",
+   "name": "18 St",
+   "ada": 0,
+   "explanation": "Broadway - 7Av [1]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway - 7Av",
+     "routes": "1",
+     "ada": 0,
+     "explanation": "Broadway - 7Av [1]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "323",
+   "name": "Christopher St-Stonewall",
+   "ada": 0,
+   "explanation": "Broadway - 7Av [1]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway - 7Av",
+     "routes": "1",
+     "ada": 0,
+     "explanation": "Broadway - 7Av [1]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "324",
+   "name": "Houston St",
+   "ada": 0,
+   "explanation": "Broadway - 7Av [1]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway - 7Av",
+     "routes": "1",
+     "ada": 0,
+     "explanation": "Broadway - 7Av [1]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "325",
+   "name": "Canal St",
+   "ada": 0,
+   "explanation": "Broadway - 7Av [1]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway - 7Av",
+     "routes": "1",
+     "ada": 0,
+     "explanation": "Broadway - 7Av [1]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "326",
+   "name": "Franklin St",
+   "ada": 0,
+   "explanation": "Broadway - 7Av [1]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway - 7Av",
+     "routes": "1",
+     "ada": 0,
+     "explanation": "Broadway - 7Av [1]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "327",
+   "name": "Chambers St",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Broadway - 7Av",
+     "routes": "1 2 3",
+     "ada": 1,
+     "explanation": "Broadway - 7Av [1 2 3]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "328",
+   "name": "WTC Cortlandt",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Broadway - 7Av",
+     "routes": "1",
+     "ada": 1,
+     "explanation": "Broadway - 7Av [1]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "329",
+   "name": "Rector St",
+   "ada": 0,
+   "explanation": "Broadway - 7Av [1]: not accessible.",
+   "lines": [
+    {
+     "line": "Broadway - 7Av",
+     "routes": "1",
+     "ada": 0,
+     "explanation": "Broadway - 7Av [1]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "333",
+   "name": "Wall St",
+   "ada": 0,
+   "explanation": "Clark St [2 3]: not accessible.",
+   "lines": [
+    {
+     "line": "Clark St",
+     "routes": "2 3",
+     "ada": 0,
+     "explanation": "Clark St [2 3]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "334",
+   "name": "Clark St",
+   "ada": 0,
+   "explanation": "Clark St [2 3]: not accessible.",
+   "lines": [
+    {
+     "line": "Clark St",
+     "routes": "2 3",
+     "ada": 0,
+     "explanation": "Clark St [2 3]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "336",
+   "name": "Hoyt St",
+   "ada": 2,
+   "explanation": "Eastern Pky [2 3]: Outbound only.",
+   "lines": [
+    {
+     "line": "Eastern Pky",
+     "routes": "2 3",
+     "ada": 2,
+     "explanation": "Eastern Pky [2 3]: Outbound only."
+    }
+   ]
+  },
+  {
+   "complexId": "337",
+   "name": "Nevins St",
+   "ada": 0,
+   "explanation": "Eastern Pky [2 3 4 5]: not accessible.",
+   "lines": [
+    {
+     "line": "Eastern Pky",
+     "routes": "2 3 4 5",
+     "ada": 0,
+     "explanation": "Eastern Pky [2 3 4 5]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "339",
+   "name": "Bergen St",
+   "ada": 0,
+   "explanation": "Eastern Pky [2 3]: not accessible.",
+   "lines": [
+    {
+     "line": "Eastern Pky",
+     "routes": "2 3",
+     "ada": 0,
+     "explanation": "Eastern Pky [2 3]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "340",
+   "name": "Grand Army Plaza",
+   "ada": 0,
+   "explanation": "Eastern Pky [2 3]: not accessible.",
+   "lines": [
+    {
+     "line": "Eastern Pky",
+     "routes": "2 3",
+     "ada": 0,
+     "explanation": "Eastern Pky [2 3]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "341",
+   "name": "Eastern Pkwy-Brooklyn Museum",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Eastern Pky",
+     "routes": "2 3",
+     "ada": 1,
+     "explanation": "Eastern Pky [2 3]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "343",
+   "name": "Nostrand Av",
+   "ada": 0,
+   "explanation": "Eastern Pky [3]: not accessible.",
+   "lines": [
+    {
+     "line": "Eastern Pky",
+     "routes": "3",
+     "ada": 0,
+     "explanation": "Eastern Pky [3]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "344",
+   "name": "Kingston Av",
+   "ada": 0,
+   "explanation": "Eastern Pky [3]: not accessible.",
+   "lines": [
+    {
+     "line": "Eastern Pky",
+     "routes": "3",
+     "ada": 0,
+     "explanation": "Eastern Pky [3]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "345",
+   "name": "Crown Hts-Utica Av",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Eastern Pky",
+     "routes": "3 4",
+     "ada": 1,
+     "explanation": "Eastern Pky [3 4]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "346",
+   "name": "Sutter Av-Rutland Rd",
+   "ada": 0,
+   "explanation": "Eastern Pky [3]: not accessible.",
+   "lines": [
+    {
+     "line": "Eastern Pky",
+     "routes": "3",
+     "ada": 0,
+     "explanation": "Eastern Pky [3]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "347",
+   "name": "Saratoga Av",
+   "ada": 0,
+   "explanation": "Eastern Pky [3]: not accessible.",
+   "lines": [
+    {
+     "line": "Eastern Pky",
+     "routes": "3",
+     "ada": 0,
+     "explanation": "Eastern Pky [3]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "348",
+   "name": "Rockaway Av",
+   "ada": 0,
+   "explanation": "Eastern Pky [3]: not accessible.",
+   "lines": [
+    {
+     "line": "Eastern Pky",
+     "routes": "3",
+     "ada": 0,
+     "explanation": "Eastern Pky [3]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "349",
+   "name": "Junius St",
+   "ada": 0,
+   "explanation": "Eastern Pky [3]: not accessible.",
+   "lines": [
+    {
+     "line": "Eastern Pky",
+     "routes": "3",
+     "ada": 0,
+     "explanation": "Eastern Pky [3]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "350",
+   "name": "Pennsylvania Av",
+   "ada": 0,
+   "explanation": "Eastern Pky [3]: not accessible.",
+   "lines": [
+    {
+     "line": "Eastern Pky",
+     "routes": "3",
+     "ada": 0,
+     "explanation": "Eastern Pky [3]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "351",
+   "name": "Van Siclen Av",
+   "ada": 0,
+   "explanation": "Eastern Pky [3]: not accessible.",
+   "lines": [
+    {
+     "line": "Eastern Pky",
+     "routes": "3",
+     "ada": 0,
+     "explanation": "Eastern Pky [3]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "352",
+   "name": "New Lots Av",
+   "ada": 0,
+   "explanation": "Eastern Pky [3]: not accessible.",
+   "lines": [
+    {
+     "line": "Eastern Pky",
+     "routes": "3",
+     "ada": 0,
+     "explanation": "Eastern Pky [3]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "353",
+   "name": "President St-Medgar Evers College",
+   "ada": 0,
+   "explanation": "Nostrand [2 5]: not accessible.",
+   "lines": [
+    {
+     "line": "Nostrand",
+     "routes": "2 5",
+     "ada": 0,
+     "explanation": "Nostrand [2 5]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "354",
+   "name": "Sterling St",
+   "ada": 0,
+   "explanation": "Nostrand [2 5]: not accessible.",
+   "lines": [
+    {
+     "line": "Nostrand",
+     "routes": "2 5",
+     "ada": 0,
+     "explanation": "Nostrand [2 5]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "355",
+   "name": "Winthrop St",
+   "ada": 0,
+   "explanation": "Nostrand [2 5]: not accessible.",
+   "lines": [
+    {
+     "line": "Nostrand",
+     "routes": "2 5",
+     "ada": 0,
+     "explanation": "Nostrand [2 5]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "356",
+   "name": "Church Av",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Nostrand",
+     "routes": "2 5",
+     "ada": 1,
+     "explanation": "Nostrand [2 5]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "357",
+   "name": "Beverly Rd",
+   "ada": 0,
+   "explanation": "Nostrand [2 5]: not accessible.",
+   "lines": [
+    {
+     "line": "Nostrand",
+     "routes": "2 5",
+     "ada": 0,
+     "explanation": "Nostrand [2 5]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "358",
+   "name": "Newkirk Av-Little Haiti",
+   "ada": 0,
+   "explanation": "Nostrand [2 5]: not accessible.",
+   "lines": [
+    {
+     "line": "Nostrand",
+     "routes": "2 5",
+     "ada": 0,
+     "explanation": "Nostrand [2 5]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "359",
+   "name": "Flatbush Av-Brooklyn College",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Nostrand",
+     "routes": "2 5",
+     "ada": 1,
+     "explanation": "Nostrand [2 5]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "360",
+   "name": "Pelham Bay Park",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Pelham",
+     "routes": "6",
+     "ada": 1,
+     "explanation": "Pelham [6]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "361",
+   "name": "Buhre Av",
+   "ada": 0,
+   "explanation": "Pelham [6]: not accessible.",
+   "lines": [
+    {
+     "line": "Pelham",
+     "routes": "6",
+     "ada": 0,
+     "explanation": "Pelham [6]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "362",
+   "name": "Middletown Rd",
+   "ada": 0,
+   "explanation": "Pelham [6]: not accessible.",
+   "lines": [
+    {
+     "line": "Pelham",
+     "routes": "6",
+     "ada": 0,
+     "explanation": "Pelham [6]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "363",
+   "name": "Westchester Sq-E Tremont Av",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Pelham",
+     "routes": "6",
+     "ada": 1,
+     "explanation": "Pelham [6]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "364",
+   "name": "Zerega Av",
+   "ada": 0,
+   "explanation": "Pelham [6]: not accessible.",
+   "lines": [
+    {
+     "line": "Pelham",
+     "routes": "6",
+     "ada": 0,
+     "explanation": "Pelham [6]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "365",
+   "name": "Castle Hill Av",
+   "ada": 0,
+   "explanation": "Pelham [6]: not accessible.",
+   "lines": [
+    {
+     "line": "Pelham",
+     "routes": "6",
+     "ada": 0,
+     "explanation": "Pelham [6]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "366",
+   "name": "Parkchester",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Pelham",
+     "routes": "6",
+     "ada": 1,
+     "explanation": "Pelham [6]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "367",
+   "name": "St Lawrence Av",
+   "ada": 0,
+   "explanation": "Pelham [6]: not accessible.",
+   "lines": [
+    {
+     "line": "Pelham",
+     "routes": "6",
+     "ada": 0,
+     "explanation": "Pelham [6]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "368",
+   "name": "Morrison Av-Soundview",
+   "ada": 0,
+   "explanation": "Pelham [6]: not accessible.",
+   "lines": [
+    {
+     "line": "Pelham",
+     "routes": "6",
+     "ada": 0,
+     "explanation": "Pelham [6]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "369",
+   "name": "Elder Av",
+   "ada": 0,
+   "explanation": "Pelham [6]: not accessible.",
+   "lines": [
+    {
+     "line": "Pelham",
+     "routes": "6",
+     "ada": 0,
+     "explanation": "Pelham [6]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "370",
+   "name": "Whitlock Av",
+   "ada": 0,
+   "explanation": "Pelham [6]: not accessible.",
+   "lines": [
+    {
+     "line": "Pelham",
+     "routes": "6",
+     "ada": 0,
+     "explanation": "Pelham [6]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "371",
+   "name": "Hunts Point Av",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Pelham",
+     "routes": "6",
+     "ada": 1,
+     "explanation": "Pelham [6]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "372",
+   "name": "Longwood Av",
+   "ada": 0,
+   "explanation": "Pelham [6]: not accessible.",
+   "lines": [
+    {
+     "line": "Pelham",
+     "routes": "6",
+     "ada": 0,
+     "explanation": "Pelham [6]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "373",
+   "name": "E 149 St",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Pelham",
+     "routes": "6",
+     "ada": 1,
+     "explanation": "Pelham [6]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "374",
+   "name": "E 143 St-St Mary's St",
+   "ada": 0,
+   "explanation": "Pelham [6]: not accessible.",
+   "lines": [
+    {
+     "line": "Pelham",
+     "routes": "6",
+     "ada": 0,
+     "explanation": "Pelham [6]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "375",
+   "name": "Cypress Av",
+   "ada": 0,
+   "explanation": "Pelham [6]: not accessible.",
+   "lines": [
+    {
+     "line": "Pelham",
+     "routes": "6",
+     "ada": 0,
+     "explanation": "Pelham [6]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "376",
+   "name": "Brook Av",
+   "ada": 0,
+   "explanation": "Pelham [6]: not accessible.",
+   "lines": [
+    {
+     "line": "Pelham",
+     "routes": "6",
+     "ada": 0,
+     "explanation": "Pelham [6]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "377",
+   "name": "3 Av-138 St",
+   "ada": 0,
+   "explanation": "Pelham [6]: not accessible.",
+   "lines": [
+    {
+     "line": "Pelham",
+     "routes": "6",
+     "ada": 0,
+     "explanation": "Pelham [6]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "378",
+   "name": "Woodlawn",
+   "ada": 0,
+   "explanation": "Jerome Av [4]: not accessible.",
+   "lines": [
+    {
+     "line": "Jerome Av",
+     "routes": "4",
+     "ada": 0,
+     "explanation": "Jerome Av [4]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "379",
+   "name": "Mosholu Pkwy",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Jerome Av",
+     "routes": "4",
+     "ada": 1,
+     "explanation": "Jerome Av [4]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "380",
+   "name": "Bedford Park Blvd-Lehman College",
+   "ada": 0,
+   "explanation": "Jerome Av [4]: not accessible.",
+   "lines": [
+    {
+     "line": "Jerome Av",
+     "routes": "4",
+     "ada": 0,
+     "explanation": "Jerome Av [4]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "381",
+   "name": "Kingsbridge Rd",
+   "ada": 0,
+   "explanation": "Jerome Av [4]: not accessible.",
+   "lines": [
+    {
+     "line": "Jerome Av",
+     "routes": "4",
+     "ada": 0,
+     "explanation": "Jerome Av [4]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "382",
+   "name": "Fordham Rd",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Jerome Av",
+     "routes": "4",
+     "ada": 1,
+     "explanation": "Jerome Av [4]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "383",
+   "name": "183 St",
+   "ada": 0,
+   "explanation": "Jerome Av [4]: not accessible.",
+   "lines": [
+    {
+     "line": "Jerome Av",
+     "routes": "4",
+     "ada": 0,
+     "explanation": "Jerome Av [4]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "384",
+   "name": "Burnside Av",
+   "ada": 0,
+   "explanation": "Jerome Av [4]: not accessible.",
+   "lines": [
+    {
+     "line": "Jerome Av",
+     "routes": "4",
+     "ada": 0,
+     "explanation": "Jerome Av [4]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "385",
+   "name": "176 St",
+   "ada": 0,
+   "explanation": "Jerome Av [4]: not accessible.",
+   "lines": [
+    {
+     "line": "Jerome Av",
+     "routes": "4",
+     "ada": 0,
+     "explanation": "Jerome Av [4]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "386",
+   "name": "Mt Eden Av",
+   "ada": 0,
+   "explanation": "Jerome Av [4]: not accessible.",
+   "lines": [
+    {
+     "line": "Jerome Av",
+     "routes": "4",
+     "ada": 0,
+     "explanation": "Jerome Av [4]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "387",
+   "name": "170 St",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Jerome Av",
+     "routes": "4",
+     "ada": 1,
+     "explanation": "Jerome Av [4]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "388",
+   "name": "167 St",
+   "ada": 0,
+   "explanation": "Jerome Av [4]: not accessible.",
+   "lines": [
+    {
+     "line": "Jerome Av",
+     "routes": "4",
+     "ada": 0,
+     "explanation": "Jerome Av [4]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "391",
+   "name": "138 St-Grand Concourse",
+   "ada": 0,
+   "explanation": "Jerome Av [4 5]: not accessible.",
+   "lines": [
+    {
+     "line": "Jerome Av",
+     "routes": "4 5",
+     "ada": 0,
+     "explanation": "Jerome Av [4 5]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "392",
+   "name": "125 St",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Lexington Av",
+     "routes": "4 5 6",
+     "ada": 1,
+     "explanation": "Lexington Av [4 5 6]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "393",
+   "name": "116 St",
+   "ada": 0,
+   "explanation": "Lexington Av [6]: not accessible.",
+   "lines": [
+    {
+     "line": "Lexington Av",
+     "routes": "6",
+     "ada": 0,
+     "explanation": "Lexington Av [6]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "394",
+   "name": "110 St",
+   "ada": 0,
+   "explanation": "Lexington Av [6]: not accessible.",
+   "lines": [
+    {
+     "line": "Lexington Av",
+     "routes": "6",
+     "ada": 0,
+     "explanation": "Lexington Av [6]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "395",
+   "name": "103 St",
+   "ada": 0,
+   "explanation": "Lexington Av [6]: not accessible.",
+   "lines": [
+    {
+     "line": "Lexington Av",
+     "routes": "6",
+     "ada": 0,
+     "explanation": "Lexington Av [6]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "396",
+   "name": "96 St",
+   "ada": 0,
+   "explanation": "Lexington Av [6]: not accessible.",
+   "lines": [
+    {
+     "line": "Lexington Av",
+     "routes": "6",
+     "ada": 0,
+     "explanation": "Lexington Av [6]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "397",
+   "name": "86 St",
+   "ada": 2,
+   "explanation": "Lexington Av [4 5 6]: Uptown local only.",
+   "lines": [
+    {
+     "line": "Lexington Av",
+     "routes": "4 5 6",
+     "ada": 2,
+     "explanation": "Lexington Av [4 5 6]: Uptown local only."
+    }
+   ]
+  },
+  {
+   "complexId": "398",
+   "name": "77 St",
+   "ada": 0,
+   "explanation": "Lexington Av [6]: not accessible.",
+   "lines": [
+    {
+     "line": "Lexington Av",
+     "routes": "6",
+     "ada": 0,
+     "explanation": "Lexington Av [6]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "399",
+   "name": "68 St-Hunter College",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Lexington Av",
+     "routes": "6",
+     "ada": 1,
+     "explanation": "Lexington Av [6]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "403",
+   "name": "33 St",
+   "ada": 0,
+   "explanation": "Lexington Av [6]: not accessible.",
+   "lines": [
+    {
+     "line": "Lexington Av",
+     "routes": "6",
+     "ada": 0,
+     "explanation": "Lexington Av [6]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "404",
+   "name": "28 St",
+   "ada": 2,
+   "explanation": "Lexington Av [6]: Downtown only.",
+   "lines": [
+    {
+     "line": "Lexington Av",
+     "routes": "6",
+     "ada": 2,
+     "explanation": "Lexington Av [6]: Downtown only."
+    }
+   ]
+  },
+  {
+   "complexId": "405",
+   "name": "23 St-Baruch College",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Lexington Av",
+     "routes": "6",
+     "ada": 1,
+     "explanation": "Lexington Av [6]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "407",
+   "name": "Astor Pl",
+   "ada": 0,
+   "explanation": "Lexington Av [6]: not accessible.",
+   "lines": [
+    {
+     "line": "Lexington Av",
+     "routes": "6",
+     "ada": 0,
+     "explanation": "Lexington Av [6]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "409",
+   "name": "Spring St",
+   "ada": 0,
+   "explanation": "Lexington Av [6]: not accessible.",
+   "lines": [
+    {
+     "line": "Lexington Av",
+     "routes": "6",
+     "ada": 0,
+     "explanation": "Lexington Av [6]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "413",
+   "name": "Wall St",
+   "ada": 0,
+   "explanation": "Lexington Av [4 5]: not accessible.",
+   "lines": [
+    {
+     "line": "Lexington Av",
+     "routes": "4 5",
+     "ada": 0,
+     "explanation": "Lexington Av [4 5]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "414",
+   "name": "Bowling Green",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Lexington Av",
+     "routes": "4 5",
+     "ada": 1,
+     "explanation": "Lexington Av [4 5]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "416",
+   "name": "Wakefield-241 St",
+   "ada": 0,
+   "explanation": "Lenox - White Plains Rd [2]: not accessible.",
+   "lines": [
+    {
+     "line": "Lenox - White Plains Rd",
+     "routes": "2",
+     "ada": 0,
+     "explanation": "Lenox - White Plains Rd [2]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "417",
+   "name": "Nereid Av",
+   "ada": 0,
+   "explanation": "Lenox - White Plains Rd [2 5]: not accessible.",
+   "lines": [
+    {
+     "line": "Lenox - White Plains Rd",
+     "routes": "2 5",
+     "ada": 0,
+     "explanation": "Lenox - White Plains Rd [2 5]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "418",
+   "name": "233 St",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Lenox - White Plains Rd",
+     "routes": "2 5",
+     "ada": 1,
+     "explanation": "Lenox - White Plains Rd [2 5]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "419",
+   "name": "225 St",
+   "ada": 0,
+   "explanation": "Lenox - White Plains Rd [2 5]: not accessible.",
+   "lines": [
+    {
+     "line": "Lenox - White Plains Rd",
+     "routes": "2 5",
+     "ada": 0,
+     "explanation": "Lenox - White Plains Rd [2 5]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "420",
+   "name": "219 St",
+   "ada": 0,
+   "explanation": "Lenox - White Plains Rd [2 5]: not accessible.",
+   "lines": [
+    {
+     "line": "Lenox - White Plains Rd",
+     "routes": "2 5",
+     "ada": 0,
+     "explanation": "Lenox - White Plains Rd [2 5]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "421",
+   "name": "Gun Hill Rd",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Lenox - White Plains Rd",
+     "routes": "2 5",
+     "ada": 1,
+     "explanation": "Lenox - White Plains Rd [2 5]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "422",
+   "name": "Burke Av",
+   "ada": 0,
+   "explanation": "Lenox - White Plains Rd [2 5]: not accessible.",
+   "lines": [
+    {
+     "line": "Lenox - White Plains Rd",
+     "routes": "2 5",
+     "ada": 0,
+     "explanation": "Lenox - White Plains Rd [2 5]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "423",
+   "name": "Allerton Av",
+   "ada": 0,
+   "explanation": "Lenox - White Plains Rd [2 5]: not accessible.",
+   "lines": [
+    {
+     "line": "Lenox - White Plains Rd",
+     "routes": "2 5",
+     "ada": 0,
+     "explanation": "Lenox - White Plains Rd [2 5]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "424",
+   "name": "Pelham Pkwy",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Lenox - White Plains Rd",
+     "routes": "2 5",
+     "ada": 1,
+     "explanation": "Lenox - White Plains Rd [2 5]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "425",
+   "name": "Bronx Park East",
+   "ada": 0,
+   "explanation": "Lenox - White Plains Rd [2 5]: not accessible.",
+   "lines": [
+    {
+     "line": "Lenox - White Plains Rd",
+     "routes": "2 5",
+     "ada": 0,
+     "explanation": "Lenox - White Plains Rd [2 5]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "426",
+   "name": "E 180 St",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Lenox - White Plains Rd",
+     "routes": "2 5",
+     "ada": 1,
+     "explanation": "Lenox - White Plains Rd [2 5]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "427",
+   "name": "West Farms Sq-E Tremont Av",
+   "ada": 0,
+   "explanation": "Lenox - White Plains Rd [2 5]: not accessible.",
+   "lines": [
+    {
+     "line": "Lenox - White Plains Rd",
+     "routes": "2 5",
+     "ada": 0,
+     "explanation": "Lenox - White Plains Rd [2 5]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "428",
+   "name": "174 St",
+   "ada": 0,
+   "explanation": "Lenox - White Plains Rd [2 5]: not accessible.",
+   "lines": [
+    {
+     "line": "Lenox - White Plains Rd",
+     "routes": "2 5",
+     "ada": 0,
+     "explanation": "Lenox - White Plains Rd [2 5]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "429",
+   "name": "Freeman St",
+   "ada": 0,
+   "explanation": "Lenox - White Plains Rd [2 5]: not accessible.",
+   "lines": [
+    {
+     "line": "Lenox - White Plains Rd",
+     "routes": "2 5",
+     "ada": 0,
+     "explanation": "Lenox - White Plains Rd [2 5]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "430",
+   "name": "Simpson St",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Lenox - White Plains Rd",
+     "routes": "2 5",
+     "ada": 1,
+     "explanation": "Lenox - White Plains Rd [2 5]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "431",
+   "name": "Intervale Av",
+   "ada": 0,
+   "explanation": "Lenox - White Plains Rd [2 5]: not accessible.",
+   "lines": [
+    {
+     "line": "Lenox - White Plains Rd",
+     "routes": "2 5",
+     "ada": 0,
+     "explanation": "Lenox - White Plains Rd [2 5]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "432",
+   "name": "Prospect Av",
+   "ada": 0,
+   "explanation": "Lenox - White Plains Rd [2 5]: not accessible.",
+   "lines": [
+    {
+     "line": "Lenox - White Plains Rd",
+     "routes": "2 5",
+     "ada": 0,
+     "explanation": "Lenox - White Plains Rd [2 5]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "433",
+   "name": "Jackson Av",
+   "ada": 0,
+   "explanation": "Lenox - White Plains Rd [2 5]: not accessible.",
+   "lines": [
+    {
+     "line": "Lenox - White Plains Rd",
+     "routes": "2 5",
+     "ada": 0,
+     "explanation": "Lenox - White Plains Rd [2 5]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "434",
+   "name": "3 Av-149 St",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Lenox - White Plains Rd",
+     "routes": "2 5",
+     "ada": 1,
+     "explanation": "Lenox - White Plains Rd [2 5]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "436",
+   "name": "Harlem-148 St",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Lenox - White Plains Rd",
+     "routes": "3",
+     "ada": 1,
+     "explanation": "Lenox - White Plains Rd [3]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "437",
+   "name": "145 St",
+   "ada": 0,
+   "explanation": "Lenox - White Plains Rd [3]: not accessible.",
+   "lines": [
+    {
+     "line": "Lenox - White Plains Rd",
+     "routes": "3",
+     "ada": 0,
+     "explanation": "Lenox - White Plains Rd [3]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "438",
+   "name": "135 St",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Lenox - White Plains Rd",
+     "routes": "2 3",
+     "ada": 1,
+     "explanation": "Lenox - White Plains Rd [2 3]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "439",
+   "name": "125 St",
+   "ada": 0,
+   "explanation": "Lenox - White Plains Rd [2 3]: not accessible.",
+   "lines": [
+    {
+     "line": "Lenox - White Plains Rd",
+     "routes": "2 3",
+     "ada": 0,
+     "explanation": "Lenox - White Plains Rd [2 3]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "440",
+   "name": "116 St",
+   "ada": 0,
+   "explanation": "Lenox - White Plains Rd [2 3]: not accessible.",
+   "lines": [
+    {
+     "line": "Lenox - White Plains Rd",
+     "routes": "2 3",
+     "ada": 0,
+     "explanation": "Lenox - White Plains Rd [2 3]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "441",
+   "name": "110 St-Malcolm X Plaza",
+   "ada": 0,
+   "explanation": "Lenox - White Plains Rd [2 3]: not accessible.",
+   "lines": [
+    {
+     "line": "Lenox - White Plains Rd",
+     "routes": "2 3",
+     "ada": 0,
+     "explanation": "Lenox - White Plains Rd [2 3]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "442",
+   "name": "Eastchester-Dyre Av",
+   "ada": 0,
+   "explanation": "Dyre Av [5]: not accessible.",
+   "lines": [
+    {
+     "line": "Dyre Av",
+     "routes": "5",
+     "ada": 0,
+     "explanation": "Dyre Av [5]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "443",
+   "name": "Baychester Av",
+   "ada": 0,
+   "explanation": "Dyre Av [5]: not accessible.",
+   "lines": [
+    {
+     "line": "Dyre Av",
+     "routes": "5",
+     "ada": 0,
+     "explanation": "Dyre Av [5]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "444",
+   "name": "Gun Hill Rd",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Dyre Av",
+     "routes": "5",
+     "ada": 1,
+     "explanation": "Dyre Av [5]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "445",
+   "name": "Pelham Pkwy",
+   "ada": 0,
+   "explanation": "Dyre Av [5]: not accessible.",
+   "lines": [
+    {
+     "line": "Dyre Av",
+     "routes": "5",
+     "ada": 0,
+     "explanation": "Dyre Av [5]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "446",
+   "name": "Morris Park",
+   "ada": 0,
+   "explanation": "Dyre Av [5]: not accessible.",
+   "lines": [
+    {
+     "line": "Dyre Av",
+     "routes": "5",
+     "ada": 0,
+     "explanation": "Dyre Av [5]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "447",
+   "name": "Flushing-Main St",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Flushing",
+     "routes": "7",
+     "ada": 1,
+     "explanation": "Flushing [7]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "448",
+   "name": "Mets-Willets Point",
+   "ada": 0,
+   "explanation": "Flushing [7]: not accessible.",
+   "lines": [
+    {
+     "line": "Flushing",
+     "routes": "7",
+     "ada": 0,
+     "explanation": "Flushing [7]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "449",
+   "name": "111 St",
+   "ada": 0,
+   "explanation": "Flushing [7]: not accessible.",
+   "lines": [
+    {
+     "line": "Flushing",
+     "routes": "7",
+     "ada": 0,
+     "explanation": "Flushing [7]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "450",
+   "name": "103 St-Corona Plaza",
+   "ada": 0,
+   "explanation": "Flushing [7]: not accessible.",
+   "lines": [
+    {
+     "line": "Flushing",
+     "routes": "7",
+     "ada": 0,
+     "explanation": "Flushing [7]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "451",
+   "name": "Junction Blvd",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Flushing",
+     "routes": "7",
+     "ada": 1,
+     "explanation": "Flushing [7]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "452",
+   "name": "90 St-Elmhurst Av",
+   "ada": 0,
+   "explanation": "Flushing [7]: not accessible.",
+   "lines": [
+    {
+     "line": "Flushing",
+     "routes": "7",
+     "ada": 0,
+     "explanation": "Flushing [7]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "453",
+   "name": "82 St-Jackson Hts",
+   "ada": 0,
+   "explanation": "Flushing [7]: not accessible.",
+   "lines": [
+    {
+     "line": "Flushing",
+     "routes": "7",
+     "ada": 0,
+     "explanation": "Flushing [7]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "455",
+   "name": "69 St",
+   "ada": 0,
+   "explanation": "Flushing [7]: not accessible.",
+   "lines": [
+    {
+     "line": "Flushing",
+     "routes": "7",
+     "ada": 0,
+     "explanation": "Flushing [7]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "456",
+   "name": "61 St-Woodside",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Flushing",
+     "routes": "7",
+     "ada": 1,
+     "explanation": "Flushing [7]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "457",
+   "name": "52 St",
+   "ada": 0,
+   "explanation": "Flushing [7]: not accessible.",
+   "lines": [
+    {
+     "line": "Flushing",
+     "routes": "7",
+     "ada": 0,
+     "explanation": "Flushing [7]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "458",
+   "name": "46 St-Bliss St",
+   "ada": 0,
+   "explanation": "Flushing [7]: not accessible.",
+   "lines": [
+    {
+     "line": "Flushing",
+     "routes": "7",
+     "ada": 0,
+     "explanation": "Flushing [7]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "459",
+   "name": "40 St-Lowery St",
+   "ada": 0,
+   "explanation": "Flushing [7]: not accessible.",
+   "lines": [
+    {
+     "line": "Flushing",
+     "routes": "7",
+     "ada": 0,
+     "explanation": "Flushing [7]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "460",
+   "name": "33 St-Rawson St",
+   "ada": 0,
+   "explanation": "Flushing [7]: not accessible.",
+   "lines": [
+    {
+     "line": "Flushing",
+     "routes": "7",
+     "ada": 0,
+     "explanation": "Flushing [7]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "461",
+   "name": "Queensboro Plaza",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Astoria",
+     "routes": "N W",
+     "ada": 1,
+     "explanation": "Astoria [N W]: accessible."
+    },
+    {
+     "line": "Flushing",
+     "routes": "7",
+     "ada": 1,
+     "explanation": "Flushing [7]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "463",
+   "name": "Hunters Point Av",
+   "ada": 0,
+   "explanation": "Flushing [7]: not accessible.",
+   "lines": [
+    {
+     "line": "Flushing",
+     "routes": "7",
+     "ada": 0,
+     "explanation": "Flushing [7]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "464",
+   "name": "Vernon Blvd-Jackson Av",
+   "ada": 0,
+   "explanation": "Flushing [7]: not accessible.",
+   "lines": [
+    {
+     "line": "Flushing",
+     "routes": "7",
+     "ada": 0,
+     "explanation": "Flushing [7]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "471",
+   "name": "34 St-Hudson Yards",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Flushing",
+     "routes": "7",
+     "ada": 1,
+     "explanation": "Flushing [7]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "475",
+   "name": "96 St",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Second Av",
+     "routes": "Q",
+     "ada": 1,
+     "explanation": "Second Av [Q]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "476",
+   "name": "86 St",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Second Av",
+     "routes": "Q",
+     "ada": 1,
+     "explanation": "Second Av [Q]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "477",
+   "name": "72 St",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Second Av",
+     "routes": "Q",
+     "ada": 1,
+     "explanation": "Second Av [Q]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "501",
+   "name": "St George",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Staten Island",
+     "routes": "SIR",
+     "ada": 1,
+     "explanation": "Staten Island [SIR]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "502",
+   "name": "Tompkinsville",
+   "ada": 0,
+   "explanation": "Staten Island [SIR]: not accessible.",
+   "lines": [
+    {
+     "line": "Staten Island",
+     "routes": "SIR",
+     "ada": 0,
+     "explanation": "Staten Island [SIR]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "503",
+   "name": "Stapleton",
+   "ada": 0,
+   "explanation": "Staten Island [SIR]: not accessible.",
+   "lines": [
+    {
+     "line": "Staten Island",
+     "routes": "SIR",
+     "ada": 0,
+     "explanation": "Staten Island [SIR]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "504",
+   "name": "Clifton",
+   "ada": 0,
+   "explanation": "Staten Island [SIR]: not accessible.",
+   "lines": [
+    {
+     "line": "Staten Island",
+     "routes": "SIR",
+     "ada": 0,
+     "explanation": "Staten Island [SIR]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "505",
+   "name": "Grasmere",
+   "ada": 0,
+   "explanation": "Staten Island [SIR]: not accessible.",
+   "lines": [
+    {
+     "line": "Staten Island",
+     "routes": "SIR",
+     "ada": 0,
+     "explanation": "Staten Island [SIR]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "506",
+   "name": "Old Town",
+   "ada": 0,
+   "explanation": "Staten Island [SIR]: not accessible.",
+   "lines": [
+    {
+     "line": "Staten Island",
+     "routes": "SIR",
+     "ada": 0,
+     "explanation": "Staten Island [SIR]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "507",
+   "name": "Dongan Hills",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Staten Island",
+     "routes": "SIR",
+     "ada": 1,
+     "explanation": "Staten Island [SIR]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "508",
+   "name": "Jefferson Av",
+   "ada": 0,
+   "explanation": "Staten Island [SIR]: not accessible.",
+   "lines": [
+    {
+     "line": "Staten Island",
+     "routes": "SIR",
+     "ada": 0,
+     "explanation": "Staten Island [SIR]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "509",
+   "name": "Grant City",
+   "ada": 0,
+   "explanation": "Staten Island [SIR]: not accessible.",
+   "lines": [
+    {
+     "line": "Staten Island",
+     "routes": "SIR",
+     "ada": 0,
+     "explanation": "Staten Island [SIR]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "510",
+   "name": "New Dorp",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Staten Island",
+     "routes": "SIR",
+     "ada": 1,
+     "explanation": "Staten Island [SIR]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "511",
+   "name": "Oakwood Heights",
+   "ada": 0,
+   "explanation": "Staten Island [SIR]: not accessible.",
+   "lines": [
+    {
+     "line": "Staten Island",
+     "routes": "SIR",
+     "ada": 0,
+     "explanation": "Staten Island [SIR]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "512",
+   "name": "Bay Terrace",
+   "ada": 0,
+   "explanation": "Staten Island [SIR]: not accessible.",
+   "lines": [
+    {
+     "line": "Staten Island",
+     "routes": "SIR",
+     "ada": 0,
+     "explanation": "Staten Island [SIR]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "513",
+   "name": "Great Kills",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Staten Island",
+     "routes": "SIR",
+     "ada": 1,
+     "explanation": "Staten Island [SIR]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "514",
+   "name": "Eltingville",
+   "ada": 0,
+   "explanation": "Staten Island [SIR]: not accessible.",
+   "lines": [
+    {
+     "line": "Staten Island",
+     "routes": "SIR",
+     "ada": 0,
+     "explanation": "Staten Island [SIR]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "515",
+   "name": "Annadale",
+   "ada": 0,
+   "explanation": "Staten Island [SIR]: not accessible.",
+   "lines": [
+    {
+     "line": "Staten Island",
+     "routes": "SIR",
+     "ada": 0,
+     "explanation": "Staten Island [SIR]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "516",
+   "name": "Huguenot",
+   "ada": 0,
+   "explanation": "Staten Island [SIR]: not accessible.",
+   "lines": [
+    {
+     "line": "Staten Island",
+     "routes": "SIR",
+     "ada": 0,
+     "explanation": "Staten Island [SIR]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "517",
+   "name": "Prince's Bay",
+   "ada": 0,
+   "explanation": "Staten Island [SIR]: not accessible.",
+   "lines": [
+    {
+     "line": "Staten Island",
+     "routes": "SIR",
+     "ada": 0,
+     "explanation": "Staten Island [SIR]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "518",
+   "name": "Pleasant Plains",
+   "ada": 0,
+   "explanation": "Staten Island [SIR]: not accessible.",
+   "lines": [
+    {
+     "line": "Staten Island",
+     "routes": "SIR",
+     "ada": 0,
+     "explanation": "Staten Island [SIR]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "519",
+   "name": "Richmond Valley",
+   "ada": 0,
+   "explanation": "Staten Island [SIR]: not accessible.",
+   "lines": [
+    {
+     "line": "Staten Island",
+     "routes": "SIR",
+     "ada": 0,
+     "explanation": "Staten Island [SIR]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "522",
+   "name": "Tottenville",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Staten Island",
+     "routes": "SIR",
+     "ada": 1,
+     "explanation": "Staten Island [SIR]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "523",
+   "name": "Arthur Kill",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Staten Island",
+     "routes": "SIR",
+     "ada": 1,
+     "explanation": "Staten Island [SIR]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "601",
+   "name": "6 Av",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Canarsie",
+     "routes": "L",
+     "ada": 1,
+     "explanation": "Canarsie [L]: accessible."
+    },
+    {
+     "line": "6th Av - Culver",
+     "routes": "F M",
+     "ada": 1,
+     "explanation": "6th Av - Culver [F M]: accessible."
+    },
+    {
+     "line": "Broadway - 7Av",
+     "routes": "1 2 3",
+     "ada": 1,
+     "explanation": "Broadway - 7Av [1 2 3]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "602",
+   "name": "14 St-Union Sq",
+   "ada": 2,
+   "explanation": "N Q R W accessible; L accessible; 4 5 6 not accessible.",
+   "lines": [
+    {
+     "line": "Broadway - Brighton",
+     "routes": "N Q R W",
+     "ada": 1,
+     "explanation": "Broadway - Brighton [N Q R W]: accessible."
+    },
+    {
+     "line": "Canarsie",
+     "routes": "L",
+     "ada": 1,
+     "explanation": "Canarsie [L]: accessible."
+    },
+    {
+     "line": "Lexington Av",
+     "routes": "4 5 6",
+     "ada": 0,
+     "explanation": "Lexington Av [4 5 6]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "603",
+   "name": "149 St-Grand Concourse",
+   "ada": 0,
+   "explanation": "Jerome Av [4]: not accessible. Lenox - White Plains Rd [2 5]: not accessible.",
+   "lines": [
+    {
+     "line": "Jerome Av",
+     "routes": "4",
+     "ada": 0,
+     "explanation": "Jerome Av [4]: not accessible."
+    },
+    {
+     "line": "Lenox - White Plains Rd",
+     "routes": "2 5",
+     "ada": 0,
+     "explanation": "Lenox - White Plains Rd [2 5]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "604",
+   "name": "161 St-Yankee Stadium",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Concourse",
+     "routes": "B D",
+     "ada": 1,
+     "explanation": "Concourse [B D]: accessible."
+    },
+    {
+     "line": "Jerome Av",
+     "routes": "4",
+     "ada": 1,
+     "explanation": "Jerome Av [4]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "605",
+   "name": "168 St",
+   "ada": 2,
+   "explanation": "A C accessible; 1 not accessible.",
+   "lines": [
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "A C",
+     "ada": 1,
+     "explanation": "8th Av - Fulton St [A C]: accessible."
+    },
+    {
+     "line": "Broadway - 7Av",
+     "routes": "1",
+     "ada": 0,
+     "explanation": "Broadway - 7Av [1]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "606",
+   "name": "Court Sq-23 St",
+   "ada": 2,
+   "explanation": "E M Manhattan-bound only; G accessible; 7 accessible.",
+   "lines": [
+    {
+     "line": "Queens Blvd",
+     "routes": "E F",
+     "ada": 2,
+     "explanation": "Queens Blvd [E F]: Manhattan-bound only."
+    },
+    {
+     "line": "Crosstown",
+     "routes": "G",
+     "ada": 1,
+     "explanation": "Crosstown [G]: accessible."
+    },
+    {
+     "line": "Flushing",
+     "routes": "7",
+     "ada": 1,
+     "explanation": "Flushing [7]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "607",
+   "name": "34 St-Herald Sq",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Broadway - Brighton",
+     "routes": "N Q R W",
+     "ada": 1,
+     "explanation": "Broadway - Brighton [N Q R W]: accessible."
+    },
+    {
+     "line": "6th Av - Culver",
+     "routes": "B D F M",
+     "ada": 1,
+     "explanation": "6th Av - Culver [B D F M]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "608",
+   "name": "4 Av-9 St",
+   "ada": 0,
+   "explanation": "4th Av [R]: not accessible. 6th Av - Culver [F G]: not accessible.",
+   "lines": [
+    {
+     "line": "4th Av",
+     "routes": "R",
+     "ada": 0,
+     "explanation": "4th Av [R]: not accessible."
+    },
+    {
+     "line": "6th Av - Culver",
+     "routes": "F G",
+     "ada": 0,
+     "explanation": "6th Av - Culver [F G]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "609",
+   "name": "42 St-Bryant Pk",
+   "ada": 0,
+   "explanation": "6th Av - Culver [B D F M]: not accessible. Flushing [7]: not accessible.",
+   "lines": [
+    {
+     "line": "6th Av - Culver",
+     "routes": "B D F M",
+     "ada": 0,
+     "explanation": "6th Av - Culver [B D F M]: not accessible."
+    },
+    {
+     "line": "Flushing",
+     "routes": "7",
+     "ada": 0,
+     "explanation": "Flushing [7]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "610",
+   "name": "Grand Central-42 St",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Lexington Av",
+     "routes": "4 5 6",
+     "ada": 1,
+     "explanation": "Lexington Av [4 5 6]: accessible."
+    },
+    {
+     "line": "Flushing",
+     "routes": "7",
+     "ada": 1,
+     "explanation": "Flushing [7]: accessible."
+    },
+    {
+     "line": "Lexington - Shuttle",
+     "routes": "S",
+     "ada": 1,
+     "explanation": "Lexington - Shuttle [S]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "611",
+   "name": "Times Sq-42 St",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Broadway - Brighton",
+     "routes": "N Q R W",
+     "ada": 1,
+     "explanation": "Broadway - Brighton [N Q R W]: accessible."
+    },
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "A C E",
+     "ada": 1,
+     "explanation": "8th Av - Fulton St [A C E]: accessible."
+    },
+    {
+     "line": "Broadway - 7Av",
+     "routes": "1 2 3",
+     "ada": 1,
+     "explanation": "Broadway - 7Av [1 2 3]: accessible."
+    },
+    {
+     "line": "Flushing",
+     "routes": "7",
+     "ada": 1,
+     "explanation": "Flushing [7]: accessible."
+    },
+    {
+     "line": "Lexington - Shuttle",
+     "routes": "S",
+     "ada": 1,
+     "explanation": "Lexington - Shuttle [S]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "612",
+   "name": "Lexington Av/53 St",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Queens Blvd",
+     "routes": "E F",
+     "ada": 1,
+     "explanation": "Queens Blvd [E F]: accessible."
+    },
+    {
+     "line": "Lexington Av",
+     "routes": "6",
+     "ada": 1,
+     "explanation": "Lexington Av [6]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "613",
+   "name": "Lexington Av/59 St",
+   "ada": 0,
+   "explanation": "Astoria [N R W]: not accessible. Lexington Av [4 5 6]: not accessible.",
+   "lines": [
+    {
+     "line": "Astoria",
+     "routes": "N R W",
+     "ada": 0,
+     "explanation": "Astoria [N R W]: not accessible."
+    },
+    {
+     "line": "Lexington Av",
+     "routes": "4 5 6",
+     "ada": 0,
+     "explanation": "Lexington Av [4 5 6]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "614",
+   "name": "59 St-Columbus Circle",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "A C B D",
+     "ada": 1,
+     "explanation": "8th Av - Fulton St [A C B D]: accessible."
+    },
+    {
+     "line": "Broadway - 7Av",
+     "routes": "1",
+     "ada": 1,
+     "explanation": "Broadway - 7Av [1]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "615",
+   "name": "62 St",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "West End",
+     "routes": "D",
+     "ada": 1,
+     "explanation": "West End [D]: accessible."
+    },
+    {
+     "line": "Sea Beach",
+     "routes": "N",
+     "ada": 1,
+     "explanation": "Sea Beach [N]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "616",
+   "name": "Jackson Hts-Roosevelt Av",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Queens Blvd",
+     "routes": "E F M R",
+     "ada": 1,
+     "explanation": "Queens Blvd [E F M R]: accessible."
+    },
+    {
+     "line": "Flushing",
+     "routes": "7",
+     "ada": 1,
+     "explanation": "Flushing [7]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "617",
+   "name": "Atlantic Av-Barclays Ctr",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "4th Av",
+     "routes": "D N R",
+     "ada": 1,
+     "explanation": "4th Av [D N R]: accessible."
+    },
+    {
+     "line": "Broadway - Brighton",
+     "routes": "B Q",
+     "ada": 1,
+     "explanation": "Broadway - Brighton [B Q]: accessible."
+    },
+    {
+     "line": "Eastern Pky",
+     "routes": "2 3 4 5",
+     "ada": 1,
+     "explanation": "Eastern Pky [2 3 4 5]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "618",
+   "name": "8 Av",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Canarsie",
+     "routes": "L",
+     "ada": 1,
+     "explanation": "Canarsie [L]: accessible."
+    },
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "A C E",
+     "ada": 1,
+     "explanation": "8th Av - Fulton St [A C E]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "619",
+   "name": "Broadway-Lafayette St",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "6th Av - Culver",
+     "routes": "B D F M",
+     "ada": 1,
+     "explanation": "6th Av - Culver [B D F M]: accessible."
+    },
+    {
+     "line": "Lexington Av",
+     "routes": "6",
+     "ada": 1,
+     "explanation": "Lexington Av [6]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "620",
+   "name": "Court St",
+   "ada": 2,
+   "explanation": "R not accessible; 2 3 accessible; 4 5 Manhattan-bound only.",
+   "lines": [
+    {
+     "line": "Broadway",
+     "routes": "R",
+     "ada": 0,
+     "explanation": "Broadway [R]: not accessible."
+    },
+    {
+     "line": "Clark St",
+     "routes": "2 3",
+     "ada": 1,
+     "explanation": "Clark St [2 3]: accessible."
+    },
+    {
+     "line": "Eastern Pky",
+     "routes": "4 5",
+     "ada": 1,
+     "explanation": "Eastern Pky [4 5]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "621",
+   "name": "Broadway Junction",
+   "ada": 0,
+   "explanation": "Jamaica [J Z]: not accessible. Canarsie [L]: not accessible. 8th Av - Fulton St [A C]: not accessible.",
+   "lines": [
+    {
+     "line": "Jamaica",
+     "routes": "J Z",
+     "ada": 0,
+     "explanation": "Jamaica [J Z]: not accessible."
+    },
+    {
+     "line": "Canarsie",
+     "routes": "L",
+     "ada": 0,
+     "explanation": "Canarsie [L]: not accessible."
+    },
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "A C",
+     "ada": 0,
+     "explanation": "8th Av - Fulton St [A C]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "622",
+   "name": "Chambers St",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Jamaica",
+     "routes": "J Z",
+     "ada": 1,
+     "explanation": "Jamaica [J Z]: accessible."
+    },
+    {
+     "line": "Lexington Av",
+     "routes": "4 5 6",
+     "ada": 1,
+     "explanation": "Lexington Av [4 5 6]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "623",
+   "name": "Canal St",
+   "ada": 2,
+   "explanation": "R W not accessible; N Q not accessible; J Z not accessible; 6 accessible.",
+   "lines": [
+    {
+     "line": "Broadway",
+     "routes": "R W",
+     "ada": 0,
+     "explanation": "Broadway [R W]: not accessible."
+    },
+    {
+     "line": "Manhattan Bridge",
+     "routes": "N Q",
+     "ada": 0,
+     "explanation": "Manhattan Bridge [N Q]: not accessible."
+    },
+    {
+     "line": "Jamaica",
+     "routes": "J Z",
+     "ada": 0,
+     "explanation": "Jamaica [J Z]: not accessible."
+    },
+    {
+     "line": "Lexington Av",
+     "routes": "6",
+     "ada": 1,
+     "explanation": "Lexington Av [6]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "624",
+   "name": "Cortlandt St",
+   "ada": 2,
+   "explanation": "R W accessible; A C not accessible; E accessible; 2 3 not accessible.",
+   "lines": [
+    {
+     "line": "Broadway",
+     "routes": "R W",
+     "ada": 1,
+     "explanation": "Broadway [R W]: accessible."
+    },
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "A C",
+     "ada": 0,
+     "explanation": "8th Av - Fulton St [A C]: not accessible."
+    },
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "E",
+     "ada": 1,
+     "explanation": "8th Av - Fulton St [E]: accessible."
+    },
+    {
+     "line": "Clark St",
+     "routes": "2 3",
+     "ada": 0,
+     "explanation": "Clark St [2 3]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "625",
+   "name": "Delancey St-Essex St",
+   "ada": 0,
+   "explanation": "Jamaica [M J Z]: not accessible. 6th Av - Culver [F]: not accessible.",
+   "lines": [
+    {
+     "line": "Jamaica",
+     "routes": "M J Z",
+     "ada": 0,
+     "explanation": "Jamaica [M J Z]: not accessible."
+    },
+    {
+     "line": "6th Av - Culver",
+     "routes": "F",
+     "ada": 0,
+     "explanation": "6th Av - Culver [F]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "626",
+   "name": "Botanic Garden",
+   "ada": 0,
+   "explanation": "Franklin Shuttle [S]: not accessible. Eastern Pky [2 3 4 5]: not accessible.",
+   "lines": [
+    {
+     "line": "Franklin Shuttle",
+     "routes": "S",
+     "ada": 0,
+     "explanation": "Franklin Shuttle [S]: not accessible."
+    },
+    {
+     "line": "Eastern Pky",
+     "routes": "2 3 4 5",
+     "ada": 0,
+     "explanation": "Eastern Pky [2 3 4 5]: not accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "627",
+   "name": "Franklin Av",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Franklin Shuttle",
+     "routes": "S",
+     "ada": 1,
+     "explanation": "Franklin Shuttle [S]: accessible."
+    },
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "C",
+     "ada": 1,
+     "explanation": "8th Av - Fulton St [C]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "628",
+   "name": "Fulton St",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Jamaica",
+     "routes": "J Z",
+     "ada": 1,
+     "explanation": "Jamaica [J Z]: accessible."
+    },
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "A C",
+     "ada": 1,
+     "explanation": "8th Av - Fulton St [A C]: accessible."
+    },
+    {
+     "line": "Clark St",
+     "routes": "2 3",
+     "ada": 1,
+     "explanation": "Clark St [2 3]: accessible."
+    },
+    {
+     "line": "Lexington Av",
+     "routes": "4 5",
+     "ada": 1,
+     "explanation": "Lexington Av [4 5]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "629",
+   "name": "Lorimer St",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Canarsie",
+     "routes": "L",
+     "ada": 1,
+     "explanation": "Canarsie [L]: accessible."
+    },
+    {
+     "line": "Crosstown",
+     "routes": "G",
+     "ada": 1,
+     "explanation": "Crosstown [G]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "630",
+   "name": "Myrtle-Wyckoff Avs",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Myrtle Av",
+     "routes": "M",
+     "ada": 1,
+     "explanation": "Myrtle Av [M]: accessible."
+    },
+    {
+     "line": "Canarsie",
+     "routes": "L",
+     "ada": 1,
+     "explanation": "Canarsie [L]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "635",
+   "name": "Whitehall St-South Ferry",
+   "ada": 2,
+   "explanation": "R W not accessible; 1 accessible.",
+   "lines": [
+    {
+     "line": "Broadway",
+     "routes": "R W",
+     "ada": 0,
+     "explanation": "Broadway [R W]: not accessible."
+    },
+    {
+     "line": "Broadway - 7Av",
+     "routes": "1",
+     "ada": 1,
+     "explanation": "Broadway - 7Av [1]: accessible."
+    }
+   ]
+  },
+  {
+   "complexId": "636",
+   "name": "Jay St-MetroTech",
+   "ada": 1,
+   "explanation": null,
+   "lines": [
+    {
+     "line": "Broadway",
+     "routes": "R",
+     "ada": 1,
+     "explanation": "Broadway [R]: accessible."
+    },
+    {
+     "line": "8th Av - Fulton St",
+     "routes": "A C F",
+     "ada": 1,
+     "explanation": "8th Av - Fulton St [A C F]: accessible."
+    }
+   ]
+  }
+ ]
+}

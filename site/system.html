@@ -323,6 +323,27 @@
     <p class="legend">These are <strong>not elevators</strong> — boarding platforms, portable lifts, and ramps whose loss removes step-free access. Tracked and archived separately; <strong>never counted</strong> in this system's elevator totals or rankings. <span class="red">OUT</span> = currently out of service; <span class="green">RESTORED</span> = a recent spell that ended.</p>
   </section>
 
+  <section class="board" id="ada-section" aria-labelledby="ada-h" hidden>
+    <div class="board-head">
+      <h2 id="ada-h">Station accessibility <span class="t-sub">MTA's own design-time declaration, by line &amp; direction</span></h2>
+      <span class="side board-note" id="ada-summary"></span>
+    </div>
+    <div class="tablewrap">
+      <table class="led narrow">
+        <caption class="sr-only">Stations where MTA's own accessibility declaration is partial or none — which lines and directions are and aren't step-free by design, independent of today's elevator outages</caption>
+        <thead>
+          <tr>
+            <th scope="col">station</th>
+            <th scope="col">status</th>
+            <th scope="col">what this means</th>
+          </tr>
+        </thead>
+        <tbody id="ada-body"></tbody>
+      </table>
+    </div>
+    <p class="legend">MTA's own published accessibility rating for the STATION ITSELF (by design — not today's elevator status). <span class="chip red">NOT ACCESSIBLE</span> = no step-free route on any line here; <span class="chip unknown">PARTIALLY ACCESSIBLE</span> = some line(s) or direction(s) are step-free and others aren't — the "what this means" column names exactly which.</p>
+  </section>
+
   <section class="board" aria-labelledby="access-h">
     <div class="board-head">
       <h2 id="access-h">Station access <span class="t-sub">live status of modeled routes</span></h2>
@@ -734,6 +755,26 @@ if (!id) {
           `<td class="white">${esc(r.station)}</td>`,
           `<td class="dim">${esc(r.reason || "—")}</td>`,
           `<td class="num red">${formatDays(r.days)}</td>`,
+        ]);
+      }
+    }
+
+    // --- Station accessibility (MTA's own design-time declaration) ---
+    // MTA-only; hidden entirely for every other system. Never shows a bare
+    // "partial" status — the explanation column always names the specific
+    // lines and directions, straight from MTA's own text.
+    const ada = data.stationAccessibility ?? [];
+    const adaSection = document.getElementById("ada-section");
+    adaSection.hidden = ada.length === 0;
+    if (ada.length) {
+      document.getElementById("ada-summary").textContent = `${ada.length} station${ada.length === 1 ? "" : "s"} partial or not accessible`;
+      const adb = document.getElementById("ada-body");
+      for (const s of ada) {
+        const chip = s.ada === 0 ? '<span class="chip red">NOT ACCESSIBLE</span>' : '<span class="chip unknown">PARTIALLY ACCESSIBLE</span>';
+        simpleRow(adb, [
+          `<td class="white">${esc(s.name)}</td>`,
+          `<td>${chip}</td>`,
+          `<td class="info">${esc(s.explanation)}</td>`,
         ]);
       }
     }
