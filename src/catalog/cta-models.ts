@@ -908,4 +908,42 @@ export const CTA_STATION_MODELS: StationModel[] = [
       { id: "rotogate-platform", label: "Harlem-bound platform elevator (egress via rotogates)", elevators: [{ externalId: "41140-HARLEM-BOUND", label: "King Drive Harlem-bound platform elevator" }] },
     ],
   },
+
+  // Roosevelt (41400, Red/Orange/Green) — deferred 2026-07-16 pending
+  // firsthand info (chicago-L.org accounted for only 2 of the ASAP plan's
+  // 3 elevators). Bryce asked on Discord and got a full structural answer:
+  // TWO independent chains, not one. Green/Orange riders reach the elevated
+  // platform via ONE elevator straight from the street (never yet observed
+  // live). Red Line riders reach the underground platform via TWO elevators
+  // in series: street to the transfer tunnel, then transfer tunnel to the
+  // Red Line platform — different elevator from the one Green/Orange riders
+  // use to reach street. The transfer tunnel's real, live-observed id
+  // (41400-TRANSFER-TUNNEL) is the SECOND leg (tunnel-to-platform) — Bryce
+  // confirmed this mapping explains why the real alert text names "Red,
+  // Orange and Green Lines" together: that elevator is also the shared
+  // choke point for Orange/Green riders transferring down to the Red Line
+  // platform, not just for Red riders arriving from street. Confidence
+  // 8/10 — crowd-sourced via Discord rather than an agency document, but a
+  // complete, internally-consistent structural answer Bryce vetted himself.
+  {
+    systemId: SYSTEM,
+    stationExternalId: "41400",
+    chainLabel: " (Orange/Green)",
+    note: "Street to the elevated Orange/Green platform: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Never yet observed live; synthetic placeholder id, promotable once individually observed. Structure confirmed by Bryce via Discord 2026-07-16 (confidence 8/10).",
+    segments: [
+      { id: "street-platform", label: "Street to elevated platform", elevators: [{ externalId: "CTA-SYNTH-41400-ORANGE-GREEN", label: "Roosevelt Orange/Green platform elevator — never yet observed live, synthetic id" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "41400",
+    chainLabel: " (Red)",
+    note: "Street to the underground Red Line platform: 2 elevators in series (street to the transfer tunnel, then transfer tunnel to the platform), no backup on either leg. If either elevator is out of service, this route is not step-free.",
+    internalNote: "Street-to-tunnel leg never yet observed live, synthetic placeholder id. Tunnel-to-platform leg is the real, live-observed 41400-TRANSFER-TUNNEL -- also the shared choke point for Orange/Green riders transferring down to the Red Line platform (explains the live alert naming all 3 lines). Structure confirmed by Bryce via Discord 2026-07-16 (confidence 8/10).",
+    segments: [
+      { id: "street-tunnel", label: "Street to transfer tunnel", elevators: [{ externalId: "CTA-SYNTH-41400-STREET-TUNNEL", label: "Roosevelt street-to-transfer-tunnel elevator — never yet observed live, synthetic id" }] },
+      { id: "tunnel-platform", label: "Transfer tunnel to Red Line platform", elevators: [{ externalId: "41400-TRANSFER-TUNNEL", label: "Roosevelt transfer tunnel to Red Line platform elevator" }] },
+    ],
+  },
 ];

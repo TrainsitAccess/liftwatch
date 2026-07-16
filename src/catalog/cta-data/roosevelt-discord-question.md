@@ -42,4 +42,27 @@ they'll be used to finalize the model in `src/catalog/cta-models.ts`.
 
 ## Answers received
 
-(none yet)
+Bryce got a full structural answer via Discord (2026-07-16):
+
+> Roosevelt has 3 elevators
+>
+> 1 elevator from street level to the elevated Green/Orange Line station
+>
+> 1 elevator from street level to the transfer tunnel to the red line
+>
+> 1 elevator from the transfer tunnel to the Red Line subway platform
+>
+> Red line riders use a separate elevator from Green/Orange Line riders to
+> get to street level
+>
+> There is one elevator straight from the Green/Orange Line platform to
+> street level
+
+Resolved: TWO independent chains, not one. Green/Orange = one elevator
+straight to street. Red Line = two elevators in series (street→tunnel,
+tunnel→platform). Bryce confirmed the real observed id
+(`41400-TRANSFER-TUNNEL`) maps to the tunnel→platform leg — the shared
+choke point for both Red riders arriving from street and Orange/Green
+riders transferring down to the Red platform, which is why the live alert
+text names all three lines. Modeled in `src/catalog/cta-models.ts`
+2026-07-16 (confidence 8/10).

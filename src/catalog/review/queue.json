@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-16T23:01:50.118Z",
+ "updatedAt": "2026-07-16T23:05:16.375Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -383,7 +383,7 @@
    "system": "cta-chicago",
    "stationId": "41400",
    "name": "Roosevelt",
-   "status": "deferred",
+   "status": "modeled",
    "priority": 14,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
@@ -401,8 +401,8 @@
     }
    ],
    "resolution": {
-    "verdict": "deferred",
-    "notes": "ASAP count says 3 elevators but chicago-L.org only names 2 (main street->mezz, transfer tunnel to elevated). Third elevator unconfirmed -- Bryce is asking online (Discord) for firsthand knowledge of the station layout before modeling.",
+    "verdict": "approved-as-proposed",
+    "notes": "Modeled as 2 independent chains: Orange/Green (1 elevator, street straight to elevated platform, synthetic id) and Red (2 elevators in series, street->transfer tunnel->platform; the tunnel->platform leg is the real observed id 41400-TRANSFER-TUNNEL, confirmed to be the shared choke point for Red street access AND Orange/Green transfers to Red -- explains why the live alert names all 3 lines). Sourced from a Discord crowd-sourced answer Bryce solicited and vetted himself, 2026-07-16 (confidence 8/10). src/catalog/cta-models.ts.",
     "date": "2026-07-16"
    }
   },
