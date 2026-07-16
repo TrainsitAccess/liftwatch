@@ -57,7 +57,9 @@
     "review:status": "tsx scripts/review-queue.mts --status",
     "mbta:pathways": "tsx scripts/mbta-pathways.mts",
     "check:mbta-pathways": "tsx src/checks/mbta-pathways-check.ts",
-    "mbta:ramps": "tsx scripts/mbta-ramps.mts"
+    "mbta:ramps": "tsx scripts/mbta-ramps.mts",
+    "mta:ny-inventory": "tsx scripts/mta-ny-inventory.mts",
+    "check:mta-ny": "tsx scripts/check-mta-ny.mts"
   },
   "dependencies": {
     "@netlify/blobs": "^10.7.9",
