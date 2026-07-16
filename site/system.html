@@ -695,6 +695,7 @@ if (!id) {
         (o.note ? field("Note", esc(o.note)) : "") +
         (impact ? `<div class="field wide"><div class="k">Access impact</div>${impact}</div>` : "") +
         (notesHtml ? `<div class="field wide"><div class="k">Route notes &amp; alternatives</div><div class="v">${notesHtml}</div></div>` : "") +
+        (o.reroute ? `<div class="field wide"><div class="k">MTA reroute (if this elevator is out)</div><div class="v">${esc(o.reroute)}</div></div>` : "") +
         `</div></td>`;
 
       bb.appendChild(tr);

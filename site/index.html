@@ -493,6 +493,7 @@ fetch("./data.json").then((r) => r.json()).then((data) => {
         field("Out since", esc(fmtWhen(o.since, o.tz) || "—") + ` · ${o.days} days`, "amber") +
         field("Estimated return", esc(ret), "amber") +
         field("Elevator", esc(o.unitDesc || o.unit)) +
+        (o.reroute ? `<div class="field wide"><div class="k">MTA reroute (if this elevator is out)</div><div class="v">${esc(o.reroute)}</div></div>` : "") +
         field("System board", `<a href="./system.html?id=${encodeURIComponent(o.systemId)}">${esc(o.system)} — full board</a>`) +
         `</div></td>`;
 

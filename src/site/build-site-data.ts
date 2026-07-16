@@ -12,6 +12,19 @@ import {
   type Interval,
   type StationModel,
 } from "../lib/accessibility.js";
+import nyInventory from "../catalog/mta-data/ny-elevator-inventory.json" with { type: "json" };
+
+// MTA's OWN rider-facing reroute guidance, keyed by equipment code (= our MTA
+// external ids), from the data.ny.gov inventory (94fv-bak7 → `alternative_route`;
+// see scripts/mta-ny-inventory.mts). It reads "if this elevator is out, do X"
+// (cross to another entrance, use a named backup, ride to the next accessible
+// station and return…) — MTA's authoritative wayfinding, surfaced verbatim on
+// the site when the elevator is out. It assumes only THIS elevator is out (as
+// MTA's own signage does), so it's presented as MTA's guidance, not our claim.
+const mtaReroute = new Map<string, string>();
+for (const e of (nyInventory as { elevators: { equipment_code: string; alternative_route?: string }[] }).elevators) {
+  if (e.alternative_route) mtaReroute.set(e.equipment_code, e.alternative_route);
+}
 
 // Snapshot the archive into the site's data payloads. Server-side (service
 // key) so the site itself needs no credentials. Two callers share this ONE
@@ -306,6 +319,7 @@ const allOpenOutages = (events.data ?? [])
       unit: (unit?.external_id as string) ?? "?",
       unitDesc: (unit?.description as string | null) ?? null,
       soleAccess: confirmedSoleAccess(unit),
+      reroute: (unit?.external_id && mtaReroute.get(unit.external_id as string)) ?? null,
       planned: e.is_planned as boolean,
       reason: (e.reason as string | null) ?? null,
       estimatedReturn: (e.estimated_return as string | null) ?? null,
@@ -550,6 +564,9 @@ function buildSystemDetail(systemId: string) {
         backups: impact?.backups ?? [],
         rampAlternative: impact?.rampAlternative ?? false,
         chainNotes: impact?.notes ?? [],
+        // MTA's own rider-facing reroute for THIS elevator (data.ny.gov), shown
+        // verbatim when it's out; null for non-MTA / unlisted elevators.
+        reroute: (ext && mtaReroute.get(ext)) ?? null,
         // MTA (so far) marks a unit is_active: false while it's mid
         // capital-replacement rather than just "broken" — flag that
         // distinction so a 600+ day outage doesn't read as neglect.
