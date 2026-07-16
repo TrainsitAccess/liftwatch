@@ -15,20 +15,33 @@ text layer (3 pages, small file, clean extraction — no image-wrapping issues
 unlike the CTA/MTA PDFs).
 
 **How to use this**: a real signal, but NOT infallible — see "Known
-non-issues" below for 3 cases where this guide's data looked like a
+non-issues" below for 6 cases where this guide's data looked like a
 discrepancy against our curated models but, on verification against BART's
-own LIVE per-station page, turned out to be a guide artifact rather than a
-real gap. Treat every apparent mismatch the same way: verify against
-`bart.gov/stations/<code>/accessible` (live, JS-rendered — use a real
-browser, not WebFetch/curl) before changing a model. Never trust this guide
-alone for a redundancy claim.
+own LIVE per-station page, turned out to be a guide artifact (or, at
+Millbrae, apparently STALE relative to a since-changed platform layout)
+rather than a real gap. Treat every apparent mismatch the same way: verify
+against `bart.gov/stations/<code>/accessible` (live, JS-rendered — use a
+real browser, not WebFetch/curl) before changing a model. Never trust this
+guide alone for a redundancy claim.
 
-**Coverage note**: this is a *bike-dimensions* guide, not a formal capital
-inventory — a few stations show fewer rows than we've curated (Millbrae,
-Warm Springs, West Dublin/Pleasanton), most plausibly because garage or
-pedestrian-bridge elevators outside the main bike route were omitted from a
-bike-focused guide. Not individually re-verified beyond the pattern
-established by the 3 confirmed non-issues below — flag if revisited.
+**Coverage note (2026-07-16 fact-check, 6 stations live-verified)**: every
+station where this guide showed fewer rows than our curated model — COLM,
+RICH, 19TH, MLPT, MLBR, WARM — was individually checked against BART's live
+outage-options page and confirmed our existing model correct in every case.
+The pattern is consistent: this bike-focused guide collapses same-dimension
+elevator pairs into one row (19TH, MLPT), omits auxiliary/garage/bridge
+elevators outside the core bike route (WARM's pedestrian bridge, and by the
+same pattern presumably COLS's arena footbridge and DALY's pedestrian
+tunnel — not individually re-verified but structurally consistent, see their
+`auxiliary`/chain-note fields), and in at least one case (MLBR) appears to
+describe a pre-2022 layout BART has since reconfigured. **WDUB and SFIA were
+independently verified against bart.gov in a prior session** (see their
+`internalNote` fields in the source) and not re-checked here.
+**Conclusion: after this fact-check, every apparent discrepancy this guide
+raised has been resolved — none required a model change. Its highest value
+turned out to be corroboration, not new-bug detection** (contrast CTA's
+ASAP plan / Morgan finding, or MTA's data.ny.gov, both of which surfaced a
+real fix).
 
 ## Known non-issues (verified 2026-07-16, don't re-flag)
 
@@ -47,6 +60,49 @@ established by the 3 confirmed non-issues below — flag if revisited.
   distinguished). BART's live page explicitly names "PLATFORM ELEVATOR 1"
   and "PLATFORM ELEVATOR 2" as each other's backup. Our redundant-pair model
   is correct; the guide just isn't granular enough to show it.
+- **MLPT (Milpitas)**: guide shows ONE row ("Street/All Platforms"), but our
+  model has 2 separate per-direction platform elevators with NO backup
+  claimed between them. BART's live page independently confirms: "PLATFORM
+  1 ELEVATOR (Berryessa direction)" and "PLATFORM 2 ELEVATOR (Millbrae/
+  SFO/Daly City/Richmond directions)" are two distinct elevators, each with
+  only a cross-station detour as its fallback (never each other). Same
+  same-dimension-collapse pattern as 19TH — our model is correct.
+- **MLBR (Millbrae)**: guide shows 4 rows including a "Concourse/Platform
+  1-2" elevator our model doesn't track at all. BART's LIVE page lists only
+  4 elevators total (East Plaza street, Caltrain West Plaza, Platform 3
+  "ALL DESTINATIONS", Caltrain concourse-to-northbound) — no "Platform 1-2"
+  entry exists in the current text; "Platform 3" now explicitly serves
+  every platform. The guide (2022) most likely predates a platform
+  reconfiguration or renaming. Our model matches BART's CURRENT text
+  exactly and is correct; the guide's extra row is stale, not a gap.
+- **WARM (Warm Springs/South Fremont)**: guide collapses the two street
+  elevators and two platform elevators into one row each (4 physical
+  elevators → 2 rows), plus omits the pedestrian-bridge elevator entirely.
+  BART's live page confirms all 5 (Street 1/2 mutually redundant, Platform
+  1/2 mutually redundant, Pedestrian Bridge with entry-only limitation)
+  word-for-word matching our model's existing text. Our model is correct.
+
+## Enrichment pass (2026-07-16): minimal opportunity, and why
+
+Surveyed every curated BART elevator's label against this guide's landing
+description to see if any could be sharpened (the same `preferMtaNote()`
+principle used for MTA). Conclusion: **not much to adopt** — our existing
+labels were built from BART's own per-station outage-options advisory text
+(richer, rider-facing, direction-named: e.g. "Platform 1 elevator (Berryessa
+direction)"), which is already more specific than this guide's terse
+table-cell phrasing (e.g. "Street/All Platforms"). The guide's genuine
+enrichment value was the fact-check above, not label wording. Its one type
+of data we don't otherwise capture — physical door/cab dimensions — is
+preserved in the table below for a possible future capacity-facing feature,
+but isn't wired into any current model field (out of this project's current
+step-free-access scope).
+
+As a byproduct, this pass also corroborates all 16 single-elevator "Station
+elevator" BART stations (Balboa Park, Bay Fair, Berryessa, Castro Valley,
+Concord, Dublin/Pleasanton, Fremont, Glen Park, Lafayette, North Berkeley,
+North Concord, Orinda, Pittsburg Center, Rockridge, San Bruno, South San
+Francisco) — each shows exactly one guide row, matching our model, no hidden
+second elevator suggested.
 
 ## Full per-station elevator list (as published, 2022)
 
