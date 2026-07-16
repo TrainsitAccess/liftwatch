@@ -1629,3 +1629,198 @@ via the `/liftwatch-station-review` walkthrough with Bryce.
   it existed). Locked as a standing rule in CLAUDE.md: check every system's
   own feed/API for ramp or other non-elevator step-free data before
   finalizing ANY station model, not just when the question happens to come up.
+
+### CTA curated tier, continued: correction, audit, and 15 more stations (2026-07-16)
+
+Continuing the walkthrough above in the same session.
+
+- **Wilson (40540) CORRECTED**: a prior "researched but not shipped" note had
+  called Wilson two independent single-elevator chains, no backup. CTA's own
+  `/wilson/` reconstruction page (fetched via the in-app Browser pane, since
+  CTA's site 403s WebFetch) plus Bryce's direct confirmation revealed the
+  Sunnyside Ave entrance has TWO ADA ramps — one straight to each island
+  platform, no mezzanine — so each direction is actually REDUNDANT (elevator
+  OR ramp), encoded via `segment.stepFreeAlternative`. The research had
+  simply missed the ramps; exactly the failure mode the standing ramp-
+  research rule exists to catch. Verified live against a real outage: Wilson
+  (95th/Loop-bound) now correctly reads ACCESSIBLE instead of a false
+  INACCESSIBLE.
+- **Full model audit against CTA's own pages**: before shipping more
+  stations, cross-checked all 24 then-modeled CTA stations against CTA's
+  project/station pages (`/95thterminal/`, `/westernbrown/`, `/fprebuild/`,
+  `/redsouth/`, `/rpm/`, and others under `/projects/`). 23/24 confirmed
+  correct. **Morgan (41510) was a real mismodel**: built as ONE elevator
+  serving both directions of a single island platform, but CTA's own page
+  plus chicago-L.org plus Wikipedia independently agree it's actually TWO
+  SIDE PLATFORMS, one elevator each, linked by a transfer-ONLY overhead
+  bridge (no step-free cross-platform backup) — re-modeled as a per-direction
+  pair. The live alert's combined id ("The Loop- and 63rd-bound platform
+  elevator") had been misread as "one elevator, both directions" when it
+  actually names one direction's two DESTINATIONS (Green toward Loop→63rd +
+  Pink toward Loop, both served from the same eastbound platform).
+- **Batch 4**: 7 more zero-redundancy stations, risk-bucketed like Batches
+  1-3 — nothing in the batch claims a backup, so nothing can under-warn.
+  Four Diversey-pattern per-direction pairs (Addison, Montrose, Pulaski-Green
+  40030, Southport); two 2-in-series chains (Jackson-Blue 40070: street→mezz
+  then mezz→platform; Cicero: street→fare-control then passageway→platform);
+  one shared-prerequisite shape (Grand 40330 — the same pattern as WMATA's
+  street↔mezzanine-prerequisite-feeding-per-direction-legs shape: one
+  street→mezz elevator, real feed evidence, feeds BOTH per-direction
+  mezz→platform legs, so an outage on the shared unit correctly severs both
+  directions at once).
+- **95th/Dan Ryan (40450)**, individual review: rebuilt 2014-2019 with two
+  street-grade terminal buildings (North + South of 95th St) sharing ONE
+  island platform via a platform-level walkway. Each terminal has its own
+  elevator to the platform — South Terminal's is agency-named in a live
+  alert, North Terminal's is on CTA's own `/95thterminal/` project page.
+  Modeled as a REDUNDANT pair (the Cermak bookend pattern, terminal-
+  flavored). Confidence 8/10 — the one open residual is unverified overnight
+  terminal hours (no closure evidence found; same precedent as Cermak's
+  auxiliary headhouses shipping without hours-gating).
+- **Jackson-Red (40560)**, individual review — the session's deepest single-
+  station dig. The station is a State St subway island reached via TWO
+  mezzanines (Adams-Jackson north, Jackson-Van Buren south); Bryce was
+  confident both mezzanines have their own street→mezzanine elevator, but
+  whether EACH mezzanine also has its own mezzanine→platform elevator (one
+  full route each = redundant, vs. one shared platform elevator = not) was
+  unresolved even after an agent's own prior research pass concluded only
+  "moderate confidence." Bryce supplied the actual lead that broke it: a link
+  to a Scribd-hosted **CTA ADA class-action settlement independent-monitor
+  quarterly report** (Access Living et al. v. CTA, 2001 settlement, 5-year
+  monitoring period that ended ~2006 — no newer report of that exact kind
+  exists, but it pointed toward the right MODERN equivalent: CTA's All
+  Stations Accessibility Program). Combined with a real CTA live alert
+  explicitly naming "the elevator to/from platform at the Jackson Van Buren
+  entrance" and chicago-L.org's account of the 2000 Jackson-Van Buren
+  renovation ("accessible from both mezzanines, a Chicago subway first"),
+  this confirmed BOTH mezzanines have a full independent street→mezzanine +
+  mezzanine→platform pair — four elevators, two genuinely redundant routes.
+  Modeled as a REDUNDANT PAIR OF 2-IN-SERIES CHAINS via a 4-clause CNF
+  encoding (the Stamford paired-segment pattern already used for LIRR/MNR:
+  `(Adams_street ∧ Adams_plat) ∨ (VanBuren_street ∧ VanBuren_plat)`),
+  verified correct with an 11-case accessibility test (every single-elevator
+  outage stays accessible; the four route-breaking two-outage combinations
+  correctly sever). All four unit ids are real — the Van Buren pair's ids
+  are the CTA text-identity parser's deterministic output for that alert
+  text, so a future Van Buren outage will match by id, no synthetic
+  placeholder needed.
+- **New CTA research sources found and locked in**: **transit.wiki**
+  (community-editable — corroboration-tier, same trust level as
+  chicago-L.org/Wikipedia, never sole ground truth) and **CTA's own ASAP
+  ("All Stations Accessibility Program") Strategic Plan**, a 48MB PDF at
+  `transitchicago.com/assets/1/6/ASAP_Strategic_Plan_508_FINAL.pdf`.
+  Neither WebFetch's extractor nor its 10MB size cap can handle this file —
+  the working recipe is `curl -A "<browser UA>"` to download (CTA's `/assets/`
+  path isn't behind the same WAF as the rest of the site) + Node `pdf-parse`
+  to read the 508-compliance text layer underneath the image wrapper (this
+  works on any accessibility-compliant government/agency PDF, not just CTA's
+  — worth trying before giving up on a PDF as "unreadable"). The plan's
+  Tables 14 & 15 ("Current/Future Elevator Replacement Program") are an
+  authoritative per-station elevator COUNT list (not topology — "X of Y
+  elevators to be rehabilitated" gives Y) — snapshotted to
+  `src/catalog/cta-data/asap-elevator-counts.md`. Cross-checked against every
+  count-covered modeled station: 7/7 match exactly (Jackson-Red=4,
+  Sox-35th/Central/Loyola/Forest Park=1, Grand=3, Western=2), corroborating
+  the Jackson-Red/Grand models independently of the settlement-report lead.
+
+CTA now 33/46 reviewed. 13 pending — see HANDOFF.md for the current
+per-station breakdown and priority order.
+
+### MTA enrichment from data.ny.gov — a second, richer ground-truth source (2026-07-16)
+
+Bryce found `data.ny.gov/resource/94fv-bak7.json` ("MTA Elevators and
+Escalators") — an official New York State open-data mirror of an MTA
+per-equipment inventory that is RICHER than the live `nyct_ene` feed our
+models are built from. Where `nyct_ene` gives only a boolean `redundant`
+flag, this dataset carries, per elevator: `redundant_elevator` (+/−) WITH
+the specific named backup elevator(s), `elevator_direction_serviced`,
+per-level access flags (mezzanine 1/2, platform), `ada_compliant`, and —
+the two fields that drove this session's work — `alternative_route`
+(MTA's own rider-facing reroute instructions) and `notes` (MTA's own plain-
+English description of what the elevator connects). `npm run mta:ny-inventory`
+snapshots all 475 elevators to `src/catalog/mta-data/ny-elevator-inventory.json`.
+
+**1. Ground-truth cross-check (`npm run check:mta-ny`).** Every elevator our
+MTA chain generator processes must exist in this inventory with matching ADA
+status and (with documented exceptions) matching redundancy. Result: 121/121
+modeled elevators clean, zero unexplained mismatches — MTA's two independently
+published data sources agree completely on everything we model. CRITICAL
+nuance, documented directly in `scripts/mta-ny-inventory.mts` so a future
+cross-check never misreads it: the `redundant_elevator` boolean here means
+"does ONE other elevator fully replace this unit's entire journey" — STRICTER
+than our own SEGMENT-level redundancy. 14 St-6 Av's EL609/EL610 (our one
+hand-authored `REDUNDANCY_EXCEPTIONS` override, based on a human visual
+confirmation that `nyct_ene`'s own flag was wrong) both read `redundant: -`
+in this dataset too — but each elevator's OWN `alternative_route` text names
+the OTHER as its backup for the L-platform leg specifically. Two sources
+agreeing the boolean is "no" while both also naming each other as segment
+backups isn't a contradiction — it CORROBORATES the override; the dataset's
+boolean is answering a different, stricter question (full-journey
+replacement) than our chain model asks (this-segment replacement).
+
+**2. Rider-facing reroutes shown on outages.** `alternative_route` exists for
+421 of 475 elevators — MTA's own official wayfinding ("cross to another
+entrance," "use elevator EL610," "ride to the next accessible station and
+return"). `build-site-data.ts` attaches it (keyed by equipment code, which
+IS our external id) to every outage row as `reroute`; both `system.html` and
+`index.html` render it in the outage detail as "MTA reroute (if this
+elevator is out)" whenever that specific elevator is the one that's down. It
+assumes only that one elevator is out (as MTA's own signage does), so it's
+presented explicitly as MTA's guidance, not LiftWatch's derived claim.
+
+**3. MTA's own elevator descriptions preferred when richer.** `notes` is
+MTA's own plain-English description of an elevator's route. `preferMtaNote()`
+swaps our feed-derived description for MTA's whenever MTA's is equivalent or
+richer (e.g. "Street to mezzanine" → "179 Pl & Hillside Ave (SE corner) to
+mezzanine for Manhattan-bound service") — but keeps ours when MTA's text is
+a data-quality artifact (an internal maintenance/bookkeeping note like
+EL132's "UNLINK...WITHDRAW AND PLACE OUT OF SERVICE...duplicate", filtered
+by a `MTA_NOTE_JUNK` regex) or when ours is dramatically richer already.
+
+**4. MTA's own display-guidance doc, saved and implemented against.** Bryce
+uploaded MTA's developer page ("Displaying NYCT station accessibility and
+elevator & escalator status," mta.info/developers/display-elevators-NYCT —
+403s WebFetch; extracted from a saved `.mht` snapshot) to
+`src/catalog/mta-data/MTA-DISPLAY-GUIDE.md` with a compliance checklist. Its
+top recommendation — show STATION-LEVEL ADA accessibility (0=not, 1=fully,
+2=partially accessible, and for partial, WHICH direction) — is a genuinely
+different question from live elevator status: it's MTA's own design-time
+declaration of which lines/directions have step-free access AT ALL,
+independent of whether today's elevator happens to be working.
+
+Built via `npm run mta:station-ada` → `src/catalog/mta-data/mta-station-ada.json`,
+joining TWO more data.ny.gov datasets on `complex_id` (which equals our
+`stationExternalId` exactly — MTA's own `stationcomplexid` — no fuzzy
+matching needed): `4ta5-wz5s` ("MTA Subway Station Complexes") covers the
+~32 TRUE multi-line interchanges and carries MTA's own AUTHORED rollup
+sentence per complex (e.g. 14 St-Union Sq: "N Q R W accessible; L
+accessible; 4 5 6 not accessible" — verbatim MTA prose, used as-is);
+`39hk-dx4f` ("MTA Subway Stations") has one row per line at every one of the
+445 complexes (including the ~413 single-line stations the interchange
+dataset omits, since there's nothing to roll up), used to SYNTHESIZE an
+equally specific per-line sentence for those (e.g. a single-line station at
+`ada=2` becomes "Astoria [N W]: accessible toward Manhattan only," naming
+the line, its routes, and the working direction).
+
+**Bryce's explicit, load-bearing instruction for this feature (2026-07-16):
+never display a bare status word like "partially accessible" — always
+explain what that means, naming the specific lines and directions.** This is
+enforced, not just styled: `npm run check:mta-ada` (452 checks) asserts
+every complex with `ada !== 1` carries a non-empty explanation, and every
+fully-accessible complex stays quiet (no noise). New "Station accessibility"
+board on `system.html`, MTA-only (hidden entirely for every other system,
+same visibility pattern as the "Other accessibility equipment" board),
+scoped to complexes our archive actually tracks elevators at (grounds the
+board in real monitored stations rather than the full 445-complex network).
+The explanation is shown directly in the row — never hidden behind an
+expand toggle, since the whole point is that riders shouldn't have to click
+to learn what "partial" means.
+
+Verified against real production data (not just synthetic test cases): 21
+MTA complexes our archive tracks currently read partial-or-none, each with
+MTA's own line-and-direction text. One finding independently validated the
+underlying data quality: **Clark St correctly reads NOT ACCESSIBLE despite
+having a tracked elevator** — that elevator only reaches the mezzanine, with
+no step-free path onward to the platform, which is the EXACT example MTA's
+own display-guidance doc uses to illustrate why "has an elevator" and "is
+accessible" are different questions.
