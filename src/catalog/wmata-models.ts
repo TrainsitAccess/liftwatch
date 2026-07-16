@@ -944,4 +944,84 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       { id: "grand-blvd-mezzanine", label: "Grand Boulevard to mezzanine", elevators: [{ externalId: "G05X01", label: "Downtown Largo Grand Boulevard to mezzanine elevator" }] },
     ],
   },
+  // Potomac Yard (C11, Blue/Yellow, opened 2023) — excluded by the
+  // side-platforms gate: the 2 GTFS-modeled platform elevators serve
+  // disjoint directions (per-direction, not redundant), and the station is
+  // new enough that nothing has ever appeared in the live feed yet. Bryce
+  // walked the full layout 2026-07-16, correcting GTFS's undercount on
+  // BOTH legs:
+  //   - 3 street entrances (North Pavilion, South Pavilion, Potomac Greens),
+  //     each with its OWN redundant pair of elevators (next to each other) —
+  //     GTFS only modeled 1 per entrance. All 3 entrances reach the same
+  //     shared mezzanine, so this is a 6-way OR shared prerequisite.
+  //   - Each of the 2 platforms (side platforms, per direction) has its own
+  //     redundant pair of elevators, located together on the far north side
+  //     of that platform — GTFS only modeled 1 per platform. Directions:
+  //     one platform toward Downtown Largo, one toward Mount Vernon Sq
+  //     (station signage numbers them "7" and "8" respectively, but Bryce
+  //     is not certain those numbers mean anything in WMATA's own unit-id
+  //     scheme, so they're not used as part of the external id).
+  // All 10 elevators are synthetic (station too new to have had a live
+  // outage yet); the first live outage at each will name its direction
+  // directly, letting each synthetic id be promoted to a real one.
+  // Approved by Bryce via /liftwatch-station-review 2026-07-16 (confidence
+  // 9/10 -- full layout confirmed directly by Bryce).
+  {
+    systemId: SYSTEM,
+    stationExternalId: "C11",
+    chainLabel: " (Downtown Largo-bound)",
+    note: "Street to the Downtown Largo-bound platform: 3 entrances (North Pavilion, South Pavilion, Potomac Greens), each with 2 elevators — any one keeps street access step-free — then 2 more elevators to the platform, either one of which keeps that leg step-free. The station stays step-free on this route as long as at least one street-entrance elevator and at least one platform elevator are working.",
+    internalNote: "Shared street-to-mezzanine prerequisite (6-way OR across 3 entrances x 2 elevators each) feeding a per-direction platform leg (2-way OR, both elevators together on the platform's far north side) -- WMATA shared-prerequisite shape (same pattern as Grand/CTA, Mt Vernon Sq/WMATA). All 10 station elevators are synthetic; station opened 2023 and has had no live outage yet. Station signage labels this platform's elevators \"7\"; Bryce is not certain that number maps onto WMATA's own unit-id scheme. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 9/10).",
+    segments: [
+      {
+        id: "street-mezzanine",
+        label: "Street to mezzanine",
+        elevators: [
+          { externalId: "WMATA-C11_NPAV_ELV1", label: "Potomac Yard North Pavilion entrance elevator — never yet observed live, synthetic id" },
+          { externalId: "WMATA-C11_NPAV_ELV2", label: "Potomac Yard North Pavilion entrance elevator — never yet observed live, synthetic id" },
+          { externalId: "WMATA-C11_SPAV_ELV1", label: "Potomac Yard South Pavilion entrance elevator — never yet observed live, synthetic id" },
+          { externalId: "WMATA-C11_SPAV_ELV2", label: "Potomac Yard South Pavilion entrance elevator — never yet observed live, synthetic id" },
+          { externalId: "WMATA-C11_PG_ELV1", label: "Potomac Yard Potomac Greens entrance elevator — never yet observed live, synthetic id" },
+          { externalId: "WMATA-C11_PG_ELV2", label: "Potomac Yard Potomac Greens entrance elevator — never yet observed live, synthetic id" },
+        ],
+      },
+      {
+        id: "mezzanine-platform",
+        label: "Mezzanine to Downtown Largo-bound platform",
+        elevators: [
+          { externalId: "WMATA-C11_LARGO_ELV1", label: "Potomac Yard Downtown Largo-bound platform elevator (far north side, station-signed \"7\") — never yet observed live, synthetic id" },
+          { externalId: "WMATA-C11_LARGO_ELV2", label: "Potomac Yard Downtown Largo-bound platform elevator (far north side, station-signed \"7\") — never yet observed live, synthetic id" },
+        ],
+      },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "C11",
+    chainLabel: " (Mount Vernon Sq-bound)",
+    note: "Street to the Mount Vernon Sq-bound platform: 3 entrances (North Pavilion, South Pavilion, Potomac Greens), each with 2 elevators — any one keeps street access step-free — then 2 more elevators to the platform, either one of which keeps that leg step-free. The station stays step-free on this route as long as at least one street-entrance elevator and at least one platform elevator are working.",
+    internalNote: "Shares the street-to-mezzanine prerequisite with the Downtown Largo-bound chain (same physical units, same synthetic ids in both chains -- an outage on one severs BOTH directions, which is the real structure). Per-direction platform leg is its own redundant pair (far north side of this platform). Station signage labels this platform's elevators \"8\"; Bryce is not certain that number maps onto WMATA's own unit-id scheme. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 9/10).",
+    segments: [
+      {
+        id: "street-mezzanine",
+        label: "Street to mezzanine",
+        elevators: [
+          { externalId: "WMATA-C11_NPAV_ELV1", label: "Potomac Yard North Pavilion entrance elevator — never yet observed live, synthetic id" },
+          { externalId: "WMATA-C11_NPAV_ELV2", label: "Potomac Yard North Pavilion entrance elevator — never yet observed live, synthetic id" },
+          { externalId: "WMATA-C11_SPAV_ELV1", label: "Potomac Yard South Pavilion entrance elevator — never yet observed live, synthetic id" },
+          { externalId: "WMATA-C11_SPAV_ELV2", label: "Potomac Yard South Pavilion entrance elevator — never yet observed live, synthetic id" },
+          { externalId: "WMATA-C11_PG_ELV1", label: "Potomac Yard Potomac Greens entrance elevator — never yet observed live, synthetic id" },
+          { externalId: "WMATA-C11_PG_ELV2", label: "Potomac Yard Potomac Greens entrance elevator — never yet observed live, synthetic id" },
+        ],
+      },
+      {
+        id: "mezzanine-platform",
+        label: "Mezzanine to Mount Vernon Sq-bound platform",
+        elevators: [
+          { externalId: "WMATA-C11_MTVERNON_ELV1", label: "Potomac Yard Mount Vernon Sq-bound platform elevator (far north side, station-signed \"8\") — never yet observed live, synthetic id" },
+          { externalId: "WMATA-C11_MTVERNON_ELV2", label: "Potomac Yard Mount Vernon Sq-bound platform elevator (far north side, station-signed \"8\") — never yet observed live, synthetic id" },
+        ],
+      },
+    ],
+  },
 ];

@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-16T23:42:54.764Z",
+ "updatedAt": "2026-07-16T23:51:04.133Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -1536,7 +1536,7 @@
    "system": "wmata-dc",
    "stationId": "C11",
    "name": "Potomac Yard",
-   "status": "pending",
+   "status": "modeled",
    "priority": 30,
    "reason": "side-platforms",
    "evidence": [
@@ -1564,7 +1564,12 @@
      "source": "GTFS roster",
      "text": "WMATA-C11_S_PAV_ELV: Street ↔ Mezzanine"
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "adjusted",
+    "notes": "Modeled as 2 per-direction chains (Downtown Largo-bound, Mount Vernon Sq-bound), each sharing a 6-way OR street-to-mezzanine prerequisite (3 entrances x 2 redundant elevators each) feeding a 2-way OR platform leg (2 redundant elevators, far north side of that platform). All 10 elevators are synthetic -- station opened 2023, no live outage yet; the first real outage at each will name its direction directly, promoting the synthetic id. GTFS had undercounted both legs (1 elevator per entrance/platform instead of 2). Confidence 9/10, full layout confirmed directly by Bryce. Adjusted from the initial single-elevator-per-entrance/platform proposal via /liftwatch-station-review 2026-07-16.",
+    "date": "2026-07-16"
+   }
   },
   {
    "key": "wmata:C14",
