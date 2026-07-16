@@ -9,6 +9,13 @@ rule stands: chains only with agency guidance or Bryce's confirmation.
 `observed:` lists LiftWatch's per-elevator unit ids seen in the live feed so
 far (src/catalog/cta-data/observed-units.json).
 
+Additional fallback source (Bryce, 2026-07-16): **transit.wiki** (the Transit
+Wiki, transit.wiki/<Station>) — check it when the agency + chicago-L.org +
+Wikipedia don't settle a detail. It is **open-sourced / community-editable**, so
+don't trust it completely: corroboration only, never ground truth, never the
+sole basis for a redundancy claim (it helped confirm Jackson/State's Van Buren
+platform elevator, but only alongside a real CTA alert + chicago-L.org).
+
 Legend: ✚ = redundancy candidate worth verifying (rare for CTA); ⚠ = open
 question that blocks modeling.
 
