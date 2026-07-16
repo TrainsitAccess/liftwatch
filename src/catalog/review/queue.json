@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-16T23:51:04.133Z",
+ "updatedAt": "2026-07-16T23:56:47.842Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -1776,7 +1776,7 @@
    "system": "wmata-dc",
    "stationId": "K06",
    "name": "West Falls Church",
-   "status": "pending",
+   "status": "modeled",
    "priority": 30,
    "reason": "side-platforms",
    "evidence": [
@@ -1800,7 +1800,12 @@
      "source": "live feed (observed)",
      "text": "K06X04: \"Garage elevator\""
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "adjusted",
+    "notes": "Modeled as 2 core per-direction chains (mezzanine<->platform, no street segment -- the mezzanine is reachable at grade via the I-66/Leesburg Pike median entrance, same shape as Downtown Largo) plus 3 auxiliary chains: bus bay entrance (1 elevator, not required), and 2 SEPARATE garage entrances (not assumed redundant with each other since Bryce doesn't know). Confidence 7/10 -- core structure confirmed directly, platform elevator directions unconfirmed (cosmetic). Adjusted from the initial shared-street-prerequisite proposal via /liftwatch-station-review 2026-07-16.",
+    "date": "2026-07-16"
+   }
   },
   {
    "key": "rail:0CT",

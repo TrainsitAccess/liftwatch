@@ -1024,4 +1024,74 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       },
     ],
   },
+  // West Falls Church (K06, Orange Line terminus) — excluded by the
+  // side-platforms gate: 2 GTFS elevators both mislabeled "Platform" on
+  // both ends (a known WMATA stops.txt quirk seen elsewhere), serving
+  // disjoint per-direction platform legs, plus a 3rd Street<->Mezzanine
+  // edge, plus a real live-observed garage elevator. Bryce confirmed the
+  // full layout 2026-07-16: the mezzanine needs NO elevator at all for
+  // core access -- it's reachable at grade via the I-66/Leesburg Pike
+  // median entrance (same shape as Downtown Largo's Harry Truman Drive
+  // entrance) -- so the core chains are just the 2 per-direction platform
+  // elevators, no street segment. The bus bay elevator (GTFS's ELE3) and
+  // both garage elevators are auxiliary, none required for core access;
+  // Bryce doesn't know if the 2 garage elevators back each other up, so
+  // they're modeled as 2 SEPARATE single-elevator auxiliary chains rather
+  // than assumed redundant. Approved by Bryce via /liftwatch-station-review
+  // 2026-07-16 (confidence 7/10 -- core mezzanine/platform structure
+  // confirmed directly; the 2 platform elevators' directions are unknown,
+  // cosmetic only).
+  {
+    systemId: SYSTEM,
+    stationExternalId: "K06",
+    chainLabel: " (Platform 1)",
+    note: "Mezzanine to this platform: one elevator, no backup. If it is out of service, this route is not step-free. The mezzanine itself needs no elevator at all — it's reachable at grade via the I-66/Leesburg Pike median entrance.",
+    internalNote: "GTFS unit WMATA-K06_ELE1, mislabeled \"Platform\" on both ends (a known WMATA stops.txt quirk) -- structurally a mezzanine<->platform elevator serving one direction, never yet observed live, synthetic id. Direction (e.g. toward Vienna vs. New Carrollton) unconfirmed. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 7/10).",
+    segments: [
+      { id: "mezzanine-platform", label: "Mezzanine to platform", elevators: [{ externalId: "WMATA-K06_ELE1", label: "West Falls Church platform elevator (direction unconfirmed) — never yet observed live, synthetic id" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "K06",
+    chainLabel: " (Platform 2)",
+    note: "Mezzanine to this platform: one elevator, no backup. If it is out of service, this route is not step-free. The mezzanine itself needs no elevator at all — it's reachable at grade via the I-66/Leesburg Pike median entrance.",
+    internalNote: "GTFS unit WMATA-K06_ELE2, mislabeled \"Platform\" on both ends (a known WMATA stops.txt quirk) -- structurally a mezzanine<->platform elevator serving the opposite direction from Platform 1, never yet observed live, synthetic id. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 7/10).",
+    segments: [
+      { id: "mezzanine-platform", label: "Mezzanine to platform", elevators: [{ externalId: "WMATA-K06_ELE2", label: "West Falls Church platform elevator (direction unconfirmed) — never yet observed live, synthetic id" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "K06",
+    chainLabel: " (bus bay)",
+    auxiliary: true,
+    note: "Bus bay entrance to the mezzanine: one elevator, no backup. This is a secondary entrance, not required for ordinary station access — the mezzanine is also reachable step-free via the I-66/Leesburg Pike median entrance.",
+    internalNote: "GTFS unit WMATA-K06_ELE3 (Street<->Mezzanine), never yet observed live, synthetic id. Bryce confirmed 2026-07-16 this is the bus bay entrance and is not required for core accessibility. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 7/10).",
+    segments: [
+      { id: "bus-bay-mezzanine", label: "Bus bay to mezzanine", elevators: [{ externalId: "WMATA-K06_ELE3", label: "West Falls Church bus bay to mezzanine elevator — never yet observed live, synthetic id" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "K06",
+    chainLabel: " (garage 1)",
+    auxiliary: true,
+    note: "Garage entrance to the mezzanine: one elevator, no backup. This is a secondary entrance, not required for ordinary station access.",
+    internalNote: "Real, live-observed id (K06X04, \"Garage elevator\"). Bryce confirmed 2026-07-16 neither garage elevator is mandatory for core access; he doesn't know if the 2 garage elevators back each other up, so modeled as 2 SEPARATE single-elevator chains rather than assumed redundant. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 7/10).",
+    segments: [
+      { id: "garage-mezzanine", label: "Garage to mezzanine", elevators: [{ externalId: "K06X04", label: "West Falls Church garage elevator" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "K06",
+    chainLabel: " (garage 2)",
+    auxiliary: true,
+    note: "Garage entrance to the mezzanine: one elevator, no backup. This is a secondary entrance, not required for ordinary station access.",
+    internalNote: "Never yet observed live; synthetic placeholder id for the 2nd garage elevator Bryce confirmed exists. Not assumed redundant with the other garage elevator (K06X04) -- modeled as its own separate chain. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 7/10).",
+    segments: [
+      { id: "garage-mezzanine", label: "Garage to mezzanine", elevators: [{ externalId: "WMATA-K06_GAR_ELV2", label: "West Falls Church garage elevator (2nd unit) — never yet observed live, synthetic id" }] },
+    ],
+  },
 ];
