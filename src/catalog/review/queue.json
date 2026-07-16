@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-16T04:38:48.867Z",
+ "updatedAt": "2026-07-16T04:43:33.937Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -4180,7 +4180,7 @@
    "system": "cta-chicago",
    "stationId": "40450",
    "name": "95th/Dan Ryan",
-   "status": "pending",
+   "status": "modeled",
    "priority": 50,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
@@ -4192,7 +4192,12 @@
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **40450 95th/Dan Ryan (Red)** — island in the expressway, rebuilt 2014-19 with NORTH and SOUTH terminal buildings; observed SOUTH-TERMINAL-PLATFORM implies at least a north twin ✚ (two street↔platform paths → possibly redundant). ⚠ verify the north terminal has its own elevator."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Individual review 2026-07-16. REDUNDANT pair (Cermak bookend pattern, terminal-flavored): one island platform + platform-level walkway spanning both street-grade terminals (chicago-L.org); each terminal has its own platform elevator — South agency-named in a live alert (40450-SOUTH-TERMINAL-PLATFORM, observed), North on CTA's own /95thterminal/ page (synthetic pending observation). Either elevator alone keeps the station step-free; vague alerts fail-safe to UNKNOWN. Residual documented: overnight terminal hours unverified (Cermak precedent). Confidence 8/10. Implemented in src/catalog/cta-models.ts.",
+    "date": "2026-07-16"
+   }
   },
   {
    "key": "cta:40470",

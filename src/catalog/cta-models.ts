@@ -680,4 +680,35 @@ export const CTA_STATION_MODELS: StationModel[] = [
       { id: "mezzanine-platform", label: "Mezzanine to Howard-bound platform", elevators: [{ externalId: "CTA-SYNTH-40330-HOWARD-BOUND", label: "Grand (Red Line) Howard-bound platform elevator — never yet observed live, synthetic id" }] },
     ],
   },
+
+  // 95th/Dan Ryan (40450, Red Line terminal) — rebuilt 2014-2019 with TWO
+  // street-level terminal buildings (North + South of 95th St), one island
+  // platform in the Dan Ryan median. The platform sits under the North
+  // Terminal and a PLATFORM-LEVEL walkway continues south to under the South
+  // Terminal (chicago-L.org), so the whole platform level is walkable end to
+  // end. EACH terminal has its own elevator to the platform: the South
+  // Terminal's is agency-named in a live alert ("The South Terminal elevator
+  // to/from platform"), the North Terminal's is on CTA's own project page
+  // ("Stairs, escalators and an elevator connect the North Terminal concourse
+  // to the train platform"). Both terminals are street-grade concourses →
+  // either elevator alone keeps the station step-free — a REDUNDANT pair
+  // (Cermak bookend pattern, terminal-flavored). Approved by Bryce 2026-07-16
+  // (individual review). A vague "elevator at 95th" alert matches neither
+  // member → needsReview → UNKNOWN (fail-safe, never false-accessible).
+  {
+    systemId: SYSTEM,
+    stationExternalId: "40450",
+    note: "Street to platform: 2 elevators (one in the North Terminal, one in the South Terminal — the platform connects to both) — either one keeps this station step-free. No single elevator outage removes step-free access on this route.",
+    internalNote: "One island platform + platform-level walkway spanning both terminals (chicago-L.org); North Terminal elevator from CTA's own /95thterminal/ project page; South Terminal elevator agency-named in a live alert (observed id 40450-SOUTH-TERMINAL-PLATFORM). Both terminals street-grade. North elevator never yet observed → synthetic id, promote on first observation (expected phrasing ~'The North Terminal elevator to/from platform at 95th/Dan Ryan'). Residual: overnight terminal hours unverified (if one terminal locks overnight the redundancy is time-dependent) — no closure evidence found; same precedent as Cermak's auxiliary headhouses. Approved by Bryce 2026-07-16. Confidence 8/10.",
+    segments: [
+      {
+        id: "street-platform",
+        label: "Street to platform (either terminal's elevator)",
+        elevators: [
+          { externalId: "40450-SOUTH-TERMINAL-PLATFORM", label: "95th/Dan Ryan South Terminal elevator (street concourse to platform)" },
+          { externalId: "CTA-SYNTH-40450-NORTH-TERMINAL", label: "95th/Dan Ryan North Terminal elevator (street concourse to platform) — never yet observed live, synthetic id" },
+        ],
+      },
+    ],
+  },
 ];
