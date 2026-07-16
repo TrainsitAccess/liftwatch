@@ -200,12 +200,12 @@ export const WMATA_STATION_MODELS: StationModel[] = [
     stationExternalId: "E07",
     chainLabel: " (opposite direction)",
     note: "Street/mezzanine to the opposite-direction platform: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
-    internalNote: "Never yet observed live; synthetic GTFS slot id, promotable to a real UnitName once observed (same pattern as Rockville/A14). Human-approved as Batch 3 via /liftwatch-station-review 2026-07-15 (no redundancy claimed anywhere in this batch — every chain is a straight AND of single-elevator legs, the same shape as WMATA's ~55 already-shipped auto-generated stations).",
+    internalNote: "PROMOTED 2026-07-16 from synthetic to real id E07X01, sourced from WMATA's own FY2026 Q3 Capital Improvement Program report (\"WMATA FY26 Q3 Capital Improvement Program Project Pages.pdf\", CIP0132 Escalator and Elevator Overhaul Program: \"The West Hyattsville Station E07X01 modernization project was also completed\") — confirms the real unit exists and follows the same station-code + X01/X02 pairing convention already confirmed at Rockville (A14X01/A14X02); never yet observed in a live outage. Human-approved as Batch 3 via /liftwatch-station-review 2026-07-15 (no redundancy claimed anywhere in this batch — every chain is a straight AND of single-elevator legs, the same shape as WMATA's ~55 already-shipped auto-generated stations).",
     segments: [
       {
         id: "street-platform",
         label: "Street/mezzanine to the opposite-direction platform",
-        elevators: [{ externalId: "WMATA-E07_MZ_ELV_W", label: "West Hyattsville elevator (street/mezzanine to opposite-direction platform) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "E07X01", label: "West Hyattsville elevator (street/mezzanine to opposite-direction platform)" }],
       },
     ],
   },
