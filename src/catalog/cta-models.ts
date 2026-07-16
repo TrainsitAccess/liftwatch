@@ -511,4 +511,173 @@ export const CTA_STATION_MODELS: StationModel[] = [
       { id: "street-platform", label: "Street to Howard/Linden-bound platform", stepFreeAlternative: true, elevators: [{ externalId: "CTA-SYNTH-40540-HOWARD-LINDEN-BOUND", label: "Wilson Howard-bound / Linden-bound platform elevator — never yet observed live, synthetic id (Sunnyside Ave ramp is a step-free backup)" }] },
     ],
   },
+
+  // ── Batch 4 (2026-07-16, /liftwatch-station-review risk-bucketed batch) ──
+  // Seven zero-redundancy stations approved as a group: 4 Diversey-pattern
+  // per-direction pairs (Addison, Montrose, Pulaski-Green, Southport), 2
+  // series chains (Jackson-Blue, Cicero), and 1 shared-prerequisite shape
+  // (Grand — the WMATA "street↔mezzanine prerequisite feeding per-direction
+  // platform legs" pattern). None claims a backup anywhere, so none can
+  // under-warn by construction. Structures from chicago-L.org
+  // (STATION-RESEARCH.md), corroborated by fitting live alert identities.
+  // Confidence 8/10 collectively.
+
+  // Addison (41440, Brown Line) — dual side platforms, dual elevator towers,
+  // one per platform. BOTH directions observed live.
+  {
+    systemId: SYSTEM,
+    stationExternalId: "41440",
+    chainLabel: " (Kimball-bound)",
+    note: "Street to the Kimball-bound platform: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Dual side platforms, dual elevator towers, one per platform (chicago-L.org). Observed live: 41440-KIMBALL-BOUND. Batch 4, 2026-07-16 (confidence 8/10 collectively).",
+    segments: [
+      { id: "street-platform", label: "Street to Kimball-bound platform", elevators: [{ externalId: "41440-KIMBALL-BOUND", label: "Addison Kimball-bound platform elevator" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "41440",
+    chainLabel: " (Loop-bound)",
+    note: "Street to the Loop-bound platform: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Observed live: 41440-LOOP-BOUND. Batch 4, 2026-07-16 (confidence 8/10 collectively).",
+    segments: [
+      { id: "street-platform", label: "Street to Loop-bound platform", elevators: [{ externalId: "41440-LOOP-BOUND", label: "Addison Loop-bound platform elevator" }] },
+    ],
+  },
+
+  // Montrose (41500, Brown Line) — dual side platforms, "a set of stairs and
+  // an elevator… to each platform" (chicago-L.org). BOTH directions observed.
+  {
+    systemId: SYSTEM,
+    stationExternalId: "41500",
+    chainLabel: " (Kimball-bound)",
+    note: "Street to the Kimball-bound platform: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Dual side platforms, one elevator per platform (chicago-L.org). Observed live: 41500-KIMBALL-BOUND. Batch 4, 2026-07-16 (confidence 8/10 collectively).",
+    segments: [
+      { id: "street-platform", label: "Street to Kimball-bound platform", elevators: [{ externalId: "41500-KIMBALL-BOUND", label: "Montrose Kimball-bound platform elevator" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "41500",
+    chainLabel: " (Loop-bound)",
+    note: "Street to the Loop-bound platform: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Observed live: 41500-LOOP-BOUND. Batch 4, 2026-07-16 (confidence 8/10 collectively).",
+    segments: [
+      { id: "street-platform", label: "Street to Loop-bound platform", elevators: [{ externalId: "41500-LOOP-BOUND", label: "Montrose Loop-bound platform elevator" }] },
+    ],
+  },
+
+  // Pulaski (40030, Green Line — Lake branch) — dual side platforms, separate
+  // station house + elevator per platform (Blue-Green Program rebuild;
+  // re-confirmed in the 2026-07-16 chicago-L.org sweep: "separate inbound and
+  // outbound station houses with stairs and elevators from the street to
+  // each"). BOTH directions observed. Distinct from Pink Pulaski (40150).
+  {
+    systemId: SYSTEM,
+    stationExternalId: "40030",
+    chainLabel: " (Harlem-bound)",
+    note: "Street to the Harlem-bound platform: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Separate station house + elevator per platform (chicago-L.org, re-confirmed 2026-07-16 sweep). Observed live: 40030-HARLEM-BOUND. Batch 4, 2026-07-16 (confidence 8/10 collectively).",
+    segments: [
+      { id: "street-platform", label: "Street to Harlem-bound platform", elevators: [{ externalId: "40030-HARLEM-BOUND", label: "Pulaski (Green Line) Harlem-bound platform elevator" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "40030",
+    chainLabel: " (63rd-bound)",
+    note: "Street to the 63rd-bound platform: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Observed live: 40030-63RD-BOUND. Batch 4, 2026-07-16 (confidence 8/10 collectively).",
+    segments: [
+      { id: "street-platform", label: "Street to 63rd-bound platform", elevators: [{ externalId: "40030-63RD-BOUND", label: "Pulaski (Green Line) 63rd-bound platform elevator" }] },
+    ],
+  },
+
+  // Southport (40360, Brown Line) — dual side platforms, dual elevator towers
+  // one per platform, NO transfer bridge (chicago-L.org, fetched 2026-07-16).
+  // Only Loop-bound observed; Kimball-bound synthetic pending observation.
+  {
+    systemId: SYSTEM,
+    stationExternalId: "40360",
+    chainLabel: " (Loop-bound)",
+    note: "Street to the Loop-bound platform: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Dual side platforms, dual elevator towers, no transfer bridge (chicago-L.org, fetched 2026-07-16). Observed live: 40360-LOOP-BOUND. Batch 4, 2026-07-16 (confidence 8/10 collectively).",
+    segments: [
+      { id: "street-platform", label: "Street to Loop-bound platform", elevators: [{ externalId: "40360-LOOP-BOUND", label: "Southport Loop-bound platform elevator" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "40360",
+    chainLabel: " (Kimball-bound)",
+    note: "Street to the Kimball-bound platform: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Never yet observed live; synthetic placeholder id, promotable once observed (expected 'Kimball-bound' per Brown Line convention). Batch 4, 2026-07-16 (confidence 8/10 collectively).",
+    segments: [
+      { id: "street-platform", label: "Street to Kimball-bound platform", elevators: [{ externalId: "CTA-SYNTH-40360-KIMBALL-BOUND", label: "Southport Kimball-bound platform elevator — never yet observed live, synthetic id" }] },
+    ],
+  },
+
+  // Jackson (40070, Blue Line — Dearborn subway) — island platform reached via
+  // the Adams-Jackson mezzanine: street→mezzanine elevator (1991) THEN
+  // mezzanine→platform elevator, TWO IN SERIES — both must work
+  // (chicago-L.org). Observed: 40070-STREET (fits the street→mezz elevator);
+  // the mezz→platform elevator is synthetic pending observation. A series
+  // chain can only over-warn, never under-warn.
+  {
+    systemId: SYSTEM,
+    stationExternalId: "40070",
+    note: "Street to the platform takes two elevators in a row (street to mezzanine, then mezzanine to platform) — both must be working, and neither has a backup. If either elevator is out of service, this route is not step-free.",
+    internalNote: "Subway island via the Adams-Jackson mezzanine; street→mezz elevator (1991, replaced the NE stair) + mezz→platform elevator, 2-in-series (chicago-L.org). Observed live: 40070-STREET ('The elevator to/from street at Jackson (Blue Line)') = the street→mezz leg; mezz→platform leg synthetic pending observation. Batch 4, 2026-07-16 (confidence 8/10 collectively).",
+    segments: [
+      { id: "street-mezzanine", label: "Street to mezzanine", elevators: [{ externalId: "40070-STREET", label: "Jackson (Blue Line) street-to-mezzanine elevator" }] },
+      { id: "mezzanine-platform", label: "Mezzanine to platform", elevators: [{ externalId: "CTA-SYNTH-40070-PLATFORM", label: "Jackson (Blue Line) mezzanine-to-platform elevator — never yet observed live, synthetic id" }] },
+    ],
+  },
+
+  // Cicero (40480, Green Line — Lake branch) — two-story station house:
+  // street→2nd-floor fare control (elevator #1), then a mezzanine passageway
+  // over the street to the island platform (elevator #2). TWO IN SERIES
+  // (chicago-L.org). Observed: 40480-STREET (fits elevator #1); the
+  // passage→platform elevator is synthetic pending observation.
+  {
+    systemId: SYSTEM,
+    stationExternalId: "40480",
+    note: "Street to the platform takes two elevators in a row (street to the fare-control level, then across the passageway down to the platform) — both must be working, and neither has a backup. If either elevator is out of service, this route is not step-free.",
+    internalNote: "Two-story station house: street→2nd-floor fare (elevator #1) → mezzanine passageway over the street → island platform (elevator #2), 2-in-series (chicago-L.org). Observed live: 40480-STREET = elevator #1; platform leg synthetic pending observation. Batch 4, 2026-07-16 (confidence 8/10 collectively).",
+    segments: [
+      { id: "street-fare", label: "Street to fare-control level", elevators: [{ externalId: "40480-STREET", label: "Cicero (Green Line) street-to-fare-control elevator" }] },
+      { id: "passage-platform", label: "Passageway to platform", elevators: [{ externalId: "CTA-SYNTH-40480-PLATFORM", label: "Cicero (Green Line) passageway-to-platform elevator — never yet observed live, synthetic id" }] },
+    ],
+  },
+
+  // Grand (40330, Red Line — State St subway) — dual side platforms +
+  // mezzanine: ONE street→mezzanine elevator (NW-corner kiosk) is the shared
+  // prerequisite for BOTH directions, then each platform has its own
+  // mezz→platform elevator (2000s rehab; chicago-L.org). Same shape as
+  // WMATA's Batch-3 "shared street↔mezzanine prerequisite feeding
+  // per-direction platform legs". Observed: 40330-95TH-BOUND (a platform
+  // leg); street elevator + Howard-bound leg synthetic pending observation.
+  {
+    systemId: SYSTEM,
+    stationExternalId: "40330",
+    chainLabel: " (95th-bound)",
+    note: "Street to the 95th-bound platform takes two elevators in a row (street to mezzanine, then mezzanine to the 95th-bound platform) — both must be working, and neither has a backup. If either elevator is out of service, this route is not step-free.",
+    internalNote: "Shared street→mezz elevator (NW-corner kiosk) feeding per-direction mezz→platform elevators (chicago-L.org, 2000s rehab) — WMATA Batch-3 shared-prerequisite shape. Observed live: 40330-95TH-BOUND (platform leg). Street elevator synthetic (expected 'The elevator to/from street at Grand'). Batch 4, 2026-07-16 (confidence 8/10 collectively).",
+    segments: [
+      { id: "street-mezzanine", label: "Street to mezzanine", elevators: [{ externalId: "CTA-SYNTH-40330-STREET", label: "Grand (Red Line) street-to-mezzanine elevator — never yet observed live, synthetic id" }] },
+      { id: "mezzanine-platform", label: "Mezzanine to 95th-bound platform", elevators: [{ externalId: "40330-95TH-BOUND", label: "Grand (Red Line) 95th-bound platform elevator" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "40330",
+    chainLabel: " (Howard-bound)",
+    note: "Street to the Howard-bound platform takes two elevators in a row (street to mezzanine, then mezzanine to the Howard-bound platform) — both must be working, and neither has a backup. If either elevator is out of service, this route is not step-free.",
+    internalNote: "Shares the street→mezz prerequisite elevator with the 95th-bound chain (same physical unit, same synthetic id in both chains — an outage on it severs BOTH directions, which is the real structure). Howard-bound platform elevator never yet observed; synthetic pending observation. Batch 4, 2026-07-16 (confidence 8/10 collectively).",
+    segments: [
+      { id: "street-mezzanine", label: "Street to mezzanine", elevators: [{ externalId: "CTA-SYNTH-40330-STREET", label: "Grand (Red Line) street-to-mezzanine elevator — never yet observed live, synthetic id" }] },
+      { id: "mezzanine-platform", label: "Mezzanine to Howard-bound platform", elevators: [{ externalId: "CTA-SYNTH-40330-HOWARD-BOUND", label: "Grand (Red Line) Howard-bound platform elevator — never yet observed live, synthetic id" }] },
+    ],
+  },
 ];

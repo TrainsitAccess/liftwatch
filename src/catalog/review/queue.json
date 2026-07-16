@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-16T01:48:25.189Z",
+ "updatedAt": "2026-07-16T04:38:48.867Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -227,7 +227,7 @@
    "system": "cta-chicago",
    "stationId": "41440",
    "name": "Addison",
-   "status": "pending",
+   "status": "modeled",
    "priority": 12,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
@@ -243,7 +243,12 @@
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **41440 Addison (Brown)** — dual side platforms; dual elevator towers (the Ron Santo box-score ones). observed: KIMBALL-BOUND, LOOP-BOUND ✓ both."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 4 (7 zero-redundancy CTA stations), approved by Bryce as a group 2026-07-16 via risk-bucketing. Per-direction pairs (Addison, Montrose, Pulaski-Green, Southport — Diversey pattern, one elevator per side platform); 2-in-series chains (Jackson-Blue street→mezz→platform, Cicero street→fare→passage→platform); shared-prerequisite shape (Grand: one street→mezz elevator feeding per-direction mezz→platform legs — WMATA Batch-3 shape). No redundancy claimed anywhere, so none can under-warn; series/prerequisite shapes only ever over-warn if wrong. Structures from chicago-L.org (STATION-RESEARCH.md; Southport fetched fresh 2026-07-16 — dual towers, no transfer bridge), corroborated by fitting live alert identities. Real observed ids used wherever seen; never-observed legs are CTA-SYNTH-* placeholders. Confidence 8/10 collectively. Implemented in src/catalog/cta-models.ts.",
+    "date": "2026-07-16"
+   }
   },
   {
    "key": "cta:41480",
@@ -274,7 +279,7 @@
    "system": "cta-chicago",
    "stationId": "41500",
    "name": "Montrose",
-   "status": "pending",
+   "status": "modeled",
    "priority": 12,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
@@ -290,14 +295,19 @@
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **41500 Montrose (Brown)** — dual side platforms; \"a set of stairs and an elevator… to each platform\". observed: KIMBALL-BOUND, LOOP-BOUND ✓ both. ### B′ — side platforms WITH an overhead transfer bridge (✚ possible cross-redundancy) Green Line rebuilds where elevator towers on each platform are LINKED by an overhead bridge. ✚ If the bridge is inside fare control and each tower runs street(or fare level)↔bridge↔platform, then EITHER tower may reach BOTH platforms — a genuine redundant pair, rare for CTA. ⚠ Verify: is the bridge paid-side, and do both towers serve all three levels?"
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 4 (7 zero-redundancy CTA stations), approved by Bryce as a group 2026-07-16 via risk-bucketing. Per-direction pairs (Addison, Montrose, Pulaski-Green, Southport — Diversey pattern, one elevator per side platform); 2-in-series chains (Jackson-Blue street→mezz→platform, Cicero street→fare→passage→platform); shared-prerequisite shape (Grand: one street→mezz elevator feeding per-direction mezz→platform legs — WMATA Batch-3 shape). No redundancy claimed anywhere, so none can under-warn; series/prerequisite shapes only ever over-warn if wrong. Structures from chicago-L.org (STATION-RESEARCH.md; Southport fetched fresh 2026-07-16 — dual towers, no transfer bridge), corroborated by fitting live alert identities. Real observed ids used wherever seen; never-observed legs are CTA-SYNTH-* placeholders. Confidence 8/10 collectively. Implemented in src/catalog/cta-models.ts.",
+    "date": "2026-07-16"
+   }
   },
   {
    "key": "cta:40070",
    "system": "cta-chicago",
    "stationId": "40070",
    "name": "Jackson",
-   "status": "pending",
+   "status": "modeled",
    "priority": 14,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
@@ -309,14 +319,19 @@
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **40070 Jackson (Blue/Dearborn)** — subway island; accessible via the Adams-Jackson mezzanine: street→mezz elevator (1991, replaced NE stair) + mezz→platform elevator. 2 in series. observed: STREET ✓ fits."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 4 (7 zero-redundancy CTA stations), approved by Bryce as a group 2026-07-16 via risk-bucketing. Per-direction pairs (Addison, Montrose, Pulaski-Green, Southport — Diversey pattern, one elevator per side platform); 2-in-series chains (Jackson-Blue street→mezz→platform, Cicero street→fare→passage→platform); shared-prerequisite shape (Grand: one street→mezz elevator feeding per-direction mezz→platform legs — WMATA Batch-3 shape). No redundancy claimed anywhere, so none can under-warn; series/prerequisite shapes only ever over-warn if wrong. Structures from chicago-L.org (STATION-RESEARCH.md; Southport fetched fresh 2026-07-16 — dual towers, no transfer bridge), corroborated by fitting live alert identities. Real observed ids used wherever seen; never-observed legs are CTA-SYNTH-* placeholders. Confidence 8/10 collectively. Implemented in src/catalog/cta-models.ts.",
+    "date": "2026-07-16"
+   }
   },
   {
    "key": "cta:40330",
    "system": "cta-chicago",
    "stationId": "40330",
    "name": "Grand",
-   "status": "pending",
+   "status": "modeled",
    "priority": 14,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
@@ -328,7 +343,12 @@
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **40330 Grand (Red)** — subway, dual side platforms + mezzanine: street→mezz elevator (NW corner kiosk) PLUS a new elevator to EACH platform (2000s rehab). 3 elevators: series street→mezz then per-direction mezz→platform — same shape as WMATA's E01. observed: 95TH-BOUND ✓ fits."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 4 (7 zero-redundancy CTA stations), approved by Bryce as a group 2026-07-16 via risk-bucketing. Per-direction pairs (Addison, Montrose, Pulaski-Green, Southport — Diversey pattern, one elevator per side platform); 2-in-series chains (Jackson-Blue street→mezz→platform, Cicero street→fare→passage→platform); shared-prerequisite shape (Grand: one street→mezz elevator feeding per-direction mezz→platform legs — WMATA Batch-3 shape). No redundancy claimed anywhere, so none can under-warn; series/prerequisite shapes only ever over-warn if wrong. Structures from chicago-L.org (STATION-RESEARCH.md; Southport fetched fresh 2026-07-16 — dual towers, no transfer bridge), corroborated by fitting live alert identities. Real observed ids used wherever seen; never-observed legs are CTA-SYNTH-* placeholders. Confidence 8/10 collectively. Implemented in src/catalog/cta-models.ts.",
+    "date": "2026-07-16"
+   }
   },
   {
    "key": "cta:40560",
@@ -3958,7 +3978,7 @@
    "system": "cta-chicago",
    "stationId": "40030",
    "name": "Pulaski",
-   "status": "pending",
+   "status": "modeled",
    "priority": 50,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
@@ -3982,7 +4002,12 @@
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **40030 Pulaski (Green/Lake)** — dual side platforms; station house + elevator per platform (Blue-Green Program rebuild). observed: 63RD-BOUND, HARLEM-BOUND ✓ both."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 4 (7 zero-redundancy CTA stations), approved by Bryce as a group 2026-07-16 via risk-bucketing. Per-direction pairs (Addison, Montrose, Pulaski-Green, Southport — Diversey pattern, one elevator per side platform); 2-in-series chains (Jackson-Blue street→mezz→platform, Cicero street→fare→passage→platform); shared-prerequisite shape (Grand: one street→mezz elevator feeding per-direction mezz→platform legs — WMATA Batch-3 shape). No redundancy claimed anywhere, so none can under-warn; series/prerequisite shapes only ever over-warn if wrong. Structures from chicago-L.org (STATION-RESEARCH.md; Southport fetched fresh 2026-07-16 — dual towers, no transfer bridge), corroborated by fitting live alert identities. Real observed ids used wherever seen; never-observed legs are CTA-SYNTH-* placeholders. Confidence 8/10 collectively. Implemented in src/catalog/cta-models.ts.",
+    "date": "2026-07-16"
+   }
   },
   {
    "key": "cta:40150",
@@ -4088,7 +4113,7 @@
    "system": "cta-chicago",
    "stationId": "40360",
    "name": "Southport",
-   "status": "pending",
+   "status": "modeled",
    "priority": 50,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
@@ -4096,7 +4121,12 @@
      "source": "live feed (alert text)",
      "text": "Elevator at Southport Temporarily Out-of-Service — The Loop-bound elevator at Southport (Brown Line) is temporarily out-of-service."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 4 (7 zero-redundancy CTA stations), approved by Bryce as a group 2026-07-16 via risk-bucketing. Per-direction pairs (Addison, Montrose, Pulaski-Green, Southport — Diversey pattern, one elevator per side platform); 2-in-series chains (Jackson-Blue street→mezz→platform, Cicero street→fare→passage→platform); shared-prerequisite shape (Grand: one street→mezz elevator feeding per-direction mezz→platform legs — WMATA Batch-3 shape). No redundancy claimed anywhere, so none can under-warn; series/prerequisite shapes only ever over-warn if wrong. Structures from chicago-L.org (STATION-RESEARCH.md; Southport fetched fresh 2026-07-16 — dual towers, no transfer bridge), corroborated by fitting live alert identities. Real observed ids used wherever seen; never-observed legs are CTA-SYNTH-* placeholders. Confidence 8/10 collectively. Implemented in src/catalog/cta-models.ts.",
+    "date": "2026-07-16"
+   }
   },
   {
    "key": "cta:40380",
@@ -4193,7 +4223,7 @@
    "system": "cta-chicago",
    "stationId": "40480",
    "name": "Cicero",
-   "status": "pending",
+   "status": "modeled",
    "priority": 50,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
@@ -4205,7 +4235,12 @@
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **40480 Cicero (Green/Lake)** — two-story station house: street→2nd-floor fare (elevator #1) → mezzanine passageway over the street → island platform (elevator #2). TWO IN SERIES. observed: STREET ✓ fits elevator #1."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Batch 4 (7 zero-redundancy CTA stations), approved by Bryce as a group 2026-07-16 via risk-bucketing. Per-direction pairs (Addison, Montrose, Pulaski-Green, Southport — Diversey pattern, one elevator per side platform); 2-in-series chains (Jackson-Blue street→mezz→platform, Cicero street→fare→passage→platform); shared-prerequisite shape (Grand: one street→mezz elevator feeding per-direction mezz→platform legs — WMATA Batch-3 shape). No redundancy claimed anywhere, so none can under-warn; series/prerequisite shapes only ever over-warn if wrong. Structures from chicago-L.org (STATION-RESEARCH.md; Southport fetched fresh 2026-07-16 — dual towers, no transfer bridge), corroborated by fitting live alert identities. Real observed ids used wherever seen; never-observed legs are CTA-SYNTH-* placeholders. Confidence 8/10 collectively. Implemented in src/catalog/cta-models.ts.",
+    "date": "2026-07-16"
+   }
   },
   {
    "key": "cta:40510",
