@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-16T23:30:59.157Z",
+ "updatedAt": "2026-07-16T23:34:30.752Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -695,7 +695,7 @@
    "system": "wmata-dc",
    "stationId": "B35",
    "name": "NoMa-Gallaudet U",
-   "status": "pending",
+   "status": "modeled",
    "priority": 22,
    "reason": "observed-unmappable",
    "evidence": [
@@ -711,7 +711,12 @@
      "source": "live feed (observed)",
      "text": "B35N02: \"Elevator between bike trail and mezzanine\""
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Modeled as 2 chains: core mezzanine<->platform (redundant pair, both synthetic, center of platform on opposite sides -- mirrors Morgan Blvd's arrangement) and a separate auxiliary chain for the bike-trail entrance (B35N02, real, marked auxiliary: true, same pattern as BART Coliseum's parking-lot elevator). Bryce corrected the initial single-elevator core guess to a redundant pair. Confidence 8/10. Approved by Bryce individually 2026-07-16.",
+    "date": "2026-07-16"
+   }
   },
   {
    "key": "wmata:G05",

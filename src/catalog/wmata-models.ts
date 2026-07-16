@@ -818,4 +818,52 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       },
     ],
   },
+  // NoMa-Gallaudet U (B35, Red Line) — excluded by the observed-units gate as
+  // an "observed-unmappable": the live unit B35N02 ("Elevator between bike
+  // trail and mezzanine") maps to 0 segments in the station's GTFS levels,
+  // which excluded the WHOLE station from auto-generation, not just that one
+  // elevator. NoMa-Gallaudet U sits next to the Metropolitan Branch Trail
+  // (a bike trail along the tracks) -- B35N02 is a real, separate secondary
+  // entrance from that trail, not part of the core street route, so it's
+  // modeled as its own AUXILIARY chain (same pattern as BART Coliseum's
+  // parking-lot elevator). Bryce corrected the core route (2026-07-16): it
+  // is a REDUNDANT PAIR, not a single elevator -- two platform<->mezzanine
+  // elevators in the center of the platform, on opposite sides of each
+  // other (mirrors Morgan Blvd's arrangement exactly). Neither has ever
+  // appeared individually in a live outage, so both get synthetic
+  // placeholder ids. Approved by Bryce via /liftwatch-station-review
+  // 2026-07-16 (confidence 8/10 -- core pair confirmed directly by Bryce
+  // including physical locations; auxiliary chain inferred from the
+  // station's known adjacency to the bike trail).
+  {
+    systemId: SYSTEM,
+    stationExternalId: "B35",
+    note: "Mezzanine to platform: 2 elevators, in the center of the platform on opposite sides of each other — either one keeps this route step-free. Only if both are out of service does this station lose step-free access.",
+    internalNote: "GTFS models only 1 elevator (WMATA-B35_ELE) but Bryce confirmed 2026-07-16 this is a redundant pair, both in the center of the platform on opposite sides -- same arrangement as Morgan Blvd (G04). Neither has ever appeared individually in a live outage; both are synthetic placeholder ids. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 8/10).",
+    segments: [
+      {
+        id: "mezzanine-platform",
+        label: "Mezzanine to platform",
+        elevators: [
+          { externalId: "WMATA-B35_ELE1", label: "NoMa-Gallaudet U elevator (mezzanine to platform) — center of platform" },
+          { externalId: "WMATA-B35_ELE2", label: "NoMa-Gallaudet U elevator (mezzanine to platform) — center of platform, opposite side" },
+        ],
+      },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "B35",
+    chainLabel: " (bike trail)",
+    auxiliary: true,
+    note: "The Metropolitan Branch Trail (bike trail) entrance to the mezzanine: one elevator, no backup. This is a secondary entrance, not required for ordinary street access.",
+    internalNote: "Real, live-observed id (B35N02, \"Elevator between bike trail and mezzanine\") -- maps to 0 segments in the station's GTFS levels, which is what excluded the whole station from auto-generation. Modeled as an auxiliary chain (same pattern as BART Coliseum's parking-lot elevator), auxiliary: true so it's excluded from platformDefaultElevator. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 8/10).",
+    segments: [
+      {
+        id: "bike-trail-mezzanine",
+        label: "Bike trail to mezzanine",
+        elevators: [{ externalId: "B35N02", label: "NoMa-Gallaudet U bike trail to mezzanine elevator" }],
+      },
+    ],
+  },
 ];
