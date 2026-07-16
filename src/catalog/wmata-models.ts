@@ -706,4 +706,33 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       },
     ],
   },
+  // Forest Glen (B09, Red Line) — excluded by the observed-units gate as an
+  // "observed-undercount": 3 distinct live units (B09X04/X05/X06), all
+  // identically described ("Elevator between mezzanine and platform", no
+  // direction or segment distinction), vs GTFS's single WMATA-B09_ELE edge.
+  // Forest Glen is one of only two WMATA stations (with Wheaton) built with
+  // NO stairs or escalators at all — elevator-only access by design, due to
+  // its depth — so a true parallel bank of elevators on the one mezzanine
+  // <-> platform run is exactly the expected shape, unlike a per-direction
+  // split. Approved by Bryce via /liftwatch-station-review 2026-07-16
+  // (confidence 6/10 — the all-elevator/no-stairs fact is general public
+  // knowledge about this station, not sourced from a WMATA document in this
+  // repo).
+  {
+    systemId: SYSTEM,
+    stationExternalId: "B09",
+    note: "Mezzanine to platform: 3 elevators, any one keeps this route step-free. Only if all 3 are out of service does this station lose step-free access — Forest Glen has no stairs or escalators, so the elevators are the only way to reach the platform at all.",
+    internalNote: "GTFS models only 1 elevator (WMATA-B09_ELE) but the live feed has observed 3 distinct units (B09X04, B09X05, B09X06), all identically worded with no direction/segment distinction -- a genuine redundant bank, not a per-direction split. Forest Glen + Wheaton are WMATA's only all-elevator (no stairs/escalators) stations, consistent with a deliberate redundant bank at this depth. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 6/10).",
+    segments: [
+      {
+        id: "mezzanine-platform",
+        label: "Mezzanine to platform",
+        elevators: [
+          { externalId: "B09X04", label: "Forest Glen elevator (mezzanine to platform)" },
+          { externalId: "B09X05", label: "Forest Glen elevator (mezzanine to platform)" },
+          { externalId: "B09X06", label: "Forest Glen elevator (mezzanine to platform)" },
+        ],
+      },
+    ],
+  },
 ];
