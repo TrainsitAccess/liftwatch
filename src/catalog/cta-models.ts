@@ -380,4 +380,119 @@ export const CTA_STATION_MODELS: StationModel[] = [
       },
     ],
   },
+
+  // ── Researched externally, shipped 2026-07-16 (/liftwatch-station-review) ──
+  // Five single-elevator stations resolved by external research last session
+  // (chicago-L.org + CTA project pages) but never implemented. Each has ONE
+  // elevator and no backup; CTA's own live alert text calls it "the elevator
+  // at <station>" (singular, no direction — see observed-units.json), so the
+  // bare station id IS the real elevator's id (no OR to hide behind, same safe
+  // pattern as the Batch 2 single-elevator islands). No redundancy claimed at
+  // any of the five, so a vague alert unambiguously means this one elevator.
+  // Confidence 9/10 each (single-elevator layout independently confirmed by
+  // both third-party research AND the singular live-alert phrasing).
+
+  // Racine (40470, Blue Line — Forest Park branch). The old 1950s ramp is gone
+  // / non-ADA; replaced by a single new elevator opened Oct 2025. (A second,
+  // Loomis-entrance ramp is future work not built until ~2027 — NOT a current
+  // backup, so it is not modeled here.)
+  {
+    systemId: SYSTEM,
+    stationExternalId: "40470",
+    note: "One elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Single new elevator opened Oct 2025, replacing the removed non-ADA 1950s ramp (chicago-L.org / CTA project pages, researched prior session). The planned Loomis-entrance ramp (~2027) is future work, not a current backup. Live alert phrasing 'The elevator at Racine (Blue Line)' (singular). Researched prior session, shipped 2026-07-16 (confidence 9/10).",
+    segments: [
+      { id: "street-platform", label: "Street to platform", elevators: [{ externalId: "40470", label: "Racine platform elevator (only step-free access, never individually identified)" }] },
+    ],
+  },
+  // Pulaski (40150, Pink Line — Cermak branch). Single elevator, island
+  // platform. NOTE: the OTHER Pulaski (40030, Green Line) is a per-direction
+  // two-elevator side-platform station and is deliberately left pending.
+  {
+    systemId: SYSTEM,
+    stationExternalId: "40150",
+    note: "One elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Single elevator, island platform (chicago-L.org, researched prior session). Distinct from Green Line Pulaski (40030), which has two per-direction elevators and stays pending. Live alert phrasing 'The elevator at Pulaski (Pink Line)' (singular). Researched prior session, shipped 2026-07-16 (confidence 9/10).",
+    segments: [
+      { id: "street-platform", label: "Street to platform", elevators: [{ externalId: "40150", label: "Pulaski (Pink Line) platform elevator (only step-free access, never individually identified)" }] },
+    ],
+  },
+  // 69th (40990, Red Line — Dan Ryan branch). Single elevator, in service
+  // Jan 2007.
+  {
+    systemId: SYSTEM,
+    stationExternalId: "40990",
+    note: "One elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Single elevator, island platform, in service Jan 2007 (chicago-L.org, researched prior session). Live alert phrasing 'The elevator at 69th (Red Line)' (singular). Researched prior session, shipped 2026-07-16 (confidence 9/10).",
+    segments: [
+      { id: "street-platform", label: "Street to platform", elevators: [{ externalId: "40990", label: "69th platform elevator (only step-free access, never individually identified)" }] },
+    ],
+  },
+  // 47th (41230, Red Line — Dan Ryan branch). Single elevator, in service
+  // Dec 2006. Distinct from 47th (41080, Green Line), already modeled as a
+  // per-direction pair.
+  {
+    systemId: SYSTEM,
+    stationExternalId: "41230",
+    note: "One elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Single elevator, island platform, in service Dec 2006 (chicago-L.org, researched prior session). Distinct from Green Line 47th (41080). Live alert phrasing 'The elevator at 47th (Red Line)' (singular). Researched prior session, shipped 2026-07-16 (confidence 9/10).",
+    segments: [
+      { id: "street-platform", label: "Street to platform", elevators: [{ externalId: "41230", label: "47th (Red Line) platform elevator (only step-free access, never individually identified)" }] },
+    ],
+  },
+  // Argyle (41200, Red Line — RPM Phase One, reopened 2025-07-20). Single
+  // elevator to a single ~520-ft island platform; the auxiliary exit is
+  // stairs-only (confirmed, unlike RPM-sibling Bryn Mawr which got a 2nd
+  // elevator — see the Bryn Mawr entry above).
+  {
+    systemId: SYSTEM,
+    stationExternalId: "41200",
+    note: "One elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Single elevator, single ~520-ft island platform; auxiliary exit stairs-only (chicago-L.org / CTA RPM pages, researched prior session — Bryn Mawr was the only RPM Phase One station to get a redundant pair). Live alert phrasing 'The elevator at Argyle (Red Line)' (singular). Researched prior session, shipped 2026-07-16 (confidence 9/10).",
+    segments: [
+      { id: "street-platform", label: "Street to platform", elevators: [{ externalId: "41200", label: "Argyle platform elevator (only step-free access, never individually identified)" }] },
+    ],
+  },
+
+  // Wilson (40540, Red Line + Purple Line Express) — rebuilt 2017. TWO island
+  // platforms arranged by DIRECTION for cross-platform Red↔Purple transfers:
+  // the southbound (west) island serves 95th-bound (Red) + Loop-bound (Purple),
+  // the northbound (east) island serves Howard-bound (Red) + Linden-bound
+  // (Purple). The islands sit on opposite sides of the tracks (a rider can't
+  // cross directions at platform level), so each direction is its own route.
+  // CTA's own live alert text confirms the direction model: "The 95th- and
+  // Loop-bound platform elevator at Wilson (Red, Purple Lines)"
+  // (observed-units.json → 40540-95TH-LOOP-BOUND).
+  //
+  // EACH DIRECTION IS REDUNDANT (step-free backup): besides the main-entrance
+  // elevator per island, the Sunnyside Ave entrance has TWO ADA ramps — one to
+  // each island — connecting street directly to platform (no mezzanine). So a
+  // platform stays step-free even if its own elevator is out (elevator OR
+  // Sunnyside ramp). Geometry confirmed by Bryce 2026-07-16; this is exactly
+  // the agency-confirmed non-elevator step-free path the STANDING RAMP RULE
+  // (CLAUDE.md, 2026-07-15) requires checking for — the prior-session research
+  // note that called Wilson "no backup" had MISSED the Sunnyside ramps.
+  // Encoded as segment.stepFreeAlternative on each chain: the elevators are
+  // still tracked (an outage is recorded), but the ramp keeps the platform
+  // accessible, so neither direction is a single point of failure.
+  {
+    systemId: SYSTEM,
+    stationExternalId: "40540",
+    chainLabel: " (95th/Loop-bound)",
+    note: "Street to the 95th-bound (Red) / Loop-bound (Purple) platform: reachable step-free by this platform's elevator OR the Sunnyside Ave entrance ramp. This platform stays step-free even if the elevator is out of service.",
+    internalNote: "Direction-organized island platforms (cross-platform Red/Purple transfer), rebuilt 2017; one elevator per island (chicago-L.org / CTA reconstruction-project page — 'elevators serving the east and west platforms'). Southbound elevator observed live (40540-95TH-LOOP-BOUND). REDUNDANCY: the Sunnyside Ave entrance has two ADA ramps, one straight from street to each island platform (no mezzanine) — geometry confirmed by Bryce 2026-07-16 — so each direction has a permanent non-elevator step-free path (stepFreeAlternative). This corrects the prior-session research note that called Wilson 'no backup' (it had missed the Sunnyside ramps). Confidence 9/10. Shipped 2026-07-16.",
+    segments: [
+      { id: "street-platform", label: "Street to 95th/Loop-bound platform", stepFreeAlternative: true, elevators: [{ externalId: "40540-95TH-LOOP-BOUND", label: "Wilson 95th-bound / Loop-bound platform elevator (Sunnyside Ave ramp is a step-free backup)" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "40540",
+    chainLabel: " (Howard/Linden-bound)",
+    note: "Street to the Howard-bound (Red) / Linden-bound (Purple) platform: reachable step-free by this platform's elevator OR the Sunnyside Ave entrance ramp. This platform stays step-free even if the elevator is out of service.",
+    internalNote: "Opposite (northbound/east) island of Wilson's cross-platform pair; one elevator, plus the Sunnyside Ave ramp to this island as a step-free backup (stepFreeAlternative — see the sibling chain's internalNote for the ramp geometry confirmed by Bryce 2026-07-16). The northbound elevator has never appeared in an alert, so its id (CTA-SYNTH-40540-HOWARD-LINDEN-BOUND) is a synthetic placeholder — promote to the real CTA unit id the first time it appears in observed-units.json (expected phrasing 'The Howard- and Linden-bound platform elevator at Wilson'). Confidence 9/10. Shipped 2026-07-16.",
+    segments: [
+      { id: "street-platform", label: "Street to Howard/Linden-bound platform", stepFreeAlternative: true, elevators: [{ externalId: "CTA-SYNTH-40540-HOWARD-LINDEN-BOUND", label: "Wilson Howard-bound / Linden-bound platform elevator — never yet observed live, synthetic id (Sunnyside Ave ramp is a step-free backup)" }] },
+    ],
+  },
 ];

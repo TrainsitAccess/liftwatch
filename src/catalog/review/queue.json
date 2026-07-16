@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-15T19:45:05.082Z",
+ "updatedAt": "2026-07-16T01:48:25.189Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -3989,7 +3989,7 @@
    "system": "cta-chicago",
    "stationId": "40150",
    "name": "Pulaski",
-   "status": "pending",
+   "status": "modeled",
    "priority": 50,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
@@ -4001,7 +4001,12 @@
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **40150 Pulaski (Pink)** — chicago-L page (pulaski-met) is mostly the historic Met station (dual side platforms, 1900s); the Douglas rehab (2004-05) rebuilt it — ⚠ thin data; Douglas-rehab stations typically got an island platform + one elevator (like Central Park), verify. observed: vague."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Pulaski (Pink Line). Single elevator, island platform. Distinct from Green Line Pulaski (40030), which has two per-direction elevators and stays pending. Live alert 'The elevator at Pulaski (Pink Line)' (singular) + prior-session research. Confidence 9/10.",
+    "date": "2026-07-16"
+   }
   },
   {
    "key": "cta:40190",
@@ -4164,7 +4169,7 @@
    "system": "cta-chicago",
    "stationId": "40470",
    "name": "Racine",
-   "status": "pending",
+   "status": "modeled",
    "priority": 50,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
@@ -4176,7 +4181,12 @@
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **40470 Racine (Blue/Congress)** — island reached by SLOPING enclosed passageway/RAMPS from the Racine and Loomis overpasses (original 1950s design) — ✚ possible genuine stepFreeAlternative! Renovation plans add an elevator at Racine + an ADA ramp at Loomis. ⚠ verify current as-built state and ramp gradient/status before ANY step-free credit."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Racine (Blue Line). Single elevator opened Oct 2025, replacing the removed non-ADA 1950s ramp; the planned Loomis-entrance ramp (~2027) is future work, not a current backup. Live alert 'The elevator at Racine (Blue Line)' (singular) + prior-session chicago-L.org research. Bare station id IS the real elevator (no OR to hide behind). Confidence 9/10.",
+    "date": "2026-07-16"
+   }
   },
   {
    "key": "cta:40480",
@@ -4225,7 +4235,7 @@
    "system": "cta-chicago",
    "stationId": "40540",
    "name": "Wilson",
-   "status": "pending",
+   "status": "modeled",
    "priority": 50,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
@@ -4245,7 +4255,12 @@
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **40540 Wilson (Red/Purple)** — rebuilt 2017, dual island platforms, elevators from the main station house to each island. observed: 95TH-LOOP-BOUND ✓ (island phrasing — one elevator serves both directions)."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Wilson (Red + Purple Express). Two direction-organized island platforms (cross-platform Red/Purple transfer): SB/west = 95th-bound (Red) + Loop-bound (Purple); NB/east = Howard-bound (Red) + Linden-bound (Purple), confirmed by CTA's own reconstruction-project track staging. Each direction has its own main-entrance elevator AND a Sunnyside Ave ADA ramp straight from street to that island (two ramps, one per island, no mezzanine — geometry confirmed by Bryce 2026-07-16). So each direction is REDUNDANT (elevator OR ramp), encoded as segment.stepFreeAlternative on both chains; neither is a single point of failure. Southbound elevator observed live (40540-95TH-LOOP-BOUND); northbound synthetic pending observation. This corrects the prior-session research note that called Wilson 'no backup' — it had missed the Sunnyside ramps (the standing ramp rule, CLAUDE.md 2026-07-15, exists to catch exactly this). Confidence 9/10.",
+    "date": "2026-07-16"
+   }
   },
   {
    "key": "cta:40730",
@@ -4342,7 +4357,7 @@
    "system": "cta-chicago",
    "stationId": "40990",
    "name": "69th",
-   "status": "pending",
+   "status": "modeled",
    "priority": 50,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
@@ -4354,7 +4369,12 @@
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **40990 69th (Red)** — island; \"new elevators at 47th and 69th\" (2006) — ⚠ plural is per-project, likely one per station; verify count. observed: vague."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "69th (Red Line). Single elevator, island platform, in service Jan 2007. Live alert 'The elevator at 69th (Red Line)' (singular) + prior-session research. Confidence 9/10.",
+    "date": "2026-07-16"
+   }
   },
   {
    "key": "cta:41030",
@@ -4473,7 +4493,7 @@
    "system": "cta-chicago",
    "stationId": "41200",
    "name": "Argyle",
-   "status": "pending",
+   "status": "modeled",
    "priority": 50,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
@@ -4485,14 +4505,19 @@
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **41200 Argyle (Red)** — rebuilt with a single 520-ft platform; presumably one elevator (⚠ verify in rebuilt station). observed: vague."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Argyle (Red Line, RPM Phase One, reopened 2025-07-20). Single elevator, single ~520-ft island platform; auxiliary exit stairs-only (unlike RPM sibling Bryn Mawr, which got a redundant pair). Live alert 'The elevator at Argyle (Red Line)' (singular) + prior-session research. Confidence 9/10.",
+    "date": "2026-07-16"
+   }
   },
   {
    "key": "cta:41230",
    "system": "cta-chicago",
    "stationId": "41230",
    "name": "47th",
-   "status": "pending",
+   "status": "modeled",
    "priority": 50,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
@@ -4504,7 +4529,12 @@
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **41230 47th (Red)** — island; new elevator(s) 2006 (⚠ same plural as 69th). observed: vague."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "47th (Red Line). Single elevator, island platform, in service Dec 2006. Distinct from Green Line 47th (41080). Live alert 'The elevator at 47th (Red Line)' (singular) + prior-session research. Confidence 9/10.",
+    "date": "2026-07-16"
+   }
   },
   {
    "key": "cta:41300",
