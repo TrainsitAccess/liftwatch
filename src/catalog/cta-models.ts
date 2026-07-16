@@ -929,7 +929,7 @@ export const CTA_STATION_MODELS: StationModel[] = [
     systemId: SYSTEM,
     stationExternalId: "41400",
     chainLabel: " (Orange/Green)",
-    note: "Street to the elevated Orange/Green platform: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    note: "Street to the elevated Orange/Green platform: one elevator, no backup. If that elevator is out of service, this route is not step-free. This station's layout was reconstructed from rider reports rather than an agency diagram, so confidence here is lower than most of the site — if you use this station and something looks off, feedback is welcome (a proper reporting channel is coming soon).",
     internalNote: "Never yet observed live; synthetic placeholder id, promotable once individually observed. Structure confirmed by Bryce via Discord 2026-07-16 (confidence 8/10).",
     segments: [
       { id: "street-platform", label: "Street to elevated platform", elevators: [{ externalId: "CTA-SYNTH-41400-ORANGE-GREEN", label: "Roosevelt Orange/Green platform elevator — never yet observed live, synthetic id" }] },
@@ -939,7 +939,7 @@ export const CTA_STATION_MODELS: StationModel[] = [
     systemId: SYSTEM,
     stationExternalId: "41400",
     chainLabel: " (Red)",
-    note: "Street to the underground Red Line platform: 2 elevators in series (street to the transfer tunnel, then transfer tunnel to the platform), no backup on either leg. If either elevator is out of service, this route is not step-free.",
+    note: "Street to the underground Red Line platform: 2 elevators in series (street to the transfer tunnel, then transfer tunnel to the platform), no backup on either leg. If either elevator is out of service, this route is not step-free. This station's layout was reconstructed from rider reports rather than an agency diagram, so confidence here is lower than most of the site — if you use this station and something looks off, feedback is welcome (a proper reporting channel is coming soon).",
     internalNote: "Street-to-tunnel leg never yet observed live, synthetic placeholder id. Tunnel-to-platform leg is the real, live-observed 41400-TRANSFER-TUNNEL -- also the shared choke point for Orange/Green riders transferring down to the Red Line platform (explains the live alert naming all 3 lines). Structure confirmed by Bryce via Discord 2026-07-16 (confidence 8/10).",
     segments: [
       { id: "street-tunnel", label: "Street to transfer tunnel", elevators: [{ externalId: "CTA-SYNTH-41400-STREET-TUNNEL", label: "Roosevelt street-to-transfer-tunnel elevator — never yet observed live, synthetic id" }] },
