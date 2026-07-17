@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-17T03:43:22.391Z",
+ "updatedAt": "2026-07-17T03:49:56.083Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -4174,7 +4174,7 @@
    "system": "wmata-dc",
    "stationId": "N09",
    "name": "Innovation Center",
-   "status": "pending",
+   "status": "modeled",
    "priority": 44,
    "reason": "unorderable-levels",
    "evidence": [
@@ -4189,8 +4189,17 @@
     {
      "source": "GTFS roster",
      "text": "WMATA-N09_S_PAV_ELV: Mezzanine"
+    },
+    {
+     "source": "Bryce (2026-07-16)",
+     "text": "There are four elevators, two from the mezzanine to the platform, two labeled South Entry Pavilion -- Bryce does not yet know what the South Entry Pavilion pair connects to and will investigate."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "adjusted",
+    "notes": "Shipped the confirmed core now (mezzanine<->platform, redundant pair, both synthetic -- GTFS undercounted this as 1 elevator). The 2 'South Entry Pavilion' elevators are deliberately NOT modeled -- their role is unconfirmed; Bryce is investigating and will follow up. Confidence 7/10 for the shipped core. Adjusted via /liftwatch-station-review 2026-07-16.",
+    "date": "2026-07-16"
+   }
   },
   {
    "key": "wmata:A02",

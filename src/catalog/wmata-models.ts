@@ -1695,4 +1695,33 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       { id: "mezzanine-platform", label: "Mezzanine to platform", elevators: [{ externalId: "WMATA-E10_MZ_ELV", label: "Greenbelt elevator (mezzanine to platform) — never yet observed live, synthetic id" }] },
     ],
   },
+  // Innovation Center (N09, Silver Line, opened 2022) — excluded by the
+  // unorderable-levels gate. Bryce confirmed 2026-07-16: 4 elevators total.
+  // 2 are mezzanine<->platform (GTFS only modeled 1 -- another undercount,
+  // same shape as Forest Glen/Mt Vernon Sq/Rosslyn), confirmed redundant --
+  // shipping this core chain now. The other 2, labeled "South Entry
+  // Pavilion" in GTFS (also undercounted -- GTFS lists only 1), have an
+  // UNCONFIRMED role -- Bryce doesn't yet know what they connect (a street
+  // entrance is the obvious guess, matching WMATA's naming convention
+  // elsewhere, but not asserted here). Deliberately left OUT of this model
+  // rather than guessed; they remain ordinary un-curated tracked units
+  // (assumed redundancy) until their role is confirmed. Approved by Bryce
+  // via /liftwatch-station-review 2026-07-16 (confidence 7/10 for the
+  // shipped core; the South Entry Pavilion piece is a followup).
+  {
+    systemId: SYSTEM,
+    stationExternalId: "N09",
+    note: "Mezzanine to platform: 2 elevators, either one keeps this route step-free. Only if both are out of service does this station lose step-free access on this route.",
+    internalNote: "GTFS models only 1 elevator (WMATA-N09_MZ_ELV) but Bryce confirmed 2026-07-16 there are 2, a redundant pair -- same undercount shape as Forest Glen/Mt Vernon Sq/Rosslyn. Neither individually observed live (new station, opened 2022); both synthetic ids. FOLLOWUP: 2 more elevators, labeled 'South Entry Pavilion' in GTFS (also undercounted -- GTFS lists only 1), have an unconfirmed role -- Bryce is investigating what they connect; not modeled here, deliberately left out rather than guessed. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 7/10).",
+    segments: [
+      {
+        id: "mezzanine-platform",
+        label: "Mezzanine to platform",
+        elevators: [
+          { externalId: "WMATA-N09_MZ_ELV1", label: "Innovation Center elevator (mezzanine to platform) — never yet observed live, synthetic id" },
+          { externalId: "WMATA-N09_MZ_ELV2", label: "Innovation Center elevator (mezzanine to platform) — never yet observed live, synthetic id" },
+        ],
+      },
+    ],
+  },
 ];
