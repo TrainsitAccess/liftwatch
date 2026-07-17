@@ -468,10 +468,22 @@ fetch("./data.json").then((r) => r.json()).then((data) => {
     for (const o of list) {
       const status = o.reason || "OUT OF SERVICE";
       const ret = fmtWhen(o.estimatedReturn, o.tz) || "—";
+      // Curated-chain access impact, mirroring the per-system board — highest
+      // signal first: severed routes > backup route > ramp coverage > sole-
+      // access warning. Older data.json (no severs/backups) falls back to the
+      // soleAccess-only annotation this board used to show.
+      const severs = o.severs ?? [];
+      const backups = o.backups ?? [];
       const infoBits = [];
-      if (o.soleAccess) infoBits.push("NO STEP-FREE ACCESS AT THIS STATION WHILE OUT");
+      if (severs.length) infoBits.push(`NO STEP-FREE ACCESS: ${severs.join(" · ")}`);
+      else if (backups.length) infoBits.push(`BACKUP AVAILABLE: ${backups.join(" · ")}`);
+      else if (o.rampAlternative) infoBits.push("STEP-FREE RAMP COVERS THIS ROUTE");
+      else if (o.soleAccess) infoBits.push("NO STEP-FREE ACCESS AT THIS STATION WHILE OUT");
       if (o.unitDesc) infoBits.push(o.unitDesc);
       const info = infoBits.join(" · ") || "—";
+      const chips =
+        (severs.length || (o.soleAccess && !backups.length && !o.rampAlternative) ? '<span class="chip red">NO STEP-FREE</span> ' : "") +
+        (backups.length || o.rampAlternative ? '<span class="chip green">BACKUP</span> ' : "");
 
       const tr = document.createElement("tr");
       tr.className = "row";
@@ -482,17 +494,27 @@ fetch("./data.json").then((r) => r.json()).then((data) => {
         `<td${o.planned ? ' class="dim"' : ""}><div class="scroll-cell"><span>${esc(status)}</span></div></td>` +
         `<td class="num${o.days > 180 ? " red" : ""}">${formatDays(o.days)}</td>` +
         `<td class="dim">${esc(ret)}</td>` +
-        `<td class="info"><div class="scroll-cell"><span>${o.soleAccess ? '<span class="chip red">NO STEP-FREE</span> ' : ""}${esc(info)}</span></div></td>` +
+        `<td class="info"><div class="scroll-cell"><span>${chips}${esc(info)}</span></div></td>` +
         `<td><button class="expand" aria-expanded="false" aria-label="Details for ${esc(o.unit)} at ${esc(o.station)}">▸</button></td>`;
+
+      const impact =
+        (severs.length ? `<div class="v red">Severs step-free access: ${esc(severs.join(", "))}</div>` : "") +
+        (backups.length ? `<div class="v green">Still covered by: ${esc(backups.join("; "))}</div>` : "") +
+        (o.rampAlternative ? `<div class="v green">A step-free ramp covers this elevator's route.</div>` : "") +
+        (!severs.length && !backups.length && !o.rampAlternative && o.soleAccess ? `<div class="v red">Confirmed sole step-free access — the station is inaccessible while this elevator is out.</div>` : "");
+      const chainNotes = o.chainNotes ?? [];
+      const notesHtml = chainNotes.length ? `<ul>${chainNotes.map((n) => `<li>${esc(n)}</li>`).join("")}</ul>` : "";
 
       const dtr = document.createElement("tr");
       dtr.className = "detail-row";
       dtr.hidden = true;
       dtr.innerHTML = `<td colspan="8"><div class="detail">` +
-        field("Status", esc(status) + (o.planned ? ' <span class="chip sched">PLANNED</span>' : "") + (o.soleAccess ? ' <span class="chip red">NO STEP-FREE</span>' : ""), "amber") +
+        field("Status", esc(status) + (o.planned ? ' <span class="chip sched">PLANNED</span>' : "") + (severs.length || (o.soleAccess && !backups.length && !o.rampAlternative) ? ' <span class="chip red">NO STEP-FREE</span>' : "") + (backups.length || o.rampAlternative ? ' <span class="chip green">BACKUP</span>' : ""), "amber") +
         field("Out since", esc(fmtWhen(o.since, o.tz) || "—") + ` · ${o.days} days`, "amber") +
         field("Estimated return", esc(ret), "amber") +
         field("Elevator", esc(o.unitDesc || o.unit)) +
+        (impact ? `<div class="field wide"><div class="k">Access impact</div>${impact}</div>` : "") +
+        (notesHtml ? `<div class="field wide"><div class="k">Route notes &amp; alternatives</div><div class="v">${notesHtml}</div></div>` : "") +
         (o.reroute ? `<div class="field wide"><div class="k">MTA reroute (if this elevator is out)</div><div class="v">${esc(o.reroute)}</div></div>` : "") +
         field("System board", `<a href="./system.html?id=${encodeURIComponent(o.systemId)}">${esc(o.system)} — full board</a>`) +
         `</div></td>`;

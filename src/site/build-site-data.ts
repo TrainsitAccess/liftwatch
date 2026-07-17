@@ -326,12 +326,66 @@ const systemRows = (systems.data ?? [])
   // own column). Null denominators sort last, as before.
   .sort((a, b) => (b.pctUnplanned ?? -1) - (a.pctUnplanned ?? -1));
 
+// Live chain impact for ONE broken elevator, computed from the curated chains:
+// which access routes its outage SEVERS right now (given everything else down
+// in its system), which still-working elevators BACK IT UP on its own segments,
+// whether a non-elevator step-free path covers it, plus rider-facing chain
+// notes. Pure over its inputs (reads only the global stationName map) so BOTH
+// the per-system detail pages AND the cross-system longest-outage boards can
+// call it — the homepage previously annotated only soleAccess because this
+// logic lived inside a per-system closure it couldn't reach.
+function computeAccessImpact(chainsList: StationModel[], openExtIds: Set<string>, systemId: string, extId: string) {
+  const memberChains = chainsList.filter((m) => allElevators(m).some((el) => el.externalId === extId));
+  if (!memberChains.length) return null;
+  const severs: string[] = [];
+  const backups = new Set<string>();
+  let rampAlternative = false;
+  const notes = new Set<string>();
+  for (const m of memberChains) {
+    const ids = new Set(allElevators(m).map((el) => el.externalId));
+    const down = new Set([...openExtIds].filter((id) => ids.has(id)));
+    const stName = stationName.get(`${systemId}:${m.stationExternalId}`) ?? m.stationExternalId;
+    if (!stationAccessible(m, down)) severs.push(chainDisplayName(stName, m));
+    for (const seg of m.segments) {
+      if (!seg.elevators.some((el) => el.externalId === extId)) continue;
+      if (seg.stepFreeAlternative) rampAlternative = true;
+      for (const el of seg.elevators) {
+        if (el.externalId !== extId && !openExtIds.has(el.externalId)) backups.add(el.label);
+      }
+    }
+    if (m.note) notes.add(m.note);
+  }
+  return { severs, backups: [...backups], rampAlternative, notes: [...notes] };
+}
+
+// Per-system open-outage external ids + curated chains, both cached — the two
+// inputs computeAccessImpact needs at the cross-system board build point (the
+// per-system pages compute their own equivalents inside buildSystemDetail).
+const openExtIdsBySystem = new Map<string, Set<string>>();
+for (const e of events.data ?? []) {
+  const ext = unitById.get(e.unit_id as string)?.external_id as string | undefined;
+  if (!ext) continue;
+  let set = openExtIdsBySystem.get(e.system_id as string);
+  if (!set) openExtIdsBySystem.set(e.system_id as string, (set = new Set()));
+  set.add(ext);
+}
+const chainsBySystemCache = new Map<string, StationModel[]>();
+function chainsForSystem(systemId: string): StationModel[] {
+  let c = chainsBySystemCache.get(systemId);
+  if (!c) chainsBySystemCache.set(systemId, (c = [...stationModelsFor(systemId).values()].flat()));
+  return c;
+}
+
 const allOpenOutages = (events.data ?? [])
   .filter((e) => !isHidden(e.system_id as string))
   .map((e) => {
     const unit = unitById.get(e.unit_id as string);
     const since = e.source_started_at ?? e.started_at;
     const days = Math.max(0, Math.floor((now - Date.parse(since as string)) / 86_400_000));
+    const ext = unit?.external_id as string | undefined;
+    const impact = ext
+      ? computeAccessImpact(chainsForSystem(e.system_id as string), openExtIdsBySystem.get(e.system_id as string) ?? new Set(), e.system_id as string, ext)
+      : null;
     return {
       system: (systems.data ?? []).find((s) => s.id === e.system_id)?.short_name ?? e.system_id,
       systemId: e.system_id as string,
@@ -339,6 +393,14 @@ const allOpenOutages = (events.data ?? [])
       unit: (unit?.external_id as string) ?? "?",
       unitDesc: preferMtaNote((unit?.description as string | null) ?? null, unit?.external_id as string | undefined),
       soleAccess: confirmedSoleAccess(unit),
+      // Live curated-chain impact (mirrors the per-system "Currently broken"
+      // board): routes severed now, working backups on this elevator's own
+      // segments, whether a non-elevator step-free path covers it, and the
+      // chains' rider-facing notes (detours, garage-only elevators…).
+      severs: impact?.severs ?? [],
+      backups: impact?.backups ?? [],
+      rampAlternative: impact?.rampAlternative ?? false,
+      chainNotes: impact?.notes ?? [],
       reroute: (unit?.external_id && mtaReroute.get(unit.external_id as string)) ?? null,
       planned: e.is_planned as boolean,
       reason: (e.reason as string | null) ?? null,
@@ -478,29 +540,9 @@ function buildSystemDetail(systemId: string) {
   // everything else that's down), which still-working elevators BACK IT UP
   // on its own segments, whether a non-elevator step-free path covers it,
   // plus the chains' rider-facing notes (detours, garage-only elevators…).
-  function accessImpactFor(extId: string) {
-    const memberChains = chainsList.filter((m) => allElevators(m).some((el) => el.externalId === extId));
-    if (!memberChains.length) return null;
-    const severs: string[] = [];
-    const backups = new Set<string>();
-    let rampAlternative = false;
-    const notes = new Set<string>();
-    for (const m of memberChains) {
-      const ids = new Set(allElevators(m).map((el) => el.externalId));
-      const down = new Set([...openExtIds].filter((id) => ids.has(id)));
-      const stName = stationName.get(`${systemId}:${m.stationExternalId}`) ?? m.stationExternalId;
-      if (!stationAccessible(m, down)) severs.push(chainDisplayName(stName, m));
-      for (const seg of m.segments) {
-        if (!seg.elevators.some((el) => el.externalId === extId)) continue;
-        if (seg.stepFreeAlternative) rampAlternative = true;
-        for (const el of seg.elevators) {
-          if (el.externalId !== extId && !openExtIds.has(el.externalId)) backups.add(el.label);
-        }
-      }
-      if (m.note) notes.add(m.note);
-    }
-    return { severs, backups: [...backups], rampAlternative, notes: [...notes] };
-  }
+  // Delegates to the top-level computeAccessImpact (shared with the homepage's
+  // longest-outage boards) using this system's own chains + open ids.
+  const accessImpactFor = (extId: string) => computeAccessImpact(chainsList, openExtIds, systemId, extId);
 
   const eventsByElevatorExtId = new Map<string, typeof allEvents>();
   for (const e of systemEvents) {
