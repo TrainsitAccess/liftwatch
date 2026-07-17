@@ -1659,19 +1659,19 @@ export const WMATA_STATION_MODELS: StationModel[] = [
     systemId: SYSTEM,
     stationExternalId: "F05",
     note: "Two independent step-free routes to the platform: the Navy Yard Entrance (street elevator then platform elevator) or the Navy Yard West Entrance (street elevator then platform elevator). The station stays step-free as long as both elevators on at least one of the two routes are working — no single elevator outage removes step-free access.",
-    internalNote: "Redundant pair of 2-in-series chains, one per entrance, encoded as a 4-clause CNF (paired-segment / Stamford/Jackson-Red pattern) of (streetE AND platformE) OR (streetW AND platformW). All 4 ids real, live-observed: F05E01/F05E02 (Navy Yard Entrance, street+platform), F05W01/F05W02 (Navy Yard West Entrance, street+platform). Confirmed by Bryce 2026-07-16 both routes lead to the same platform; whether the intermediate mezzanine is shared between the two sides is still unconfirmed (does not affect this encoding). Human-approved via /liftwatch-station-review 2026-07-16 (confidence 8/10).",
+    internalNote: "Redundant pair of 2-in-series chains, one per entrance, encoded as a 4-clause CNF (paired-segment / Stamford/Jackson-Red pattern) of (streetE AND platformE) OR (streetW AND platformW). All 4 ids real, live-observed: F05E01/F05E02 (Navy Yard Entrance, street+platform), F05W01/F05W02 (Navy Yard West Entrance, street+platform). Confirmed by Bryce 2026-07-16 both routes lead to the same platform. Bryce confirmed the two mezzanines are NOT connected (does not affect this encoding -- it never assumes a cross-side combination). Human-approved via /liftwatch-station-review 2026-07-16 (confidence 8/10).",
     segments: [
       { id: "cnf-street-street", label: "Step-free guard: a Navy Yard or Navy Yard West STREET elevator", elevators: [
-        { externalId: "F05E01", label: "Navy Yard Entrance street-to-mezzanine elevator" },
-        { externalId: "F05W01", label: "Navy Yard West Entrance street-to-mezzanine elevator" },
+        { externalId: "F05E01", label: "Navy Yard Entrance street-to-mezzanine elevator — northwest corner of M St & New Jersey Ave SE (38.876637543869336, -77.00470868944808)" },
+        { externalId: "F05W01", label: "Navy Yard West Entrance street-to-mezzanine elevator — embedded in a building facing the sidewalk on Half St SE, across from the ballpark bullpen (38.876056299972035, -77.00727462190551)" },
       ] },
       { id: "cnf-street-plat", label: "Step-free guard: Navy Yard street or Navy Yard West platform elevator", elevators: [
-        { externalId: "F05E01", label: "Navy Yard Entrance street-to-mezzanine elevator" },
+        { externalId: "F05E01", label: "Navy Yard Entrance street-to-mezzanine elevator — northwest corner of M St & New Jersey Ave SE (38.876637543869336, -77.00470868944808)" },
         { externalId: "F05W02", label: "Navy Yard West Entrance mezzanine-to-platform elevator" },
       ] },
       { id: "cnf-plat-street", label: "Step-free guard: Navy Yard platform or Navy Yard West street elevator", elevators: [
         { externalId: "F05E02", label: "Navy Yard Entrance mezzanine-to-platform elevator" },
-        { externalId: "F05W01", label: "Navy Yard West Entrance street-to-mezzanine elevator" },
+        { externalId: "F05W01", label: "Navy Yard West Entrance street-to-mezzanine elevator — embedded in a building facing the sidewalk on Half St SE, across from the ballpark bullpen (38.876056299972035, -77.00727462190551)" },
       ] },
       { id: "cnf-plat-plat", label: "Step-free guard: a Navy Yard or Navy Yard West PLATFORM elevator", elevators: [
         { externalId: "F05E02", label: "Navy Yard Entrance mezzanine-to-platform elevator" },
