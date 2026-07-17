@@ -1679,4 +1679,20 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       ] },
     ],
   },
+  // Greenbelt (E10, Green Line terminus) — excluded by the
+  // unorderable-levels gate: the one GTFS edge (WMATA-E10_MZ_ELV) reads
+  // "Street/Mezzanine" on both ends, so the generator couldn't tell which
+  // direction it goes. Bryce confirmed 2026-07-16: just one elevator,
+  // mezzanine to platform, sole access. Approved by Bryce via
+  // /liftwatch-station-review 2026-07-16 (confidence 9/10 — confirmed
+  // directly).
+  {
+    systemId: SYSTEM,
+    stationExternalId: "E10",
+    note: "Mezzanine to platform: one elevator, no backup. If it is out of service, this route is not step-free.",
+    internalNote: "GTFS's WMATA-E10_MZ_ELV reads 'Street/Mezzanine' on both ends (unorderable-levels gate), but Bryce confirmed 2026-07-16 it's simply one elevator, mezzanine to platform, sole access. Never yet observed live; synthetic placeholder id. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 9/10).",
+    segments: [
+      { id: "mezzanine-platform", label: "Mezzanine to platform", elevators: [{ externalId: "WMATA-E10_MZ_ELV", label: "Greenbelt elevator (mezzanine to platform) — never yet observed live, synthetic id" }] },
+    ],
+  },
 ];

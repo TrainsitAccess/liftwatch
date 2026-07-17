@@ -4146,7 +4146,7 @@
    "system": "wmata-dc",
    "stationId": "E10",
    "name": "Greenbelt",
-   "status": "pending",
+   "status": "modeled",
    "priority": 44,
    "reason": "unorderable-levels",
    "evidence": [
@@ -4157,8 +4157,17 @@
     {
      "source": "GTFS roster",
      "text": "WMATA-E10_MZ_ELV: Street/Mezzanine"
+    },
+    {
+     "source": "Bryce (2026-07-16)",
+     "text": "Greenbelt has one elevator from the mezzanine to the platform."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Modeled as a single sole-access elevator, mezzanine to platform -- resolves GTFS's unorderable 'Street/Mezzanine on both ends' labeling. Confirmed directly by Bryce. Confidence 9/10. Approved via /liftwatch-station-review 2026-07-16.",
+    "date": "2026-07-16"
+   }
   },
   {
    "key": "wmata:N09",
