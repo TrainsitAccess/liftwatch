@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-17T00:02:43.301Z",
+ "updatedAt": "2026-07-17T00:17:04.414Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -3478,7 +3478,7 @@
    "system": "wmata-dc",
    "stationId": "K04",
    "name": "Ballston-MU",
-   "status": "pending",
+   "status": "modeled",
    "priority": 38,
    "reason": "multi-level-shaft",
    "evidence": [
@@ -3510,7 +3510,12 @@
      "source": "live feed (observed)",
      "text": "K04X05: \"Elevator between street and mezzanine to New Carrollton\""
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "adjusted",
+    "notes": "Modeled as 2 per-direction chains sharing a 4-way OR street<->mezzanine prerequisite (SW pair + NW just-to-mezzanine + NW platform-continuing elevator), each feeding its own sole-access platform leg (Vienna-bound via the NW continuing elevator; New Carrollton-bound via a 5th, separate elevator). Full structure confirmed directly by Bryce; the specific mapping of the 3 already-observed unit ids onto this structure is inferential (flagged internally to watch for contradicting future alerts). Confidence 6/10. Adjusted from the initial unclear-layout state via /liftwatch-station-review 2026-07-16.",
+    "date": "2026-07-16"
+   }
   },
   {
    "key": "wmata:A01_C01",

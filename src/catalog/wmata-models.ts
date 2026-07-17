@@ -1149,4 +1149,82 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       { id: "mezzanine-platform", label: "Mezzanine to Vienna/Franconia-Springfield-bound platform", elevators: [{ externalId: "D02S02", label: "Smithsonian elevator (mezzanine to Vienna/Franconia-Springfield-bound platform)" }] },
     ],
   },
+  // Ballston-MU (K04, Orange/Silver) — excluded by the multi-level-shaft
+  // gate: WMATA-K04_N_EL spans all 3 named levels (Street, Mezzanine,
+  // Platform). Bryce walked the full layout 2026-07-16 -- 5 elevators,
+  // all currently running:
+  //   - SW corner of Fairfax Dr & Stuart St (38.88208521293941,
+  //     -77.11211144204533): 2 redundant elevators, next to each other,
+  //     street<->mezzanine.
+  //   - NW corner of Fairfax Dr & Stuart St: 2 elevators, next to each
+  //     other. One goes just to the mezzanine (street<->mezzanine only).
+  //     The other continues all the way to the Vienna-bound platform
+  //     (street<->mezzanine<->platform, one shaft) -- and is the ONLY
+  //     access to that platform.
+  //   - A 5th, separate elevator goes from the mezzanine to the New
+  //     Carrollton-bound platform -- the ONLY way to reach that platform.
+  // Modeled as a shared street<->mezzanine prerequisite (4-way OR across
+  // both corners) feeding 2 independent per-direction platform legs, same
+  // shape as Grand/Mt Vernon Sq/Smithsonian. Bryce mapped the 3
+  // already-observed live units onto this structure: K04X04/K04X05 (both
+  // worded "to New Carrollton", identical) = the SW-corner redundant pair;
+  // K04X03 ("to Vienna") = the NW "just to mezzanine" elevator. NEITHER the
+  // NW platform-continuing elevator nor the New Carrollton-platform
+  // elevator has ever been individually observed, so both stay synthetic.
+  // INTERNAL CAVEAT: this id mapping is Bryce's best read, not confirmed
+  // against a fresh, unambiguous alert naming a platform directly -- watch
+  // future live alerts at this station for wording that contradicts this
+  // mapping (e.g. an alert on K04X03/X04/X05 that mentions a platform, or
+  // a new unit id that doesn't fit this structure) and revisit if so.
+  // Approved by Bryce via /liftwatch-station-review 2026-07-16 (confidence
+  // 6/10 -- full structure confirmed directly, but the observed-id mapping
+  // specifically is inferential, not a smoking-gun alert).
+  {
+    systemId: SYSTEM,
+    stationExternalId: "K04",
+    chainLabel: " (Vienna-bound)",
+    note: "Street to the Vienna-bound platform: 2 street entrances (southwest and northwest corners of Fairfax Dr & Stuart St) reach the mezzanine — any one of 4 elevators keeps street access step-free — then one elevator continues to the platform, no backup. If all street entrances are down, or the platform elevator is out of service, this route is not step-free.",
+    internalNote: "Shared street<->mezzanine prerequisite: SW corner pair (K04X04, K04X05, real, 38.88208521293941/-77.11211144204533) + NW corner \"just to mezzanine\" elevator (K04X03, real) + NW corner platform-continuing elevator (WMATA-K04_N_EL, synthetic -- also serves as the mezzanine<->platform leg below, since it's one continuous shaft). Mezzanine<->Vienna-bound platform leg: WMATA-K04_N_EL only, sole access. CAVEAT: Bryce's id mapping for K04X03/X04/X05 is inferential (none of their alert texts mention a platform) -- watch future alerts for contradicting wording. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 6/10).",
+    segments: [
+      {
+        id: "street-mezzanine",
+        label: "Street to mezzanine",
+        elevators: [
+          { externalId: "K04X04", label: "Ballston-MU SW corner elevator (street to mezzanine) — SW corner of Fairfax Dr & Stuart St (38.88208521293941, -77.11211144204533)" },
+          { externalId: "K04X05", label: "Ballston-MU SW corner elevator (street to mezzanine) — SW corner of Fairfax Dr & Stuart St (38.88208521293941, -77.11211144204533)" },
+          { externalId: "K04X03", label: "Ballston-MU NW corner elevator (street to mezzanine only) — NW corner of Fairfax Dr & Stuart St" },
+          { externalId: "WMATA-K04_N_EL", label: "Ballston-MU NW corner elevator (street to mezzanine to Vienna-bound platform, one shaft) — NW corner of Fairfax Dr & Stuart St, never yet observed live, synthetic id" },
+        ],
+      },
+      {
+        id: "mezzanine-platform",
+        label: "Mezzanine to Vienna-bound platform",
+        elevators: [{ externalId: "WMATA-K04_N_EL", label: "Ballston-MU NW corner elevator (street to mezzanine to Vienna-bound platform, one shaft) — NW corner of Fairfax Dr & Stuart St, never yet observed live, synthetic id" }],
+      },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "K04",
+    chainLabel: " (New Carrollton-bound)",
+    note: "Street to the New Carrollton-bound platform: 2 street entrances (southwest and northwest corners of Fairfax Dr & Stuart St) reach the mezzanine — any one of 4 elevators keeps street access step-free — then one elevator continues to the platform, no backup. If all street entrances are down, or the platform elevator is out of service, this route is not step-free.",
+    internalNote: "Shares the street<->mezzanine prerequisite with the Vienna-bound chain (same 4 physical units, same ids in both chains -- an outage on any single one only reduces the OR group, doesn't sever access unless all 4 are down). Mezzanine<->New Carrollton-bound platform leg: a 5th, separate elevator, never yet observed live, synthetic id, sole access. CAVEAT: Bryce's id mapping for K04X03/X04/X05 (in the shared prerequisite) is inferential -- watch future alerts for contradicting wording. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 6/10).",
+    segments: [
+      {
+        id: "street-mezzanine",
+        label: "Street to mezzanine",
+        elevators: [
+          { externalId: "K04X04", label: "Ballston-MU SW corner elevator (street to mezzanine) — SW corner of Fairfax Dr & Stuart St (38.88208521293941, -77.11211144204533)" },
+          { externalId: "K04X05", label: "Ballston-MU SW corner elevator (street to mezzanine) — SW corner of Fairfax Dr & Stuart St (38.88208521293941, -77.11211144204533)" },
+          { externalId: "K04X03", label: "Ballston-MU NW corner elevator (street to mezzanine only) — NW corner of Fairfax Dr & Stuart St" },
+          { externalId: "WMATA-K04_N_EL", label: "Ballston-MU NW corner elevator (street to mezzanine to Vienna-bound platform, one shaft) — NW corner of Fairfax Dr & Stuart St, never yet observed live, synthetic id" },
+        ],
+      },
+      {
+        id: "mezzanine-platform",
+        label: "Mezzanine to New Carrollton-bound platform",
+        elevators: [{ externalId: "WMATA-K04_MZ_ELE1", label: "Ballston-MU mezzanine to New Carrollton-bound platform elevator — never yet observed live, synthetic id" }],
+      },
+    ],
+  },
 ];
