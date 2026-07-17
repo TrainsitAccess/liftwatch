@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-17T02:07:03.345Z",
+ "updatedAt": "2026-07-17T02:14:44.432Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -3686,7 +3686,7 @@
    "system": "wmata-dc",
    "stationId": "C05",
    "name": "Rosslyn",
-   "status": "pending",
+   "status": "modeled",
    "priority": 40,
    "reason": "non-standard-levels",
    "evidence": [
@@ -3714,7 +3714,12 @@
      "source": "live feed (observed)",
      "text": "C05E03: \"Elevator between street, and upper platform\""
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "adjusted",
+    "notes": "Modeled as 2 chains sharing a redundant 3-way street<->upper-platform bank (C05E01/02/03, east side of North Moore St & Wilson Blvd): eastbound (upper platform, sole via the bank) and westbound (shares the bank, plus a 4th elevator down to the lower platform, sole access on that leg). Full layout + location confirmed directly by Bryce. Confidence 9/10. Adjusted from the initial low-confidence proposal via /liftwatch-station-review 2026-07-16.",
+    "date": "2026-07-16"
+   }
   },
   {
    "key": "wmata:C07",

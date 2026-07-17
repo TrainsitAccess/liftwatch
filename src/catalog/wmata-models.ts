@@ -1378,4 +1378,58 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       { id: "lower-platform-shady-grove", label: "Green/Yellow platform back up to Shady Grove-bound platform", elevators: [{ externalId: "B01E04", label: "Gallery Place elevator (Green/Yellow platform to Shady Grove-bound platform)" }] },
     ],
   },
+  // Rosslyn (C05, Blue/Orange/Silver) — excluded by the non-standard-levels
+  // gate: "Mezzanine/Upper Platform" + "Lower Platform" (plus Street).
+  // Rosslyn is a 2-level station due to the flyover junction just west of
+  // it -- both levels serve the same 3 lines (Blue/Orange/Silver), just
+  // opposite directions. Bryce confirmed the full layout 2026-07-16:
+  //   - 3 REDUNDANT elevators, street<->upper platform, on the east side
+  //     of North Moore St & Wilson Blvd (38.896181305462086,
+  //     -77.07135426023925) -- GTFS only modeled 1 street<->upper edge,
+  //     but all 3 have appeared live, identically worded (same
+  //     undercount shape as Forest Glen's bank). Upper platform serves
+  //     EASTBOUND trains: Orange to New Carrollton, Silver, Blue to Largo.
+  //   - A 4th elevator connects upper<->lower platform. The lower
+  //     platform serves the SAME 3 lines in the OPPOSITE (westbound)
+  //     direction. Never yet individually observed, synthetic id (GTFS's
+  //     WMATA-C05_ELE, mislabeled "Platform" on both ends).
+  // Approved by Bryce via /liftwatch-station-review 2026-07-16 (confidence
+  // 9/10 -- full layout confirmed directly, including physical location).
+  {
+    systemId: SYSTEM,
+    stationExternalId: "C05",
+    chainLabel: " (eastbound: New Carrollton/Largo)",
+    note: "Street to the eastbound platform (Orange to New Carrollton, Silver, Blue to Largo): 3 elevators, on the east side of North Moore St & Wilson Blvd — any one keeps this route step-free. Only if all 3 are out of service does this station lose step-free access on this route.",
+    internalNote: "3 real, live-observed units (C05E01, C05E02, C05E03), all worded \"Elevator between street, and upper platform\" -- east side of North Moore St & Wilson Blvd (38.896181305462086, -77.07135426023925), per Bryce 2026-07-16. GTFS only modeled 1 edge here; a genuine redundant bank, same undercount shape as Forest Glen. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 9/10).",
+    segments: [
+      {
+        id: "street-upper-platform",
+        label: "Street to upper (eastbound) platform",
+        elevators: [
+          { externalId: "C05E01", label: "Rosslyn elevator (street to eastbound platform) — east side of North Moore St & Wilson Blvd (38.896181305462086, -77.07135426023925)" },
+          { externalId: "C05E02", label: "Rosslyn elevator (street to eastbound platform) — east side of North Moore St & Wilson Blvd (38.896181305462086, -77.07135426023925)" },
+          { externalId: "C05E03", label: "Rosslyn elevator (street to eastbound platform) — east side of North Moore St & Wilson Blvd (38.896181305462086, -77.07135426023925)" },
+        ],
+      },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "C05",
+    chainLabel: " (westbound)",
+    note: "Street to the westbound platform (same 3 lines, opposite direction) takes 2 legs: the street entrance (3 elevators, any one works) then one elevator down to the lower platform, which has no backup. If all 3 street elevators are out, or the lower-platform elevator is out of service, this route is not step-free.",
+    internalNote: "Shares the redundant street<->upper-platform bank (C05E01/02/03) with the eastbound chain. Upper<->lower leg is GTFS's WMATA-C05_ELE (mislabeled \"Platform\" on both ends), never yet individually observed, synthetic id, sole access. Confirmed by Bryce 2026-07-16 (confidence 9/10).",
+    segments: [
+      {
+        id: "street-upper-platform",
+        label: "Street to upper platform",
+        elevators: [
+          { externalId: "C05E01", label: "Rosslyn elevator (street to eastbound platform) — east side of North Moore St & Wilson Blvd (38.896181305462086, -77.07135426023925)" },
+          { externalId: "C05E02", label: "Rosslyn elevator (street to eastbound platform) — east side of North Moore St & Wilson Blvd (38.896181305462086, -77.07135426023925)" },
+          { externalId: "C05E03", label: "Rosslyn elevator (street to eastbound platform) — east side of North Moore St & Wilson Blvd (38.896181305462086, -77.07135426023925)" },
+        ],
+      },
+      { id: "upper-lower-platform", label: "Upper platform down to lower (westbound) platform", elevators: [{ externalId: "WMATA-C05_ELE", label: "Rosslyn elevator (upper to lower/westbound platform) — never yet observed live, synthetic id" }] },
+    ],
+  },
 ];
