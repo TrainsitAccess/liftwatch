@@ -197,6 +197,21 @@ anomaly stations. MTA rail's ~10 remaining MNR stations. All 71 TfL
 stations. CTA's 7 remaining complexes (Cumberland's redundancy candidate is
 the most promising quick win; Garfield needs id untangling first).
 
+## TfL auto-model audit — DONE 2026-07-17 (sound, no fixes)
+
+Audited all 209 auto-generated TfL models against the WMATA-audit lessons
+(`src/catalog/tfl-data/COVERAGE-AUDIT.md`). Outcome: the tier is **sound, no
+under-warns** — unlike WMATA, TfL derives redundancy from exact
+`(fromAreas, toAreas)` matches enforced by `check:tfl-chains`, and the
+different-platform redundancies are all backed by TfL-published step-free
+paths (verified East Croydon ramps, Abbey Road / Royal Victoria same-level).
+Notes consistent; excluded 71 = the interchange human-review backlog. **One
+flagged observation needing your verdict**: the 11 step-free-path-backed
+redundant segments have `stepFreeAlternative:false`, so an *all-lifts-down*
+case over-warns (reads inaccessible though a ramp exists). Safe direction;
+making it accurate is a *less-conservative* change reserved for you — see §5
+of the report.
+
 ## Known open item — RESOLVED 2026-07-17
 
 **Homepage now renders elevator/ramp backups.** `site/index.html`'s longest-
