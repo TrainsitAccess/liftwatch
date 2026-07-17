@@ -6,7 +6,7 @@
 // Run: npm run check:wmata
 
 import { readFileSync } from "node:fs";
-import { allElevators, elevatorRedundant, type StationModel } from "../lib/accessibility.js";
+import { allElevators, elevatorRedundant, stationAccessible, type StationModel } from "../lib/accessibility.js";
 import { WMATA_STATION_MODELS } from "../catalog/wmata-models.js";
 import { parseWmataLocation } from "../adapters/wmata/location.js";
 import { attributeWmataIncident, failSafeReasonNote } from "../adapters/wmata/index.js";
@@ -70,8 +70,28 @@ const modelOf = (st: string) => generatedByStation.get(st)?.[0];
   const e04 = modelOf("E04")!;
   ok(!elevatorRedundant(e04, "E04X02"), "E04 Columbia Heights: platform elevator E04X02 is sole access");
   ok(!elevatorRedundant(e04, "E04X01"), "E04 Columbia Heights: street elevator E04X01 is sole access");
-  const a08 = modelOf("A08")!;
-  ok(allElevators(a08).every((e) => elevatorRedundant(a08, e.externalId)), "A08 Friendship Heights: all four elevators redundant (2+2)");
+}
+
+console.log("\n  A08 Friendship Heights (split-mezzanine spot-check fix, 2026-07-17): CNF pairing of Jenifer St. (4-elevator street bank + 1 platform elevator) OR Western Ave. (1 street + 1 platform), no false 2x2:");
+{
+  ok(!generatedByStation.has("A08"), "A08: moved out of the auto-generated tier (split-mezzanine)");
+  ok(excludedReason.get("A08") === "split-mezzanine", "A08: excluded with reason split-mezzanine");
+  const a08 = WMATA_STATION_MODELS.filter((m) => m.stationExternalId === "A08");
+  ok(a08.length === 1, "A08: curated as one CNF-encoded model (not two separate chains)");
+  const m = a08[0]!;
+  ok(new Set(allElevators(m).map((e) => e.externalId)).size === 7, "A08: 7 distinct elevators tracked (4 Jenifer St. + 1 Jenifer plat. + 1 Western Ave. + 1 Western plat.)");
+  const JEN = ["WMATA-A08_JEN_ELE1", "WMATA-A08_JEN_ELE2", "WMATA-A08_JEN_ELE3", "WMATA-A08_JEN_ELE4"];
+  const JEN_PLAT = "WMATA-A08_JEN_ELE5";
+  const WES = "WMATA-A08_WES_ELE1";
+  const WES_PLAT = "WMATA-A08_WES_ELE2";
+  ok(stationAccessible(m, new Set()), "A08: all 7 up -> accessible");
+  ok(stationAccessible(m, new Set([WES])), "A08: Western St. down alone -> still accessible (Jenifer route intact)");
+  ok(stationAccessible(m, new Set([JEN_PLAT])), "A08: Jenifer plat. down alone -> still accessible (Western route intact)");
+  ok(stationAccessible(m, new Set(JEN.slice(0, 3))), "A08: 3 of 4 Jenifer St. elevators down -> still accessible (bank absorbs it)");
+  ok(!stationAccessible(m, new Set([...JEN, JEN_PLAT, WES])), "A08: whole Jenifer route + Western St. down -> inaccessible (Western plat. alone can't complete a route)");
+  ok(!stationAccessible(m, new Set([JEN_PLAT, WES])), "A08: Jenifer plat. + Western St. down together -> inaccessible (opposite-ends double, the false-redundancy trap the fix targets)");
+  ok(!stationAccessible(m, new Set([...JEN, WES])), "A08: all 5 street elevators down -> inaccessible (both routes severed at the street leg)");
+  ok(!stationAccessible(m, new Set([...JEN, WES_PLAT])), "A08: all 4 Jenifer St. + Western plat. down -> inaccessible (Jenifer route has no street leg, Western route has no platform leg)");
 }
 
 console.log("\n  Grade-separated stations (2026-07-17 audit): two opposite-side entrances are NOT redundant — curated per-entrance, no false street→mezzanine backup:");

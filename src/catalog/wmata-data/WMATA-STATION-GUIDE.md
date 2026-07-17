@@ -269,9 +269,15 @@ is *not* a signal — it both invents redundancy (§3J) and hides it (§3G).
   outside fact; ordinary elevated station). Exact id→side unconfirmed.
 - **Potomac Yard (C11)** — station signage numbers "7"/"8" may not map to
   WMATA's unit-id scheme.
-- **The three from the 2026-07-17 audit** still to review with Bryce (see
+- **From the 2026-07-17 audit**, still to review with Bryce (see
   `COVERAGE-AUDIT.md` §4): Glenmont (B11) redundancy call, Deanwood (D10) note
-  artifact, Friendship Heights (A08) all-synthetic 2+2.
+  artifact. **Friendship Heights (A08) RESOLVED 2026-07-17** via
+  /liftwatch-wmata-spot-check — the auto 2×2 was wrong: WMATA's own page shows
+  7 elevators / two separate mezzanines (Jenifer St. north 4+1, Western Ave.
+  south 1+1); re-modeled per-entrance CNF (F05 shape) with a 4-elevator street
+  bank on the Jenifer St. leg. A first illustration of the **split-mezzanine +
+  undercounted-bank** failure class (§3J's inverse-of-inverse: separate
+  mezzanines like §3I, but with a §3G bank on one leg). See `spot-check-log.md`.
 
 ---
 

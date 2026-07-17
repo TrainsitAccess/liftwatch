@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-17T16:20:43.471Z",
+  "generatedAt": "2026-07-17T23:22:35.375Z",
   "source": "WMATA GTFS rail pathways.txt mode-5 connected components (in-station elevators only)",
   "units": [
     {
@@ -534,45 +534,45 @@
       "externalId": "WMATA-A08_N_ELE1",
       "station": "A08",
       "stationName": "Friendship Heights",
-      "description": "Elevator between street and mezzanine",
+      "description": "Street ↔ Mezzanine",
       "levelFrom": "Street",
       "levelTo": "Mezzanine",
-      "segment": "street-mezzanine",
-      "modeled": true,
-      "isRedundant": true
+      "segment": "",
+      "modeled": false,
+      "isRedundant": false
     },
     {
       "externalId": "WMATA-A08_N_ELE2",
       "station": "A08",
       "stationName": "Friendship Heights",
-      "description": "Elevator between mezzanine and platform",
+      "description": "Mezzanine ↔ Platform",
       "levelFrom": "Mezzanine",
       "levelTo": "Platform",
-      "segment": "mezzanine-platform",
-      "modeled": true,
-      "isRedundant": true
+      "segment": "",
+      "modeled": false,
+      "isRedundant": false
     },
     {
       "externalId": "WMATA-A08_S_ELE1",
       "station": "A08",
       "stationName": "Friendship Heights",
-      "description": "Elevator between street and mezzanine",
+      "description": "Street ↔ Mezzanine",
       "levelFrom": "Street",
       "levelTo": "Mezzanine",
-      "segment": "street-mezzanine",
-      "modeled": true,
-      "isRedundant": true
+      "segment": "",
+      "modeled": false,
+      "isRedundant": false
     },
     {
       "externalId": "WMATA-A08_S_ELE2",
       "station": "A08",
       "stationName": "Friendship Heights",
-      "description": "Elevator between mezzanine and platform",
+      "description": "Mezzanine ↔ Platform",
       "levelFrom": "Mezzanine",
       "levelTo": "Platform",
-      "segment": "mezzanine-platform",
-      "modeled": true,
-      "isRedundant": true
+      "segment": "",
+      "modeled": false,
+      "isRedundant": false
     },
     {
       "externalId": "WMATA-A09_ELE2",

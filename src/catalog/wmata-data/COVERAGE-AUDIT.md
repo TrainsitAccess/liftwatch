@@ -130,7 +130,7 @@ GTFS marks a street→mezzanine leg redundant whenever two elevators both reach 
 
 **Redundancy that IS sound (leave as-is):**
 - **C13 King St-Old Town** (live-validated: C13N01 out → chain correctly REDUCED via C13N02), **F06 Anacostia**, **N10 Dulles Airport** — two elevators from a shared mezzanine/concourse to one ISLAND platform; rider is already paid-side and can walk between them.
-- **A08 Friendship Heights** — redundant on both legs; urban, both street entrances on the same Wisconsin Ave sidewalk. Plausibly real; all ids still synthetic.
+- ~~**A08 Friendship Heights** — redundant on both legs; urban, both street entrances on the same Wisconsin Ave sidewalk. Plausibly real; all ids still synthetic.~~ **RESOLVED 2026-07-17 (spot-check) — the 2×2 was WRONG on two axes.** WMATA's own Rider Tools page shows 7 elevators across two SEPARATE mezzanines (Jenifer St. north: 4 street + 1 platform; Western Ave. south: 1 street + 1 platform); Bryce confirmed the mezzanines aren't connected. Re-modeled per-entrance CNF (Navy Yard F05 shape) with a 4-elevator Jenifer St. street bank (Forest Glen/Rosslyn undercount). Curated in `wmata-models.ts`, excluded via `split-mezzanine`; see `spot-check-log.md`.
 
 ### 3b. Note phrasing artifact
 - **D10 Deanwood** — note reads "One elevator connects the street-level mezzanine to the mezzanine…", a level-naming collision confusing to a rider. Worth a manual level/label fix.
@@ -159,7 +159,10 @@ of fully accessible; the shared platform elevator failing takes down both.
    (redundant) pending your call.
 2. **D10 Deanwood** — fix the "street-level mezzanine to the mezzanine" note /
    level-naming artifact.
-3. **A08 Friendship Heights** — redundancy plausibly real (urban, same-sidewalk
-   entrances) but all ids synthetic; confirm opportunistically.
+3. ~~**A08 Friendship Heights** — redundancy plausibly real (urban, same-sidewalk
+   entrances) but all ids synthetic; confirm opportunistically.~~ **DONE
+   2026-07-17 (spot-check)**: the 2×2 was wrong — separate mezzanines + a
+   4-elevator Jenifer St. street bank. Re-modeled per-entrance CNF; see above
+   and `spot-check-log.md`. (ids still synthetic.)
 4. Backfill physical street-elevator locations (16/98 today) per the standing
    documentation rule.

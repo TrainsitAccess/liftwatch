@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-17T16:20:43.471Z",
+  "generatedAt": "2026-07-17T23:22:35.375Z",
   "source": "WMATA GTFS pathways topology (conservative single-platform Street→Mezzanine→Platform ladders)",
   "models": [
     {
@@ -15,42 +15,6 @@
             {
               "externalId": "A07X01",
               "label": "Tenleytown-AU elevator A07X01 (Street to Platform)"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "systemId": "wmata-dc",
-      "stationExternalId": "A08",
-      "note": "Two elevators connect the street to the mezzanine — either one keeps this leg open. Two elevators connect the mezzanine to the platform — either one keeps this leg open. No single elevator outage removes step-free access.",
-      "internalNote": "Topology from WMATA GTFS pathways (mode-5 elevator components): Street→Mezzanine: 2 elevators, Mezzanine→Platform: 2 elevators. In-station elevators only — garage/facility elevators are not in the rail GTFS. Slot ids are live UnitNames where observed, synthetic WMATA-<node> otherwise.",
-      "segments": [
-        {
-          "id": "street-mezzanine",
-          "label": "Street to Mezzanine",
-          "elevators": [
-            {
-              "externalId": "WMATA-A08_N_ELE1",
-              "label": "Friendship Heights elevator (Street to Mezzanine)"
-            },
-            {
-              "externalId": "WMATA-A08_S_ELE1",
-              "label": "Friendship Heights elevator (Street to Mezzanine)"
-            }
-          ]
-        },
-        {
-          "id": "mezzanine-platform",
-          "label": "Mezzanine to Platform",
-          "elevators": [
-            {
-              "externalId": "WMATA-A08_N_ELE2",
-              "label": "Friendship Heights elevator (Mezzanine to Platform)"
-            },
-            {
-              "externalId": "WMATA-A08_S_ELE2",
-              "label": "Friendship Heights elevator (Mezzanine to Platform)"
             }
           ]
         }

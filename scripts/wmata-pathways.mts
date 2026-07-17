@@ -284,6 +284,18 @@ const CURATED_GRADE_SEPARATED: Record<string, string> = {
   E09: "College Park-U of Md — island platform, entrances both sides of the rail corridor",
 };
 
+// Human-reviewed stations with genuinely SEPARATE (unconnected) mezzanines per
+// entrance, where GTFS also undercounts a redundant bank on one leg. Not
+// grade-separated (no highway/rail barrier between entrances) — the failure
+// is GTFS assuming one connected mezzanine spanning both entrances, drawn as
+// a plain symmetric N×N when the real structure needs a per-entrance CNF
+// pairing (Navy Yard F05 shape) AND an intra-leg bank on one side (Forest
+// Glen/Rosslyn shape). Confirmed by Bryce via /liftwatch-wmata-spot-check
+// 2026-07-17; curated per-entrance CNF in wmata-models.ts.
+const CURATED_SPLIT_MEZZANINE: Record<string, string> = {
+  A08: "Friendship Heights — separate Jenifer St. (north) and Western Ave. (south) mezzanines; Jenifer St. street leg is a 4-elevator bank GTFS drew as 1",
+};
+
 function nameOf(st: string) { return stationName.get(`STN_${st}`) ?? stationName.get(st) ?? st; }
 function exclude(st: string, reason: string, detail: string, levels: string[]) {
   excluded.push({ station: st, name: nameOf(st), reason, detail, levels });
@@ -305,6 +317,10 @@ for (const [st, els] of [...byStation.entries()].sort()) {
   //     CURATED_GRADE_SEPARATED note above).
   if (CURATED_GRADE_SEPARATED[st]) {
     exclude(st, "grade-separated-entrances", CURATED_GRADE_SEPARATED[st], [...new Set(els.flatMap((e) => e.levels))]);
+    continue;
+  }
+  if (CURATED_SPLIT_MEZZANINE[st]) {
+    exclude(st, "split-mezzanine", CURATED_SPLIT_MEZZANINE[st], [...new Set(els.flatMap((e) => e.levels))]);
     continue;
   }
   // (1) corruption guard: any elevator node whose level_id belongs to a DIFFERENT

@@ -56,7 +56,10 @@ const add = (e: Entry) => entries.set(e.key, e);
   // (hand-modeled from the start). The 8 grade-separated stations: audited
   // 2026-07-17, moved out of the auto tier and curated per-entrance because
   // their GTFS street→mezzanine redundancy was false (see COVERAGE-AUDIT.md).
-  const CURATED = new Set(["A14", "N01", "N02", "N03", "N04", "N07", "N08", "N12", "E09"]);
+  // A08 Friendship Heights: spot-checked 2026-07-17, separate mezzanines +
+  // a 4-elevator Jenifer St. street bank GTFS drew as 1 — curated CNF (see
+  // spot-check-log.md).
+  const CURATED = new Set(["A14", "A08", "N01", "N02", "N03", "N04", "N07", "N08", "N12", "E09"]);
   const prio: Record<string, number> = {
     "observed-undercount": 20, "observed-unmappable": 22, "side-platforms": 30,
     "multi-level-shaft": 38, "non-standard-levels": 40, "unorderable-levels": 44, "corrupt-levels": 46,

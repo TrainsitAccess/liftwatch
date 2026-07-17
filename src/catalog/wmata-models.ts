@@ -622,6 +622,64 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       },
     ],
   },
+  // Friendship Heights (A08, Red Line) — spot-checked via
+  // /liftwatch-wmata-spot-check 2026-07-17. The GTFS auto-model (chains.json)
+  // undercounted this station on TWO axes at once: it drew a plain 2×2 (2
+  // street elevators, 2 platform elevators, symmetric), assuming one
+  // connected mezzanine. WMATA's own Rider Tools page
+  // (wmata.com/ridertools/station/friendship-heights/info, "7 of 7 elevators
+  // running", confirmed live by Bryce's screenshot + independently
+  // re-fetched in-session 2026-07-17) shows the real structure is
+  // asymmetric and the two entrances are separate:
+  //   Jenifer Street Entrance (north): 4× street↔mezzanine + 1× mezzanine↔platform
+  //   Western Avenue Entrance (south): 1× street↔mezzanine + 1× mezzanine↔platform
+  // Bryce confirmed the two mezzanines are NOT connected to each other
+  // without going through a platform — same "separate entrance, no
+  // cross-redundancy assumed" shape as Navy Yard (F05), but here compounded
+  // with a genuine redundant BANK on the Jenifer Street leg (GTFS drew that
+  // leg as 1 elevator; it's really 4 — the Forest Glen/Rosslyn undercount
+  // pattern) that the plain Navy Yard-style pairing doesn't have. Encoded as
+  // a 4-clause CNF (same paired-segment pattern as F05/Jackson-Red/Stamford)
+  // of (any Jenifer St. elevator AND the Jenifer St. platform elevator) OR
+  // (the Western Ave. street elevator AND the Western Ave. platform
+  // elevator) — each clause folds in all 4 Jenifer St. street elevators as
+  // an OR-group wherever that leg is referenced. All ids synthetic — WMATA's
+  // page names entrances but not individual unit numbers; promote to real
+  // UnitNames on first live observation. Approved by Bryce via
+  // /liftwatch-wmata-spot-check 2026-07-17 (confidence 8/10 — Bryce-
+  // confirmed separate-mezzanine fact + WMATA's own official elevator count,
+  // same tier as Gallery Place/Forest Glen/Navy Yard: structure confirmed,
+  // ids not yet observed live).
+  {
+    systemId: SYSTEM,
+    stationExternalId: "A08",
+    note: "Two independent step-free routes to the platform: the Jenifer Street Entrance (any one of four street elevators to the mezzanine, then the mezzanine elevator to the platform) or the Western Avenue Entrance (one street elevator to the mezzanine, then one elevator to the platform). The station stays step-free as long as at least one full route is working. The Jenifer Street route can absorb any single (or multiple) street-elevator outage there, but still depends on its one mezzanine-to-platform elevator; the Western Avenue route has no backup on either leg.",
+    internalNote: "Source: WMATA's official Rider Tools station page (wmata.com/ridertools/station/friendship-heights/info), \"7 of 7 elevators running\" — Jenifer Street Entrance: 4× street↔mezzanine + 1× mezzanine↔platform; Western Avenue Entrance: 1× street↔mezzanine + 1× mezzanine↔platform. Confirmed via Bryce's screenshot and independently re-fetched live 2026-07-17. Corrects the GTFS-pathways auto-model (chains.json), which (a) undercounted the Jenifer Street leg as 1 elevator instead of 4, and (b) assumed one connected mezzanine spanning both entrances — Bryce confirmed 2026-07-17 the two mezzanines are separate. Excluded from the generator via CURATED_SPLIT_MEZZANINE in scripts/wmata-pathways.mts. All 6 ids synthetic (WMATA-A08_JEN_ELE1..5, WMATA-A08_WES_ELE1..2); no UnitNames observed live yet. Approved via /liftwatch-wmata-spot-check 2026-07-17 (confidence 8/10).",
+    segments: [
+      { id: "cnf-street-street", label: "Step-free guard: a Jenifer Street or Western Avenue STREET elevator", elevators: [
+        { externalId: "WMATA-A08_JEN_ELE1", label: "Friendship Heights elevator — Jenifer Street Entrance, street to mezzanine (1 of 4), never yet observed live, synthetic id" },
+        { externalId: "WMATA-A08_JEN_ELE2", label: "Friendship Heights elevator — Jenifer Street Entrance, street to mezzanine (2 of 4), never yet observed live, synthetic id" },
+        { externalId: "WMATA-A08_JEN_ELE3", label: "Friendship Heights elevator — Jenifer Street Entrance, street to mezzanine (3 of 4), never yet observed live, synthetic id" },
+        { externalId: "WMATA-A08_JEN_ELE4", label: "Friendship Heights elevator — Jenifer Street Entrance, street to mezzanine (4 of 4), never yet observed live, synthetic id" },
+        { externalId: "WMATA-A08_WES_ELE1", label: "Friendship Heights elevator — Western Avenue Entrance, street to mezzanine, never yet observed live, synthetic id" },
+      ] },
+      { id: "cnf-street-plat", label: "Step-free guard: a Jenifer Street STREET or Western Avenue PLATFORM elevator", elevators: [
+        { externalId: "WMATA-A08_JEN_ELE1", label: "Friendship Heights elevator — Jenifer Street Entrance, street to mezzanine (1 of 4), never yet observed live, synthetic id" },
+        { externalId: "WMATA-A08_JEN_ELE2", label: "Friendship Heights elevator — Jenifer Street Entrance, street to mezzanine (2 of 4), never yet observed live, synthetic id" },
+        { externalId: "WMATA-A08_JEN_ELE3", label: "Friendship Heights elevator — Jenifer Street Entrance, street to mezzanine (3 of 4), never yet observed live, synthetic id" },
+        { externalId: "WMATA-A08_JEN_ELE4", label: "Friendship Heights elevator — Jenifer Street Entrance, street to mezzanine (4 of 4), never yet observed live, synthetic id" },
+        { externalId: "WMATA-A08_WES_ELE2", label: "Friendship Heights elevator — Western Avenue Entrance, mezzanine to platform, never yet observed live, synthetic id" },
+      ] },
+      { id: "cnf-plat-street", label: "Step-free guard: the Jenifer Street PLATFORM or a Western Avenue STREET elevator", elevators: [
+        { externalId: "WMATA-A08_JEN_ELE5", label: "Friendship Heights elevator — Jenifer Street Entrance, mezzanine to platform, never yet observed live, synthetic id" },
+        { externalId: "WMATA-A08_WES_ELE1", label: "Friendship Heights elevator — Western Avenue Entrance, street to mezzanine, never yet observed live, synthetic id" },
+      ] },
+      { id: "cnf-plat-plat", label: "Step-free guard: a Jenifer Street or Western Avenue PLATFORM elevator", elevators: [
+        { externalId: "WMATA-A08_JEN_ELE5", label: "Friendship Heights elevator — Jenifer Street Entrance, mezzanine to platform, never yet observed live, synthetic id" },
+        { externalId: "WMATA-A08_WES_ELE2", label: "Friendship Heights elevator — Western Avenue Entrance, mezzanine to platform, never yet observed live, synthetic id" },
+      ] },
+    ],
+  },
   // New Carrollton (D13, Orange Line) — Batch 3, Group 4 (straight 2-elevator
   // chain, single path — "non-standard-levels" was just unusual level naming,
   // not real topology ambiguity).
