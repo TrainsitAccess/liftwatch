@@ -1,5 +1,12 @@
 # CTA station research dossier (chicago-L.org pass, 2026-07-14)
 
+**Status (2026-07-17): mostly consumed.** The curated-chains pass this
+dossier was written to seed has largely happened — 39 of 46 queue stations
+are now modeled in `src/catalog/cta-models.ts`, each walked through with
+Bryce via `/liftwatch-station-review`. The live tracker is
+`src/catalog/review/queue.json`; this file is kept as research provenance
+and as background for the 7 remaining interchange complexes.
+
 Layout research for every station in the observed outage corpus (42), compiled
 from chicago-L.org station histories to support an eventual curated-chains
 pass. **Nothing here ships without a human walkthrough** — chicago-L.org is a

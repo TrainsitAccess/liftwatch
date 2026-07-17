@@ -1,8 +1,14 @@
-# Roosevelt (41400) — outstanding question, posted to Discord 2026-07-16
+# Roosevelt (41400) — RESOLVED 2026-07-16 (Discord question, answered)
 
-Deferred in the station-review queue (`cta:41400`) pending firsthand answers.
-Paste responses back to Claude in the `/liftwatch-station-review` session —
-they'll be used to finalize the model in `src/catalog/cta-models.ts`.
+**Status: resolved and modeled.** The Discord post below got a full
+structural answer Bryce vetted himself; Roosevelt shipped as two independent
+chains in `src/catalog/cta-models.ts` (Orange/Green: one street→elevated
+elevator; Red: street→mezzanine then the shared transfer-tunnel elevator
+down to the platform), plus a same-day follow-up correction when Bryce
+found a 4th elevator (1155 S State St entrance) making the Red chain's
+street→mezzanine leg redundant. Full resolution trail: `cta:41400` in
+`src/catalog/review/queue.json`. This file is kept as provenance for the
+crowd-sourced answer — the post as sent, below, is the citable source.
 
 ## What we know for sure
 

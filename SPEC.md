@@ -355,7 +355,7 @@ against a reference photo):
   public data export.
 
 Deferred / parked (not on the critical path): TfL multi-chain review for the
-85 stations with branching/ambiguous topology (see §5's TfL section — the
+71 stations with branching/ambiguous topology (see §5's TfL section — the
 safe majority shipped 2026-07-08, some now with alert-evidence hints from
 real down-elevator alerts as a review head start), TMB feed data-quality
 review (currently hidden), DB FaSta (Germany).
@@ -1034,12 +1034,16 @@ and the live disruptions endpoint.
   the same complex. A multi-edge component touching any intermediate landing
   is excluded (the simple 2-node path model can't route through a 3rd stop),
   same conservative treatment as a multi-destination edge. Result (after the
-  fix): 151 chains across 132 of 201 lift-equipped stations; 85 stations (93
-  components) — all recognizable major interchanges: Bank, King's Cross,
-  Paddington, Stratford, Tottenham Court Road, Victoria, Waterloo, Liverpool
-  Street, Wembley Park, Farringdon, Canary Wharf, and more — excluded to
-  `chains-excluded.json` pending a human review pass, same precedent as
-  MTA's 9 hand-authored interchanges. **Self-check**
+  fix, 2026-07-08): 151 chains across 132 of 201 lift-equipped stations; 85
+  stations (93 components) excluded. After the 2026-07-14 RampRoutes/
+  SameLevelPaths wiring: 209 chains across 132 stations, 71 stations (74
+  components) excluded — counts drift with the daily model refresh. The
+  excluded stations — all recognizable major interchanges: Bank, King's
+  Cross, Stratford, Tottenham Court Road, Victoria, Waterloo, Liverpool
+  Street, Wembley Park, Farringdon, Canary Wharf, and more — sit in
+  `chains-excluded.json` pending the /liftwatch-station-review walkthrough
+  (none started), same precedent as MTA's 9 hand-authored interchanges.
+  **Self-check**
   (`npm run check:tfl-chains`, `src/checks/tfl-chains-check.ts`): every
   modeled elevator's chain-derived redundancy must exactly equal its own
   `isRedundant` flag from `lifts.json` — simpler than MTA's
@@ -1376,14 +1380,16 @@ railroad. Facts below verified live 2026-07-06.
   means "no elevators", not "missing data"; the complete station layer
   still comes from `/infrastructure` via `NormalizedRead.stations` (branch
   rides in the borough slot).
-- **Redundancy**: no signal in the feed. Fourteen major stations are
+- **Redundancy**: no signal in the feed. Eighteen major stations are
   hand-modeled in `src/catalog/mta-rail-models.ts` (walked through
   station-by-station with a human 2026-07-06 — the walk-through corrected
   three feed-text misreadings at Stamford alone; its notes outrank the raw
   location strings. Greenwich added 2026-07-10, resolved live from the
   generator's review queue when its 218E broke: overpass reachable at grade,
   218E sole access to the New Haven-bound platform, Track 3 covered by a ramp
-  off Greenwich Plaza, 218T = street→ticket office only, outside the chains). The adapter applies model-derived redundancy as
+  off Greenwich Plaza, 218T = street→ticket office only, outside the chains;
+  Amityville, Lindenhurst, Purdy's, and Cortlandt added 2026-07-15 via
+  /liftwatch-station-review — all zero-redundancy shapes). The adapter applies model-derived redundancy as
   `curated`, aggregated across every chain a unit appears in; un-modeled
   units fall to `assumed`. Commuter-rail chains are PER-TRACK
   ("Stamford (Track 3)") the way subway chains are per-line. Stamford uses
@@ -1517,12 +1523,14 @@ generator's answer key is the hand-curated models themselves.
 - **Output** (`npm run rail:chains` → `src/catalog/mta-rail-data/`):
   115 chains across 72 stations (Chappaqua: parking→overpass 148P +
   overpass→island 148I, both sole-access — a 148I outage now reads NO ACCESS
-  to Tracks 1 & 2, matching MTA's own status page); 14 stations excluded for
-  review; 9 garage units outside chains; only two redundant groups emitted,
+  to Tracks 1 & 2, matching MTA's own status page); 9 stations currently
+  excluded for review (14 originally — Amityville, Lindenhurst, Purdy's,
+  Cortlandt, and Greenwich have since graduated to the hand-curated tier);
+  9 garage units outside chains; only two redundant groups emitted,
   both genuine (Ronkonkoma's street pair, Tuckahoe's two Track-1 elevators).
   MNR modeled routes went 15 → 81 on the access board.
 - **Offline regression**: `npm run check:rail-chains`
-  (`src/checks/rail-chains-check.ts`, 50 checks) re-runs mapper + engine +
+  (`src/checks/rail-chains-check.ts`, 60 checks) re-runs mapper + engine +
   ground-truth gate against a committed raw-feed fixture — no network — plus
   the Chappaqua and Fairfield regressions, the no-overlap/no-ramp-claims
   invariants, and locked counts (update `LOCKED` when deliberately
@@ -1769,8 +1777,11 @@ Continuing the walkthrough above in the same session.
   Sox-35th/Central/Loyola/Forest Park=1, Grand=3, Western=2), corroborating
   the Jackson-Red/Grand models independently of the settlement-report lead.
 
-CTA now 33/46 reviewed. 13 pending — see HANDOFF.md for the current
-per-station breakdown and priority order.
+CTA now 39/46 reviewed (2026-07-17 — Roosevelt's Discord-sourced 2-chain
+model with its 4th-elevator follow-up correction, the transfer-bridge/
+rotogate batch, and more since this section was written). 7 pending, all
+interchange complexes — see HANDOFF.md for the current per-station
+breakdown and priority order.
 
 ### MTA enrichment from data.ny.gov — a second, richer ground-truth source (2026-07-16)
 

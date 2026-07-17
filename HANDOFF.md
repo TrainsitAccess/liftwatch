@@ -127,6 +127,22 @@ Three questions posed to Bryce, unanswered as of this handoff:
 
 Full session log lives in the conversation transcript; condensed version:
 
+**Documentation audit (2026-07-17, follow-up session)** — every repo doc
+cross-checked against the live code/data and brought current: README.md
+rewritten (still described the retired GitHub-Actions-cron architecture and
+a pre-production Supabase); CLAUDE.md/SPEC.md stale counts fixed (demo:access
+69 not 25, check:rail-chains 60 not 50, check:mbta-chains 20 not 18, rail
+hand-models 18 not 14, rail generator exclusions 9 not 14, CTA 39/46 not
+33/46, TfL 209 chains/71 excluded not 151/85, WMATA "55+22 modeled, 2
+holdouts" reconciled to all-98-complete); the stale "No DB yet" gotcha
+removed; CTA's adapter bullet updated to point at the now-existing curated
+tier; `review:status`/`review:queue` added to the Running It block;
+`roosevelt-discord-question.md` marked RESOLVED (provenance kept);
+`STATION-RESEARCH.md` marked mostly-consumed. Flagged for Bryce, not acted
+on: `.github/workflows/poll.yml` (the fallback poller) has outlived its
+"few cycles" probation — Netlify's schedule has run reliably since
+2026-07-09; removing it is Bryce's call.
+
 **WMATA station review taken from 21/42 to 42/42 (COMPLETE)** — 21 stations
 individually reviewed with Bryce in one continuous session. Highlights:
 GTFS-undercounted redundant banks found at Potomac Yard (10 elevators total,

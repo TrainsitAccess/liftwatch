@@ -55,13 +55,13 @@ $env:Path = "C:\Program Files\nodejs;$env:Path"
 npm install
 npm run poll:dry         # MTA, fetch + normalize, no DB
 npm run poll:bart:dry    # BART, MBTA, WMATA, TfL, CTA, TMB, LIRR, MNR have :dry variants too
-npm run demo:access      # prove the chain-aware accessibility model (25 checks)
+npm run demo:access      # prove the chain-aware accessibility model (69 checks)
 npm run check:tfl        # prove TfL's topology-derived redundancy (10 checks)
 npm run check:tmb        # prove TMB's elevator catalog integrity (7 checks)
 npm run check:mta        # prove MTA's multi-chain models vs feed flags (offline)
 npm run check:rail       # prove the LIRR/MNR mapper + curated models (offline fixture)
 npm run rail:chains      # regenerate LIRR/MNR simple-station chains (ground-truth-gated)
-npm run check:rail-chains # prove the rail chain generator vs the 13 hand models (offline)
+npm run check:rail-chains # prove the rail chain generator vs the 18 hand models (offline, 60 checks)
 npm run mta:chains       # regenerate MTA multi-chain models from the live feed
 npm run mbta:chains      # regenerate MBTA simple-station chains (validated vs MBTA's own guidance)
 npm run check:mbta-chains # prove the MBTA chain generator offline (full-feed fixture)
@@ -73,6 +73,8 @@ npm run mta:ny-inventory  # refresh the data.ny.gov MTA elevator ground-truth sn
 npm run check:mta-ny      # cross-check every modeled MTA elevator vs the data.ny.gov inventory (offline)
 npm run mta:station-ada   # refresh MTA's own station-level ADA accessibility crosswalk (445 complexes)
 npm run check:mta-ada     # prove every partial/inaccessible MTA station carries a real explanation (offline)
+npm run review:status     # station-review walkthrough tracker (103/214 as of 2026-07-17)
+npm run review:queue      # rebuild the review queue (verdicts + hand-added evidence persist)
 npm run typecheck        # tsc --noEmit — run after edits
 npm run db:status        # row counts + latest poll_runs, once Supabase is set up
 npm run site:data && npm run site:serve  # rebuild + preview the departure-board site
@@ -219,7 +221,7 @@ parking lot). A station is accessible only if **every** segment is up.
   pair by railroad; see SPEC.md's railroad section for the feed dossier), and
   (b) the five subway interchanges that touch them (Penn, Grand Central,
   Atlantic, Woodside, Sutphin Blvd–Jamaica) carry subway-side "(LIRR)" chains
-  built only from subway-feed elevators. Fourteen railroad stations have
+  built only from subway-feed elevators. Eighteen railroad stations have
   hand-curated models (`src/catalog/mta-rail-models.ts`, human walk-through
   2026-07-06; Greenwich added 2026-07-10 after a live 218E outage exposed it
   in the generator's review queue — overpass at grade, Track 3 ramp off
@@ -312,8 +314,8 @@ parking lot). A station is accessible only if **every** segment is up.
 - **MBTA joint review pass COMPLETE (2026-07-12): `review-flags.json` is now
   empty.** Every flagged street-alternate and no-guidance elevator was walked
   through with Bryce and resolved into one of four HUMAN-approved lists in
-  `scripts/mbta-chains.mts` (all re-asserted by `check:mbta-chains`, now 18
-  checks): (1) `APPROVED_STREET_ALTERNATES` — 8 elevators (Framingham 50/51,
+  `scripts/mbta-chains.mts` (all re-asserted by `check:mbta-chains`, 20
+  checks as of 2026-07-17): (1) `APPROVED_STREET_ALTERNATES` — 8 elevators (Framingham 50/51,
   Natick 750/751, Ball Square 769, Union Square 771, East Taunton 778/779):
   MBTA names an elevator-free ≤0.3-mi step-free route → sets
   `stepFreeAlternative` + discloses the walk. (2) `DISCLOSED_ALTERNATES` — NEW
@@ -341,12 +343,13 @@ parking lot). A station is accessible only if **every** segment is up.
   ("if what you generate disagrees with what I've told you, then your
   generator is broken") — 9/13 reproduce exactly, the 4 tangled ones
   self-exclude. Output: 115 chains / 72 stations →
-  `src/catalog/mta-rail-data/chains.json` (+ `chains-excluded.json`, 14
-  stations for human review — TfL precedent). **Two-tier ingest**: hand
+  `src/catalog/mta-rail-data/chains.json` (+ `chains-excluded.json`, 9
+  stations still awaiting human review as of 2026-07-17, down from the
+  original 14 — TfL precedent). **Two-tier ingest**: hand
   models stay `curated`; generated models enter as `serving_text` (below
   every human signal; contradictions flag, never clobber; non-assumed, so ▮ +
   SPOF apply). The generator guarantees no station/elevator overlap between
-  tiers. Offline: `npm run check:rail-chains` (50 checks, incl. the
+  tiers. Offline: `npm run check:rail-chains` (60 checks, incl. the
   Chappaqua-148I regression that motivated the whole build). GOTCHA locked in
   the mapper: the feed abbreviates "Tk 3" — the first run's regex missed it
   and minted five FALSE redundant pairs; when touching the mapper, re-scan
@@ -356,17 +359,17 @@ parking lot). A station is accessible only if **every** segment is up.
   CONNECTED COMPONENT of the mode-5 pathway subgraph (`scripts/
   wmata-pathways.mts` — a node-name regex missed ~25%; components can't split
   a 3-level shaft into a false redundant pair). 206 in-station elevators / 98
-  stations; 55 stations modeled + 22 hand-curated
-  (`src/catalog/wmata-models.ts` — Rockville's human-confirmed
-  pedestrian-bridge pair A14X01/X02 as its own chain, plus 21 more stations
-  shipped 2026-07-15 via /liftwatch-station-review batching: no-redundancy
-  ladder-chain shapes across 4 structural groups — direct street↔platform
-  per direction, street/mezzanine-combined per direction, a shared
-  street↔mezzanine prerequisite feeding per-direction platform legs, and
-  straight single-path chains with unusual level names; several elevators
-  upgraded from synthetic to real `UnitName`s by cross-checking
-  `observed-units.json` along the way): side platforms, big
-  transfers, 3-level shafts, corrupt A02 levels, and the
+  stations; **ALL 98 stations now carry models** — 55 generated
+  (`wmata-data/chains.json`) + 43 hand-curated
+  (`src/catalog/wmata-models.ts`, grown 2026-07-13→17 via
+  /liftwatch-station-review from Rockville alone, through the 2026-07-15
+  batch of 21 no-redundancy ladder-chain stations, to the final 22
+  individually-resolved holdouts — see the STATION REVIEW COMPLETE bullet
+  below; several elevators upgraded from synthetic to real `UnitName`s by
+  cross-checking `observed-units.json` along the way). The generator's
+  conservative gates still park 43 stations in `chains-excluded.json` from
+  its OWN output (all now covered by the curated tier instead): side
+  platforms, big transfers, 3-level shafts, corrupt A02 levels, and the
   **observed-units gate** — every UnitName ever seen in the feed
   (`wmata-data/observed-units.json`, `npm run wmata:observed`) must map onto
   exactly one segment with no segment over-subscribed; this caught GTFS
@@ -460,7 +463,8 @@ parking lot). A station is accessible only if **every** segment is up.
 - **CTA's FIRST curated tier (2026-07-15/16, `src/catalog/cta-models.ts`)**:
   CTA has no per-elevator inventory or topology feed at all (structural — see
   the identity-parsing note above), so before this pass every station sat at
-  `assumed` redundancy regardless of real layout. 18 stations now modeled via
+  `assumed` redundancy regardless of real layout. 18 stations modeled in
+  this first pass via
   /liftwatch-station-review: Cermak-McCormick Place (confirmed bookend
   redundant pair) and Diversey (confirmed per-direction pair) individually,
   then "Batch 2" — 15 stations batched by risk (9 single-elevator islands
@@ -537,7 +541,10 @@ parking lot). A station is accessible only if **every** segment is up.
   COUNT list (not topology), snapshotted to
   `src/catalog/cta-data/asap-elevator-counts.md` — cross-checked against every
   count-covered modeled station (7/7 match, 0 mismatches) and used to
-  corroborate the Jackson-Red/Grand/Western models. CTA now 33/46 reviewed.
+  corroborate the Jackson-Red/Grand/Western models. CTA now 39/46 reviewed
+  (as of 2026-07-17 — Roosevelt's Discord-sourced 2-chain model + follow-up
+  4th-elevator correction, the transfer-bridge/rotogate batch, and more; 7
+  pending, all interchange complexes — see HANDOFF.md).
 - **TfL multi-chain models are GENERATED from graph topology, not hand-typed**
   (2026-07-08). Unlike MTA, TfL has no line-served field — only `FromAreas`/
   `ToAreas` area codes. `npm run tfl:chains` (`scripts/tfl-chains.mjs`) treats
@@ -563,12 +570,15 @@ parking lot). A station is accessible only if **every** segment is up.
   lift's `IntermediateAreas` landing counts as a real connectivity node too
   (missed in the first pass — caught by cross-checking live TfL alerts, below
   — King's Cross's Lift-B was wrongly modeled as isolated when it's actually
-  linked to Lift-A/C/D through a shared landing). Result: 151 chains across
-  132 of 201 lift-equipped stations; 85 stations (all recognizable major
-  interchanges — Bank, King's Cross, Paddington, Stratford, Tottenham Court
-  Road, Victoria, Waterloo, and more) are excluded pending a human review
-  pass, same precedent as MTA's 9 hand-authored interchanges (see SPEC.md's
-  TfL section for the full writeup).
+  linked to Lift-A/C/D through a shared landing). Result as of 2026-07-08:
+  151 chains across 132 of 201 lift-equipped stations; after the 2026-07-14
+  ramp/same-level wiring (see the TfL gotcha below), currently 209 chains
+  across 132 stations with 71 stations (74 components) excluded — counts
+  drift with the daily model refresh. The excluded stations (all
+  recognizable major interchanges — Bank, King's Cross, Stratford, Tottenham
+  Court Road, Victoria, Waterloo, and more) await the /liftwatch-station-review
+  walkthrough (71 pending, none started), same precedent as MTA's 9
+  hand-authored interchanges (see SPEC.md's TfL section for the full writeup).
 - **TfL alert-evidence enrichment, progressive by design** (2026-07-08,
   `npm run tfl:alert-evidence` → `src/site/tfl-alert-evidence.ts`): mines
   TfL's own outage alert text — already archived verbatim in
@@ -631,7 +641,7 @@ parking lot). A station is accessible only if **every** segment is up.
   verified `poll:bart:dry`), and let the **Richmond attribution-override be
   REMOVED** (`ATTRIBUTION_OVERRIDES` is now empty; the mechanism stays for a
   future human-confirmed elevator neither hints nor the default can reach).
-  Regressions in `demo:access` (now 45). `matchHints` for the 12 per-direction
+  Regressions in `demo:access`. `matchHints` for the 12 per-direction
   stations: only Milpitas, Hayward, and 12th St.'s "convention center" hint
   are CONFIRMED against a real live advisory; the other 10 are unverified
   guesses at BART's phrasing (built from the outage-options page wording,
@@ -789,8 +799,8 @@ parking lot). A station is accessible only if **every** segment is up.
   **WMATA** = per-elevator ids but the feed only lists broken units (`fair`,
   `inventoryComplete: false`, no single_elevator inference, units discovered
   as they break; station list IS complete via `NormalizedRead.stations`).
-  Since 2026-07-13 WMATA ALSO carries 56 modeled stations with
-  pathways-derived redundancy (see the WMATA bullet in the redundancy
+  Since 2026-07-17 ALL 98 WMATA stations carry access-chain models —
+  pathways-generated + hand-curated (see the WMATA bullets in the redundancy
   section) — an additive accessibility layer that deliberately does NOT flip
   inventoryComplete: ~⅓ of the fleet is garage/parking elevators absent from
   the rail GTFS, so 320 stays the honest denominator.
@@ -803,15 +813,18 @@ parking lot). A station is accessible only if **every** segment is up.
   observed corpus is the regression fixture, `npm run check:cta`, snapshot
   via `npm run cta:observed`). A vague alert ("The elevator at Central")
   falls back to the BARE station id — the pre-identity unit id, so archive
-  history continues unbroken and nothing is guessed. NO chains/redundancy
-  (CTA publishes no inventory or backup guidance — re-verified 2026-07-13:
-  ASAP plan tables are graphical, no per-station roster exists; ASAP's "163
-  existing elevators" (2018) corroborates the 173 staticFleetReference). No
-  `NormalizedRead.stations` (station list not fetched in this MVP pass).
-  Layout research for a future curated-chains pass:
-  `src/catalog/cta-data/STATION-RESEARCH.md` (chicago-L.org, all 42 observed
-  stations, archetype-grouped with a verification order) — walk it with
-  Bryce before modeling anything.
+  history continues unbroken and nothing is guessed. The FEED has no
+  chains/redundancy signal (CTA publishes no inventory or backup guidance —
+  re-verified 2026-07-13: ASAP plan tables are graphical, no per-station
+  roster exists; ASAP's "163 existing elevators" (2018) corroborates the 173
+  staticFleetReference) — redundancy comes entirely from the hand-curated
+  tier (`src/catalog/cta-models.ts`, 39 of 46 queue stations as of
+  2026-07-17; see the CTA curated-tier bullets in the redundancy section).
+  No `NormalizedRead.stations` (station list not fetched in this MVP pass).
+  The research that seeded the curated tier is preserved in
+  `src/catalog/cta-data/STATION-RESEARCH.md` (chicago-L.org, all 42
+  then-observed stations, archetype-grouped) — mostly consumed now; the
+  live tracker is `src/catalog/review/queue.json`.
   WMATA has no live fleet total anywhere (exhaustively verified), so its %
   ranking uses `staticFleetReference` — WMATA's own published "320 elevators"
   figure — as the denominator. It **does** rank (currently ~1.9%\*), but every
@@ -953,7 +966,7 @@ parking lot). A station is accessible only if **every** segment is up.
   — WMATA publishes a return for its categorized symptoms but NOT for the
   open-ended `"Other"` catch-all, so a blank return on an `"Other"`-symptom WMATA
   outage is no longer flagged (it was pushing a spurious "missing predicted
-  return", e.g. Waterfront F04X01). Regressions in `demo:access` (now 69).
+  return", e.g. Waterfront F04X01). Regressions in `demo:access`.
 
 ## Gotchas / deferred
 
@@ -966,7 +979,6 @@ parking lot). A station is accessible only if **every** segment is up.
   redundancy is all curation.
 - **RLS is enabled on every table, no policies** — anon key can do nothing;
   the poller's service_role key bypasses it. Add read-only policies in Phase 2.
-- **No DB yet**: everything is dry-run until Supabase is set up.
 - Feed fetches have 30s timeouts; error text redacts query strings (API keys).
 - `demo:access` is an asserting check (exits non-zero on failure) — run it after
   touching accessibility/attribution/station models.
