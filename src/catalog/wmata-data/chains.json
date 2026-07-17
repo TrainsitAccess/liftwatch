@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-17T11:46:20.409Z",
+  "generatedAt": "2026-07-17T16:20:43.471Z",
   "source": "WMATA GTFS pathways topology (conservative single-platform Street→Mezzanine→Platform ladders)",
   "models": [
     {
@@ -760,38 +760,6 @@
     },
     {
       "systemId": "wmata-dc",
-      "stationExternalId": "E09",
-      "note": "Two elevators connect the street to the mezzanine — either one keeps this leg open. One elevator connects the mezzanine to the platform. A leg served by a single elevator has no backup — an outage there removes the station's step-free route.",
-      "internalNote": "Topology from WMATA GTFS pathways (mode-5 elevator components): Street→Mezzanine: 2 elevators, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS. Slot ids are live UnitNames where observed, synthetic WMATA-<node> otherwise.",
-      "segments": [
-        {
-          "id": "street-mezzanine",
-          "label": "Street to Mezzanine",
-          "elevators": [
-            {
-              "externalId": "WMATA-E09_ELV_E",
-              "label": "College Park-U of Md elevator (Street to Mezzanine)"
-            },
-            {
-              "externalId": "WMATA-E09_ELE_W",
-              "label": "College Park-U of Md elevator (Street to Mezzanine)"
-            }
-          ]
-        },
-        {
-          "id": "mezzanine-platform",
-          "label": "Mezzanine to Platform",
-          "elevators": [
-            {
-              "externalId": "WMATA-E09_MZ_ELV",
-              "label": "College Park-U of Md elevator (Mezzanine to Platform)"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "systemId": "wmata-dc",
       "stationExternalId": "F02",
       "note": "One elevator connects the street to the mezzanine. One elevator connects the mezzanine to the platform. None of these elevators has a backup — if any one is out of service, the station has no step-free route.",
       "internalNote": "Topology from WMATA GTFS pathways (mode-5 elevator components): Street→Mezzanine: 1 elevator, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS. Slot ids are live UnitNames where observed, synthetic WMATA-<node> otherwise.",
@@ -1108,134 +1076,6 @@
     },
     {
       "systemId": "wmata-dc",
-      "stationExternalId": "N01",
-      "note": "Two elevators connect the street to the mezzanine — either one keeps this leg open. One elevator connects the mezzanine to the platform. A leg served by a single elevator has no backup — an outage there removes the station's step-free route.",
-      "internalNote": "Topology from WMATA GTFS pathways (mode-5 elevator components): Street→Mezzanine: 2 elevators, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS. Slot ids are live UnitNames where observed, synthetic WMATA-<node> otherwise.",
-      "segments": [
-        {
-          "id": "street-mezzanine",
-          "label": "Street to Mezzanine",
-          "elevators": [
-            {
-              "externalId": "WMATA-N01_S_PAV_ELE",
-              "label": "McLean elevator (Street to Mezzanine)"
-            },
-            {
-              "externalId": "N01X01",
-              "label": "McLean elevator N01X01 (Street to Mezzanine)"
-            }
-          ]
-        },
-        {
-          "id": "mezzanine-platform",
-          "label": "Mezzanine to Platform",
-          "elevators": [
-            {
-              "externalId": "WMATA-N01_MZ_ELE",
-              "label": "McLean elevator (Mezzanine to Platform)"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "systemId": "wmata-dc",
-      "stationExternalId": "N02",
-      "note": "Two elevators connect the street to the mezzanine — either one keeps this leg open. One elevator connects the mezzanine to the platform. A leg served by a single elevator has no backup — an outage there removes the station's step-free route.",
-      "internalNote": "Topology from WMATA GTFS pathways (mode-5 elevator components): Street→Mezzanine: 2 elevators, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS. Slot ids are live UnitNames where observed, synthetic WMATA-<node> otherwise.",
-      "segments": [
-        {
-          "id": "street-mezzanine",
-          "label": "Street to Mezzanine",
-          "elevators": [
-            {
-              "externalId": "N02X02",
-              "label": "Tysons elevator N02X02 (Street to Mezzanine)"
-            },
-            {
-              "externalId": "N02X03",
-              "label": "Tysons elevator N02X03 (Street to Mezzanine)"
-            }
-          ]
-        },
-        {
-          "id": "mezzanine-platform",
-          "label": "Mezzanine to Platform",
-          "elevators": [
-            {
-              "externalId": "WMATA-N02_MZ_ELV",
-              "label": "Tysons elevator (Mezzanine to Platform)"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "systemId": "wmata-dc",
-      "stationExternalId": "N03",
-      "note": "Two elevators connect the street to the mezzanine — either one keeps this leg open. One elevator connects the mezzanine to the platform. A leg served by a single elevator has no backup — an outage there removes the station's step-free route.",
-      "internalNote": "Topology from WMATA GTFS pathways (mode-5 elevator components): Street→Mezzanine: 2 elevators, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS. Slot ids are live UnitNames where observed, synthetic WMATA-<node> otherwise.",
-      "segments": [
-        {
-          "id": "street-mezzanine",
-          "label": "Street to Mezzanine",
-          "elevators": [
-            {
-              "externalId": "WMATA-N03_S_PAV_ELE",
-              "label": "Greensboro elevator (Street to Mezzanine)"
-            },
-            {
-              "externalId": "N03X02",
-              "label": "Greensboro elevator N03X02 (Street to Mezzanine)"
-            }
-          ]
-        },
-        {
-          "id": "mezzanine-platform",
-          "label": "Mezzanine to Platform",
-          "elevators": [
-            {
-              "externalId": "WMATA-N03_MZ_ELE",
-              "label": "Greensboro elevator (Mezzanine to Platform)"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "systemId": "wmata-dc",
-      "stationExternalId": "N04",
-      "note": "Two elevators connect the street to the mezzanine — either one keeps this leg open. One elevator connects the mezzanine to the platform. A leg served by a single elevator has no backup — an outage there removes the station's step-free route.",
-      "internalNote": "Topology from WMATA GTFS pathways (mode-5 elevator components): Street→Mezzanine: 2 elevators, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS. Slot ids are live UnitNames where observed, synthetic WMATA-<node> otherwise.",
-      "segments": [
-        {
-          "id": "street-mezzanine",
-          "label": "Street to Mezzanine",
-          "elevators": [
-            {
-              "externalId": "WMATA-N04_S_PAV_ELE",
-              "label": "Spring Hill elevator (Street to Mezzanine)"
-            },
-            {
-              "externalId": "WMATA-N04_N_PAV_EL",
-              "label": "Spring Hill elevator (Street to Mezzanine)"
-            }
-          ]
-        },
-        {
-          "id": "mezzanine-platform",
-          "label": "Mezzanine to Platform",
-          "elevators": [
-            {
-              "externalId": "WMATA-N04_MZ_ELV",
-              "label": "Spring Hill elevator (Mezzanine to Platform)"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "systemId": "wmata-dc",
       "stationExternalId": "N06",
       "note": "One elevator connects the street to the mezzanine. One elevator connects the mezzanine to the platform. None of these elevators has a backup — if any one is out of service, the station has no step-free route.",
       "internalNote": "Topology from WMATA GTFS pathways (mode-5 elevator components): Street→Mezzanine: 1 elevator, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS. Slot ids are live UnitNames where observed, synthetic WMATA-<node> otherwise.",
@@ -1257,70 +1097,6 @@
             {
               "externalId": "N06X04",
               "label": "Wiehle-Reston East elevator N06X04 (Mezzanine to Platform)"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "systemId": "wmata-dc",
-      "stationExternalId": "N07",
-      "note": "Two elevators connect the street to the mezzanine — either one keeps this leg open. One elevator connects the mezzanine to the platform. A leg served by a single elevator has no backup — an outage there removes the station's step-free route.",
-      "internalNote": "Topology from WMATA GTFS pathways (mode-5 elevator components): Street→Mezzanine: 2 elevators, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS. Slot ids are live UnitNames where observed, synthetic WMATA-<node> otherwise.",
-      "segments": [
-        {
-          "id": "street-mezzanine",
-          "label": "Street to Mezzanine",
-          "elevators": [
-            {
-              "externalId": "WMATA-N07_N_PAV_ELV",
-              "label": "Reston Town Center elevator (Street to Mezzanine)"
-            },
-            {
-              "externalId": "WMATA-N07_S_PAV_ELE",
-              "label": "Reston Town Center elevator (Street to Mezzanine)"
-            }
-          ]
-        },
-        {
-          "id": "mezzanine-platform",
-          "label": "Mezzanine to Platform",
-          "elevators": [
-            {
-              "externalId": "WMATA-N07_MZ_ELE",
-              "label": "Reston Town Center elevator (Mezzanine to Platform)"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "systemId": "wmata-dc",
-      "stationExternalId": "N08",
-      "note": "Two elevators connect the street to the mezzanine — either one keeps this leg open. One elevator connects the mezzanine to the platform. A leg served by a single elevator has no backup — an outage there removes the station's step-free route.",
-      "internalNote": "Topology from WMATA GTFS pathways (mode-5 elevator components): Street→Mezzanine: 2 elevators, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS. Slot ids are live UnitNames where observed, synthetic WMATA-<node> otherwise.",
-      "segments": [
-        {
-          "id": "street-mezzanine",
-          "label": "Street to Mezzanine",
-          "elevators": [
-            {
-              "externalId": "WMATA-N08_S_PAV_ELV",
-              "label": "Herndon elevator (Street to Mezzanine)"
-            },
-            {
-              "externalId": "WMATA-N08_N_PAV_ELV",
-              "label": "Herndon elevator (Street to Mezzanine)"
-            }
-          ]
-        },
-        {
-          "id": "mezzanine-platform",
-          "label": "Mezzanine to Platform",
-          "elevators": [
-            {
-              "externalId": "WMATA-N08_MZ_ELV",
-              "label": "Herndon elevator (Mezzanine to Platform)"
             }
           ]
         }
@@ -1371,38 +1147,6 @@
             {
               "externalId": "WMATA-N11_MZ_ELV",
               "label": "Loudoun Gateway elevator (Mezzanine to Platform)"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "systemId": "wmata-dc",
-      "stationExternalId": "N12",
-      "note": "Two elevators connect the street to the mezzanine — either one keeps this leg open. One elevator connects the mezzanine to the platform. A leg served by a single elevator has no backup — an outage there removes the station's step-free route.",
-      "internalNote": "Topology from WMATA GTFS pathways (mode-5 elevator components): Street→Mezzanine: 2 elevators, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS. Slot ids are live UnitNames where observed, synthetic WMATA-<node> otherwise.",
-      "segments": [
-        {
-          "id": "street-mezzanine",
-          "label": "Street to Mezzanine",
-          "elevators": [
-            {
-              "externalId": "WMATA-N12_S_PAV_ELV",
-              "label": "Ashburn elevator (Street to Mezzanine)"
-            },
-            {
-              "externalId": "WMATA-N12_N_PAV_ELV",
-              "label": "Ashburn elevator (Street to Mezzanine)"
-            }
-          ]
-        },
-        {
-          "id": "mezzanine-platform",
-          "label": "Mezzanine to Platform",
-          "elevators": [
-            {
-              "externalId": "WMATA-N12_MZ_ELV",
-              "label": "Ashburn elevator (Mezzanine to Platform)"
             }
           ]
         }

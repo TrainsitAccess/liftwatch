@@ -72,11 +72,24 @@ const modelOf = (st: string) => generatedByStation.get(st)?.[0];
   ok(!elevatorRedundant(e04, "E04X01"), "E04 Columbia Heights: street elevator E04X01 is sole access");
   const a08 = modelOf("A08")!;
   ok(allElevators(a08).every((e) => elevatorRedundant(a08, e.externalId)), "A08 Friendship Heights: all four elevators redundant (2+2)");
-  const e09 = modelOf("E09")!;
-  const e09Street = e09.segments.find((s) => s.id === "street-mezzanine")!;
-  const e09Plat = e09.segments.find((s) => s.id === "mezzanine-platform")!;
-  ok(e09Street.elevators.length === 2 && e09Street.elevators.every((e) => elevatorRedundant(e09, e.externalId)), "E09 College Park: street pair redundant");
-  ok(e09Plat.elevators.length === 1 && !elevatorRedundant(e09, e09Plat.elevators[0]!.externalId), "E09 College Park: platform elevator sole access");
+}
+
+console.log("\n  Grade-separated stations (2026-07-17 audit): two opposite-side entrances are NOT redundant — curated per-entrance, no false street→mezzanine backup:");
+{
+  const GRADE_SEP = ["N01", "N02", "N03", "N04", "N07", "N08", "N12", "E09"];
+  for (const st of GRADE_SEP) {
+    ok(!generatedByStation.has(st), `${st}: moved out of the auto-generated tier (grade-separated-entrances)`);
+    ok(excludedReason.get(st) === "grade-separated-entrances", `${st}: excluded with reason grade-separated-entrances`);
+    const chains = WMATA_STATION_MODELS.filter((m) => m.stationExternalId === st);
+    ok(chains.length === 2, `${st}: curated as two per-entrance chains`);
+    // Every elevator at the station is sole-access — a single outage must sever
+    // its chain (the whole point of the fix: no cross-entrance redundancy).
+    const anyRedundant = chains.some((c) => allElevators(c).some((e) => elevatorRedundant(c, e.externalId)));
+    ok(!anyRedundant, `${st}: no elevator is modeled redundant (single outage strands one side)`);
+    // The mezzanine→platform elevator is shared: the same id appears in both chains.
+    const platIds = chains.map((c) => c.segments.find((s) => s.id === "mezzanine-platform")!.elevators[0]!.externalId);
+    ok(platIds[0] === platIds[1], `${st}: both entrances share one mezzanine→platform elevator`);
+  }
 }
 
 console.log("\n  Rockville hand model (human-confirmed 2026-07-13 — the bridge pair must be conveyed):");

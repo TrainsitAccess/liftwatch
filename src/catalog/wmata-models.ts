@@ -1754,4 +1754,192 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       { id: "mezzanine-platform", label: "Mezzanine to platform", elevators: [{ externalId: "WMATA-A02_ELE2", label: "Farragut North elevator (mezzanine to platform) — never yet observed live, synthetic id" }] },
     ],
   },
+  // ── Grade-separated stations: two entrances on opposite sides of a highway
+  // or rail corridor, each with its own street elevator, sharing one
+  // mezzanine/concourse→platform elevator. GTFS treats the two street
+  // elevators as a redundant street→mezzanine pair, but they are NOT backups
+  // for each other: a rider cannot cross between the entrances step-free at
+  // street level, so one street elevator failing strands riders on that side.
+  // Modeled per-entrance (no cross-redundancy) so a single outage warns
+  // correctly; the note discloses that the far entrance is still usable IF the
+  // rider can reach the other side. Moved out of the auto-generated tier by
+  // CURATED_GRADE_SEPARATED in scripts/wmata-pathways.mts. Audited + approved
+  // 2026-07-17 (see wmata-data/COVERAGE-AUDIT.md); confidence 8/10 — geometry
+  // confirmed for Spring Hill & McLean via Wikipedia, identical corridor design.
+  {
+    systemId: SYSTEM,
+    stationExternalId: "N01",
+    chainLabel: " (south entrance)",
+    note: "Reaching the platform from the south entrance takes two elevators in a row — a street-to-mezzanine elevator at this entrance, then a shared mezzanine-to-platform elevator — and neither has a backup. If this entrance's street elevator is out of service, this entrance is not step-free. The station's north-side entrance has its own street elevator, but it is on the far side of Route 123 (Chain Bridge Road) with no step-free way to cross at the station, so it is not a backup for this one — you could still reach the platform through it only if you can get to the other side. If the shared mezzanine-to-platform elevator is out of service, neither entrance is step-free.",
+    internalNote: "Per-entrance remodel of a grade-separated station whose GTFS-derived street→mezzanine redundancy is false (the two entrances are across Route 123 (Chain Bridge Road), unreachable from each other step-free at street level). Structure: this entrance's sole street→mezzanine elevator + the shared mezzanine→platform elevator (WMATA-N01_MZ_ELE, repeated in the other entrance's chain). Street elevator never observed live, synthetic id. Audited + human-approved 2026-07-17 via /liftwatch-station-review (see wmata-data/COVERAGE-AUDIT.md); confidence 8/10.",
+    segments: [
+      { id: "street-mezzanine", label: "Street to mezzanine (south entrance)", elevators: [{ externalId: "WMATA-N01_S_PAV_ELE", label: "McLean south entrance elevator (street to mezzanine) — never yet observed live, synthetic id" }] },
+      { id: "mezzanine-platform", label: "Mezzanine to platform (shared)", elevators: [{ externalId: "WMATA-N01_MZ_ELE", label: "McLean shared elevator (mezzanine to platform) — never yet observed live, synthetic id" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "N01",
+    chainLabel: " (north entrance)",
+    note: "Reaching the platform from the north entrance takes two elevators in a row — a street-to-mezzanine elevator at this entrance, then a shared mezzanine-to-platform elevator — and neither has a backup. If this entrance's street elevator is out of service, this entrance is not step-free. The station's south-side entrance has its own street elevator, but it is on the far side of Route 123 (Chain Bridge Road) with no step-free way to cross at the station, so it is not a backup for this one — you could still reach the platform through it only if you can get to the other side. If the shared mezzanine-to-platform elevator is out of service, neither entrance is step-free.",
+    internalNote: "Per-entrance remodel of a grade-separated station whose GTFS-derived street→mezzanine redundancy is false (the two entrances are across Route 123 (Chain Bridge Road), unreachable from each other step-free at street level). Structure: this entrance's sole street→mezzanine elevator + the shared mezzanine→platform elevator (WMATA-N01_MZ_ELE, repeated in the other entrance's chain). Street elevator id is a real observed UnitName. This entrance's side is inferred by elimination (a median station has exactly two opposite pavilions; the other elevator is the confirmed south pavilion). Audited + human-approved 2026-07-17 via /liftwatch-station-review (see wmata-data/COVERAGE-AUDIT.md); confidence 8/10.",
+    segments: [
+      { id: "street-mezzanine", label: "Street to mezzanine (north entrance)", elevators: [{ externalId: "N01X01", label: "McLean north entrance elevator (street to mezzanine)" }] },
+      { id: "mezzanine-platform", label: "Mezzanine to platform (shared)", elevators: [{ externalId: "WMATA-N01_MZ_ELE", label: "McLean shared elevator (mezzanine to platform) — never yet observed live, synthetic id" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "N02",
+    chainLabel: " (one entrance)",
+    note: "Reaching the platform from one entrance takes two elevators in a row — a street-to-mezzanine elevator at this entrance, then a shared mezzanine-to-platform elevator — and neither has a backup. If this entrance's street elevator is out of service, this entrance is not step-free. The station's the other entrance has its own street elevator, but it is on the far side of the highway (Route 123) with no step-free way to cross at the station, so it is not a backup for this one — you could still reach the platform through it only if you can get to the other side. If the shared mezzanine-to-platform elevator is out of service, neither entrance is step-free.",
+    internalNote: "Per-entrance remodel of a grade-separated station whose GTFS-derived street→mezzanine redundancy is false (the two entrances are across the highway (Route 123), unreachable from each other step-free at street level). Structure: this entrance's sole street→mezzanine elevator + the shared mezzanine→platform elevator (WMATA-N02_MZ_ELV, repeated in the other entrance's chain). Street elevator id is a real observed UnitName. Audited + human-approved 2026-07-17 via /liftwatch-station-review (see wmata-data/COVERAGE-AUDIT.md); confidence 8/10.",
+    segments: [
+      { id: "street-mezzanine", label: "Street to mezzanine (one entrance)", elevators: [{ externalId: "N02X02", label: "Tysons one entrance elevator (street to mezzanine)" }] },
+      { id: "mezzanine-platform", label: "Mezzanine to platform (shared)", elevators: [{ externalId: "WMATA-N02_MZ_ELV", label: "Tysons shared elevator (mezzanine to platform) — never yet observed live, synthetic id" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "N02",
+    chainLabel: " (the other entrance)",
+    note: "Reaching the platform from the other entrance takes two elevators in a row — a street-to-mezzanine elevator at this entrance, then a shared mezzanine-to-platform elevator — and neither has a backup. If this entrance's street elevator is out of service, this entrance is not step-free. The station's one entrance has its own street elevator, but it is on the far side of the highway (Route 123) with no step-free way to cross at the station, so it is not a backup for this one — you could still reach the platform through it only if you can get to the other side. If the shared mezzanine-to-platform elevator is out of service, neither entrance is step-free.",
+    internalNote: "Per-entrance remodel of a grade-separated station whose GTFS-derived street→mezzanine redundancy is false (the two entrances are across the highway (Route 123), unreachable from each other step-free at street level). Structure: this entrance's sole street→mezzanine elevator + the shared mezzanine→platform elevator (WMATA-N02_MZ_ELV, repeated in the other entrance's chain). Street elevator id is a real observed UnitName. Audited + human-approved 2026-07-17 via /liftwatch-station-review (see wmata-data/COVERAGE-AUDIT.md); confidence 8/10.",
+    segments: [
+      { id: "street-mezzanine", label: "Street to mezzanine (the other entrance)", elevators: [{ externalId: "N02X03", label: "Tysons the other entrance elevator (street to mezzanine)" }] },
+      { id: "mezzanine-platform", label: "Mezzanine to platform (shared)", elevators: [{ externalId: "WMATA-N02_MZ_ELV", label: "Tysons shared elevator (mezzanine to platform) — never yet observed live, synthetic id" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "N03",
+    chainLabel: " (south entrance)",
+    note: "Reaching the platform from the south entrance takes two elevators in a row — a street-to-mezzanine elevator at this entrance, then a shared mezzanine-to-platform elevator — and neither has a backup. If this entrance's street elevator is out of service, this entrance is not step-free. The station's north-side entrance has its own street elevator, but it is on the far side of Route 7 (Leesburg Pike) with no step-free way to cross at the station, so it is not a backup for this one — you could still reach the platform through it only if you can get to the other side. If the shared mezzanine-to-platform elevator is out of service, neither entrance is step-free.",
+    internalNote: "Per-entrance remodel of a grade-separated station whose GTFS-derived street→mezzanine redundancy is false (the two entrances are across Route 7 (Leesburg Pike), unreachable from each other step-free at street level). Structure: this entrance's sole street→mezzanine elevator + the shared mezzanine→platform elevator (WMATA-N03_MZ_ELE, repeated in the other entrance's chain). Street elevator never observed live, synthetic id. Audited + human-approved 2026-07-17 via /liftwatch-station-review (see wmata-data/COVERAGE-AUDIT.md); confidence 8/10.",
+    segments: [
+      { id: "street-mezzanine", label: "Street to mezzanine (south entrance)", elevators: [{ externalId: "WMATA-N03_S_PAV_ELE", label: "Greensboro south entrance elevator (street to mezzanine) — never yet observed live, synthetic id" }] },
+      { id: "mezzanine-platform", label: "Mezzanine to platform (shared)", elevators: [{ externalId: "WMATA-N03_MZ_ELE", label: "Greensboro shared elevator (mezzanine to platform) — never yet observed live, synthetic id" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "N03",
+    chainLabel: " (north entrance)",
+    note: "Reaching the platform from the north entrance takes two elevators in a row — a street-to-mezzanine elevator at this entrance, then a shared mezzanine-to-platform elevator — and neither has a backup. If this entrance's street elevator is out of service, this entrance is not step-free. The station's south-side entrance has its own street elevator, but it is on the far side of Route 7 (Leesburg Pike) with no step-free way to cross at the station, so it is not a backup for this one — you could still reach the platform through it only if you can get to the other side. If the shared mezzanine-to-platform elevator is out of service, neither entrance is step-free.",
+    internalNote: "Per-entrance remodel of a grade-separated station whose GTFS-derived street→mezzanine redundancy is false (the two entrances are across Route 7 (Leesburg Pike), unreachable from each other step-free at street level). Structure: this entrance's sole street→mezzanine elevator + the shared mezzanine→platform elevator (WMATA-N03_MZ_ELE, repeated in the other entrance's chain). Street elevator id is a real observed UnitName. This entrance's side is inferred by elimination (a median station has exactly two opposite pavilions; the other elevator is the confirmed south pavilion). Audited + human-approved 2026-07-17 via /liftwatch-station-review (see wmata-data/COVERAGE-AUDIT.md); confidence 8/10.",
+    segments: [
+      { id: "street-mezzanine", label: "Street to mezzanine (north entrance)", elevators: [{ externalId: "N03X02", label: "Greensboro north entrance elevator (street to mezzanine)" }] },
+      { id: "mezzanine-platform", label: "Mezzanine to platform (shared)", elevators: [{ externalId: "WMATA-N03_MZ_ELE", label: "Greensboro shared elevator (mezzanine to platform) — never yet observed live, synthetic id" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "N04",
+    chainLabel: " (south entrance)",
+    note: "Reaching the platform from the south entrance takes two elevators in a row — a street-to-mezzanine elevator at this entrance, then a shared mezzanine-to-platform elevator — and neither has a backup. If this entrance's street elevator is out of service, this entrance is not step-free. The station's north-side entrance has its own street elevator, but it is on the far side of Route 7 (Leesburg Pike) with no step-free way to cross at the station, so it is not a backup for this one — you could still reach the platform through it only if you can get to the other side. If the shared mezzanine-to-platform elevator is out of service, neither entrance is step-free.",
+    internalNote: "Per-entrance remodel of a grade-separated station whose GTFS-derived street→mezzanine redundancy is false (the two entrances are across Route 7 (Leesburg Pike), unreachable from each other step-free at street level). Structure: this entrance's sole street→mezzanine elevator + the shared mezzanine→platform elevator (WMATA-N04_MZ_ELV, repeated in the other entrance's chain). Street elevator never observed live, synthetic id. Audited + human-approved 2026-07-17 via /liftwatch-station-review (see wmata-data/COVERAGE-AUDIT.md); confidence 8/10.",
+    segments: [
+      { id: "street-mezzanine", label: "Street to mezzanine (south entrance)", elevators: [{ externalId: "WMATA-N04_S_PAV_ELE", label: "Spring Hill south entrance elevator (street to mezzanine) — never yet observed live, synthetic id" }] },
+      { id: "mezzanine-platform", label: "Mezzanine to platform (shared)", elevators: [{ externalId: "WMATA-N04_MZ_ELV", label: "Spring Hill shared elevator (mezzanine to platform) — never yet observed live, synthetic id" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "N04",
+    chainLabel: " (north entrance)",
+    note: "Reaching the platform from the north entrance takes two elevators in a row — a street-to-mezzanine elevator at this entrance, then a shared mezzanine-to-platform elevator — and neither has a backup. If this entrance's street elevator is out of service, this entrance is not step-free. The station's south-side entrance has its own street elevator, but it is on the far side of Route 7 (Leesburg Pike) with no step-free way to cross at the station, so it is not a backup for this one — you could still reach the platform through it only if you can get to the other side. If the shared mezzanine-to-platform elevator is out of service, neither entrance is step-free.",
+    internalNote: "Per-entrance remodel of a grade-separated station whose GTFS-derived street→mezzanine redundancy is false (the two entrances are across Route 7 (Leesburg Pike), unreachable from each other step-free at street level). Structure: this entrance's sole street→mezzanine elevator + the shared mezzanine→platform elevator (WMATA-N04_MZ_ELV, repeated in the other entrance's chain). Street elevator never observed live, synthetic id. Audited + human-approved 2026-07-17 via /liftwatch-station-review (see wmata-data/COVERAGE-AUDIT.md); confidence 8/10.",
+    segments: [
+      { id: "street-mezzanine", label: "Street to mezzanine (north entrance)", elevators: [{ externalId: "WMATA-N04_N_PAV_EL", label: "Spring Hill north entrance elevator (street to mezzanine) — never yet observed live, synthetic id" }] },
+      { id: "mezzanine-platform", label: "Mezzanine to platform (shared)", elevators: [{ externalId: "WMATA-N04_MZ_ELV", label: "Spring Hill shared elevator (mezzanine to platform) — never yet observed live, synthetic id" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "N07",
+    chainLabel: " (north entrance)",
+    note: "Reaching the platform from the north entrance takes two elevators in a row — a street-to-mezzanine elevator at this entrance, then a shared mezzanine-to-platform elevator — and neither has a backup. If this entrance's street elevator is out of service, this entrance is not step-free. The station's south-side entrance has its own street elevator, but it is on the far side of the Dulles Toll Road corridor with no step-free way to cross at the station, so it is not a backup for this one — you could still reach the platform through it only if you can get to the other side. If the shared mezzanine-to-platform elevator is out of service, neither entrance is step-free.",
+    internalNote: "Per-entrance remodel of a grade-separated station whose GTFS-derived street→mezzanine redundancy is false (the two entrances are across the Dulles Toll Road corridor, unreachable from each other step-free at street level). Structure: this entrance's sole street→mezzanine elevator + the shared mezzanine→platform elevator (WMATA-N07_MZ_ELE, repeated in the other entrance's chain). Street elevator never observed live, synthetic id. Audited + human-approved 2026-07-17 via /liftwatch-station-review (see wmata-data/COVERAGE-AUDIT.md); confidence 8/10.",
+    segments: [
+      { id: "street-mezzanine", label: "Street to mezzanine (north entrance)", elevators: [{ externalId: "WMATA-N07_N_PAV_ELV", label: "Reston Town Center north entrance elevator (street to mezzanine) — never yet observed live, synthetic id" }] },
+      { id: "mezzanine-platform", label: "Mezzanine to platform (shared)", elevators: [{ externalId: "WMATA-N07_MZ_ELE", label: "Reston Town Center shared elevator (mezzanine to platform) — never yet observed live, synthetic id" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "N07",
+    chainLabel: " (south entrance)",
+    note: "Reaching the platform from the south entrance takes two elevators in a row — a street-to-mezzanine elevator at this entrance, then a shared mezzanine-to-platform elevator — and neither has a backup. If this entrance's street elevator is out of service, this entrance is not step-free. The station's north-side entrance has its own street elevator, but it is on the far side of the Dulles Toll Road corridor with no step-free way to cross at the station, so it is not a backup for this one — you could still reach the platform through it only if you can get to the other side. If the shared mezzanine-to-platform elevator is out of service, neither entrance is step-free.",
+    internalNote: "Per-entrance remodel of a grade-separated station whose GTFS-derived street→mezzanine redundancy is false (the two entrances are across the Dulles Toll Road corridor, unreachable from each other step-free at street level). Structure: this entrance's sole street→mezzanine elevator + the shared mezzanine→platform elevator (WMATA-N07_MZ_ELE, repeated in the other entrance's chain). Street elevator never observed live, synthetic id. Audited + human-approved 2026-07-17 via /liftwatch-station-review (see wmata-data/COVERAGE-AUDIT.md); confidence 8/10.",
+    segments: [
+      { id: "street-mezzanine", label: "Street to mezzanine (south entrance)", elevators: [{ externalId: "WMATA-N07_S_PAV_ELE", label: "Reston Town Center south entrance elevator (street to mezzanine) — never yet observed live, synthetic id" }] },
+      { id: "mezzanine-platform", label: "Mezzanine to platform (shared)", elevators: [{ externalId: "WMATA-N07_MZ_ELE", label: "Reston Town Center shared elevator (mezzanine to platform) — never yet observed live, synthetic id" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "N08",
+    chainLabel: " (south entrance)",
+    note: "Reaching the platform from the south entrance takes two elevators in a row — a street-to-mezzanine elevator at this entrance, then a shared mezzanine-to-platform elevator — and neither has a backup. If this entrance's street elevator is out of service, this entrance is not step-free. The station's north-side entrance has its own street elevator, but it is on the far side of the Dulles Toll Road corridor with no step-free way to cross at the station, so it is not a backup for this one — you could still reach the platform through it only if you can get to the other side. If the shared mezzanine-to-platform elevator is out of service, neither entrance is step-free.",
+    internalNote: "Per-entrance remodel of a grade-separated station whose GTFS-derived street→mezzanine redundancy is false (the two entrances are across the Dulles Toll Road corridor, unreachable from each other step-free at street level). Structure: this entrance's sole street→mezzanine elevator + the shared mezzanine→platform elevator (WMATA-N08_MZ_ELV, repeated in the other entrance's chain). Street elevator never observed live, synthetic id. Audited + human-approved 2026-07-17 via /liftwatch-station-review (see wmata-data/COVERAGE-AUDIT.md); confidence 8/10.",
+    segments: [
+      { id: "street-mezzanine", label: "Street to mezzanine (south entrance)", elevators: [{ externalId: "WMATA-N08_S_PAV_ELV", label: "Herndon south entrance elevator (street to mezzanine) — never yet observed live, synthetic id" }] },
+      { id: "mezzanine-platform", label: "Mezzanine to platform (shared)", elevators: [{ externalId: "WMATA-N08_MZ_ELV", label: "Herndon shared elevator (mezzanine to platform) — never yet observed live, synthetic id" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "N08",
+    chainLabel: " (north entrance)",
+    note: "Reaching the platform from the north entrance takes two elevators in a row — a street-to-mezzanine elevator at this entrance, then a shared mezzanine-to-platform elevator — and neither has a backup. If this entrance's street elevator is out of service, this entrance is not step-free. The station's south-side entrance has its own street elevator, but it is on the far side of the Dulles Toll Road corridor with no step-free way to cross at the station, so it is not a backup for this one — you could still reach the platform through it only if you can get to the other side. If the shared mezzanine-to-platform elevator is out of service, neither entrance is step-free.",
+    internalNote: "Per-entrance remodel of a grade-separated station whose GTFS-derived street→mezzanine redundancy is false (the two entrances are across the Dulles Toll Road corridor, unreachable from each other step-free at street level). Structure: this entrance's sole street→mezzanine elevator + the shared mezzanine→platform elevator (WMATA-N08_MZ_ELV, repeated in the other entrance's chain). Street elevator never observed live, synthetic id. Audited + human-approved 2026-07-17 via /liftwatch-station-review (see wmata-data/COVERAGE-AUDIT.md); confidence 8/10.",
+    segments: [
+      { id: "street-mezzanine", label: "Street to mezzanine (north entrance)", elevators: [{ externalId: "WMATA-N08_N_PAV_ELV", label: "Herndon north entrance elevator (street to mezzanine) — never yet observed live, synthetic id" }] },
+      { id: "mezzanine-platform", label: "Mezzanine to platform (shared)", elevators: [{ externalId: "WMATA-N08_MZ_ELV", label: "Herndon shared elevator (mezzanine to platform) — never yet observed live, synthetic id" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "N12",
+    chainLabel: " (south entrance)",
+    note: "Reaching the platform from the south entrance takes two elevators in a row — a street-to-mezzanine elevator at this entrance, then a shared mezzanine-to-platform elevator — and neither has a backup. If this entrance's street elevator is out of service, this entrance is not step-free. The station's north-side entrance has its own street elevator, but it is on the far side of the Dulles Greenway corridor with no step-free way to cross at the station, so it is not a backup for this one — you could still reach the platform through it only if you can get to the other side. If the shared mezzanine-to-platform elevator is out of service, neither entrance is step-free.",
+    internalNote: "Per-entrance remodel of a grade-separated station whose GTFS-derived street→mezzanine redundancy is false (the two entrances are across the Dulles Greenway corridor, unreachable from each other step-free at street level). Structure: this entrance's sole street→mezzanine elevator + the shared mezzanine→platform elevator (WMATA-N12_MZ_ELV, repeated in the other entrance's chain). Street elevator never observed live, synthetic id. Audited + human-approved 2026-07-17 via /liftwatch-station-review (see wmata-data/COVERAGE-AUDIT.md); confidence 8/10.",
+    segments: [
+      { id: "street-mezzanine", label: "Street to mezzanine (south entrance)", elevators: [{ externalId: "WMATA-N12_S_PAV_ELV", label: "Ashburn south entrance elevator (street to mezzanine) — never yet observed live, synthetic id" }] },
+      { id: "mezzanine-platform", label: "Mezzanine to platform (shared)", elevators: [{ externalId: "WMATA-N12_MZ_ELV", label: "Ashburn shared elevator (mezzanine to platform) — never yet observed live, synthetic id" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "N12",
+    chainLabel: " (north entrance)",
+    note: "Reaching the platform from the north entrance takes two elevators in a row — a street-to-mezzanine elevator at this entrance, then a shared mezzanine-to-platform elevator — and neither has a backup. If this entrance's street elevator is out of service, this entrance is not step-free. The station's south-side entrance has its own street elevator, but it is on the far side of the Dulles Greenway corridor with no step-free way to cross at the station, so it is not a backup for this one — you could still reach the platform through it only if you can get to the other side. If the shared mezzanine-to-platform elevator is out of service, neither entrance is step-free.",
+    internalNote: "Per-entrance remodel of a grade-separated station whose GTFS-derived street→mezzanine redundancy is false (the two entrances are across the Dulles Greenway corridor, unreachable from each other step-free at street level). Structure: this entrance's sole street→mezzanine elevator + the shared mezzanine→platform elevator (WMATA-N12_MZ_ELV, repeated in the other entrance's chain). Street elevator never observed live, synthetic id. Audited + human-approved 2026-07-17 via /liftwatch-station-review (see wmata-data/COVERAGE-AUDIT.md); confidence 8/10.",
+    segments: [
+      { id: "street-mezzanine", label: "Street to mezzanine (north entrance)", elevators: [{ externalId: "WMATA-N12_N_PAV_ELV", label: "Ashburn north entrance elevator (street to mezzanine) — never yet observed live, synthetic id" }] },
+      { id: "mezzanine-platform", label: "Mezzanine to platform (shared)", elevators: [{ externalId: "WMATA-N12_MZ_ELV", label: "Ashburn shared elevator (mezzanine to platform) — never yet observed live, synthetic id" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "E09",
+    chainLabel: " (east entrance)",
+    note: "Reaching the platform from the east entrance takes two elevators in a row — a street-to-mezzanine elevator at this entrance, then a shared mezzanine-to-platform elevator — and neither has a backup. If this entrance's street elevator is out of service, this entrance is not step-free. The station's west-side entrance has its own street elevator, but it is on the far side of the railroad tracks with no step-free way to cross at the station, so it is not a backup for this one — you could still reach the platform through it only if you can get to the other side. If the shared mezzanine-to-platform elevator is out of service, neither entrance is step-free.",
+    internalNote: "Per-entrance remodel of a grade-separated station whose GTFS-derived street→mezzanine redundancy is false (the two entrances are across the railroad tracks, unreachable from each other step-free at street level). Structure: this entrance's sole street→mezzanine elevator + the shared mezzanine→platform elevator (WMATA-E09_MZ_ELV, repeated in the other entrance's chain). Street elevator never observed live, synthetic id. Audited + human-approved 2026-07-17 via /liftwatch-station-review (see wmata-data/COVERAGE-AUDIT.md); confidence 8/10.",
+    segments: [
+      { id: "street-mezzanine", label: "Street to mezzanine (east entrance)", elevators: [{ externalId: "WMATA-E09_ELV_E", label: "College Park-U of Md east entrance elevator (street to mezzanine) — never yet observed live, synthetic id" }] },
+      { id: "mezzanine-platform", label: "Mezzanine to platform (shared)", elevators: [{ externalId: "WMATA-E09_MZ_ELV", label: "College Park-U of Md shared elevator (mezzanine to platform) — never yet observed live, synthetic id" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "E09",
+    chainLabel: " (west entrance)",
+    note: "Reaching the platform from the west entrance takes two elevators in a row — a street-to-mezzanine elevator at this entrance, then a shared mezzanine-to-platform elevator — and neither has a backup. If this entrance's street elevator is out of service, this entrance is not step-free. The station's east-side entrance has its own street elevator, but it is on the far side of the railroad tracks with no step-free way to cross at the station, so it is not a backup for this one — you could still reach the platform through it only if you can get to the other side. If the shared mezzanine-to-platform elevator is out of service, neither entrance is step-free.",
+    internalNote: "Per-entrance remodel of a grade-separated station whose GTFS-derived street→mezzanine redundancy is false (the two entrances are across the railroad tracks, unreachable from each other step-free at street level). Structure: this entrance's sole street→mezzanine elevator + the shared mezzanine→platform elevator (WMATA-E09_MZ_ELV, repeated in the other entrance's chain). Street elevator never observed live, synthetic id. Audited + human-approved 2026-07-17 via /liftwatch-station-review (see wmata-data/COVERAGE-AUDIT.md); confidence 8/10.",
+    segments: [
+      { id: "street-mezzanine", label: "Street to mezzanine (west entrance)", elevators: [{ externalId: "WMATA-E09_ELE_W", label: "College Park-U of Md west entrance elevator (street to mezzanine) — never yet observed live, synthetic id" }] },
+      { id: "mezzanine-platform", label: "Mezzanine to platform (shared)", elevators: [{ externalId: "WMATA-E09_MZ_ELV", label: "College Park-U of Md shared elevator (mezzanine to platform) — never yet observed live, synthetic id" }] },
+    ],
+  },
 ];

@@ -261,6 +261,29 @@ interface Unit { externalId: string; station: string; stationName: string; descr
 const units: Unit[] = [];
 const excluded: { station: string; name: string; reason: string; detail: string; levels: string[] }[] = [];
 
+// Human-reviewed stations that PASS the structural gates but whose auto-model
+// is nonetheless wrong, so they are hand-curated in wmata-models.ts instead.
+// The generator can't see this from GTFS alone (pathways don't encode which
+// side of a highway/rail corridor an entrance is on), so it's a manual list —
+// the street/entrance analog of the (4) side-platforms gate. These stations
+// have two street-entrance elevators GTFS treats as a redundant street→
+// mezzanine pair, but the entrances sit on OPPOSITE sides of a highway or rail
+// corridor with no step-free crossing at street level: one elevator failing
+// strands riders on that side, so the pair is NOT redundant. Confirmed by a
+// 2026-07-17 audit (see wmata-data/COVERAGE-AUDIT.md); curated per-entrance in
+// wmata-models.ts. Keep this list and the curated tier in sync — a code here
+// with no curated model would leave the station unmodeled.
+const CURATED_GRADE_SEPARATED: Record<string, string> = {
+  N01: "McLean — Silver Line median, N/S pavilions across the Dulles Access Rd",
+  N02: "Tysons — Silver Line median, N/S pavilions across Rte 123",
+  N03: "Greensboro — Silver Line median, N/S pavilions across Rte 7",
+  N04: "Spring Hill — Silver Line median, N/S pavilions across Rte 7",
+  N07: "Reston Town Center — Silver Line median, N/S pavilions across the Dulles corridor",
+  N08: "Herndon — Silver Line median, N/S pavilions across the Dulles corridor",
+  N12: "Ashburn — Silver Line median, N/S pavilions across the Dulles Greenway",
+  E09: "College Park-U of Md — island platform, entrances both sides of the rail corridor",
+};
+
 function nameOf(st: string) { return stationName.get(`STN_${st}`) ?? stationName.get(st) ?? st; }
 function exclude(st: string, reason: string, detail: string, levels: string[]) {
   excluded.push({ station: st, name: nameOf(st), reason, detail, levels });
@@ -277,6 +300,13 @@ function exclude(st: string, reason: string, detail: string, levels: string[]) {
 
 for (const [st, els] of [...byStation.entries()].sort()) {
   const name = nameOf(st);
+  // (0) human-reviewed grade-separated stations: hand-curated in wmata-models.ts
+  //     because their GTFS-derived street→mezzanine redundancy is false (see the
+  //     CURATED_GRADE_SEPARATED note above).
+  if (CURATED_GRADE_SEPARATED[st]) {
+    exclude(st, "grade-separated-entrances", CURATED_GRADE_SEPARATED[st], [...new Set(els.flatMap((e) => e.levels))]);
+    continue;
+  }
   // (1) corruption guard: any elevator node whose level_id belongs to a DIFFERENT
   //     station (live-observed at A02, whose nodes point at A03's levels).
   const corrupt = els.some((e) => e.nodes.some((n) => {

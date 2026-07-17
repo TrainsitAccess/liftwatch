@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-17T11:46:20.409Z",
+  "generatedAt": "2026-07-17T16:20:43.471Z",
   "note": "Stations NOT auto-modeled — complex/side-platform/non-standard, pending a human pass.",
   "stations": [
     {
@@ -335,6 +335,17 @@
       ]
     },
     {
+      "station": "E09",
+      "name": "College Park-U of Md",
+      "reason": "grade-separated-entrances",
+      "detail": "College Park-U of Md — island platform, entrances both sides of the rail corridor",
+      "levels": [
+        "Street",
+        "Mezzanine",
+        "Platform"
+      ]
+    },
+    {
       "station": "E10",
       "name": "Greenbelt",
       "reason": "unorderable-levels",
@@ -453,11 +464,88 @@
       ]
     },
     {
+      "station": "N01",
+      "name": "McLean",
+      "reason": "grade-separated-entrances",
+      "detail": "McLean — Silver Line median, N/S pavilions across the Dulles Access Rd",
+      "levels": [
+        "Street",
+        "Mezzanine",
+        "Platform"
+      ]
+    },
+    {
+      "station": "N02",
+      "name": "Tysons",
+      "reason": "grade-separated-entrances",
+      "detail": "Tysons — Silver Line median, N/S pavilions across Rte 123",
+      "levels": [
+        "Street",
+        "Mezzanine",
+        "Platform"
+      ]
+    },
+    {
+      "station": "N03",
+      "name": "Greensboro",
+      "reason": "grade-separated-entrances",
+      "detail": "Greensboro — Silver Line median, N/S pavilions across Rte 7",
+      "levels": [
+        "Street",
+        "Mezzanine",
+        "Platform"
+      ]
+    },
+    {
+      "station": "N04",
+      "name": "Spring Hill",
+      "reason": "grade-separated-entrances",
+      "detail": "Spring Hill — Silver Line median, N/S pavilions across Rte 7",
+      "levels": [
+        "Street",
+        "Mezzanine",
+        "Platform"
+      ]
+    },
+    {
+      "station": "N07",
+      "name": "Reston Town Center",
+      "reason": "grade-separated-entrances",
+      "detail": "Reston Town Center — Silver Line median, N/S pavilions across the Dulles corridor",
+      "levels": [
+        "Street",
+        "Mezzanine",
+        "Platform"
+      ]
+    },
+    {
+      "station": "N08",
+      "name": "Herndon",
+      "reason": "grade-separated-entrances",
+      "detail": "Herndon — Silver Line median, N/S pavilions across the Dulles corridor",
+      "levels": [
+        "Street",
+        "Mezzanine",
+        "Platform"
+      ]
+    },
+    {
       "station": "N09",
       "name": "Innovation Center",
       "reason": "unorderable-levels",
       "detail": "elevator level pair not a standard rung",
       "levels": [
+        "Mezzanine",
+        "Platform"
+      ]
+    },
+    {
+      "station": "N12",
+      "name": "Ashburn",
+      "reason": "grade-separated-entrances",
+      "detail": "Ashburn — Silver Line median, N/S pavilions across the Dulles Greenway",
+      "levels": [
+        "Street",
         "Mezzanine",
         "Platform"
       ]

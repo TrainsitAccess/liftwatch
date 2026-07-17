@@ -51,7 +51,12 @@ const add = (e: Entry) => entries.set(e.key, e);
   const observed = read("src/catalog/wmata-data/observed-units.json").units as {
     unitName: string; stationCode: string; location: string;
   }[];
-  const CURATED = new Set(["A14"]); // already hand-modeled — not in the queue
+  // Hand-modeled outside the queue — excluded from the generator but curated in
+  // wmata-models.ts, so they must not resurface as pending. A14: Rockville
+  // (hand-modeled from the start). The 8 grade-separated stations: audited
+  // 2026-07-17, moved out of the auto tier and curated per-entrance because
+  // their GTFS street→mezzanine redundancy was false (see COVERAGE-AUDIT.md).
+  const CURATED = new Set(["A14", "N01", "N02", "N03", "N04", "N07", "N08", "N12", "E09"]);
   const prio: Record<string, number> = {
     "observed-undercount": 20, "observed-unmappable": 22, "side-platforms": 30,
     "multi-level-shaft": 38, "non-standard-levels": 40, "unorderable-levels": 44, "corrupt-levels": 46,
