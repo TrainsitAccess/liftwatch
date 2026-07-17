@@ -1535,7 +1535,7 @@ export const WMATA_STATION_MODELS: StationModel[] = [
         id: "mezzanine-platform",
         label: "Mezzanine to platform",
         elevators: [
-          { externalId: "WMATA-C15_N_ELE1", label: "Huntington elevator (Huntington Ave. entrance, mezzanine to platform) — never yet observed live, synthetic id" },
+          { externalId: "WMATA-C15_N_ELE1", label: "Huntington elevator (Huntington Ave. entrance, mezzanine to platform) — by the parking lot off Huntington Ave (38.7946865611983, -77.07520784819755), never yet observed live, synthetic id" },
           { externalId: "WMATA-C15_S_ELE2", label: "Huntington inclinator (South Kings Hwy entrance, mezzanine to platform) — never yet observed live, synthetic id" },
         ],
       },
@@ -1548,7 +1548,7 @@ export const WMATA_STATION_MODELS: StationModel[] = [
     note: "North Kings Hwy entrance to the platform takes two elevators in a row (an elevator, despite being named \"Garage #1,\" up to the mezzanine, then the South Kings Hwy inclinator down to the platform) — both must be working, and neither has a backup. If either is out of service, this route is not step-free.",
     internalNote: "CORRECTED 2026-07-16 (Bryce): \"Garage #1 elevator\" (real, live-observed C15S01) is NOT parking-only -- it's the required street<->mezzanine elevator for the North Kings Hwy Entrance. From that mezzanine, only the South Kings Hwy inclinator (WMATA-C15_S_ELE2) continues to the platform -- NOT the Huntington Ave elevator, confirmed by Bryce. So this is its own entrance-specific chain, not an auxiliary one. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 8/10).",
     segments: [
-      { id: "street-mezzanine", label: "North Kings Hwy Entrance to mezzanine", elevators: [{ externalId: "C15S01", label: "Huntington North Kings Hwy Entrance elevator (\"Garage #1\", street to mezzanine)" }] },
+      { id: "street-mezzanine", label: "North Kings Hwy Entrance to mezzanine", elevators: [{ externalId: "C15S01", label: "Huntington North Kings Hwy Entrance elevator (\"Garage #1\", street to mezzanine) — next to the parking lot off Kings Hwy (38.79255576071115, -77.07582151181714)" }] },
       { id: "mezzanine-platform", label: "Mezzanine to platform (via inclinator)", elevators: [{ externalId: "WMATA-C15_S_ELE2", label: "Huntington inclinator (South Kings Hwy entrance, mezzanine to platform) — never yet observed live, synthetic id" }] },
     ],
   },
