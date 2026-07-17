@@ -1227,4 +1227,75 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       },
     ],
   },
+  // Metro Center (A01_C01, Red/Blue/Orange/Silver interchange) — excluded
+  // by the non-standard-levels gate: the Red Line's upper platform doubles
+  // as the station's mezzanine (WMATA's combined level name "Lower
+  // Mezzanine/Upper Platform"), stacked directly above the Blue/Orange/
+  // Silver lower platform. Bryce confirmed the full structure 2026-07-16,
+  // and pasted WMATA's own 3 official elevator descriptions, which resolve
+  // everything cleanly:
+  //   1. "Elevator between street and mezzanine" -- street to the upper
+  //      level, which is physically the SHADY GROVE-BOUND Red Line
+  //      platform (real, live-observed as C01N01).
+  //   2. "Elevator between upper platform to Shady Grove and lower
+  //      platform for Blue/Orange Lines" -- connects the Shady-Grove end
+  //      of the upper level down to the shared lower Blue/Orange/Silver
+  //      platform (never yet individually observed, synthetic).
+  //   3. "Elevator between upper platform to Glenmont and lower platform
+  //      for Blue/Orange Lines" -- connects the Glenmont end of the upper
+  //      level down to the SAME shared lower platform (never yet
+  //      individually observed, synthetic).
+  // The two ends of the upper (Red Line) platform are NOT directly
+  // walkable to each other -- the only way from the Shady-Grove end to the
+  // Glenmont end is down to the lower platform and back up via the other
+  // elevator. So: Shady Grove-bound Red Line needs only elevator 1 (sole
+  // access). Blue/Orange/Silver needs elevator 1 then EITHER elevator 2 OR
+  // elevator 3 (both reach the same lower platform -- a real redundant OR).
+  // Glenmont-bound Red Line needs elevator 1, THEN BOTH elevator 2 AND
+  // elevator 3 in series (down via one, back up via the other -- no
+  // redundancy, and no shortcut). Approved by Bryce via
+  // /liftwatch-station-review 2026-07-16 (confidence 9/10 -- WMATA's own
+  // wording resolves the structure directly; only the exact GTFS N_ELE2 vs
+  // S_ELE1 physical-id-to-description mapping is an arbitrary guess, noted
+  // internally).
+  {
+    systemId: SYSTEM,
+    stationExternalId: "A01_C01",
+    chainLabel: " (Shady Grove-bound Red Line)",
+    note: "Street to the Shady Grove-bound Red Line platform: one elevator, no backup. The mezzanine and this platform are the same level. If that elevator is out of service, this route is not step-free.",
+    internalNote: "Real, live-observed id C01N01 (\"Elevator between street and mezzanine\") -- WMATA's own wording, confirmed by Bryce 2026-07-16 to land directly on the Shady Grove-bound platform (the upper level doubles as the mezzanine). Human-approved via /liftwatch-station-review 2026-07-16 (confidence 9/10).",
+    segments: [
+      { id: "street-mezzanine", label: "Street to mezzanine/Shady Grove-bound platform", elevators: [{ externalId: "C01N01", label: "Metro Center elevator (street to mezzanine, WMATA: \"Elevator between street and mezzanine\")" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "A01_C01",
+    chainLabel: " (Blue/Orange/Silver)",
+    note: "Street to the Blue/Orange/Silver platform: one elevator to the upper level, then one of two elevators down to the platform — either one keeps this leg step-free. The station stays step-free on this route as long as the street elevator and at least one of the two down elevators are working.",
+    internalNote: "Shares the street<->mezzanine prerequisite with the Shady Grove-bound chain (C01N01). Lower-platform leg is a 2-way OR of WMATA's other two elevators, both landing on the same shared Blue/Orange/Silver platform: \"Elevator between upper platform to Shady Grove and lower platform for Blue/Orange Lines\" and \"Elevator between upper platform to Glenmont and lower platform for Blue/Orange Lines\" -- neither individually observed live, both synthetic. GTFS's N_ELE2/S_ELE1 id-to-description mapping is an arbitrary guess (doesn't affect correctness, both are in the OR group regardless). Confirmed by Bryce 2026-07-16 (confidence 9/10).",
+    segments: [
+      { id: "street-mezzanine", label: "Street to mezzanine", elevators: [{ externalId: "C01N01", label: "Metro Center elevator (street to mezzanine, WMATA: \"Elevator between street and mezzanine\")" }] },
+      {
+        id: "mezzanine-lower-platform",
+        label: "Upper level to Blue/Orange/Silver platform",
+        elevators: [
+          { externalId: "WMATA-A01_C01_N_ELE2", label: "Metro Center elevator (WMATA: \"Elevator between upper platform to Shady Grove and lower platform for Blue/Orange Lines\") — never yet observed live, synthetic id" },
+          { externalId: "WMATA-A01_C01_S_ELE1", label: "Metro Center elevator (WMATA: \"Elevator between upper platform to Glenmont and lower platform for Blue/Orange Lines\") — never yet observed live, synthetic id" },
+        ],
+      },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "A01_C01",
+    chainLabel: " (Glenmont-bound Red Line)",
+    note: "Street to the Glenmont-bound Red Line platform takes 3 elevators in a row: street to the upper level, down to the Blue/Orange/Silver platform, then back up to the Glenmont-bound platform on the opposite end. All 3 must be working, and none has a backup — the two ends of the upper platform aren't directly connected. If any one of the 3 is out of service, this route is not step-free.",
+    internalNote: "Shares the street<->mezzanine prerequisite (C01N01) and both of the upper<->lower elevators with the other two chains, but here BOTH are required in series (down via one, back up via the other), not an OR -- the two ends of the upper Red Line platform aren't walkable to each other, confirmed by Bryce 2026-07-16. Confidence 9/10.",
+    segments: [
+      { id: "street-mezzanine", label: "Street to mezzanine", elevators: [{ externalId: "C01N01", label: "Metro Center elevator (street to mezzanine, WMATA: \"Elevator between street and mezzanine\")" }] },
+      { id: "mezzanine-lower-platform", label: "Upper level (Shady Grove end) down to Blue/Orange/Silver platform", elevators: [{ externalId: "WMATA-A01_C01_N_ELE2", label: "Metro Center elevator (WMATA: \"Elevator between upper platform to Shady Grove and lower platform for Blue/Orange Lines\") — never yet observed live, synthetic id" }] },
+      { id: "lower-platform-glenmont", label: "Blue/Orange/Silver platform back up to Glenmont-bound platform", elevators: [{ externalId: "WMATA-A01_C01_S_ELE1", label: "Metro Center elevator (WMATA: \"Elevator between upper platform to Glenmont and lower platform for Blue/Orange Lines\") — never yet observed live, synthetic id" }] },
+    ],
+  },
 ];

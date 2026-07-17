@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-17T00:17:04.414Z",
+ "updatedAt": "2026-07-17T02:01:10.321Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -3522,7 +3522,7 @@
    "system": "wmata-dc",
    "stationId": "A01_C01",
    "name": "Metro Center",
-   "status": "pending",
+   "status": "modeled",
    "priority": 40,
    "reason": "non-standard-levels",
    "evidence": [
@@ -3546,7 +3546,12 @@
      "source": "live feed (observed)",
      "text": "C01N01: \"Elevator between street and mezzanine\""
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "adjusted",
+    "notes": "Modeled as 3 chains: Shady Grove-bound Red Line (1 elevator, real C01N01, sole access), Blue/Orange/Silver (shares C01N01, then a 2-way OR of the two upper<->lower elevators, both synthetic), Glenmont-bound Red Line (shares C01N01, then BOTH upper<->lower elevators required in series -- the two ends of the upper platform aren't directly walkable to each other). Resolved directly from WMATA's own elevator descriptions, which Bryce provided. Confidence 9/10. Adjusted from the initial unclear-layout proposal via /liftwatch-station-review 2026-07-16.",
+    "date": "2026-07-16"
+   }
   },
   {
    "key": "wmata:A04",
