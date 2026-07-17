@@ -1115,4 +1115,38 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       { id: "street-mezzanine-platform", label: "Street/mezzanine to platform (all levels)", elevators: [{ externalId: "WMATA-B06_E06_ELE", label: "Fort Totten elevator (serves all 3 levels: street/mezzanine, Red Line, Green/Yellow) — never yet observed live, synthetic id" }] },
     ],
   },
+  // Smithsonian (D02, Blue/Orange/Silver) — excluded by the multi-level-shaft
+  // gate: WMATA-D02_S_ELE1 spans all 3 named levels (Street, Mezzanine,
+  // Platform) in one shaft. Live feed resolves this cleanly: D02S01
+  // ("Elevator between street, mezzanine, and platform to New Carrollton/
+  // Largo Town Center") is that one continuous elevator, sole access for
+  // the New Carrollton/Largo-bound platform. D02S02 ("Elevator between
+  // mezzanine and platform to Vienna/Franconia-Springfield") only covers
+  // mezzanine<->platform for the OPPOSITE direction, so that direction
+  // needs D02S01 as a shared street<->mezzanine prerequisite PLUS D02S02
+  // for mezzanine<->platform (Grand/Mt Vernon Sq shared-prerequisite
+  // shape). Bryce confirmed this reading 2026-07-16 (confidence 9/10 --
+  // both elevator ids are real and the live text names both directions
+  // directly).
+  {
+    systemId: SYSTEM,
+    stationExternalId: "D02",
+    chainLabel: " (New Carrollton/Largo-bound)",
+    note: "Street to the New Carrollton/Largo Town Center-bound platform: one continuous elevator, no backup. If it is out of service, this route is not step-free.",
+    internalNote: "Real, live-observed id D02S01 (\"Elevator between street, mezzanine, and platform to New Carrollton/Largo Town Center\") -- one continuous shaft spanning all 3 levels for this direction. Confirmed by Bryce 2026-07-16 (confidence 9/10).",
+    segments: [
+      { id: "street-mezzanine-platform", label: "Street to platform (all levels)", elevators: [{ externalId: "D02S01", label: "Smithsonian elevator (street to New Carrollton/Largo-bound platform, all levels)" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "D02",
+    chainLabel: " (Vienna/Franconia-Springfield-bound)",
+    note: "Street to the Vienna/Franconia-Springfield-bound platform takes two elevators in a row (street to mezzanine, then mezzanine to this platform) — both must be working, and neither has a backup. If either elevator is out of service, this route is not step-free.",
+    internalNote: "Shares the street<->mezzanine prerequisite with the New Carrollton/Largo-bound chain (same physical unit D02S01, same real id in both chains -- an outage on it severs BOTH directions, which is the real structure). Mezzanine<->platform leg is the real, live-observed D02S02 (\"Elevator between mezzanine and platform to Vienna/Franconia-Springfield\"). Confirmed by Bryce 2026-07-16 (confidence 9/10).",
+    segments: [
+      { id: "street-mezzanine", label: "Street to mezzanine", elevators: [{ externalId: "D02S01", label: "Smithsonian elevator (street to New Carrollton/Largo-bound platform, all levels)" }] },
+      { id: "mezzanine-platform", label: "Mezzanine to Vienna/Franconia-Springfield-bound platform", elevators: [{ externalId: "D02S02", label: "Smithsonian elevator (mezzanine to Vienna/Franconia-Springfield-bound platform)" }] },
+    ],
+  },
 ];
