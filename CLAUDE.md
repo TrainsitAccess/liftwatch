@@ -403,6 +403,11 @@ parking lot). A station is accessible only if **every** segment is up.
   NTFY_TOPIC repo secret is set — `gh secret set NTFY_TOPIC`, never hardcode
   it, the repo is public) sends a high-priority "needs review" push. Manual
   per-system loops still work anytime.
+- **WMATA modeling field guide (2026-07-17): `wmata-data/WMATA-STATION-GUIDE.md`**
+  — distilled from all 51 reviewed stations: the vertical-stack mental model,
+  the station archetypes with examples, the redundancy decision table, what
+  GTFS reliably gets wrong, an encoding cheatsheet, and a per-station
+  checklist. **Read it before modeling or auditing any WMATA station.**
 - **WMATA STATION REVIEW COMPLETE (2026-07-17): 42/42, every excluded
   station individually resolved with Bryce.** GTFS undercounted or
   corrupted more than the observed-units gate alone could catch — several
