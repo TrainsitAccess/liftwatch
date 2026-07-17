@@ -1638,4 +1638,45 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       { id: "mezzanine-platform", label: "Mezzanine to platform", elevators: [{ externalId: "WMATA-E03_MZ_ELE_W", label: "U St elevator (mezzanine to center platform) — never yet observed live, synthetic id" }] },
     ],
   },
+  // Navy Yard-Ballpark (F05, Green Line) — excluded by the
+  // non-standard-levels gate: 2 identical GTFS pairs (Street/West
+  // Mezzanine<->Mezzanine/Intermediate Passageway, Mezzanine/Intermediate
+  // Passageway<->Platform), matching a real, live-observed East/West
+  // entrance pair with identical wording on both sides. Bryce confirmed
+  // 2026-07-16: both the Navy Yard Entrance (east) and Navy Yard West
+  // Entrance routes lead to the SAME platform -- a genuine REDUNDANT PAIR
+  // OF 2-IN-SERIES CHAINS, same shape as CTA's Jackson-Red
+  // (Adams-Jackson/Jackson-Van Buren). The station is accessible as long
+  // as EITHER side's full 2-elevator route is working; encoded as the same
+  // 4-clause CNF pattern (Stamford/Jackson-Red paired-segment shape) rather
+  // than an approximation. Whether the two sides share one intermediate
+  // mezzanine or have separate ones is still unconfirmed (Bryce is
+  // checking) but doesn't change this encoding's correctness -- it only
+  // asserts (streetE AND platformE) OR (streetW AND platformW), never a
+  // cross-side combination. All 4 ids are real, live-observed. Approved by
+  // Bryce via /liftwatch-station-review 2026-07-16 (confidence 8/10).
+  {
+    systemId: SYSTEM,
+    stationExternalId: "F05",
+    note: "Two independent step-free routes to the platform: the Navy Yard Entrance (street elevator then platform elevator) or the Navy Yard West Entrance (street elevator then platform elevator). The station stays step-free as long as both elevators on at least one of the two routes are working — no single elevator outage removes step-free access.",
+    internalNote: "Redundant pair of 2-in-series chains, one per entrance, encoded as a 4-clause CNF (paired-segment / Stamford/Jackson-Red pattern) of (streetE AND platformE) OR (streetW AND platformW). All 4 ids real, live-observed: F05E01/F05E02 (Navy Yard Entrance, street+platform), F05W01/F05W02 (Navy Yard West Entrance, street+platform). Confirmed by Bryce 2026-07-16 both routes lead to the same platform; whether the intermediate mezzanine is shared between the two sides is still unconfirmed (does not affect this encoding). Human-approved via /liftwatch-station-review 2026-07-16 (confidence 8/10).",
+    segments: [
+      { id: "cnf-street-street", label: "Step-free guard: a Navy Yard or Navy Yard West STREET elevator", elevators: [
+        { externalId: "F05E01", label: "Navy Yard Entrance street-to-mezzanine elevator" },
+        { externalId: "F05W01", label: "Navy Yard West Entrance street-to-mezzanine elevator" },
+      ] },
+      { id: "cnf-street-plat", label: "Step-free guard: Navy Yard street or Navy Yard West platform elevator", elevators: [
+        { externalId: "F05E01", label: "Navy Yard Entrance street-to-mezzanine elevator" },
+        { externalId: "F05W02", label: "Navy Yard West Entrance mezzanine-to-platform elevator" },
+      ] },
+      { id: "cnf-plat-street", label: "Step-free guard: Navy Yard platform or Navy Yard West street elevator", elevators: [
+        { externalId: "F05E02", label: "Navy Yard Entrance mezzanine-to-platform elevator" },
+        { externalId: "F05W01", label: "Navy Yard West Entrance street-to-mezzanine elevator" },
+      ] },
+      { id: "cnf-plat-plat", label: "Step-free guard: a Navy Yard or Navy Yard West PLATFORM elevator", elevators: [
+        { externalId: "F05E02", label: "Navy Yard Entrance mezzanine-to-platform elevator" },
+        { externalId: "F05W02", label: "Navy Yard West Entrance mezzanine-to-platform elevator" },
+      ] },
+    ],
+  },
 ];

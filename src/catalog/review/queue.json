@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-17T03:09:09.490Z",
+ "updatedAt": "2026-07-17T03:11:21.287Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -3906,7 +3906,7 @@
    "system": "wmata-dc",
    "stationId": "F05",
    "name": "Navy Yard-Ballpark",
-   "status": "pending",
+   "status": "modeled",
    "priority": 40,
    "reason": "non-standard-levels",
    "evidence": [
@@ -3946,7 +3946,12 @@
      "source": "live feed (observed)",
      "text": "F05W02: \"Elevator between mezzanine and platform\""
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Modeled as a redundant pair of 2-in-series chains (Navy Yard Entrance, Navy Yard West Entrance), encoded as a 4-clause CNF -- same paired-segment pattern as CTA's Jackson-Red. All 4 elevator ids real/live-observed. Confirmed by Bryce both sides reach the same platform. Confidence 8/10. Approved via /liftwatch-station-review 2026-07-16.",
+    "date": "2026-07-16"
+   }
   },
   {
    "key": "wmata:F08",
