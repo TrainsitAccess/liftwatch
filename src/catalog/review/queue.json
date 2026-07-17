@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-17T03:56:31.055Z",
+ "updatedAt": "2026-07-17T07:02:10.518Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -4210,7 +4210,7 @@
    "system": "wmata-dc",
    "stationId": "A02",
    "name": "Farragut North",
-   "status": "pending",
+   "status": "modeled",
    "priority": 46,
    "reason": "corrupt-levels",
    "evidence": [
@@ -4225,8 +4225,17 @@
     {
      "source": "GTFS roster",
      "text": "WMATA-A02_S_ELE2: Mezzanine ↔ Platform"
+    },
+    {
+     "source": "Bryce (2026-07-16)",
+     "text": "That station only has two elevators: one from the street to the mezzanine and one from the mezzanine to the platform. The street elevator is located at 38.90302988015644, -77.03933989074207 -- embedded into a building on the east side of Connecticut Ave, between L St and K St NW."
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "adjusted",
+    "notes": "Modeled as a straight 2-elevator series, no redundancy: street to mezzanine (embedded in a building, east side of Connecticut Ave between L & K St NW, coordinates recorded) then mezzanine to platform. Confirms the corrupt-levels flag was real -- GTFS's 2 Mezzanine<->Platform edges don't reflect reality. Confidence 9/10, confirmed directly by Bryce. Adjusted via /liftwatch-station-review 2026-07-16.",
+    "date": "2026-07-16"
+   }
   },
   {
    "key": "cta:40030",

@@ -1733,4 +1733,25 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       },
     ],
   },
+  // Farragut North (A02, Red Line) — excluded by the corrupt-levels gate:
+  // GTFS's level_id pointed at another station's levels, and the 2 listed
+  // edges (WMATA-A02_S_ELE1/ELE2, both Mezzanine<->Platform) looked like a
+  // possible redundant pair but couldn't be trusted. Bryce confirmed
+  // 2026-07-16 the real structure is a straight 2-elevator series, no
+  // redundancy: street to mezzanine (embedded in a building, east side of
+  // Connecticut Ave, between L St and K St NW), then mezzanine to
+  // platform. Confirms the corruption flag was pointing at genuinely bad
+  // data, not just a naming quirk — GTFS's 2 platform-leg edges don't
+  // reflect reality at all. Approved by Bryce via /liftwatch-station-review
+  // 2026-07-16 (confidence 9/10 — confirmed directly).
+  {
+    systemId: SYSTEM,
+    stationExternalId: "A02",
+    note: "Street to platform takes two elevators in a row (street to mezzanine, then mezzanine to platform) — both must be working, and neither has a backup. If either elevator is out of service, this route is not step-free.",
+    internalNote: "GTFS's corrupt level data listed 2 Mezzanine<->Platform edges that looked like a possible redundant pair, but Bryce confirmed 2026-07-16 the real structure is a plain 2-elevator series with no redundancy at all -- the GTFS edges don't reflect reality. Neither elevator has ever been observed live; both synthetic ids. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 9/10).",
+    segments: [
+      { id: "street-mezzanine", label: "Street to mezzanine", elevators: [{ externalId: "WMATA-A02_ELE1", label: "Farragut North elevator (street to mezzanine) — embedded in a building, east side of Connecticut Ave between L St & K St NW (38.90302988015644, -77.03933989074207), never yet observed live, synthetic id" }] },
+      { id: "mezzanine-platform", label: "Mezzanine to platform", elevators: [{ externalId: "WMATA-A02_ELE2", label: "Farragut North elevator (mezzanine to platform) — never yet observed live, synthetic id" }] },
+    ],
+  },
 ];
