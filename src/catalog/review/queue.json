@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-17T02:26:37.977Z",
+ "updatedAt": "2026-07-17T02:31:11.775Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -3754,7 +3754,7 @@
    "system": "wmata-dc",
    "stationId": "C15",
    "name": "Huntington",
-   "status": "pending",
+   "status": "modeled",
    "priority": 40,
    "reason": "non-standard-levels",
    "evidence": [
@@ -3782,7 +3782,12 @@
      "source": "live feed (observed)",
      "text": "C15S03: \"Garage #2 elevator\""
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "adjusted",
+    "notes": "Modeled as 1 core chain (mezzanine<->platform, redundant pair: Huntington Ave elevator + South Kings Hwy inclinator, both synthetic) plus 2 separate auxiliary garage chains (Garage #1 real C15S01, Garage #2 real C15S03, not assumed redundant with each other). Structure confirmed directly from WMATA's own entrance listing, which Bryce provided. Confidence 8/10. Adjusted from the initial unclear-layout proposal via /liftwatch-station-review 2026-07-16.",
+    "date": "2026-07-16"
+   }
   },
   {
    "key": "wmata:D03_F03",
