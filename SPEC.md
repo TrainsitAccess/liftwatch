@@ -1887,10 +1887,17 @@ accessible" are different questions.
 ### BART and WMATA ground-truth sources — fact-check pass, one WMATA fix (2026-07-16)
 
 Following the CTA-ASAP / MTA-data.ny.gov pattern, searched for a BART and
-WMATA equivalent. Found real sources for both; MBTA came up empty (its
-"Plan for Accessible Transit Infrastructure" is a policy slide deck with
-aggregate stats only, no per-station data — GTFS `pathways.txt` remains the
-best public MBTA source, already in use).
+WMATA equivalent. Found real sources for both; MBTA's *inventory*-style search
+came up empty at the time (its "Plan for Accessible Transit Infrastructure" is
+a policy slide deck with aggregate stats only, no per-station data — GTFS
+`pathways.txt` remains the best public MBTA *inventory* source). **A different
+MBTA source WAS later found (2026-07-17): the Daniels-Finegold ADA class-action
+settlement** — the direct CTA-settlement analog, committing the MBTA to
+specific new/redundant + replacement elevators at named stations with real
+facility IDs. It resolves topology for 3 of the 6 MBTA anomaly holdouts
+(Downtown Crossing, State, Oak Grove). Snapshot + caution (it's a legal/
+planning doc, not a live inventory — verify built-vs-planned against the feed)
+in `src/catalog/mbta-data/daniels-finegold-settlement.md`.
 
 **BART's own "Bikes on BART — Elevator Dimensions" guide** (2022,
 `src/catalog/bart-data/elevator-dimensions-guide.md`) is a genuine

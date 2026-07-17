@@ -673,6 +673,21 @@ parking lot). A station is accessible only if **every** segment is up.
   platform elevator there; the Caltrain NB elevator is its named backup, so the
   redundant station stays accessible). Mirrors the confirmed Milpitas pattern;
   locked in `demo:access`.
+- **MBTA Daniels-Finegold ADA settlement — ground truth (2026-07-17,
+  `src/catalog/mbta-data/daniels-finegold-settlement.md`).** The MBTA analog to
+  CTA's ADA settlement (*Daniels-Finegold v. MBTA*, D. Mass. 1:02-cv-11504,
+  2006 + 2018 amendment). Commits the MBTA to specific new/redundant +
+  replacement elevators at named stations **with real facility IDs matching our
+  feed** (State's `802`, Central `861`, Park St `804`/`808`, Harvard `821`,
+  Porter `818`/`820`). The 2018 amendment gives the authoritative Red↔Orange
+  elevator topology at **Downtown Crossing** (the four OL/RL connections) and
+  flags **Oak Grove** in its ¶59 review group — resolving 3 of the 6 MBTA
+  anomaly holdouts. CAUTION: it's a legal/planning doc, not a live inventory —
+  some "redundant" elevators are still in design (e.g. State), so always verify
+  built-vs-planned against the live feed before modeling. Extract via
+  `curl -A "<UA>"` + `pdftotext -layout` (PDFs at cdn.mbta.com, linked from
+  mbta.com/accessibility/history). Corrects the earlier "MBTA came up empty"
+  note — that was the inventory-style search; this is a settlement.
 - **BART elevator dimensions guide — ground truth, fact-checked (2026-07-16,
   `src/catalog/bart-data/elevator-dimensions-guide.md`).** BART's own "Bikes
   on BART" elevator dimensions guide (2022) is a genuine per-elevator
