@@ -197,18 +197,17 @@ anomaly stations. MTA rail's ~10 remaining MNR stations. All 71 TfL
 stations. CTA's 7 remaining complexes (Cumberland's redundancy candidate is
 the most promising quick win; Garfield needs id untangling first).
 
-## Known open item (not urgent)
+## Known open item — RESOLVED 2026-07-17
 
-**Homepage doesn't render elevator/ramp backups** — `site/index.html`'s
-longest-outage boards annotate only `soleAccess`, not `severs`/`backups`/
-`rampAlternative` (unlike `system.html`, which has all three). Root cause:
-those fields come from `accessImpactFor`, a closure inside per-system
-`buildSystemDetail`, unavailable at the cross-system `allOpenOutages` build
-point in `build-site-data.ts`. Fix: extract a shared top-level
-`accessImpact(systemId, extId, openExtIds)` helper, call from both places,
-mirror `system.html`'s chip/line rendering in `index.html`. Low urgency —
-only bites when a backup/ramp-covered outage is among the 10 *longest*
-current outages system-wide.
+**Homepage now renders elevator/ramp backups.** `site/index.html`'s longest-
+outage boards used to annotate only `soleAccess`, missing `severs`/`backups`/
+`rampAlternative`. Fixed: extracted the per-system `accessImpactFor` closure
+into a top-level pure `computeAccessImpact()` in `build-site-data.ts`
+(buildSystemDetail delegates to it, per-system behavior unchanged), wired it
+into the `allOpenOutages` rows, and mirrored `system.html`'s chips + "Access
+impact" / "Route notes" rendering in `index.html`. Verified in the browser
+(16/30 current longest rows carried impact previously invisible). Commit on
+main.
 
 ## Not yet done (flagged, not started)
 
