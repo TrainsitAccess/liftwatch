@@ -219,6 +219,18 @@ if (existsSync(outPath)) {
     cur.status = old.status;
     cur.priority = old.priority;
     if (old.resolution) cur.resolution = old.resolution;
+    // Evidence added by hand during review (Bryce's confirmations, elevator
+    // locations, agency quotes pasted in chat) lives ONLY in queue.json —
+    // regenerating from source files would silently discard it (this
+    // actually happened 2026-07-16: every "Bryce (…)" entry since Mt Vernon
+    // Sq was wiped by routine rebuilds and had to be restored from the chat
+    // log). Carry forward any prior entry the regenerated list doesn't
+    // already contain, exact source+text match. Grows-only, same philosophy
+    // as observed-units.json.
+    const have = new Set(cur.evidence.map((e) => `${e.source} ${e.text}`));
+    for (const e of old.evidence) {
+      if (!have.has(`${e.source} ${e.text}`)) cur.evidence.push(e);
+    }
   }
 }
 

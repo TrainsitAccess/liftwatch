@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-17T03:36:56.058Z",
+ "updatedAt": "2026-07-17T03:43:22.391Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -398,6 +398,14 @@
     {
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **41400 Roosevelt (Red)** — subway island: street→mezz elevator (main) plus the TRANSFER TUNNEL elevator to the elevated (Orange/Green). The tunnel elevator gates the accessible subway↔elevated transfer, not street access. observed: TRANSFER-TUNNEL ✓ distinct. Two chains (street access; transfer)."
+    },
+    {
+     "source": "Discord (crowd-sourced, via Bryce, 2026-07-16)",
+     "text": "Roosevelt has 3 elevators: 1 from street to the elevated Green/Orange platform (direct), 1 from street to the transfer tunnel, and 1 from the transfer tunnel to the Red Line platform. Red Line riders use a separate elevator from Green/Orange riders to reach street level."
+    },
+    {
+     "source": "Bryce (2026-07-16, follow-up correction)",
+     "text": "There is another elevator from State Street to the Red Line mezzanine, located at 1155 S State St. It lands at a different physical space than the transfer-tunnel entrance, but both funnel into the same elevator down to the platform -- making the street-to-mezzanine leg redundant (2 entrances), not sole access. Final confirmed structure: 2 elevators street<->transfer tunnel, 1 elevator street<->Orange/Green platform, 1 elevator transfer tunnel<->Red platform."
     }
    ],
    "resolution": {
@@ -650,6 +658,18 @@
     {
      "source": "live feed (observed)",
      "text": "E01X05: \"Elevator between mezzanine and platform\""
+    },
+    {
+     "source": "WMATA FY26 Q3 Capital Improvement Program report (2026-07-16)",
+     "text": "Names E01X04 as under construction in the Elevator Rehabilitation Program -- a 3rd independent source confirming that unit id is real, alongside GTFS and the live feed (see src/catalog/wmata-data/cip-elevator-mentions.md)."
+    },
+    {
+     "source": "Bryce (2026-07-16)",
+     "text": "There are 3 elevators between street and mezzanine (only 2, E01X01/E01X02, had appeared live) -- initially unsure whether all 3 reach the same mezzanine; confirmed after investigation."
+    },
+    {
+     "source": "Bryce (2026-07-16)",
+     "text": "Street<->mezzanine: TWO redundant elevators together at the southwest corner of 7th & M St NW (E01X01, E01X02), PLUS a separate single elevator at the northwest corner of 7th & M St NW, within the outside corner of the Convention Center (never yet observed live). All three reach the same mezzanine. Mezzanine<->platform: TWO elevators, one at the center of the platform and one on the far south side (E01X04, E01X05; exact id-to-position mapping not confirmed)."
     }
    ],
    "resolution": {
@@ -682,6 +702,10 @@
     {
      "source": "live feed (observed)",
      "text": "G04X02: \"Elevator between mezzanine and platform\""
+    },
+    {
+     "source": "Bryce (2026-07-16)",
+     "text": "Both elevators are located in the center of the platform, on opposite sides of each other."
     }
    ],
    "resolution": {
@@ -710,6 +734,14 @@
     {
      "source": "live feed (observed)",
      "text": "B35N02: \"Elevator between bike trail and mezzanine\""
+    },
+    {
+     "source": "Bryce (2026-07-16)",
+     "text": "Total of 3 elevators: two redundant platform-to-mezzanine elevators located in the center of the platform, opposite from each other, plus the one auxiliary elevator from the bike path to the mezzanine (B35N02, already observed live)."
+    },
+    {
+     "source": "Bryce (2026-07-16, discrepancy note)",
+     "text": "WMATA's own materials say this station has only 1 elevator between mezzanine and platform, contradicting Bryce's certainty that there are 2. Possible but unlikely: one may be a replacement/rebuild not yet reflected in WMATA's count. Internal-only -- watch for a 2nd distinct unit id on this segment in future observed-units refreshes or WMATA documents; do not resolve unilaterally either direction."
     }
    ],
    "resolution": {
@@ -742,6 +774,10 @@
     {
      "source": "live feed (observed)",
      "text": "G05X01: \"Elevator between street and mezzanine\""
+    },
+    {
+     "source": "Bryce (2026-07-16)",
+     "text": "Total of 6 elevators: 2 redundant platform-to-mezzanine elevators opposite from one another (core), 1 from the North Garage to mezzanine, 2 redundant elevators between the South Garage and mezzanine, and 1 between the mezzanine and Grand Boulevard (this is the real, already-observed G05X01). The Grand Boulevard elevator is not required -- the mezzanine is at street level via the Harry Truman Drive entrance. For the station to be inaccessible, both platform elevators would have to be out; every other elevator could be down and the station would still be usable."
     }
    ],
    "resolution": {
@@ -1563,6 +1599,10 @@
     {
      "source": "GTFS roster",
      "text": "WMATA-C11_S_PAV_ELV: Street ↔ Mezzanine"
+    },
+    {
+     "source": "Bryce (2026-07-16)",
+     "text": "3 entrances: North Pavilion, South Pavilion, Potomac Greens -- each has 2 redundant elevators, next to each other. Each platform has 2 elevators next to each other, located on the far north side. Station signage labels one platform's elevators \"7\" (toward Downtown Largo) and the other \"8\" (toward Mount Vernon Sq) -- Bryce is not certain those numbers map onto WMATA's own unit-id scheme."
     }
    ],
    "resolution": {
@@ -1799,6 +1839,10 @@
     {
      "source": "live feed (observed)",
      "text": "K06X04: \"Garage elevator\""
+    },
+    {
+     "source": "Bryce (2026-07-16)",
+     "text": "Only one elevator from street to mezzanine (the bus bay), and it is not required -- the entrance to the mezzanine at the median of I-66 at Leesburg Pike is accessible without an elevator. There are two garage elevators, neither mandatory. Bryce does not know if the two garage elevators are redundant with each other."
     }
    ],
    "resolution": {
@@ -3429,6 +3473,10 @@
     {
      "source": "GTFS roster",
      "text": "WMATA-B06_E06_ELE: Street/Mezzanine ↔ Platform"
+    },
+    {
+     "source": "Bryce (2026-07-16)",
+     "text": "Only one elevator. It goes to all three levels (street/mezzanine, Red Line, Green/Yellow), and it can be accessed without other elevators."
     }
    ],
    "resolution": {
@@ -3465,6 +3513,10 @@
     {
      "source": "live feed (observed)",
      "text": "D02S02: \"Elevator between mezzanine and platform to Vienna/Franconia-Springfield\""
+    },
+    {
+     "source": "Bryce (2026-07-16)",
+     "text": "Confirmed the 2-chain reading (D02S01 = one continuous street/mezzanine/platform elevator for the New Carrollton/Largo direction; D02S02 = mezzanine<->platform for Vienna/Franconia, requiring D02S01 as its street leg). The D02S01 street entrance is at the northwest corner of 12th St & Independence Ave SW (38.887765272151604, -77.02853785398135)."
     }
    ],
    "resolution": {
@@ -3509,6 +3561,10 @@
     {
      "source": "live feed (observed)",
      "text": "K04X05: \"Elevator between street and mezzanine to New Carrollton\""
+    },
+    {
+     "source": "Bryce (2026-07-16)",
+     "text": "5 elevators total, all currently running. SW corner of Fairfax Dr & Stuart St (38.88208521293941, -77.11211144204533): 2 redundant elevators, street<->mezzanine. NW corner of Fairfax Dr & Stuart St: 2 elevators -- one goes just to the mezzanine, the other goes to both the mezzanine and the Vienna-bound platform (sole access to that platform). A 5th, separate elevator goes from the mezzanine to the New Carrollton-bound platform (sole access). Mapped the 3 already-observed units: K04X04/K04X05 (both \"to New Carrollton\") = the SW pair; K04X03 (\"to Vienna\") = the NW just-to-mezzanine elevator. Bryce noted this id mapping is inferential, not confirmed by an alert naming a platform directly."
     }
    ],
    "resolution": {
@@ -3545,6 +3601,10 @@
     {
      "source": "live feed (observed)",
      "text": "C01N01: \"Elevator between street and mezzanine\""
+    },
+    {
+     "source": "Bryce (2026-07-16), quoting WMATA's own elevator descriptions",
+     "text": "The mezzanine is at the same level as the Shady Grove-bound Red Line platform, so reaching it only needs the street-to-mezzanine elevator. To reach Glenmont-bound Red Line trains you take an elevator down to the Blue/Orange/Silver platform, then another back up. WMATA's 3 descriptions: 'Elevator between street and mezzanine'; 'Elevator between upper platform to Shady Grove and lower platform for Blue/Orange Lines'; 'Elevator between upper platform to Glenmont and lower platform for Blue/Orange Lines'. So: 1 elevator for Shady Grove-bound Red Line, 2 for Blue/Silver/Orange, 3 for Glenmont-bound Red Line (in series)."
     }
    ],
    "resolution": {
@@ -3673,6 +3733,10 @@
     {
      "source": "live feed (observed)",
      "text": "B01E04: \"Elevator between platform for Green/Yellow lines and platform to Shady Grove\""
+    },
+    {
+     "source": "Bryce (2026-07-16)",
+     "text": "Confirmed the Metro-Center-mirror structure, except there are 2 elevators from the street to the Glenmont platform (redundant pair), embedded into Capital One Arena, facing the National Portrait Gallery (38.898045155641995, -77.02177530236538). Only B01E02 has appeared live so far."
     }
    ],
    "resolution": {
@@ -3713,6 +3777,10 @@
     {
      "source": "live feed (observed)",
      "text": "C05E03: \"Elevator between street, and upper platform\""
+    },
+    {
+     "source": "Bryce (2026-07-16)",
+     "text": "3 redundant elevators, east side of North Moore St & Wilson Blvd (38.896181305462086, -77.07135426023925), street to upper platform -- serves Orange to New Carrollton, Silver, and Blue to Largo (eastbound). A 4th elevator goes between the upper and lower platforms; the lower platform serves the same 3 lines in the opposite (westbound) direction."
     }
    ],
    "resolution": {
@@ -3741,6 +3809,10 @@
     {
      "source": "GTFS roster",
      "text": "WMATA-C07_M_ELE: Mezzanine/Upper Platform ↔ Lower Platform"
+    },
+    {
+     "source": "Bryce (2026-07-16), quoting WMATA's own elevator descriptions",
+     "text": "5 elevators total: 2 redundant 'Elevator between the bus bay and the mezzanine' (the real street-equivalent entrance -- Bryce: the bus-bay elevators can be understood as street elevators), 1 'Elevator between upper and lower platforms' (sole access, train levels), and 2 redundant 'Elevator between the lower bus platform and the upper platform' -- confirmed to be a bus-to-bus connection only, between two bus platforms, unrelated to the train platforms despite the wording; still tracked, as its own auxiliary chain."
     }
    ],
    "resolution": {
@@ -3781,6 +3853,18 @@
     {
      "source": "live feed (observed)",
      "text": "C15S03: \"Garage #2 elevator\""
+    },
+    {
+     "source": "Bryce (2026-07-16), quoting WMATA's own entrance/elevator listing",
+     "text": "Huntington Ave. Entrance: elevator between mezzanine and platform. North Kings Hwy Entrance: Garage #1 elevator. North Kings Hwy Garage: Garage #2 elevator. South Kings Hwy Entrance: inclinator between mezzanine and platform. The Huntington Ave elevator and South Kings Hwy inclinator reach the same platform (redundant pair)."
+    },
+    {
+     "source": "Bryce (2026-07-16, correction)",
+     "text": "The elevator called 'Garage #1' at the North Kings Hwy Entrance is actually necessary to get from street level to the mezzanine (not just parking access). From there, only the South Kings Hwy inclinator continues to the platform -- not the Huntington Ave elevator. The Huntington Ave mezzanine is at street level (no elevator needed to reach it). Garage #2 remains auxiliary/parking-only."
+    },
+    {
+     "source": "Bryce (2026-07-16, locations)",
+     "text": "Huntington Ave entrance elevator: by the parking lot off Huntington Avenue (38.7946865611983, -77.07520784819755). The North Kings Hwy elevator down to the inclinator ('Garage #1'): next to the parking lot off Kings Highway (38.79255576071115, -77.07582151181714)."
     }
    ],
    "resolution": {
@@ -3833,6 +3917,10 @@
     {
      "source": "live feed (observed)",
      "text": "F03N03: \"Elevator between mezzanine and platform to Greenbelt/Mt. Vernon Sq\""
+    },
+    {
+     "source": "Bryce (2026-07-16), quoting WMATA's own elevator descriptions",
+     "text": "3 platforms total: a center platform for Orange/Blue/Silver, and 2 side platforms for Green/Yellow. WMATA's 4 elevator descriptions: 7th St/Maryland Ave./Smithsonian Museums Entrance/VRE trains has 'street and mezzanine' (F03N01), 'mezzanine and platform to Branch Ave/Huntington' (F03N02), 'mezzanine and platform to Greenbelt/Mt. Vernon Sq' (F03N03); 9th & D St (L'Enfant Plaza Entrance) has 'mezzanine/upper platform to Branch Ave/Huntington and lower platform for Blue/Orange Lines' (D03W04) -- the only connector to the center platform."
     }
    ],
    "resolution": {
@@ -3893,6 +3981,10 @@
     {
      "source": "GTFS roster",
      "text": "WMATA-E03_MZ_ELE_W: East/West Mezzanine ↔ Platform"
+    },
+    {
+     "source": "Bryce (2026-07-16)",
+     "text": "There are two elevators: street to mezzanine, and mezzanine to the center platform. The street elevator is embedded in the building at 38.91682122969772, -77.02897751998267 on U St's south side. No east-side elevator exists."
     }
    ],
    "resolution": {
