@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-17T03:49:56.083Z",
+ "updatedAt": "2026-07-17T03:56:31.055Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -4193,11 +4193,15 @@
     {
      "source": "Bryce (2026-07-16)",
      "text": "There are four elevators, two from the mezzanine to the platform, two labeled South Entry Pavilion -- Bryce does not yet know what the South Entry Pavilion pair connects to and will investigate."
+    },
+    {
+     "source": "Bryce (2026-07-16, follow-up)",
+     "text": "South Entry Pavilion elevators (2) are street elevators connecting a pedestrian bridge that crosses the highway directly to the mezzanine -- SW corner of Sunrise Valley Dr & Carta Way (38.960235044168805, -77.41716048322571). Even if both are down, the station stays accessible via a separate, elevator-free pedestrian bridge from the mezzanine north across the highway to an entrance on Innovation Ave (38.96210371098253, -77.41685815258685)."
     }
    ],
    "resolution": {
     "verdict": "adjusted",
-    "notes": "Shipped the confirmed core now (mezzanine<->platform, redundant pair, both synthetic -- GTFS undercounted this as 1 elevator). The 2 'South Entry Pavilion' elevators are deliberately NOT modeled -- their role is unconfirmed; Bryce is investigating and will follow up. Confidence 7/10 for the shipped core. Adjusted via /liftwatch-station-review 2026-07-16.",
+    "notes": "Shipped the confirmed core now (mezzanine<->platform, redundant pair, both synthetic -- GTFS undercounted this as 1 elevator). The 2 'South Entry Pavilion' elevators are deliberately NOT modeled -- their role is unconfirmed; Bryce is investigating and will follow up. Confidence 7/10 for the shipped core. Adjusted via /liftwatch-station-review 2026-07-16. FOLLOWUP RESOLVED 2026-07-16: South Entry Pavilion elevators are street elevators (pedestrian bridge to mezzanine, SW corner of Sunrise Valley Dr & Carta Way) -- added to the model as a street<->mezzanine segment marked stepFreeAlternative, since a separate elevator-free pedestrian bridge (north to Innovation Ave) always keeps this leg step-free regardless of the South elevators' status. Confidence 8/10.",
     "date": "2026-07-16"
    }
   },

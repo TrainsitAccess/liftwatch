@@ -1711,9 +1711,18 @@ export const WMATA_STATION_MODELS: StationModel[] = [
   {
     systemId: SYSTEM,
     stationExternalId: "N09",
-    note: "Mezzanine to platform: 2 elevators, either one keeps this route step-free. Only if both are out of service does this station lose step-free access on this route.",
-    internalNote: "GTFS models only 1 elevator (WMATA-N09_MZ_ELV) but Bryce confirmed 2026-07-16 there are 2, a redundant pair -- same undercount shape as Forest Glen/Mt Vernon Sq/Rosslyn. Neither individually observed live (new station, opened 2022); both synthetic ids. FOLLOWUP: 2 more elevators, labeled 'South Entry Pavilion' in GTFS (also undercounted -- GTFS lists only 1), have an unconfirmed role -- Bryce is investigating what they connect; not modeled here, deliberately left out rather than guessed. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 7/10).",
+    note: "Street to mezzanine: step-free even without an elevator — a pedestrian bridge from Innovation Ave, on the north side, needs no elevator at all. The South Entry Pavilion elevators (southwest corner of Sunrise Valley Dr & Carta Way) are a second way in, over a separate pedestrian bridge, but aren't required. Mezzanine to platform: 2 elevators, either one keeps this route step-free. Only if both platform elevators are out of service does this station lose step-free access.",
+    internalNote: "GTFS models only 1 mezzanine<->platform elevator but Bryce confirmed 2026-07-16 there are 2, a redundant pair -- same undercount shape as Forest Glen/Mt Vernon Sq/Rosslyn. Neither individually observed live (new station, opened 2022); both synthetic ids. South Entry Pavilion (2 elevators, also undercounted in GTFS -- lists only 1) confirmed by Bryce 2026-07-16 as street elevators: connect a pedestrian bridge crossing the highway directly to the mezzanine, at the SW corner of Sunrise Valley Dr & Carta Way (38.960235044168805, -77.41716048322571). Even with both South elevators down, the station stays reachable via a SEPARATE, elevator-free pedestrian bridge from the mezzanine north across the highway to an entrance on Innovation Ave (38.96210371098253, -77.41685815258685) -- so this leg is stepFreeAlternative regardless of the South elevators' status. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 8/10).",
     segments: [
+      {
+        id: "street-mezzanine",
+        label: "Street to mezzanine",
+        stepFreeAlternative: true,
+        elevators: [
+          { externalId: "WMATA-N09_S_PAV_ELV1", label: "Innovation Center South Entry Pavilion elevator (pedestrian bridge to mezzanine) — SW corner of Sunrise Valley Dr & Carta Way (38.960235044168805, -77.41716048322571), never yet observed live, synthetic id" },
+          { externalId: "WMATA-N09_S_PAV_ELV2", label: "Innovation Center South Entry Pavilion elevator (pedestrian bridge to mezzanine) — SW corner of Sunrise Valley Dr & Carta Way (38.960235044168805, -77.41716048322571), never yet observed live, synthetic id" },
+        ],
+      },
       {
         id: "mezzanine-platform",
         label: "Mezzanine to platform",
