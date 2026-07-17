@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-17T02:42:07.318Z",
+ "updatedAt": "2026-07-17T03:09:09.490Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -3878,7 +3878,7 @@
    "system": "wmata-dc",
    "stationId": "E03",
    "name": "U St",
-   "status": "pending",
+   "status": "modeled",
    "priority": 40,
    "reason": "non-standard-levels",
    "evidence": [
@@ -3894,7 +3894,12 @@
      "source": "GTFS roster",
      "text": "WMATA-E03_MZ_ELE_W: East/West Mezzanine ↔ Platform"
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Modeled as a straight 2-elevator series, no redundancy: street to mezzanine (with location) then mezzanine to the center island platform. Confirmed directly by Bryce, resolving the GTFS 'East/West Mezzanine' ambiguity -- there is no east-side elevator. Confidence 9/10. Approved via /liftwatch-station-review 2026-07-16.",
+    "date": "2026-07-16"
+   }
   },
   {
    "key": "wmata:F05",

@@ -1619,4 +1619,23 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       { id: "upper-lower-platform", label: "Branch Ave/Huntington-bound platform down to Blue/Orange/Silver platform", elevators: [{ externalId: "D03W04", label: "L'Enfant Plaza elevator (Branch Ave/Huntington platform to Blue/Orange/Silver platform, 9th & D St entrance)" }] },
     ],
   },
+  // U St (E03, Green/Yellow) — excluded by the non-standard-levels gate:
+  // "East/West Mezzanine" combined level name, both GTFS edges suffixed
+  // "_W" with nothing for an east side. Bryce confirmed 2026-07-16: just 2
+  // elevators total, a straight series with no redundancy -- street to
+  // mezzanine (embedded in the building at 38.91682122969772,
+  // -77.02897751998267 on U St's south side), then mezzanine to the
+  // center (island) platform. No east-side elevator exists. Approved by
+  // Bryce via /liftwatch-station-review 2026-07-16 (confidence 9/10 --
+  // confirmed directly).
+  {
+    systemId: SYSTEM,
+    stationExternalId: "E03",
+    note: "Street to platform takes two elevators in a row (street to mezzanine, then mezzanine to the platform) — both must be working, and neither has a backup. If either elevator is out of service, this route is not step-free.",
+    internalNote: "GTFS's 'East/West Mezzanine' combined level name and both edges suffixed '_W' suggested a possible east-side elevator, but Bryce confirmed 2026-07-16 there are only 2 elevators total, no east side. Neither has ever been observed live; both synthetic ids. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 9/10).",
+    segments: [
+      { id: "street-mezzanine", label: "Street to mezzanine", elevators: [{ externalId: "WMATA-E03_ELE_W", label: "U St elevator (street to mezzanine) — embedded in the building at 38.91682122969772, -77.02897751998267, U St's south side, never yet observed live, synthetic id" }] },
+      { id: "mezzanine-platform", label: "Mezzanine to platform", elevators: [{ externalId: "WMATA-E03_MZ_ELE_W", label: "U St elevator (mezzanine to center platform) — never yet observed live, synthetic id" }] },
+    ],
+  },
 ];
