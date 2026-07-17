@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-17T02:31:11.775Z",
+ "updatedAt": "2026-07-17T02:36:57.102Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -3785,7 +3785,7 @@
    ],
    "resolution": {
     "verdict": "adjusted",
-    "notes": "Modeled as 1 core chain (mezzanine<->platform, redundant pair: Huntington Ave elevator + South Kings Hwy inclinator, both synthetic) plus 2 separate auxiliary garage chains (Garage #1 real C15S01, Garage #2 real C15S03, not assumed redundant with each other). Structure confirmed directly from WMATA's own entrance listing, which Bryce provided. Confidence 8/10. Adjusted from the initial unclear-layout proposal via /liftwatch-station-review 2026-07-16.",
+    "notes": "Modeled as 1 core chain (mezzanine<->platform, redundant pair: Huntington Ave elevator + South Kings Hwy inclinator, both synthetic) plus 2 separate auxiliary garage chains (Garage #1 real C15S01, Garage #2 real C15S03, not assumed redundant with each other). Structure confirmed directly from WMATA's own entrance listing, which Bryce provided. Confidence 8/10. Adjusted from the initial unclear-layout proposal via /liftwatch-station-review 2026-07-16. CORRECTED 2026-07-16: Garage #1 (C15S01) is NOT auxiliary/parking-only -- it's the required street<->mezzanine elevator for the North Kings Hwy Entrance, feeding specifically into the South Kings Hwy inclinator (not the Huntington Ave elevator) to reach the platform. Re-modeled as its own entrance-specific 2-elevator chain, no longer auxiliary. Garage #2 (North Kings Hwy Garage) remains auxiliary/parking-only, unaffected.",
     "date": "2026-07-16"
    }
   },

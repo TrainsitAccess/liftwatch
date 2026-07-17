@@ -1529,7 +1529,7 @@ export const WMATA_STATION_MODELS: StationModel[] = [
     systemId: SYSTEM,
     stationExternalId: "C15",
     note: "Mezzanine to platform: 2 elevators (one at the Huntington Ave. entrance, one an inclinator at the South Kings Hwy entrance) — either one keeps this route step-free. Only if both are out of service does this station lose step-free access.",
-    internalNote: "WMATA's own entrance listing (Bryce, 2026-07-16): Huntington Ave. Entrance has an ordinary elevator, South Kings Hwy Entrance has an inclinator (inclined lift) -- both mezzanine<->platform, confirmed to reach the same platform (real redundant pair). Neither has ever appeared individually in a live outage; both synthetic ids. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 8/10).",
+    internalNote: "WMATA's own entrance listing (Bryce, 2026-07-16): Huntington Ave. Entrance has an ordinary elevator, South Kings Hwy Entrance has an inclinator (inclined lift) -- both mezzanine<->platform, confirmed to reach the same platform (real redundant pair). Bryce confirmed the Huntington Ave. mezzanine is at street level -- no separate street<->mezzanine elevator needed there. Neither the mezzanine<->platform elevator nor the inclinator has ever appeared individually in a live outage; both synthetic ids. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 8/10).",
     segments: [
       {
         id: "mezzanine-platform",
@@ -1544,12 +1544,12 @@ export const WMATA_STATION_MODELS: StationModel[] = [
   {
     systemId: SYSTEM,
     stationExternalId: "C15",
-    chainLabel: " (North Kings Hwy Entrance garage)",
-    auxiliary: true,
-    note: "North Kings Hwy Entrance garage elevator: one elevator, no backup. This is parking-garage access only, not required for ordinary station access.",
-    internalNote: "Real, live-observed id C15S01 (\"Garage #1 elevator\"). Confirmed by Bryce 2026-07-16 as auxiliary/parking only. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 8/10).",
+    chainLabel: " (North Kings Hwy Entrance)",
+    note: "North Kings Hwy entrance to the platform takes two elevators in a row (an elevator, despite being named \"Garage #1,\" up to the mezzanine, then the South Kings Hwy inclinator down to the platform) — both must be working, and neither has a backup. If either is out of service, this route is not step-free.",
+    internalNote: "CORRECTED 2026-07-16 (Bryce): \"Garage #1 elevator\" (real, live-observed C15S01) is NOT parking-only -- it's the required street<->mezzanine elevator for the North Kings Hwy Entrance. From that mezzanine, only the South Kings Hwy inclinator (WMATA-C15_S_ELE2) continues to the platform -- NOT the Huntington Ave elevator, confirmed by Bryce. So this is its own entrance-specific chain, not an auxiliary one. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 8/10).",
     segments: [
-      { id: "garage-mezzanine", label: "Garage to mezzanine", elevators: [{ externalId: "C15S01", label: "Huntington North Kings Hwy Entrance garage elevator (Garage #1)" }] },
+      { id: "street-mezzanine", label: "North Kings Hwy Entrance to mezzanine", elevators: [{ externalId: "C15S01", label: "Huntington North Kings Hwy Entrance elevator (\"Garage #1\", street to mezzanine)" }] },
+      { id: "mezzanine-platform", label: "Mezzanine to platform (via inclinator)", elevators: [{ externalId: "WMATA-C15_S_ELE2", label: "Huntington inclinator (South Kings Hwy entrance, mezzanine to platform) — never yet observed live, synthetic id" }] },
     ],
   },
   {
