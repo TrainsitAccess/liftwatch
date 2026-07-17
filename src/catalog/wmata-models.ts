@@ -1135,7 +1135,7 @@ export const WMATA_STATION_MODELS: StationModel[] = [
     note: "Street to the New Carrollton/Largo Town Center-bound platform: one continuous elevator, no backup. If it is out of service, this route is not step-free.",
     internalNote: "Real, live-observed id D02S01 (\"Elevator between street, mezzanine, and platform to New Carrollton/Largo Town Center\") -- one continuous shaft spanning all 3 levels for this direction. Confirmed by Bryce 2026-07-16 (confidence 9/10).",
     segments: [
-      { id: "street-mezzanine-platform", label: "Street to platform (all levels)", elevators: [{ externalId: "D02S01", label: "Smithsonian elevator (street to New Carrollton/Largo-bound platform, all levels)" }] },
+      { id: "street-mezzanine-platform", label: "Street to platform (all levels)", elevators: [{ externalId: "D02S01", label: "Smithsonian elevator (street to New Carrollton/Largo-bound platform, all levels) — street entrance at the northwest corner of 12th St & Independence Ave SW (38.887765272151604, -77.02853785398135)" }] },
     ],
   },
   {
@@ -1145,7 +1145,7 @@ export const WMATA_STATION_MODELS: StationModel[] = [
     note: "Street to the Vienna/Franconia-Springfield-bound platform takes two elevators in a row (street to mezzanine, then mezzanine to this platform) — both must be working, and neither has a backup. If either elevator is out of service, this route is not step-free.",
     internalNote: "Shares the street<->mezzanine prerequisite with the New Carrollton/Largo-bound chain (same physical unit D02S01, same real id in both chains -- an outage on it severs BOTH directions, which is the real structure). Mezzanine<->platform leg is the real, live-observed D02S02 (\"Elevator between mezzanine and platform to Vienna/Franconia-Springfield\"). Confirmed by Bryce 2026-07-16 (confidence 9/10).",
     segments: [
-      { id: "street-mezzanine", label: "Street to mezzanine", elevators: [{ externalId: "D02S01", label: "Smithsonian elevator (street to New Carrollton/Largo-bound platform, all levels)" }] },
+      { id: "street-mezzanine", label: "Street to mezzanine", elevators: [{ externalId: "D02S01", label: "Smithsonian elevator (street to New Carrollton/Largo-bound platform, all levels) — street entrance at the northwest corner of 12th St & Independence Ave SW (38.887765272151604, -77.02853785398135)" }] },
       { id: "mezzanine-platform", label: "Mezzanine to Vienna/Franconia-Springfield-bound platform", elevators: [{ externalId: "D02S02", label: "Smithsonian elevator (mezzanine to Vienna/Franconia-Springfield-bound platform)" }] },
     ],
   },
