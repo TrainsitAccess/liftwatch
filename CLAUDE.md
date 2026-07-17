@@ -365,11 +365,7 @@ parking lot). A station is accessible only if **every** segment is up.
   street↔mezzanine prerequisite feeding per-direction platform legs, and
   straight single-path chains with unusual level names; several elevators
   upgraded from synthetic to real `UnitName`s by cross-checking
-  `observed-units.json` along the way), 22 excluded with reasons
-  (`wmata-data/chains-excluded.json`, down from the original 43 — Potomac
-  Yard's 3 street entrances and West Falls Church's unlabeled roster are
-  the 2 side-platform holdouts, held back from the batch for individual
-  review): side platforms, big
+  `observed-units.json` along the way): side platforms, big
   transfers, 3-level shafts, corrupt A02 levels, and the
   **observed-units gate** — every UnitName ever seen in the feed
   (`wmata-data/observed-units.json`, `npm run wmata:observed`) must map onto
@@ -401,6 +397,39 @@ parking lot). A station is accessible only if **every** segment is up.
   NTFY_TOPIC repo secret is set — `gh secret set NTFY_TOPIC`, never hardcode
   it, the repo is public) sends a high-priority "needs review" push. Manual
   per-system loops still work anytime.
+- **WMATA STATION REVIEW COMPLETE (2026-07-17): 42/42, every excluded
+  station individually resolved with Bryce.** GTFS undercounted or
+  corrupted more than the observed-units gate alone could catch — several
+  stations needed Bryce's direct knowledge or WMATA's own elevator-
+  description text (pasted from its status page) to resolve: Potomac Yard
+  and Rosslyn each had a GTFS-undercounted redundant BANK (3+ elevators
+  drawn as 1-2); Downtown Largo, West Falls Church, and Innovation Center
+  have a mezzanine reachable at STREET GRADE with no elevator at all on
+  that leg (Innovation Center modeled via `stepFreeAlternative`, since a
+  separate elevator-free bridge exists alongside real elevators); Fort
+  Totten is a single elevator serving all 3 stacked levels; Metro Center,
+  Gallery Place, and L'Enfant Plaza are stacked interchanges resolved from
+  WMATA's own per-elevator text descriptions into 2-3 chains apiece,
+  including down-and-back-up 3-elevator series routes; Huntington's
+  "Garage #1" was MIS-EXCLUDED as auxiliary at first — it's actually a
+  required entrance elevator, corrected mid-review (a reminder that a
+  garage-sounding name doesn't mean parking-only, see the Millbrae
+  precedent); Farragut North's corrupt-levels flag was confirmed genuine
+  (the 2 GTFS edges don't reflect reality — real structure is a plain
+  2-elevator series). Every station carries its confidence rating +
+  evidence trail in `src/catalog/review/queue.json`; two internal
+  (non-public) watch notes remain open (NoMa B35's elevator count,
+  Ballston-MU K04's observed-id mapping) — each documented inline in
+  `wmata-models.ts`'s `internalNote` for the affected station.
+  **Infra fix from this pass**: `scripts/review-queue.mts`'s rebuild step
+  used to regenerate each station's `evidence` array from source files on
+  every run, silently discarding any hand-added entry (a real incident —
+  every manually-recorded confirmation and elevator coordinate since Mt
+  Vernon Sq was wiped by routine `npm run review:queue` calls before being
+  caught and restored from the session log). Fixed: the merge step now
+  carries forward any prior evidence entry the regenerated list doesn't
+  already contain (grows-only, exact source+text dedupe) — hand-added
+  evidence can no longer be lost to a rebuild.
 - **WMATA Capital Improvement Program report — a second ground-truth source
   (2026-07-16, `src/catalog/wmata-data/cip-elevator-mentions.md`)**. WMATA's
   own quarterly CIP progress report (241-page budget/contract PDF, NOT a

@@ -814,8 +814,9 @@ tier; free Default Tier = 10 calls/sec, 50k/day). `data_quality: 'fair'`,
 
 ### WMATA per-elevator build (2026-07-13) — GTFS pathways chains, observed binding, fail-safe
 
-56 stations now carry per-elevator access-chain models (55 generated + Rockville
-hand-curated, 57 chains) with topology-derived redundancy — while
+56 stations initially carried per-elevator access-chain models (55 generated +
+Rockville hand-curated, 57 chains) with topology-derived redundancy — since
+2026-07-17 all 98 stations do (see "STATION REVIEW COMPLETE" below) — while
 `inventoryComplete` stays `false` and `staticFleetReference` (320) stays the %
 denominator, because ~⅓ of the fleet is garage/parking elevators absent from
 the rail GTFS (live-confirmed: "Garage elevator" outages at B11/C15/D13/K06…).
@@ -861,8 +862,7 @@ access chain only when the agency's guidance or a human confirms the route.**
   by risk — no-redundancy ladder-chain shapes (a shared street↔mezzanine
   prerequisite feeding one or two per-direction platform legs, or a straight
   street→platform run with unusual level names) batch safely since nothing
-  in them CLAIMS a backup; genuine ambiguity (Potomac Yard's 3 street
-  entrances, West Falls Church's unlabeled roster) stays individual. Shipped
+  in them CLAIMS a backup; genuine ambiguity stayed individual. Shipped
   in 4 structural groups (Judiciary Sq/Arlington Cemetery; Reagan National
   Airport/Eisenhower Ave/West Hyattsville/Hyattsville Crossing;
   Dupont Circle/McPherson Sq/Farragut West/Pentagon City/Crystal City/
@@ -871,8 +871,54 @@ access chain only when the agency's guidance or a human confirms the route.**
   elevators upgraded from synthetic `WMATA-<node>` slots to real observed
   `UnitName`s during this pass by cross-checking `observed-units.json`
   (Reagan National Airport ships fully real; Cheverly's both platform legs
-  are real). 77 stations now carry per-elevator access-chain models total
-  (55 generated + 22 hand-curated); 22 stations remain excluded.
+  are real).
+- **STATION REVIEW COMPLETE (2026-07-17): the remaining 22 excluded
+  stations were resolved one at a time with Bryce — 98 stations now carry
+  per-elevator access-chain models, ZERO excluded.** The observed-units gate
+  alone couldn't catch everything GTFS got wrong; several stations needed
+  Bryce's direct knowledge or WMATA's own per-elevator status-page text
+  (pasted in chat) to resolve correctly:
+  - **GTFS-undercounted redundant banks**: Potomac Yard (3 street entrances
+    × 2 elevators each, plus 2-elevator platform pairs — GTFS drew 1 per
+    entrance/platform) and Rosslyn (3 redundant street elevators, GTFS drew
+    1) both had 2-3x more elevators than GTFS modeled.
+  - **Mezzanine at street grade, no elevator on that leg**: Downtown Largo
+    (Harry Truman Dr entrance), West Falls Church (I-66/Leesburg Pike median
+    entrance), and Innovation Center (a separate elevator-free pedestrian
+    bridge to Innovation Ave, alongside 2 real "South Entry Pavilion"
+    elevators — modeled via `stepFreeAlternative` since the real elevators
+    stay tracked, just never gate accessibility alone).
+  - **Single elevator serving multiple stacked levels**: Fort Totten (one
+    shaft, all 3 levels — Red Line + both Green/Yellow platforms).
+  - **Stacked interchanges resolved from WMATA's own elevator-description
+    text**: Metro Center, Gallery Place, and L'Enfant Plaza each split into
+    2-3 chains (one straight-through, one/two requiring a down-then-back-up
+    3-elevator series through a specific platform side — the two ends of the
+    upper level aren't directly walkable at any of the three).
+  - **A mis-exclusion caught mid-review**: Huntington's "Garage #1
+    elevator" was first modeled as auxiliary/parking-only by name pattern
+    match, then corrected — it's actually the REQUIRED street↔mezzanine
+    elevator for the North Kings Hwy entrance (a garage-sounding name
+    doesn't mean parking-only; same caution as the Millbrae precedent).
+  - **Corrupt-levels flag confirmed genuine**: Farragut North's 2 GTFS
+    Mezzanine↔Platform edges don't reflect reality at all — real structure
+    is a plain 2-elevator series (street→mezzanine, mezzanine→platform).
+  Every resolved station carries a numeric confidence rating and its full
+  evidence trail (including exact lat/long for many street entrances) in
+  `src/catalog/review/queue.json`. Two internal (non-public) watch notes
+  remain open, documented inline in each station's `internalNote`: NoMa
+  B35's elevator count (WMATA's materials say 1, Bryce is certain of 2) and
+  Ballston-MU K04's observed-unit-id-to-physical-elevator mapping
+  (inferential, not confirmed by a platform-naming alert).
+  **Infra fix found during this pass**: `scripts/review-queue.mts`'s
+  rebuild step used to regenerate each station's `evidence` array from
+  source files on every run, silently discarding any hand-added entry — a
+  real incident where every manually-recorded confirmation and elevator
+  coordinate since Mt Vernon Sq was wiped by routine `npm run review:queue`
+  calls before being caught and restored from the session transcript. Fixed:
+  the merge step now carries forward any prior evidence entry the
+  regenerated list doesn't already contain (grows-only, exact source+text
+  dedupe) — hand-added evidence can no longer be lost to a rebuild.
 - **Adapter attribution** (`attributeWmataIncident`, pure):
   id-in-model → modeled (segment + model-derived redundancy, source
   `pathways`/`curated`); unknown UnitName at a modeled station → level-pair
