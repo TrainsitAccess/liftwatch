@@ -1,7 +1,13 @@
 {
-  "updatedAt": "2026-07-16T11:56:45.352Z",
+  "updatedAt": "2026-07-17T11:46:15.068Z",
   "note": "Every WMATA elevator UnitName ever observed (archive + live feed). Grows only. Consumed by scripts/wmata-pathways.mts as an undercount/vocabulary gate.",
   "units": [
+    {
+      "unitName": "A02S02",
+      "stationCode": "A02",
+      "location": "Elevator between mezzanine and platform",
+      "firstObserved": "2026-07-16T14:55:33.48076+00:00"
+    },
     {
       "unitName": "A07X01",
       "stationCode": "A07",
@@ -67,6 +73,18 @@
       "stationCode": "B02",
       "location": "Elevator between street and platform to Shady Grove",
       "firstObserved": "2026-07-08T21:21:08.628597+00:00"
+    },
+    {
+      "unitName": "B02N02",
+      "stationCode": "B02",
+      "location": "Elevator between street and platform to Glenmont",
+      "firstObserved": "2026-07-17T10:18:07.018548+00:00"
+    },
+    {
+      "unitName": "B06X01",
+      "stationCode": "B06",
+      "location": "Elevator between mezzanine, upper platform to Red Line, and lower platform for Green Line",
+      "firstObserved": "2026-07-17T09:54:12.684592+00:00"
     },
     {
       "unitName": "B09X04",
@@ -153,6 +171,12 @@
       "firstObserved": "2026-07-15T13:27:22.051981+00:00"
     },
     {
+      "unitName": "C04X02",
+      "stationCode": "C04",
+      "location": "Elevator between mezzanine and platform",
+      "firstObserved": "2026-07-16T20:23:25.020621+00:00"
+    },
+    {
       "unitName": "C05E01",
       "stationCode": "C05",
       "location": "Elevator between street, and upper platform",
@@ -169,6 +193,12 @@
       "stationCode": "C05",
       "location": "Elevator between street, and upper platform",
       "firstObserved": "2026-07-11T15:56:41.525963+00:00"
+    },
+    {
+      "unitName": "C06X01",
+      "stationCode": "C06",
+      "location": "Elevator between mezzanine and platform to Franconia Springfield",
+      "firstObserved": "2026-07-16T18:37:47.143617+00:00"
     },
     {
       "unitName": "C08X01",
@@ -453,6 +483,18 @@
       "firstObserved": "2026-07-07T01:27:17.988474+00:00"
     },
     {
+      "unitName": "F09X01",
+      "stationCode": "F09",
+      "location": "Elevator between mezzanine and platform",
+      "firstObserved": "2026-07-16T19:03:18.254276+00:00"
+    },
+    {
+      "unitName": "F11X01",
+      "stationCode": "F11",
+      "location": "Elevator between mezzanine and platform",
+      "firstObserved": "2026-07-17T08:55:56.699165+00:00"
+    },
+    {
       "unitName": "G01X01",
       "stationCode": "G01",
       "location": "Elevator between street and mezzanine, north side of Benning Road at 45th Street",
@@ -571,6 +613,12 @@
       "stationCode": "N06",
       "location": "Elevator - south entry pavilion",
       "firstObserved": "2026-07-11T00:36:36.021569+00:00"
+    },
+    {
+      "unitName": "N06X04",
+      "stationCode": "N06",
+      "location": "Elevator between mezzanine and platform",
+      "firstObserved": "2026-07-16T17:46:01.210805+00:00"
     }
   ]
 }

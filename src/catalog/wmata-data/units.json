@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-16T11:56:50.714Z",
+  "generatedAt": "2026-07-17T11:46:20.409Z",
   "source": "WMATA GTFS rail pathways.txt mode-5 connected components (in-station elevators only)",
   "units": [
     {
@@ -61,6 +61,17 @@
       "externalId": "B11X03",
       "station": "B11",
       "stationName": "Glenmont",
+      "description": "Elevator between mezzanine and platform",
+      "levelFrom": "Mezzanine",
+      "levelTo": "Platform",
+      "segment": "mezzanine-platform",
+      "modeled": true,
+      "isRedundant": false
+    },
+    {
+      "externalId": "C04X02",
+      "station": "C04",
+      "stationName": "Foggy Bottom-GWU",
       "description": "Elevator between mezzanine and platform",
       "levelFrom": "Mezzanine",
       "levelTo": "Platform",
@@ -278,6 +289,28 @@
       "isRedundant": false
     },
     {
+      "externalId": "F09X01",
+      "station": "F09",
+      "stationName": "Naylor Rd",
+      "description": "Elevator between street/mezzanine and platform",
+      "levelFrom": "Street/Mezzanine",
+      "levelTo": "Platform",
+      "segment": "street-mezzanine-platform",
+      "modeled": true,
+      "isRedundant": false
+    },
+    {
+      "externalId": "F11X01",
+      "station": "F11",
+      "stationName": "Branch Av",
+      "description": "Elevator between street/mezzanine and platform",
+      "levelFrom": "Street/Mezzanine",
+      "levelTo": "Platform",
+      "segment": "street-mezzanine-platform",
+      "modeled": true,
+      "isRedundant": false
+    },
+    {
       "externalId": "G01X01",
       "station": "G01",
       "stationName": "Benning Rd",
@@ -373,6 +406,17 @@
       "levelFrom": "Street",
       "levelTo": "Mezzanine",
       "segment": "street-mezzanine",
+      "modeled": true,
+      "isRedundant": false
+    },
+    {
+      "externalId": "N06X04",
+      "station": "N06",
+      "stationName": "Wiehle-Reston East",
+      "description": "Elevator between mezzanine and platform",
+      "levelFrom": "Mezzanine",
+      "levelTo": "Platform",
+      "segment": "mezzanine-platform",
       "modeled": true,
       "isRedundant": false
     },
@@ -923,17 +967,6 @@
       "levelFrom": "Street",
       "levelTo": "Mezzanine",
       "segment": "street-mezzanine",
-      "modeled": true,
-      "isRedundant": false
-    },
-    {
-      "externalId": "WMATA-C04_MZ_ELE",
-      "station": "C04",
-      "stationName": "Foggy Bottom-GWU",
-      "description": "Elevator between mezzanine and platform",
-      "levelFrom": "Mezzanine",
-      "levelTo": "Platform",
-      "segment": "mezzanine-platform",
       "modeled": true,
       "isRedundant": false
     },
@@ -1697,17 +1730,6 @@
       "isRedundant": false
     },
     {
-      "externalId": "WMATA-F09_ELV",
-      "station": "F09",
-      "stationName": "Naylor Rd",
-      "description": "Elevator between street/mezzanine and platform",
-      "levelFrom": "Street/Mezzanine",
-      "levelTo": "Platform",
-      "segment": "street-mezzanine-platform",
-      "modeled": true,
-      "isRedundant": false
-    },
-    {
       "externalId": "WMATA-F10_ELE1",
       "station": "F10",
       "stationName": "Suitland",
@@ -1727,17 +1749,6 @@
       "levelTo": "Platform",
       "segment": "",
       "modeled": false,
-      "isRedundant": false
-    },
-    {
-      "externalId": "WMATA-F11_MZ_ELV",
-      "station": "F11",
-      "stationName": "Branch Av",
-      "description": "Elevator between street/mezzanine and platform",
-      "levelFrom": "Street/Mezzanine",
-      "levelTo": "Platform",
-      "segment": "street-mezzanine-platform",
-      "modeled": true,
       "isRedundant": false
     },
     {
@@ -2091,17 +2102,6 @@
       "segment": "street-mezzanine",
       "modeled": true,
       "isRedundant": true
-    },
-    {
-      "externalId": "WMATA-N06_MZ_ELV",
-      "station": "N06",
-      "stationName": "Wiehle-Reston East",
-      "description": "Elevator between mezzanine and platform",
-      "levelFrom": "Mezzanine",
-      "levelTo": "Platform",
-      "segment": "mezzanine-platform",
-      "modeled": true,
-      "isRedundant": false
     },
     {
       "externalId": "WMATA-N07_MZ_ELE",

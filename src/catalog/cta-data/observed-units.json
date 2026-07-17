@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-16T11:56:47.055Z",
+  "updatedAt": "2026-07-17T11:46:16.773Z",
   "note": "Every CTA elevator identity ever observed (archive + live alert texts, parsed by src/adapters/cta/location.ts). Grows only. Regression fixture for check:cta and the curation aid for a future chains pass.",
   "units": [
     {
@@ -127,6 +127,14 @@
       "firstObserved": "2026-07-09T23:46:13.649+00:00"
     },
     {
+      "unitId": "40460-KIMBALL-LINDEN-BOUND",
+      "stationId": "40460",
+      "texts": [
+        "Elevator at Merchandise Mart Temporarily Out-of-Service — The Kimball-bound and Linden-bound platform elevator at Merchandise Mart (Brown, Purple Lines) is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-07-16T14:33:52.31+00:00"
+    },
+    {
       "unitId": "40470",
       "stationId": "40470",
       "texts": [
@@ -246,7 +254,8 @@
       "unitId": "40990",
       "stationId": "40990",
       "texts": [
-        "The elevator at 69th (Red Line) is temporarily out of service."
+        "The elevator at 69th (Red Line) is temporarily out of service.",
+        "Elevator at 69th Temporarily Out-of-Service — The elevator at 69th (Red Line) is temporarily out-of-service."
       ],
       "firstObserved": "2026-07-05T11:42:26.287+00:00"
     },

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-16T11:56:50.714Z",
+  "generatedAt": "2026-07-17T11:46:20.409Z",
   "source": "WMATA GTFS pathways topology (conservative single-platform Street→Mezzanine→Platform ladders)",
   "models": [
     {
@@ -385,8 +385,8 @@
           "label": "Mezzanine to Platform",
           "elevators": [
             {
-              "externalId": "WMATA-C04_MZ_ELE",
-              "label": "Foggy Bottom-GWU elevator (Mezzanine to Platform)"
+              "externalId": "C04X02",
+              "label": "Foggy Bottom-GWU elevator C04X02 (Mezzanine to Platform)"
             }
           ]
         }
@@ -907,8 +907,8 @@
           "label": "Street/Mezzanine to Platform",
           "elevators": [
             {
-              "externalId": "WMATA-F09_ELV",
-              "label": "Naylor Rd elevator (Street/Mezzanine to Platform)"
+              "externalId": "F09X01",
+              "label": "Naylor Rd elevator F09X01 (Street/Mezzanine to Platform)"
             }
           ]
         }
@@ -925,8 +925,8 @@
           "label": "Street/Mezzanine to Platform",
           "elevators": [
             {
-              "externalId": "WMATA-F11_MZ_ELV",
-              "label": "Branch Av elevator (Street/Mezzanine to Platform)"
+              "externalId": "F11X01",
+              "label": "Branch Av elevator F11X01 (Street/Mezzanine to Platform)"
             }
           ]
         }
@@ -1255,8 +1255,8 @@
           "label": "Mezzanine to Platform",
           "elevators": [
             {
-              "externalId": "WMATA-N06_MZ_ELV",
-              "label": "Wiehle-Reston East elevator (Mezzanine to Platform)"
+              "externalId": "N06X04",
+              "label": "Wiehle-Reston East elevator N06X04 (Mezzanine to Platform)"
             }
           ]
         }

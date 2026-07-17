@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-17T07:02:10.518Z",
+ "updatedAt": "2026-07-17T11:46:24.697Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -1355,6 +1355,10 @@
     {
      "source": "live feed (observed)",
      "text": "B02N01: \"Elevator between street and platform to Shady Grove\""
+    },
+    {
+     "source": "live feed (observed)",
+     "text": "B02N02: \"Elevator between street and platform to Glenmont\""
     }
    ],
    "resolution": {
@@ -1451,6 +1455,10 @@
     {
      "source": "GTFS roster",
      "text": "WMATA-C06_W_ELE: Street ↔ Platform"
+    },
+    {
+     "source": "live feed (observed)",
+     "text": "C06X01: \"Elevator between mezzanine and platform to Franconia Springfield\""
     }
    ],
    "resolution": {
@@ -3475,6 +3483,10 @@
      "text": "WMATA-B06_E06_ELE: Street/Mezzanine ↔ Platform"
     },
     {
+     "source": "live feed (observed)",
+     "text": "B06X01: \"Elevator between mezzanine, upper platform to Red Line, and lower platform for Green Line\""
+    },
+    {
      "source": "Bryce (2026-07-16)",
      "text": "Only one elevator. It goes to all three levels (street/mezzanine, Red Line, Green/Yellow), and it can be accessed without other elevators."
     }
@@ -4227,6 +4239,10 @@
      "text": "WMATA-A02_S_ELE2: Mezzanine ↔ Platform"
     },
     {
+     "source": "live feed (observed)",
+     "text": "A02S02: \"Elevator between mezzanine and platform\""
+    },
+    {
      "source": "Bryce (2026-07-16)",
      "text": "That station only has two elevators: one from the street to the mezzanine and one from the mezzanine to the platform. The street elevator is located at 38.90302988015644, -77.03933989074207 -- embedded into a building on the east side of Connecticut Ave, between L St and K St NW."
     }
@@ -4464,6 +4480,21 @@
    }
   },
   {
+   "key": "cta:40460",
+   "system": "cta-chicago",
+   "stationId": "40460",
+   "name": "Merchandise Mart",
+   "status": "pending",
+   "priority": 50,
+   "reason": "no chains modeled (no agency inventory — text-identity only)",
+   "evidence": [
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Merchandise Mart Temporarily Out-of-Service — The Kimball-bound and Linden-bound platform elevator at Merchandise Mart (Brown, Purple Lines) is temporarily out-of-service."
+    }
+   ]
+  },
+  {
    "key": "cta:40470",
    "system": "cta-chicago",
    "stationId": "40470",
@@ -4668,6 +4699,10 @@
     {
      "source": "live feed (alert text)",
      "text": "The elevator at 69th (Red Line) is temporarily out of service."
+    },
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at 69th Temporarily Out-of-Service — The elevator at 69th (Red Line) is temporarily out-of-service."
     },
     {
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
