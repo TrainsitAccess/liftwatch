@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-17T02:01:10.321Z",
+ "updatedAt": "2026-07-17T02:07:03.345Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -3642,7 +3642,7 @@
    "system": "wmata-dc",
    "stationId": "B01_F01",
    "name": "Gallery Place",
-   "status": "pending",
+   "status": "modeled",
    "priority": 40,
    "reason": "non-standard-levels",
    "evidence": [
@@ -3674,7 +3674,12 @@
      "source": "live feed (observed)",
      "text": "B01E04: \"Elevator between platform for Green/Yellow lines and platform to Shady Grove\""
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "adjusted",
+    "notes": "Modeled as 3 chains mirroring Metro Center: Glenmont-bound Red Line (redundant street pair, both at Capital One Arena/National Portrait Gallery), Green/Yellow (shares the street pair, then B01E03, sole access), Shady Grove-bound Red Line (shares the street pair + B01E03, then B01E04, sole access, both ends of the upper platform not directly walkable). All 4 elevator identities plus the location detail confirmed directly by Bryce. Confidence 8/10. Adjusted from the initial single-street-elevator proposal via /liftwatch-station-review 2026-07-16.",
+    "date": "2026-07-16"
+   }
   },
   {
    "key": "wmata:C05",

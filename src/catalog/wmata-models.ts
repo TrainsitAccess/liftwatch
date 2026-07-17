@@ -1298,4 +1298,84 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       { id: "lower-platform-glenmont", label: "Blue/Orange/Silver platform back up to Glenmont-bound platform", elevators: [{ externalId: "WMATA-A01_C01_S_ELE1", label: "Metro Center elevator (WMATA: \"Elevator between upper platform to Glenmont and lower platform for Blue/Orange Lines\") — never yet observed live, synthetic id" }] },
     ],
   },
+  // Gallery Place-Chinatown (B01_F01, Red/Green/Yellow interchange) —
+  // excluded by the non-standard-levels gate: same "Lower Mezzanine/Upper
+  // Platform" + "Lower Platform" pattern as Metro Center -- the Red Line
+  // platform doubles as the mezzanine, stacked above the Green/Yellow
+  // platform. Structurally a MIRROR of Metro Center (street surfaces at
+  // the Glenmont-bound end here, not the Shady Grove-bound end), confirmed
+  // by Bryce 2026-07-16 from WMATA's own live-observed elevator wording:
+  //   - B01E02: "Elevator between street and platform to Glenmont" --
+  //     street straight to the Glenmont-bound platform. Bryce corrected
+  //     this to a REDUNDANT PAIR: 2 elevators, both embedded into Capital
+  //     One Arena, facing the National Portrait Gallery
+  //     (38.898045155641995, -77.02177530236538) -- only B01E02 has
+  //     appeared live so far, the 2nd is synthetic.
+  //   - B01E03: "Elevator between platform for Green/Yellow lines and
+  //     platform to Glenmont" -- Glenmont-upper down to the shared
+  //     Green/Yellow lower platform.
+  //   - B01E04: "Elevator between platform for Green/Yellow lines and
+  //     platform to Shady Grove" -- Green/Yellow lower back up to the
+  //     Shady Grove-bound upper platform.
+  // The two ends of the upper Red Line platform aren't directly walkable
+  // to each other (same as Metro Center), so: Glenmont-bound Red Line
+  // needs only the street pair (redundant). Green/Yellow needs the street
+  // pair then B01E03 (no redundancy on that leg). Shady Grove-bound Red
+  // Line needs the street pair, then B01E03, then B01E04 in series (no
+  // redundancy, no shortcut). Approved by Bryce via
+  // /liftwatch-station-review 2026-07-16 (confidence 8/10).
+  {
+    systemId: SYSTEM,
+    stationExternalId: "B01_F01",
+    chainLabel: " (Glenmont-bound Red Line)",
+    note: "Street to the Glenmont-bound Red Line platform: 2 elevators, embedded into Capital One Arena facing the National Portrait Gallery — either one keeps this route step-free. Only if both are out of service does this station lose step-free access on this route.",
+    internalNote: "Real, live-observed id B01E02 (\"Elevator between street and platform to Glenmont\") + a 2nd, never yet observed synthetic id -- both at Capital One Arena facing the National Portrait Gallery (38.898045155641995, -77.02177530236538), per Bryce 2026-07-16. The upper level here doubles as the mezzanine, mirroring Metro Center's structure but with street surfacing at the Glenmont end instead of Shady Grove. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 8/10).",
+    segments: [
+      {
+        id: "street-glenmont-platform",
+        label: "Street to Glenmont-bound platform",
+        elevators: [
+          { externalId: "B01E02", label: "Gallery Place elevator (street to Glenmont-bound platform) — Capital One Arena, facing the National Portrait Gallery (38.898045155641995, -77.02177530236538)" },
+          { externalId: "WMATA-B01_F01_E_ELE_2", label: "Gallery Place elevator (street to Glenmont-bound platform) — Capital One Arena, facing the National Portrait Gallery, never yet observed live, synthetic id" },
+        ],
+      },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "B01_F01",
+    chainLabel: " (Green/Yellow)",
+    note: "Street to the Green/Yellow platform takes two elevators in a row (street to the Glenmont-bound platform, then down to the Green/Yellow platform) — the first leg has a backup, the second does not. If both street elevators are out, or the 2nd elevator is out of service, this route is not step-free.",
+    internalNote: "Shares the redundant street<->Glenmont-platform pair (B01E02 + synthetic) with the Glenmont-bound chain. Second leg is the real, live-observed B01E03 (\"Elevator between platform for Green/Yellow lines and platform to Glenmont\"), sole access -- no other path down from street that doesn't go through the Glenmont-bound platform first. Confirmed by Bryce 2026-07-16 (confidence 8/10).",
+    segments: [
+      {
+        id: "street-glenmont-platform",
+        label: "Street to Glenmont-bound platform",
+        elevators: [
+          { externalId: "B01E02", label: "Gallery Place elevator (street to Glenmont-bound platform) — Capital One Arena, facing the National Portrait Gallery (38.898045155641995, -77.02177530236538)" },
+          { externalId: "WMATA-B01_F01_E_ELE_2", label: "Gallery Place elevator (street to Glenmont-bound platform) — Capital One Arena, facing the National Portrait Gallery, never yet observed live, synthetic id" },
+        ],
+      },
+      { id: "glenmont-lower-platform", label: "Glenmont-bound platform down to Green/Yellow platform", elevators: [{ externalId: "B01E03", label: "Gallery Place elevator (Glenmont-bound platform to Green/Yellow platform)" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "B01_F01",
+    chainLabel: " (Shady Grove-bound Red Line)",
+    note: "Street to the Shady Grove-bound Red Line platform takes 3 elevators in a row: street to the Glenmont-bound platform, down to the Green/Yellow platform, then back up to the Shady Grove-bound platform on the opposite end. All 3 must be working (though the first leg has a backup) — the two ends of the upper platform aren't directly connected. If both street elevators are out, or either of the other two is out of service, this route is not step-free.",
+    internalNote: "Shares the redundant street<->Glenmont-platform pair and the Glenmont<->Green/Yellow elevator (B01E03) with the other two chains, plus a 3rd leg: the real, live-observed B01E04 (\"Elevator between platform for Green/Yellow lines and platform to Shady Grove\"), sole access. Mirrors Metro Center's Glenmont-bound chain shape. Confirmed by Bryce 2026-07-16 (confidence 8/10).",
+    segments: [
+      {
+        id: "street-glenmont-platform",
+        label: "Street to Glenmont-bound platform",
+        elevators: [
+          { externalId: "B01E02", label: "Gallery Place elevator (street to Glenmont-bound platform) — Capital One Arena, facing the National Portrait Gallery (38.898045155641995, -77.02177530236538)" },
+          { externalId: "WMATA-B01_F01_E_ELE_2", label: "Gallery Place elevator (street to Glenmont-bound platform) — Capital One Arena, facing the National Portrait Gallery, never yet observed live, synthetic id" },
+        ],
+      },
+      { id: "glenmont-lower-platform", label: "Glenmont-bound platform down to Green/Yellow platform", elevators: [{ externalId: "B01E03", label: "Gallery Place elevator (Glenmont-bound platform to Green/Yellow platform)" }] },
+      { id: "lower-platform-shady-grove", label: "Green/Yellow platform back up to Shady Grove-bound platform", elevators: [{ externalId: "B01E04", label: "Gallery Place elevator (Green/Yellow platform to Shady Grove-bound platform)" }] },
+    ],
+  },
 ];
