@@ -1432,4 +1432,80 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       { id: "upper-lower-platform", label: "Upper platform down to lower (westbound) platform", elevators: [{ externalId: "WMATA-C05_ELE", label: "Rosslyn elevator (upper to lower/westbound platform) — never yet observed live, synthetic id" }] },
     ],
   },
+  // Pentagon (C07, Blue/Yellow) — excluded by the non-standard-levels
+  // gate: "Mezzanine/Upper Platform" + "Lower Platform" (plus Street),
+  // same combined-level pattern as Rosslyn/Metro Center/Gallery Place.
+  // Bryce pasted WMATA's own elevator descriptions 2026-07-16, which
+  // resolve to 5 elevators total, only 3 of which are core rail access:
+  //   - 2 redundant elevators, "Elevator between the bus bay and the
+  //     mezzanine" -- the station's actual street-equivalent entrance
+  //     (Pentagon Transit Center's bus bay), reaching the
+  //     mezzanine/upper-platform level.
+  //   - 1 elevator, "Elevator between upper and lower platforms" -- sole
+  //     access between the two train platform levels (opposite
+  //     directions of Blue/Yellow).
+  // The other 2, "Elevator between the lower bus platform and the upper
+  // platform" (a redundant pair), are PURELY a bus-to-bus connection
+  // within the transit center -- Bryce confirmed both ends are bus
+  // platforms, unrelated to the Metro rail platforms despite the
+  // "upper platform" wording. Tracked as their own auxiliary chain (never
+  // required for train access), per the universal-inclusion policy (every
+  // elevator an agency reports gets tracked, but only enters a core chain
+  // when confirmed to be part of the route). None of the 5 have ever been
+  // individually observed live. Approved by Bryce via
+  // /liftwatch-station-review 2026-07-16 (confidence 8/10 -- structure
+  // confirmed directly from WMATA's own descriptions).
+  {
+    systemId: SYSTEM,
+    stationExternalId: "C07",
+    chainLabel: " (upper platform)",
+    note: "Bus bay to the upper platform: 2 elevators, either one keeps this route step-free. Only if both are out of service does this station lose step-free access on this route.",
+    internalNote: "GTFS's WMATA-C07_E_ELE (Street<->Mezzanine/Upper Platform) is, per Bryce 2026-07-16, actually 2 redundant elevators (WMATA's own wording: \"Elevator between the bus bay and the mezzanine\") -- Pentagon Transit Center's bus bay is the station's real street-equivalent entrance. Neither individually observed live, both synthetic ids. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 8/10).",
+    segments: [
+      {
+        id: "bus-bay-mezzanine",
+        label: "Bus bay to mezzanine/upper platform",
+        elevators: [
+          { externalId: "WMATA-C07_E_ELE1", label: "Pentagon elevator (bus bay to mezzanine, WMATA: \"Elevator between the bus bay and the mezzanine\") — never yet observed live, synthetic id" },
+          { externalId: "WMATA-C07_E_ELE2", label: "Pentagon elevator (bus bay to mezzanine, WMATA: \"Elevator between the bus bay and the mezzanine\") — never yet observed live, synthetic id" },
+        ],
+      },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "C07",
+    chainLabel: " (lower platform)",
+    note: "Bus bay to the lower platform takes two legs: the bus bay entrance (2 elevators, either works) then one elevator down to the lower platform, which has no backup. If both bus-bay elevators are out, or the lower-platform elevator is out of service, this route is not step-free.",
+    internalNote: "Shares the redundant bus-bay<->mezzanine pair with the upper-platform chain. Second leg is GTFS's WMATA-C07_M_ELE (Mezzanine/Upper Platform<->Lower Platform), WMATA's own wording \"Elevator between upper and lower platforms\" -- sole access, never yet observed live, synthetic id. Confirmed by Bryce 2026-07-16 (confidence 8/10).",
+    segments: [
+      {
+        id: "bus-bay-mezzanine",
+        label: "Bus bay to mezzanine/upper platform",
+        elevators: [
+          { externalId: "WMATA-C07_E_ELE1", label: "Pentagon elevator (bus bay to mezzanine, WMATA: \"Elevator between the bus bay and the mezzanine\") — never yet observed live, synthetic id" },
+          { externalId: "WMATA-C07_E_ELE2", label: "Pentagon elevator (bus bay to mezzanine, WMATA: \"Elevator between the bus bay and the mezzanine\") — never yet observed live, synthetic id" },
+        ],
+      },
+      { id: "upper-lower-platform", label: "Upper platform down to lower platform", elevators: [{ externalId: "WMATA-C07_M_ELE", label: "Pentagon elevator (upper to lower platform, WMATA: \"Elevator between upper and lower platforms\") — never yet observed live, synthetic id" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "C07",
+    chainLabel: " (bus-to-bus)",
+    auxiliary: true,
+    note: "A separate elevator connection between two bus platforms at the Pentagon Transit Center — 2 elevators, either one works. This is for bus-to-bus transfers only; it does not connect to the Metro train platforms and is not required for station access.",
+    internalNote: "WMATA's own wording: \"Elevator between the lower bus platform and the upper platform\" -- despite the \"upper platform\" phrasing, Bryce confirmed 2026-07-16 both ends are BUS platforms within the transit center, unrelated to the train's upper/lower rail platforms. Tracked per the universal-inclusion policy (every agency-reported elevator is tracked) but kept out of the core rail chains since it's genuinely not part of the route. Neither individually observed live, both synthetic ids. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 8/10).",
+    segments: [
+      {
+        id: "bus-platform-to-bus-platform",
+        label: "Lower bus platform to upper bus platform",
+        elevators: [
+          { externalId: "WMATA-C07_BUS_ELE1", label: "Pentagon bus-to-bus elevator (WMATA: \"Elevator between the lower bus platform and the upper platform\") — never yet observed live, synthetic id" },
+          { externalId: "WMATA-C07_BUS_ELE2", label: "Pentagon bus-to-bus elevator (WMATA: \"Elevator between the lower bus platform and the upper platform\") — never yet observed live, synthetic id" },
+        ],
+      },
+    ],
+  },
 ];

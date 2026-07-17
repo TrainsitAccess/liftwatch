@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-17T02:14:44.432Z",
+ "updatedAt": "2026-07-17T02:26:37.977Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -3726,7 +3726,7 @@
    "system": "wmata-dc",
    "stationId": "C07",
    "name": "Pentagon",
-   "status": "pending",
+   "status": "modeled",
    "priority": 40,
    "reason": "non-standard-levels",
    "evidence": [
@@ -3742,7 +3742,12 @@
      "source": "GTFS roster",
      "text": "WMATA-C07_M_ELE: Mezzanine/Upper Platform ↔ Lower Platform"
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "adjusted",
+    "notes": "Modeled as 2 core rail chains (upper platform: redundant bus-bay pair; lower platform: shares the pair + 1 sole-access elevator) plus a separate auxiliary bus-to-bus chain (2 redundant elevators, explicitly not required for train access). All 5 elevators confirmed directly from WMATA's own descriptions, which Bryce provided; none individually observed live yet. Confidence 8/10. Adjusted from the initial low-confidence 2-elevator guess via /liftwatch-station-review 2026-07-16.",
+    "date": "2026-07-16"
+   }
   },
   {
    "key": "wmata:C15",
