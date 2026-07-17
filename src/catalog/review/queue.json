@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-17T02:36:57.102Z",
+ "updatedAt": "2026-07-17T02:42:07.318Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -3794,7 +3794,7 @@
    "system": "wmata-dc",
    "stationId": "D03_F03",
    "name": "L'Enfant Plaza",
-   "status": "pending",
+   "status": "modeled",
    "priority": 40,
    "reason": "non-standard-levels",
    "evidence": [
@@ -3834,7 +3834,12 @@
      "source": "live feed (observed)",
      "text": "F03N03: \"Elevator between mezzanine and platform to Greenbelt/Mt. Vernon Sq\""
     }
-   ]
+   ],
+   "resolution": {
+    "verdict": "approved-as-proposed",
+    "notes": "Modeled as 3 chains, all 4 elevators real/live-observed: Green/Yellow Branch Ave/Huntington-bound (F03N01+F03N02), Green/Yellow Greenbelt/Mt Vernon Sq-bound (F03N01+F03N03), and Blue/Orange/Silver (F03N01+F03N02+D03W04, 3 elevators in series, only reachable via the Branch Ave/Huntington side). Structure confirmed directly by Bryce and matches the initial reading exactly. Confidence 9/10. Approved via /liftwatch-station-review 2026-07-16.",
+    "date": "2026-07-16"
+   }
   },
   {
    "key": "wmata:D13",

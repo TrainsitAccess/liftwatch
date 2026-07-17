@@ -1563,4 +1563,60 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       { id: "garage-mezzanine", label: "Garage to mezzanine", elevators: [{ externalId: "C15S03", label: "Huntington North Kings Hwy Garage elevator (Garage #2)" }] },
     ],
   },
+  // L'Enfant Plaza (D03_F03, Green/Yellow + Blue/Orange/Silver
+  // interchange) — excluded by the non-standard-levels gate. Bryce
+  // confirmed the full layout 2026-07-16: 3 platforms total -- a CENTER
+  // island platform for Blue/Orange/Silver, and TWO SIDE platforms for
+  // Green/Yellow (one per direction) -- plus WMATA's own 4 elevator
+  // descriptions, all real/live-observed, which match the initial reading
+  // exactly:
+  //   7th St/Maryland Ave./Smithsonian Museums Entrance/VRE trains:
+  //     - F03N01: "Elevator between street and mezzanine"
+  //     - F03N02: "Elevator between mezzanine and platform to Branch
+  //       Ave/Huntington" (one Green/Yellow side platform)
+  //     - F03N03: "Elevator between mezzanine and platform to
+  //       Greenbelt/Mt. Vernon Sq" (the other Green/Yellow side platform)
+  //   9th & D St (L'Enfant Plaza Entrance):
+  //     - D03W04: "Elevator between mezzanine/upper platform to Branch
+  //       Ave/Huntington and lower platform for Blue/Orange Lines" -- the
+  //       ONLY connector down to the center Blue/Orange/Silver platform,
+  //       reachable only via the Branch Ave/Huntington side.
+  // No redundancy anywhere -- every leg is sole access, and the two
+  // Green/Yellow side platforms aren't directly connected to each other.
+  // Approved by Bryce via /liftwatch-station-review 2026-07-16 (confidence
+  // 9/10 -- all 4 ids real/live-observed, structure confirmed directly).
+  {
+    systemId: SYSTEM,
+    stationExternalId: "D03_F03",
+    chainLabel: " (Green/Yellow: Branch Ave/Huntington-bound)",
+    note: "Street to the Branch Ave/Huntington-bound Green/Yellow platform takes two elevators in a row (street to mezzanine, then mezzanine to this platform) — both must be working, and neither has a backup. If either elevator is out of service, this route is not step-free.",
+    internalNote: "Real, live-observed ids: F03N01 (\"Elevator between street and mezzanine\") + F03N02 (\"Elevator between mezzanine and platform to Branch Ave/Huntington\"). Confirmed by Bryce 2026-07-16 (confidence 9/10).",
+    segments: [
+      { id: "street-mezzanine", label: "Street to mezzanine", elevators: [{ externalId: "F03N01", label: "L'Enfant Plaza elevator (street to mezzanine, 7th St/Maryland Ave./Smithsonian Museums Entrance)" }] },
+      { id: "mezzanine-platform", label: "Mezzanine to Branch Ave/Huntington-bound platform", elevators: [{ externalId: "F03N02", label: "L'Enfant Plaza elevator (mezzanine to Branch Ave/Huntington-bound platform)" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "D03_F03",
+    chainLabel: " (Green/Yellow: Greenbelt/Mt Vernon Sq-bound)",
+    note: "Street to the Greenbelt/Mt. Vernon Sq-bound Green/Yellow platform takes two elevators in a row (street to mezzanine, then mezzanine to this platform) — both must be working, and neither has a backup. If either elevator is out of service, this route is not step-free.",
+    internalNote: "Shares the street<->mezzanine prerequisite (F03N01) with the Branch Ave/Huntington-bound chain. Real, live-observed id F03N03 (\"Elevator between mezzanine and platform to Greenbelt/Mt. Vernon Sq\"), sole access. Confirmed by Bryce 2026-07-16 (confidence 9/10).",
+    segments: [
+      { id: "street-mezzanine", label: "Street to mezzanine", elevators: [{ externalId: "F03N01", label: "L'Enfant Plaza elevator (street to mezzanine, 7th St/Maryland Ave./Smithsonian Museums Entrance)" }] },
+      { id: "mezzanine-platform", label: "Mezzanine to Greenbelt/Mt. Vernon Sq-bound platform", elevators: [{ externalId: "F03N03", label: "L'Enfant Plaza elevator (mezzanine to Greenbelt/Mt. Vernon Sq-bound platform)" }] },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "D03_F03",
+    chainLabel: " (Blue/Orange/Silver)",
+    note: "Street to the center Blue/Orange/Silver platform takes three elevators in a row (street to mezzanine, mezzanine to the Branch Ave/Huntington-bound Green/Yellow platform, then down to the Blue/Orange/Silver platform) — all three must be working, and none has a backup. If any one of the three is out of service, this route is not step-free.",
+    internalNote: "Shares the street<->mezzanine prerequisite (F03N01) and the Branch Ave/Huntington-bound leg (F03N02) with that chain, plus a 3rd leg: the real, live-observed D03W04 (\"Elevator between mezzanine/upper platform to Branch Ave/Huntington and lower platform for Blue/Orange Lines,\" listed under WMATA's \"9th & D St (L'Enfant Plaza Entrance)\" heading) -- the ONLY connector down to the center platform, reachable only via the Branch Ave/Huntington side (the two Green/Yellow side platforms aren't directly connected). Confirmed by Bryce 2026-07-16 (confidence 9/10).",
+    segments: [
+      { id: "street-mezzanine", label: "Street to mezzanine", elevators: [{ externalId: "F03N01", label: "L'Enfant Plaza elevator (street to mezzanine, 7th St/Maryland Ave./Smithsonian Museums Entrance)" }] },
+      { id: "mezzanine-upper-platform", label: "Mezzanine to Branch Ave/Huntington-bound platform", elevators: [{ externalId: "F03N02", label: "L'Enfant Plaza elevator (mezzanine to Branch Ave/Huntington-bound platform)" }] },
+      { id: "upper-lower-platform", label: "Branch Ave/Huntington-bound platform down to Blue/Orange/Silver platform", elevators: [{ externalId: "D03W04", label: "L'Enfant Plaza elevator (Branch Ave/Huntington platform to Blue/Orange/Silver platform, 9th & D St entrance)" }] },
+    ],
+  },
 ];
