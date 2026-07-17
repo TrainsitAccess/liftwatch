@@ -341,9 +341,10 @@ against a reference photo):
   rebuilds (a build-hook-per-poll design was considered and dropped: ~288
   builds/day, ~9x the free tier, to swap a 17 KB file). Pages show "updated
   N min ago" from `generatedAt` and self-reload when a newer snapshot lands.
-  `poll.yml` is kept as a redundant fallback until Netlify's schedule proves
-  reliable (idempotent ingest makes double-polling harmless). See CLAUDE.md's
-  "Deployment (Netlify)" for the operational detail.
+  The old `poll.yml` GitHub Actions cron was kept as a redundant fallback
+  through the transition and **removed 2026-07-17** once Netlify's schedule
+  had proven reliable for a week — Netlify is now the sole poller. See
+  CLAUDE.md's "Deployment (Netlify)" for the operational detail.
 - **Phase 1.5** ✓ — weekly backup (XLSX + JSON) to a private git repo (Google
   Drive abandoned: service accounts have no Drive quota).
 - **Phase 2** ~ — the site: **live departure-board view shipped** (per-system
@@ -1222,7 +1223,8 @@ TMB (Barcelona) was the first non-North-America, non-UK system. It is now
 **`hidden: true`** — withheld from the site and not polled — because a review
 of TMB's own resources surfaced serious data-quality problems (below). The
 adapter, catalog (`units.json`), `check:tmb`, and archived data are all kept
-intact; unhide with `hidden: false` + restoring the poll.yml step.
+intact; unhide with a single `hidden: false` in systems.ts (the Netlify
+poller filters hidden systems out automatically — no workflow step to restore).
 
 **Why hidden — two feed problems (2026-07-07):**
 - The **alerts feed** used by the adapter (`api.tmb.cat/v1/alerts/metro/

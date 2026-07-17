@@ -13,9 +13,9 @@ Metro-North); **eight are visible** — TMB is hidden pending a feed
 data-quality review. A Netlify scheduled function polls every system every
 5 minutes, derives outage (and offline) events into Supabase, and rebuilds
 the site's data payloads into Netlify Blobs — fresh data reaches the live
-site every poll with no redeploys (a GitHub Actions cron remains as a
-redundant fallback poller, and a weekly job backs the archive up to a
-private repo). The site (`site/`) is a digital train-departure display
+site every poll with no redeploys (a weekly GitHub Actions job backs the
+archive up to a private repo, and a daily one refreshes the generated
+station models). The site (`site/`) is a digital train-departure display
 reading the archive, with chain-aware station accessibility: hand-verified
 and generated access-chain models across every visible system say whether a
 given elevator outage actually severs step-free access or a backup route

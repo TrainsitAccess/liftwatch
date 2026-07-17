@@ -22,10 +22,10 @@ reaches the live site every poll with ZERO rebuilds/redeploys; deploys happen
 only on push. Migrated off GitHub Actions cron because GitHub silently stopped
 firing the schedule for 30+ min stretches (confirmed live 2026-07-09: BART's
 Coliseum outage sat unarchived past its 10-min slot with no error, just a gap
-in `gh run list`). `.github/workflows/poll.yml` is KEPT as a redundant
-fallback during the transition (ingest is idempotent, so both firing is
-harmless) — remove it only once Netlify's schedule is confirmed reliable over
-a few cycles. Backed up weekly to a private repo (`backup.yml`), with a
+in `gh run list`). The old `.github/workflows/poll.yml` was kept as a
+redundant fallback through the transition and **removed 2026-07-17** once
+Netlify's schedule had proven reliable for a week — Netlify is now the sole
+poller. Backed up weekly to a private repo (`backup.yml`), with a
 keepalive workflow so the backup cron never auto-disables. The site is styled
 as a digital train-departure display
 (`site/`) — amber LED boards with reasons, expected returns, live
@@ -37,8 +37,9 @@ semantic tables (the accessible layer is the markup itself, no separate
 - **`SystemCatalogEntry.hidden`** withholds a system from the ENTIRE site
   (board, per-system pages, longest-outages, aggregate totals) without
   deleting its adapter/catalog/checks/archive, and it stops being polled
-  (its poll.yml step is commented out). Reversible: `hidden: false` + restore
-  the poll step. TMB is currently hidden — its undocumented alerts feed is
+  (the Netlify poller filters `hidden` systems out of `knownSystemIds()`).
+  Reversible with a single `hidden: false` — no other change needed. TMB is
+  currently hidden — its undocumented alerts feed is
   sparse, and the richer `itransit/metro/ascensors` feed we found reports
   statuses that contradict reality (274 "KO" vs 1 actually out of service —
   a classic don't-trust-an-unverified-feed-field trap; see SPEC.md).
@@ -83,9 +84,11 @@ npm run site:data && npm run site:serve  # rebuild + preview the departure-board
 
 No `SUPABASE_*` env → always dry-run (fetch + normalize, no writes). Credentials
 (Supabase, MBTA_API_KEY, WMATA_API_KEY, TMB_APP_ID/TMB_APP_KEY) live in
-gitignored `.env` locally, as **Netlify environment variables** for the
-scheduled poll + site build, and (still) as GitHub Actions secrets for the
-fallback `poll.yml` — never in chat, never committed.
+gitignored `.env` locally and as **Netlify environment variables** for the
+scheduled poll + site build — never in chat, never committed. (The GitHub
+Actions secrets that fed the old `poll.yml` fallback are now unused — the
+`model-refresh.yml` / `backup.yml` workflows still need `NTFY_TOPIC` and the
+Supabase secrets respectively.)
 
 ## Deployment (Netlify)
 
@@ -96,7 +99,7 @@ Hosting + the 5-min poll cron both live on Netlify now (site
   `site/data.json` snapshot at push time — shadowed in production by the data
   function below; kept for local preview parity), publish dir `site`,
   functions dir `netlify/functions`, `NODE_VERSION=22` (supabase-js needs
-  native WebSocket, same constraint as the old poll.yml).
+  native WebSocket, same constraint the old poll.yml ran under).
 - **`netlify/functions/poll.mts`** — the scheduled poller
   (`schedule: "*/5 * * * *"`). A **REGULAR** synchronous function —
   **scheduled functions must not be background functions**: the first
@@ -106,8 +109,8 @@ Hosting + the 5-min poll cron both live on Netlify now (site
   manifest, but zero invocations ever happen; a manual POST returns 202
   "accepted" yet never executes either). Regular functions cap at 30s, so
   the 8 per-system polls run in PARALLEL (`Promise.allSettled` — wall-clock
-  = slowest single feed; one failing feed doesn't stop the rest, mirroring
-  poll.yml's per-step `if: !cancelled()`), then the site data payloads are
+  = slowest single feed; one failing feed doesn't stop the rest, the same
+  isolation the old poll.yml got from its per-step `if: !cancelled()`), then the site data payloads are
   rebuilt via `buildSiteData()` and written to the **`site-data` Netlify
   Blobs store**. NO build hook / redeploy per poll — at a 5-min cadence
   that would be ~288 builds/day (~9x the free tier's 300 build-min/month)
@@ -1026,4 +1029,5 @@ parking lot). A station is accessible only if **every** segment is up.
   never wired to monitoring, i.e. permanently unknown, not transient). **Do
   NOT migrate TMB to itransit or trust its statuses** without first
   time-series-sampling whether `KO` ever flips and comparing against TMB's own
-  rendered site. To unhide: `hidden: false` + restore the poll.yml step.
+  rendered site. To unhide: set `hidden: false` in systems.ts (the Netlify
+  poller picks it up automatically — no workflow change needed).

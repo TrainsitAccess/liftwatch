@@ -138,10 +138,18 @@ holdouts" reconciled to all-98-complete); the stale "No DB yet" gotcha
 removed; CTA's adapter bullet updated to point at the now-existing curated
 tier; `review:status`/`review:queue` added to the Running It block;
 `roosevelt-discord-question.md` marked RESOLVED (provenance kept);
-`STATION-RESEARCH.md` marked mostly-consumed. Flagged for Bryce, not acted
-on: `.github/workflows/poll.yml` (the fallback poller) has outlived its
-"few cycles" probation — Netlify's schedule has run reliably since
-2026-07-09; removing it is Bryce's call.
+`STATION-RESEARCH.md` marked mostly-consumed.
+
+**GitHub Actions fallback poller removed (2026-07-17)** — Bryce approved
+retiring `.github/workflows/poll.yml`. It had been kept as a redundant
+fallback through the Netlify-poller transition; Netlify's schedule has run
+reliably since 2026-07-09, so it outlived its "few cycles" probation. The
+Netlify function is now the sole poller (it enumerates systems from the
+registry and filters `hidden` out itself, so TMB unhiding no longer needs a
+workflow edit — just `hidden: false`). Docs updated across CLAUDE.md/SPEC.md/
+README.md; the unused GitHub Actions Supabase/API-key secrets can be deleted
+from the repo settings whenever convenient (`model-refresh.yml` still needs
+`NTFY_TOPIC`, `backup.yml` still needs the Supabase secrets).
 
 **WMATA station review taken from 21/42 to 42/42 (COMPLETE)** — 21 stations
 individually reviewed with Bryce in one continuous session. Highlights:

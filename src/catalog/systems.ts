@@ -248,8 +248,9 @@ export const SYSTEMS: SystemCatalogEntry[] = [
     // itransit/metro/ascensors feed we found reports statuses that contradict
     // reality (274 "KO" vs 1 actually out of service; see SPEC.md + memory).
     // The adapter, catalog, checks, and archived data are all kept intact for
-    // later; TMB is simply withheld from view and no longer polled. Flip to
-    // false and restore the poll step in .github/workflows/poll.yml to unhide.
+    // later; TMB is simply withheld from view and no longer polled. Flip this
+    // to false to unhide — the Netlify poller filters hidden systems out of
+    // knownSystemIds() itself, so no other change is needed.
     hidden: true,
   },
 ];
