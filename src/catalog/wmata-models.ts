@@ -1459,12 +1459,12 @@ export const WMATA_STATION_MODELS: StationModel[] = [
     systemId: SYSTEM,
     stationExternalId: "C07",
     chainLabel: " (upper platform)",
-    note: "Bus bay to the upper platform: 2 elevators, either one keeps this route step-free. Only if both are out of service does this station lose step-free access on this route.",
+    note: "Street to the upper platform: 2 elevators, either one keeps this route step-free. Only if both are out of service does this station lose step-free access on this route.",
     internalNote: "GTFS's WMATA-C07_E_ELE (Street<->Mezzanine/Upper Platform) is, per Bryce 2026-07-16, actually 2 redundant elevators (WMATA's own wording: \"Elevator between the bus bay and the mezzanine\") -- Pentagon Transit Center's bus bay is the station's real street-equivalent entrance. Neither individually observed live, both synthetic ids. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 8/10).",
     segments: [
       {
         id: "bus-bay-mezzanine",
-        label: "Bus bay to mezzanine/upper platform",
+        label: "Street to mezzanine/upper platform",
         elevators: [
           { externalId: "WMATA-C07_E_ELE1", label: "Pentagon elevator (bus bay to mezzanine, WMATA: \"Elevator between the bus bay and the mezzanine\") — never yet observed live, synthetic id" },
           { externalId: "WMATA-C07_E_ELE2", label: "Pentagon elevator (bus bay to mezzanine, WMATA: \"Elevator between the bus bay and the mezzanine\") — never yet observed live, synthetic id" },
@@ -1476,12 +1476,12 @@ export const WMATA_STATION_MODELS: StationModel[] = [
     systemId: SYSTEM,
     stationExternalId: "C07",
     chainLabel: " (lower platform)",
-    note: "Bus bay to the lower platform takes two legs: the bus bay entrance (2 elevators, either works) then one elevator down to the lower platform, which has no backup. If both bus-bay elevators are out, or the lower-platform elevator is out of service, this route is not step-free.",
+    note: "Street to the lower platform takes two legs: the street entrance (2 elevators, either works) then one elevator down to the lower platform, which has no backup. If both street elevators are out, or the lower-platform elevator is out of service, this route is not step-free.",
     internalNote: "Shares the redundant bus-bay<->mezzanine pair with the upper-platform chain. Second leg is GTFS's WMATA-C07_M_ELE (Mezzanine/Upper Platform<->Lower Platform), WMATA's own wording \"Elevator between upper and lower platforms\" -- sole access, never yet observed live, synthetic id. Confirmed by Bryce 2026-07-16 (confidence 8/10).",
     segments: [
       {
         id: "bus-bay-mezzanine",
-        label: "Bus bay to mezzanine/upper platform",
+        label: "Street to mezzanine/upper platform",
         elevators: [
           { externalId: "WMATA-C07_E_ELE1", label: "Pentagon elevator (bus bay to mezzanine, WMATA: \"Elevator between the bus bay and the mezzanine\") — never yet observed live, synthetic id" },
           { externalId: "WMATA-C07_E_ELE2", label: "Pentagon elevator (bus bay to mezzanine, WMATA: \"Elevator between the bus bay and the mezzanine\") — never yet observed live, synthetic id" },
