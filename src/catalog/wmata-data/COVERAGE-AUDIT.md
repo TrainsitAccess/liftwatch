@@ -185,10 +185,17 @@ mystery) and F06 Anacostia (per-entrance pair connectivity) added below.
    entrances ARE mutually reachable step-free (~0.3 mi surface walk).
    Redundancy preserved under the step-free detour policy (≤0.3 mi); curated
    as `step-free-detour-redundant` with the walk disclosed in the rider note.
-5. **B10 Wheaton** — WMATA's page lists NO in-station street→mezzanine
+5. ~~**B10 Wheaton** — WMATA's page lists NO in-station street→mezzanine
    elevator (only B10X01 platform + 4 "garage"), but GTFS drew one and the
    auto model includes it. Either GTFS invented the leg or a "garage" elevator
-   is really the street entrance (reverse-Huntington). Needs investigation.
+   is really the street entrance (reverse-Huntington). Needs investigation.~~
+   **RESOLVED 2026-07-17 (Bryce)**: BOTH were true. Two entrances to one
+   at-grade mezzanine — a bus-bay entrance reached step-free by a RAMP from
+   Georgia Ave (so the street→mezz leg needs no elevator, §3C), and a Kiss &
+   Ride/garage entrance where two of the four "garage" elevators are actually
+   the entrance access (reverse-Huntington; which two unknown). GTFS's
+   street→mezz elevator was a phantom, dropped. Only B10X01 (mezz→platform)
+   gates. Curated as `mezzanine-at-grade`; both entrance coords recorded.
 3. ~~**A08 Friendship Heights** — redundancy plausibly real (urban, same-sidewalk
    entrances) but all ids synthetic; confirm opportunistically.~~ **DONE
    2026-07-17 (spot-check)**: the 2×2 was wrong — separate mezzanines + a

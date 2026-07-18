@@ -140,6 +140,18 @@ console.log("\n  F06 Anacostia (step-free-detour-redundant, 2026-07-17 audit): s
   ok(/0\.3 mile/.test(f06.note ?? "") && /step-free walk/.test(f06.note ?? ""), "F06: public note discloses the ~0.3 mi step-free walk (detour policy requires it)");
 }
 
+console.log("\n  B10 Wheaton (mezzanine-at-grade, 2026-07-17 audit): at-grade mezzanine via a ramp, GTFS phantom street elevator dropped, only B10X01 gates:");
+{
+  ok(!generatedByStation.has("B10"), "B10: moved out of the auto-generated tier (mezzanine-at-grade)");
+  ok(excludedReason.get("B10") === "mezzanine-at-grade", "B10: excluded with reason mezzanine-at-grade");
+  const b10 = WMATA_STATION_MODELS.find((m) => m.stationExternalId === "B10")!;
+  const ids = allElevators(b10).map((e) => e.externalId);
+  ok(ids.length === 1 && ids[0] === "B10X01", "B10: single gating elevator B10X01 (mezz->platform); phantom street elevator dropped");
+  ok(!elevatorRedundant(b10, "B10X01"), "B10: B10X01 is sole access (no backup)");
+  ok(!ids.some((id) => id.startsWith("WMATA-B10")), "B10: no synthetic ids remain (the phantom street elevator is gone)");
+  ok(/ramp/.test(b10.note ?? ""), "B10: public note discloses the at-grade ramp entrance");
+}
+
 console.log("\n  Grade-separated stations (2026-07-17 audit): two opposite-side entrances are NOT redundant — curated per-entrance, no false street→mezzanine backup:");
 {
   const GRADE_SEP = ["N01", "N02", "N03", "N04", "N07", "N08", "N12", "E09"];

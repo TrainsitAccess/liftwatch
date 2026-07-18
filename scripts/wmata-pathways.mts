@@ -326,6 +326,16 @@ const CURATED_STEP_FREE_DETOUR: Record<string, string> = {
   F06: "Anacostia — separate at-grade Howard Rd + Kiss & Ride mezzanines, each with its own platform elevator; redundant only via a disclosed ~0.3 mi step-free surface walk between the two entrances (Bryce 2026-07-17)",
 };
 
+// Human-reviewed stations whose GTFS "street→mezzanine" elevator is a PHANTOM:
+// the mezzanine is reachable step-free from the street WITHOUT an elevator (a
+// ramp / at-grade entrance), so that leg is omitted and only the platform
+// elevator gates — the §3C mezzanine-at-grade pattern (Rockville, Downtown
+// Largo, West Falls Church). GTFS models a street→mezz pathway that doesn't
+// actually gate step-free access. Curated in wmata-models.ts.
+const CURATED_MEZZANINE_AT_GRADE: Record<string, string> = {
+  B10: "Wheaton — at-grade mezzanine reached step-free by a ramp from Georgia Ave (bus-bay entrance) plus a Kiss & Ride/garage-elevator entrance; GTFS drew a phantom street→mezz elevator. Only B10X01 (mezz→platform) gates (Bryce 2026-07-17)",
+};
+
 function nameOf(st: string) { return stationName.get(`STN_${st}`) ?? stationName.get(st) ?? st; }
 function exclude(st: string, reason: string, detail: string, levels: string[]) {
   excluded.push({ station: st, name: nameOf(st), reason, detail, levels });
@@ -359,6 +369,10 @@ for (const [st, els] of [...byStation.entries()].sort()) {
   }
   if (CURATED_STEP_FREE_DETOUR[st]) {
     exclude(st, "step-free-detour-redundant", CURATED_STEP_FREE_DETOUR[st], [...new Set(els.flatMap((e) => e.levels))]);
+    continue;
+  }
+  if (CURATED_MEZZANINE_AT_GRADE[st]) {
+    exclude(st, "mezzanine-at-grade", CURATED_MEZZANINE_AT_GRADE[st], [...new Set(els.flatMap((e) => e.levels))]);
     continue;
   }
   // (1) corruption guard: any elevator node whose level_id belongs to a DIFFERENT

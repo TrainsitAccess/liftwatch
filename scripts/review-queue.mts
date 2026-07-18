@@ -63,7 +63,9 @@ const add = (e: Entry) => entries.set(e.key, e);
   // elevators than GTFS drew; curated with real page ids.
   // F06 Anacostia: 2026-07-17 audit (step-free-detour-redundant) — separate
   // at-grade mezzanines, redundant via a disclosed ~0.3 mi step-free walk.
-  const CURATED = new Set(["A14", "A08", "C13", "D01", "F06", "N06", "N10", "N11", "N01", "N02", "N03", "N04", "N07", "N08", "N12", "E09"]);
+  // B10 Wheaton: 2026-07-17 audit (mezzanine-at-grade) — at-grade mezzanine via
+  // a ramp; GTFS drew a phantom street elevator; only B10X01 gates.
+  const CURATED = new Set(["A14", "A08", "B10", "C13", "D01", "F06", "N06", "N10", "N11", "N01", "N02", "N03", "N04", "N07", "N08", "N12", "E09"]);
   const prio: Record<string, number> = {
     "observed-undercount": 20, "observed-unmappable": 22, "side-platforms": 30,
     "multi-level-shaft": 38, "non-standard-levels": 40, "unorderable-levels": 44, "corrupt-levels": 46,

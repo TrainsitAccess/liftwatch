@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-18T02:42:39.986Z",
+  "generatedAt": "2026-07-18T02:51:40.552Z",
   "source": "WMATA GTFS pathways topology (conservative single-platform Street→Mezzanine→Platform ladders)",
   "models": [
     {
@@ -263,34 +263,6 @@
             {
               "externalId": "WMATA-B08_S_ELE",
               "label": "Silver Spring elevator (Street/Mezzanine to Platform)"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "systemId": "wmata-dc",
-      "stationExternalId": "B10",
-      "note": "One elevator connects the street to the mezzanine. One elevator connects the mezzanine to the platform. None of these elevators has a backup — if any one is out of service, the station has no step-free route.",
-      "internalNote": "Topology from WMATA GTFS pathways (mode-5 elevator components): Street→Mezzanine: 1 elevator, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS. Slot ids are live UnitNames where observed, synthetic WMATA-<node> otherwise.",
-      "segments": [
-        {
-          "id": "street-mezzanine",
-          "label": "Street to Mezzanine",
-          "elevators": [
-            {
-              "externalId": "WMATA-B10_E_ELE",
-              "label": "Wheaton elevator (Street to Mezzanine)"
-            }
-          ]
-        },
-        {
-          "id": "mezzanine-platform",
-          "label": "Mezzanine to Platform",
-          "elevators": [
-            {
-              "externalId": "B10X01",
-              "label": "Wheaton elevator B10X01 (Mezzanine to Platform)"
             }
           ]
         }

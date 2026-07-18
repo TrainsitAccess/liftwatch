@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-18T02:42:39.986Z",
+  "generatedAt": "2026-07-18T02:51:40.552Z",
   "source": "WMATA GTFS rail pathways.txt mode-5 connected components (in-station elevators only)",
   "units": [
     {
@@ -32,17 +32,6 @@
       "levelFrom": "Street",
       "levelTo": "Mezzanine",
       "segment": "street-mezzanine",
-      "modeled": true,
-      "isRedundant": false
-    },
-    {
-      "externalId": "B10X01",
-      "station": "B10",
-      "stationName": "Wheaton",
-      "description": "Elevator between mezzanine and platform",
-      "levelFrom": "Mezzanine",
-      "levelTo": "Platform",
-      "segment": "mezzanine-platform",
       "modeled": true,
       "isRedundant": false
     },
@@ -754,11 +743,22 @@
       "externalId": "WMATA-B10_E_ELE",
       "station": "B10",
       "stationName": "Wheaton",
-      "description": "Elevator between street and mezzanine",
+      "description": "Street ↔ Mezzanine",
       "levelFrom": "Street",
       "levelTo": "Mezzanine",
-      "segment": "street-mezzanine",
-      "modeled": true,
+      "segment": "",
+      "modeled": false,
+      "isRedundant": false
+    },
+    {
+      "externalId": "WMATA-B10_MZ_ELE",
+      "station": "B10",
+      "stationName": "Wheaton",
+      "description": "Mezzanine ↔ Platform",
+      "levelFrom": "Mezzanine",
+      "levelTo": "Platform",
+      "segment": "",
+      "modeled": false,
       "isRedundant": false
     },
     {

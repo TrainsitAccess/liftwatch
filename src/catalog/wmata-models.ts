@@ -2096,6 +2096,36 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       ] },
     ],
   },
+  // Wheaton (B10, Red Line) — the 2026-07-17 audit flagged that WMATA's page
+  // lists NO in-station street→mezzanine elevator (only B10X01 mezz→platform +
+  // four "garage"), yet GTFS drew a street→mezz elevator (synthetic
+  // WMATA-B10_E_ELE). Bryce resolved 2026-07-17: the station has TWO entrances,
+  // both reaching one at-grade mezzanine, so the street→mezz leg needs no
+  // elevator (§3C mezzanine-at-grade, like Rockville/Downtown Largo):
+  //   (1) Bus-bay entrance at the SW corner of Reedie Dr & Georgia Ave
+  //       (39.03828350424475, -77.05108585814365) — at-grade mezzanine; from
+  //       Georgia Ave you go DOWN A RAMP (step-free, no elevator).
+  //   (2) Kiss & Ride / Park & Garage entrance facing Reedie Dr
+  //       (39.03866500402913, -77.05029943969589) — TWO of the four "garage"
+  //       elevators are actually this entrance's access (reverse-Huntington;
+  //       which two of B10X02..B10X05, and the other two's locations, unknown).
+  // The single mezzanine→platform elevator B10X01 is the only elevator that
+  // gates step-free access. The Georgia Ave ramp keeps the street→mezz leg
+  // step-free regardless of any elevator, so that leg is omitted (§3C) and the
+  // garage-side entrance elevators are additive (never gate). Excluded from the
+  // generator via CURATED_MEZZANINE_AT_GRADE; the phantom synthetic
+  // WMATA-B10_E_ELE is dropped. Confidence 8/10 (Bryce + WMATA page + coords).
+  {
+    systemId: SYSTEM,
+    stationExternalId: "B10",
+    note: "The mezzanine is at street level and reached step-free without an elevator: from the bus-bay entrance at Reedie Drive and Georgia Avenue you go down a ramp, and there is a second entrance from the Kiss & Ride/parking garage. One elevator connects the mezzanine to the platform — it has no backup, so if it is out of service the station is not step-free.",
+    internalNote: "2026-07-17 auto-tier audit fix (mezzanine-at-grade): WMATA's Rider Tools page lists no in-station street→mezzanine elevator — only B10X01 (mezzanine→platform) plus four 'garage' elevators (B10X02..B10X05) — but GTFS drew a phantom street→mezz elevator (synthetic WMATA-B10_E_ELE), now dropped. Bryce confirmed 2026-07-17 two entrances to one at-grade mezzanine: (1) bus-bay entrance at the SW corner of Reedie Dr & Georgia Ave (39.03828350424475, -77.05108585814365), reached step-free from Georgia Ave by a RAMP (no elevator); (2) Kiss & Ride/parking garage entrance facing Reedie Dr (39.03866500402913, -77.05029943969589), where TWO of the four 'garage' elevators are actually this entrance's access (which two of B10X02..B10X05 — and the other two's locations — unknown; reverse-Huntington). The ramp keeps the street→mezz leg step-free regardless of elevators, so it is omitted (§3C); B10X01 is the sole gating elevator (real, page-published). Garage-side entrance elevators stay tracked units, not chain members. Source: wmata-data/rider-tools-inventory.json + Bryce coords. Approved via /liftwatch-wmata-spot-check 2026-07-17 (confidence 8/10).",
+    segments: [
+      { id: "mezzanine-platform", label: "Mezzanine to platform", elevators: [
+        { externalId: "B10X01", label: "Wheaton elevator B10X01 — mezzanine to platform (inside fare control)" },
+      ] },
+    ],
+  },
   // King St-Old Town (C13, Blue/Yellow) — the 2026-07-17 audit found WMATA's
   // page lists a THIRD mezzanine→platform elevator (C13S01) beyond the
   // live-validated N-pair the generator modeled. Bryce resolved it same day:

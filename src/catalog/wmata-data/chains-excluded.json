@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-18T02:42:39.986Z",
+  "generatedAt": "2026-07-18T02:51:40.552Z",
   "note": "Stations NOT auto-modeled — complex/side-platform/non-standard, pending a human pass.",
   "stations": [
     {
@@ -126,6 +126,17 @@
       "reason": "observed-undercount",
       "detail": "3 distinct live units (B09X04, B09X05, B09X06) on Mezzanine→Platform vs 1 in GTFS",
       "levels": [
+        "Mezzanine",
+        "Platform"
+      ]
+    },
+    {
+      "station": "B10",
+      "name": "Wheaton",
+      "reason": "mezzanine-at-grade",
+      "detail": "Wheaton — at-grade mezzanine reached step-free by a ramp from Georgia Ave (bus-bay entrance) plus a Kiss & Ride/garage-elevator entrance; GTFS drew a phantom street→mezz elevator. Only B10X01 (mezz→platform) gates (Bryce 2026-07-17)",
+      "levels": [
+        "Street",
         "Mezzanine",
         "Platform"
       ]
