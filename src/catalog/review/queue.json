@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-17T11:46:24.697Z",
+ "updatedAt": "2026-07-18T11:27:06.994Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -3673,6 +3673,10 @@
     {
      "source": "GTFS roster",
      "text": "WMATA-A05_ELE2: Mezzanine/Intermediate Passageway ↔ Platform"
+    },
+    {
+     "source": "live feed (observed)",
+     "text": "A05X01: \"Elevator between street and mezzanine on east side of Connecticut Ave\""
     }
    ],
    "resolution": {
@@ -4714,6 +4718,21 @@
     "notes": "69th (Red Line). Single elevator, island platform, in service Jan 2007. Live alert 'The elevator at 69th (Red Line)' (singular) + prior-session research. Confidence 9/10.",
     "date": "2026-07-16"
    }
+  },
+  {
+   "key": "cta:41020",
+   "system": "cta-chicago",
+   "stationId": "41020",
+   "name": "Logan Square",
+   "status": "pending",
+   "priority": 50,
+   "reason": "no chains modeled (no agency inventory — text-identity only)",
+   "evidence": [
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Logan Square Temporarily Out-of-Service — The elevator to/from platform at Logan Square (Blue Line) is temporarily out-of-service."
+    }
+   ]
   },
   {
    "key": "cta:41030",

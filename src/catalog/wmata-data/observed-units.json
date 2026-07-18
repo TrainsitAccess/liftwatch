@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-17T11:46:15.068Z",
+  "updatedAt": "2026-07-18T11:26:58.639Z",
   "note": "Every WMATA elevator UnitName ever observed (archive + live feed). Grows only. Consumed by scripts/wmata-pathways.mts as an undercount/vocabulary gate.",
   "units": [
     {
@@ -7,6 +7,12 @@
       "stationCode": "A02",
       "location": "Elevator between mezzanine and platform",
       "firstObserved": "2026-07-16T14:55:33.48076+00:00"
+    },
+    {
+      "unitName": "A05X01",
+      "stationCode": "A05",
+      "location": "Elevator between street and mezzanine on east side of Connecticut Ave",
+      "firstObserved": "2026-07-18T01:06:35.26286+00:00"
     },
     {
       "unitName": "A07X01",

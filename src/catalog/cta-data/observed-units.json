@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-17T11:46:16.773Z",
+  "updatedAt": "2026-07-18T11:27:00.054Z",
   "note": "Every CTA elevator identity ever observed (archive + live alert texts, parsed by src/adapters/cta/location.ts). Grows only. Regression fixture for check:cta and the curation aid for a future chains pass.",
   "units": [
     {
@@ -258,6 +258,14 @@
         "Elevator at 69th Temporarily Out-of-Service — The elevator at 69th (Red Line) is temporarily out-of-service."
       ],
       "firstObserved": "2026-07-05T11:42:26.287+00:00"
+    },
+    {
+      "unitId": "41020-PLATFORM",
+      "stationId": "41020",
+      "texts": [
+        "Elevator at Logan Square Temporarily Out-of-Service — The elevator to/from platform at Logan Square (Blue Line) is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-07-18T02:43:52.172+00:00"
     },
     {
       "unitId": "41030-54TH-BOUND",
