@@ -2096,6 +2096,34 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       ] },
     ],
   },
+  // Glenmont (B11, Red Line terminus) — the standing open item from the
+  // 2026-07-17 coverage audit (§3a "milder" bucket): two street elevators
+  // flank Georgia Ave (Rte 97), a signalized SURFACE road. Bryce resolved
+  // 2026-07-17: the two entrances ARE mutually reachable at grade, so the
+  // street pair is genuinely REDUNDANT (contrast the grade-separated Silver
+  // Line median / College Park, where a highway or rail corridor makes the
+  // crossing impossible → not redundant). WMATA's page confirms one mezzanine
+  // → platform elevator (B11X03), so both street elevators feed a single
+  // mezzanine. Real page ids + locations: B11X01 east side at the bus bay/
+  // Kiss & Ride, B11X02 west side at the Kiss & Ride (promoted from synthetic
+  // WMATA-B11_W_ELE). Structure matches the generated model; curated to carry
+  // the real west id, the locations, and a note disclosing the Georgia Ave
+  // crossing. Confidence 8/10 (Bryce-confirmed + WMATA page ids).
+  {
+    systemId: SYSTEM,
+    stationExternalId: "B11",
+    note: "Two elevators connect the street to the mezzanine — one on each side of Georgia Avenue (the east side at the bus bay/Kiss & Ride, the west side at the Kiss & Ride) — and either one reaches the mezzanine. If one is out of service, you can cross Georgia Avenue at street level and use the other, so no single street-elevator outage removes step-free access. One elevator connects the mezzanine to the platform, and it has no backup — if it is out of service, the station is not step-free.",
+    internalNote: "2026-07-17: standing coverage-audit open item resolved. Bryce confirmed the two street entrances flanking Georgia Ave (Rte 97) are mutually reachable at grade → the street→mezzanine pair is genuinely redundant (the milder counterpart to the grade-separated stations, where a highway/rail corridor blocks the crossing). Real page ids: B11X01 (east side at bus bay/Kiss & Ride, live-observed), B11X02 (west side at Kiss & Ride — promoted from synthetic WMATA-B11_W_ELE), B11X03 (sole mezzanine→platform, live-observed). WMATA's Rider Tools page lists one mezz→platform elevator, so both street elevators feed a single mezzanine. Five garage elevators (B11X04..B11X08) stay tracked units, not chain members. Source: wmata-data/rider-tools-inventory.json. Approved via /liftwatch-wmata-spot-check 2026-07-17 (confidence 8/10).",
+    segments: [
+      { id: "street-mezzanine", label: "Street to mezzanine (either side of Georgia Ave)", elevators: [
+        { externalId: "B11X01", label: "Glenmont elevator B11X01 — street to mezzanine, east side of the station at the bus bay/Kiss & Ride" },
+        { externalId: "B11X02", label: "Glenmont elevator B11X02 — street to mezzanine, west side of the station at the Kiss & Ride" },
+      ] },
+      { id: "mezzanine-platform", label: "Mezzanine to platform", elevators: [
+        { externalId: "B11X03", label: "Glenmont elevator B11X03 — mezzanine to platform (inside fare control)" },
+      ] },
+    ],
+  },
   // Wheaton (B10, Red Line) — the 2026-07-17 audit flagged that WMATA's page
   // lists NO in-station street→mezzanine elevator (only B10X01 mezz→platform +
   // four "garage"), yet GTFS drew a street→mezz elevator (synthetic

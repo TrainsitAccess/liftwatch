@@ -269,9 +269,11 @@ is *not* a signal — it both invents redundancy (§3J) and hides it (§3G).
   outside fact; ordinary elevated station). Exact id→side unconfirmed.
 - **Potomac Yard (C11)** — station signage numbers "7"/"8" may not map to
   WMATA's unit-id scheme.
-- **From the 2026-07-17 audit**, still to review with Bryce (see
-  `COVERAGE-AUDIT.md` §4): Glenmont (B11) redundancy call, Deanwood (D10) note
-  artifact. **Friendship Heights (A08) RESOLVED 2026-07-17** via
+- **From the 2026-07-17 audit** — all resolved in the same-day bulk auto-tier
+  spot-check (`spot-check-log.md`): Glenmont (B11) confirmed REDUNDANT (street
+  pair crossable at grade across Georgia Ave); Deanwood (D10) confirmed a plain
+  2-series (note artifact is phrasing only). **Friendship Heights (A08)
+  RESOLVED 2026-07-17** via
   /liftwatch-wmata-spot-check — the auto 2×2 was wrong: WMATA's own page shows
   7 elevators / two separate mezzanines (Jenifer St. north 4+1, Western Ave.
   south 1+1); re-modeled per-entrance CNF (F05 shape) with a 4-elevator street

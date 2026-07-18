@@ -152,6 +152,20 @@ console.log("\n  B10 Wheaton (mezzanine-at-grade, 2026-07-17 audit): at-grade me
   ok(/ramp/.test(b10.note ?? ""), "B10: public note discloses the at-grade ramp entrance");
 }
 
+console.log("\n  B11 Glenmont (surface-crossing-redundant, 2026-07-17 audit): street pair flanking Georgia Ave is redundant (crossable at grade), sole platform elevator:");
+{
+  ok(!generatedByStation.has("B11"), "B11: moved out of the auto-generated tier (surface-crossing-redundant)");
+  ok(excludedReason.get("B11") === "surface-crossing-redundant", "B11: excluded with reason surface-crossing-redundant");
+  const b11 = WMATA_STATION_MODELS.find((m) => m.stationExternalId === "B11")!;
+  const ids = new Set(allElevators(b11).map((e) => e.externalId));
+  ok(ids.has("B11X01") && ids.has("B11X02") && ids.has("B11X03") && ids.size === 3, "B11: three real page ids (street pair B11X01/B11X02 + platform B11X03); synthetic west id promoted");
+  ok(elevatorRedundant(b11, "B11X01") && elevatorRedundant(b11, "B11X02"), "B11: street pair mutually redundant (cross Georgia Ave at grade)");
+  ok(!elevatorRedundant(b11, "B11X03"), "B11: platform elevator B11X03 is sole access");
+  ok(stationAccessible(b11, new Set(["B11X01"])), "B11: one street elevator down -> still accessible via the other");
+  ok(!stationAccessible(b11, new Set(["B11X03"])), "B11: platform elevator down -> inaccessible");
+  ok(/cross Georgia Avenue/.test(b11.note ?? ""), "B11: public note discloses the Georgia Ave surface crossing");
+}
+
 console.log("\n  Grade-separated stations (2026-07-17 audit): two opposite-side entrances are NOT redundant — curated per-entrance, no false street→mezzanine backup:");
 {
   const GRADE_SEP = ["N01", "N02", "N03", "N04", "N07", "N08", "N12", "E09"];

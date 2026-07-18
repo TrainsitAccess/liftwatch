@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-18T02:51:40.552Z",
+  "generatedAt": "2026-07-18T02:54:52.359Z",
   "source": "WMATA GTFS pathways topology (conservative single-platform Street→Mezzanine→Platform ladders)",
   "models": [
     {
@@ -263,38 +263,6 @@
             {
               "externalId": "WMATA-B08_S_ELE",
               "label": "Silver Spring elevator (Street/Mezzanine to Platform)"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "systemId": "wmata-dc",
-      "stationExternalId": "B11",
-      "note": "Two elevators connect the street to the mezzanine — either one keeps this leg open. One elevator connects the mezzanine to the platform. A leg served by a single elevator has no backup — an outage there removes the station's step-free route.",
-      "internalNote": "Topology from WMATA GTFS pathways (mode-5 elevator components): Street→Mezzanine: 2 elevators, Mezzanine→Platform: 1 elevator. In-station elevators only — garage/facility elevators are not in the rail GTFS. Slot ids are live UnitNames where observed, synthetic WMATA-<node> otherwise.",
-      "segments": [
-        {
-          "id": "street-mezzanine",
-          "label": "Street to Mezzanine",
-          "elevators": [
-            {
-              "externalId": "B11X01",
-              "label": "Glenmont elevator B11X01 (Street to Mezzanine)"
-            },
-            {
-              "externalId": "WMATA-B11_W_ELE",
-              "label": "Glenmont elevator (Street to Mezzanine)"
-            }
-          ]
-        },
-        {
-          "id": "mezzanine-platform",
-          "label": "Mezzanine to Platform",
-          "elevators": [
-            {
-              "externalId": "B11X03",
-              "label": "Glenmont elevator B11X03 (Mezzanine to Platform)"
             }
           ]
         }

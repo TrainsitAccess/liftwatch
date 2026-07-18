@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-18T02:51:40.552Z",
+  "generatedAt": "2026-07-18T02:54:52.359Z",
   "note": "Stations NOT auto-modeled — complex/side-platform/non-standard, pending a human pass.",
   "stations": [
     {
@@ -135,6 +135,17 @@
       "name": "Wheaton",
       "reason": "mezzanine-at-grade",
       "detail": "Wheaton — at-grade mezzanine reached step-free by a ramp from Georgia Ave (bus-bay entrance) plus a Kiss & Ride/garage-elevator entrance; GTFS drew a phantom street→mezz elevator. Only B10X01 (mezz→platform) gates (Bryce 2026-07-17)",
+      "levels": [
+        "Street",
+        "Mezzanine",
+        "Platform"
+      ]
+    },
+    {
+      "station": "B11",
+      "name": "Glenmont",
+      "reason": "surface-crossing-redundant",
+      "detail": "Glenmont — two street elevators flank Georgia Ave (Rte 97), a signalized surface road crossable at grade → redundant street pair feeding one mezzanine (Bryce confirmed redundant 2026-07-17); one sole mezz→platform elevator B11X03",
       "levels": [
         "Street",
         "Mezzanine",

@@ -336,6 +336,17 @@ const CURATED_MEZZANINE_AT_GRADE: Record<string, string> = {
   B10: "Wheaton — at-grade mezzanine reached step-free by a ramp from Georgia Ave (bus-bay entrance) plus a Kiss & Ride/garage-elevator entrance; GTFS drew a phantom street→mezz elevator. Only B10X01 (mezz→platform) gates (Bryce 2026-07-17)",
 };
 
+// Human-reviewed stations whose two street entrances flank a SURFACE road
+// crossable at grade, so the street→mezzanine pair IS genuinely redundant
+// (a rider can cross to the other entrance step-free) — the milder-case
+// counterpart to CURATED_GRADE_SEPARATED (where a highway/rail corridor makes
+// the crossing impossible → NOT redundant). The generated redundant-pair
+// structure is already correct; curated in wmata-models.ts to promote real
+// page ids + locations and disclose the crossing in the rider note.
+const CURATED_SURFACE_CROSSING: Record<string, string> = {
+  B11: "Glenmont — two street elevators flank Georgia Ave (Rte 97), a signalized surface road crossable at grade → redundant street pair feeding one mezzanine (Bryce confirmed redundant 2026-07-17); one sole mezz→platform elevator B11X03",
+};
+
 function nameOf(st: string) { return stationName.get(`STN_${st}`) ?? stationName.get(st) ?? st; }
 function exclude(st: string, reason: string, detail: string, levels: string[]) {
   excluded.push({ station: st, name: nameOf(st), reason, detail, levels });
@@ -373,6 +384,10 @@ for (const [st, els] of [...byStation.entries()].sort()) {
   }
   if (CURATED_MEZZANINE_AT_GRADE[st]) {
     exclude(st, "mezzanine-at-grade", CURATED_MEZZANINE_AT_GRADE[st], [...new Set(els.flatMap((e) => e.levels))]);
+    continue;
+  }
+  if (CURATED_SURFACE_CROSSING[st]) {
+    exclude(st, "surface-crossing-redundant", CURATED_SURFACE_CROSSING[st], [...new Set(els.flatMap((e) => e.levels))]);
     continue;
   }
   // (1) corruption guard: any elevator node whose level_id belongs to a DIFFERENT

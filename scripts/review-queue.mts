@@ -65,7 +65,9 @@ const add = (e: Entry) => entries.set(e.key, e);
   // at-grade mezzanines, redundant via a disclosed ~0.3 mi step-free walk.
   // B10 Wheaton: 2026-07-17 audit (mezzanine-at-grade) — at-grade mezzanine via
   // a ramp; GTFS drew a phantom street elevator; only B10X01 gates.
-  const CURATED = new Set(["A14", "A08", "B10", "C13", "D01", "F06", "N06", "N10", "N11", "N01", "N02", "N03", "N04", "N07", "N08", "N12", "E09"]);
+  // B11 Glenmont: 2026-07-17 audit (surface-crossing-redundant) — two street
+  // elevators flank Georgia Ave, crossable at grade; Bryce confirmed redundant.
+  const CURATED = new Set(["A14", "A08", "B10", "B11", "C13", "D01", "F06", "N06", "N10", "N11", "N01", "N02", "N03", "N04", "N07", "N08", "N12", "E09"]);
   const prio: Record<string, number> = {
     "observed-undercount": 20, "observed-unmappable": 22, "side-platforms": 30,
     "multi-level-shaft": 38, "non-standard-levels": 40, "unorderable-levels": 44, "corrupt-levels": 46,

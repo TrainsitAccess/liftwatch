@@ -16,7 +16,7 @@ Driven by `/liftwatch-wmata-spot-check`._
 | C13 | King St-Old Town | FIXED — 3rd standalone platform elevator C13S01 (south of King St) added; mezzanine at street grade; 3-way OR, all redundant | 2026-07-17 |
 | F06 | Anacostia | FIXED — pair split across Howard Rd / Kiss & Ride (separate at-grade mezzanines); redundant via disclosed ~0.3 mi step-free walk | 2026-07-17 |
 | B10 | Wheaton | FIXED — at-grade mezzanine via ramp (§3C); GTFS phantom street elevator dropped; 2 garage elevators are the Kiss & Ride entrance; only B10X01 gates | 2026-07-17 |
-| B11 | Glenmont | OPEN — ids/locations page-confirmed; standing Georgia Ave redundancy call unchanged | 2026-07-17 |
+| B11 | Glenmont | FIXED — street pair flanking Georgia Ave confirmed REDUNDANT (crossable at grade); real ids + locations; sole platform elevator | 2026-07-17 |
 
 ## Notes
 

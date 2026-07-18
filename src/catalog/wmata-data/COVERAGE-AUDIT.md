@@ -163,10 +163,13 @@ C13 King St-Old Town (3rd elevator C13S01) and B10 Wheaton (street-leg
 mystery) and F06 Anacostia (per-entrance pair connectivity) added below.
 
 **Still open:**
-1. **Glenmont (B11)** — decide whether the two entrances flanking Georgia Ave
-   (a surface street crossable at grade) count as redundant. Left as-is
-   (redundant) pending your call. (2026-07-17 audit: both street ids +
-   locations page-confirmed — B11X01 east/bus bay, B11X02 west/Kiss & Ride.)
+1. ~~**Glenmont (B11)** — decide whether the two entrances flanking Georgia Ave
+   (a surface street crossable at grade) count as redundant.~~ **RESOLVED
+   2026-07-17 (Bryce): REDUNDANT.** The two entrances are mutually reachable at
+   grade, so the street pair backs each other up. Curated
+   (`surface-crossing-redundant`) with real ids (B11X01 east/bus bay, B11X02
+   west/Kiss & Ride — promoted from synthetic, B11X03 sole platform) and a note
+   disclosing the Georgia Ave crossing.
 2. **D10 Deanwood** — fix the "street-level mezzanine to the mezzanine" note /
    level-naming artifact. (2026-07-17 audit: structure page-confirmed as a
    plain 2-series — phrasing-only fix.)
