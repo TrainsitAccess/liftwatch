@@ -296,6 +296,21 @@ const CURATED_SPLIT_MEZZANINE: Record<string, string> = {
   A08: "Friendship Heights — separate Jenifer St. (north) and Western Ave. (south) mezzanines; Jenifer St. street leg is a 4-elevator bank GTFS drew as 1",
 };
 
+// Human-reviewed stations where WMATA's own Rider Tools station-page inventory
+// (wmata-data/rider-tools-inventory.json, fetched 2026-07-17) shows MORE
+// in-station elevators than GTFS drew — the same undercount class as Forest
+// Glen/Rosslyn, but caught from WMATA's page rather than live observation.
+// All four verified single-mezzanine (no A08 split-mezzanine risk): N06/N11
+// have one entry pavilion each, N10 is entered from the airport at mezzanine
+// level, D01 has one mezzanine. Curated with the real page ids in
+// wmata-models.ts (2026-07-17 auto-tier audit, spot-check-log.md).
+const CURATED_PAGE_UNDERCOUNT: Record<string, string> = {
+  N06: "Wiehle-Reston East — page shows 2x2 (two south-pavilion street elevators + two platform elevators); GTFS drew 1+1",
+  N10: "Washington Dulles International Airport — page shows a 4-elevator mezzanine-to-platform bank; GTFS drew 2",
+  N11: "Loudoun Gateway — page shows 2x2 (two north-pavilion street elevators + two platform elevators); GTFS drew 1+1",
+  D01: "Federal Triangle — page shows a redundant mezzanine-to-platform pair (D01X02/D01X03); GTFS drew 1+1",
+};
+
 function nameOf(st: string) { return stationName.get(`STN_${st}`) ?? stationName.get(st) ?? st; }
 function exclude(st: string, reason: string, detail: string, levels: string[]) {
   excluded.push({ station: st, name: nameOf(st), reason, detail, levels });
@@ -321,6 +336,10 @@ for (const [st, els] of [...byStation.entries()].sort()) {
   }
   if (CURATED_SPLIT_MEZZANINE[st]) {
     exclude(st, "split-mezzanine", CURATED_SPLIT_MEZZANINE[st], [...new Set(els.flatMap((e) => e.levels))]);
+    continue;
+  }
+  if (CURATED_PAGE_UNDERCOUNT[st]) {
+    exclude(st, "page-inventory-undercount", CURATED_PAGE_UNDERCOUNT[st], [...new Set(els.flatMap((e) => e.levels))]);
     continue;
   }
   // (1) corruption guard: any elevator node whose level_id belongs to a DIFFERENT

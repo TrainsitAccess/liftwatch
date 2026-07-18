@@ -2000,4 +2000,94 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       { id: "mezzanine-platform", label: "Mezzanine to platform (shared)", elevators: [{ externalId: "WMATA-E09_MZ_ELV", label: "College Park-U of Md shared elevator (mezzanine to platform) — never yet observed live, synthetic id" }] },
     ],
   },
+  // ——— 2026-07-17 auto-tier audit fixes (page-inventory undercounts) ———
+  // Four stations where WMATA's own Rider Tools station-page inventory
+  // (wmata-data/rider-tools-inventory.json) shows MORE in-station elevators
+  // than GTFS drew — the Forest Glen/Rosslyn undercount class, caught from
+  // WMATA's page instead of live observation. All ids are REAL page-published
+  // UnitNames. All four verified single-mezzanine (no A08 split-mezzanine
+  // risk). Excluded from the generator via CURATED_PAGE_UNDERCOUNT; approved
+  // by Bryce via /liftwatch-wmata-spot-check 2026-07-17 (see spot-check-log.md).
+
+  // Wiehle-Reston East (N06, Silver Line) — GTFS drew 1+1; WMATA's page shows
+  // 2×2: N06X01+N06X02 both "Elevator - south entry pavilion" (street→mezz
+  // pair) and N06X03+N06X04 both mezzanine→platform. ONE south pavilion (the
+  // station's single entrance side), so one mezzanine — genuine 2×2, unlike
+  // A08. Confidence 8/10 (WMATA's own inventory, identical wording per pair).
+  {
+    systemId: SYSTEM,
+    stationExternalId: "N06",
+    note: "Two elevators connect the street (south entry pavilion) to the mezzanine — either one keeps this leg open. Two elevators connect the mezzanine to the platform — either one keeps this leg open. No single elevator outage removes step-free access.",
+    internalNote: "2026-07-17 auto-tier audit fix (page-inventory undercount): GTFS drew 1+1 (N06X02 street, N06X04 platform, both live-observed); WMATA's Rider Tools page shows 4 in-station elevators — N06X01/N06X02 both 'Elevator - south entry pavilion', N06X03/N06X04 both mezzanine→platform. Single south entry pavilion → one mezzanine → genuine 2×2 redundancy. All 4 ids real (page-published; X02/X04 also live-observed). Source: wmata-data/rider-tools-inventory.json. Approved via /liftwatch-wmata-spot-check 2026-07-17 (confidence 8/10).",
+    segments: [
+      { id: "street-mezzanine", label: "Street (south entry pavilion) to mezzanine", elevators: [
+        { externalId: "N06X01", label: "Wiehle-Reston East elevator N06X01 — south entry pavilion, street to mezzanine" },
+        { externalId: "N06X02", label: "Wiehle-Reston East elevator N06X02 — south entry pavilion, street to mezzanine" },
+      ] },
+      { id: "mezzanine-platform", label: "Mezzanine to platform", elevators: [
+        { externalId: "N06X03", label: "Wiehle-Reston East elevator N06X03 — mezzanine to platform" },
+        { externalId: "N06X04", label: "Wiehle-Reston East elevator N06X04 — mezzanine to platform" },
+      ] },
+    ],
+  },
+  // Loudoun Gateway (N11, Silver Line) — same shape as N06: GTFS drew 1+1;
+  // WMATA's page shows N11X03+N11X04 both "Elevator - north entry pavilion"
+  // (street→mezz pair) and N11X01+N11X02 both mezzanine→platform. ONE north
+  // pavilion → one mezzanine → genuine 2×2. Confidence 8/10.
+  {
+    systemId: SYSTEM,
+    stationExternalId: "N11",
+    note: "Two elevators connect the street (north entry pavilion) to the mezzanine — either one keeps this leg open. Two elevators connect the mezzanine to the platform — either one keeps this leg open. No single elevator outage removes step-free access.",
+    internalNote: "2026-07-17 auto-tier audit fix (page-inventory undercount): GTFS drew 1+1 (both synthetic); WMATA's Rider Tools page shows 4 in-station elevators — N11X03/N11X04 both 'Elevator - north entry pavilion', N11X01/N11X02 both mezzanine→platform. Single north entry pavilion → one mezzanine → genuine 2×2 redundancy. All 4 ids real (page-published), replacing the synthetics WMATA-N11_N_PAV_ELV / WMATA-N11_MZ_ELV. Source: wmata-data/rider-tools-inventory.json. Approved via /liftwatch-wmata-spot-check 2026-07-17 (confidence 8/10).",
+    segments: [
+      { id: "street-mezzanine", label: "Street (north entry pavilion) to mezzanine", elevators: [
+        { externalId: "N11X03", label: "Loudoun Gateway elevator N11X03 — north entry pavilion, street to mezzanine" },
+        { externalId: "N11X04", label: "Loudoun Gateway elevator N11X04 — north entry pavilion, street to mezzanine" },
+      ] },
+      { id: "mezzanine-platform", label: "Mezzanine to platform", elevators: [
+        { externalId: "N11X01", label: "Loudoun Gateway elevator N11X01 — mezzanine to platform" },
+        { externalId: "N11X02", label: "Loudoun Gateway elevator N11X02 — mezzanine to platform" },
+      ] },
+    ],
+  },
+  // Washington Dulles International Airport (N10, Silver Line) — GTFS drew a
+  // 2-elevator mezzanine→platform pair; WMATA's page shows a FOUR-elevator
+  // bank (N10X01..N10X04, identical wording, one airport entrance at
+  // mezzanine level — no street leg, same as the prior model's assumption).
+  // Redundancy direction unchanged (was already redundant); this corrects the
+  // elevator count and replaces synthetics with real ids. Confidence 8/10.
+  {
+    systemId: SYSTEM,
+    stationExternalId: "N10",
+    note: "Four elevators connect the mezzanine to the platform — any one of them keeps the station step-free. The station is entered from the airport at mezzanine level, so no street elevator is needed. No single elevator outage removes step-free access.",
+    internalNote: "2026-07-17 auto-tier audit fix (page-inventory undercount): GTFS drew this mezzanine→platform bank as 2 elevators (both synthetic); WMATA's Rider Tools page shows 4 with identical wording (N10X01..N10X04), one 'Washington Dulles International Airport' entrance group. Replaces synthetics WMATA-N10_MZ_ELV1/2. Source: wmata-data/rider-tools-inventory.json. Approved via /liftwatch-wmata-spot-check 2026-07-17 (confidence 8/10).",
+    segments: [
+      { id: "mezzanine-platform", label: "Mezzanine to platform", elevators: [
+        { externalId: "N10X01", label: "Washington Dulles International Airport elevator N10X01 — mezzanine to platform" },
+        { externalId: "N10X02", label: "Washington Dulles International Airport elevator N10X02 — mezzanine to platform" },
+        { externalId: "N10X03", label: "Washington Dulles International Airport elevator N10X03 — mezzanine to platform" },
+        { externalId: "N10X04", label: "Washington Dulles International Airport elevator N10X04 — mezzanine to platform" },
+      ] },
+    ],
+  },
+  // Federal Triangle (D01, Orange/Blue/Silver) — GTFS drew 1+1; WMATA's page
+  // shows the mezzanine→platform leg is a REDUNDANT PAIR (D01X02 + D01X03,
+  // identical wording) behind the sole street elevator D01X01. The street
+  // elevator remains sole-access, so a D01X01 outage still severs the station
+  // — only the platform leg gains a backup. Confidence 8/10.
+  {
+    systemId: SYSTEM,
+    stationExternalId: "D01",
+    note: "One elevator connects the street to the mezzanine — it has no backup, and if it is out of service the station has no step-free route. Two elevators connect the mezzanine to the platform — either one keeps that leg open.",
+    internalNote: "2026-07-17 auto-tier audit fix (page-inventory undercount): GTFS drew 1+1 (D01X01/D01X02, both live-observed); WMATA's Rider Tools page adds D01X03 as a second mezzanine→platform elevator with identical wording — a real redundant pair. Street leg unchanged (D01X01 sole access). Source: wmata-data/rider-tools-inventory.json. Approved via /liftwatch-wmata-spot-check 2026-07-17 (confidence 8/10).",
+    segments: [
+      { id: "street-mezzanine", label: "Street to mezzanine", elevators: [
+        { externalId: "D01X01", label: "Federal Triangle elevator D01X01 — street to mezzanine" },
+      ] },
+      { id: "mezzanine-platform", label: "Mezzanine to platform", elevators: [
+        { externalId: "D01X02", label: "Federal Triangle elevator D01X02 — mezzanine to platform" },
+        { externalId: "D01X03", label: "Federal Triangle elevator D01X03 — mezzanine to platform" },
+      ] },
+    ],
+  },
 ];

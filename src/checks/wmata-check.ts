@@ -94,6 +94,35 @@ console.log("\n  A08 Friendship Heights (split-mezzanine spot-check fix, 2026-07
   ok(!stationAccessible(m, new Set([...JEN, WES_PLAT])), "A08: all 4 Jenifer St. + Western plat. down -> inaccessible (Jenifer route has no street leg, Western route has no platform leg)");
 }
 
+console.log("\n  2026-07-17 auto-tier audit fixes (page-inventory undercounts, wmata-data/rider-tools-inventory.json):");
+{
+  // The four stations WMATA's own Rider Tools page inventory showed richer
+  // than GTFS: N06/N11 real 2x2, N10 a 4-elevator bank, D01 a platform pair.
+  for (const st of ["N06", "N10", "N11", "D01"]) {
+    ok(!generatedByStation.has(st), `${st}: moved out of the auto-generated tier (page-inventory-undercount)`);
+    ok(excludedReason.get(st) === "page-inventory-undercount", `${st}: excluded with reason page-inventory-undercount`);
+  }
+  const curated = (st: string) => WMATA_STATION_MODELS.find((m) => m.stationExternalId === st)!;
+  const n06 = curated("N06");
+  ok(new Set(allElevators(n06).map((e) => e.externalId)).size === 4, "N06 Wiehle-Reston East: 4 real page ids (2 pavilion + 2 platform)");
+  ok(allElevators(n06).every((e) => elevatorRedundant(n06, e.externalId)), "N06: every elevator redundant (genuine 2x2, single pavilion/mezzanine)");
+  ok(!stationAccessible(n06, new Set(["N06X01", "N06X02"])), "N06: both pavilion elevators down -> inaccessible (street leg severed)");
+  ok(!stationAccessible(n06, new Set(["N06X03", "N06X04"])), "N06: both platform elevators down -> inaccessible (platform leg severed)");
+  ok(stationAccessible(n06, new Set(["N06X01", "N06X03"])), "N06: one of each down -> still accessible (2x2 cross-combination is real here, one mezzanine)");
+  const n11 = curated("N11");
+  ok(new Set(allElevators(n11).map((e) => e.externalId)).size === 4, "N11 Loudoun Gateway: 4 real page ids (2 pavilion + 2 platform)");
+  ok(allElevators(n11).every((e) => elevatorRedundant(n11, e.externalId)), "N11: every elevator redundant (genuine 2x2, single pavilion/mezzanine)");
+  ok(!stationAccessible(n11, new Set(["N11X03", "N11X04"])), "N11: both pavilion elevators down -> inaccessible (street leg severed)");
+  const n10 = curated("N10");
+  ok(new Set(allElevators(n10).map((e) => e.externalId)).size === 4, "N10 Dulles Airport: 4-elevator platform bank (page-corrected from GTFS's 2)");
+  ok(stationAccessible(n10, new Set(["N10X01", "N10X02", "N10X03"])), "N10: any 3 of 4 down -> still accessible (bank absorbs it)");
+  ok(!stationAccessible(n10, new Set(["N10X01", "N10X02", "N10X03", "N10X04"])), "N10: all 4 down -> inaccessible");
+  const d01 = curated("D01");
+  ok(new Set(allElevators(d01).map((e) => e.externalId)).size === 3, "D01 Federal Triangle: 3 elevators (sole street + platform pair, D01X03 was missing)");
+  ok(!elevatorRedundant(d01, "D01X01"), "D01: street elevator D01X01 stays sole access (its outage severs the station)");
+  ok(elevatorRedundant(d01, "D01X02") && elevatorRedundant(d01, "D01X03"), "D01: platform pair D01X02/D01X03 mutually redundant");
+}
+
 console.log("\n  Grade-separated stations (2026-07-17 audit): two opposite-side entrances are NOT redundant — curated per-entrance, no false street→mezzanine backup:");
 {
   const GRADE_SEP = ["N01", "N02", "N03", "N04", "N07", "N08", "N12", "E09"];

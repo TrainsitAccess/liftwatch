@@ -58,8 +58,10 @@ const add = (e: Entry) => entries.set(e.key, e);
   // their GTFS street→mezzanine redundancy was false (see COVERAGE-AUDIT.md).
   // A08 Friendship Heights: spot-checked 2026-07-17, separate mezzanines +
   // a 4-elevator Jenifer St. street bank GTFS drew as 1 — curated CNF (see
-  // spot-check-log.md).
-  const CURATED = new Set(["A14", "A08", "N01", "N02", "N03", "N04", "N07", "N08", "N12", "E09"]);
+  // spot-check-log.md). D01/N06/N10/N11: 2026-07-17 auto-tier audit
+  // (page-inventory-undercount) — WMATA's Rider Tools inventory showed more
+  // elevators than GTFS drew; curated with real page ids.
+  const CURATED = new Set(["A14", "A08", "D01", "N06", "N10", "N11", "N01", "N02", "N03", "N04", "N07", "N08", "N12", "E09"]);
   const prio: Record<string, number> = {
     "observed-undercount": 20, "observed-unmappable": 22, "side-platforms": 30,
     "multi-level-shaft": 38, "non-standard-levels": 40, "unorderable-levels": 44, "corrupt-levels": 46,

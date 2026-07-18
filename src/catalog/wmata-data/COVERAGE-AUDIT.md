@@ -153,12 +153,33 @@ entrance is still usable *if you can reach the other side of the highway/tracks*
 a single street-elevator outage now reads that entrance down (partial) instead
 of fully accessible; the shared platform elevator failing takes down both.
 
+**DONE (2026-07-17, bulk audit follow-up):** the entire remaining auto tier
+(46 stations) was audited against WMATA's own Rider Tools station-page
+inventory (`rider-tools-inventory.json`, real unit ids + entrance groups) —
+see `spot-check-log.md`. 38 confirmed; 4 fixed as `page-inventory-undercount`
+curated models (N06 Wiehle-Reston East 2×2, N11 Loudoun Gateway 2×2, N10
+Dulles Airport 4-bank, D01 Federal Triangle platform pair); new open items
+C13 King St-Old Town (3rd elevator C13S01) and B10 Wheaton (street-leg
+mystery) and F06 Anacostia (per-entrance pair connectivity) added below.
+
 **Still open:**
 1. **Glenmont (B11)** — decide whether the two entrances flanking Georgia Ave
    (a surface street crossable at grade) count as redundant. Left as-is
-   (redundant) pending your call.
+   (redundant) pending your call. (2026-07-17 audit: both street ids +
+   locations page-confirmed — B11X01 east/bus bay, B11X02 west/Kiss & Ride.)
 2. **D10 Deanwood** — fix the "street-level mezzanine to the mezzanine" note /
-   level-naming artifact.
+   level-naming artifact. (2026-07-17 audit: structure page-confirmed as a
+   plain 2-series — phrasing-only fix.)
+3. **C13 King St-Old Town** — WMATA's page lists a THIRD platform elevator
+   (C13S01) beyond the modeled N-pair; N/S prefixes suggest two mezzanines.
+   Needs Bryce: separate south mezzanine (A08-style CNF) or connected (3-bank)?
+4. **F06 Anacostia** — the modeled redundant pair is split across two named
+   entrances (F06S01 Howard Rd, F06N01 Kiss & Ride). Redundancy holds only if
+   the entrances are mutually reachable step-free at street level. Needs Bryce.
+5. **B10 Wheaton** — WMATA's page lists NO in-station street→mezzanine
+   elevator (only B10X01 platform + 4 "garage"), but GTFS drew one and the
+   auto model includes it. Either GTFS invented the leg or a "garage" elevator
+   is really the street entrance (reverse-Huntington). Needs investigation.
 3. ~~**A08 Friendship Heights** — redundancy plausibly real (urban, same-sidewalk
    entrances) but all ids synthetic; confirm opportunistically.~~ **DONE
    2026-07-17 (spot-check)**: the 2×2 was wrong — separate mezzanines + a

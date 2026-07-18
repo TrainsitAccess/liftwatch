@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-17T23:22:35.375Z",
+  "generatedAt": "2026-07-18T02:27:16.106Z",
   "source": "WMATA GTFS rail pathways.txt mode-5 connected components (in-station elevators only)",
   "units": [
     {
@@ -100,28 +100,6 @@
       "segment": "street-mezzanine-platform",
       "modeled": true,
       "isRedundant": true
-    },
-    {
-      "externalId": "D01X01",
-      "station": "D01",
-      "stationName": "Federal Triangle",
-      "description": "Elevator between street and mezzanine",
-      "levelFrom": "Street",
-      "levelTo": "Mezzanine",
-      "segment": "street-mezzanine",
-      "modeled": true,
-      "isRedundant": false
-    },
-    {
-      "externalId": "D01X02",
-      "station": "D01",
-      "stationName": "Federal Triangle",
-      "description": "Elevator between mezzanine and platform",
-      "levelFrom": "Mezzanine",
-      "levelTo": "Platform",
-      "segment": "mezzanine-platform",
-      "modeled": true,
-      "isRedundant": false
     },
     {
       "externalId": "D05X02",
@@ -351,28 +329,6 @@
       "levelFrom": "Street/Mezzanine",
       "levelTo": "Platform",
       "segment": "street-mezzanine-platform",
-      "modeled": true,
-      "isRedundant": false
-    },
-    {
-      "externalId": "N06X02",
-      "station": "N06",
-      "stationName": "Wiehle-Reston East",
-      "description": "Elevator between street and mezzanine",
-      "levelFrom": "Street",
-      "levelTo": "Mezzanine",
-      "segment": "street-mezzanine",
-      "modeled": true,
-      "isRedundant": false
-    },
-    {
-      "externalId": "N06X04",
-      "station": "N06",
-      "stationName": "Wiehle-Reston East",
-      "description": "Elevator between mezzanine and platform",
-      "levelFrom": "Mezzanine",
-      "levelTo": "Platform",
-      "segment": "mezzanine-platform",
       "modeled": true,
       "isRedundant": false
     },
@@ -1196,6 +1152,28 @@
       "stationName": "Huntington",
       "description": "South Mezzanine ↔ Platform",
       "levelFrom": "South Mezzanine",
+      "levelTo": "Platform",
+      "segment": "",
+      "modeled": false,
+      "isRedundant": false
+    },
+    {
+      "externalId": "WMATA-D01_ELE1",
+      "station": "D01",
+      "stationName": "Federal Triangle",
+      "description": "Street ↔ Mezzanine",
+      "levelFrom": "Street",
+      "levelTo": "Mezzanine",
+      "segment": "",
+      "modeled": false,
+      "isRedundant": false
+    },
+    {
+      "externalId": "WMATA-D01_ELE2",
+      "station": "D01",
+      "stationName": "Federal Triangle",
+      "description": "Mezzanine ↔ Platform",
+      "levelFrom": "Mezzanine",
       "levelTo": "Platform",
       "segment": "",
       "modeled": false,
@@ -2104,6 +2082,28 @@
       "isRedundant": false
     },
     {
+      "externalId": "WMATA-N06_MZ_ELV",
+      "station": "N06",
+      "stationName": "Wiehle-Reston East",
+      "description": "Mezzanine ↔ Platform",
+      "levelFrom": "Mezzanine",
+      "levelTo": "Platform",
+      "segment": "",
+      "modeled": false,
+      "isRedundant": false
+    },
+    {
+      "externalId": "WMATA-N06_S_PAV_ELV",
+      "station": "N06",
+      "stationName": "Wiehle-Reston East",
+      "description": "Street ↔ Mezzanine",
+      "levelFrom": "Street",
+      "levelTo": "Mezzanine",
+      "segment": "",
+      "modeled": false,
+      "isRedundant": false
+    },
+    {
       "externalId": "WMATA-N07_MZ_ELE",
       "station": "N07",
       "stationName": "Reston Town Center",
@@ -2195,44 +2195,44 @@
       "externalId": "WMATA-N10_MZ_ELV1",
       "station": "N10",
       "stationName": "Washington Dulles International Airport",
-      "description": "Elevator between street/mezzanine and platform",
+      "description": "Street/Mezzanine ↔ Platform",
       "levelFrom": "Street/Mezzanine",
       "levelTo": "Platform",
-      "segment": "street-mezzanine-platform",
-      "modeled": true,
-      "isRedundant": true
+      "segment": "",
+      "modeled": false,
+      "isRedundant": false
     },
     {
       "externalId": "WMATA-N10_MZ_ELV2",
       "station": "N10",
       "stationName": "Washington Dulles International Airport",
-      "description": "Elevator between street/mezzanine and platform",
+      "description": "Street/Mezzanine ↔ Platform",
       "levelFrom": "Street/Mezzanine",
       "levelTo": "Platform",
-      "segment": "street-mezzanine-platform",
-      "modeled": true,
-      "isRedundant": true
+      "segment": "",
+      "modeled": false,
+      "isRedundant": false
     },
     {
       "externalId": "WMATA-N11_MZ_ELV",
       "station": "N11",
       "stationName": "Loudoun Gateway",
-      "description": "Elevator between mezzanine and platform",
+      "description": "Mezzanine ↔ Platform",
       "levelFrom": "Mezzanine",
       "levelTo": "Platform",
-      "segment": "mezzanine-platform",
-      "modeled": true,
+      "segment": "",
+      "modeled": false,
       "isRedundant": false
     },
     {
       "externalId": "WMATA-N11_N_PAV_ELV",
       "station": "N11",
       "stationName": "Loudoun Gateway",
-      "description": "Elevator between street and mezzanine",
+      "description": "Street ↔ Mezzanine",
       "levelFrom": "Street",
       "levelTo": "Mezzanine",
-      "segment": "street-mezzanine",
-      "modeled": true,
+      "segment": "",
+      "modeled": false,
       "isRedundant": false
     },
     {
