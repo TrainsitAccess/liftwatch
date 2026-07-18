@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-18T02:27:16.106Z",
+  "generatedAt": "2026-07-18T02:37:17.045Z",
   "note": "Stations NOT auto-modeled — complex/side-platform/non-standard, pending a human pass.",
   "stations": [
     {
@@ -235,6 +235,16 @@
         "Mezzanine",
         "Platform",
         "Street"
+      ]
+    },
+    {
+      "station": "C13",
+      "name": "King St-Old Town",
+      "reason": "page-inventory-undercount",
+      "detail": "King St-Old Town — page + Bryce: a third standalone platform elevator (C13S01) slightly south of King St; GTFS drew only the N-pair",
+      "levels": [
+        "Street/Mezzanine",
+        "Platform"
       ]
     },
     {

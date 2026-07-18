@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-18T02:27:16.106Z",
+  "generatedAt": "2026-07-18T02:37:17.045Z",
   "source": "WMATA GTFS pathways topology (conservative single-platform Street→Mezzanine→Platform ladders)",
   "models": [
     {
@@ -369,28 +369,6 @@
             {
               "externalId": "WMATA-C12_ELE",
               "label": "Braddock Rd elevator (Street/Mezzanine to Platform)"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "systemId": "wmata-dc",
-      "stationExternalId": "C13",
-      "note": "Two elevators connect the street-level mezzanine to the platform — either one keeps this leg open. No single elevator outage removes step-free access.",
-      "internalNote": "Topology from WMATA GTFS pathways (mode-5 elevator components): Street/Mezzanine→Platform: 2 elevators. In-station elevators only — garage/facility elevators are not in the rail GTFS. Slot ids are live UnitNames where observed, synthetic WMATA-<node> otherwise.",
-      "segments": [
-        {
-          "id": "street-mezzanine-platform",
-          "label": "Street/Mezzanine to Platform",
-          "elevators": [
-            {
-              "externalId": "C13N01",
-              "label": "King St-Old Town elevator C13N01 (Street/Mezzanine to Platform)"
-            },
-            {
-              "externalId": "C13N02",
-              "label": "King St-Old Town elevator C13N02 (Street/Mezzanine to Platform)"
             }
           ]
         }

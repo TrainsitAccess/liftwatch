@@ -2070,6 +2070,30 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       ] },
     ],
   },
+  // King St-Old Town (C13, Blue/Yellow) — the 2026-07-17 audit found WMATA's
+  // page lists a THIRD mezzanine→platform elevator (C13S01) beyond the
+  // live-validated N-pair the generator modeled. Bryce resolved it same day:
+  // the mezzanine is AT STREET LEVEL (no street elevator leg anywhere), and
+  // C13S01 is a separate STANDALONE platform→mezzanine elevator slightly
+  // south of King Street. All three land on the same single island platform
+  // and everything street-side is at grade, so ANY one of the three keeps the
+  // station step-free — one 3-way OR segment, full redundancy. All three
+  // elevators are inside fare control (paid side), so per Bryce no street
+  // coordinates are needed for them. Confidence 9/10 (Bryce + WMATA's own
+  // page + the earlier live-validated C13N01→C13N02 reduction).
+  {
+    systemId: SYSTEM,
+    stationExternalId: "C13",
+    note: "The mezzanine is at street level, so no elevator is needed between the street and the mezzanine. Three elevators connect the mezzanine to the platform — a pair at the north end and a standalone elevator slightly south of King Street. Any one of them keeps the station step-free; no single elevator outage removes step-free access.",
+    internalNote: "2026-07-17 auto-tier audit fix (page-inventory undercount): the generator modeled only the N-pair (C13N01/C13N02, live-validated redundant — C13N01 out correctly reduced via C13N02); WMATA's Rider Tools page lists a third identical mezzanine→platform elevator C13S01. Bryce confirmed 2026-07-17: standalone platform→mezzanine elevator slightly south of King Street; the mezzanine is at street grade; all three elevators are after fare control (paid side — no street coordinates needed per Bryce). Single island platform + everything street-side at grade → one 3-way OR segment. All 3 ids real (N-pair live-observed, S01 page-published). Source: wmata-data/rider-tools-inventory.json. Approved via /liftwatch-wmata-spot-check 2026-07-17 (confidence 9/10).",
+    segments: [
+      { id: "street-mezzanine-platform", label: "Street-level mezzanine to platform", elevators: [
+        { externalId: "C13N01", label: "King St-Old Town elevator C13N01 — street-level mezzanine to platform (north pair, inside fare control)" },
+        { externalId: "C13N02", label: "King St-Old Town elevator C13N02 — street-level mezzanine to platform (north pair, inside fare control)" },
+        { externalId: "C13S01", label: "King St-Old Town elevator C13S01 — standalone, street-level mezzanine to platform, slightly south of King Street (inside fare control)" },
+      ] },
+    ],
+  },
   // Federal Triangle (D01, Orange/Blue/Silver) — GTFS drew 1+1; WMATA's page
   // shows the mezzanine→platform leg is a REDUNDANT PAIR (D01X02 + D01X03,
   // identical wording) behind the sole street elevator D01X01. The street

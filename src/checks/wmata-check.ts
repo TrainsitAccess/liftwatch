@@ -65,8 +65,6 @@ ok(bindingChecked > 0, `${bindingChecked} observed units bound into generated mo
 console.log("\n  Redundancy spot-checks (validated against step-free platform reachability 2026-07-13):");
 const modelOf = (st: string) => generatedByStation.get(st)?.[0];
 {
-  const c13 = modelOf("C13")!;
-  ok(elevatorRedundant(c13, "C13N01") && elevatorRedundant(c13, "C13N02"), "C13 King St: bound pair C13N01/C13N02 mutually redundant (true island)");
   const e04 = modelOf("E04")!;
   ok(!elevatorRedundant(e04, "E04X02"), "E04 Columbia Heights: platform elevator E04X02 is sole access");
   ok(!elevatorRedundant(e04, "E04X01"), "E04 Columbia Heights: street elevator E04X01 is sole access");
@@ -96,9 +94,10 @@ console.log("\n  A08 Friendship Heights (split-mezzanine spot-check fix, 2026-07
 
 console.log("\n  2026-07-17 auto-tier audit fixes (page-inventory undercounts, wmata-data/rider-tools-inventory.json):");
 {
-  // The four stations WMATA's own Rider Tools page inventory showed richer
-  // than GTFS: N06/N11 real 2x2, N10 a 4-elevator bank, D01 a platform pair.
-  for (const st of ["N06", "N10", "N11", "D01"]) {
+  // The five stations WMATA's own Rider Tools page inventory showed richer
+  // than GTFS: N06/N11 real 2x2, N10 a 4-elevator bank, D01 a platform pair,
+  // C13 a third standalone platform elevator (Bryce-resolved same day).
+  for (const st of ["N06", "N10", "N11", "D01", "C13"]) {
     ok(!generatedByStation.has(st), `${st}: moved out of the auto-generated tier (page-inventory-undercount)`);
     ok(excludedReason.get(st) === "page-inventory-undercount", `${st}: excluded with reason page-inventory-undercount`);
   }
@@ -121,6 +120,12 @@ console.log("\n  2026-07-17 auto-tier audit fixes (page-inventory undercounts, w
   ok(new Set(allElevators(d01).map((e) => e.externalId)).size === 3, "D01 Federal Triangle: 3 elevators (sole street + platform pair, D01X03 was missing)");
   ok(!elevatorRedundant(d01, "D01X01"), "D01: street elevator D01X01 stays sole access (its outage severs the station)");
   ok(elevatorRedundant(d01, "D01X02") && elevatorRedundant(d01, "D01X03"), "D01: platform pair D01X02/D01X03 mutually redundant");
+  const c13 = curated("C13");
+  ok(new Set(allElevators(c13).map((e) => e.externalId)).size === 3, "C13 King St-Old Town: 3 platform elevators (N-pair + standalone C13S01, mezzanine at street grade)");
+  ok(c13.segments.length === 1, "C13: single 3-way OR segment (no street leg — mezzanine at street level)");
+  ok(allElevators(c13).every((e) => elevatorRedundant(c13, e.externalId)), "C13: every elevator redundant (any one of three keeps the station step-free)");
+  ok(stationAccessible(c13, new Set(["C13N01", "C13N02"])), "C13: whole N-pair down -> still accessible via standalone C13S01");
+  ok(!stationAccessible(c13, new Set(["C13N01", "C13N02", "C13S01"])), "C13: all three down -> inaccessible");
 }
 
 console.log("\n  Grade-separated stations (2026-07-17 audit): two opposite-side entrances are NOT redundant — curated per-entrance, no false street→mezzanine backup:");
@@ -173,9 +178,9 @@ console.log("\n  Adapter attribution crosswalk (pure, against the committed mode
   const a = attributeWmataIncident("E04X02", "Elevator between mezzanine and platform", e04);
   ok(a.kind === "modeled" && a.segment === "mezzanine-platform" && !a.isRedundant && a.source === "pathways",
     "known unit E04X02 → modeled, mezzanine-platform, sole access, pathways");
-  const c13 = generatedByStation.get("C13")!;
+  const c13 = WMATA_STATION_MODELS.filter((m) => m.stationExternalId === "C13");
   const b = attributeWmataIncident("C13N01", "Elevator between mezzanine and platform", c13);
-  ok(b.kind === "modeled" && b.isRedundant, "known unit C13N01 → modeled, redundant");
+  ok(b.kind === "modeled" && b.isRedundant && b.source === "curated", "known unit C13N01 → modeled, redundant, via curated tier (2026-07-17 audit fix)");
   const a14 = WMATA_STATION_MODELS.filter((m) => m.stationExternalId === "A14");
   const c = attributeWmataIncident("A14X01", "Elevator between pedestrian bridge and mezzanine", a14);
   ok(c.kind === "modeled" && c.segment === "bridge-mezzanine" && c.source === "curated", "A14X01 → modeled via curated tier, bridge segment");

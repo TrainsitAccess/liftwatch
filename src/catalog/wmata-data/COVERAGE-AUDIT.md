@@ -170,9 +170,14 @@ mystery) and F06 Anacostia (per-entrance pair connectivity) added below.
 2. **D10 Deanwood** — fix the "street-level mezzanine to the mezzanine" note /
    level-naming artifact. (2026-07-17 audit: structure page-confirmed as a
    plain 2-series — phrasing-only fix.)
-3. **C13 King St-Old Town** — WMATA's page lists a THIRD platform elevator
+3. ~~**C13 King St-Old Town** — WMATA's page lists a THIRD platform elevator
    (C13S01) beyond the modeled N-pair; N/S prefixes suggest two mezzanines.
-   Needs Bryce: separate south mezzanine (A08-style CNF) or connected (3-bank)?
+   Needs Bryce: separate south mezzanine (A08-style CNF) or connected (3-bank)?~~
+   **RESOLVED 2026-07-17 (Bryce)**: C13S01 is a separate standalone
+   platform→mezzanine elevator slightly south of King Street; the mezzanine is
+   AT STREET GRADE, everything street-side walkable, all three elevators after
+   fare control → one 3-way OR segment, fully redundant. Curated
+   (page-inventory-undercount); see spot-check-log.md.
 4. **F06 Anacostia** — the modeled redundant pair is split across two named
    entrances (F06S01 Howard Rd, F06N01 Kiss & Ride). Redundancy holds only if
    the entrances are mutually reachable step-free at street level. Needs Bryce.

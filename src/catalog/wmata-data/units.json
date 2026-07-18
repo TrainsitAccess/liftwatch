@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-18T02:27:16.106Z",
+  "generatedAt": "2026-07-18T02:37:17.045Z",
   "source": "WMATA GTFS rail pathways.txt mode-5 connected components (in-station elevators only)",
   "units": [
     {
@@ -78,28 +78,6 @@
       "segment": "mezzanine-platform",
       "modeled": true,
       "isRedundant": false
-    },
-    {
-      "externalId": "C13N01",
-      "station": "C13",
-      "stationName": "King St-Old Town",
-      "description": "Elevator between street/mezzanine and platform",
-      "levelFrom": "Street/Mezzanine",
-      "levelTo": "Platform",
-      "segment": "street-mezzanine-platform",
-      "modeled": true,
-      "isRedundant": true
-    },
-    {
-      "externalId": "C13N02",
-      "station": "C13",
-      "stationName": "King St-Old Town",
-      "description": "Elevator between street/mezzanine and platform",
-      "levelFrom": "Street/Mezzanine",
-      "levelTo": "Platform",
-      "segment": "street-mezzanine-platform",
-      "modeled": true,
-      "isRedundant": true
     },
     {
       "externalId": "D05X02",
@@ -1100,6 +1078,28 @@
       "levelTo": "Platform",
       "segment": "street-mezzanine-platform",
       "modeled": true,
+      "isRedundant": false
+    },
+    {
+      "externalId": "WMATA-C13_MID_ELE1",
+      "station": "C13",
+      "stationName": "King St-Old Town",
+      "description": "Street/Mezzanine ↔ Platform",
+      "levelFrom": "Street/Mezzanine",
+      "levelTo": "Platform",
+      "segment": "",
+      "modeled": false,
+      "isRedundant": false
+    },
+    {
+      "externalId": "WMATA-C13_N_ELE1",
+      "station": "C13",
+      "stationName": "King St-Old Town",
+      "description": "Street/Mezzanine ↔ Platform",
+      "levelFrom": "Street/Mezzanine",
+      "levelTo": "Platform",
+      "segment": "",
+      "modeled": false,
       "isRedundant": false
     },
     {

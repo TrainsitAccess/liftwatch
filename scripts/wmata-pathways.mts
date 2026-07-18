@@ -309,6 +309,7 @@ const CURATED_PAGE_UNDERCOUNT: Record<string, string> = {
   N10: "Washington Dulles International Airport — page shows a 4-elevator mezzanine-to-platform bank; GTFS drew 2",
   N11: "Loudoun Gateway — page shows 2x2 (two north-pavilion street elevators + two platform elevators); GTFS drew 1+1",
   D01: "Federal Triangle — page shows a redundant mezzanine-to-platform pair (D01X02/D01X03); GTFS drew 1+1",
+  C13: "King St-Old Town — page + Bryce: a third standalone platform elevator (C13S01) slightly south of King St; GTFS drew only the N-pair",
 };
 
 function nameOf(st: string) { return stationName.get(`STN_${st}`) ?? stationName.get(st) ?? st; }
