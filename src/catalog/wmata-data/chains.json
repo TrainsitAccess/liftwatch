@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-18T02:37:17.045Z",
+  "generatedAt": "2026-07-18T02:42:39.986Z",
   "source": "WMATA GTFS pathways topology (conservative single-platform Street→Mezzanine→Platform ladders)",
   "models": [
     {
@@ -723,28 +723,6 @@
             {
               "externalId": "F04X02",
               "label": "Waterfront elevator F04X02 (Mezzanine to Platform)"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "systemId": "wmata-dc",
-      "stationExternalId": "F06",
-      "note": "Two elevators connect the street-level mezzanine to the platform — either one keeps this leg open. No single elevator outage removes step-free access.",
-      "internalNote": "Topology from WMATA GTFS pathways (mode-5 elevator components): Street/Mezzanine→Platform: 2 elevators. In-station elevators only — garage/facility elevators are not in the rail GTFS. Slot ids are live UnitNames where observed, synthetic WMATA-<node> otherwise.",
-      "segments": [
-        {
-          "id": "street-mezzanine-platform",
-          "label": "Street/Mezzanine to Platform",
-          "elevators": [
-            {
-              "externalId": "WMATA-F06_MZ_ELE_S",
-              "label": "Anacostia elevator (Street/Mezzanine to Platform)"
-            },
-            {
-              "externalId": "WMATA-F06_MZ_ELV_N",
-              "label": "Anacostia elevator (Street/Mezzanine to Platform)"
             }
           ]
         }

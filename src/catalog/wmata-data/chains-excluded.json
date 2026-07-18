@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-18T02:37:17.045Z",
+  "generatedAt": "2026-07-18T02:42:39.986Z",
   "note": "Stations NOT auto-modeled — complex/side-platform/non-standard, pending a human pass.",
   "stations": [
     {
@@ -394,6 +394,16 @@
       "levels": [
         "Street/West Mezzanine",
         "Mezzanine/Intermediate Passageway",
+        "Platform"
+      ]
+    },
+    {
+      "station": "F06",
+      "name": "Anacostia",
+      "reason": "step-free-detour-redundant",
+      "detail": "Anacostia — separate at-grade Howard Rd + Kiss & Ride mezzanines, each with its own platform elevator; redundant only via a disclosed ~0.3 mi step-free surface walk between the two entrances (Bryce 2026-07-17)",
+      "levels": [
+        "Street/Mezzanine",
         "Platform"
       ]
     },

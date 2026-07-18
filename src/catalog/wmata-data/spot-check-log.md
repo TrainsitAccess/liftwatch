@@ -14,7 +14,7 @@ Driven by `/liftwatch-wmata-spot-check`._
 | N10 | Washington Dulles International Airport | FIXED — 4-elevator platform bank (GTFS drew 2); real page ids | 2026-07-17 |
 | D01 | Federal Triangle | FIXED — platform pair D01X02/D01X03 (GTFS drew 1+1); real page ids | 2026-07-17 |
 | C13 | King St-Old Town | FIXED — 3rd standalone platform elevator C13S01 (south of King St) added; mezzanine at street grade; 3-way OR, all redundant | 2026-07-17 |
-| F06 | Anacostia | OPEN — platform pair split across Howard Rd / Kiss & Ride entrances; street-level connectivity question for Bryce | 2026-07-17 |
+| F06 | Anacostia | FIXED — pair split across Howard Rd / Kiss & Ride (separate at-grade mezzanines); redundant via disclosed ~0.3 mi step-free walk | 2026-07-17 |
 | B10 | Wheaton | OPEN — GTFS street→mezz elevator absent from WMATA's page (only garage listed); how does street access work? | 2026-07-17 |
 | B11 | Glenmont | OPEN — ids/locations page-confirmed; standing Georgia Ave redundancy call unchanged | 2026-07-17 |
 

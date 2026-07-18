@@ -61,7 +61,9 @@ const add = (e: Entry) => entries.set(e.key, e);
   // spot-check-log.md). C13/D01/N06/N10/N11: 2026-07-17 auto-tier audit
   // (page-inventory-undercount) — WMATA's Rider Tools inventory showed more
   // elevators than GTFS drew; curated with real page ids.
-  const CURATED = new Set(["A14", "A08", "C13", "D01", "N06", "N10", "N11", "N01", "N02", "N03", "N04", "N07", "N08", "N12", "E09"]);
+  // F06 Anacostia: 2026-07-17 audit (step-free-detour-redundant) — separate
+  // at-grade mezzanines, redundant via a disclosed ~0.3 mi step-free walk.
+  const CURATED = new Set(["A14", "A08", "C13", "D01", "F06", "N06", "N10", "N11", "N01", "N02", "N03", "N04", "N07", "N08", "N12", "E09"]);
   const prio: Record<string, number> = {
     "observed-undercount": 20, "observed-unmappable": 22, "side-platforms": 30,
     "multi-level-shaft": 38, "non-standard-levels": 40, "unorderable-levels": 44, "corrupt-levels": 46,

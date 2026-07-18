@@ -2070,6 +2070,32 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       ] },
     ],
   },
+  // Anacostia (F06, Green Line) — the 2026-07-17 audit found the two platform
+  // elevators sit under DIFFERENT named entrances (F06S01 Howard Road, F06N01
+  // Kiss & Ride). Bryce confirmed same day: the two mezzanines are NOT
+  // connected inside fare control, but a rider CAN walk between the two
+  // entrances step-free at street level (~0.3 mi). Under the step-free detour
+  // policy (2026-07-10: an elevator-free detour of at most 0.3 mi counts as a
+  // step-free alternative, and the walk MUST be disclosed to riders), the two
+  // elevators stay mutually redundant — either keeps the station step-free —
+  // so the generated redundant-pair structure is correct. But the generated
+  // note wrongly implied one connected mezzanine and hid the walk, so this is
+  // curated to disclose it. Both mezzanines are at street grade (no
+  // street→mezzanine elevator). Contrast the grade-separated stations
+  // (E09/Silver Line median), where no step-free crossing exists → genuinely
+  // NOT redundant. Confidence 8/10 (Bryce + WMATA page ids + policy).
+  {
+    systemId: SYSTEM,
+    stationExternalId: "F06",
+    note: "The station has two street-level entrances — Howard Road and Kiss & Ride — each with its own elevator up to the platform, and the two are not connected past fare control. Either elevator keeps the station step-free: if one is out of service, you can reach the other entrance by a step-free walk of about 0.3 miles at street level. Only if both elevators are out is the station not step-free.",
+    internalNote: "2026-07-17 auto-tier audit: the generator drew a redundant mezzanine→platform pair (synthetics WMATA-F06_MZ_ELE_S / WMATA-F06_MZ_ELV_N) assuming one connected mezzanine. WMATA's Rider Tools page shows the pair split across two entrances — F06S01 (Howard Road), F06N01 (Kiss & Ride) — and Bryce confirmed 2026-07-17 the mezzanines are NOT connected but the entrances are mutually reachable step-free (~0.3 mi surface walk). Redundancy preserved under the step-free detour policy (≤0.3 mi, 2026-07-10); the walk is disclosed in the public note as the policy requires. Both mezzanines at street grade (single OR segment, no street leg). Real page ids replace the synthetics. Source: wmata-data/rider-tools-inventory.json. Approved via /liftwatch-wmata-spot-check 2026-07-17 (confidence 8/10).",
+    segments: [
+      { id: "street-mezzanine-platform", label: "Street-level mezzanine to platform (either entrance)", elevators: [
+        { externalId: "F06S01", label: "Anacostia elevator F06S01 — Howard Road entrance, street-level mezzanine to platform" },
+        { externalId: "F06N01", label: "Anacostia elevator F06N01 — Kiss & Ride entrance, street-level mezzanine to platform" },
+      ] },
+    ],
+  },
   // King St-Old Town (C13, Blue/Yellow) — the 2026-07-17 audit found WMATA's
   // page lists a THIRD mezzanine→platform elevator (C13S01) beyond the
   // live-validated N-pair the generator modeled. Bryce resolved it same day:

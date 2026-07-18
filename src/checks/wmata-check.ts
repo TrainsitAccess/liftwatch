@@ -128,6 +128,18 @@ console.log("\n  2026-07-17 auto-tier audit fixes (page-inventory undercounts, w
   ok(!stationAccessible(c13, new Set(["C13N01", "C13N02", "C13S01"])), "C13: all three down -> inaccessible");
 }
 
+console.log("\n  F06 Anacostia (step-free-detour-redundant, 2026-07-17 audit): separate at-grade mezzanines, redundant via a disclosed ~0.3 mi step-free walk:");
+{
+  ok(!generatedByStation.has("F06"), "F06: moved out of the auto-generated tier (step-free-detour-redundant)");
+  ok(excludedReason.get("F06") === "step-free-detour-redundant", "F06: excluded with reason step-free-detour-redundant");
+  const f06 = WMATA_STATION_MODELS.find((m) => m.stationExternalId === "F06")!;
+  const ids = new Set(allElevators(f06).map((e) => e.externalId));
+  ok(ids.has("F06S01") && ids.has("F06N01") && ids.size === 2, "F06: two real page ids (F06S01 Howard Rd + F06N01 Kiss & Ride)");
+  ok(allElevators(f06).every((e) => elevatorRedundant(f06, e.externalId)), "F06: both elevators redundant (either keeps the station step-free via the disclosed walk)");
+  ok(!stationAccessible(f06, new Set(["F06S01", "F06N01"])), "F06: both down -> inaccessible");
+  ok(/0\.3 mile/.test(f06.note ?? "") && /step-free walk/.test(f06.note ?? ""), "F06: public note discloses the ~0.3 mi step-free walk (detour policy requires it)");
+}
+
 console.log("\n  Grade-separated stations (2026-07-17 audit): two opposite-side entrances are NOT redundant — curated per-entrance, no false street→mezzanine backup:");
 {
   const GRADE_SEP = ["N01", "N02", "N03", "N04", "N07", "N08", "N12", "E09"];

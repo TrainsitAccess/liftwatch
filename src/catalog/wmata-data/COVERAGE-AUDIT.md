@@ -178,9 +178,13 @@ mystery) and F06 Anacostia (per-entrance pair connectivity) added below.
    AT STREET GRADE, everything street-side walkable, all three elevators after
    fare control → one 3-way OR segment, fully redundant. Curated
    (page-inventory-undercount); see spot-check-log.md.
-4. **F06 Anacostia** — the modeled redundant pair is split across two named
+4. ~~**F06 Anacostia** — the modeled redundant pair is split across two named
    entrances (F06S01 Howard Rd, F06N01 Kiss & Ride). Redundancy holds only if
-   the entrances are mutually reachable step-free at street level. Needs Bryce.
+   the entrances are mutually reachable step-free at street level. Needs Bryce.~~
+   **RESOLVED 2026-07-17 (Bryce)**: mezzanines NOT connected, but the two
+   entrances ARE mutually reachable step-free (~0.3 mi surface walk).
+   Redundancy preserved under the step-free detour policy (≤0.3 mi); curated
+   as `step-free-detour-redundant` with the walk disclosed in the rider note.
 5. **B10 Wheaton** — WMATA's page lists NO in-station street→mezzanine
    elevator (only B10X01 platform + 4 "garage"), but GTFS drew one and the
    auto model includes it. Either GTFS invented the leg or a "garage" elevator

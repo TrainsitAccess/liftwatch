@@ -312,6 +312,20 @@ const CURATED_PAGE_UNDERCOUNT: Record<string, string> = {
   C13: "King St-Old Town — page + Bryce: a third standalone platform elevator (C13S01) slightly south of King St; GTFS drew only the N-pair",
 };
 
+// Human-reviewed stations whose two elevators serve SEPARATE (unconnected)
+// at-grade mezzanines but stay mutually redundant only via a DISCLOSED
+// step-free surface walk between the entrances (≤0.3 mi step-free detour
+// policy, 2026-07-10). The generated redundant-pair STRUCTURE is correct, but
+// its auto-composed note wrongly implies one connected mezzanine and hides the
+// walk — so these are curated in wmata-models.ts with an honest note that
+// discloses the walk (the policy REQUIRES the walk always be surfaced to
+// riders). Distinct from grade-separated (§CURATED_GRADE_SEPARATED — no
+// step-free crossing → genuinely NOT redundant) and from A08 split-mezzanine
+// (no walk between the ends).
+const CURATED_STEP_FREE_DETOUR: Record<string, string> = {
+  F06: "Anacostia — separate at-grade Howard Rd + Kiss & Ride mezzanines, each with its own platform elevator; redundant only via a disclosed ~0.3 mi step-free surface walk between the two entrances (Bryce 2026-07-17)",
+};
+
 function nameOf(st: string) { return stationName.get(`STN_${st}`) ?? stationName.get(st) ?? st; }
 function exclude(st: string, reason: string, detail: string, levels: string[]) {
   excluded.push({ station: st, name: nameOf(st), reason, detail, levels });
@@ -341,6 +355,10 @@ for (const [st, els] of [...byStation.entries()].sort()) {
   }
   if (CURATED_PAGE_UNDERCOUNT[st]) {
     exclude(st, "page-inventory-undercount", CURATED_PAGE_UNDERCOUNT[st], [...new Set(els.flatMap((e) => e.levels))]);
+    continue;
+  }
+  if (CURATED_STEP_FREE_DETOUR[st]) {
+    exclude(st, "step-free-detour-redundant", CURATED_STEP_FREE_DETOUR[st], [...new Set(els.flatMap((e) => e.levels))]);
     continue;
   }
   // (1) corruption guard: any elevator node whose level_id belongs to a DIFFERENT
