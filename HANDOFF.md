@@ -1,14 +1,22 @@
-# LiftWatch — Session Handoff (2026-07-17)
+# LiftWatch — Session Handoff (2026-07-18)
 
 **To start the next session, paste the prompt in [§ Next-session prompt](#next-session-prompt) below.**
 
 Repo: `C:\Users\Bryce\Claude\liftwatch` · main pushed to
 github.com/TrainsitAccess/liftwatch. `SPEC.md` is the source of truth; `CLAUDE.md`
 is the operational summary (both current as of this handoff, including the
-WMATA-complete writeup). Deeper resume context lives in Claude's memory:
-`project_liftwatch.md` (full narrative log), `project_liftwatch_wmata_findings.md`
-(now says DONE, 42/42), plus the `reference_liftwatch_*_command.md` files for
-each resumable slash-command workflow.
+WMATA id-promotion + Tier B writeup). Deeper resume context lives in Claude's
+memory: `project_liftwatch.md` (full narrative log), the
+`reference_liftwatch_*_command.md` files for each resumable slash-command
+workflow, and `reference_liftwatch_wmata_tier_b_command.md` (the new fix session).
+
+**Primary next task: `/liftwatch-wmata-tier-b`** — the 2026-07-18 session
+promoted every synthetic WMATA elevator id to its real UnitName (generated tier:
+all 38; curated Tier A: 33 stations) and cross-checked every model against
+WMATA's own Rider-Tools inventory with **0 errors**. The only work left is the
+**13 "Tier B" stations** where WMATA's page structurally disagrees with the model
+— that command carries the full dossier. The broader station-review backlog
+(TfL/CTA/MBTA/MTA-rail, below) is the SECONDARY track.
 
 ---
 
@@ -18,16 +26,25 @@ Copy everything in this block:
 
 ```
 Resume LiftWatch (C:\Users\Bryce\Claude\liftwatch). Read HANDOFF.md in the
-repo first, then run `npm run review:status` (Node isn't on PATH in
-non-interactive shells — export PATH="/c/Program Files/nodejs:$PATH" in bash,
-or $env:Path="C:\Program Files\nodejs;$env:Path" in PowerShell) to see the
-live station-review tracker.
+repo first. Node isn't on PATH in non-interactive shells — export
+PATH="/c/Program Files/nodejs:$PATH" in bash, or
+$env:Path="C:\Program Files\nodejs;$env:Path" in PowerShell.
 
-TASK: continue the /liftwatch-station-review walkthrough (103/214 stations
-done as of this handoff — WMATA is fully COMPLETE at 42/42, see the table
-below for what's left in the other four systems). Use the Skill tool with
-"liftwatch-station-review" to resume it properly (loads the full ritual +
-queue conventions) rather than improvising from this doc alone.
+PRIMARY TASK: fix the 13 WMATA "Tier B" stations. Use the Skill tool with
+"liftwatch-wmata-tier-b" to load the full dossier + ritual (do NOT improvise
+from this doc alone — the command has the per-station id/structure detail and
+the exact questions to ask Bryce). These are the stations where WMATA's own
+Rider-Tools page inventory structurally disagrees with our curated model:
+the 7 Silver Line grade-separated median stations (undercounted redundant
+pairs), the NoMa/Ballston watch items, Southern Ave, Huntington, Potomac Yard
+(a likely direction-grouping bug), and Arlington Cemetery. Bryce's direct
+knowledge outranks the page where they conflict.
+
+SECONDARY TASK (if Tier B is done or Bryce redirects): continue the
+/liftwatch-station-review walkthrough (103/214 stations done — WMATA's
+review tier is COMPLETE at 42/42; the table below shows what's left in the
+other four systems). Run `npm run review:status` for the live tracker and use
+the Skill tool with "liftwatch-station-review" to resume it properly.
 
 Standing rules, all locked in CLAUDE.md — don't re-litigate:
 - Risk-bucket the queue and batch stations that claim ZERO redundancy
@@ -75,7 +92,31 @@ new stations.
 
 ---
 
-## Where things stand (2026-07-17, end of session)
+## What shipped this session (2026-07-18) — WMATA id promotion + Tier B split
+
+The whole session was WMATA elevator-id work (no station-review-queue progress —
+that backlog table below is unchanged from 2026-07-17). Summary:
+
+- **Auto-tier spot-check (`/liftwatch-wmata-spot-check`)** — hand-audited the ~46
+  GTFS-generated station models against WMATA's Rider-Tools pages; found + fixed
+  **8** (A08 Friendship Heights, N06/N11/N10/D01 undercounts, C13 King St, F06
+  Anacostia detour, B10 Wheaton ramp, B11 Glenmont surface-crossing). 5 new
+  generator exclusion classes. Every fix has a `check:wmata` regression.
+- **Bulk id promotion** — WMATA's Rider-Tools inventory (all 91 stations)
+  snapshotted to `wmata-data/rider-tools-inventory.json`. Generated tier: a
+  page-id binding pass in `scripts/wmata-pathways.mts` promoted ALL 38 stations'
+  synthetics to real UnitNames (0 left). Curated tier: **33 stations' (Tier A)**
+  synthetics promoted to real ids. Full model-vs-page cross-check: **0 wrong ids,
+  0 segment errors**.
+- **13 "Tier B" stations remain** — the only real model-vs-page discrepancies,
+  handed off to **`/liftwatch-wmata-tier-b`** (full dossier in that command).
+  The two long-standing internal watch items (NoMa B35 count, Ballston K04
+  mapping) are now part of this group, cross-referenced against the page.
+
+All pushed to main (`c123e30..` through the id-promotion commits). typecheck +
+demo:access (69) + check:wmata green throughout.
+
+## Where things stand (station-review queue — unchanged since 2026-07-17)
 
 **Station-review progress: 103/214 (48.1%)** — `npm run review:status` for
 the live number; verdicts AND evidence now both persist across
@@ -84,7 +125,7 @@ the live number; verdicts AND evidence now both persist across
 | System | Done / Total | Notes |
 |---|---|---|
 | `mta-lirr` | 2/2 | **Complete.** |
-| `wmata-dc` | 42/42 | **Complete as of this session** — every one of the 22 remaining excluded/holdout stations resolved with Bryce. See CLAUDE.md/SPEC.md for the full writeup; two internal (non-public) watch notes remain open (NoMa B35's elevator count, Ballston-MU K04's observed-id mapping), documented inline in `wmata-models.ts`. |
+| `wmata-dc` | 42/42 | **Review tier complete.** SEPARATE from the 2026-07-18 id work: every synthetic elevator id is now a real UnitName except the 13 `/liftwatch-wmata-tier-b` stations (page-vs-model structural conflicts, incl. the NoMa B35 count + Ballston K04 mapping watch items). See CLAUDE.md/SPEC.md. |
 | `mbta-boston` | 18/41 | 23 pending. `State` is IN PROGRESS — full evidence gathered, 3 open questions posed to Bryce, awaiting his answers (see below). The other 22 are untouched interchange/anomaly stations. |
 | `cta-chicago` | 39/46 | 7 pending, all genuine "Archetype C" complexes — see table below. |
 | `mta-mnr` | 2/12 | 10 pending, several genuinely tangled (Croton-Harmon, South Norwalk, Peekskill). |

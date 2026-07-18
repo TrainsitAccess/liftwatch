@@ -408,6 +408,39 @@ parking lot). A station is accessible only if **every** segment is up.
   the station archetypes with examples, the redundancy decision table, what
   GTFS reliably gets wrong, an encoding cheatsheet, and a per-station
   checklist. **Read it before modeling or auditing any WMATA station.**
+- **WMATA Rider-Tools page inventory — a THIRD ground-truth source + a bulk
+  id-promotion (2026-07-18, `wmata-data/rider-tools-inventory.json`).**
+  WMATA's own station-info pages (`wmata.com/ridertools/station/<slug>/info`)
+  server-render an `elevatorListCMF` payload: a per-station roster of REAL
+  UnitNames + per-entrance groups + level descriptions in the SAME vocabulary
+  the live feed uses (`parseWmataLocation`). Snapshotted for all 91 rail
+  stations (fetch via the in-app Browser pane — `fetch('/ridertools/station/
+  <slug>/info')`; the JS-rendered pages need a real browser, and the payload
+  interleaves escalators/garages that reuse ids, so filter to names starting
+  "Elevator"/"Garage"). Used two ways: **(1) generated tier** — a purely-
+  additive binding pass in `scripts/wmata-pathways.mts` fills every still-
+  synthetic slot with its real id by level-pair (never overrides an observed
+  binding, never gates/excludes; `PAGE_ID_OVERRIDES` covers 2 non-standard
+  wordings — A15 "parking/Kiss & Ride", B03 "Amtrak station"), so all 38
+  generated stations now carry real UnitNames and re-derive identically each
+  daily refresh. **(2) curated tier** — 33 stations' synthetic ids promoted to
+  real UnitNames (Tier A), a self-consistent swap where the model structure
+  already matched the page. A full cross-check of EVERY model (curated +
+  generated) vs the page found **0 wrong ids and 0 genuine segment errors** —
+  the only real discrepancies are the **13 "Tier B" stations** where the page
+  structurally disagrees with the model, left for a focused fix session
+  (**`/liftwatch-wmata-tier-b`**): the 7 Silver Line grade-separated median
+  stations (N01/N02/N03/N04/N07/N08/N12) whose page shows redundant PAIRS on
+  every leg vs our single-elevator models (fixing them flips those 7 to
+  redundant); the NoMa B35 / Ballston K04 watch items; Southern Ave F08
+  (bridge vs garage) and Huntington C15 (inclinator absent from the elevator
+  list); and the C11 Potomac Yard direction-grouping bug (WMATA groups
+  Largo+MtVernon on ONE northbound platform, the model splits them) + the
+  trivial C06 Arlington Cemetery East/West relabel. **NoMa & Ballston are the
+  two long-standing internal watch items** — now cross-referenced against the
+  page (page says NoMa has 1 platform elevator vs Bryce's 2; page has no
+  Vienna-bound platform elevator at Ballston). Bryce's direct knowledge
+  outranks the page where they conflict.
 - **WMATA STATION REVIEW COMPLETE (2026-07-17): 42/42, every excluded
   station individually resolved with Bryce.** GTFS undercounted or
   corrupted more than the observed-units gate alone could catch — several

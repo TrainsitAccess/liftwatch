@@ -949,6 +949,56 @@ access chain only when the agency's guidance or a human confirms the route.**
   via bound partner C13N02; Columbia Heights E04X02 (sole) → NO ACCESS;
   4 garage outages tracked with zero chain effect.
 
+#### WMATA auto-tier spot-check + Rider-Tools inventory + bulk id promotion (2026-07-18)
+
+Two connected efforts, driven by `/liftwatch-wmata-spot-check` then a full
+id-promotion sweep. **First**, a hand accuracy audit of the ~46 auto-generated
+station models (the GTFS-derived tier, never individually reviewed) found and
+fixed **8** — A08 Friendship Heights (a 2-axis error: separate mezzanines + a
+4-elevator street bank GTFS drew as 1 → re-modeled CNF, then all 7 slots given
+real ids + the Jenifer St. cluster location); N06/N11/N10/D01 (page-inventory
+undercounts → real 2×2 / 4-banks); C13 King St (a 3rd standalone platform
+elevator); F06 Anacostia (redundant pair split across two entrances, redundant
+only via a disclosed ≤0.3-mi step-free walk — the detour policy); B10 Wheaton
+(at-grade ramp mezzanine + a phantom GTFS street elevator dropped); B11 Glenmont
+(street pair confirmed redundant across the Georgia Ave surface crossing). New
+generator exclusion classes: `page-inventory-undercount`, `step-free-detour-
+redundant`, `mezzanine-at-grade`, `surface-crossing-redundant`, `split-mezzanine`.
+
+**Second**, WMATA's own Rider-Tools station-info pages became a THIRD ground-truth
+source (`wmata-data/rider-tools-inventory.json`, all 91 rail stations): real
+UnitNames + per-entrance groups + level phrases in the shared `parseWmataLocation`
+vocabulary. A purely-additive binding pass in `scripts/wmata-pathways.mts` fills
+every still-synthetic GENERATED slot with its real id by level-pair (2 wording
+quirks handled by `PAGE_ID_OVERRIDES`: A15 "parking/Kiss & Ride", B03 "Amtrak
+station") → 0 synthetics in `chains.json`, re-derived identically each daily
+refresh. **33 CURATED stations** then had their synthetic ids promoted to real
+UnitNames (Tier A — self-consistent swaps where structure already matched the
+page; directional per-direction platforms matched to WMATA's destination wording).
+
+A full cross-check of EVERY model (curated + generated) vs the page found **0
+wrong ids, 0 genuine segment errors** (the only Class-B flags were false
+positives: CNF/interchange custom segment names + the at-grade `street-platform`
+convention). The **only** real discrepancies are **13 "Tier B" stations** where
+the page structurally disagrees with the model — left for the focused
+**`/liftwatch-wmata-tier-b`** session:
+- **Silver Line grade-separated pairs (N01/N02/N03/N04/N07/N08/N12)** — the page
+  shows a redundant PAIR on every leg (two opposite-side entrance pavilions + a
+  platform bank) vs our single-elevator models; fixing them flips these 7 to
+  redundant (single-fault tolerant), keeping the grade-separated no-cross-crossing
+  rule. Needs Bryce to confirm the median grade-separation + the N/S id→side
+  mapping (WMATA labels are "south entry pavilion" vs "mezzanine to grade/street",
+  which the current models may have inverted).
+- **Watch-item conflicts** — NoMa B35 (page: 1 platform elevator, Bryce: 2),
+  Ballston K04 (page has no Vienna-bound platform elevator — the id-mapping watch
+  item), Southern Ave F08 (page: platform + garage, model has a pedestrian-bridge
+  member WMATA doesn't list), Huntington C15 (the South Kings Hwy inclinator is
+  real but absent from WMATA's elevator list). Bryce's knowledge is ground truth.
+- **Structural** — C11 Potomac Yard (likely bug: WMATA groups Largo+MtVernon on
+  ONE northbound platform, model splits them; re-model 2 platform directions ×
+  pairs + 3 entrance pairs on the single island), C06 Arlington Cemetery (trivial
+  East/West → destination relabel).
+
 ### TfL feeds (in use) — real per-lift inventory, real topology-derived redundancy
 
 The richest system yet: a genuine per-lift inventory (569 lifts, 201/509

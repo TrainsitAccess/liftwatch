@@ -20,6 +20,22 @@ Driven by `/liftwatch-wmata-spot-check`._
 
 ## Notes
 
+- **Bulk id promotion + full cross-check (2026-07-18)** — Bryce asked to promote
+  every remaining synthetic `WMATA-<node>` id to its real UnitName, system-wide.
+  The Rider-Tools inventory was extended to all 91 rail stations
+  (`rider-tools-inventory.json`). **Generated tier**: an additive page-id binding
+  pass in `scripts/wmata-pathways.mts` promoted all 38 stations (0 synthetics
+  left; `PAGE_ID_OVERRIDES` for A15 "parking/Kiss & Ride" + B03 "Amtrak station").
+  **Curated tier**: 33 stations (Tier A) promoted — self-consistent swaps where
+  structure already matched the page. A full model-vs-page cross-check (real-id-
+  not-on-page, segment-mismatch, missing-elevator) came back **0 errors**; the
+  only real discrepancies are the **13 Tier B stations** (page structurally
+  disagrees with the model), handed to `/liftwatch-wmata-tier-b`: the 7 Silver
+  Line grade-separated median stations (undercounted redundant pairs — N01/N02/
+  N03/N04/N07/N08/N12), NoMa B35 + Ballston K04 (watch items), Southern Ave F08,
+  Huntington C15, Potomac Yard C11 (direction-grouping bug), Arlington Cemetery
+  C06. **Bryce's knowledge outranks the page** where they conflict.
+
 - **Bulk audit (2026-07-17)** — After A08 Friendship Heights turned up wrong on
   two axes, Bryce asked for a full audit of the remaining auto tier against
   WMATA's own Rider Tools station pages (the A08 ground-truth source). All 46
