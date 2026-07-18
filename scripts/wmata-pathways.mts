@@ -76,6 +76,42 @@ try {
 // The SAME vocabulary the live adapter uses at poll time — never fork it.
 import { parseWmataLocation, segmentIdsForPair } from "../src/adapters/wmata/location.js";
 
+// ── Rider-Tools page inventory (rider-tools-inventory.json) ───────────────────
+// WMATA's own station-info pages (wmata.com/ridertools/station/<slug>/info)
+// publish a per-station elevator roster with REAL UnitNames + level
+// descriptions (same vocabulary as the live feed's LocationDescription). We use
+// it ONLY to give a still-unobserved slot its real id ahead of a live outage —
+// a purely additive fill: it never overrides an observed binding and never
+// gates/excludes a station (the observed-units gate above stays the sole
+// exclusion signal). Fetched 2026-07-18 during the auto-tier id-promotion sweep.
+interface PageElevator { id: string; name: string }
+interface PageStation { groups: { entrance: string; elevators: PageElevator[] }[] }
+// Page descriptions the shared level-pair vocabulary can't place on the standard
+// ladder (non-standard entrance wording), resolved by hand from the Rider-Tools
+// inventory. Keyed station → segId → real UnitName. Both are the entrance
+// (street→mezzanine) elevator, mis-worded on WMATA's page.
+const PAGE_ID_OVERRIDES: Record<string, Record<string, string>> = {
+  A15: { "street-mezzanine": "A15X01" }, // "east side parking/Kiss & Ride and mezzanine" — the Kiss & Ride entrance elevator (parser reads "parking" as garage)
+  B03: { "street-mezzanine": "B03N01" }, // "Amtrak station and mezzanine" — the Amtrak concourse is the street/entrance level
+};
+const pageByStation = new Map<string, { id: string; pair: ReturnType<typeof parseWmataLocation> }[]>();
+try {
+  const p = fileURLToPath(new URL("../src/catalog/wmata-data/rider-tools-inventory.json", import.meta.url));
+  const inv = JSON.parse(readFileSync(p, "utf8")) as { stations: Record<string, PageStation> };
+  for (const [code, st] of Object.entries(inv.stations)) {
+    const seen = new Set<string>();
+    const els: { id: string; pair: ReturnType<typeof parseWmataLocation> }[] = [];
+    for (const g of st.groups) for (const e of g.elevators) {
+      if (seen.has(e.id)) continue; // ids can repeat across entrance groups (shared elevator)
+      seen.add(e.id);
+      els.push({ id: e.id, pair: parseWmataLocation(e.name) });
+    }
+    pageByStation.set(code, els);
+  }
+} catch {
+  console.warn("WARN: no rider-tools-inventory.json — page-id promotion skipped");
+}
+
 // --- minimal CSV (WMATA GTFS is simple; quoted fields with commas do occur) ---
 function parseCsv(text: string): Record<string, string>[] {
   const lines = text.split(/\r?\n/).filter((l) => l.length);
@@ -497,6 +533,28 @@ for (const [st, els] of [...byStation.entries()].sort()) {
     const slots = s.els.slice().sort((a, b) => a.elevId.localeCompare(b.elevId));
     slots.forEach((e, i) => boundId.set(e, names[i] ?? `WMATA-${e.elevId}`));
   }
+  // Supplementary: promote still-synthetic slots to their REAL WMATA UnitName
+  // from the Rider-Tools page inventory (same level-pair vocabulary as the
+  // observed binding). Purely additive — observed bindings are never touched,
+  // and a page id already used by an observed binding is skipped. Slots within a
+  // segment are interchangeable, so sorted-into-sorted assignment stays exact.
+  const pageEls = pageByStation.get(st) ?? [];
+  if (pageEls.length) {
+    const used = new Set(boundId.values());
+    for (const s of segs) {
+      const thisSeg = segId(s.from, s.to);
+      const ov = PAGE_ID_OVERRIDES[st]?.[thisSeg];
+      const cand = [
+        ...(ov && !used.has(ov) ? [ov] : []),
+        ...pageEls
+          .filter((p) => p.pair !== "garage" && p.pair && segmentIdsForPair(p.pair).includes(thisSeg) && !used.has(p.id))
+          .map((p) => p.id)
+          .sort(),
+      ];
+      const synSlots = s.els.slice().sort((a, b) => a.elevId.localeCompare(b.elevId)).filter((e) => boundId.get(e)!.startsWith("WMATA-"));
+      synSlots.forEach((e, i) => { if (cand[i]) { boundId.set(e, cand[i]!); used.add(cand[i]!); } });
+    }
+  }
 
   // build the model. Two note tiers (per Bryce, 2026-07-13): `note` is the
   // PUBLIC rider-facing text — plain English, no GTFS/generator jargon;
@@ -521,7 +579,7 @@ for (const [st, els] of [...byStation.entries()].sort()) {
     systemId: "wmata-dc",
     stationExternalId: st,
     note: `${segSentences.join(". ")}. ${tail}`,
-    internalNote: `Topology from WMATA GTFS pathways (mode-5 elevator components): ${segs.map((s) => `${s.from}→${s.to}: ${s.els.length} elevator${s.els.length > 1 ? "s" : ""}`).join(", ")}. In-station elevators only — garage/facility elevators are not in the rail GTFS. Slot ids are live UnitNames where observed, synthetic WMATA-<node> otherwise.`,
+    internalNote: `Topology from WMATA GTFS pathways (mode-5 elevator components): ${segs.map((s) => `${s.from}→${s.to}: ${s.els.length} elevator${s.els.length > 1 ? "s" : ""}`).join(", ")}. In-station elevators only — garage/facility elevators are not in the rail GTFS. Slot ids are real WMATA UnitNames (from live observation or the Rider-Tools page inventory), synthetic WMATA-<node> only where neither has one yet.`,
     segments: segs.map((s): AccessSegment => ({
       id: segId(s.from, s.to),
       label: segLabel(s.from, s.to),
