@@ -35,7 +35,7 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       {
         id: "mezzanine-platform",
         label: "Mezzanine to platform",
-        elevators: [{ externalId: "WMATA-A14_ELE", label: "Rockville elevator (mezzanine to platform)" }],
+        elevators: [{ externalId: "A14X03", label: "Rockville elevator (mezzanine to platform)" }],
       },
     ],
   },
@@ -83,7 +83,7 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       {
         id: "street-platform",
         label: "Street to the opposite-direction platform",
-        elevators: [{ externalId: "WMATA-B02_NW_ELE2", label: "Judiciary Sq elevator (street to opposite-direction platform) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "B02N02", label: "Judiciary Sq elevator (street to opposite-direction platform)" }],
       },
     ],
   },
@@ -175,7 +175,7 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       {
         id: "street-platform",
         label: "Street/mezzanine to the opposite-direction platform",
-        elevators: [{ externalId: "WMATA-C14_ELE1", label: "Eisenhower Ave elevator (street/mezzanine to opposite-direction platform) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "C14X01", label: "Eisenhower Ave elevator (street/mezzanine to opposite-direction platform)" }],
       },
     ],
   },
@@ -221,7 +221,7 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       {
         id: "street-platform",
         label: "Street/mezzanine to the North platform",
-        elevators: [{ externalId: "WMATA-E08_MZ_N_ELV", label: "Hyattsville Crossing North elevator (street/mezzanine to platform) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "E08X02", label: "Hyattsville Crossing North elevator (street/mezzanine to platform)" }],
       },
     ],
   },
@@ -235,7 +235,7 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       {
         id: "street-platform",
         label: "Street/mezzanine to the South platform",
-        elevators: [{ externalId: "WMATA-E08_MZ_S_ELV", label: "Hyattsville Crossing South elevator (street/mezzanine to platform) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "E08X01", label: "Hyattsville Crossing South elevator (street/mezzanine to platform)" }],
       },
     ],
   },
@@ -251,12 +251,12 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       {
         id: "street-mezzanine",
         label: "Street to mezzanine",
-        elevators: [{ externalId: "WMATA-A03_N_ELE1", label: "Dupont Circle elevator (street to mezzanine) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "A03N01", label: "Dupont Circle elevator (street to mezzanine)" }],
       },
       {
         id: "mezzanine-platform",
         label: "Mezzanine to the opposite direction 1 platform",
-        elevators: [{ externalId: "WMATA-A03_N_ELE2", label: "Dupont Circle elevator (mezzanine to opposite direction 1 platform) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "A03N02", label: "Dupont Circle elevator (mezzanine to opposite direction 1 platform)" }],
       },
     ],
   },
@@ -270,12 +270,12 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       {
         id: "street-mezzanine",
         label: "Street to mezzanine",
-        elevators: [{ externalId: "WMATA-A03_N_ELE1", label: "Dupont Circle elevator (street to mezzanine) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "A03N01", label: "Dupont Circle elevator (street to mezzanine)" }],
       },
       {
         id: "mezzanine-platform",
         label: "Mezzanine to the opposite direction 2 platform",
-        elevators: [{ externalId: "WMATA-A03_N_ELE3", label: "Dupont Circle elevator (mezzanine to opposite direction 2 platform) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "A03N03", label: "Dupont Circle elevator (mezzanine to opposite direction 2 platform)" }],
       },
     ],
   },
@@ -291,12 +291,12 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       {
         id: "street-mezzanine",
         label: "Street to mezzanine",
-        elevators: [{ externalId: "WMATA-C02_E_MZ_ELE", label: "McPherson Sq elevator (street to mezzanine) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "C02E01", label: "McPherson Sq elevator (street to mezzanine)" }],
       },
       {
         id: "mezzanine-platform",
         label: "Mezzanine to the opposite direction 1 platform",
-        elevators: [{ externalId: "WMATA-C02_E_ELE1", label: "McPherson Sq elevator (mezzanine to opposite direction 1 platform) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "C02E02", label: "McPherson Sq elevator (mezzanine to opposite direction 1 platform)" }],
       },
     ],
   },
@@ -310,12 +310,12 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       {
         id: "street-mezzanine",
         label: "Street to mezzanine",
-        elevators: [{ externalId: "WMATA-C02_E_MZ_ELE", label: "McPherson Sq elevator (street to mezzanine) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "C02E01", label: "McPherson Sq elevator (street to mezzanine)" }],
       },
       {
         id: "mezzanine-platform",
         label: "Mezzanine to the opposite direction 2 platform",
-        elevators: [{ externalId: "WMATA-C02_E_ELE2", label: "McPherson Sq elevator (mezzanine to opposite direction 2 platform) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "C02E03", label: "McPherson Sq elevator (mezzanine to opposite direction 2 platform)" }],
       },
     ],
   },
@@ -331,12 +331,12 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       {
         id: "street-mezzanine",
         label: "Street to mezzanine",
-        elevators: [{ externalId: "WMATA-C03_W_MZ_ELE", label: "Farragut West elevator (street to mezzanine) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "C03W01", label: "Farragut West elevator (street to mezzanine)" }],
       },
       {
         id: "mezzanine-platform",
         label: "Mezzanine to the opposite direction 1 platform",
-        elevators: [{ externalId: "WMATA-C03_W_ELE1", label: "Farragut West elevator (mezzanine to opposite direction 1 platform) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "C03W02", label: "Farragut West elevator (mezzanine to opposite direction 1 platform)" }],
       },
     ],
   },
@@ -350,12 +350,12 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       {
         id: "street-mezzanine",
         label: "Street to mezzanine",
-        elevators: [{ externalId: "WMATA-C03_W_MZ_ELE", label: "Farragut West elevator (street to mezzanine) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "C03W01", label: "Farragut West elevator (street to mezzanine)" }],
       },
       {
         id: "mezzanine-platform",
         label: "Mezzanine to the opposite direction 2 platform",
-        elevators: [{ externalId: "WMATA-C03_W_ELE2", label: "Farragut West elevator (mezzanine to opposite direction 2 platform) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "C03W03", label: "Farragut West elevator (mezzanine to opposite direction 2 platform)" }],
       },
     ],
   },
@@ -376,7 +376,7 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       {
         id: "mezzanine-platform",
         label: "Mezzanine to the opposite direction 1 platform",
-        elevators: [{ externalId: "WMATA-C08_M_ELE1", label: "Pentagon City elevator (mezzanine to opposite direction 1 platform) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "C08X02", label: "Pentagon City elevator (mezzanine to opposite direction 1 platform)" }],
       },
     ],
   },
@@ -395,7 +395,7 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       {
         id: "mezzanine-platform",
         label: "Mezzanine to the opposite direction 2 platform",
-        elevators: [{ externalId: "WMATA-C08_M_ELE2", label: "Pentagon City elevator (mezzanine to opposite direction 2 platform) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "C08X03", label: "Pentagon City elevator (mezzanine to opposite direction 2 platform)" }],
       },
     ],
   },
@@ -411,12 +411,12 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       {
         id: "street-mezzanine",
         label: "Street to mezzanine",
-        elevators: [{ externalId: "WMATA-C09_ELE1", label: "Crystal City elevator (street to mezzanine) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "C09X01", label: "Crystal City elevator (street to mezzanine)" }],
       },
       {
         id: "mezzanine-platform",
         label: "Mezzanine to the opposite direction 1 platform",
-        elevators: [{ externalId: "WMATA-C09_ELE2", label: "Crystal City elevator (mezzanine to opposite direction 1 platform) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "C09X02", label: "Crystal City elevator (mezzanine to opposite direction 1 platform)" }],
       },
     ],
   },
@@ -430,12 +430,12 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       {
         id: "street-mezzanine",
         label: "Street to mezzanine",
-        elevators: [{ externalId: "WMATA-C09_ELE1", label: "Crystal City elevator (street to mezzanine) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "C09X01", label: "Crystal City elevator (street to mezzanine)" }],
       },
       {
         id: "mezzanine-platform",
         label: "Mezzanine to the opposite direction 2 platform",
-        elevators: [{ externalId: "WMATA-C09_ELE3", label: "Crystal City elevator (mezzanine to opposite direction 2 platform) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "C09X03", label: "Crystal City elevator (mezzanine to opposite direction 2 platform)" }],
       },
     ],
   },
@@ -451,7 +451,7 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       {
         id: "street-mezzanine",
         label: "Street to mezzanine",
-        elevators: [{ externalId: "WMATA-D11_MZ_ELE1", label: "Cheverly elevator (street to mezzanine) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "D11X01", label: "Cheverly elevator (street to mezzanine)" }],
       },
       {
         id: "mezzanine-platform",
@@ -470,7 +470,7 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       {
         id: "street-mezzanine",
         label: "Street to mezzanine",
-        elevators: [{ externalId: "WMATA-D11_MZ_ELE1", label: "Cheverly elevator (street to mezzanine) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "D11X01", label: "Cheverly elevator (street to mezzanine)" }],
       },
       {
         id: "mezzanine-platform",
@@ -491,12 +491,12 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       {
         id: "street-mezzanine",
         label: "Street to mezzanine",
-        elevators: [{ externalId: "WMATA-K02_ELE1", label: "Clarendon elevator (street to mezzanine) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "K02X01", label: "Clarendon elevator (street to mezzanine)" }],
       },
       {
         id: "mezzanine-platform",
         label: "Mezzanine to the opposite direction 1 platform",
-        elevators: [{ externalId: "WMATA-K02_ELE2", label: "Clarendon elevator (mezzanine to opposite direction 1 platform) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "K02X02", label: "Clarendon elevator (mezzanine to opposite direction 1 platform)" }],
       },
     ],
   },
@@ -510,12 +510,12 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       {
         id: "street-mezzanine",
         label: "Street to mezzanine",
-        elevators: [{ externalId: "WMATA-K02_ELE1", label: "Clarendon elevator (street to mezzanine) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "K02X01", label: "Clarendon elevator (street to mezzanine)" }],
       },
       {
         id: "mezzanine-platform",
         label: "Mezzanine to the opposite direction 2 platform",
-        elevators: [{ externalId: "WMATA-K02_ELE3", label: "Clarendon elevator (mezzanine to opposite direction 2 platform) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "K02X03", label: "Clarendon elevator (mezzanine to opposite direction 2 platform)" }],
       },
     ],
   },
@@ -531,12 +531,12 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       {
         id: "street-mezzanine",
         label: "Street to mezzanine",
-        elevators: [{ externalId: "WMATA-K03_ELE1", label: "Virginia Sq-GMU elevator (street to mezzanine) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "K03X01", label: "Virginia Sq-GMU elevator (street to mezzanine)" }],
       },
       {
         id: "mezzanine-platform",
         label: "Mezzanine to the opposite direction 1 platform",
-        elevators: [{ externalId: "WMATA-K03_ELE2", label: "Virginia Sq-GMU elevator (mezzanine to opposite direction 1 platform) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "K03X02", label: "Virginia Sq-GMU elevator (mezzanine to opposite direction 1 platform)" }],
       },
     ],
   },
@@ -550,12 +550,12 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       {
         id: "street-mezzanine",
         label: "Street to mezzanine",
-        elevators: [{ externalId: "WMATA-K03_ELE1", label: "Virginia Sq-GMU elevator (street to mezzanine) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "K03X01", label: "Virginia Sq-GMU elevator (street to mezzanine)" }],
       },
       {
         id: "mezzanine-platform",
         label: "Mezzanine to the opposite direction 2 platform",
-        elevators: [{ externalId: "WMATA-K03_ELE3", label: "Virginia Sq-GMU elevator (mezzanine to opposite direction 2 platform) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "K03X03", label: "Virginia Sq-GMU elevator (mezzanine to opposite direction 2 platform)" }],
       },
     ],
   },
@@ -571,12 +571,12 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       {
         id: "street-mezzanine",
         label: "Street to mezzanine/intermediate passageway",
-        elevators: [{ externalId: "WMATA-A04_N_ELE", label: "Woodley Park elevator (street to mezzanine/intermediate passageway) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "A04X01", label: "Woodley Park elevator (street to mezzanine/intermediate passageway)" }],
       },
       {
         id: "mezzanine-platform",
         label: "Mezzanine/intermediate passageway to platform",
-        elevators: [{ externalId: "WMATA-A04_ELE1", label: "Woodley Park elevator (mezzanine/intermediate passageway to platform) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "A04X02", label: "Woodley Park elevator (mezzanine/intermediate passageway to platform)" }],
       },
     ],
   },
@@ -592,12 +592,12 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       {
         id: "street-mezzanine",
         label: "Street to mezzanine/intermediate passageway",
-        elevators: [{ externalId: "WMATA-A05_ELE1", label: "Cleveland Park elevator (street to mezzanine/intermediate passageway) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "A05X01", label: "Cleveland Park elevator (street to mezzanine/intermediate passageway)" }],
       },
       {
         id: "mezzanine-platform",
         label: "Mezzanine/intermediate passageway to platform",
-        elevators: [{ externalId: "WMATA-A05_ELE2", label: "Cleveland Park elevator (mezzanine/intermediate passageway to platform) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "A05X02", label: "Cleveland Park elevator (mezzanine/intermediate passageway to platform)" }],
       },
     ],
   },
@@ -613,12 +613,12 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       {
         id: "street-mezzanine",
         label: "Street to mezzanine/intermediate passageway",
-        elevators: [{ externalId: "WMATA-A06_ELE1", label: "Van Ness-UDC elevator (street to mezzanine/intermediate passageway) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "A06X01", label: "Van Ness-UDC elevator (street to mezzanine/intermediate passageway)" }],
       },
       {
         id: "mezzanine-platform",
         label: "Mezzanine/intermediate passageway to platform",
-        elevators: [{ externalId: "WMATA-A06_ELE2", label: "Van Ness-UDC elevator (mezzanine/intermediate passageway to platform) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "A06X02", label: "Van Ness-UDC elevator (mezzanine/intermediate passageway to platform)" }],
       },
     ],
   },
@@ -654,29 +654,29 @@ export const WMATA_STATION_MODELS: StationModel[] = [
     systemId: SYSTEM,
     stationExternalId: "A08",
     note: "Two independent step-free routes to the platform: the Jenifer Street Entrance (any one of four street elevators to the mezzanine, then the mezzanine elevator to the platform) or the Western Avenue Entrance (one street elevator to the mezzanine, then one elevator to the platform). The station stays step-free as long as at least one full route is working. The Jenifer Street route can absorb any single (or multiple) street-elevator outage there, but still depends on its one mezzanine-to-platform elevator; the Western Avenue route has no backup on either leg.",
-    internalNote: "Source: WMATA's official Rider Tools station page (wmata.com/ridertools/station/friendship-heights/info), \"7 of 7 elevators running\" — Jenifer Street Entrance: 4× street↔mezzanine + 1× mezzanine↔platform; Western Avenue Entrance: 1× street↔mezzanine + 1× mezzanine↔platform. Confirmed via Bryce's screenshot and independently re-fetched live 2026-07-17. Corrects the GTFS-pathways auto-model (chains.json), which (a) undercounted the Jenifer Street leg as 1 elevator instead of 4, and (b) assumed one connected mezzanine spanning both entrances — Bryce confirmed 2026-07-17 the two mezzanines are separate. Excluded from the generator via CURATED_SPLIT_MEZZANINE in scripts/wmata-pathways.mts. All 7 ids synthetic (WMATA-A08_JEN_ELE1..5, WMATA-A08_WES_ELE1..2); no UnitNames observed live yet. Physical locations from Bryce (2026-07-17): the Jenifer St. (south) entrance's bank includes a street elevator on the WEST side of Wisconsin Ave, just south of Jenifer St NW, connected to the bus yard/bay (38.95851818379839, -77.08495378033165 -> WMATA-A08_JEN_ELE1); the Western Ave. (north) entrance's street elevator is at the north end near the DC/MD line, embedded in the mall on the EAST side of Wisconsin Ave (38.960275908452, -77.08526194769317 -> WMATA-A08_WES_ELE1). Coordinates confirm Western Ave = NORTH entrance / Jenifer St = SOUTH (the Western-Ave street elevator sits ~200 m north of the Jenifer St one). Bryce confirmed all four Jenifer St. street elevators are clustered next to each other, so the same coordinate applies to JEN_ELE1..4 (approximate for 2..4). The two mezzanine->platform elevators sit at opposite far ends of the single island platform, each toward the center of its own mezzanine: WMATA-A08_JEN_ELE5 at the SOUTH end (Jenifer St. mezzanine), WMATA-A08_WES_ELE2 at the NORTH end (Western Ave. mezzanine) -- confirming the two mezzanines are physically separated along the platform, consistent with the split-mezzanine CNF encoding. All 7 elevators now carry a recorded location (street elevators by coordinate, platform elevators by landing description). Approved via /liftwatch-wmata-spot-check 2026-07-17 (confidence 8/10).",
+    internalNote: "Source: WMATA's official Rider Tools station page (wmata.com/ridertools/station/friendship-heights/info), \"7 of 7 elevators running\" — Jenifer Street Entrance: 4× street↔mezzanine + 1× mezzanine↔platform; Western Avenue Entrance: 1× street↔mezzanine + 1× mezzanine↔platform. Confirmed via Bryce's screenshot and independently re-fetched live 2026-07-17. Corrects the GTFS-pathways auto-model (chains.json), which (a) undercounted the Jenifer Street leg as 1 elevator instead of 4, and (b) assumed one connected mezzanine spanning both entrances — Bryce confirmed 2026-07-17 the two mezzanines are separate. Excluded from the generator via CURATED_SPLIT_MEZZANINE in scripts/wmata-pathways.mts. All 7 ids synthetic (A08S01..5, A08N01..2); no UnitNames observed live yet. Physical locations from Bryce (2026-07-17): the Jenifer St. (south) entrance's bank includes a street elevator on the WEST side of Wisconsin Ave, just south of Jenifer St NW, connected to the bus yard/bay (38.95851818379839, -77.08495378033165 -> A08S01); the Western Ave. (north) entrance's street elevator is at the north end near the DC/MD line, embedded in the mall on the EAST side of Wisconsin Ave (38.960275908452, -77.08526194769317 -> A08N01). Coordinates confirm Western Ave = NORTH entrance / Jenifer St = SOUTH (the Western-Ave street elevator sits ~200 m north of the Jenifer St one). Bryce confirmed all four Jenifer St. street elevators are clustered next to each other, so the same coordinate applies to JEN_ELE1..4 (approximate for 2..4). The two mezzanine->platform elevators sit at opposite far ends of the single island platform, each toward the center of its own mezzanine: A08S05 at the SOUTH end (Jenifer St. mezzanine), A08N02 at the NORTH end (Western Ave. mezzanine) -- confirming the two mezzanines are physically separated along the platform, consistent with the split-mezzanine CNF encoding. All 7 elevators now carry a recorded location (street elevators by coordinate, platform elevators by landing description). Approved via /liftwatch-wmata-spot-check 2026-07-17 (confidence 8/10).",
     segments: [
       { id: "cnf-street-street", label: "Step-free guard: a Jenifer Street or Western Avenue STREET elevator", elevators: [
-        { externalId: "WMATA-A08_JEN_ELE1", label: "Friendship Heights elevator — Jenifer Street Entrance, street to mezzanine (1 of 4) — west side of Wisconsin Ave, slightly south of the Jenifer St NW & Wisconsin Ave intersection, connected to the bus yard/bay (38.95851818379839, -77.08495378033165); synthetic id, never yet observed live" },
-        { externalId: "WMATA-A08_JEN_ELE2", label: "Friendship Heights elevator — Jenifer Street Entrance, street to mezzanine (2 of 4) — west side of Wisconsin Ave by the bus yard/bay, clustered with the other Jenifer St. street elevators (approx. 38.95851818379839, -77.08495378033165); synthetic id, never yet observed live" },
-        { externalId: "WMATA-A08_JEN_ELE3", label: "Friendship Heights elevator — Jenifer Street Entrance, street to mezzanine (3 of 4) — west side of Wisconsin Ave by the bus yard/bay, clustered with the other Jenifer St. street elevators (approx. 38.95851818379839, -77.08495378033165); synthetic id, never yet observed live" },
-        { externalId: "WMATA-A08_JEN_ELE4", label: "Friendship Heights elevator — Jenifer Street Entrance, street to mezzanine (4 of 4) — west side of Wisconsin Ave by the bus yard/bay, clustered with the other Jenifer St. street elevators (approx. 38.95851818379839, -77.08495378033165); synthetic id, never yet observed live" },
-        { externalId: "WMATA-A08_WES_ELE1", label: "Friendship Heights elevator — Western Avenue Entrance, street to mezzanine — north end (nearer the DC/MD line), embedded into the mall on the east side of Wisconsin Ave (38.960275908452, -77.08526194769317); synthetic id, never yet observed live" },
+        { externalId: "A08S01", label: "Friendship Heights elevator — Jenifer Street Entrance, street to mezzanine (1 of 4) — west side of Wisconsin Ave, slightly south of the Jenifer St NW & Wisconsin Ave intersection, connected to the bus yard/bay (38.95851818379839, -77.08495378033165)" },
+        { externalId: "A08S02", label: "Friendship Heights elevator — Jenifer Street Entrance, street to mezzanine (2 of 4) — west side of Wisconsin Ave by the bus yard/bay, clustered with the other Jenifer St. street elevators (approx. 38.95851818379839, -77.08495378033165)" },
+        { externalId: "A08S03", label: "Friendship Heights elevator — Jenifer Street Entrance, street to mezzanine (3 of 4) — west side of Wisconsin Ave by the bus yard/bay, clustered with the other Jenifer St. street elevators (approx. 38.95851818379839, -77.08495378033165)" },
+        { externalId: "A08S04", label: "Friendship Heights elevator — Jenifer Street Entrance, street to mezzanine (4 of 4) — west side of Wisconsin Ave by the bus yard/bay, clustered with the other Jenifer St. street elevators (approx. 38.95851818379839, -77.08495378033165)" },
+        { externalId: "A08N01", label: "Friendship Heights elevator — Western Avenue Entrance, street to mezzanine — north end (nearer the DC/MD line), embedded into the mall on the east side of Wisconsin Ave (38.960275908452, -77.08526194769317)" },
       ] },
       { id: "cnf-street-plat", label: "Step-free guard: a Jenifer Street STREET or Western Avenue PLATFORM elevator", elevators: [
-        { externalId: "WMATA-A08_JEN_ELE1", label: "Friendship Heights elevator — Jenifer Street Entrance, street to mezzanine (1 of 4) — west side of Wisconsin Ave, slightly south of the Jenifer St NW & Wisconsin Ave intersection, connected to the bus yard/bay (38.95851818379839, -77.08495378033165); synthetic id, never yet observed live" },
-        { externalId: "WMATA-A08_JEN_ELE2", label: "Friendship Heights elevator — Jenifer Street Entrance, street to mezzanine (2 of 4) — west side of Wisconsin Ave by the bus yard/bay, clustered with the other Jenifer St. street elevators (approx. 38.95851818379839, -77.08495378033165); synthetic id, never yet observed live" },
-        { externalId: "WMATA-A08_JEN_ELE3", label: "Friendship Heights elevator — Jenifer Street Entrance, street to mezzanine (3 of 4) — west side of Wisconsin Ave by the bus yard/bay, clustered with the other Jenifer St. street elevators (approx. 38.95851818379839, -77.08495378033165); synthetic id, never yet observed live" },
-        { externalId: "WMATA-A08_JEN_ELE4", label: "Friendship Heights elevator — Jenifer Street Entrance, street to mezzanine (4 of 4) — west side of Wisconsin Ave by the bus yard/bay, clustered with the other Jenifer St. street elevators (approx. 38.95851818379839, -77.08495378033165); synthetic id, never yet observed live" },
-        { externalId: "WMATA-A08_WES_ELE2", label: "Friendship Heights elevator — Western Avenue Entrance, mezzanine to platform — at the NORTH far end of the island platform, toward the center of the Western Ave. (north) mezzanine; synthetic id, never yet observed live" },
+        { externalId: "A08S01", label: "Friendship Heights elevator — Jenifer Street Entrance, street to mezzanine (1 of 4) — west side of Wisconsin Ave, slightly south of the Jenifer St NW & Wisconsin Ave intersection, connected to the bus yard/bay (38.95851818379839, -77.08495378033165)" },
+        { externalId: "A08S02", label: "Friendship Heights elevator — Jenifer Street Entrance, street to mezzanine (2 of 4) — west side of Wisconsin Ave by the bus yard/bay, clustered with the other Jenifer St. street elevators (approx. 38.95851818379839, -77.08495378033165)" },
+        { externalId: "A08S03", label: "Friendship Heights elevator — Jenifer Street Entrance, street to mezzanine (3 of 4) — west side of Wisconsin Ave by the bus yard/bay, clustered with the other Jenifer St. street elevators (approx. 38.95851818379839, -77.08495378033165)" },
+        { externalId: "A08S04", label: "Friendship Heights elevator — Jenifer Street Entrance, street to mezzanine (4 of 4) — west side of Wisconsin Ave by the bus yard/bay, clustered with the other Jenifer St. street elevators (approx. 38.95851818379839, -77.08495378033165)" },
+        { externalId: "A08N02", label: "Friendship Heights elevator — Western Avenue Entrance, mezzanine to platform — at the NORTH far end of the island platform, toward the center of the Western Ave. (north) mezzanine" },
       ] },
       { id: "cnf-plat-street", label: "Step-free guard: the Jenifer Street PLATFORM or a Western Avenue STREET elevator", elevators: [
-        { externalId: "WMATA-A08_JEN_ELE5", label: "Friendship Heights elevator — Jenifer Street Entrance, mezzanine to platform — at the SOUTH far end of the island platform, toward the center of the Jenifer St. (south) mezzanine; synthetic id, never yet observed live" },
-        { externalId: "WMATA-A08_WES_ELE1", label: "Friendship Heights elevator — Western Avenue Entrance, street to mezzanine — north end (nearer the DC/MD line), embedded into the mall on the east side of Wisconsin Ave (38.960275908452, -77.08526194769317); synthetic id, never yet observed live" },
+        { externalId: "A08S05", label: "Friendship Heights elevator — Jenifer Street Entrance, mezzanine to platform — at the SOUTH far end of the island platform, toward the center of the Jenifer St. (south) mezzanine" },
+        { externalId: "A08N01", label: "Friendship Heights elevator — Western Avenue Entrance, street to mezzanine — north end (nearer the DC/MD line), embedded into the mall on the east side of Wisconsin Ave (38.960275908452, -77.08526194769317)" },
       ] },
       { id: "cnf-plat-plat", label: "Step-free guard: a Jenifer Street or Western Avenue PLATFORM elevator", elevators: [
-        { externalId: "WMATA-A08_JEN_ELE5", label: "Friendship Heights elevator — Jenifer Street Entrance, mezzanine to platform — at the SOUTH far end of the island platform, toward the center of the Jenifer St. (south) mezzanine; synthetic id, never yet observed live" },
-        { externalId: "WMATA-A08_WES_ELE2", label: "Friendship Heights elevator — Western Avenue Entrance, mezzanine to platform — at the NORTH far end of the island platform, toward the center of the Western Ave. (north) mezzanine; synthetic id, never yet observed live" },
+        { externalId: "A08S05", label: "Friendship Heights elevator — Jenifer Street Entrance, mezzanine to platform — at the SOUTH far end of the island platform, toward the center of the Jenifer St. (south) mezzanine" },
+        { externalId: "A08N02", label: "Friendship Heights elevator — Western Avenue Entrance, mezzanine to platform — at the NORTH far end of the island platform, toward the center of the Western Ave. (north) mezzanine" },
       ] },
     ],
   },
@@ -692,12 +692,12 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       {
         id: "street-mezzanine",
         label: "Street/mezzanine to NW mezzanine",
-        elevators: [{ externalId: "WMATA-D13_MZ_ELV1", label: "New Carrollton elevator (street/mezzanine to nw mezzanine) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "D13X02", label: "New Carrollton elevator (street/mezzanine to nw mezzanine)" }],
       },
       {
         id: "mezzanine-platform",
         label: "NW mezzanine to platform",
-        elevators: [{ externalId: "WMATA-D13_MZ_ELV2", label: "New Carrollton elevator (nw mezzanine to platform) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "D13X01", label: "New Carrollton elevator (nw mezzanine to platform)" }],
       },
     ],
   },
@@ -734,12 +734,12 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       {
         id: "bridge-mezzanine",
         label: "Pedestrian bridge to street/mezzanine",
-        elevators: [{ externalId: "WMATA-F10_ELE1", label: "Suitland elevator (pedestrian bridge to street/mezzanine) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "F10X02", label: "Suitland elevator (pedestrian bridge to street/mezzanine)" }],
       },
       {
         id: "mezzanine-platform",
         label: "Street/mezzanine to platform",
-        elevators: [{ externalId: "WMATA-F10_MZ_ELE2", label: "Suitland elevator (street/mezzanine to platform) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "F10X01", label: "Suitland elevator (street/mezzanine to platform)" }],
       },
     ],
   },
@@ -755,7 +755,7 @@ export const WMATA_STATION_MODELS: StationModel[] = [
       {
         id: "street-mezzanine",
         label: "Street to mezzanine",
-        elevators: [{ externalId: "WMATA-J03_MZ_ELV1", label: "Franconia-Springfield elevator (street to mezzanine) — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "J03X01", label: "Franconia-Springfield elevator (street to mezzanine)" }],
       },
       {
         id: "mezzanine-platform",
@@ -792,9 +792,9 @@ export const WMATA_STATION_MODELS: StationModel[] = [
           { externalId: "B09X04", label: "Forest Glen elevator (mezzanine to platform)" },
           { externalId: "B09X05", label: "Forest Glen elevator (mezzanine to platform)" },
           { externalId: "B09X06", label: "Forest Glen elevator (mezzanine to platform)" },
-          { externalId: "WMATA-B09_ELE2", label: "Forest Glen elevator (mezzanine to platform) — never yet observed live, synthetic id" },
-          { externalId: "WMATA-B09_ELE3", label: "Forest Glen elevator (mezzanine to platform) — never yet observed live, synthetic id" },
-          { externalId: "WMATA-B09_ELE4", label: "Forest Glen elevator (mezzanine to platform) — never yet observed live, synthetic id" },
+          { externalId: "B09X01", label: "Forest Glen elevator (mezzanine to platform)" },
+          { externalId: "B09X02", label: "Forest Glen elevator (mezzanine to platform)" },
+          { externalId: "B09X03", label: "Forest Glen elevator (mezzanine to platform)" },
         ],
       },
     ],
@@ -834,7 +834,7 @@ export const WMATA_STATION_MODELS: StationModel[] = [
         elevators: [
           { externalId: "E01X01", label: "Mt Vernon Sq elevator (street to mezzanine) — southwest corner of 7th & M St NW" },
           { externalId: "E01X02", label: "Mt Vernon Sq elevator (street to mezzanine) — southwest corner of 7th & M St NW" },
-          { externalId: "WMATA-E01_NW_ELE", label: "Mt Vernon Sq elevator (street to mezzanine) — northwest corner of 7th & M St NW, inside the Convention Center — never yet observed live, synthetic id" },
+          { externalId: "E01X03", label: "Mt Vernon Sq elevator (street to mezzanine) — northwest corner of 7th & M St NW, inside the Convention Center" },
         ],
       },
       {
@@ -956,8 +956,8 @@ export const WMATA_STATION_MODELS: StationModel[] = [
         id: "mezzanine-platform",
         label: "Mezzanine to platform",
         elevators: [
-          { externalId: "WMATA-G05_ELE1", label: "Downtown Largo elevator (mezzanine to platform) — one side of platform" },
-          { externalId: "WMATA-G05_ELE2", label: "Downtown Largo elevator (mezzanine to platform) — opposite side of platform" },
+          { externalId: "G05X02", label: "Downtown Largo elevator (mezzanine to platform) — one side of platform" },
+          { externalId: "G05X03", label: "Downtown Largo elevator (mezzanine to platform) — opposite side of platform" },
         ],
       },
     ],
@@ -970,7 +970,7 @@ export const WMATA_STATION_MODELS: StationModel[] = [
     note: "North Garage entrance to the mezzanine: one elevator, no backup. This is a secondary entrance, not required for ordinary station access — the mezzanine is also reachable step-free via the Harry Truman Drive street entrance.",
     internalNote: "Never yet observed live; synthetic placeholder id. Auxiliary secondary entrance, confirmed by Bryce 2026-07-16 not to be required for core accessibility. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 9/10).",
     segments: [
-      { id: "north-garage-mezzanine", label: "North Garage to mezzanine", elevators: [{ externalId: "WMATA-G05_NG_ELE", label: "Downtown Largo North Garage to mezzanine elevator — never yet observed live, synthetic id" }] },
+      { id: "north-garage-mezzanine", label: "North Garage to mezzanine", elevators: [{ externalId: "G05X04", label: "Downtown Largo North Garage to mezzanine elevator" }] },
     ],
   },
   {
@@ -985,8 +985,8 @@ export const WMATA_STATION_MODELS: StationModel[] = [
         id: "south-garage-mezzanine",
         label: "South Garage to mezzanine",
         elevators: [
-          { externalId: "WMATA-G05_SG_ELE1", label: "Downtown Largo South Garage to mezzanine elevator — never yet observed live, synthetic id" },
-          { externalId: "WMATA-G05_SG_ELE2", label: "Downtown Largo South Garage to mezzanine elevator — never yet observed live, synthetic id" },
+          { externalId: "G05X06", label: "Downtown Largo South Garage to mezzanine elevator" },
+          { externalId: "G05X07", label: "Downtown Largo South Garage to mezzanine elevator" },
         ],
       },
     ],
@@ -1104,9 +1104,9 @@ export const WMATA_STATION_MODELS: StationModel[] = [
     stationExternalId: "K06",
     chainLabel: " (Platform 1)",
     note: "Mezzanine to this platform: one elevator, no backup. If it is out of service, this route is not step-free. The mezzanine itself needs no elevator at all — it's reachable at grade via the I-66/Leesburg Pike median entrance.",
-    internalNote: "GTFS unit WMATA-K06_ELE1, mislabeled \"Platform\" on both ends (a known WMATA stops.txt quirk) -- structurally a mezzanine<->platform elevator serving one direction, never yet observed live, synthetic id. Direction (e.g. toward Vienna vs. New Carrollton) unconfirmed. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 7/10).",
+    internalNote: "GTFS unit K06X01, mislabeled \"Platform\" on both ends (a known WMATA stops.txt quirk) -- structurally a mezzanine<->platform elevator serving one direction, never yet observed live, synthetic id. Direction (e.g. toward Vienna vs. New Carrollton) unconfirmed. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 7/10).",
     segments: [
-      { id: "mezzanine-platform", label: "Mezzanine to platform", elevators: [{ externalId: "WMATA-K06_ELE1", label: "West Falls Church platform elevator (direction unconfirmed) — never yet observed live, synthetic id" }] },
+      { id: "mezzanine-platform", label: "Mezzanine to platform", elevators: [{ externalId: "K06X01", label: "West Falls Church platform elevator (direction unconfirmed)" }] },
     ],
   },
   {
@@ -1114,9 +1114,9 @@ export const WMATA_STATION_MODELS: StationModel[] = [
     stationExternalId: "K06",
     chainLabel: " (Platform 2)",
     note: "Mezzanine to this platform: one elevator, no backup. If it is out of service, this route is not step-free. The mezzanine itself needs no elevator at all — it's reachable at grade via the I-66/Leesburg Pike median entrance.",
-    internalNote: "GTFS unit WMATA-K06_ELE2, mislabeled \"Platform\" on both ends (a known WMATA stops.txt quirk) -- structurally a mezzanine<->platform elevator serving the opposite direction from Platform 1, never yet observed live, synthetic id. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 7/10).",
+    internalNote: "GTFS unit K06X02, mislabeled \"Platform\" on both ends (a known WMATA stops.txt quirk) -- structurally a mezzanine<->platform elevator serving the opposite direction from Platform 1, never yet observed live, synthetic id. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 7/10).",
     segments: [
-      { id: "mezzanine-platform", label: "Mezzanine to platform", elevators: [{ externalId: "WMATA-K06_ELE2", label: "West Falls Church platform elevator (direction unconfirmed) — never yet observed live, synthetic id" }] },
+      { id: "mezzanine-platform", label: "Mezzanine to platform", elevators: [{ externalId: "K06X02", label: "West Falls Church platform elevator (direction unconfirmed)" }] },
     ],
   },
   {
@@ -1125,9 +1125,9 @@ export const WMATA_STATION_MODELS: StationModel[] = [
     chainLabel: " (bus bay)",
     auxiliary: true,
     note: "Bus bay entrance to the mezzanine: one elevator, no backup. This is a secondary entrance, not required for ordinary station access — the mezzanine is also reachable step-free via the I-66/Leesburg Pike median entrance.",
-    internalNote: "GTFS unit WMATA-K06_ELE3 (Street<->Mezzanine), never yet observed live, synthetic id. Bryce confirmed 2026-07-16 this is the bus bay entrance and is not required for core accessibility. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 7/10).",
+    internalNote: "GTFS unit K06X03 (Street<->Mezzanine), never yet observed live, synthetic id. Bryce confirmed 2026-07-16 this is the bus bay entrance and is not required for core accessibility. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 7/10).",
     segments: [
-      { id: "bus-bay-mezzanine", label: "Bus bay to mezzanine", elevators: [{ externalId: "WMATA-K06_ELE3", label: "West Falls Church bus bay to mezzanine elevator — never yet observed live, synthetic id" }] },
+      { id: "bus-bay-mezzanine", label: "Bus bay to mezzanine", elevators: [{ externalId: "K06X03", label: "West Falls Church bus bay to mezzanine elevator" }] },
     ],
   },
   {
@@ -1149,7 +1149,7 @@ export const WMATA_STATION_MODELS: StationModel[] = [
     note: "Garage entrance to the mezzanine: one elevator, no backup. This is a secondary entrance, not required for ordinary station access.",
     internalNote: "Never yet observed live; synthetic placeholder id for the 2nd garage elevator Bryce confirmed exists. Not assumed redundant with the other garage elevator (K06X04) -- modeled as its own separate chain. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 7/10).",
     segments: [
-      { id: "garage-mezzanine", label: "Garage to mezzanine", elevators: [{ externalId: "WMATA-K06_GAR_ELV2", label: "West Falls Church garage elevator (2nd unit) — never yet observed live, synthetic id" }] },
+      { id: "garage-mezzanine", label: "Garage to mezzanine", elevators: [{ externalId: "K06X05", label: "West Falls Church garage elevator (2nd unit)" }] },
     ],
   },
   // Fort Totten (B06_E06, Red/Green/Yellow interchange) — excluded by the
@@ -1168,9 +1168,9 @@ export const WMATA_STATION_MODELS: StationModel[] = [
     systemId: SYSTEM,
     stationExternalId: "B06_E06",
     note: "One elevator serves the entire station — street/mezzanine, the Red Line level, and the Green/Yellow Line level — with no backup. If it is out of service, no part of this station is step-free.",
-    internalNote: "GTFS models one elevator (WMATA-B06_E06_ELE) spanning 3 named levels (Street/Mezzanine, Lower Platform, Upper Platform); auto-generator couldn't confirm whether it's a genuine single shaft or a naming quirk hiding multiple elevators. Bryce confirmed 2026-07-16 it's genuinely one continuous shaft serving all 3 levels, sole access for the whole station. Never yet observed live; synthetic placeholder id. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 9/10).",
+    internalNote: "GTFS models one elevator (B06X01) spanning 3 named levels (Street/Mezzanine, Lower Platform, Upper Platform); auto-generator couldn't confirm whether it's a genuine single shaft or a naming quirk hiding multiple elevators. Bryce confirmed 2026-07-16 it's genuinely one continuous shaft serving all 3 levels, sole access for the whole station. Never yet observed live; synthetic placeholder id. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 9/10).",
     segments: [
-      { id: "street-mezzanine-platform", label: "Street/mezzanine to platform (all levels)", elevators: [{ externalId: "WMATA-B06_E06_ELE", label: "Fort Totten elevator (serves all 3 levels: street/mezzanine, Red Line, Green/Yellow) — never yet observed live, synthetic id" }] },
+      { id: "street-mezzanine-platform", label: "Street/mezzanine to platform (all levels)", elevators: [{ externalId: "B06X01", label: "Fort Totten elevator (serves all 3 levels: street/mezzanine, Red Line, Green/Yellow)" }] },
     ],
   },
   // Smithsonian (D02, Blue/Orange/Silver) — excluded by the multi-level-shaft
@@ -1338,8 +1338,8 @@ export const WMATA_STATION_MODELS: StationModel[] = [
         id: "mezzanine-lower-platform",
         label: "Upper level to Blue/Orange/Silver platform",
         elevators: [
-          { externalId: "WMATA-A01_C01_N_ELE2", label: "Metro Center elevator (WMATA: \"Elevator between upper platform to Shady Grove and lower platform for Blue/Orange Lines\") — never yet observed live, synthetic id" },
-          { externalId: "WMATA-A01_C01_S_ELE1", label: "Metro Center elevator (WMATA: \"Elevator between upper platform to Glenmont and lower platform for Blue/Orange Lines\") — never yet observed live, synthetic id" },
+          { externalId: "C01N02", label: "Metro Center elevator (WMATA: \"Elevator between upper platform to Shady Grove and lower platform for Blue/Orange Lines\")" },
+          { externalId: "C01N03", label: "Metro Center elevator (WMATA: \"Elevator between upper platform to Glenmont and lower platform for Blue/Orange Lines\")" },
         ],
       },
     ],
@@ -1352,8 +1352,8 @@ export const WMATA_STATION_MODELS: StationModel[] = [
     internalNote: "Shares the street<->mezzanine prerequisite (C01N01) and both of the upper<->lower elevators with the other two chains, but here BOTH are required in series (down via one, back up via the other), not an OR -- the two ends of the upper Red Line platform aren't walkable to each other, confirmed by Bryce 2026-07-16. Confidence 9/10.",
     segments: [
       { id: "street-mezzanine", label: "Street to mezzanine", elevators: [{ externalId: "C01N01", label: "Metro Center elevator (street to mezzanine, WMATA: \"Elevator between street and mezzanine\")" }] },
-      { id: "mezzanine-lower-platform", label: "Upper level (Shady Grove end) down to Blue/Orange/Silver platform", elevators: [{ externalId: "WMATA-A01_C01_N_ELE2", label: "Metro Center elevator (WMATA: \"Elevator between upper platform to Shady Grove and lower platform for Blue/Orange Lines\") — never yet observed live, synthetic id" }] },
-      { id: "lower-platform-glenmont", label: "Blue/Orange/Silver platform back up to Glenmont-bound platform", elevators: [{ externalId: "WMATA-A01_C01_S_ELE1", label: "Metro Center elevator (WMATA: \"Elevator between upper platform to Glenmont and lower platform for Blue/Orange Lines\") — never yet observed live, synthetic id" }] },
+      { id: "mezzanine-lower-platform", label: "Upper level (Shady Grove end) down to Blue/Orange/Silver platform", elevators: [{ externalId: "C01N02", label: "Metro Center elevator (WMATA: \"Elevator between upper platform to Shady Grove and lower platform for Blue/Orange Lines\")" }] },
+      { id: "lower-platform-glenmont", label: "Blue/Orange/Silver platform back up to Glenmont-bound platform", elevators: [{ externalId: "C01N03", label: "Metro Center elevator (WMATA: \"Elevator between upper platform to Glenmont and lower platform for Blue/Orange Lines\")" }] },
     ],
   },
   // Gallery Place-Chinatown (B01_F01, Red/Green/Yellow interchange) —
@@ -1394,7 +1394,7 @@ export const WMATA_STATION_MODELS: StationModel[] = [
         label: "Street to Glenmont-bound platform",
         elevators: [
           { externalId: "B01E02", label: "Gallery Place elevator (street to Glenmont-bound platform) — Capital One Arena, facing the National Portrait Gallery (38.898045155641995, -77.02177530236538)" },
-          { externalId: "WMATA-B01_F01_E_ELE_2", label: "Gallery Place elevator (street to Glenmont-bound platform) — Capital One Arena, facing the National Portrait Gallery, never yet observed live, synthetic id" },
+          { externalId: "B01E01", label: "Gallery Place elevator (street to Glenmont-bound platform) — Capital One Arena, facing the National Portrait Gallery" },
         ],
       },
     ],
@@ -1411,7 +1411,7 @@ export const WMATA_STATION_MODELS: StationModel[] = [
         label: "Street to Glenmont-bound platform",
         elevators: [
           { externalId: "B01E02", label: "Gallery Place elevator (street to Glenmont-bound platform) — Capital One Arena, facing the National Portrait Gallery (38.898045155641995, -77.02177530236538)" },
-          { externalId: "WMATA-B01_F01_E_ELE_2", label: "Gallery Place elevator (street to Glenmont-bound platform) — Capital One Arena, facing the National Portrait Gallery, never yet observed live, synthetic id" },
+          { externalId: "B01E01", label: "Gallery Place elevator (street to Glenmont-bound platform) — Capital One Arena, facing the National Portrait Gallery" },
         ],
       },
       { id: "glenmont-lower-platform", label: "Glenmont-bound platform down to Green/Yellow platform", elevators: [{ externalId: "B01E03", label: "Gallery Place elevator (Glenmont-bound platform to Green/Yellow platform)" }] },
@@ -1429,7 +1429,7 @@ export const WMATA_STATION_MODELS: StationModel[] = [
         label: "Street to Glenmont-bound platform",
         elevators: [
           { externalId: "B01E02", label: "Gallery Place elevator (street to Glenmont-bound platform) — Capital One Arena, facing the National Portrait Gallery (38.898045155641995, -77.02177530236538)" },
-          { externalId: "WMATA-B01_F01_E_ELE_2", label: "Gallery Place elevator (street to Glenmont-bound platform) — Capital One Arena, facing the National Portrait Gallery, never yet observed live, synthetic id" },
+          { externalId: "B01E01", label: "Gallery Place elevator (street to Glenmont-bound platform) — Capital One Arena, facing the National Portrait Gallery" },
         ],
       },
       { id: "glenmont-lower-platform", label: "Glenmont-bound platform down to Green/Yellow platform", elevators: [{ externalId: "B01E03", label: "Gallery Place elevator (Glenmont-bound platform to Green/Yellow platform)" }] },
@@ -1450,7 +1450,7 @@ export const WMATA_STATION_MODELS: StationModel[] = [
   //   - A 4th elevator connects upper<->lower platform. The lower
   //     platform serves the SAME 3 lines in the OPPOSITE (westbound)
   //     direction. Never yet individually observed, synthetic id (GTFS's
-  //     WMATA-C05_ELE, mislabeled "Platform" on both ends).
+  //     C05W04, mislabeled "Platform" on both ends).
   // Approved by Bryce via /liftwatch-station-review 2026-07-16 (confidence
   // 9/10 -- full layout confirmed directly, including physical location).
   {
@@ -1476,7 +1476,7 @@ export const WMATA_STATION_MODELS: StationModel[] = [
     stationExternalId: "C05",
     chainLabel: " (westbound)",
     note: "Street to the westbound platform (same 3 lines, opposite direction) takes 2 legs: the street entrance (3 elevators, any one works) then one elevator down to the lower platform, which has no backup. If all 3 street elevators are out, or the lower-platform elevator is out of service, this route is not step-free.",
-    internalNote: "Shares the redundant street<->upper-platform bank (C05E01/02/03) with the eastbound chain. Upper<->lower leg is GTFS's WMATA-C05_ELE (mislabeled \"Platform\" on both ends), never yet individually observed, synthetic id, sole access. Confirmed by Bryce 2026-07-16 (confidence 9/10).",
+    internalNote: "Shares the redundant street<->upper-platform bank (C05E01/02/03) with the eastbound chain. Upper<->lower leg is GTFS's C05W04 (mislabeled \"Platform\" on both ends), never yet individually observed, synthetic id, sole access. Confirmed by Bryce 2026-07-16 (confidence 9/10).",
     segments: [
       {
         id: "street-upper-platform",
@@ -1487,7 +1487,7 @@ export const WMATA_STATION_MODELS: StationModel[] = [
           { externalId: "C05E03", label: "Rosslyn elevator (street to eastbound platform) — east side of North Moore St & Wilson Blvd (38.896181305462086, -77.07135426023925)" },
         ],
       },
-      { id: "upper-lower-platform", label: "Upper platform down to lower (westbound) platform", elevators: [{ externalId: "WMATA-C05_ELE", label: "Rosslyn elevator (upper to lower/westbound platform) — never yet observed live, synthetic id" }] },
+      { id: "upper-lower-platform", label: "Upper platform down to lower (westbound) platform", elevators: [{ externalId: "C05W04", label: "Rosslyn elevator (upper to lower/westbound platform)" }] },
     ],
   },
   // Pentagon (C07, Blue/Yellow) — excluded by the non-standard-levels
@@ -1524,8 +1524,8 @@ export const WMATA_STATION_MODELS: StationModel[] = [
         id: "bus-bay-mezzanine",
         label: "Street to mezzanine/upper platform",
         elevators: [
-          { externalId: "WMATA-C07_E_ELE1", label: "Pentagon elevator (bus bay to mezzanine, WMATA: \"Elevator between the bus bay and the mezzanine\") — never yet observed live, synthetic id" },
-          { externalId: "WMATA-C07_E_ELE2", label: "Pentagon elevator (bus bay to mezzanine, WMATA: \"Elevator between the bus bay and the mezzanine\") — never yet observed live, synthetic id" },
+          { externalId: "C07N01", label: "Pentagon elevator (bus bay to mezzanine, WMATA: \"Elevator between the bus bay and the mezzanine\")" },
+          { externalId: "C07N02", label: "Pentagon elevator (bus bay to mezzanine, WMATA: \"Elevator between the bus bay and the mezzanine\")" },
         ],
       },
     ],
@@ -1535,17 +1535,17 @@ export const WMATA_STATION_MODELS: StationModel[] = [
     stationExternalId: "C07",
     chainLabel: " (lower platform)",
     note: "Street to the lower platform takes two legs: the street entrance (2 elevators, either works) then one elevator down to the lower platform, which has no backup. If both street elevators are out, or the lower-platform elevator is out of service, this route is not step-free.",
-    internalNote: "Shares the redundant bus-bay<->mezzanine pair with the upper-platform chain. Second leg is GTFS's WMATA-C07_M_ELE (Mezzanine/Upper Platform<->Lower Platform), WMATA's own wording \"Elevator between upper and lower platforms\" -- sole access, never yet observed live, synthetic id. Confirmed by Bryce 2026-07-16 (confidence 8/10).",
+    internalNote: "Shares the redundant bus-bay<->mezzanine pair with the upper-platform chain. Second leg is GTFS's C07N03 (Mezzanine/Upper Platform<->Lower Platform), WMATA's own wording \"Elevator between upper and lower platforms\" -- sole access, never yet observed live, synthetic id. Confirmed by Bryce 2026-07-16 (confidence 8/10).",
     segments: [
       {
         id: "bus-bay-mezzanine",
         label: "Street to mezzanine/upper platform",
         elevators: [
-          { externalId: "WMATA-C07_E_ELE1", label: "Pentagon elevator (bus bay to mezzanine, WMATA: \"Elevator between the bus bay and the mezzanine\") — never yet observed live, synthetic id" },
-          { externalId: "WMATA-C07_E_ELE2", label: "Pentagon elevator (bus bay to mezzanine, WMATA: \"Elevator between the bus bay and the mezzanine\") — never yet observed live, synthetic id" },
+          { externalId: "C07N01", label: "Pentagon elevator (bus bay to mezzanine, WMATA: \"Elevator between the bus bay and the mezzanine\")" },
+          { externalId: "C07N02", label: "Pentagon elevator (bus bay to mezzanine, WMATA: \"Elevator between the bus bay and the mezzanine\")" },
         ],
       },
-      { id: "upper-lower-platform", label: "Upper platform down to lower platform", elevators: [{ externalId: "WMATA-C07_M_ELE", label: "Pentagon elevator (upper to lower platform, WMATA: \"Elevator between upper and lower platforms\") — never yet observed live, synthetic id" }] },
+      { id: "upper-lower-platform", label: "Upper platform down to lower platform", elevators: [{ externalId: "C07N03", label: "Pentagon elevator (upper to lower platform, WMATA: \"Elevator between upper and lower platforms\")" }] },
     ],
   },
   {
@@ -1560,8 +1560,8 @@ export const WMATA_STATION_MODELS: StationModel[] = [
         id: "bus-platform-to-bus-platform",
         label: "Lower bus platform to upper bus platform",
         elevators: [
-          { externalId: "WMATA-C07_BUS_ELE1", label: "Pentagon bus-to-bus elevator (WMATA: \"Elevator between the lower bus platform and the upper platform\") — never yet observed live, synthetic id" },
-          { externalId: "WMATA-C07_BUS_ELE2", label: "Pentagon bus-to-bus elevator (WMATA: \"Elevator between the lower bus platform and the upper platform\") — never yet observed live, synthetic id" },
+          { externalId: "C07E04", label: "Pentagon bus-to-bus elevator (WMATA: \"Elevator between the lower bus platform and the upper platform\")" },
+          { externalId: "C07E05", label: "Pentagon bus-to-bus elevator (WMATA: \"Elevator between the lower bus platform and the upper platform\")" },
         ],
       },
     ],
@@ -1692,8 +1692,8 @@ export const WMATA_STATION_MODELS: StationModel[] = [
     note: "Street to platform takes two elevators in a row (street to mezzanine, then mezzanine to the platform) — both must be working, and neither has a backup. If either elevator is out of service, this route is not step-free.",
     internalNote: "GTFS's 'East/West Mezzanine' combined level name and both edges suffixed '_W' suggested a possible east-side elevator, but Bryce confirmed 2026-07-16 there are only 2 elevators total, no east side. Neither has ever been observed live; both synthetic ids. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 9/10).",
     segments: [
-      { id: "street-mezzanine", label: "Street to mezzanine", elevators: [{ externalId: "WMATA-E03_ELE_W", label: "U St elevator (street to mezzanine) — embedded in the building at 38.91682122969772, -77.02897751998267, U St's south side, never yet observed live, synthetic id" }] },
-      { id: "mezzanine-platform", label: "Mezzanine to platform", elevators: [{ externalId: "WMATA-E03_MZ_ELE_W", label: "U St elevator (mezzanine to center platform) — never yet observed live, synthetic id" }] },
+      { id: "street-mezzanine", label: "Street to mezzanine", elevators: [{ externalId: "E03W01", label: "U St elevator (street to mezzanine) — embedded in the building at 38.91682122969772, -77.02897751998267, U St's south side" }] },
+      { id: "mezzanine-platform", label: "Mezzanine to platform", elevators: [{ externalId: "E03W02", label: "U St elevator (mezzanine to center platform)" }] },
     ],
   },
   // Navy Yard-Ballpark (F05, Green Line) — excluded by the
@@ -1738,7 +1738,7 @@ export const WMATA_STATION_MODELS: StationModel[] = [
     ],
   },
   // Greenbelt (E10, Green Line terminus) — excluded by the
-  // unorderable-levels gate: the one GTFS edge (WMATA-E10_MZ_ELV) reads
+  // unorderable-levels gate: the one GTFS edge (E10X01) reads
   // "Street/Mezzanine" on both ends, so the generator couldn't tell which
   // direction it goes. Bryce confirmed 2026-07-16: just one elevator,
   // mezzanine to platform, sole access. Approved by Bryce via
@@ -1748,9 +1748,9 @@ export const WMATA_STATION_MODELS: StationModel[] = [
     systemId: SYSTEM,
     stationExternalId: "E10",
     note: "Mezzanine to platform: one elevator, no backup. If it is out of service, this route is not step-free.",
-    internalNote: "GTFS's WMATA-E10_MZ_ELV reads 'Street/Mezzanine' on both ends (unorderable-levels gate), but Bryce confirmed 2026-07-16 it's simply one elevator, mezzanine to platform, sole access. Never yet observed live; synthetic placeholder id. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 9/10).",
+    internalNote: "GTFS's E10X01 reads 'Street/Mezzanine' on both ends (unorderable-levels gate), but Bryce confirmed 2026-07-16 it's simply one elevator, mezzanine to platform, sole access. Never yet observed live; synthetic placeholder id. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 9/10).",
     segments: [
-      { id: "mezzanine-platform", label: "Mezzanine to platform", elevators: [{ externalId: "WMATA-E10_MZ_ELV", label: "Greenbelt elevator (mezzanine to platform) — never yet observed live, synthetic id" }] },
+      { id: "mezzanine-platform", label: "Mezzanine to platform", elevators: [{ externalId: "E10X01", label: "Greenbelt elevator (mezzanine to platform)" }] },
     ],
   },
   // Innovation Center (N09, Silver Line, opened 2022) — excluded by the
@@ -1777,16 +1777,16 @@ export const WMATA_STATION_MODELS: StationModel[] = [
         label: "Street to mezzanine",
         stepFreeAlternative: true,
         elevators: [
-          { externalId: "WMATA-N09_S_PAV_ELV1", label: "Innovation Center South Entry Pavilion elevator (pedestrian bridge to mezzanine) — SW corner of Sunrise Valley Dr & Carta Way (38.960235044168805, -77.41716048322571), never yet observed live, synthetic id" },
-          { externalId: "WMATA-N09_S_PAV_ELV2", label: "Innovation Center South Entry Pavilion elevator (pedestrian bridge to mezzanine) — SW corner of Sunrise Valley Dr & Carta Way (38.960235044168805, -77.41716048322571), never yet observed live, synthetic id" },
+          { externalId: "N09X03", label: "Innovation Center South Entry Pavilion elevator (pedestrian bridge to mezzanine) — SW corner of Sunrise Valley Dr & Carta Way (38.960235044168805, -77.41716048322571)" },
+          { externalId: "N09X04", label: "Innovation Center South Entry Pavilion elevator (pedestrian bridge to mezzanine) — SW corner of Sunrise Valley Dr & Carta Way (38.960235044168805, -77.41716048322571)" },
         ],
       },
       {
         id: "mezzanine-platform",
         label: "Mezzanine to platform",
         elevators: [
-          { externalId: "WMATA-N09_MZ_ELV1", label: "Innovation Center elevator (mezzanine to platform) — never yet observed live, synthetic id" },
-          { externalId: "WMATA-N09_MZ_ELV2", label: "Innovation Center elevator (mezzanine to platform) — never yet observed live, synthetic id" },
+          { externalId: "N09X01", label: "Innovation Center elevator (mezzanine to platform)" },
+          { externalId: "N09X02", label: "Innovation Center elevator (mezzanine to platform)" },
         ],
       },
     ],
@@ -1808,8 +1808,8 @@ export const WMATA_STATION_MODELS: StationModel[] = [
     note: "Street to platform takes two elevators in a row (street to mezzanine, then mezzanine to platform) — both must be working, and neither has a backup. If either elevator is out of service, this route is not step-free.",
     internalNote: "GTFS's corrupt level data listed 2 Mezzanine<->Platform edges that looked like a possible redundant pair, but Bryce confirmed 2026-07-16 the real structure is a plain 2-elevator series with no redundancy at all -- the GTFS edges don't reflect reality. Neither elevator has ever been observed live; both synthetic ids. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 9/10).",
     segments: [
-      { id: "street-mezzanine", label: "Street to mezzanine", elevators: [{ externalId: "WMATA-A02_ELE1", label: "Farragut North elevator (street to mezzanine) — embedded in a building, east side of Connecticut Ave between L St & K St NW (38.90302988015644, -77.03933989074207), never yet observed live, synthetic id" }] },
-      { id: "mezzanine-platform", label: "Mezzanine to platform", elevators: [{ externalId: "WMATA-A02_ELE2", label: "Farragut North elevator (mezzanine to platform) — never yet observed live, synthetic id" }] },
+      { id: "street-mezzanine", label: "Street to mezzanine", elevators: [{ externalId: "A02S01", label: "Farragut North elevator (street to mezzanine) — embedded in a building, east side of Connecticut Ave between L St & K St NW (38.90302988015644, -77.03933989074207)" }] },
+      { id: "mezzanine-platform", label: "Mezzanine to platform", elevators: [{ externalId: "A02S02", label: "Farragut North elevator (mezzanine to platform)" }] },
     ],
   },
   // ── Grade-separated stations: two entrances on opposite sides of a highway
@@ -1983,10 +1983,10 @@ export const WMATA_STATION_MODELS: StationModel[] = [
     stationExternalId: "E09",
     chainLabel: " (east entrance)",
     note: "Reaching the platform from the east entrance takes two elevators in a row — a street-to-mezzanine elevator at this entrance, then a shared mezzanine-to-platform elevator — and neither has a backup. If this entrance's street elevator is out of service, this entrance is not step-free. The station's west-side entrance has its own street elevator, but it is on the far side of the railroad tracks with no step-free way to cross at the station, so it is not a backup for this one — you could still reach the platform through it only if you can get to the other side. If the shared mezzanine-to-platform elevator is out of service, neither entrance is step-free.",
-    internalNote: "Per-entrance remodel of a grade-separated station whose GTFS-derived street→mezzanine redundancy is false (the two entrances are across the railroad tracks, unreachable from each other step-free at street level). Structure: this entrance's sole street→mezzanine elevator + the shared mezzanine→platform elevator (WMATA-E09_MZ_ELV, repeated in the other entrance's chain). Street elevator never observed live, synthetic id. Audited + human-approved 2026-07-17 via /liftwatch-station-review (see wmata-data/COVERAGE-AUDIT.md); confidence 8/10.",
+    internalNote: "Per-entrance remodel of a grade-separated station whose GTFS-derived street→mezzanine redundancy is false (the two entrances are across the railroad tracks, unreachable from each other step-free at street level). Structure: this entrance's sole street→mezzanine elevator + the shared mezzanine→platform elevator (E09X03, repeated in the other entrance's chain). Street elevator never observed live, synthetic id. Audited + human-approved 2026-07-17 via /liftwatch-station-review (see wmata-data/COVERAGE-AUDIT.md); confidence 8/10.",
     segments: [
-      { id: "street-mezzanine", label: "Street to mezzanine (east entrance)", elevators: [{ externalId: "WMATA-E09_ELV_E", label: "College Park-U of Md east entrance elevator (street to mezzanine) — never yet observed live, synthetic id" }] },
-      { id: "mezzanine-platform", label: "Mezzanine to platform (shared)", elevators: [{ externalId: "WMATA-E09_MZ_ELV", label: "College Park-U of Md shared elevator (mezzanine to platform) — never yet observed live, synthetic id" }] },
+      { id: "street-mezzanine", label: "Street to mezzanine (east entrance)", elevators: [{ externalId: "E09X02", label: "College Park-U of Md east entrance elevator (street to mezzanine)" }] },
+      { id: "mezzanine-platform", label: "Mezzanine to platform (shared)", elevators: [{ externalId: "E09X03", label: "College Park-U of Md shared elevator (mezzanine to platform)" }] },
     ],
   },
   {
@@ -1994,10 +1994,10 @@ export const WMATA_STATION_MODELS: StationModel[] = [
     stationExternalId: "E09",
     chainLabel: " (west entrance)",
     note: "Reaching the platform from the west entrance takes two elevators in a row — a street-to-mezzanine elevator at this entrance, then a shared mezzanine-to-platform elevator — and neither has a backup. If this entrance's street elevator is out of service, this entrance is not step-free. The station's east-side entrance has its own street elevator, but it is on the far side of the railroad tracks with no step-free way to cross at the station, so it is not a backup for this one — you could still reach the platform through it only if you can get to the other side. If the shared mezzanine-to-platform elevator is out of service, neither entrance is step-free.",
-    internalNote: "Per-entrance remodel of a grade-separated station whose GTFS-derived street→mezzanine redundancy is false (the two entrances are across the railroad tracks, unreachable from each other step-free at street level). Structure: this entrance's sole street→mezzanine elevator + the shared mezzanine→platform elevator (WMATA-E09_MZ_ELV, repeated in the other entrance's chain). Street elevator never observed live, synthetic id. Audited + human-approved 2026-07-17 via /liftwatch-station-review (see wmata-data/COVERAGE-AUDIT.md); confidence 8/10.",
+    internalNote: "Per-entrance remodel of a grade-separated station whose GTFS-derived street→mezzanine redundancy is false (the two entrances are across the railroad tracks, unreachable from each other step-free at street level). Structure: this entrance's sole street→mezzanine elevator + the shared mezzanine→platform elevator (E09X03, repeated in the other entrance's chain). Street elevator never observed live, synthetic id. Audited + human-approved 2026-07-17 via /liftwatch-station-review (see wmata-data/COVERAGE-AUDIT.md); confidence 8/10.",
     segments: [
-      { id: "street-mezzanine", label: "Street to mezzanine (west entrance)", elevators: [{ externalId: "WMATA-E09_ELE_W", label: "College Park-U of Md west entrance elevator (street to mezzanine) — never yet observed live, synthetic id" }] },
-      { id: "mezzanine-platform", label: "Mezzanine to platform (shared)", elevators: [{ externalId: "WMATA-E09_MZ_ELV", label: "College Park-U of Md shared elevator (mezzanine to platform) — never yet observed live, synthetic id" }] },
+      { id: "street-mezzanine", label: "Street to mezzanine (west entrance)", elevators: [{ externalId: "E09X01", label: "College Park-U of Md west entrance elevator (street to mezzanine)" }] },
+      { id: "mezzanine-platform", label: "Mezzanine to platform (shared)", elevators: [{ externalId: "E09X03", label: "College Park-U of Md shared elevator (mezzanine to platform)" }] },
     ],
   },
   // ——— 2026-07-17 auto-tier audit fixes (page-inventory undercounts) ———

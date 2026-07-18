@@ -78,10 +78,10 @@ console.log("\n  A08 Friendship Heights (split-mezzanine spot-check fix, 2026-07
   ok(a08.length === 1, "A08: curated as one CNF-encoded model (not two separate chains)");
   const m = a08[0]!;
   ok(new Set(allElevators(m).map((e) => e.externalId)).size === 7, "A08: 7 distinct elevators tracked (4 Jenifer St. + 1 Jenifer plat. + 1 Western Ave. + 1 Western plat.)");
-  const JEN = ["WMATA-A08_JEN_ELE1", "WMATA-A08_JEN_ELE2", "WMATA-A08_JEN_ELE3", "WMATA-A08_JEN_ELE4"];
-  const JEN_PLAT = "WMATA-A08_JEN_ELE5";
-  const WES = "WMATA-A08_WES_ELE1";
-  const WES_PLAT = "WMATA-A08_WES_ELE2";
+  const JEN = ["A08S01", "A08S02", "A08S03", "A08S04"];
+  const JEN_PLAT = "A08S05";
+  const WES = "A08N01";
+  const WES_PLAT = "A08N02";
   ok(stationAccessible(m, new Set()), "A08: all 7 up -> accessible");
   ok(stationAccessible(m, new Set([WES])), "A08: Western St. down alone -> still accessible (Jenifer route intact)");
   ok(stationAccessible(m, new Set([JEN_PLAT])), "A08: Jenifer plat. down alone -> still accessible (Western route intact)");
