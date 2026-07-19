@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-18T11:26:58.639Z",
+  "updatedAt": "2026-07-19T11:34:25.920Z",
   "note": "Every WMATA elevator UnitName ever observed (archive + live feed). Grows only. Consumed by scripts/wmata-pathways.mts as an undercount/vocabulary gate.",
   "units": [
     {
@@ -91,6 +91,12 @@
       "stationCode": "B06",
       "location": "Elevator between mezzanine, upper platform to Red Line, and lower platform for Green Line",
       "firstObserved": "2026-07-17T09:54:12.684592+00:00"
+    },
+    {
+      "unitName": "B09X02",
+      "stationCode": "B09",
+      "location": "Elevator between mezzanine and platform",
+      "firstObserved": "2026-07-18T18:35:15.500858+00:00"
     },
     {
       "unitName": "B09X04",
@@ -343,6 +349,12 @@
       "stationCode": "D12",
       "location": "Elevator between mezzanine and platform",
       "firstObserved": "2026-07-11T11:47:34.54455+00:00"
+    },
+    {
+      "unitName": "D13X01",
+      "stationCode": "D13",
+      "location": "Elevator between mezzanine and platform",
+      "firstObserved": "2026-07-18T14:56:56.67218+00:00"
     },
     {
       "unitName": "D13X05",

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-18T11:27:00.054Z",
+  "updatedAt": "2026-07-19T11:34:27.022Z",
   "note": "Every CTA elevator identity ever observed (archive + live alert texts, parsed by src/adapters/cta/location.ts). Grows only. Regression fixture for check:cta and the curation aid for a future chains pass.",
   "units": [
     {
@@ -35,6 +35,14 @@
         "The elevator at Pulaski (Pink Line) is temporarily out-of-service."
       ],
       "firstObserved": "2026-07-09T19:08:58.42+00:00"
+    },
+    {
+      "unitId": "40170",
+      "stationId": "40170",
+      "texts": [
+        "Elevator at Ashland/Lake Temporarily Out-of-Service — An elevator needed to access the Harlem- and 54th/Cermak-bound platform at Ashland (Green, Pink Lines) is temporarily out-of-service. (unidentified elevator at a modeled station — access shown as unknown)"
+      ],
+      "firstObserved": "2026-07-18T20:05:42.948+00:00"
     },
     {
       "unitId": "40170-STREET",
@@ -234,6 +242,14 @@
       "firstObserved": "2026-07-13T13:35:38.244+00:00"
     },
     {
+      "unitId": "40830-54TH-BOUND",
+      "stationId": "40830",
+      "texts": [
+        "Elevator at 18th Temporarily Out-of-Service — The 54th-bound platform elevator at 18th (Pink Line) is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-07-19T09:48:11.634+00:00"
+    },
+    {
       "unitId": "40900-95TH-LOOP-BOUND",
       "stationId": "40900",
       "texts": [
@@ -354,6 +370,14 @@
       "firstObserved": "2026-07-05T00:57:40.161+00:00"
     },
     {
+      "unitId": "41320-KIMBALL-LINDEN-BOUND",
+      "stationId": "41320",
+      "texts": [
+        "Elevator at Belmont Temporarily Out-of-Service — The Howard-, Kimball- and Linden-bound platform elevator at Belmont (Red, Brown, Purple Lines) is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-07-19T01:42:17.335+00:00"
+    },
+    {
       "unitId": "41360",
       "stationId": "41360",
       "texts": [
@@ -427,6 +451,14 @@
         "The Loop- bound platform elevator at Montrose (Brown Line) is temporarily out-of-service."
       ],
       "firstObserved": "2026-07-06T14:33:33.788+00:00"
+    },
+    {
+      "unitId": "41510-54TH-HARLEM-BOUND",
+      "stationId": "41510",
+      "texts": [
+        "Elevator at Morgan Temporarily Out-of-Service — The Harlem-bound and 54th-bound platform elevator at Morgan (Green, Pink Lines) is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-07-18T20:18:31.092+00:00"
     },
     {
       "unitId": "41510-63RD-LOOP-BOUND",

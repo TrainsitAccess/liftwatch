@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-18T11:27:06.994Z",
+ "updatedAt": "2026-07-19T11:34:34.727Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -425,6 +425,10 @@
    "evidence": [
     {
      "source": "live feed (alert text)",
+     "text": "Elevator at Ashland/Lake Temporarily Out-of-Service — An elevator needed to access the Harlem- and 54th/Cermak-bound platform at Ashland (Green, Pink Lines) is temporarily out-of-service. (unidentified elevator at a modeled station — access shown as unknown)"
+    },
+    {
+     "source": "live feed (alert text)",
      "text": "The elevator to/from street at Ashland (Green, Pink Lines) is temporarily out-of-service due to an electrical issue."
     },
     {
@@ -593,11 +597,15 @@
    "evidence": [
     {
      "source": "exclusion gate",
-     "text": "observed-undercount: 3 distinct live units (B09X04, B09X05, B09X06) on Mezzanine→Platform vs 1 in GTFS (levels: Mezzanine, Platform)"
+     "text": "observed-undercount: 4 distinct live units (B09X02, B09X04, B09X05, B09X06) on Mezzanine→Platform vs 1 in GTFS (levels: Mezzanine, Platform)"
     },
     {
      "source": "GTFS roster",
      "text": "WMATA-B09_ELE: Mezzanine ↔ Platform"
+    },
+    {
+     "source": "live feed (observed)",
+     "text": "B09X02: \"Elevator between mezzanine and platform\""
     },
     {
      "source": "live feed (observed)",
@@ -610,6 +618,10 @@
     {
      "source": "live feed (observed)",
      "text": "B09X06: \"Elevator between mezzanine and platform\""
+    },
+    {
+     "source": "exclusion gate",
+     "text": "observed-undercount: 3 distinct live units (B09X04, B09X05, B09X06) on Mezzanine→Platform vs 1 in GTFS (levels: Mezzanine, Platform)"
     }
    ],
    "resolution": {
@@ -3968,6 +3980,10 @@
     },
     {
      "source": "live feed (observed)",
+     "text": "D13X01: \"Elevator between mezzanine and platform\""
+    },
+    {
+     "source": "live feed (observed)",
      "text": "D13X05: \"Garage elevator\""
     }
    ],
@@ -4645,6 +4661,21 @@
    }
   },
   {
+   "key": "cta:40830",
+   "system": "cta-chicago",
+   "stationId": "40830",
+   "name": "18th",
+   "status": "pending",
+   "priority": 50,
+   "reason": "no chains modeled (no agency inventory — text-identity only)",
+   "evidence": [
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at 18th Temporarily Out-of-Service — The 54th-bound platform elevator at 18th (Pink Line) is temporarily out-of-service."
+    }
+   ]
+  },
+  {
    "key": "cta:40900",
    "system": "cta-chicago",
    "stationId": "40900",
@@ -4923,6 +4954,21 @@
    }
   },
   {
+   "key": "cta:41320",
+   "system": "cta-chicago",
+   "stationId": "41320",
+   "name": "Belmont",
+   "status": "pending",
+   "priority": 50,
+   "reason": "no chains modeled (no agency inventory — text-identity only)",
+   "evidence": [
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Belmont Temporarily Out-of-Service — The Howard-, Kimball- and Linden-bound platform elevator at Belmont (Red, Brown, Purple Lines) is temporarily out-of-service."
+    }
+   ]
+  },
+  {
    "key": "cta:41380",
    "system": "cta-chicago",
    "stationId": "41380",
@@ -4991,6 +5037,10 @@
    "priority": 50,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Morgan Temporarily Out-of-Service — The Harlem-bound and 54th-bound platform elevator at Morgan (Green, Pink Lines) is temporarily out-of-service."
+    },
     {
      "source": "live feed (alert text)",
      "text": "Elevator at Morgan Temporarily Out-of-Service — The Loop- and 63rd-bound platform elevator at Morgan (Green, Pink Lines) is temporarily out-of-service."

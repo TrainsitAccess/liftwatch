@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-18T11:27:02.886Z",
+  "generatedAt": "2026-07-19T11:34:30.320Z",
   "note": "Stations NOT auto-modeled — complex/side-platform/non-standard, pending a human pass.",
   "stations": [
     {
@@ -124,7 +124,7 @@
       "station": "B09",
       "name": "Forest Glen",
       "reason": "observed-undercount",
-      "detail": "3 distinct live units (B09X04, B09X05, B09X06) on Mezzanine→Platform vs 1 in GTFS",
+      "detail": "4 distinct live units (B09X02, B09X04, B09X05, B09X06) on Mezzanine→Platform vs 1 in GTFS",
       "levels": [
         "Mezzanine",
         "Platform"
