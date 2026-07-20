@@ -69,9 +69,11 @@ resolved every flagged discrepancy:
   street). Live pages 3, model 3. ✓ (E undercounted.)
 - **Warm Springs** — E listed 4, F has 5 (`S20-146`/`147` platform +
   `S20-148`/`149`/`162` street). Pages 5, model 5. ✓ (E undercounted.)
-- **Richmond** — in-scope 3: `R60-51` (platform), `R60-61`/`R60-80` (street);
-  `R60-58` confirmed **Amtrak connector** (matches the dimensions-guide note),
-  excluded. Model 3. ✓
+- **Richmond** — BART platform chain 3: `R60-51` (platform), `R60-61`/`R60-80`
+  (street). `R60-58` is the **Amtrak connector** (matches the dimensions-guide
+  note) — in scope, modeled as a separate Richmond AUXILIARY chain to the Amtrak
+  platform (Bryce, 2026-07-20), so it never joins the BART platform chain and a
+  bare RICH advisory still defaults to the BART platform elevator. ✓
 - **Colma / Daly City** — E over-listed (2/4); live pages + F effective =
   1 / (3 real). Kept model counts (live-validated).
 - **San Bruno** — F has 3, but `W30-105`/`W30-106` are **garage** (`TRA-G`);

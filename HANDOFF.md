@@ -115,7 +115,9 @@ own asset ids + function/position — extracted via `curl -A "<UA>"` +
   platform pair, Coliseum's single station elevator) were settled in the model's
   favor by BART's own live page. Resolved prior unknowns: 19th's 3rd elevator
   (`K20-163`), Warm Springs' 5th (`S20-162`, the WAB bridge), Richmond's
-  `R60-58` = out-of-scope Amtrak connector, San Bruno's extras = garage.
+  `R60-58` = Amtrak connector (modeled as a Richmond auxiliary chain to the
+  Amtrak platform, in scope but not part of the BART platform chain), San
+  Bruno's extras = garage.
 - **Adopted all 87 real asset ids as elevator `externalId`s** (replacing invented
   ids like `MLBR-PLAT-3` → `W40-109`); 10 stay descriptive where the settlement
   has no clean match (garages, Millbrae access, tunnel/arena). Caveat: asset ids

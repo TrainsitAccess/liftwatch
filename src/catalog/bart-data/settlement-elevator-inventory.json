@@ -7,7 +7,7 @@
     "platform": "platform elevator (HYD-P/P1..P5); position = BART's platform-elevator index",
     "street-platform": "single shaft spanning street to platform, no mezzanine transfer (HYD-SP)",
     "garage": "parking-garage elevator (TRA-G) — tracked unit, not a step-free chain member unless a route is confirmed",
-    "amtrak-connector": "Amtrak-only connector, outside BART's scope"
+    "amtrak-connector": "connector to the shared Amtrak platform — in scope, modeled as an auxiliary chain, not part of the BART platform chain"
   },
   "caveats": "These are ASSET-MANAGEMENT ids, NOT the live cmd=elev feed ids (BART's live advisory is free-text station-level). Adopted as our elevator externalIds + used to validate structure/function. 2023 snapshot: some ids mid-replacement (replacedBy); verify live counts vs bart.gov/stations/<code>/accessible. eBART (Antioch E30, Pittsburg Center E20) included.",
   "elevators": [
@@ -509,7 +509,7 @@
       "station": "Richmond",
       "func": "amtrak-connector",
       "position": null,
-      "note": "Amtrak-only connector — outside BART's step-free chain (excluded)"
+      "note": "Reaches the shared Amtrak/Capitol Corridor platform. In scope, modeled as a Richmond AUXILIARY chain (own status) — NOT part of the BART platform chain (Bryce, 2026-07-20)."
     },
     {
       "id": "R60-61",

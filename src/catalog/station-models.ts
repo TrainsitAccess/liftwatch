@@ -162,6 +162,15 @@ export const STATION_MODELS: StationModel[] = [
   },
   {
     systemId: "bart-bay-area",
+    stationExternalId: "RICH",
+    chainLabel: " (Amtrak connector)",
+    auxiliary: true,
+    note: "Elevator to the shared Amtrak/Capitol Corridor platform — a separate destination from the BART platforms. Sole step-free access to the Amtrak platform; its loss severs the Amtrak route only, not the BART platforms. Reached from the street via the same concourse (the street elevators or the ramp).",
+    internalNote: "R60-58 (BART asset id, HYD-AMTRAK in the ADA-settlement Exhibit F). In scope but deliberately NOT part of the BART platform chain (Bryce, 2026-07-20): a rider bound for a BART train never needs it. Auxiliary → excluded from platformDefaultElevator, so a bare RICH advisory still resolves to the BART platform elevator R60-51. matchHint is a GUESS (no observed Amtrak-connector advisory).",
+    segments: [{ id: "amtrak", label: "Concourse to Amtrak platform", elevators: [{ externalId: "R60-58", label: "Amtrak platform connector elevator", matchHints: ["amtrak"] }] }],
+  },
+  {
+    systemId: "bart-bay-area",
     stationExternalId: "SFIA",
     note: "Two platform elevators back each other up — BART names 'the other platform elevator' as the backup for each. The station connects directly to the airport at concourse level, so no street elevator is needed. Only both platform elevators failing removes step-free access.",
     internalNote: "Confirmed against bart.gov's own outage-options page 2026-07-08 (in-station backup named explicitly, no cross-station detour).",

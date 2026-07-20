@@ -691,7 +691,8 @@ parking lot). A station is accessible only if **every** segment is up.
   (BART's live page settled the two apparent conflicts, 19th + Coliseum, in the
   model's favor) and resolved prior unknowns (19th's 3rd elevator `K20-163`,
   Warm Springs' 5th `S20-162` = the WAB bridge, Richmond's `R60-58` = the
-  out-of-scope Amtrak connector, San Bruno's extras = garage). **All 87 real
+  Amtrak connector (in scope as a Richmond auxiliary chain to the Amtrak
+  platform, not part of the BART platform chain), San Bruno's extras = garage). **All 87 real
   ids adopted as elevator `externalId`s** (replacing invented ids like
   `MLBR-PLAT-3`); 10 stay descriptive where the settlement has no clean match
   (garages, Millbrae Caltrain/plaza access, a tunnel/arena bridge — documented
