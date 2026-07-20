@@ -20,6 +20,40 @@ Driven by `/liftwatch-wmata-spot-check`._
 
 ## Notes
 
+- **Tier B Group B: model-vs-page conflicts resolved (2026-07-18,
+  `/liftwatch-wmata-tier-b`)** — 4 stations where WMATA's page structurally
+  disagreed with the model, resolved with Bryce's direct ground truth
+  (outranks the page):
+  - **B35 NoMa-Gallaudet U** — RECONCILED to WMATA's count. The long-standing
+    watch item (Bryce recalled 2 platform elevators; WMATA's page always
+    showed 1) is now closed: Bryce confirmed the page's single elevator
+    (B35N01) is correct. No longer redundant. Bike-trail auxiliary chain
+    (B35N02) unaffected.
+  - **F08 Southern Ave** — the assumed pedestrian-bridge elevator does NOT
+    exist (Bryce confirmed); dropped. Core chain is now just the real
+    mezz→platform elevator (F08X02), sole access. The garage elevator
+    (F08X01, previously unmodeled) is now tracked as its own auxiliary
+    chain, not required for ordinary access.
+  - **K04 Ballston-MU** — the Vienna-bound platform elevator is one of the
+    two real "to Vienna" street→mezzanine ids (K04X01, K04X03), running
+    through in a single shaft — but Bryce does NOT know which one, and
+    asked this be left unresolved rather than guessed. Modeled
+    conservatively: BOTH K04X01 and K04X03 are now required (AND, not OR)
+    for the Vienna-bound platform leg, so an outage on either reads
+    inaccessible until alert evidence disambiguates which is the true
+    through-shaft (over-warn). New-Carrollton-bound leg promoted cleanly to
+    real id K04X02. **Watch item re-opened, not closed** — see
+    `internalNote` on the Vienna-bound chain for what future alert wording
+    would resolve it.
+  - **C15 Huntington** — the Huntington Ave. entrance elevator promoted to
+    real id C15N01. The South Kings Hwy inclinator confirmed to have no
+    real id anywhere in WMATA's elevator feed/page (inclinators are
+    separate equipment) — stays a synthetic placeholder, watch item closed
+    (no further resolution possible from this source).
+  `check:wmata` extended with a "Tier B Group B" regression block (11
+  checks) locking in all four. `demo:access` (69 checks) + `check:wmata`
+  both green.
+
 - **Tier B Group A: Silver Line median stations RE-MODELED (2026-07-18,
   `/liftwatch-wmata-tier-b`)** — N01 McLean, N02 Tysons, N03 Greensboro, N04
   Spring Hill, N07 Reston Town Center, N08 Herndon, N12 Ashburn. WMATA's own

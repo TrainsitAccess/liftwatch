@@ -707,19 +707,25 @@ export const WMATA_STATION_MODELS: StationModel[] = [
   {
     systemId: SYSTEM,
     stationExternalId: "F08",
-    note: "Pedestrian bridge to street/mezzanine: one elevator, no backup. If that elevator is out of service, this route is not step-free. Street/mezzanine to platform: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
-    internalNote: "Never yet observed live; synthetic GTFS slot id, promotable to a real UnitName once observed (same pattern as Rockville/A14). Never yet observed live; synthetic GTFS slot id, promotable to a real UnitName once observed (same pattern as Rockville/A14). Human-approved as Batch 3 via /liftwatch-station-review 2026-07-15 (no redundancy claimed anywhere in this batch — every chain is a straight AND of single-elevator legs, the same shape as WMATA's ~55 already-shipped auto-generated stations).",
+    note: "Mezzanine to platform: one elevator, no backup. If it is out of service, this route is not step-free.",
+    internalNote: "RE-MODELED 2026-07-18 (/liftwatch-wmata-tier-b): the prior model assumed a pedestrian-bridge elevator up to street/mezzanine (unconfirmed, synthetic, by analogy with Suitland F10's real bridge elevator). WMATA's Rider-Tools page inventory lists only 2 elevators at Southern Ave total -- F08X01 ('mezzanine and garage') and F08X02 ('mezzanine and platform') -- no bridge elevator at all. Bryce confirmed 2026-07-18 no such bridge elevator exists; dropped from the model. Core chain is now just the real mezz->platform elevator, sole access. F08X01 (garage) modeled as its own auxiliary chain below, not required for ordinary station access. Confidence 8/10 (WMATA's own inventory).",
     segments: [
       {
-        id: "bridge-mezzanine",
-        label: "Pedestrian bridge to street/mezzanine",
-        elevators: [{ externalId: "WMATA-F08_MZ_ELE1", label: "Southern Ave elevator (pedestrian bridge to street/mezzanine) — never yet observed live, synthetic id" }],
-      },
-      {
         id: "mezzanine-platform",
-        label: "Street/mezzanine to platform",
-        elevators: [{ externalId: "WMATA-F08_MZ_ELE2", label: "Southern Ave elevator (street/mezzanine to platform) — never yet observed live, synthetic id" }],
+        label: "Mezzanine to platform",
+        elevators: [{ externalId: "F08X02", label: "Southern Ave elevator (mezzanine to platform)" }],
       },
+    ],
+  },
+  {
+    systemId: SYSTEM,
+    stationExternalId: "F08",
+    chainLabel: " (garage)",
+    auxiliary: true,
+    note: "Garage elevator: one elevator, no backup. This is parking-garage access only, not required for ordinary station access.",
+    internalNote: "Real page id F08X01 ('Elevator between mezzanine and garage'). Added 2026-07-18 (/liftwatch-wmata-tier-b) when the phantom pedestrian-bridge member was dropped from the core chain -- this garage elevator is a real, separately-tracked unit that was previously unmodeled. Auxiliary: true (parking access, excluded from platformDefaultElevator). Confidence 8/10.",
+    segments: [
+      { id: "garage-mezzanine", label: "Garage to mezzanine", elevators: [{ externalId: "F08X01", label: "Southern Ave garage elevator" }] },
     ],
   },
   // Suitland (F10, Green Line) — Batch 3, Group 4 (straight 2-elevator
@@ -896,16 +902,13 @@ export const WMATA_STATION_MODELS: StationModel[] = [
   {
     systemId: SYSTEM,
     stationExternalId: "B35",
-    note: "Mezzanine to platform: 2 elevators, in the center of the platform on opposite sides of each other — either one keeps this route step-free. Only if both are out of service does this station lose step-free access.",
-    internalNote: "GTFS models only 1 elevator (WMATA-B35_ELE) but Bryce confirmed 2026-07-16 this is a redundant pair, both in the center of the platform on opposite sides -- same arrangement as Morgan Blvd (G04). Neither has ever appeared individually in a live outage; both are synthetic placeholder ids. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 8/10). DISCREPANCY TO WATCH (2026-07-16): WMATA's own materials say this station has only 1 elevator between mezzanine and platform, contradicting Bryce's certainty that there are 2. Possible but unlikely explanation: one may be a replacement/rebuild not yet reflected in WMATA's count. Watch observed-units.json / any future WMATA document for a 2nd distinct unit id on this segment -- that would confirm the pair; continued silence (only ever 1 id ever observed here) would support WMATA's single-elevator count instead. Do not resolve this discrepancy unilaterally -- surface it back to Bryce if new evidence appears either way.",
+    note: "Mezzanine to platform: one elevator, no backup. If it is out of service, this route is not step-free.",
+    internalNote: "RECONCILED 2026-07-18 (/liftwatch-wmata-tier-b): the prior model claimed a redundant pair (WMATA-B35_ELE1/ELE2) based on Bryce's 2026-07-16 recollection, flagged as a discrepancy against WMATA's own materials (which showed only 1 elevator). Bryce reconciled to WMATA's page inventory 2026-07-18: NoMa has exactly 1 mezzanine→platform elevator (B35N01, real page id), not 2. Watch item closed -- no longer redundant. The bike-trail auxiliary chain (B35N02) is unaffected.",
     segments: [
       {
         id: "mezzanine-platform",
         label: "Mezzanine to platform",
-        elevators: [
-          { externalId: "WMATA-B35_ELE1", label: "NoMa-Gallaudet U elevator (mezzanine to platform) — center of platform" },
-          { externalId: "WMATA-B35_ELE2", label: "NoMa-Gallaudet U elevator (mezzanine to platform) — center of platform, opposite side" },
-        ],
+        elevators: [{ externalId: "B35N01", label: "NoMa-Gallaudet U elevator (mezzanine to platform)" }],
       },
     ],
   },
@@ -1241,8 +1244,8 @@ export const WMATA_STATION_MODELS: StationModel[] = [
     systemId: SYSTEM,
     stationExternalId: "K04",
     chainLabel: " (Vienna-bound)",
-    note: "Street to the Vienna-bound platform: 2 street entrances (southwest and northwest corners of Fairfax Dr & Stuart St) reach the mezzanine — any one of 4 elevators keeps street access step-free — then one elevator continues to the platform, no backup. If all street entrances are down, or the platform elevator is out of service, this route is not step-free.",
-    internalNote: "Shared street<->mezzanine prerequisite: SW corner pair (K04X04, K04X05, real, 38.88208521293941/-77.11211144204533) + NW corner \"just to mezzanine\" elevator (K04X03, real) + NW corner platform-continuing elevator (WMATA-K04_N_EL, synthetic -- also serves as the mezzanine<->platform leg below, since it's one continuous shaft). Mezzanine<->Vienna-bound platform leg: WMATA-K04_N_EL only, sole access. CAVEAT: Bryce's id mapping for K04X03/X04/X05 is inferential (none of their alert texts mention a platform) -- watch future alerts for contradicting wording. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 6/10).",
+    note: "Street to the Vienna-bound platform: 2 street entrances (southwest and northwest corners of Fairfax Dr & Stuart St) reach the mezzanine — any one of 4 elevators keeps street access step-free. From the mezzanine, one specific elevator continues through to the Vienna-bound platform in a single shaft, but which of the two northwest-corner elevators that is has not been pinned down — until it is, either one being out of service is treated as removing step-free platform access, to avoid understating an outage. If all street entrances are down, or either northwest-corner elevator is out of service, this route is not step-free.",
+    internalNote: "WATCH ITEM, re-opened 2026-07-18 (/liftwatch-wmata-tier-b): WMATA's Rider-Tools page lists exactly 2 real 'to Vienna' street<->mezzanine ids (K04X01, K04X03, identically worded) and NO separate 'mezzanine to Vienna-bound platform' id at all -- confirming Bryce's structural read that one of the two continues through to the platform in a single shaft (the synthetic WMATA-K04_N_EL modeled a 3rd/4th phantom unit that doesn't actually exist; removed). Bryce confirmed 2026-07-18 he does NOT know which of K04X01/K04X03 is the through-shaft -- do not guess. Modeled conservatively: both K04X01 and K04X03 sit in the shared street->mezzanine OR group, AND both are required (AND, two single-elevator segments in series) for the mezzanine->Vienna-platform leg, so an outage on EITHER is treated as potentially severing Vienna-bound platform access until disambiguated (over-warn, never under-warn). TODO: watch future WMATA alert text on K04X01/K04X03 for wording that distinguishes them (e.g. one alert mentioning platform reach, the other not, or a symptom pattern that differs) -- that would let this collapse back to a single sole-access id. SW corner pair (K04X04, K04X05, real, 38.88208521293941/-77.11211144204533) unaffected. Confidence 6/10 (structure now grounded in real ids, but which-is-which remains genuinely unresolved).",
     segments: [
       {
         id: "street-mezzanine",
@@ -1250,14 +1253,19 @@ export const WMATA_STATION_MODELS: StationModel[] = [
         elevators: [
           { externalId: "K04X04", label: "Ballston-MU SW corner elevator (street to mezzanine) — SW corner of Fairfax Dr & Stuart St (38.88208521293941, -77.11211144204533)" },
           { externalId: "K04X05", label: "Ballston-MU SW corner elevator (street to mezzanine) — SW corner of Fairfax Dr & Stuart St (38.88208521293941, -77.11211144204533)" },
-          { externalId: "K04X03", label: "Ballston-MU NW corner elevator (street to mezzanine only) — NW corner of Fairfax Dr & Stuart St" },
-          { externalId: "WMATA-K04_N_EL", label: "Ballston-MU NW corner elevator (street to mezzanine to Vienna-bound platform, one shaft) — NW corner of Fairfax Dr & Stuart St, never yet observed live, synthetic id" },
+          { externalId: "K04X01", label: "Ballston-MU NW corner elevator (street to mezzanine, 'to Vienna') — NW corner of Fairfax Dr & Stuart St; may be the elevator continuing through to the platform, unconfirmed" },
+          { externalId: "K04X03", label: "Ballston-MU NW corner elevator (street to mezzanine, 'to Vienna') — NW corner of Fairfax Dr & Stuart St; may be the elevator continuing through to the platform, unconfirmed" },
         ],
       },
       {
-        id: "mezzanine-platform",
-        label: "Mezzanine to Vienna-bound platform",
-        elevators: [{ externalId: "WMATA-K04_N_EL", label: "Ballston-MU NW corner elevator (street to mezzanine to Vienna-bound platform, one shaft) — NW corner of Fairfax Dr & Stuart St, never yet observed live, synthetic id" }],
+        id: "mezzanine-platform-candidate-x01",
+        label: "Mezzanine to Vienna-bound platform (if K04X01 is the through-shaft)",
+        elevators: [{ externalId: "K04X01", label: "Ballston-MU NW corner elevator — treated as required pending disambiguation of which NW elevator reaches the platform" }],
+      },
+      {
+        id: "mezzanine-platform-candidate-x03",
+        label: "Mezzanine to Vienna-bound platform (if K04X03 is the through-shaft)",
+        elevators: [{ externalId: "K04X03", label: "Ballston-MU NW corner elevator — treated as required pending disambiguation of which NW elevator reaches the platform" }],
       },
     ],
   },
@@ -1266,7 +1274,7 @@ export const WMATA_STATION_MODELS: StationModel[] = [
     stationExternalId: "K04",
     chainLabel: " (New Carrollton-bound)",
     note: "Street to the New Carrollton-bound platform: 2 street entrances (southwest and northwest corners of Fairfax Dr & Stuart St) reach the mezzanine — any one of 4 elevators keeps street access step-free — then one elevator continues to the platform, no backup. If all street entrances are down, or the platform elevator is out of service, this route is not step-free.",
-    internalNote: "Shares the street<->mezzanine prerequisite with the Vienna-bound chain (same 4 physical units, same ids in both chains -- an outage on any single one only reduces the OR group, doesn't sever access unless all 4 are down). Mezzanine<->New Carrollton-bound platform leg: a 5th, separate elevator, never yet observed live, synthetic id, sole access. CAVEAT: Bryce's id mapping for K04X03/X04/X05 (in the shared prerequisite) is inferential -- watch future alerts for contradicting wording. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 6/10).",
+    internalNote: "Shares the street<->mezzanine prerequisite with the Vienna-bound chain (now 4 real ids -- K04X01/K04X03 NW corner, K04X04/K04X05 SW corner -- an outage on any single one only reduces the OR group, doesn't sever access unless all 4 are down). Mezzanine<->New Carrollton-bound platform leg: real page id K04X02 ('mezzanine and platform to New Carrollton/Largo Town Center'), sole access. Promoted 2026-07-18 (/liftwatch-wmata-tier-b) from synthetic WMATA-K04_MZ_ELE1. Human-approved via /liftwatch-station-review 2026-07-16, ids updated 2026-07-18 (confidence 7/10).",
     segments: [
       {
         id: "street-mezzanine",
@@ -1274,14 +1282,14 @@ export const WMATA_STATION_MODELS: StationModel[] = [
         elevators: [
           { externalId: "K04X04", label: "Ballston-MU SW corner elevator (street to mezzanine) — SW corner of Fairfax Dr & Stuart St (38.88208521293941, -77.11211144204533)" },
           { externalId: "K04X05", label: "Ballston-MU SW corner elevator (street to mezzanine) — SW corner of Fairfax Dr & Stuart St (38.88208521293941, -77.11211144204533)" },
-          { externalId: "K04X03", label: "Ballston-MU NW corner elevator (street to mezzanine only) — NW corner of Fairfax Dr & Stuart St" },
-          { externalId: "WMATA-K04_N_EL", label: "Ballston-MU NW corner elevator (street to mezzanine to Vienna-bound platform, one shaft) — NW corner of Fairfax Dr & Stuart St, never yet observed live, synthetic id" },
+          { externalId: "K04X01", label: "Ballston-MU NW corner elevator (street to mezzanine, 'to Vienna')  — NW corner of Fairfax Dr & Stuart St" },
+          { externalId: "K04X03", label: "Ballston-MU NW corner elevator (street to mezzanine, 'to Vienna') — NW corner of Fairfax Dr & Stuart St" },
         ],
       },
       {
         id: "mezzanine-platform",
         label: "Mezzanine to New Carrollton-bound platform",
-        elevators: [{ externalId: "WMATA-K04_MZ_ELE1", label: "Ballston-MU mezzanine to New Carrollton-bound platform elevator — never yet observed live, synthetic id" }],
+        elevators: [{ externalId: "K04X02", label: "Ballston-MU elevator (mezzanine to New Carrollton-bound platform)" }],
       },
     ],
   },
@@ -1587,14 +1595,14 @@ export const WMATA_STATION_MODELS: StationModel[] = [
     systemId: SYSTEM,
     stationExternalId: "C15",
     note: "Mezzanine to platform: 2 elevators (one at the Huntington Ave. entrance, one an inclinator at the South Kings Hwy entrance) — either one keeps this route step-free. Only if both are out of service does this station lose step-free access.",
-    internalNote: "WMATA's own entrance listing (Bryce, 2026-07-16): Huntington Ave. Entrance has an ordinary elevator, South Kings Hwy Entrance has an inclinator (inclined lift) -- both mezzanine<->platform, confirmed to reach the same platform (real redundant pair). Bryce confirmed the Huntington Ave. mezzanine is at street level -- no separate street<->mezzanine elevator needed there. Neither the mezzanine<->platform elevator nor the inclinator has ever appeared individually in a live outage; both synthetic ids. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 8/10).",
+    internalNote: "WMATA's own entrance listing (Bryce, 2026-07-16): Huntington Ave. Entrance has an ordinary elevator, South Kings Hwy Entrance has an inclinator (inclined lift) -- both mezzanine<->platform, confirmed to reach the same platform (real redundant pair). Bryce confirmed the Huntington Ave. mezzanine is at street level -- no separate street<->mezzanine elevator needed there. CONFIRMED 2026-07-18 (/liftwatch-wmata-tier-b): the Huntington Ave. elevator is real page id C15N01, promoted from synthetic. The inclinator has NO real id -- WMATA's Rider-Tools elevator inventory omits it entirely (only lists C15N01 + garage units C15S01/S03/S04), confirming inclinators are separate equipment outside WMATA's elevator feed/page. Bryce confirmed 2026-07-18 it stays a synthetic-id placeholder (no real id exists to promote to, from this or any other source). Human-approved via /liftwatch-station-review 2026-07-16, id updated 2026-07-18 (confidence 8/10).",
     segments: [
       {
         id: "mezzanine-platform",
         label: "Mezzanine to platform",
         elevators: [
-          { externalId: "WMATA-C15_N_ELE1", label: "Huntington elevator (Huntington Ave. entrance, mezzanine to platform) — by the parking lot off Huntington Ave (38.7946865611983, -77.07520784819755), never yet observed live, synthetic id" },
-          { externalId: "WMATA-C15_S_ELE2", label: "Huntington inclinator (South Kings Hwy entrance, mezzanine to platform) — never yet observed live, synthetic id" },
+          { externalId: "C15N01", label: "Huntington elevator (Huntington Ave. entrance, mezzanine to platform) — by the parking lot off Huntington Ave (38.7946865611983, -77.07520784819755)" },
+          { externalId: "WMATA-C15_S_ELE2", label: "Huntington inclinator (South Kings Hwy entrance, mezzanine to platform) — no real UnitName exists; inclinators are absent from WMATA's elevator feed/page entirely, synthetic placeholder id" },
         ],
       },
     ],

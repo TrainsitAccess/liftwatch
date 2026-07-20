@@ -206,6 +206,34 @@ console.log("\n  Silver Line grade-separated median stations (2026-07-18 Tier B 
   }
 }
 
+console.log("\n  Tier B Group B (2026-07-18): model-vs-page conflicts resolved with Bryce's ground truth:");
+{
+  const b35 = WMATA_STATION_MODELS.filter((m) => m.stationExternalId === "B35" && !m.auxiliary)[0]!;
+  const b35Ids = allElevators(b35).map((e) => e.externalId);
+  ok(b35Ids.length === 1 && b35Ids[0] === "B35N01", "B35 NoMa: reconciled to WMATA's 1 real platform elevator (B35N01)");
+  ok(!elevatorRedundant(b35, "B35N01"), "B35 NoMa: no longer modeled redundant");
+
+  const f08core = WMATA_STATION_MODELS.filter((m) => m.stationExternalId === "F08" && !m.auxiliary)[0]!;
+  const f08Ids = allElevators(f08core).map((e) => e.externalId);
+  ok(f08Ids.length === 1 && f08Ids[0] === "F08X02", "F08 Southern Ave: core chain is just the real mezz→platform elevator (no phantom bridge member)");
+  const f08garage = WMATA_STATION_MODELS.filter((m) => m.stationExternalId === "F08" && m.auxiliary)[0]!;
+  ok(allElevators(f08garage).some((e) => e.externalId === "F08X01"), "F08 Southern Ave: garage elevator F08X01 modeled as its own auxiliary chain");
+
+  const k04vienna = WMATA_STATION_MODELS.find((m) => m.stationExternalId === "K04" && m.chainLabel?.includes("Vienna"))!;
+  const k04ViennaStreetIds = k04vienna.segments.find((s) => s.id === "street-mezzanine")!.elevators.map((e) => e.externalId).sort();
+  ok(k04ViennaStreetIds.join(",") === "K04X01,K04X03,K04X04,K04X05", "K04 Ballston Vienna-bound: shared street→mezzanine OR group is all 4 real ids");
+  ok(!stationAccessible(k04vienna, new Set(["K04X01"])), "K04 Ballston Vienna-bound: K04X01 down alone -> inaccessible (unresolved which NW elevator is the through-shaft, over-warn)");
+  ok(!stationAccessible(k04vienna, new Set(["K04X03"])), "K04 Ballston Vienna-bound: K04X03 down alone -> inaccessible (same over-warn reasoning)");
+  const k04ncb = WMATA_STATION_MODELS.find((m) => m.stationExternalId === "K04" && m.chainLabel?.includes("New Carrollton"))!;
+  ok(allElevators(k04ncb).some((e) => e.externalId === "K04X02"), "K04 Ballston New Carrollton-bound: real platform id K04X02");
+
+  const c15 = WMATA_STATION_MODELS.filter((m) => m.stationExternalId === "C15" && !m.chainLabel)[0]!;
+  const c15Ids = allElevators(c15).map((e) => e.externalId);
+  ok(c15Ids.includes("C15N01"), "C15 Huntington: Huntington Ave elevator promoted to real id C15N01");
+  ok(c15Ids.includes("WMATA-C15_S_ELE2"), "C15 Huntington: inclinator stays synthetic (no real id exists in WMATA's feed)");
+  ok(elevatorRedundant(c15, "C15N01") && elevatorRedundant(c15, "WMATA-C15_S_ELE2"), "C15 Huntington: elevator + inclinator still mutually redundant");
+}
+
 console.log("\n  Rockville hand model (human-confirmed 2026-07-13 — the bridge pair must be conveyed):");
 {
   const a14 = WMATA_STATION_MODELS.filter((m) => m.stationExternalId === "A14");
