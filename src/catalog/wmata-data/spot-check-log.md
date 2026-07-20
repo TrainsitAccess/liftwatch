@@ -20,6 +20,31 @@ Driven by `/liftwatch-wmata-spot-check`._
 
 ## Notes
 
+- **Tier B Group A: Silver Line median stations RE-MODELED (2026-07-18,
+  `/liftwatch-wmata-tier-b`)** — N01 McLean, N02 Tysons, N03 Greensboro, N04
+  Spring Hill, N07 Reston Town Center, N08 Herndon, N12 Ashburn. WMATA's own
+  Rider-Tools page inventory shows each station has SIX elevators (verified
+  against Spring Hill as the reference layout, then all 7 individually): a
+  redundant PAIR on each pavilion's street→mezzanine leg + a redundant PAIR on
+  the shared platform leg (GTFS had undercounted every leg to a single
+  elevator — the Silver Line's version of the Forest Glen/Rosslyn undercount
+  class). Flips all 7 from non-redundant to redundant. Bryce confirmed
+  2026-07-18: single shared island platform per station; the two pavilions
+  ARE connected step-free but only via a long crossing that isn't necessarily
+  pedestrian-safe — disclosed in the rider note but deliberately NOT counted
+  as a cross-pavilion backup (kept as two separate per-pavilion pairs,
+  over-warn default). Real page UnitNames throughout; id ordering varies by
+  station (N01-N04 put the platform pair at X05/X06, N07/N08/N12 at X01/X02)
+  — bound per-station, not assumed. N01/N02's non-confirmed-side pavilion is
+  still inferred by elimination (WMATA's page labels it "mezzanine to
+  grade/street" rather than a compass side); this also corrected N01's
+  previous N/S label inversion. College Park (E09) was audited alongside and
+  confirmed to be a genuinely different, single-elevator-per-leg structure —
+  left unchanged. `check:wmata`'s grade-separated regression block split into
+  an E09 case (non-redundant) and a new Silver-median case (7 stations, all
+  redundant, 6 ids each, shared platform pair, cross-pavilion note asserted).
+  Confidence 8/10. `demo:access` (69 checks) + `check:wmata` both green.
+
 - **Bulk id promotion + full cross-check (2026-07-18)** — Bryce asked to promote
   every remaining synthetic `WMATA-<node>` id to its real UnitName, system-wide.
   The Rider-Tools inventory was extended to all 91 rail stations

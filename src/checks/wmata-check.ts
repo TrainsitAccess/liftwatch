@@ -166,21 +166,43 @@ console.log("\n  B11 Glenmont (surface-crossing-redundant, 2026-07-17 audit): st
   ok(/cross Georgia Avenue/.test(b11.note ?? ""), "B11: public note discloses the Georgia Ave surface crossing");
 }
 
-console.log("\n  Grade-separated stations (2026-07-17 audit): two opposite-side entrances are NOT redundant — curated per-entrance, no false street→mezzanine backup:");
+console.log("\n  College Park E09 (grade-separated, single-elevator-per-leg): entrances are NOT redundant — curated per-entrance, no false street→mezzanine backup:");
 {
-  const GRADE_SEP = ["N01", "N02", "N03", "N04", "N07", "N08", "N12", "E09"];
-  for (const st of GRADE_SEP) {
-    ok(!generatedByStation.has(st), `${st}: moved out of the auto-generated tier (grade-separated-entrances)`);
+  const st = "E09";
+  ok(!generatedByStation.has(st), `${st}: moved out of the auto-generated tier (grade-separated-entrances)`);
+  ok(excludedReason.get(st) === "grade-separated-entrances", `${st}: excluded with reason grade-separated-entrances`);
+  const chains = WMATA_STATION_MODELS.filter((m) => m.stationExternalId === st);
+  ok(chains.length === 2, `${st}: curated as two per-entrance chains`);
+  // Every elevator at the station is sole-access — a single outage must sever
+  // its chain (the whole point of the fix: no cross-entrance redundancy).
+  const anyRedundant = chains.some((c) => allElevators(c).some((e) => elevatorRedundant(c, e.externalId)));
+  ok(!anyRedundant, `${st}: no elevator is modeled redundant (single outage strands one side)`);
+  // The mezzanine→platform elevator is shared: the same id appears in both chains.
+  const platIds = chains.map((c) => c.segments.find((s) => s.id === "mezzanine-platform")!.elevators[0]!.externalId);
+  ok(platIds[0] === platIds[1], `${st}: both entrances share one mezzanine→platform elevator`);
+}
+
+console.log("\n  Silver Line grade-separated median stations (2026-07-18 Tier B fix): redundant PAIRS on every leg per WMATA's page, cross-pavilion crossing NOT counted as a backup:");
+{
+  const SILVER_MEDIAN = ["N01", "N02", "N03", "N04", "N07", "N08", "N12"];
+  for (const st of SILVER_MEDIAN) {
+    ok(!generatedByStation.has(st), `${st}: stays out of the auto-generated tier (grade-separated-entrances)`);
     ok(excludedReason.get(st) === "grade-separated-entrances", `${st}: excluded with reason grade-separated-entrances`);
-    const chains = WMATA_STATION_MODELS.filter((m) => m.stationExternalId === st);
-    ok(chains.length === 2, `${st}: curated as two per-entrance chains`);
-    // Every elevator at the station is sole-access — a single outage must sever
-    // its chain (the whole point of the fix: no cross-entrance redundancy).
-    const anyRedundant = chains.some((c) => allElevators(c).some((e) => elevatorRedundant(c, e.externalId)));
-    ok(!anyRedundant, `${st}: no elevator is modeled redundant (single outage strands one side)`);
-    // The mezzanine→platform elevator is shared: the same id appears in both chains.
-    const platIds = chains.map((c) => c.segments.find((s) => s.id === "mezzanine-platform")!.elevators[0]!.externalId);
-    ok(platIds[0] === platIds[1], `${st}: both entrances share one mezzanine→platform elevator`);
+    const stChains = WMATA_STATION_MODELS.filter((m) => m.stationExternalId === st);
+    ok(stChains.length === 2, `${st}: curated as two per-pavilion chains`);
+    // Every elevator now sits in a redundant pair: 6 real ids total (2 street + 2
+    // street + 2 shared platform), every one of them modeled redundant.
+    const ids = new Set(stChains.flatMap((c) => allElevators(c).map((e) => e.externalId)));
+    ok(ids.size === 6, `${st}: 6 distinct real elevator ids (2 pavilion A + 2 pavilion B + 2 shared platform)`);
+    const everyRedundant = stChains.every((c) => allElevators(c).every((e) => elevatorRedundant(c, e.externalId)));
+    ok(everyRedundant, `${st}: every elevator is modeled redundant (paired on every leg)`);
+    // The mezzanine→platform pair is shared: same two ids appear in both chains.
+    const platIds = stChains.map((c) => c.segments.find((s) => s.id === "mezzanine-platform")!.elevators.map((e) => e.externalId).sort().join(","));
+    ok(platIds[0] === platIds[1], `${st}: both pavilions share the same platform elevator pair`);
+    // A whole pavilion's street pair failing still strands that pavilion — the
+    // cross-pavilion crossing is disclosed but never counted as a backup.
+    const streetIdsA = stChains[0]!.segments.find((s) => s.id === "street-mezzanine")!.elevators.map((e) => e.externalId);
+    ok(!stationAccessible(stChains[0]!, new Set(streetIdsA)), `${st}: one pavilion's whole street pair down -> that pavilion's chain inaccessible (crossing not a backup)`);
   }
 }
 

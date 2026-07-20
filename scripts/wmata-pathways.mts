@@ -300,15 +300,21 @@ const excluded: { station: string; name: string; reason: string; detail: string;
 // Human-reviewed stations that PASS the structural gates but whose auto-model
 // is nonetheless wrong, so they are hand-curated in wmata-models.ts instead.
 // The generator can't see this from GTFS alone (pathways don't encode which
-// side of a highway/rail corridor an entrance is on), so it's a manual list —
-// the street/entrance analog of the (4) side-platforms gate. These stations
-// have two street-entrance elevators GTFS treats as a redundant street→
-// mezzanine pair, but the entrances sit on OPPOSITE sides of a highway or rail
-// corridor with no step-free crossing at street level: one elevator failing
-// strands riders on that side, so the pair is NOT redundant. Confirmed by a
-// 2026-07-17 audit (see wmata-data/COVERAGE-AUDIT.md); curated per-entrance in
-// wmata-models.ts. Keep this list and the curated tier in sync — a code here
-// with no curated model would leave the station unmodeled.
+// side of a highway/rail corridor an entrance is on, nor per-leg elevator
+// counts), so it's a manual list — the street/entrance analog of the (4)
+// side-platforms gate. Two entrances sit on OPPOSITE sides of a highway/rail
+// corridor, reachable step-free only via a long, not-necessarily-pedestrian-
+// safe crossing (never counted as a backup) — each pavilion's legs are
+// curated independently. **Two different structures**: the 7 Silver Line
+// median stations (N01/N02/N03/N04/N07/N08/N12) each have SIX elevators —
+// a redundant PAIR on every leg (2 per pavilion's street, 2 shared platform)
+// — per WMATA's Rider-Tools page inventory (re-modeled 2026-07-18 via
+// /liftwatch-wmata-tier-b; GTFS had undercounted each leg to one elevator,
+// same class of undercount as Forest Glen/Rosslyn). College Park (E09) is a
+// genuine single-elevator-per-leg grade-separated station (GTFS's original
+// 2026-07-17 model was already correct there — no undercount). Keep this
+// list and the curated tier in sync — a code here with no curated model
+// would leave the station unmodeled.
 const CURATED_GRADE_SEPARATED: Record<string, string> = {
   N01: "McLean — Silver Line median, N/S pavilions across the Dulles Access Rd",
   N02: "Tysons — Silver Line median, N/S pavilions across Rte 123",
