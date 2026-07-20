@@ -97,6 +97,40 @@ new stations.
 
 ---
 
+## What shipped this session (2026-07-20, latest) — BART re-sourced from its ADA settlement (real elevator ids)
+
+Bryce asked to hunt for better BART sources (BART was our weakest-sourced
+system — no per-elevator ids anywhere). Found the BART analog to MBTA's
+Daniels-Finegold / CTA's settlement: **_Senior and Disability Action v. BART_,
+3:17-cv-01876 (N.D. Cal.), final approval 2024-04-18**. Its **Exhibit F**
+(per-elevator maintenance schedule) is a real per-elevator inventory with BART's
+own asset ids + function/position — extracted via `curl -A "<UA>"` +
+`pdftotext -layout` from the DRA-hosted PDF.
+
+- Committed the inventory: `bart-data/settlement-elevator-inventory.json` (96
+  elevators, real ids + function) + `bart-data/bart-ada-settlement.md`
+  (provenance, id scheme, caveats, 3-way reconciliation).
+- **3-way reconciliation** (models × settlement × our live `/accessible` scrape)
+  CONFIRMED every model's structure. Two apparent conflicts (19th's redundant
+  platform pair, Coliseum's single station elevator) were settled in the model's
+  favor by BART's own live page. Resolved prior unknowns: 19th's 3rd elevator
+  (`K20-163`), Warm Springs' 5th (`S20-162`, the WAB bridge), Richmond's
+  `R60-58` = out-of-scope Amtrak connector, San Bruno's extras = garage.
+- **Adopted all 87 real asset ids as elevator `externalId`s** (replacing invented
+  ids like `MLBR-PLAT-3` → `W40-109`); 10 stay descriptive where the settlement
+  has no clean match (garages, Millbrae access, tunnel/arena). Caveat: asset ids
+  ≠ live-feed ids (attribution stays matchHints-based; ids are for identity +
+  validation); id↔side inferential for same-function pairs. `poll:bart:dry` now
+  emits real ids (`M60-36`, `M30-55`, `R60-51`).
+- **New `check:bart`** (`src/checks/bart-check.ts`) — BART's first self-check AND
+  independent audit (reconciles every real id vs the settlement inventory +
+  attribution crosswalk + hygiene), closing the playbook Part V gap.
+- typecheck + demo:access (69) + check:bart + poll:bart:dry all green.
+- Follow-ups noted, not blocking: Millbrae's Caltrain/plaza ids + Daly City's
+  tunnel elevator have no clean settlement id (kept descriptive); the settlement
+  also has Exhibit D (SMP memo) + a per-station outage-options section (~p.8560)
+  as an extra redundancy corroboration source if ever needed.
+
 ## What shipped this session (2026-07-20, later) — WMATA FINAL ACCURACY AUDIT + merged-station keying fix
 
 Bryce asked for one final, exhaustive accuracy check of the (nominally

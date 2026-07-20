@@ -568,6 +568,22 @@
       "position": null
     },
     {
+      "id": "Y10-930",
+      "abbr": "SFIA",
+      "station": "San Francisco Intl Airport",
+      "func": "platform",
+      "position": null,
+      "note": "from Exhibit E (SFIA not in the Exhibit F maintenance extract)"
+    },
+    {
+      "id": "Y10-931",
+      "abbr": "SFIA",
+      "station": "San Francisco Intl Airport",
+      "func": "platform",
+      "position": null,
+      "note": "from Exhibit E (SFIA not in the Exhibit F maintenance extract)"
+    },
+    {
       "id": "A70-10",
       "abbr": "SHAY",
       "station": "South Hayward",

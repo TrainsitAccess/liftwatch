@@ -53,7 +53,7 @@ import { attributionOverridesFor } from "../catalog/attribution-overrides.js";
 //    that station — including ones really about a different, unmodeled
 //    auxiliary elevator there (confirmed live example, 2026-07-08: Bryce
 //    reports Coliseum's advisory can read "Station - Tunnel", about the
-//    pedestrian-bridge/tunnel elevator to the arena, not the main COLS-EL
+//    pedestrian-bridge/tunnel elevator to the arena, not the main A30-3 (Coliseum station elevator)
 //    station elevator that "elevator" would wrongly claim). Surfaced for
 //    human review, not auto-fixed — fixing this means modeling the auxiliary
 //    elevator as its own tracked unit, a real change to redundancy curation
@@ -298,7 +298,7 @@ writeFileSync(
         "work, same evidentiary bar as the Milpitas/Hayward/12th St. examples in SPEC.md. A confirmed[*] entry " +
         "with genericHintRisk set is NOT necessarily wrong, but its only matching hint is a generic word that " +
         "would match ANY advisory at that station — worth a human look before trusting it, especially at " +
-        "stations with unmodeled auxiliary elevators (see Coliseum/COLS-EL). chainAmbiguous[*] is raw advisory " +
+        "stations with unmodeled auxiliary elevators (see Coliseum/A30-3). chainAmbiguous[*] is raw advisory " +
         "text at multi-chain (per-direction) stations that matches zero or 2+ chains — the tool never guesses " +
         "which one; a human reviewing this text is what would confirm or correct a matchHints entry, same " +
         "process that confirmed Milpitas's regional-shorthand hint. segmentAmbiguous[*] is the rarer case of a " +

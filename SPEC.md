@@ -395,9 +395,28 @@ external id · `stationcomplexid` → station id · `elevatorsgtfsstopid` → GT
 `is_planned` · `outagedate` → `source_started_at` · `estimatedreturntoservice` →
 `estimated_return`.
 
-### BART feeds (in use) — best-effort, station-level, but ALL 50 stations curated
+### BART feeds (in use) — best-effort, station-level, but ALL 50 stations curated (real ids from the ADA settlement)
 
 BART exposes no structured per-elevator status. `data_quality: 'best_effort'`.
+
+**Real per-elevator ids — from the ADA settlement (2026-07-20).** BART's live
+feed carries no elevator ids (station-level only), but the *Senior and Disability
+Action v. BART* ADA settlement (3:17-cv-01876, N.D. Cal., 2024) publishes BART's
+own per-elevator asset inventory in its exhibits. **Exhibit F** (Strategic
+Maintenance schedule) is authoritative: real ids (`<stationAssetCode>-<n>`, e.g.
+`M16-63`) + a function/position suffix (`HYD-S`=street, `HYD-P*`=platform w/
+index, `HYD-SP`=single shaft, `TRA-G`=garage, `HYD-AMTRAK`=out-of-scope). Extract
+via `curl -A "<UA>"` + `pdftotext -layout` (WebFetch can't parse the image-wrapped
+PDF). Committed to `bart-data/settlement-elevator-inventory.json` (96 elevators)
++ `bart-data/bart-ada-settlement.md`. A 3-way reconciliation (models × settlement
+× our live `/accessible` scrape) confirmed every model's structure — BART's live
+page resolved the two apparent conflicts (19th, Coliseum) in the model's favor —
+and all 87 real ids were adopted as elevator `externalId`s (10 stay descriptive
+where the settlement has no clean match: garages, Millbrae access elevators, a
+tunnel/arena bridge). These are asset-management ids, NOT live-feed ids —
+attribution stays `matchHints`-based; the ids give identity + a ground-truth
+audit (`check:bart` reconciles every real id vs the inventory).
+
 - Real-time (in use): `bsa.aspx?cmd=elev` — a free-text, **station-level**
   advisory ("2 elevators out: MLBR: Station; RICH: Station"). Parsed by matching
   station codes against the station list.

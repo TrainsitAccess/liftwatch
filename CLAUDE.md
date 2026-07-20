@@ -73,6 +73,7 @@ npm run mta:chains       # regenerate MTA multi-chain models from the live feed
 npm run mbta:chains      # regenerate MBTA simple-station chains (validated vs MBTA's own guidance)
 npm run check:mbta-chains # prove the MBTA chain generator offline (full-feed fixture)
 npm run check:wmata       # prove the WMATA pathways chains + attribution crosswalk (offline)
+npm run check:bart        # reconcile BART models vs the ADA-settlement real-id inventory + attribution (offline)
 npm run wmata:observed    # refresh observed-units.json (archive + live feed; grows only)
 npm run check:cta         # prove the CTA text-identity parser vs the observed corpus (offline)
 npm run cta:observed      # refresh CTA observed-units.json (archive + live alert texts; grows only)
@@ -675,9 +676,35 @@ parking lot). A station is accessible only if **every** segment is up.
   `evidenceHints` entry in `chains-excluded.json` — a head start for the
   eventual human review, not a resolution. Re-running after more polls
   absorbs more evidence automatically — no per-outage manual audit needed.
+- **BART elevators now carry REAL asset ids from the ADA settlement (2026-07-20).**
+  Found the BART analog to MBTA's Daniels-Finegold / CTA's ADA settlement:
+  *Senior and Disability Action v. BART*, 3:17-cv-01876 (N.D. Cal.), final
+  approval 2024-04-18. Its **Exhibit F** (per-elevator Strategic Maintenance
+  schedule) is a genuine per-elevator inventory with BART's OWN real asset ids
+  (`M16-63`, `W40-116`, …, prefix = station asset code) + a function/position
+  suffix (`HYD-S` street / `HYD-P*` platform / `HYD-SP` single-shaft / `TRA-G`
+  garage / `HYD-AMTRAK` out-of-scope) — the identity source BART's station-level
+  live feed never gave us. Extract: `curl -A "<UA>"` the PDF (dralegal.org host)
+  + `pdftotext -layout`. Committed as `bart-data/settlement-elevator-inventory.json`
+  + `bart-data/bart-ada-settlement.md`. A **3-way reconciliation** (models vs
+  settlement vs our live `/accessible` scrape) CONFIRMED every model's structure
+  (BART's live page settled the two apparent conflicts, 19th + Coliseum, in the
+  model's favor) and resolved prior unknowns (19th's 3rd elevator `K20-163`,
+  Warm Springs' 5th `S20-162` = the WAB bridge, Richmond's `R60-58` = the
+  out-of-scope Amtrak connector, San Bruno's extras = garage). **All 87 real
+  ids adopted as elevator `externalId`s** (replacing invented ids like
+  `MLBR-PLAT-3`); 10 stay descriptive where the settlement has no clean match
+  (garages, Millbrae Caltrain/plaza access, a tunnel/arena bridge — documented
+  in the model header). CAVEATS: asset ids ≠ live-feed ids (attribution stays
+  matchHints-based; ids are for identity + validation); id↔side is inferential
+  for same-function pairs; verify built-vs-current vs BART's live pages.
+  **New `check:bart`** (`src/checks/bart-check.ts`) is BART's first self-check
+  AND independent audit (reconciles every real id vs the settlement inventory +
+  attribution crosswalk + hygiene) — closes the playbook Part V gap that BART
+  previously had neither.
 - **ALL 50 BART stations are now curated** (2026-07-08, up from the original
   7 — `src/catalog/bart-station-models.ts`, 43 more stations, wired into
-  `station-models.ts`'s STATION_MODELS array). BART has no per-elevator feed
+  `station-models.ts`'s STATION_MODELS array). BART has no per-elevator LIVE feed
   at all (unlike TfL/MTA), so a topology-graph or line-served-field approach
   was never possible — instead this uses a REAL, BART-published per-elevator
   signal: bart.gov's own "Elevator Outage Options" page
@@ -883,6 +910,24 @@ parking lot). A station is accessible only if **every** segment is up.
   rows on the access board also carry an honest generic note. When writing a
   NEW curated model: rider guidance in `note`, verification dates/sources in
   `internalNote`.
+- **Same-name elevator letters (Bryce, 2026-07-20), DERIVED never hand-typed**:
+  within a physical station, when two or more curated elevators carry the
+  IDENTICAL `label` (e.g. Rosslyn's three "street to eastbound platform"
+  elevators, `C05E01/02/03`), each gets a stable letter designation — A, B, C…
+  — appended as `(A)` so an outage says WHICH one is down. A uniquely-named
+  elevator gets no letter (nothing to disambiguate), so pre-existing manual
+  numbering (`Platform Elevator 1`/`2`, `1 of 4`) is untouched. Implemented in
+  `accessibility.ts` (`elevatorLetterMap` groups per `stationExternalId` by
+  exact label, dedups by `externalId`, assigns by sorted id → stable across
+  every chain the elevator appears in and across rebuilds; `withElevatorLetter`
+  is the display suffix). Applied at EVERY site elevator-name emit point in
+  `build-site-data.ts` (cross-system longest board, per-system currently-broken,
+  offline log, most-broken, uptime streak, and the "backed up by" list) via the
+  per-system `letterMapForSystem`/`namedWithLetter` helpers — so it's automatic
+  and universal across all systems, retroactive with zero model edits, and can't
+  drift. The letter is keyed by `externalId`, so it rides the FEED description
+  shown on the board (not just the curated label). Locked in `demo:access`
+  (7 checks). **NEVER type a letter into a model label — the rule derives it.**
 - **Timezones**: feeds report local wall-clock; parse to UTC (`src/lib/time.ts`,
   Luxon). Store UTC everywhere.
 - Nine adapters, deliberately different fidelity (TMB currently `hidden`):

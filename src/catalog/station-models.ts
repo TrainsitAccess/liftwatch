@@ -79,15 +79,15 @@ export const STATION_MODELS: StationModel[] = [
         label: "Street to concourse",
         stepFreeAlternative: true, // sunken parking lot reaches concourse step-free
         elevators: [
-          { externalId: "ASHB-ST-ADELINE-E", label: "Adeline Street East street elevator", matchHints: ["adeline", "street"] },
+          { externalId: "R10-113", label: "Adeline Street East street elevator", matchHints: ["adeline", "street"] },
         ],
       },
       {
         id: "concourse-platform",
         label: "Concourse to platform",
         elevators: [
-          { externalId: "ASHB-PLAT-1", label: "Platform Elevator 1", matchHints: ["platform"] },
-          { externalId: "ASHB-PLAT-2", label: "Platform Elevator 2", matchHints: ["platform"] },
+          { externalId: "R10-43", label: "Platform Elevator 1", matchHints: ["platform"] },
+          { externalId: "R10-111", label: "Platform Elevator 2", matchHints: ["platform"] },
         ],
       },
     ],
@@ -101,20 +101,20 @@ export const STATION_MODELS: StationModel[] = [
         id: "street-concourse",
         label: "Street to concourse",
         elevators: [
-          { externalId: "12TH-ST-14TH", label: "14th St street elevator", matchHints: ["14th"] },
+          { externalId: "K10-22", label: "14th St street elevator", matchHints: ["14th"] },
           // "convention center" added 2026-07-08: mining the outage_events
           // archive found 4 of BART's 11 historical events (36%) used this
           // exact phrase for this elevator ("Station - Convention Center"),
           // matching bart.gov's own "11th Street/Convention Center" naming —
           // a real, confirmed match, not a guess.
-          { externalId: "12TH-ST-11TH", label: "11th St street elevator", matchHints: ["11th", "convention center"] },
+          { externalId: "K10-120", label: "11th St street elevator", matchHints: ["11th", "convention center"] },
         ],
       },
       {
         id: "concourse-platform",
         label: "Concourse to platform",
         elevators: [
-          { externalId: "12TH-PLAT", label: "Platform elevator", matchHints: ["platform"] },
+          { externalId: "K10-23", label: "Platform elevator", matchHints: ["platform"] },
         ],
       },
     ],
@@ -127,14 +127,14 @@ export const STATION_MODELS: StationModel[] = [
       {
         id: "street-concourse",
         label: "Street to concourse",
-        elevators: [{ externalId: "19TH-ST", label: "Street elevator", matchHints: ["street"] }],
+        elevators: [{ externalId: "K20-24", label: "Street elevator", matchHints: ["street"] }],
       },
       {
         id: "concourse-platform",
         label: "Concourse to platform",
         elevators: [
-          { externalId: "19TH-PLAT-1", label: "Platform Elevator 1", matchHints: ["platform"] },
-          { externalId: "19TH-PLAT-2", label: "Platform Elevator 2", matchHints: ["platform"] },
+          { externalId: "K20-25", label: "Platform Elevator 1", matchHints: ["platform"] },
+          { externalId: "K20-163", label: "Platform Elevator 2", matchHints: ["platform"] },
         ],
       },
     ],
@@ -149,14 +149,14 @@ export const STATION_MODELS: StationModel[] = [
         label: "Street to concourse",
         stepFreeAlternative: true, // ramp serves the same purpose
         elevators: [
-          { externalId: "RICH-ST-1", label: "Street elevator 1", matchHints: ["street"] },
-          { externalId: "RICH-ST-2", label: "Street elevator 2", matchHints: ["street"] },
+          { externalId: "R60-61", label: "Street elevator 1", matchHints: ["street"] },
+          { externalId: "R60-80", label: "Street elevator 2", matchHints: ["street"] },
         ],
       },
       {
         id: "concourse-platform",
         label: "Concourse to platform",
-        elevators: [{ externalId: "RICH-PLAT", label: "Platform elevator", matchHints: ["platform"] }],
+        elevators: [{ externalId: "R60-51", label: "Platform elevator", matchHints: ["platform"] }],
       },
     ],
   },
@@ -170,8 +170,8 @@ export const STATION_MODELS: StationModel[] = [
         id: "concourse-platform",
         label: "Concourse to platform",
         elevators: [
-          { externalId: "SFIA-PLAT-1", label: "Platforms 1 & 2 Elevator", matchHints: ["platform"] },
-          { externalId: "SFIA-PLAT-2", label: "Platforms 3 & 4 Elevator", matchHints: ["platform"] },
+          { externalId: "Y10-930", label: "Platforms 1 & 2 Elevator", matchHints: ["platform"] },
+          { externalId: "Y10-931", label: "Platforms 3 & 4 Elevator", matchHints: ["platform"] },
         ],
       },
     ],
@@ -186,16 +186,16 @@ export const STATION_MODELS: StationModel[] = [
         id: "street-concourse",
         label: "Street to concourse",
         elevators: [
-          { externalId: "WARM-ST-1", label: "Street elevator 1", matchHints: ["street"] },
-          { externalId: "WARM-ST-2", label: "Street elevator 2", matchHints: ["street"] },
+          { externalId: "S20-148", label: "Street elevator 1", matchHints: ["street"] },
+          { externalId: "S20-149", label: "Street elevator 2", matchHints: ["street"] },
         ],
       },
       {
         id: "concourse-platform",
         label: "Concourse to platform",
         elevators: [
-          { externalId: "WARM-PLAT-1", label: "Platform Elevator 1", matchHints: ["platform"] },
-          { externalId: "WARM-PLAT-2", label: "Platform Elevator 2", matchHints: ["platform"] },
+          { externalId: "S20-146", label: "Platform Elevator 1", matchHints: ["platform"] },
+          { externalId: "S20-147", label: "Platform Elevator 2", matchHints: ["platform"] },
         ],
       },
     ],
@@ -205,7 +205,7 @@ export const STATION_MODELS: StationModel[] = [
     stationExternalId: "WARM",
     chainLabel: " (pedestrian bridge)",
     note: "The pedestrian-bridge elevator is a separate, secondary entrance with no backup of its own for entering that way — BART's guidance is a 0.8 mi walk/roll to the main Warm Springs Blvd. entrance instead.",
-    segments: [{ id: "bridge", label: "Pedestrian bridge elevator", elevators: [{ externalId: "WARM-BRIDGE", label: "Pedestrian bridge elevator", matchHints: ["bridge", "pedestrian"] }] }],
+    segments: [{ id: "bridge", label: "Pedestrian bridge elevator", elevators: [{ externalId: "S20-162", label: "Pedestrian bridge elevator", matchHints: ["bridge", "pedestrian"] }] }],
   },
   {
     // Corrected 2026-07-08 against bart.gov's own outage-options page: the
@@ -227,7 +227,7 @@ export const STATION_MODELS: StationModel[] = [
         { externalId: "WDUB-GAR-N1", label: "Garage Elevator 1 (North/Dublin side)", matchHints: ["north", "dublin", "garage"] },
         { externalId: "WDUB-GAR-N2", label: "Garage Elevator 2 (North/Dublin side)", matchHints: ["north", "dublin", "garage"] },
       ] },
-      { id: "concourse-platform", label: "Concourse to platform", elevators: [{ externalId: "WDUB-PLAT", label: "Platform elevator", matchHints: ["platform"] }] },
+      { id: "concourse-platform", label: "Concourse to platform", elevators: [{ externalId: "L20-132", label: "Platform elevator", matchHints: ["platform"] }] },
     ],
   },
   {
@@ -240,7 +240,7 @@ export const STATION_MODELS: StationModel[] = [
         { externalId: "WDUB-GAR-S1", label: "Garage Elevator 1 (South/Pleasanton side)", matchHints: ["south", "pleasanton", "garage"] },
         { externalId: "WDUB-GAR-S2", label: "Garage Elevator 2 (South/Pleasanton side)", matchHints: ["south", "pleasanton", "garage"] },
       ] },
-      { id: "concourse-platform", label: "Concourse to platform", elevators: [{ externalId: "WDUB-PLAT", label: "Platform elevator", matchHints: ["platform"] }] },
+      { id: "concourse-platform", label: "Concourse to platform", elevators: [{ externalId: "L20-132", label: "Platform elevator", matchHints: ["platform"] }] },
     ],
   },
   // The remaining 43 BART stations: curated 2026-07-08 from bart.gov's own
