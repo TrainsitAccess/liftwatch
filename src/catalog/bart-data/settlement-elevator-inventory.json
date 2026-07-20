@@ -1,0 +1,676 @@
+{
+  "source": "Senior and Disability Action v. BART, No. 3:17-cv-01876-LB (N.D. Cal.), Settlement Agreement (Dkt. 145-1, filed 2023-10-20; final approval 2024-04-18). PDF: dralegal.org/wp-content/uploads/2023/12/145-1_Settlement_Agreement.pdf",
+  "authoritativeExhibit": "Exhibit F (per-elevator Strategic Maintenance schedule) — function/position from each unit's equipment descriptor. Exhibit E (systemwide Elevator Renovation Program) corroborates ids + gives renovation priority/year.",
+  "extractedAt": "2026-07-20",
+  "functionLegend": {
+    "street": "street/station-level entrance elevator (HYD-S)",
+    "platform": "platform elevator (HYD-P/P1..P5); position = BART's platform-elevator index",
+    "street-platform": "single shaft spanning street to platform, no mezzanine transfer (HYD-SP)",
+    "garage": "parking-garage elevator (TRA-G) — tracked unit, not a step-free chain member unless a route is confirmed",
+    "amtrak-connector": "Amtrak-only connector, outside BART's scope"
+  },
+  "caveats": "These are ASSET-MANAGEMENT ids, NOT the live cmd=elev feed ids (BART's live advisory is free-text station-level). Adopted as our elevator externalIds + used to validate structure/function. 2023 snapshot: some ids mid-replacement (replacedBy); verify live counts vs bart.gov/stations/<code>/accessible. eBART (Antioch E30, Pittsburg Center E20) included.",
+  "elevators": [
+    {
+      "id": "K10-120",
+      "abbr": "12TH",
+      "station": "12th St Oakland",
+      "func": "street",
+      "position": null
+    },
+    {
+      "id": "K10-22",
+      "abbr": "12TH",
+      "station": "12th St Oakland",
+      "func": "street",
+      "position": null
+    },
+    {
+      "id": "K10-23",
+      "abbr": "12TH",
+      "station": "12th St Oakland",
+      "func": "platform",
+      "position": null
+    },
+    {
+      "id": "M50-33",
+      "abbr": "16TH",
+      "station": "16th St Mission",
+      "func": "street",
+      "position": null
+    },
+    {
+      "id": "M50-34",
+      "abbr": "16TH",
+      "station": "16th St Mission",
+      "func": "platform",
+      "position": null
+    },
+    {
+      "id": "K20-163",
+      "abbr": "19TH",
+      "station": "19th St Oakland",
+      "func": "street",
+      "position": null
+    },
+    {
+      "id": "K20-24",
+      "abbr": "19TH",
+      "station": "19th St Oakland",
+      "func": "street",
+      "position": null
+    },
+    {
+      "id": "K20-25",
+      "abbr": "19TH",
+      "station": "19th St Oakland",
+      "func": "platform",
+      "position": null
+    },
+    {
+      "id": "M60-35",
+      "abbr": "24TH",
+      "station": "24th St Mission",
+      "func": "street",
+      "position": null
+    },
+    {
+      "id": "M60-36",
+      "abbr": "24TH",
+      "station": "24th St Mission",
+      "func": "platform",
+      "position": null
+    },
+    {
+      "id": "E30-159",
+      "abbr": "ANTC",
+      "station": "Antioch",
+      "func": "street",
+      "position": null
+    },
+    {
+      "id": "E30-160",
+      "abbr": "ANTC",
+      "station": "Antioch",
+      "func": "platform",
+      "position": null
+    },
+    {
+      "id": "R10-111",
+      "abbr": "ASHB",
+      "station": "Ashby",
+      "func": "platform",
+      "position": null
+    },
+    {
+      "id": "R10-113",
+      "abbr": "ASHB",
+      "station": "Ashby",
+      "func": "street",
+      "position": null
+    },
+    {
+      "id": "R10-43",
+      "abbr": "ASHB",
+      "station": "Ashby",
+      "func": "platform",
+      "position": null
+    },
+    {
+      "id": "M80-38",
+      "abbr": "BALB",
+      "station": "Balboa Park",
+      "func": "street-platform",
+      "position": null
+    },
+    {
+      "id": "A50-6",
+      "abbr": "BAYF",
+      "station": "Bay Fair",
+      "func": "platform",
+      "position": null
+    },
+    {
+      "id": "S50-154",
+      "abbr": "BERY",
+      "station": "Berryessa",
+      "func": "platform",
+      "position": null
+    },
+    {
+      "id": "L10-95",
+      "abbr": "CAST",
+      "station": "Castro Valley",
+      "func": "platform",
+      "position": null
+    },
+    {
+      "id": "M40-56",
+      "abbr": "CIVC",
+      "station": "Civic Center",
+      "func": "street",
+      "position": null
+    },
+    {
+      "id": "M40-57",
+      "abbr": "CIVC",
+      "station": "Civic Center",
+      "func": "platform",
+      "position": null
+    },
+    {
+      "id": "W10-91",
+      "abbr": "COLM",
+      "station": "Colma",
+      "func": "platform",
+      "position": "P1"
+    },
+    {
+      "id": "A30-3",
+      "abbr": "COLS",
+      "station": "Coliseum",
+      "func": "platform",
+      "position": null
+    },
+    {
+      "id": "A30-30",
+      "abbr": "COLS",
+      "station": "Coliseum",
+      "func": "street",
+      "position": null
+    },
+    {
+      "id": "C60-21",
+      "abbr": "CONC",
+      "station": "Concord",
+      "func": "platform",
+      "position": null
+    },
+    {
+      "id": "M90-39",
+      "abbr": "DALY",
+      "station": "Daly City",
+      "func": "platform",
+      "position": "P1"
+    },
+    {
+      "id": "M90-40",
+      "abbr": "DALY",
+      "station": "Daly City",
+      "func": "platform",
+      "position": "P3"
+    },
+    {
+      "id": "R20-44",
+      "abbr": "DBRK",
+      "station": "Downtown Berkeley",
+      "func": "street",
+      "position": null
+    },
+    {
+      "id": "R20-45",
+      "abbr": "DBRK",
+      "station": "Downtown Berkeley",
+      "func": "platform",
+      "position": null
+    },
+    {
+      "id": "R50-164",
+      "abbr": "DELN",
+      "station": "El Cerrito del Norte",
+      "func": "platform",
+      "position": "P1"
+    },
+    {
+      "id": "R50-165",
+      "abbr": "DELN",
+      "station": "El Cerrito del Norte",
+      "func": "platform",
+      "position": "P2"
+    },
+    {
+      "id": "R50-49",
+      "abbr": "DELN",
+      "station": "El Cerrito del Norte",
+      "func": "platform",
+      "position": "P1",
+      "replacedBy": "R50-165"
+    },
+    {
+      "id": "R50-50",
+      "abbr": "DELN",
+      "station": "El Cerrito del Norte",
+      "func": "platform",
+      "position": "P2",
+      "replacedBy": "R50-164"
+    },
+    {
+      "id": "L30-99",
+      "abbr": "DUBL",
+      "station": "Dublin/Pleasanton",
+      "func": "platform",
+      "position": null
+    },
+    {
+      "id": "M16-62",
+      "abbr": "EMBR",
+      "station": "Embarcadero",
+      "func": "street",
+      "position": null
+    },
+    {
+      "id": "M16-63",
+      "abbr": "EMBR",
+      "station": "Embarcadero",
+      "func": "platform",
+      "position": null
+    },
+    {
+      "id": "A90-13",
+      "abbr": "FRMT",
+      "station": "Fremont",
+      "func": "platform",
+      "position": null
+    },
+    {
+      "id": "A20-1",
+      "abbr": "FTVL",
+      "station": "Fruitvale",
+      "func": "platform",
+      "position": "P2"
+    },
+    {
+      "id": "A20-2",
+      "abbr": "FTVL",
+      "station": "Fruitvale",
+      "func": "platform",
+      "position": "P1"
+    },
+    {
+      "id": "M70-37",
+      "abbr": "GLEN",
+      "station": "Glen Park",
+      "func": "platform",
+      "position": null
+    },
+    {
+      "id": "A60-7",
+      "abbr": "HAYW",
+      "station": "Hayward",
+      "func": "platform",
+      "position": "P2"
+    },
+    {
+      "id": "A60-8",
+      "abbr": "HAYW",
+      "station": "Hayward",
+      "func": "platform",
+      "position": "P1"
+    },
+    {
+      "id": "C30-16",
+      "abbr": "LAFY",
+      "station": "Lafayette",
+      "func": "platform",
+      "position": null
+    },
+    {
+      "id": "A10-140",
+      "abbr": "LAKE",
+      "station": "Lake Merritt",
+      "func": "platform",
+      "position": null
+    },
+    {
+      "id": "A10-28",
+      "abbr": "LAKE",
+      "station": "Lake Merritt",
+      "func": "platform",
+      "position": null
+    },
+    {
+      "id": "K30-118",
+      "abbr": "MCAR",
+      "station": "MacArthur",
+      "func": "platform",
+      "position": "P2"
+    },
+    {
+      "id": "K30-119",
+      "abbr": "MCAR",
+      "station": "MacArthur",
+      "func": "platform",
+      "position": "P1"
+    },
+    {
+      "id": "W40-108",
+      "abbr": "MLBR",
+      "station": "Millbrae",
+      "func": "platform",
+      "position": "P5"
+    },
+    {
+      "id": "W40-109",
+      "abbr": "MLBR",
+      "station": "Millbrae",
+      "func": "platform",
+      "position": "P3"
+    },
+    {
+      "id": "W40-110",
+      "abbr": "MLBR",
+      "station": "Millbrae",
+      "func": "platform",
+      "position": "P4"
+    },
+    {
+      "id": "W40-112",
+      "abbr": "MLBR",
+      "station": "Millbrae",
+      "func": "platform",
+      "position": "P1"
+    },
+    {
+      "id": "W40-116",
+      "abbr": "MLBR",
+      "station": "Millbrae",
+      "func": "street",
+      "position": null
+    },
+    {
+      "id": "S40-150",
+      "abbr": "MLPT",
+      "station": "Milpitas",
+      "func": "platform",
+      "position": "P1"
+    },
+    {
+      "id": "S40-151",
+      "abbr": "MLPT",
+      "station": "Milpitas",
+      "func": "platform",
+      "position": "P2"
+    },
+    {
+      "id": "M20-52",
+      "abbr": "MONT",
+      "station": "Montgomery",
+      "func": "street",
+      "position": null
+    },
+    {
+      "id": "M20-53",
+      "abbr": "MONT",
+      "station": "Montgomery",
+      "func": "platform",
+      "position": null
+    },
+    {
+      "id": "R30-46",
+      "abbr": "NBRK",
+      "station": "North Berkeley",
+      "func": "platform",
+      "position": null
+    },
+    {
+      "id": "C70-92",
+      "abbr": "NCON",
+      "station": "North Concord",
+      "func": "platform",
+      "position": null
+    },
+    {
+      "id": "H10-156",
+      "abbr": "OAKL",
+      "station": "Oakland Intl Airport (OAC)",
+      "func": "platform",
+      "position": null
+    },
+    {
+      "id": "C20-15",
+      "abbr": "ORIN",
+      "station": "Orinda",
+      "func": "platform",
+      "position": null
+    },
+    {
+      "id": "E20-158",
+      "abbr": "PCTR",
+      "station": "Pittsburg Center",
+      "func": "street",
+      "position": null
+    },
+    {
+      "id": "C50-19",
+      "abbr": "PHIL",
+      "station": "Pleasant Hill",
+      "func": "platform",
+      "position": "P1"
+    },
+    {
+      "id": "C50-20",
+      "abbr": "PHIL",
+      "station": "Pleasant Hill",
+      "func": "platform",
+      "position": "P2"
+    },
+    {
+      "id": "C80-93",
+      "abbr": "PITT",
+      "station": "Pittsburg/Bay Point",
+      "func": "street",
+      "position": null
+    },
+    {
+      "id": "C80-94",
+      "abbr": "PITT",
+      "station": "Pittsburg/Bay Point",
+      "func": "platform",
+      "position": null
+    },
+    {
+      "id": "R40-47",
+      "abbr": "PLZA",
+      "station": "El Cerrito Plaza",
+      "func": "platform",
+      "position": "P1"
+    },
+    {
+      "id": "R40-48",
+      "abbr": "PLZA",
+      "station": "El Cerrito Plaza",
+      "func": "platform",
+      "position": "P2"
+    },
+    {
+      "id": "M30-54",
+      "abbr": "POWL",
+      "station": "Powell St",
+      "func": "street",
+      "position": null
+    },
+    {
+      "id": "M30-55",
+      "abbr": "POWL",
+      "station": "Powell St",
+      "func": "platform",
+      "position": null
+    },
+    {
+      "id": "R60-51",
+      "abbr": "RICH",
+      "station": "Richmond",
+      "func": "platform",
+      "position": null
+    },
+    {
+      "id": "R60-58",
+      "abbr": "RICH",
+      "station": "Richmond",
+      "func": "amtrak-connector",
+      "position": null,
+      "note": "Amtrak-only connector — outside BART's step-free chain (excluded)"
+    },
+    {
+      "id": "R60-61",
+      "abbr": "RICH",
+      "station": "Richmond",
+      "func": "street",
+      "position": null
+    },
+    {
+      "id": "R60-80",
+      "abbr": "RICH",
+      "station": "Richmond",
+      "func": "street",
+      "position": null
+    },
+    {
+      "id": "C10-14",
+      "abbr": "ROCK",
+      "station": "Rockridge",
+      "func": "street-platform",
+      "position": null
+    },
+    {
+      "id": "A40-4",
+      "abbr": "SANL",
+      "station": "San Leandro",
+      "func": "platform",
+      "position": "P2"
+    },
+    {
+      "id": "A40-5",
+      "abbr": "SANL",
+      "station": "San Leandro",
+      "func": "platform",
+      "position": "P1"
+    },
+    {
+      "id": "W30-104",
+      "abbr": "SBRN",
+      "station": "San Bruno",
+      "func": "platform",
+      "position": "P1"
+    },
+    {
+      "id": "W30-105",
+      "abbr": "SBRN",
+      "station": "San Bruno",
+      "func": "garage",
+      "position": null
+    },
+    {
+      "id": "W30-106",
+      "abbr": "SBRN",
+      "station": "San Bruno",
+      "func": "garage",
+      "position": null
+    },
+    {
+      "id": "A70-10",
+      "abbr": "SHAY",
+      "station": "South Hayward",
+      "func": "platform",
+      "position": "P1"
+    },
+    {
+      "id": "A70-9",
+      "abbr": "SHAY",
+      "station": "South Hayward",
+      "func": "platform",
+      "position": "P2"
+    },
+    {
+      "id": "W20-100",
+      "abbr": "SSAN",
+      "station": "South San Francisco",
+      "func": "platform",
+      "position": "P1"
+    },
+    {
+      "id": "A80-11",
+      "abbr": "UCTY",
+      "station": "Union City",
+      "func": "platform",
+      "position": "P1"
+    },
+    {
+      "id": "A80-12",
+      "abbr": "UCTY",
+      "station": "Union City",
+      "func": "platform",
+      "position": "P2"
+    },
+    {
+      "id": "S20-146",
+      "abbr": "WARM",
+      "station": "Warm Springs",
+      "func": "platform",
+      "position": null
+    },
+    {
+      "id": "S20-147",
+      "abbr": "WARM",
+      "station": "Warm Springs",
+      "func": "platform",
+      "position": null
+    },
+    {
+      "id": "S20-148",
+      "abbr": "WARM",
+      "station": "Warm Springs",
+      "func": "street",
+      "position": null
+    },
+    {
+      "id": "S20-149",
+      "abbr": "WARM",
+      "station": "Warm Springs",
+      "func": "street",
+      "position": null
+    },
+    {
+      "id": "S20-162",
+      "abbr": "WARM",
+      "station": "Warm Springs",
+      "func": "street",
+      "position": null
+    },
+    {
+      "id": "C40-17",
+      "abbr": "WCRK",
+      "station": "Walnut Creek",
+      "func": "platform",
+      "position": "P1"
+    },
+    {
+      "id": "C40-18",
+      "abbr": "WCRK",
+      "station": "Walnut Creek",
+      "func": "platform",
+      "position": "P2"
+    },
+    {
+      "id": "L20-132",
+      "abbr": "WDUB",
+      "station": "West Dublin/Pleasanton",
+      "func": "platform",
+      "position": null
+    },
+    {
+      "id": "M10-26",
+      "abbr": "WOAK",
+      "station": "West Oakland",
+      "func": "platform",
+      "position": "P1"
+    },
+    {
+      "id": "M10-27",
+      "abbr": "WOAK",
+      "station": "West Oakland",
+      "func": "platform",
+      "position": "P2"
+    }
+  ]
+}
