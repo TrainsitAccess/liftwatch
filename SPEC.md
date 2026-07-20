@@ -979,25 +979,42 @@ page; directional per-direction platforms matched to WMATA's destination wording
 A full cross-check of EVERY model (curated + generated) vs the page found **0
 wrong ids, 0 genuine segment errors** (the only Class-B flags were false
 positives: CNF/interchange custom segment names + the at-grade `street-platform`
-convention). The **only** real discrepancies are **13 "Tier B" stations** where
-the page structurally disagrees with the model — left for the focused
-**`/liftwatch-wmata-tier-b`** session:
-- **Silver Line grade-separated pairs (N01/N02/N03/N04/N07/N08/N12)** — the page
-  shows a redundant PAIR on every leg (two opposite-side entrance pavilions + a
-  platform bank) vs our single-elevator models; fixing them flips these 7 to
-  redundant (single-fault tolerant), keeping the grade-separated no-cross-crossing
-  rule. Needs Bryce to confirm the median grade-separation + the N/S id→side
-  mapping (WMATA labels are "south entry pavilion" vs "mezzanine to grade/street",
-  which the current models may have inverted).
-- **Watch-item conflicts** — NoMa B35 (page: 1 platform elevator, Bryce: 2),
-  Ballston K04 (page has no Vienna-bound platform elevator — the id-mapping watch
-  item), Southern Ave F08 (page: platform + garage, model has a pedestrian-bridge
-  member WMATA doesn't list), Huntington C15 (the South Kings Hwy inclinator is
-  real but absent from WMATA's elevator list). Bryce's knowledge is ground truth.
-- **Structural** — C11 Potomac Yard (likely bug: WMATA groups Largo+MtVernon on
-  ONE northbound platform, model splits them; re-model 2 platform directions ×
-  pairs + 3 entrance pairs on the single island), C06 Arlington Cemetery (trivial
-  East/West → destination relabel).
+convention). The **13 "Tier B" stations** were the only real discrepancies —
+**ALL RESOLVED 2026-07-18** via `/liftwatch-wmata-tier-b`:
+- **Silver Line grade-separated pairs (N01/N02/N03/N04/N07/N08/N12) — FIXED.**
+  WMATA's page confirmed a redundant PAIR on every leg (two opposite-side
+  entrance pavilions + a shared platform bank, 6 elevators per station) vs the
+  prior single-elevator models; all 7 flip to redundant (single-fault
+  tolerant). Bryce reconfirmed the median grade separation, but with a
+  correction: the two pavilions ARE step-free connected, just via a long
+  crossing that isn't necessarily pedestrian-safe — disclosed in the rider
+  note but deliberately NOT counted as a cross-pavilion backup (kept as two
+  separate per-pavilion pairs, over-warn). N01/N02's non-page-confirmed side
+  is still inferred by elimination (WMATA labels it "mezzanine to grade/
+  street" rather than a compass side).
+- **Watch-item conflicts — RESOLVED.** NoMa B35 reconciled to WMATA's count
+  (1 platform elevator, no longer redundant — the long-standing watch item is
+  closed). Southern Ave F08's assumed pedestrian-bridge elevator confirmed
+  NOT real and dropped; its garage elevator is now tracked as its own
+  auxiliary chain. Huntington C15's entrance elevator promoted to its real id
+  (C15N01); the inclinator confirmed to have no real id anywhere in WMATA's
+  feed (separate equipment) and stays a synthetic placeholder. Ballston K04
+  is the one item Bryce deliberately left OPEN rather than guessed: the
+  Vienna-bound platform elevator is one of two real ids (K04X01/K04X03), but
+  which one is unconfirmed — modeled conservatively as requiring BOTH
+  (over-warn) until a future WMATA alert disambiguates; the `internalNote`
+  carries a standing TODO to watch for that wording.
+- **Structural — FIXED.** C11 Potomac Yard was a real bug: WMATA groups
+  Downtown Largo + Mt. Vernon Sq on ONE platform (not opposite directions as
+  modeled) and Franconia-Springfield + Huntington on the OTHER — the model
+  had no chain at all for the second platform. Re-modeled as two SIDE
+  platforms (Bryce corrected an initial single-island-platform assumption)
+  sharing one 6-elevator entrance bank. C06 Arlington Cemetery's guessed
+  East/West labels swapped for WMATA's own destination names.
+
+Every WMATA elevator now carries a real UnitName station-for-station against
+the page, except the Huntington inclinator (confirmed to have none) and K04's
+deliberately-unresolved through-shaft ambiguity.
 
 ### TfL feeds (in use) — real per-lift inventory, real topology-derived redundancy
 
