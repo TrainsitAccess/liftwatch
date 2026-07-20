@@ -1170,9 +1170,10 @@ export const WMATA_STATION_MODELS: StationModel[] = [
   // confirmed directly).
   {
     systemId: SYSTEM,
-    stationExternalId: "B06_E06",
+    stationExternalId: "B06",
+    coveredStationExternalIds: ["B06", "E06"],
     note: "One elevator serves the entire station — street/mezzanine, the Red Line level, and the Green/Yellow Line level — with no backup. If it is out of service, no part of this station is step-free.",
-    internalNote: "GTFS models one elevator (B06X01) spanning 3 named levels (Street/Mezzanine, Lower Platform, Upper Platform); auto-generator couldn't confirm whether it's a genuine single shaft or a naming quirk hiding multiple elevators. Bryce confirmed 2026-07-16 it's genuinely one continuous shaft serving all 3 levels, sole access for the whole station. Never yet observed live; synthetic placeholder id. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 9/10).",
+    internalNote: "Canonical feed code B06 (covers E06) — the live incidents feed reports this station under single codes B06/E06, NOT the GTFS compound id B06_E06 (which is only the pathways generator's transfer-station namespace, and would never match an incident). GTFS models one elevator (B06X01) spanning 3 named levels (Street/Mezzanine, Lower Platform, Upper Platform); auto-generator couldn't confirm whether it's a genuine single shaft or a naming quirk hiding multiple elevators. Bryce confirmed 2026-07-16 it's genuinely one continuous shaft serving all 3 levels, sole access for the whole station. B06X01 is a real live-observed UnitName. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 9/10).",
     segments: [
       { id: "street-mezzanine-platform", label: "Street/mezzanine to platform (all levels)", elevators: [{ externalId: "B06X01", label: "Fort Totten elevator (serves all 3 levels: street/mezzanine, Red Line, Green/Yellow)" }] },
     ],
@@ -1327,7 +1328,8 @@ export const WMATA_STATION_MODELS: StationModel[] = [
   // internally).
   {
     systemId: SYSTEM,
-    stationExternalId: "A01_C01",
+    stationExternalId: "C01",
+    coveredStationExternalIds: ["A01", "C01"],
     chainLabel: " (Shady Grove-bound Red Line)",
     note: "Street to the Shady Grove-bound Red Line platform: one elevator, no backup. The mezzanine and this platform are the same level. If that elevator is out of service, this route is not step-free.",
     internalNote: "Real, live-observed id C01N01 (\"Elevator between street and mezzanine\") -- WMATA's own wording, confirmed by Bryce 2026-07-16 to land directly on the Shady Grove-bound platform (the upper level doubles as the mezzanine). Human-approved via /liftwatch-station-review 2026-07-16 (confidence 9/10).",
@@ -1337,7 +1339,8 @@ export const WMATA_STATION_MODELS: StationModel[] = [
   },
   {
     systemId: SYSTEM,
-    stationExternalId: "A01_C01",
+    stationExternalId: "C01",
+    coveredStationExternalIds: ["A01", "C01"],
     chainLabel: " (Blue/Orange/Silver)",
     note: "Street to the Blue/Orange/Silver platform: one elevator to the upper level, then one of two elevators down to the platform — either one keeps this leg step-free. The station stays step-free on this route as long as the street elevator and at least one of the two down elevators are working.",
     internalNote: "Shares the street<->mezzanine prerequisite with the Shady Grove-bound chain (C01N01). Lower-platform leg is a 2-way OR of WMATA's other two elevators, both landing on the same shared Blue/Orange/Silver platform: \"Elevator between upper platform to Shady Grove and lower platform for Blue/Orange Lines\" and \"Elevator between upper platform to Glenmont and lower platform for Blue/Orange Lines\" -- neither individually observed live, both synthetic. GTFS's N_ELE2/S_ELE1 id-to-description mapping is an arbitrary guess (doesn't affect correctness, both are in the OR group regardless). Confirmed by Bryce 2026-07-16 (confidence 9/10).",
@@ -1355,7 +1358,8 @@ export const WMATA_STATION_MODELS: StationModel[] = [
   },
   {
     systemId: SYSTEM,
-    stationExternalId: "A01_C01",
+    stationExternalId: "C01",
+    coveredStationExternalIds: ["A01", "C01"],
     chainLabel: " (Glenmont-bound Red Line)",
     note: "Street to the Glenmont-bound Red Line platform takes 3 elevators in a row: street to the upper level, down to the Blue/Orange/Silver platform, then back up to the Glenmont-bound platform on the opposite end. All 3 must be working, and none has a backup — the two ends of the upper platform aren't directly connected. If any one of the 3 is out of service, this route is not step-free.",
     internalNote: "Shares the street<->mezzanine prerequisite (C01N01) and both of the upper<->lower elevators with the other two chains, but here BOTH are required in series (down via one, back up via the other), not an OR -- the two ends of the upper Red Line platform aren't walkable to each other, confirmed by Bryce 2026-07-16. Confidence 9/10.",
@@ -1393,7 +1397,8 @@ export const WMATA_STATION_MODELS: StationModel[] = [
   // /liftwatch-station-review 2026-07-16 (confidence 8/10).
   {
     systemId: SYSTEM,
-    stationExternalId: "B01_F01",
+    stationExternalId: "B01",
+    coveredStationExternalIds: ["B01", "F01"],
     chainLabel: " (Glenmont-bound Red Line)",
     note: "Street to the Glenmont-bound Red Line platform: 2 elevators, embedded into Capital One Arena facing the National Portrait Gallery — either one keeps this route step-free. Only if both are out of service does this station lose step-free access on this route.",
     internalNote: "Real, live-observed id B01E02 (\"Elevator between street and platform to Glenmont\") + a 2nd, never yet observed synthetic id -- both at Capital One Arena facing the National Portrait Gallery (38.898045155641995, -77.02177530236538), per Bryce 2026-07-16. The upper level here doubles as the mezzanine, mirroring Metro Center's structure but with street surfacing at the Glenmont end instead of Shady Grove. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 8/10).",
@@ -1410,7 +1415,8 @@ export const WMATA_STATION_MODELS: StationModel[] = [
   },
   {
     systemId: SYSTEM,
-    stationExternalId: "B01_F01",
+    stationExternalId: "B01",
+    coveredStationExternalIds: ["B01", "F01"],
     chainLabel: " (Green/Yellow)",
     note: "Street to the Green/Yellow platform takes two elevators in a row (street to the Glenmont-bound platform, then down to the Green/Yellow platform) — the first leg has a backup, the second does not. If both street elevators are out, or the 2nd elevator is out of service, this route is not step-free.",
     internalNote: "Shares the redundant street<->Glenmont-platform pair (B01E02 + synthetic) with the Glenmont-bound chain. Second leg is the real, live-observed B01E03 (\"Elevator between platform for Green/Yellow lines and platform to Glenmont\"), sole access -- no other path down from street that doesn't go through the Glenmont-bound platform first. Confirmed by Bryce 2026-07-16 (confidence 8/10).",
@@ -1428,7 +1434,8 @@ export const WMATA_STATION_MODELS: StationModel[] = [
   },
   {
     systemId: SYSTEM,
-    stationExternalId: "B01_F01",
+    stationExternalId: "B01",
+    coveredStationExternalIds: ["B01", "F01"],
     chainLabel: " (Shady Grove-bound Red Line)",
     note: "Street to the Shady Grove-bound Red Line platform takes 3 elevators in a row: street to the Glenmont-bound platform, down to the Green/Yellow platform, then back up to the Shady Grove-bound platform on the opposite end. All 3 must be working (though the first leg has a backup) — the two ends of the upper platform aren't directly connected. If both street elevators are out, or either of the other two is out of service, this route is not step-free.",
     internalNote: "Shares the redundant street<->Glenmont-platform pair and the Glenmont<->Green/Yellow elevator (B01E03) with the other two chains, plus a 3rd leg: the real, live-observed B01E04 (\"Elevator between platform for Green/Yellow lines and platform to Shady Grove\"), sole access. Mirrors Metro Center's Glenmont-bound chain shape. Confirmed by Bryce 2026-07-16 (confidence 8/10).",
@@ -1654,7 +1661,8 @@ export const WMATA_STATION_MODELS: StationModel[] = [
   // 9/10 -- all 4 ids real/live-observed, structure confirmed directly).
   {
     systemId: SYSTEM,
-    stationExternalId: "D03_F03",
+    stationExternalId: "F03",
+    coveredStationExternalIds: ["D03", "F03"],
     chainLabel: " (Green/Yellow: Branch Ave/Huntington-bound)",
     note: "Street to the Branch Ave/Huntington-bound Green/Yellow platform takes two elevators in a row (street to mezzanine, then mezzanine to this platform) — both must be working, and neither has a backup. If either elevator is out of service, this route is not step-free.",
     internalNote: "Real, live-observed ids: F03N01 (\"Elevator between street and mezzanine\") + F03N02 (\"Elevator between mezzanine and platform to Branch Ave/Huntington\"). Confirmed by Bryce 2026-07-16 (confidence 9/10).",
@@ -1665,7 +1673,8 @@ export const WMATA_STATION_MODELS: StationModel[] = [
   },
   {
     systemId: SYSTEM,
-    stationExternalId: "D03_F03",
+    stationExternalId: "F03",
+    coveredStationExternalIds: ["D03", "F03"],
     chainLabel: " (Green/Yellow: Greenbelt/Mt Vernon Sq-bound)",
     note: "Street to the Greenbelt/Mt. Vernon Sq-bound Green/Yellow platform takes two elevators in a row (street to mezzanine, then mezzanine to this platform) — both must be working, and neither has a backup. If either elevator is out of service, this route is not step-free.",
     internalNote: "Shares the street<->mezzanine prerequisite (F03N01) with the Branch Ave/Huntington-bound chain. Real, live-observed id F03N03 (\"Elevator between mezzanine and platform to Greenbelt/Mt. Vernon Sq\"), sole access. Confirmed by Bryce 2026-07-16 (confidence 9/10).",
@@ -1676,7 +1685,8 @@ export const WMATA_STATION_MODELS: StationModel[] = [
   },
   {
     systemId: SYSTEM,
-    stationExternalId: "D03_F03",
+    stationExternalId: "F03",
+    coveredStationExternalIds: ["D03", "F03"],
     chainLabel: " (Blue/Orange/Silver)",
     note: "Street to the center Blue/Orange/Silver platform takes three elevators in a row (street to mezzanine, mezzanine to the Branch Ave/Huntington-bound Green/Yellow platform, then down to the Blue/Orange/Silver platform) — all three must be working, and none has a backup. If any one of the three is out of service, this route is not step-free.",
     internalNote: "Shares the street<->mezzanine prerequisite (F03N01) and the Branch Ave/Huntington-bound leg (F03N02) with that chain, plus a 3rd leg: the real, live-observed D03W04 (\"Elevator between mezzanine/upper platform to Branch Ave/Huntington and lower platform for Blue/Orange Lines,\" listed under WMATA's \"9th & D St (L'Enfant Plaza Entrance)\" heading) -- the ONLY connector down to the center platform, reachable only via the Branch Ave/Huntington side (the two Green/Yellow side platforms aren't directly connected). Confirmed by Bryce 2026-07-16 (confidence 9/10).",

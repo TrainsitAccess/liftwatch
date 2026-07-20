@@ -452,6 +452,29 @@ parking lot). A station is accessible only if **every** segment is up.
   relabel. Every WMATA elevator now carries a real UnitName except the
   Huntington inclinator (confirmed none exists) and K04's deliberately-
   unresolved through-shaft ambiguity.
+- **WMATA FINAL ACCURACY AUDIT (2026-07-20) — one real bug found + fixed.**
+  A fresh independent cross-check of every production model against every
+  ground-truth source (rider-tools inventory, observed-units, CIP), separate
+  from `check:wmata`'s self-check, is committed as `scripts/wmata-final-audit.mts`
+  (`npm run wmata:audit`). Result: 0 ghost ids, 0 under-warn gaps (all 253
+  rider-tools elevators modeled), 1 expected synthetic (the Huntington
+  inclinator) — and **one structural defect**: the 4 stacked-interchange
+  curated models (Metro Center, Gallery Place, Fort Totten, L'Enfant Plaza)
+  were keyed under the GTFS pathways generator's COMPOUND transfer-station id
+  (`A01_C01`, `B01_F01`, `B06_E06`, `D03_F03`). But the live incidents feed
+  reports every elevator under a real SINGLE code (`C01`, `B01`, `B06`,
+  `F03`/`D03`) — so `stationModelsFor(...).get(i.StationCode)` returned
+  nothing and these four busy interchanges' curated chains were **silently
+  bypassed at attribution AND display** (outages attributed `unmodeled`,
+  since 2026-07-17). Fix: re-keyed each to its canonical single feed code with
+  `coveredStationExternalIds` listing both real codes (`["A01","C01"]`, etc.),
+  and made the WMATA adapter resolve incidents via a covered-id-aware index
+  (`wmataModelsByFeedCode`, so L'Enfant's `D03W04` under the non-canonical
+  `D03` still finds its model). Regression locked in `check:wmata`
+  ("Merged-interchange feed-code lookup"). **Rule for any future WMATA
+  interchange model: use the real feed code(s), never the GTFS `X_Y` compound
+  id** — that id only exists in the pathways generator's namespace
+  (`chains-excluded.json`, `units.json`) and never appears in an incident.
 - **WMATA STATION REVIEW COMPLETE (2026-07-17): 42/42, every excluded
   station individually resolved with Bryce.** GTFS undercounted or
   corrupted more than the observed-units gate alone could catch — several

@@ -15,8 +15,15 @@ resolved all 13 Tier B stations where WMATA's Rider-Tools page structurally
 disagreed with the model. Every WMATA elevator now carries a real UnitName
 except the Huntington inclinator (confirmed none exists) and one deliberately
 open watch item (Ballston K04's Vienna-bound through-shaft — see below).
-**Primary next task: the broader station-review backlog** (TfL/CTA/MBTA/
-MTA-rail, table below) via `/liftwatch-station-review`.
+A **final independent accuracy audit (2026-07-20)** then cross-checked every
+model against every ground-truth source and found the models clean (0 ghost
+ids, all 253 rider-tools elevators modeled) EXCEPT one real bug — the 4
+stacked interchanges (Metro Center, Gallery Place, Fort Totten, L'Enfant) were
+keyed under the GTFS compound id (`A01_C01`…) the live feed never emits, so
+their curated chains were silently bypassed. **Fixed + regression-locked**
+(see the shipped-this-session section below). **Primary next task: the broader
+station-review backlog** (TfL/CTA/MBTA/MTA-rail, table below) via
+`/liftwatch-station-review`.
 
 ---
 
@@ -90,7 +97,39 @@ new stations.
 
 ---
 
-## What shipped this session (2026-07-20) — WMATA Tier B, all 13 stations resolved
+## What shipped this session (2026-07-20, later) — WMATA FINAL ACCURACY AUDIT + merged-station keying fix
+
+Bryce asked for one final, exhaustive accuracy check of the (nominally
+complete) DC Metro. Built an independent cross-check — `npm run wmata:audit`
+(`scripts/wmata-final-audit.mts`) — that re-derives from every ground-truth
+source (rider-tools inventory, observed-units, CIP), deliberately NOT reusing
+`check:wmata`'s self-check so it can catch shared blind spots. Verdict: models
+are accurate and complete — **0 ghost/typo ids, 0 under-warn gaps (all 253
+rider-tools elevators modeled), 1 expected synthetic (Huntington inclinator)** —
+with exactly **one structural defect found and fixed**:
+
+- The 4 stacked-interchange curated models (Metro Center, Gallery Place, Fort
+  Totten, L'Enfant Plaza) were keyed under the GTFS pathways generator's
+  COMPOUND transfer-station id (`A01_C01`, `B01_F01`, `B06_E06`, `D03_F03`).
+  The live incidents feed reports every elevator under a real SINGLE code
+  (`C01`, `B01`, `B06`, `F03`/`D03`), so `stationModelsFor(...).get(StationCode)`
+  returned nothing and these four busy interchanges' curated chains were
+  **silently bypassed at both attribution and the access board** — outages
+  there attributed `unmodeled` (assumed redundancy), a latent regression since
+  the 2026-07-17 review completion.
+- Fix: re-keyed each model to its canonical real feed code +
+  `coveredStationExternalIds` for both codes; made the WMATA adapter resolve
+  incidents via a covered-id-aware index (`wmataModelsByFeedCode`) so a unit
+  reported under a non-canonical covered code (L'Enfant's `D03W04` under `D03`)
+  still binds. Also fixed a stale Fort Totten `internalNote` (B06X01 called
+  "synthetic/never observed" — it's a real observed UnitName).
+- Regression locked in `check:wmata` ("Merged-interchange feed-code lookup",
+  5 asserts). typecheck + demo:access (69) + check:wmata (290) + wmata:audit
+  (0 errors) + poll:wmata:dry all green. **Convention recorded (CLAUDE.md /
+  SPEC.md): a WMATA interchange model keys on the real feed code, never the
+  GTFS `X_Y` compound id.**
+
+## What shipped this session (2026-07-20, earlier) — WMATA Tier B, all 13 stations resolved
 
 Picked up from the 2026-07-18 handoff via `/liftwatch-wmata-tier-b`. No
 station-review-queue progress this session — that backlog table below is

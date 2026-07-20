@@ -9,7 +9,7 @@ import { readFileSync } from "node:fs";
 import { allElevators, elevatorRedundant, stationAccessible, type StationModel } from "../lib/accessibility.js";
 import { WMATA_STATION_MODELS } from "../catalog/wmata-models.js";
 import { parseWmataLocation } from "../adapters/wmata/location.js";
-import { attributeWmataIncident, failSafeReasonNote } from "../adapters/wmata/index.js";
+import { attributeWmataIncident, failSafeReasonNote, wmataModelsByFeedCode } from "../adapters/wmata/index.js";
 
 const chains = JSON.parse(readFileSync(new URL("../catalog/wmata-data/chains.json", import.meta.url), "utf8")) as { models: StationModel[] };
 const excluded = JSON.parse(readFileSync(new URL("../catalog/wmata-data/chains-excluded.json", import.meta.url), "utf8")) as {
@@ -316,6 +316,33 @@ console.log("\n  Adapter attribution crosswalk (pure, against the committed mode
   ok(/refresh the WMATA model/.test(failSafeReasonNote(f)), "unmappable reason note names the refresh loop (rides ntfy)");
   ok(failSafeReasonNote(a) === "" && failSafeReasonNote(d) === "" && failSafeReasonNote(g) === "",
     "modeled / garage / unmodeled attributions add no reason note");
+}
+
+// Merged stacked-interchange stations (Metro Center, Gallery Place, Fort
+// Totten, L'Enfant Plaza) live under a canonical single feed code + covered
+// siblings. The live incidents feed reports their elevators under real single
+// codes — NEVER the GTFS compound id (A01_C01, …) — so the adapter must resolve
+// a feed code to the curated chains via wmataModelsByFeedCode, honoring
+// coveredStationExternalIds. Regression for the 2026-07-20 keying-mismatch bug:
+// before the fix these codes returned no model and the curated chains for four
+// of the busiest interchanges were silently bypassed (attributed "unmodeled").
+console.log("\n  Merged-interchange feed-code lookup (curated chains must resolve by the live feed's real codes):");
+{
+  const byCode = wmataModelsByFeedCode("wmata-dc");
+  const attrBy = (code: string, unit: string, loc: string) => attributeWmataIncident(unit, loc, byCode.get(code) ?? []);
+  const mc = attrBy("C01", "C01N02", "Elevator between upper platform to Shady Grove and lower platform for Blue/Orange Lines");
+  ok(mc.kind === "modeled", "Metro Center C01N02 attributes as modeled via feed code C01 (not the GTFS id A01_C01)");
+  const gp = attrBy("B01", "B01E03", "Elevator between platform for Green/Yellow lines and platform to Glenmont");
+  ok(gp.kind === "modeled", "Gallery Place B01E03 attributes as modeled via feed code B01");
+  const ft = attrBy("B06", "B06X01", "Elevator between mezzanine and platform");
+  ok(ft.kind === "modeled", "Fort Totten B06X01 attributes as modeled via feed code B06");
+  const le = attrBy("F03", "F03N02", "Elevator between mezzanine and platform to Branch Ave/Huntington");
+  ok(le.kind === "modeled", "L'Enfant F03N02 attributes as modeled via feed code F03");
+  // The subtle case: D03W04 is one physical L'Enfant elevator the feed reports
+  // under D03, a NON-canonical covered code — the covered-id index is what makes
+  // this resolve at all.
+  const leD03 = attrBy("D03", "D03W04", "Elevator between mezzanine/upper platform to Branch Ave/Huntington and lower platform for Blue/Orange Lines");
+  ok(leD03.kind === "modeled", "L'Enfant D03W04 attributes as modeled via NON-canonical covered code D03");
 }
 
 console.log("\n  Model hygiene:");

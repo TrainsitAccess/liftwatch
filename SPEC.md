@@ -1016,6 +1016,27 @@ Every WMATA elevator now carries a real UnitName station-for-station against
 the page, except the Huntington inclinator (confirmed to have none) and K04's
 deliberately-unresolved through-shaft ambiguity.
 
+**Final accuracy audit (2026-07-20) — merged-station keying bug fixed.** An
+independent cross-check of every production model against every ground-truth
+source (`npm run wmata:audit`, `scripts/wmata-final-audit.mts`) came back clean
+except for one structural defect: the four stacked-interchange curated models
+(Metro Center, Gallery Place, Fort Totten, L'Enfant Plaza) had been keyed under
+the GTFS pathways generator's COMPOUND transfer-station id (`A01_C01`,
+`B01_F01`, `B06_E06`, `D03_F03`). That id is the generator's own namespace and
+never appears in the live incidents feed, which reports each elevator under a
+real SINGLE code — so the adapter's `stationModelsFor(...).get(i.StationCode)`
+found no model and these four busy interchanges' curated chains were silently
+bypassed for both attribution and the access board (every outage there
+attributed `unmodeled` from 2026-07-17 until this fix). Corrected by re-keying
+each model to its canonical real feed code plus `coveredStationExternalIds`
+(e.g. Metro Center → `C01`, covers `["A01","C01"]`; L'Enfant → `F03`, covers
+`["D03","F03"]`), and by making the WMATA adapter resolve incidents through a
+covered-id-aware index (`wmataModelsByFeedCode`) so an elevator reported under a
+non-canonical covered code (L'Enfant's `D03W04` under `D03`) still binds. The
+`check:wmata` "Merged-interchange feed-code lookup" block is the regression.
+**Convention going forward: a WMATA interchange model keys on the real feed
+code(s), never the GTFS `X_Y` compound id.**
+
 ### TfL feeds (in use) — real per-lift inventory, real topology-derived redundancy
 
 The richest system yet: a genuine per-lift inventory (569 lifts, 201/509

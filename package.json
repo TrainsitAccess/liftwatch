@@ -51,6 +51,7 @@
     "check:mbta-chains": "tsx src/checks/mbta-chains-check.ts",
     "wmata:observed": "tsx scripts/wmata-observed.mts",
     "check:wmata": "tsx src/checks/wmata-check.ts",
+    "wmata:audit": "tsx scripts/wmata-final-audit.mts",
     "cta:observed": "tsx scripts/cta-observed.mts",
     "check:cta": "tsx src/checks/cta-check.ts",
     "review:queue": "tsx scripts/review-queue.mts",

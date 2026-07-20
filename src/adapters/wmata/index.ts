@@ -2,7 +2,7 @@ import type { Adapter, NormalizedOutage, NormalizedRead, NormalizedStation, Norm
 import { nowUtcIso, parseIsoLocalToUtcIso } from "../../lib/time.js";
 import { stationModelsFor } from "../../catalog/station-models.js";
 import { WMATA_STATION_MODELS } from "../../catalog/wmata-models.js";
-import { allElevators, elevatorRedundant, type StationModel } from "../../lib/accessibility.js";
+import { allElevators, coveredStationIds, elevatorRedundant, type StationModel } from "../../lib/accessibility.js";
 import { parseWmataLocation, segmentIdsForPair } from "./location.js";
 import type { WmataIncidentsResponse, WmataStationsResponse } from "./raw.js";
 
@@ -77,6 +77,35 @@ export function failSafeReasonNote(attr: WmataAttribution): string {
 }
 
 /** Attribute one live incident against the station's models. Pure — offline-testable (check:wmata). */
+/**
+ * Resolve a WMATA feed StationCode to its curated chains.
+ *
+ * A model may subsume several feed codes: a stacked interchange like Metro
+ * Center (A01 Red + C01 Blue/Orange/Silver) or L'Enfant Plaza (D03 + F03) is
+ * ONE physical station whose elevators the live feed reports under whichever
+ * single code they sit on. The model lives under a canonical single code and
+ * lists the rest in coveredStationExternalIds — so we must index by EVERY
+ * covered code, not just the canonical stationExternalId, or an incident
+ * reported under a non-canonical code (e.g. L'Enfant's D03W04 under "D03")
+ * would find no model and the curated chain would be silently bypassed.
+ *
+ * (Do NOT fold this into stationModelsFor: build-site-data flattens its
+ * .values(), so multi-keying there would double-count a merged model.)
+ */
+export function wmataModelsByFeedCode(systemId: string): Map<string, StationModel[]> {
+  const byCode = new Map<string, StationModel[]>();
+  for (const chains of stationModelsFor(systemId).values()) {
+    for (const model of chains) {
+      for (const code of coveredStationIds(model)) {
+        const list = byCode.get(code) ?? [];
+        if (!list.includes(model)) list.push(model);
+        byCode.set(code, list);
+      }
+    }
+  }
+  return byCode;
+}
+
 export function attributeWmataIncident(unitName: string, location: string, chains: StationModel[]): WmataAttribution {
   if (!chains.length) {
     // Un-modeled station — garage units are still recognizable (roster clarity).
@@ -148,7 +177,7 @@ export function createWmataAdapter(config: WmataConfig = WMATA_CONFIG): Adapter 
       // attributed against the station models (see header). Station name comes
       // from jStations (incident StationName is decorated with entrance
       // detail); fall back to the incident text before the comma.
-      const models = stationModelsFor(config.systemId);
+      const models = wmataModelsByFeedCode(config.systemId);
       const units: NormalizedUnit[] = [];
       const outages: NormalizedOutage[] = [];
       for (const i of elevatorIncidents) {
