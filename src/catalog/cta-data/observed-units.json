@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-19T11:34:27.022Z",
+  "updatedAt": "2026-07-20T12:28:13.992Z",
   "note": "Every CTA elevator identity ever observed (archive + live alert texts, parsed by src/adapters/cta/location.ts). Grows only. Regression fixture for check:cta and the curation aid for a future chains pass.",
   "units": [
     {
@@ -170,7 +170,8 @@
       "unitId": "40510-HARLEM-BOUND",
       "stationId": "40510",
       "texts": [
-        "Elevator at 47th Temporarily Out-of-Service — The Harlem-bound platform elevator at 47th (Green Line) is temporarily out-of-service."
+        "Elevator at 47th Temporarily Out-of-Service — The Harlem-bound platform elevator at 47th (Green Line) is temporarily out-of-service.",
+        "Elevator at Garfield Temporarily Out-of-Service — The Harlem-bound platform elevator at Garfield (Green Line) is temporarily out-of-service."
       ],
       "firstObserved": "2026-07-11T09:36:48.358+00:00"
     },
@@ -402,6 +403,15 @@
         "Elevator at Roosevelt Temporarily Out-of-Service — The transfer tunnel elevator at Roosevelt (Red, Orange and Green Lines) is temporarily out-of-service."
       ],
       "firstObserved": "2026-07-08T18:20:53.877+00:00"
+    },
+    {
+      "unitId": "41420",
+      "stationId": "41420",
+      "texts": [
+        "Elevator at Addison Temporarily Out-of-Service — The elevator at Addison (Red Line) is temporarily out-of-service",
+        "Elevator at Addison Temporarily Out-of-Service — The elevator at Addison (Red Line) is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-07-19T20:48:55.899+00:00"
     },
     {
       "unitId": "41430",

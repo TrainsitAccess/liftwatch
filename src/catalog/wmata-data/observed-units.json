@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-19T11:34:25.920Z",
+  "updatedAt": "2026-07-20T12:28:12.542Z",
   "note": "Every WMATA elevator UnitName ever observed (archive + live feed). Grows only. Consumed by scripts/wmata-pathways.mts as an undercount/vocabulary gate.",
   "units": [
     {
@@ -135,6 +135,12 @@
       "firstObserved": "2026-07-05T17:09:41.228717+00:00"
     },
     {
+      "unitName": "B11X02",
+      "stationCode": "B11",
+      "location": "Elevator between street and mezzanine, west side of station at Kiss & Ride",
+      "firstObserved": "2026-07-20T11:06:42.52211+00:00"
+    },
+    {
       "unitName": "B11X03",
       "stationCode": "B11",
       "location": "Elevator between mezzanine and platform",
@@ -175,6 +181,12 @@
       "stationCode": "C01",
       "location": "Elevator between street and mezzanine",
       "firstObserved": "2026-07-05T00:16:15.96259+00:00"
+    },
+    {
+      "unitName": "C02E01",
+      "stationCode": "C02",
+      "location": "Elevator between street and mezzanine",
+      "firstObserved": "2026-07-19T17:16:02.343861+00:00"
     },
     {
       "unitName": "C02E02",

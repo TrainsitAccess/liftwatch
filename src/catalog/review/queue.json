@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-19T11:34:34.727Z",
+ "updatedAt": "2026-07-20T12:28:20.773Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -1403,6 +1403,10 @@
     {
      "source": "GTFS roster",
      "text": "WMATA-C02_E_MZ_ELE: Street ↔ Mezzanine"
+    },
+    {
+     "source": "live feed (observed)",
+     "text": "C02E01: \"Elevator between street and mezzanine\""
     },
     {
      "source": "live feed (observed)",
@@ -4580,6 +4584,10 @@
      "text": "Elevator at 47th Temporarily Out-of-Service — The Harlem-bound platform elevator at 47th (Green Line) is temporarily out-of-service."
     },
     {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Garfield Temporarily Out-of-Service — The Harlem-bound platform elevator at Garfield (Green Line) is temporarily out-of-service."
+    },
+    {
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **40510 \"Garfield\" quirk** — the feed attached a \"Garfield (Red Line)\" alert to 40510, which is GREEN Garfield's station id (Red Garfield is 41170). Red Garfield: island, elevator added in south Red upgrades. Green Garfield: 1994-96 rebuild w/ elevators. ⚠ CTA's ServiceId labeling is unreliable for same-name stations — treat cross-name alerts at 40510/41170 with suspicion; the HARLEM-BOUND observed unit under 40510 is Green-consistent, the vague \"Garfield (Red)\" text is not. Flag any future recurrence. ## Suggested verification order (value ÷ effort) 1. **Cermak-McCormick Place** — likely CTA's only clean redundant pair; one station, huge payoff (a REDUCED state instead of NO ACCESS). 2. **The Brown Line B-archetype batch** (Diversey/Addison/Montrose/Western/ Chicago) — five near-identical per-direction stations, one pattern decision. 3. **Grand / Jackson×2 / Roosevelt** — subway series-chains, WMATA-E01 shape. 4. **43rd + Ashland + Conservatory + California** — the transfer-bridge cross-redundancy question (one answer covers four stations). 5. **King Drive + Cottage Grove** — needs the boarding-vs-exiting policy call. 6. Islands (Archetype A) — simple, but verify single-elevator assumption. 7. Clark/Lake, Howard, Wilson, 95th — true interchange tier, walkthrough each."
     }
@@ -4999,6 +5007,25 @@
     "notes": "Bryce asked to research whether any Red-Purple Modernization (RPM) stations got redundant elevator pairs. Researched all 4 RPM Phase One stations (Lawrence, Argyle, Berwyn, Bryn Mawr); only Bryn Mawr has a genuine pair (Hollywood Ave entrance's own elevator, same island platform as the main entrance's). Confidence 9/10 on structure. Approved to pre-model ahead of any live outage (0/10 live confirmation of either specific unit id — both ids are synthetic placeholders, promotable once observed) so the station's first-ever elevator outage doesn't read as a false NO_ACCESS. Implemented in src/catalog/cta-models.ts. Lawrence/Argyle/Berwyn confirmed single-elevator, no change needed there.",
     "date": "2026-07-16"
    }
+  },
+  {
+   "key": "cta:41420",
+   "system": "cta-chicago",
+   "stationId": "41420",
+   "name": "Addison",
+   "status": "pending",
+   "priority": 50,
+   "reason": "no chains modeled (no agency inventory — text-identity only)",
+   "evidence": [
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Addison Temporarily Out-of-Service — The elevator at Addison (Red Line) is temporarily out-of-service"
+    },
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Addison Temporarily Out-of-Service — The elevator at Addison (Red Line) is temporarily out-of-service."
+    }
+   ]
   },
   {
    "key": "cta:41430",
