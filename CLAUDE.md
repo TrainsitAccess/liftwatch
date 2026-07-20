@@ -3,6 +3,12 @@
 Working notes for this codebase. **`SPEC.md` is the source of truth for design and
 decisions**; this file is the operational summary + conventions + gotchas.
 
+**Before adding, modeling, or auditing ANY system, read `MODELING-PLAYBOOK.md`**
+(repo root) — the system-agnostic distillation of everything the nine systems
+(esp. the full DC Metro arc) taught us: how feeds/systems work, how stations &
+elevators work, how models encode it, and the processing/review/audit workflows.
+Per-system field guides (e.g. `wmata-data/WMATA-STATION-GUIDE.md`) specialize it.
+
 ## What this is
 
 Monitors public-transit **elevator** outages worldwide, archives them over time,
