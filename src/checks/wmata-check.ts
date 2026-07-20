@@ -234,6 +234,34 @@ console.log("\n  Tier B Group B (2026-07-18): model-vs-page conflicts resolved w
   ok(elevatorRedundant(c15, "C15N01") && elevatorRedundant(c15, "WMATA-C15_S_ELE2"), "C15 Huntington: elevator + inclinator still mutually redundant");
 }
 
+console.log("\n  Tier B Group C (2026-07-18): C11 Potomac Yard direction-grouping fix + C06 Arlington Cemetery relabel:");
+{
+  const c11chains = WMATA_STATION_MODELS.filter((m) => m.stationExternalId === "C11");
+  ok(c11chains.length === 2, "C11 Potomac Yard: two chains (was two, but wrongly split by destination instead of platform)");
+  const c11Labels = c11chains.map((c) => c.chainLabel);
+  ok(c11Labels.some((l) => l?.includes("Franconia-Springfield")), "C11: Franconia-Springfield/Huntington-bound chain now exists (previously missing entirely)");
+  ok(c11Labels.some((l) => l?.includes("Downtown Largo")), "C11: Downtown Largo/Mt. Vernon Sq-bound chain (both destinations on one platform, not split)");
+  const c11North = c11chains.find((c) => c.chainLabel?.includes("Downtown Largo"))!;
+  const c11South = c11chains.find((c) => c.chainLabel?.includes("Franconia-Springfield"))!;
+  const c11NorthStreet = c11North.segments.find((s) => s.id === "street-mezzanine")!.elevators.map((e) => e.externalId).sort();
+  const c11SouthStreet = c11South.segments.find((s) => s.id === "street-mezzanine")!.elevators.map((e) => e.externalId).sort();
+  ok(c11NorthStreet.join(",") === "C11X01,C11X02,C11X03,C11X04,C11X05,C11X06", "C11: shared 6-way entrance OR group, real page ids");
+  ok(c11NorthStreet.join(",") === c11SouthStreet.join(","), "C11: both platform-direction chains share the same entrance elevators");
+  const c11NorthPlat = c11North.segments.find((s) => s.id === "mezzanine-platform")!.elevators.map((e) => e.externalId).sort();
+  const c11SouthPlat = c11South.segments.find((s) => s.id === "mezzanine-platform")!.elevators.map((e) => e.externalId).sort();
+  ok(c11NorthPlat.join(",") === "C11X07,C11X08", "C11: Downtown Largo/Mt. Vernon Sq platform pair is C11X07/X08");
+  ok(c11SouthPlat.join(",") === "C11X09,C11X10", "C11: Franconia-Springfield/Huntington platform pair is C11X09/X10 (the previously-missing platform)");
+  ok(elevatorRedundant(c11South, "C11X09") && elevatorRedundant(c11South, "C11X10"), "C11: Franconia-Springfield/Huntington platform pair mutually redundant");
+
+  const c06chains = WMATA_STATION_MODELS.filter((m) => m.stationExternalId === "C06");
+  ok(c06chains.length === 2, "C06 Arlington Cemetery: two chains");
+  ok(!c06chains.some((c) => c.chainLabel?.includes("East") || c.chainLabel?.includes("West")), "C06: guessed East/West compass labels removed");
+  const c06Franconia = c06chains.find((c) => c.chainLabel?.includes("Franconia-Springfield"))!;
+  const c06Largo = c06chains.find((c) => c.chainLabel?.includes("Largo Town Center"))!;
+  ok(allElevators(c06Franconia).map((e) => e.externalId).join(",") === "C06X01", "C06: Franconia-Springfield-bound chain uses real id C06X01");
+  ok(allElevators(c06Largo).map((e) => e.externalId).join(",") === "C06X02", "C06: Largo Town Center-bound chain uses real id C06X02");
+}
+
 console.log("\n  Rockville hand model (human-confirmed 2026-07-13 — the bridge pair must be conveyed):");
 {
   const a14 = WMATA_STATION_MODELS.filter((m) => m.stationExternalId === "A14");

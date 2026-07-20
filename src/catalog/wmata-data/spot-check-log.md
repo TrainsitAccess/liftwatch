@@ -20,6 +20,42 @@ Driven by `/liftwatch-wmata-spot-check`._
 
 ## Notes
 
+- **Tier B Group C: C11 Potomac Yard direction-grouping fix + C06 Arlington
+  Cemetery relabel (2026-07-18, `/liftwatch-wmata-tier-b`) — TIER B COMPLETE,
+  all 13 stations resolved.**
+  - **C11 Potomac Yard** — real structural bug, confirmed by Bryce. WMATA's
+    page groups the 4 platform elevators by DESTINATION-PAIR, not opposite
+    direction: C11X07/X08 serve "Downtown Largo AND Mt. Vernon Sq platform"
+    (one platform), C11X09/X10 serve "Franconia-Springfield AND Huntington
+    platform" (the other). The prior model wrongly split Largo vs Mt. Vernon
+    Sq as if opposite directions and had NO chain at all for the real
+    Franconia-Springfield/Huntington platform — a genuine coverage gap, not
+    just a label issue. Also corrected an assumption made while proposing the
+    fix: this is NOT a single island platform, it's two separate SIDE
+    platforms — Bryce confirmed directly. That correction didn't change the
+    shape, though: shared street→mezzanine entrance bank (6-way OR — C11X01/
+    X02 bus-bay pair serving BOTH North and South Pavilion per WMATA's page,
+    C11X03/X04 South Pavilion, C11X05/X06 Potomac Greens) feeding two
+    separate per-platform redundant pairs is exactly the standard WMATA
+    shared-prerequisite side-platform shape (Dupont Circle/McPherson Sq
+    pattern) already used station-wide. All 10 synthetic ids promoted to real
+    page UnitNames. Confidence 8/10.
+  - **C06 Arlington Cemetery** — trivial relabel, Bryce approved. Guessed
+    "(East)"/"(West)" compass labels replaced with WMATA's own destination
+    names ("(Franconia-Springfield-bound)"/"(Largo Town Center-bound)");
+    synthetic ids promoted to real C06X01/C06X02. Neither id was ever
+    observed live, so this carried no correctness risk either way — pure
+    clarity improvement. Confidence 8/10.
+  `check:wmata` extended with a "Tier B Group C" regression block (12
+  checks). `demo:access` (69 checks) + `check:wmata` both green.
+
+  **All 13 Tier B stations are now resolved** (7 Silver Line median stations
+  + B35/F08/K04/C15 + C11/C06). Every WMATA elevator now carries a real
+  UnitName except the Huntington inclinator (confirmed to have none) and
+  K04's still-ambiguous through-shaft (deliberately left unresolved, watch
+  item open). The model now matches WMATA's own Rider-Tools inventory
+  station-for-station.
+
 - **Tier B Group B: model-vs-page conflicts resolved (2026-07-18,
   `/liftwatch-wmata-tier-b`)** — 4 stations where WMATA's page structurally
   disagreed with the model, resolved with Bryce's direct ground truth

@@ -88,33 +88,34 @@ export const WMATA_STATION_MODELS: StationModel[] = [
     ],
   },
   // Arlington Cemetery (C06, Blue Line) — Batch 3, Group 1 (direct
-  // street<->platform, per direction, no mezzanine level). Neither elevator
-  // has ever been observed live.
+  // street<->platform, per direction, no mezzanine level). Relabeled
+  // 2026-07-18 (/liftwatch-wmata-tier-b) from guessed compass directions to
+  // WMATA's own destination names; ids promoted to real page UnitNames.
   {
     systemId: SYSTEM,
     stationExternalId: "C06",
-    chainLabel: " (East)",
-    note: "Street to the East platform: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
-    internalNote: "Never yet observed live; synthetic GTFS slot id, promotable to a real UnitName once observed (same pattern as Rockville/A14). Human-approved as Batch 3 via /liftwatch-station-review 2026-07-15 (no redundancy claimed anywhere in this batch — every chain is a straight AND of single-elevator legs, the same shape as WMATA's ~55 already-shipped auto-generated stations).",
+    chainLabel: " (Franconia-Springfield-bound)",
+    note: "Street to the Franconia-Springfield-bound platform: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "RELABELED + PROMOTED 2026-07-18 (/liftwatch-wmata-tier-b): the prior model used guessed compass directions ('East'/'West') with no destination attached; WMATA's Rider-Tools page names this chain's elevator by destination instead (C06X01, 'Elevator between mezzanine and platform to Franconia Springfield'). Side-platform station -- each direction has its own sole platform elevator, no cross-direction redundancy. Neither id was ever observed live before this promotion, so the E/W-to-destination pairing carried no independent evidence either way; this is a clean relabel, not a correctness fix. Confidence 8/10 (WMATA's own inventory).",
     segments: [
       {
         id: "street-platform",
-        label: "Street to the East platform",
-        elevators: [{ externalId: "WMATA-C06_E_ELE", label: "Arlington Cemetery East elevator (street to platform) — never yet observed live, synthetic id" }],
+        label: "Street to the Franconia-Springfield-bound platform",
+        elevators: [{ externalId: "C06X01", label: "Arlington Cemetery elevator (street to Franconia-Springfield-bound platform)" }],
       },
     ],
   },
   {
     systemId: SYSTEM,
     stationExternalId: "C06",
-    chainLabel: " (West)",
-    note: "Street to the West platform: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
-    internalNote: "Never yet observed live; synthetic GTFS slot id, promotable to a real UnitName once observed (same pattern as Rockville/A14). Human-approved as Batch 3 via /liftwatch-station-review 2026-07-15 (no redundancy claimed anywhere in this batch — every chain is a straight AND of single-elevator legs, the same shape as WMATA's ~55 already-shipped auto-generated stations).",
+    chainLabel: " (Largo Town Center-bound)",
+    note: "Street to the Largo Town Center-bound platform: one elevator, no backup. If that elevator is out of service, this route is not step-free.",
+    internalNote: "RELABELED + PROMOTED 2026-07-18 (/liftwatch-wmata-tier-b): WMATA's Rider-Tools page names this chain's elevator by destination (C06X02, 'Elevator between mezzanine and platform to Largo Town Center'). Side-platform station -- each direction has its own sole platform elevator, no cross-direction redundancy. Confidence 8/10 (WMATA's own inventory).",
     segments: [
       {
         id: "street-platform",
-        label: "Street to the West platform",
-        elevators: [{ externalId: "WMATA-C06_W_ELE", label: "Arlington Cemetery West elevator (street to platform) — never yet observed live, synthetic id" }],
+        label: "Street to the Largo Town Center-bound platform",
+        elevators: [{ externalId: "C06X02", label: "Arlington Cemetery elevator (street to Largo Town Center-bound platform)" }],
       },
     ],
   },
@@ -1030,28 +1031,28 @@ export const WMATA_STATION_MODELS: StationModel[] = [
   {
     systemId: SYSTEM,
     stationExternalId: "C11",
-    chainLabel: " (Downtown Largo-bound)",
-    note: "Street to the Downtown Largo-bound platform: 3 entrances (North Pavilion, South Pavilion, Potomac Greens), each with 2 elevators — any one keeps street access step-free — then 2 more elevators to the platform, either one of which keeps that leg step-free. The station stays step-free on this route as long as at least one street-entrance elevator and at least one platform elevator are working.",
-    internalNote: "Shared street-to-mezzanine prerequisite (6-way OR across 3 entrances x 2 elevators each) feeding a per-direction platform leg (2-way OR, both elevators together on the platform's far north side) -- WMATA shared-prerequisite shape (same pattern as Grand/CTA, Mt Vernon Sq/WMATA). All 10 station elevators are synthetic; station opened 2023 and has had no live outage yet. Station signage labels this platform's elevators \"7\"; Bryce is not certain that number maps onto WMATA's own unit-id scheme. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 9/10).",
+    chainLabel: " (Downtown Largo/Mt. Vernon Sq-bound)",
+    note: "Street to the Downtown Largo/Mt. Vernon Sq-bound platform: 3 entrances (North Pavilion, South Pavilion, Potomac Greens), each with 2 elevators — any one keeps street access step-free — then 2 more elevators to this platform, either one of which keeps that leg step-free. The station stays step-free on this route as long as at least one street-entrance elevator and at least one of this platform's elevators are working.",
+    internalNote: "RE-MODELED 2026-07-18 (/liftwatch-wmata-tier-b): WMATA's Rider-Tools page groups the platform elevators by DESTINATION-PAIR, not by opposite direction -- C11X07/X08 serve 'the Downtown Largo AND Mt. Vernon Sq platform' (one platform; both destinations are reached the same way from here), C11X09/X10 serve 'the Franconia-Springfield AND Huntington platform' (the OTHER platform). The prior model wrongly split Largo vs Mt. Vernon Sq as if they were opposite directions and had NO chain at all for the real Franconia-Springfield/Huntington platform -- a real coverage gap, not just a label issue. Bryce corrected a further assumption 2026-07-18: this is NOT a single island platform -- it's two separate SIDE platforms, each with its own redundant elevator pair (matching WMATA's own destination-pair grouping exactly) -- the standard shared-street-entrance + per-platform-leg shape used station-wide (Dupont Circle/McPherson Sq pattern). Shared street->mezzanine prerequisite (6-way OR across 3 entrances x 2 elevators each -- C11X01/X02 bus-bay pair serves BOTH North and South Pavilion per WMATA's page, C11X03/X04 South Pavilion, C11X05/X06 Potomac Greens) feeding this platform's own redundant pair. All 10 real page ids (promoted from synthetic placeholders); station opened 2023, no live outage yet, so none independently observed. Confidence 8/10 (WMATA's own inventory + Bryce's structural correction).",
     segments: [
       {
         id: "street-mezzanine",
         label: "Street to mezzanine",
         elevators: [
-          { externalId: "WMATA-C11_NPAV_ELV1", label: "Potomac Yard North Pavilion entrance elevator — never yet observed live, synthetic id" },
-          { externalId: "WMATA-C11_NPAV_ELV2", label: "Potomac Yard North Pavilion entrance elevator — never yet observed live, synthetic id" },
-          { externalId: "WMATA-C11_SPAV_ELV1", label: "Potomac Yard South Pavilion entrance elevator — never yet observed live, synthetic id" },
-          { externalId: "WMATA-C11_SPAV_ELV2", label: "Potomac Yard South Pavilion entrance elevator — never yet observed live, synthetic id" },
-          { externalId: "WMATA-C11_PG_ELV1", label: "Potomac Yard Potomac Greens entrance elevator — never yet observed live, synthetic id" },
-          { externalId: "WMATA-C11_PG_ELV2", label: "Potomac Yard Potomac Greens entrance elevator — never yet observed live, synthetic id" },
+          { externalId: "C11X01", label: "Potomac Yard North/South Pavilion bus-bay elevator (street to mezzanine)" },
+          { externalId: "C11X02", label: "Potomac Yard North/South Pavilion bus-bay elevator (street to mezzanine)" },
+          { externalId: "C11X03", label: "Potomac Yard South Pavilion entrance elevator (street to mezzanine)" },
+          { externalId: "C11X04", label: "Potomac Yard South Pavilion entrance elevator (street to mezzanine)" },
+          { externalId: "C11X05", label: "Potomac Yard Potomac Greens entrance elevator (street to mezzanine)" },
+          { externalId: "C11X06", label: "Potomac Yard Potomac Greens entrance elevator (street to mezzanine)" },
         ],
       },
       {
         id: "mezzanine-platform",
-        label: "Mezzanine to Downtown Largo-bound platform",
+        label: "Mezzanine to Downtown Largo/Mt. Vernon Sq-bound platform",
         elevators: [
-          { externalId: "WMATA-C11_LARGO_ELV1", label: "Potomac Yard Downtown Largo-bound platform elevator (far north side, station-signed \"7\") — never yet observed live, synthetic id" },
-          { externalId: "WMATA-C11_LARGO_ELV2", label: "Potomac Yard Downtown Largo-bound platform elevator (far north side, station-signed \"7\") — never yet observed live, synthetic id" },
+          { externalId: "C11X07", label: "Potomac Yard elevator (mezzanine to the Downtown Largo/Mt. Vernon Sq-bound platform)" },
+          { externalId: "C11X08", label: "Potomac Yard elevator (mezzanine to the Downtown Largo/Mt. Vernon Sq-bound platform)" },
         ],
       },
     ],
@@ -1059,28 +1060,28 @@ export const WMATA_STATION_MODELS: StationModel[] = [
   {
     systemId: SYSTEM,
     stationExternalId: "C11",
-    chainLabel: " (Mount Vernon Sq-bound)",
-    note: "Street to the Mount Vernon Sq-bound platform: 3 entrances (North Pavilion, South Pavilion, Potomac Greens), each with 2 elevators — any one keeps street access step-free — then 2 more elevators to the platform, either one of which keeps that leg step-free. The station stays step-free on this route as long as at least one street-entrance elevator and at least one platform elevator are working.",
-    internalNote: "Shares the street-to-mezzanine prerequisite with the Downtown Largo-bound chain (same physical units, same synthetic ids in both chains -- an outage on one severs BOTH directions, which is the real structure). Per-direction platform leg is its own redundant pair (far north side of this platform). Station signage labels this platform's elevators \"8\"; Bryce is not certain that number maps onto WMATA's own unit-id scheme. Human-approved via /liftwatch-station-review 2026-07-16 (confidence 9/10).",
+    chainLabel: " (Franconia-Springfield/Huntington-bound)",
+    note: "Street to the Franconia-Springfield/Huntington-bound platform: 3 entrances (North Pavilion, South Pavilion, Potomac Greens), each with 2 elevators — any one keeps street access step-free — then 2 more elevators to this platform, either one of which keeps that leg step-free. The station stays step-free on this route as long as at least one street-entrance elevator and at least one of this platform's elevators are working.",
+    internalNote: "ADDED 2026-07-18 (/liftwatch-wmata-tier-b): the real 2nd platform direction, missing entirely from the prior model (which only covered the Downtown Largo/Mt. Vernon Sq platform, split incorrectly into two false directions -- see that chain's note for the full writeup). Shares the same street->mezzanine prerequisite (same 6 physical units, same real ids in both chains -- an outage on any one only reduces the OR group, doesn't sever access unless all 6 are down). Platform leg: real page ids C11X09/X10 ('mezzanine and Franconia-Springfield and Huntington platform'), a redundant pair on this station's second, separate side platform. Confidence 8/10.",
     segments: [
       {
         id: "street-mezzanine",
         label: "Street to mezzanine",
         elevators: [
-          { externalId: "WMATA-C11_NPAV_ELV1", label: "Potomac Yard North Pavilion entrance elevator — never yet observed live, synthetic id" },
-          { externalId: "WMATA-C11_NPAV_ELV2", label: "Potomac Yard North Pavilion entrance elevator — never yet observed live, synthetic id" },
-          { externalId: "WMATA-C11_SPAV_ELV1", label: "Potomac Yard South Pavilion entrance elevator — never yet observed live, synthetic id" },
-          { externalId: "WMATA-C11_SPAV_ELV2", label: "Potomac Yard South Pavilion entrance elevator — never yet observed live, synthetic id" },
-          { externalId: "WMATA-C11_PG_ELV1", label: "Potomac Yard Potomac Greens entrance elevator — never yet observed live, synthetic id" },
-          { externalId: "WMATA-C11_PG_ELV2", label: "Potomac Yard Potomac Greens entrance elevator — never yet observed live, synthetic id" },
+          { externalId: "C11X01", label: "Potomac Yard North/South Pavilion bus-bay elevator (street to mezzanine)" },
+          { externalId: "C11X02", label: "Potomac Yard North/South Pavilion bus-bay elevator (street to mezzanine)" },
+          { externalId: "C11X03", label: "Potomac Yard South Pavilion entrance elevator (street to mezzanine)" },
+          { externalId: "C11X04", label: "Potomac Yard South Pavilion entrance elevator (street to mezzanine)" },
+          { externalId: "C11X05", label: "Potomac Yard Potomac Greens entrance elevator (street to mezzanine)" },
+          { externalId: "C11X06", label: "Potomac Yard Potomac Greens entrance elevator (street to mezzanine)" },
         ],
       },
       {
         id: "mezzanine-platform",
-        label: "Mezzanine to Mount Vernon Sq-bound platform",
+        label: "Mezzanine to Franconia-Springfield/Huntington-bound platform",
         elevators: [
-          { externalId: "WMATA-C11_MTVERNON_ELV1", label: "Potomac Yard Mount Vernon Sq-bound platform elevator (far north side, station-signed \"8\") — never yet observed live, synthetic id" },
-          { externalId: "WMATA-C11_MTVERNON_ELV2", label: "Potomac Yard Mount Vernon Sq-bound platform elevator (far north side, station-signed \"8\") — never yet observed live, synthetic id" },
+          { externalId: "C11X09", label: "Potomac Yard elevator (mezzanine to the Franconia-Springfield/Huntington-bound platform)" },
+          { externalId: "C11X10", label: "Potomac Yard elevator (mezzanine to the Franconia-Springfield/Huntington-bound platform)" },
         ],
       },
     ],
