@@ -746,7 +746,7 @@ parking lot). A station is accessible only if **every** segment is up.
   each chain's LAST (platform-terminus) segment, but ONLY when the station has
   exactly ONE — a per-direction station has several, so it declines and stays
   `-UNSPECIFIED` (never guesses which platform). This resolved the live
-  RICH/POWL/COLS "unspecified" complaints (all now RICH-PLAT/POWL-PLAT/COLS-EL,
+  RICH/POWL/COLS "unspecified" complaints (all now R60-51/M30-55/A30-3,
   verified `poll:bart:dry`), and let the **Richmond attribution-override be
   REMOVED** (`ATTRIBUTION_OVERRIDES` is now empty; the mechanism stays for a
   future human-confirmed elevator neither hints nor the default can reach).
@@ -769,7 +769,7 @@ parking lot). A station is accessible only if **every** segment is up.
   **Millbrae resolved from a real advisory (2026-07-16)**: MLBR's live
   `"Station - SF/East Bay/SFO Airport"` (a terminus → only the outbound platform
   direction exists) was in the `structuralUnsolvable` bucket and pushing a
-  recurring needs-review alert; now attributed to `MLBR-PLAT-3` via
+  recurring needs-review alert; now attributed to `W40-109` via
   `"east bay"`/`"sfo airport"` hints on the Platform 3 elevator (BART's only
   platform elevator there; the Caltrain NB elevator is its named backup, so the
   redundant station stays accessible). Mirrors the confirmed Milpitas pattern;
@@ -1080,9 +1080,17 @@ parking lot). A station is accessible only if **every** segment is up.
 - **Unidentified-outage flag (universal, 2026-07-12)**: `NormalizedOutage.
   needsReview` marks an outage we could NOT confidently place onto a specific
   known elevator — a conservative `-UNSPECIFIED` fallback, or a low-confidence
-  guess (BART's platform default at a station that ALSO has other equipment,
-  e.g. Coliseum; a single-platform default like Richmond/Powell is confident and
-  does NOT flag). Persisted as `outage_events.needs_review`. Surfaced three
+  guess. **BART platform-default policy (revised 2026-07-20, `platformDefaultAmbiguous`):**
+  a bare/unhinted advisory that falls through to the platform elevator is
+  CONFIDENT (no flag) UNLESS the station has an auxiliary elevator with NO
+  matchHints — since the adapter tries every hint first, a real auxiliary outage
+  only reaches the platform default if it matched no hint, so hint-distinguishable
+  auxiliaries (Coliseum's OAC/arena, Richmond's Amtrak connector) never make the
+  default ambiguous. Today every BART auxiliary carries hints (from the
+  ADA-settlement re-source), so no BART station flags on the platform default;
+  the guard remains for a future hint-less auxiliary. (Replaces the older "any
+  auxiliary/other-equipment ⇒ flag" rule, which flagged Coliseum.) Persisted as
+  `outage_events.needs_review`. Surfaced three
   ways: a poll-time warning (`poll.ts`), a per-system "Needs review" board
   (`build-site-data` → `needsReview`, rendered in `system.html`), and an **ntfy
   push** (`src/lib/notify.ts`, fired from `pollSystem` for NEWLY-opened flagged

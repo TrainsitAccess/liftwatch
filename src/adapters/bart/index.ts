@@ -1,6 +1,6 @@
 import type { Adapter, NormalizedOutage, NormalizedOtherEquipment, NormalizedRead, NormalizedUnit } from "../../types.js";
 import { nowUtcIso } from "../../lib/time.js";
-import { attributeOutageAcrossChains, elevatorRedundant, platformDefaultElevator } from "../../lib/accessibility.js";
+import { attributeOutageAcrossChains, elevatorRedundant, platformDefaultElevator, type StationModel } from "../../lib/accessibility.js";
 import { stationModelsFor } from "../../catalog/station-models.js";
 import { matchBartOtherEquipment } from "../../catalog/bart-other-equipment.js";
 import { fetchPlannedAdvisories } from "./planned-rss.js";
@@ -71,6 +71,28 @@ async function fetchJson<T>(url: string): Promise<T> {
   // is persisted to poll_runs.error.
   if (!res.ok) throw new Error(`BART feed ${url.split("?")[0]} returned HTTP ${res.status}`);
   return (await res.json()) as T;
+}
+
+/**
+ * STANDING BART POLICY (Bryce, 2026-07-20): a bare/unhinted station-level
+ * advisory that falls through to the platform-elevator default is CONFIDENT
+ * (not flagged needsReview) — UNLESS the station has an auxiliary elevator with
+ * NO matchHints of its own.
+ *
+ * Rationale: the adapter tries every chain's matchHints FIRST, so a real
+ * auxiliary outage only reaches the platform-default fallback if its advisory
+ * matched no hint at all. When every auxiliary elevator is hint-distinguishable
+ * (Coliseum's OAC/arena, Richmond's Amtrak connector), that fallthrough means
+ * "not one of the auxiliaries" → the platform elevator, confidently. Only a
+ * hint-LESS auxiliary is genuinely indistinguishable from a bare advisory, so
+ * only then is the platform default a guess worth flagging. (Replaces the older
+ * "any auxiliary ⇒ flag" rule, which over-flagged now that every BART auxiliary
+ * carries real ids + hints from the ADA-settlement re-source.)
+ */
+export function platformDefaultAmbiguous(stationModels: StationModel[]): boolean {
+  return stationModels.some(
+    (m) => m.auxiliary && m.segments.some((s) => s.elevators.some((e) => !(e.matchHints && e.matchHints.length))),
+  );
 }
 
 export function createBartAdapter(config: BartConfig = BART_CONFIG): Adapter {
@@ -223,12 +245,11 @@ export function createBartAdapter(config: BartConfig = BART_CONFIG): Adapter {
           const plat = platformDefaultElevator(stationModels);
           if (plat?.elevatorExternalId) {
             const cleanDesc = (desc || "Elevator out of service").replace(/^[\s\-–—/]+/, "").trim();
-            // A platform default at a station that ALSO has auxiliary chains
-            // (Coliseum) is a GUESS that could actually be an auxiliary elevator
-            // whose advisory wording we haven't confirmed — flag for review. At
-            // a station with no auxiliaries (Richmond, Powell) it's unambiguous.
-            const hasAux = stationModels.some((m) => m.auxiliary);
-            outages.push({ ...base, unitExternalId: plat.elevatorExternalId, segmentId: plat.segmentId, attributed: true, needsReview: hasAux || undefined, reason: `${cleanDesc} (station-level advisory → platform elevator${hasAux ? "; unconfirmed — station has other equipment" : ""})` });
+            // Standing BART policy (see platformDefaultAmbiguous): confident
+            // unless a hint-LESS auxiliary elevator could have fallen through
+            // here. Coliseum/Richmond auxiliaries all carry hints → confident.
+            const ambiguous = platformDefaultAmbiguous(stationModels);
+            outages.push({ ...base, unitExternalId: plat.elevatorExternalId, segmentId: plat.segmentId, attributed: true, needsReview: ambiguous || undefined, reason: `${cleanDesc} (station-level advisory → platform elevator${ambiguous ? "; unconfirmed — station has an unhinted auxiliary elevator" : ""})` });
             continue;
           }
           // Genuinely ambiguous (matched >1 chain, or >1 platform elevator) ->

@@ -166,7 +166,7 @@ export const STATION_MODELS: StationModel[] = [
     chainLabel: " (Amtrak connector)",
     auxiliary: true,
     note: "Elevator to the shared Amtrak/Capitol Corridor platform — a separate destination from the BART platforms. Sole step-free access to the Amtrak platform; its loss severs the Amtrak route only, not the BART platforms. Reached from the street via the same concourse (the street elevators or the ramp).",
-    internalNote: "R60-58 (BART asset id, HYD-AMTRAK in the ADA-settlement Exhibit F). In scope but deliberately NOT part of the BART platform chain (Bryce, 2026-07-20): a rider bound for a BART train never needs it. Auxiliary → excluded from platformDefaultElevator, so a bare RICH advisory still resolves to the BART platform elevator R60-51. matchHint is a GUESS (no observed Amtrak-connector advisory).",
+    internalNote: "R60-58 (BART asset id, HYD-AMTRAK in the ADA-settlement Exhibit F). In scope but deliberately NOT part of the BART platform chain (Bryce, 2026-07-20): a rider bound for a BART train never needs it. Auxiliary → excluded from platformDefaultElevator, so a bare RICH advisory still resolves to the BART platform elevator R60-51 — and CONFIDENTLY (no needsReview flag), because this auxiliary carries its own 'amtrak' hint (see platformDefaultAmbiguous / the standing BART platform-default policy). matchHint is a best guess (no observed Amtrak-connector advisory yet).",
     segments: [{ id: "amtrak", label: "Concourse to Amtrak platform", elevators: [{ externalId: "R60-58", label: "Amtrak platform connector elevator", matchHints: ["amtrak"] }] }],
   },
   {

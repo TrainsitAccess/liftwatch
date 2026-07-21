@@ -506,15 +506,15 @@ Millbrae is a special complex station (BART/Caltrain shared), NOT one of the 12
 templated per-direction stations. Its real live advisory `"Station - SF/East
 Bay/SFO Airport"` (archived 2026-07-04, previously in the `structuralUnsolvable`
 bucket and pushing a recurring needs-review alert) is now attributed to
-`MLBR-PLAT-3` via `"east bay"`/`"sfo airport"` `matchHints` on the Platform 3
+`W40-109` via `"east bay"`/`"sfo airport"` `matchHints` on the Platform 3
 elevator. Basis: Millbrae is the southern TERMINUS, so all trains depart
 northbound and a directional "SF/East Bay/SFO Airport" advisory can only mean
 the outbound platform elevator — and BART's own advisories concern BART's own
 elevator, of which Platform 3 is the only one (the Caltrain NB elevator is
 tracked solely as its named backup). The advisory TEXT is confirmed real; the
 mapping mirrors the CONFIRMED Milpitas "SF/East Bay" pattern. Because
-`MLBR-PLAT-3` is redundant, the station correctly stays accessible when only it
-is out. Locked in `demo:access` (advisory→`MLBR-PLAT-3`, redundancy-keeps-
+`W40-109` is redundant, the station correctly stays accessible when only it
+is out. Locked in `demo:access` (advisory→`W40-109`, redundancy-keeps-
 accessible, and a disjointness check that a concourse "East Plaza" advisory is
 NOT dragged onto the platform elevator).
 
@@ -536,23 +536,23 @@ declines whenever there's a choice). "Unless I say otherwise" = a station
 whose real meaning differs gets a `matchHint` (or, if truly unreachable, an
 `attribution-overrides.ts` entry) that resolves it before the default is
 reached. Live effect (verified `poll:bart:dry` 2026-07-12): RICH/POWL/COLS all
-went from `-UNSPECIFIED` to `RICH-PLAT`/`POWL-PLAT`/`COLS-EL` with clean
+went from `-UNSPECIFIED` to `R60-51`/`M30-55`/`A30-3` with clean
 reasons; MacArthur still attributes via its direction hint; regressions in
 `demo:access` lock in single-platform→attributes and per-direction→null.
 
 *Coliseum — all four elevators now modeled (2026-07-12, Bryce: "include it
 all")*: BART tracks FOUR elevators at COLS, and the platform default made the
-earlier "any COLS advisory → COLS-EL" over-warn risk concrete. Now each is its
-own chain sharing the COLS id: the main **station** chain (`COLS-EL` → BART
+earlier "any COLS advisory → A30-3" over-warn risk concrete. Now each is its
+own chain sharing the COLS id: the main **station** chain (`A30-3` → BART
 platforms) plus three chains flagged `auxiliary: true` on the `StationModel` —
-**Oakland Airport Connector** (`COLS-OAC`, sole access, non-redundant),
+**Oakland Airport Connector** (`A30-30`, sole access, non-redundant),
 **arena footbridge** (`COLS-ARENA`, redundant — ramp alternative), **parking
 lot** (`COLS-PARKING-LIFT`, redundant — surface-street alternative). An
 auxiliary outage severs only its own labeled route (build-data evaluates each
 chain independently), never the BART platforms. The new `auxiliary` flag is
 consumed ONLY by `platformDefaultElevator`, which now filters auxiliary chains
 out before its exactly-one-platform test — so a bare/ambiguous "Station" (or
-the live "Terminal/Station") still resolves to `COLS-EL`. HINT ASSIGNMENT
+the live "Terminal/Station") still resolves to `A30-3`. HINT ASSIGNMENT
 follows Bryce's own reading of BART's unreliable text, NOT a guess about the
 words: the station elevator is HINT-FREE (it is the platform default, so
 anything unclaimed lands there — "Terminal/Station" is the platform elevator
@@ -569,9 +569,9 @@ non-elevator lift.
 
 *Richmond override — REMOVED 2026-07-12*: the manual
 `src/catalog/attribution-overrides.ts` entry that redirected
-`RICH-UNSPECIFIED → RICH-PLAT` (added 2026-07-08, Bryce-confirmed) is gone —
+`RICH-UNSPECIFIED → R60-51` (added 2026-07-08, Bryce-confirmed) is gone —
 the platform-default policy above now attributes "RICH: Station" to
-`RICH-PLAT` directly at the adapter, with a clean reason, so no ingest-level
+`R60-51` directly at the adapter, with a clean reason, so no ingest-level
 redirect is needed. (It also fixed a subtler artifact: ingest re-writes an
 event's `reason` every poll from the adapter's text, so the override moved the
 `unit_id` but the reason still read "unspecified elevator — conservative" —
@@ -607,7 +607,7 @@ auto-applies anything; every bucket is raw evidence for a human to read.
 *A real finding from building it, and a claim retracted*: a live example from
 Bryce ("Coliseum's advisory can read 'Station - Tunnel', about the
 pedestrian-bridge elevator to the arena") was first suspected to be a live
-misattribution bug — COLS-EL's only hint is the generic word "elevator", and
+misattribution bug — A30-3's only hint is the generic word "elevator", and
 BART's advisory always contains "N elevators out:", so the fear was that
 generic hint would match ANY Coliseum advisory including ones about other,
 unmodeled elevators there. **Verified false**: `parseAffected()`
@@ -730,9 +730,16 @@ portable boarding lifts (`PORTABLE_BOARDING_LIFT`), wheelchair lifts
 
 `NormalizedOutage.needsReview` marks an outage we could NOT confidently place
 onto a specific known elevator: a conservative `-UNSPECIFIED` fallback, or a
-low-confidence guess (BART's platform default at a station that ALSO has other
-equipment, e.g. Coliseum — a single-platform default like Richmond/Powell is
-confident and does NOT flag). Persisted as `outage_events.needs_review`.
+low-confidence guess. **BART platform-default policy (revised 2026-07-20,
+`platformDefaultAmbiguous`):** a bare/unhinted advisory that defaults to the
+platform elevator is confident (no flag) UNLESS the station has an auxiliary
+elevator with NO matchHints. The adapter tries every chain's hints first, so a
+real auxiliary outage only reaches the platform default if it matched no hint —
+hint-distinguishable auxiliaries (Coliseum's OAC/arena, Richmond's Amtrak
+connector) therefore never make the default ambiguous. Every BART auxiliary
+today carries hints, so no BART station currently flags on the platform default;
+the guard stays for a future hint-less auxiliary. (Replaces the older "any
+auxiliary ⇒ flag" rule.) Persisted as `outage_events.needs_review`.
 Surfaced three ways so a human gets flagged: a poll-time warning (`poll.ts`), a
 per-system "Needs review" board (`build-site-data` → `needsReview`, rendered in
 `system.html`), and an **ntfy push** (`src/lib/notify.ts`, fired from

@@ -10,6 +10,7 @@
 import { readFileSync } from "node:fs";
 import { stationModelsFor } from "../catalog/station-models.js";
 import { allElevators, attributeOutageAcrossChains, elevatorRedundant, platformDefaultElevator, type StationModel } from "../lib/accessibility.js";
+import { platformDefaultAmbiguous } from "../adapters/bart/index.js";
 
 const inv = JSON.parse(
   readFileSync(new URL("../catalog/bart-data/settlement-elevator-inventory.json", import.meta.url), "utf8"),
@@ -85,6 +86,22 @@ console.log("\n  Attribution crosswalk (matchHints resolve to the right real id 
   ok(streetAttr?.elevatorExternalId === "M16-62", "EMBR 'street' advisory → street elevator M16-62 (real id)");
   const platAttr = attributeOutageAcrossChains("Platform Elevator", embr);
   ok(platAttr?.elevatorExternalId === "M16-63", "EMBR 'platform' advisory → platform elevator M16-63 (real id)");
+}
+
+console.log("\n  Platform-default confidence (standing BART policy: aux WITH hints → confident, no flag):");
+{
+  ok(!platformDefaultAmbiguous(models.get("RICH") ?? []), "RICH bare advisory is CONFIDENT — the Amtrak auxiliary carries its own hint");
+  ok(!platformDefaultAmbiguous(models.get("COLS") ?? []), "COLS bare advisory is CONFIDENT — OAC/arena auxiliaries are hint-distinguishable");
+  // every BART auxiliary elevator today carries hints, so NO station flags on
+  // the platform default (the older 'any aux ⇒ flag' rule is retired).
+  const anyAmbiguous = [...models.keys()].filter((abbr) => platformDefaultAmbiguous(models.get(abbr) ?? []));
+  ok(anyAmbiguous.length === 0, `no station flags its platform default (all auxiliaries are hinted)${anyAmbiguous.length ? ": " + anyAmbiguous.join(", ") : ""}`);
+  // a hint-less auxiliary WOULD flag — construct one to prove the guard still bites.
+  const withHintlessAux: StationModel = {
+    systemId: "bart-bay-area", stationExternalId: "TEST", auxiliary: true,
+    segments: [{ id: "aux", label: "aux", elevators: [{ externalId: "X", label: "hint-less aux" }] }],
+  };
+  ok(platformDefaultAmbiguous([withHintlessAux]), "a hint-LESS auxiliary elevator still flags the platform default (guard intact)");
 }
 
 console.log("\n  Redundancy sanity (derived, not hand-set — a real signal must back each redundant station):");
