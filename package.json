@@ -31,6 +31,7 @@
     "check:tfl": "tsx src/checks/tfl-redundancy-check.ts",
     "check:tmb": "tsx src/checks/tmb-check.ts",
     "check:mta": "tsx src/checks/mta-chains-check.ts",
+    "mta:audit": "tsx scripts/mta-final-audit.mts",
     "check:rail": "tsx src/checks/mta-rail-check.ts",
     "check:tfl-chains": "tsx src/checks/tfl-chains-check.ts",
     "mta:chains": "tsx scripts/mta-chains.mjs",
