@@ -65,7 +65,8 @@ npm run poll:bart:dry    # BART, MBTA, WMATA, TfL, CTA, TMB, LIRR, MNR have :dry
 npm run demo:access      # prove the chain-aware accessibility model (69 checks)
 npm run check:tfl        # prove TfL's topology-derived redundancy (10 checks)
 npm run check:tmb        # prove TMB's elevator catalog integrity (7 checks)
-npm run check:mta        # prove MTA's multi-chain models vs feed flags (offline)
+npm run check:mta        # prove MTA's per-station models vs feed flags (offline, full coverage)
+npm run mta:audit        # INDEPENDENT MTA audit: models + fleet vs data.ny.gov + tsdataclinic topology (offline)
 npm run check:rail       # prove the LIRR/MNR mapper + curated models (offline fixture)
 npm run rail:chains      # regenerate LIRR/MNR simple-station chains (ground-truth-gated)
 npm run check:rail-chains # prove the rail chain generator vs the 18 hand models (offline, 60 checks)
@@ -210,22 +211,63 @@ parking lot). A station is accessible only if **every** segment is up.
   physical station MTA fragments across several complex-ids (Penn = 164+318,
   Fulton/Oculus = 628+624) merges under one canonical id via
   `coveredStationExternalIds` (build-data counts each covered id once).
-- **MTA multi-chain models are GENERATED, not hand-typed.** `npm run mta:chains`
-  (`scripts/mta-chains.mjs`) derives one chain per platform line-group from the
-  live `nyct_ene_equipments` feed: drops non-ADA elevators (re-running picks up
-  any newly-accessible ones automatically), treats a line-spanning elevator as a
-  shared prerequisite, and groups redundant elevators by description. Output →
-  `src/catalog/mta-data/station-chains.json`, loaded by `station-models.ts`. The
-  ENGINE + SELF-CHECK are system-agnostic (operate on the normalized elevator
-  shape + `StationModel`); only the raw-feed mapper and the hand-verified config
-  are MTA-specific. **Self-check** (in the generator and offline via
-  `check:mta`): every elevator's model-DERIVED redundancy must match MTA's own
-  DECLARED `redundant` flag (aggregated across all its chains) — mismatches fail
-  the build unless listed in `REDUNDANCY_EXCEPTIONS` with a human reason (MTA's
-  flag is sometimes wrong, e.g. 14 St-6 Av EL609/EL610; or reflects cross-station
-  redundancy a per-station model can't see, e.g. Grand Central's Shuttle EL607X).
-  Nine tangled interchanges are hand-authored OVERRIDES in the script, verified
-  station-by-station with a human; the rest are inferred.
+- **MTA models are GENERATED, not hand-typed — now FULL COVERAGE** (2026-07-21:
+  every elevator-equipped complex the live feed reports, 123 stations / 230
+  chains, up from 19 interchange-only). `npm run mta:chains`
+  (`scripts/mta-chains.mjs`) runs two tiers, both keyed on the live
+  `nyct_ene_equipments` feed + the committed data.ny.gov inventory:
+  - **`inferChains`** (unchanged) — multi-LINE-group interchanges: one chain per
+    platform line-group, line-spanning elevators as shared prerequisites.
+  - **`inferDirectional`** (NEW, the universal tier) — every simple/per-DIRECTION
+    complex `inferChains` skipped. Structure comes from data.ny.gov's STRUCTURED
+    fields (`elevator_mezzanine_1/2_access` + `elevator_platform_access` +
+    `elevator_direction_serviced`), NOT free-text: `mez+ plat-` = street→mezz
+    shared prereq; `mez- plat+` = street→platform direct; `mez+ plat+` = a spoke
+    (if the complex has a dedicated street→mezz leg) else a direct single shaft.
+    A redundant GROUP (union-find over MTA's own named/flagged backups) = one
+    segment; one chain per platform-reaching segment, prefixed with the shared
+    prereqs; label carries the direction. Handles per-direction sole (72 St),
+    shared-prereq + spokes (DeKalb), redundant pairs collapsed (Far Rockaway,
+    Parkchester), single-elevator SPOFs.
+  - **Redundancy is READ from MTA, never re-derived-then-guessed**: the feed
+    `redundant` flag == data.ny.gov `redundant_elevator` on all 391 ADA elevators
+    (0 disagreements fleet-wide), so a claimed backup is always MTA's own.
+  - **Gate = conform-to-MTA + log** (Bryce, 2026-07-21): the 9 hand-authored
+    OVERRIDES + the multi-line auto tier keep the STRICT self-check (mismatch fails
+    unless in `REDUNDANCY_EXCEPTIONS` — 14 St-6 Av EL609/EL610, GCT Shuttle EL607X,
+    Times Sq EL619). The universal tier CONFORMS: a residual mismatch is only ever
+    the SAFE over-warn direction (derived sole where MTA=redundant, backup
+    unplaceable) → logged to `generator-disagreements.json` (the engine-improvement
+    worklist; 2 entries, both Columbus Circle) and never fails the build; an
+    UNDER-warn (derived redundant where MTA=sole) fails loudly. `check:mta` embeds
+    `overrideStations`/`overWarnAllowed` and applies the same policy offline.
+  - Excluded complexes are correct: no ADA elevator in the live feed (191 St etc.),
+    or a data.ny.gov ADA elevator the feed doesn't emit (can't track it).
+- **MTA ground-truth + topology sources (2026-07-21).** data.ny.gov `94fv-bak7`
+  (`ny-elevator-inventory.json`, the redundancy/level/direction gate);
+  **tsdataclinic/mta** (`mta-data/tsdataclinic/`, Apache-2.0, archived Jan 2025) —
+  the elevator street→platform TOPOLOGY graph NYCT's GTFS lacks, plus a
+  criticality analysis (its "Perc. Importance" is a betweenness score, NOT a
+  redundancy flag — context only); the 2022 **ADA settlement** (CIDNY/De La Rosa,
+  `mta-ada-settlement.md`) — a station-level buildout ROADMAP with no per-station
+  or per-elevator list, so corroboration-tier only, does not feed the generator.
+  Universal join key across all three (+ the feed): the elevator id `EL###`;
+  data.ny.gov `station_complex_mrn` == our `stationExternalId` (pre-`MERGES`).
+  **`npm run mta:audit`** (`scripts/mta-final-audit.mts`) is the independent NYCT
+  reconciliation (analog to bart/wmata:audit): models + fleet vs data.ny.gov, with
+  tsdataclinic as context — 0 review flags (known items = documented exceptions,
+  logged over-warn fallbacks, data.ny.gov catalog lag).
+- **MTA ramp/other-access: CHECKED and ruled out (2026-07-21, standing ramp
+  rule).** Unlike MBTA (a `RAMP` facilities feed) and TfL (`RampRoutes`/
+  `SameLevelPaths`), MTA publishes **no structured ramp data** usable as a
+  `stepFreeAlternative`: GTFS has no `pathways.txt`/`levels.txt`, the stations
+  dataset (`39hk-dx4f`) has only `ada`/`ada_northbound/southbound` flags,
+  data.ny.gov's only "ramp" text is non-ADA/exit ramps or ramps used *with* an
+  elevator, and MTA's own developer guidance states outright *"Ramps are not ADA
+  accessible; elevators should be used instead."* So NO ramp `stepFreeAlternative`
+  is added for MTA — doing so would contradict the agency and risk under-warning.
+  (Genuinely ramp-accessible stations are ramp-ONLY, no elevator to break.) Same
+  elevator-centric ruling as WMATA/CTA; opposite of MBTA/TfL.
 - **Commuter rail (LIRR + Metro-North) is DONE, both directions** (2026-07-06):
   (a) they are their own leaderboard systems (`mta-lirr`, `mta-mnr` — one
   shared adapter, `src/adapters/mta-rail`, filtering one undocumented feed

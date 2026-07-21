@@ -2040,6 +2040,53 @@ no step-free path onward to the platform, which is the EXACT example MTA's
 own display-guidance doc uses to illustrate why "has an elevator" and "is
 accessible" are different questions.
 
+### MTA full-coverage station modeling + topology sources (2026-07-21)
+
+The MTA generator went from **19 interchange-only complexes to 123** — every
+elevator-equipped complex the live feed reports — via a new universal tier in
+`scripts/mta-chains.mjs`. The line-group `inferChains` (unchanged) handles the
+multi-line interchanges; a new **`inferDirectional`** models every simple/
+per-direction complex it skipped, structured from data.ny.gov's STRUCTURED fields
+(`elevator_mezzanine_1/2_access` + `elevator_platform_access` +
+`elevator_direction_serviced`, NOT free text): `mez+ plat-` = street→mezz shared
+prereq; `mez- plat+` = street→platform direct; `mez+ plat+` = a spoke (if a
+dedicated street→mezz leg exists) else a direct single shaft. A redundant GROUP
+(union-find over MTA's own named/flagged backups) = one segment; one chain per
+platform-reaching segment, prefixed with the shared prereqs; direction in the
+label. **Redundancy is READ from MTA's flag, never re-derived** — the feed
+`redundant` flag equals data.ny.gov `redundant_elevator` on all 391 ADA elevators
+(0 disagreements fleet-wide), so a claimed backup is always MTA's own.
+
+**Gate = conform-to-MTA + log** (Bryce's directive): the 9 hand OVERRIDES + the
+multi-line auto tier keep the STRICT self-check; the universal tier CONFORMS — a
+residual mismatch is only ever the SAFE over-warn direction (derived sole where
+MTA=redundant, backup unplaceable) → logged to `generator-disagreements.json` (2
+entries, both Columbus Circle) and never fails the build; an UNDER-warn fails
+loudly. `check:mta` applies the same policy offline via embedded
+`overrideStations`/`overWarnAllowed`. The 19 pre-existing models are byte-for-byte
+unchanged (51/51 chains identical). New sources: **tsdataclinic/mta**
+(`mta-data/tsdataclinic/`, Apache-2.0, archived Jan 2025) supplies the elevator
+street→platform TOPOLOGY graph NYCT's GTFS lacks (its "Perc. Importance" is a
+betweenness score, NOT a redundancy flag — context only); the 2022 **ADA
+settlement** (CIDNY/De La Rosa, `mta-ada-settlement.md`) is a station-level
+buildout roadmap with no per-station/elevator list → corroboration-tier only.
+Universal join key: the `EL###` id (data.ny.gov `station_complex_mrn` == our
+`stationExternalId`, pre-`MERGES`). **`npm run mta:audit`**
+(`scripts/mta-final-audit.mts`) is the independent reconciliation — 0 review flags.
+
+**Ramps — checked and ruled out as a `stepFreeAlternative` (standing ramp rule).**
+Unlike MBTA (a `RAMP` facilities feed) and TfL (`RampRoutes`/`SameLevelPaths`),
+MTA publishes no structured ramp data: GTFS has no `pathways.txt`/`levels.txt`,
+the stations dataset (`39hk-dx4f`) has only `ada`/`ada_northbound/southbound`
+flags, and MTA's own guidance states *"Ramps are not ADA accessible; elevators
+should be used instead."* So NO ramp `stepFreeAlternative` is added (it would
+contradict MTA and risk under-warning). BUT where MTA's own `alternative_route`
+text NAMES a ramp, that is surfaced persistently on a new MTA-only **"Ramp
+alternatives"** board (`system.html`, `rampAlternatives` in `build-site-data.ts`)
+— shown whether the elevator is up or down, with the disclaimer *"The MTA does not
+consider all ramps ADA-accessible, and usability may vary"* (Bryce, 2026-07-21).
+This is INFORMATION only; it never flips a station's accessibility status.
+
 ### BART and WMATA ground-truth sources — fact-check pass, one WMATA fix (2026-07-16)
 
 Following the CTA-ASAP / MTA-data.ny.gov pattern, searched for a BART and

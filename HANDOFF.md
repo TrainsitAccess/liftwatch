@@ -97,6 +97,40 @@ new stations.
 
 ---
 
+## What shipped this session (2026-07-21, later) — MTA full-coverage modeling + new sources + ramp ruling
+
+Extended MTA subway modeling from 19 interchange-only complexes to **123** (every
+elevator-equipped complex the live feed reports; 230 chains), then answered the
+ramp question.
+
+- **New sources** (`src/catalog/mta-data/`): `tsdataclinic/` (Apache-2.0 elevator
+  topology graph — the pathways NYCT's GTFS lacks; corroboration-tier),
+  `mta-ada-settlement.md` (2022 CIDNY/De La Rosa settlement — station-level
+  roadmap, corroboration only). Universal join key: the `EL###` id
+  (data.ny.gov `station_complex_mrn` == our `stationExternalId`, pre-MERGES).
+- **`npm run mta:audit`** — independent reconciliation (analog to bart/wmata:audit).
+  Confirmed our 19 hand models have ZERO undocumented discrepancies vs data.ny.gov
+  (only the 4 known `REDUNDANCY_EXCEPTIONS`). 0 review flags after full coverage.
+- **Universal generator** (`inferDirectional` in `scripts/mta-chains.mjs`): simple/
+  per-direction complexes structured from data.ny.gov's per-level + direction
+  fields; redundancy READ from MTA's flag (feed == data.ny.gov, 0 fleet-wide
+  disagreements). Gate = conform-to-MTA + log (`generator-disagreements.json`, 2
+  Columbus Circle over-warn fallbacks); overrides keep the strict gate; 19 existing
+  models byte-for-byte unchanged. check:mta / check:mta-ny (391 elevators now, was
+  121) / demo:access / poll:dry green. **Pushed** (`ad606ac`).
+- **Ramp ruling** (standing ramp rule): MTA exposes NO structured ramp data (no
+  GTFS pathways, no ramp field, guidance says "Ramps are not ADA accessible") — so
+  no ramp `stepFreeAlternative` is added (would under-warn). BUT where MTA's own
+  `alternative_route` names a ramp, it's now surfaced on a persistent MTA-only
+  **"Ramp alternatives"** board (`system.html`), shown whether the elevator is up
+  or down, with the disclaimer "The MTA does not consider all ramps ADA-accessible,
+  and usability may vary" — information only, never flips accessibility status. 11
+  entries / 6 stations (62 St, Aqueduct, Atlantic Av-Barclays, Bay Pkwy, Coney
+  Island-Stillwell Av, New Utrecht).
+- **Open/next**: hand models for Columbus Circle (614) + Bryant Park would clear
+  the 2 logged over-warn fallbacks. Docs (CLAUDE.md/SPEC.md) updated. The
+  ramp-board + settlement-doc + docs commit is separate from the pushed generator.
+
 ## What shipped this session (2026-07-21) — BART final accuracy audit + Millbrae real-id promotion
 
 Bryce asked to run an audit of BART against the new sources (the ADA-settlement

@@ -984,11 +984,18 @@ function buildSystemDetail(systemId: string) {
   let stationAccessibility: {
     complexId: string; name: string; ada: number; adaLabel: string; explanation: string;
   }[] = [];
+  // MTA elevators whose OWN alternative_route names a ramp — a STANDING step-free
+  // option, shown ALWAYS (whether the elevator is up or down), not just on outage.
+  // The MTA does not deem all ramps ADA-accessible (see CLAUDE.md ramp ruling), so
+  // this is presented as information with a usability caveat and never flips a
+  // station's accessibility status (Bryce, 2026-07-21).
+  let rampAlternatives: { complexId: string; name: string; elevator: string; text: string }[] = [];
   if (systemId === "mta-nyct") {
     const trackedComplexIds = new Set(
       systemUnits.map((u) => (u.station_id as string | null)?.split(":")[1]).filter(Boolean),
     );
     const adaEntries = (mtaStationAda as { stations: { complexId: string; name: string; ada: number; explanation: string | null }[] }).stations;
+    const nameByComplex = new Map(adaEntries.map((s) => [s.complexId, s.name]));
     stationAccessibility = adaEntries
       .filter((s) => s.ada !== 1 && trackedComplexIds.has(s.complexId))
       .map((s) => ({
@@ -999,6 +1006,17 @@ function buildSystemDetail(systemId: string) {
         explanation: s.explanation ?? "",
       }))
       .sort((a, b) => a.ada - b.ada || a.name.localeCompare(b.name));
+
+    const NY_MERGES: Record<string, string> = { "318": "164", "624": "628" };
+    const RAMP_RE = /\bramp\b/i;
+    const allNy = (nyInventory as { elevators: { equipment_code: string; station_complex_mrn?: string; station_name?: string; alternative_route?: string }[] }).elevators;
+    for (const e of allNy) {
+      if (!e.alternative_route || !RAMP_RE.test(e.alternative_route) || !e.station_complex_mrn) continue;
+      const cx = NY_MERGES[String(e.station_complex_mrn)] ?? String(e.station_complex_mrn);
+      if (!trackedComplexIds.has(cx)) continue;
+      rampAlternatives.push({ complexId: cx, name: nameByComplex.get(cx) ?? e.station_name ?? cx, elevator: e.equipment_code, text: e.alternative_route });
+    }
+    rampAlternatives.sort((a, b) => a.name.localeCompare(b.name) || a.elevator.localeCompare(b.elevator, undefined, { numeric: true }));
   }
 
   // "Needs review" — currently-open outages we couldn't confidently place onto
@@ -1023,6 +1041,7 @@ function buildSystemDetail(systemId: string) {
   return {
     currentlyBroken,
     stationAccessibility,
+    rampAlternatives,
     needsReview: { current: needsReview.length, rows: needsReview },
     offline: { current: offlineLog.filter((o) => o.restored === null).length, log: offlineLog },
     otherEquipment: { current: otherEquipment.filter((a) => a.restored === null).length, log: otherEquipment },

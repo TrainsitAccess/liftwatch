@@ -344,6 +344,27 @@
     <p class="legend">MTA's own published accessibility rating for the STATION ITSELF (by design — not today's elevator status). <span class="chip red">NOT ACCESSIBLE</span> = no step-free route on any line here; <span class="chip unknown">PARTIALLY ACCESSIBLE</span> = some line(s) or direction(s) are step-free and others aren't — the "what this means" column names exactly which.</p>
   </section>
 
+  <section class="board" id="ramp-section" aria-labelledby="ramp-h" hidden>
+    <div class="board-head">
+      <h2 id="ramp-h">Ramp alternatives <span class="t-sub">MTA-listed ramp routes — shown always, whether the elevator is working or not</span></h2>
+      <span class="side board-note" id="ramp-summary"></span>
+    </div>
+    <div class="tablewrap">
+      <table class="led narrow">
+        <caption class="sr-only">Stations where MTA's own guidance names a ramp as an alternative step-free route, shown persistently regardless of elevator status</caption>
+        <thead>
+          <tr>
+            <th scope="col">station</th>
+            <th scope="col">elevator</th>
+            <th scope="col">MTA's ramp alternative</th>
+          </tr>
+        </thead>
+        <tbody id="ramp-body"></tbody>
+      </table>
+    </div>
+    <p class="legend">Shown for every station where MTA's own guidance names a ramp — regardless of whether the elevator is up or down. <strong>The MTA does not consider all ramps ADA-accessible, and usability may vary.</strong></p>
+  </section>
+
   <section class="board" aria-labelledby="access-h">
     <div class="board-head">
       <h2 id="access-h">Station access <span class="t-sub">live status of modeled routes</span></h2>
@@ -775,6 +796,25 @@ if (!id) {
           `<td class="white">${esc(s.name)}</td>`,
           `<td>${chip}</td>`,
           `<td class="info">${esc(s.explanation)}</td>`,
+        ]);
+      }
+    }
+
+    // --- Ramp alternatives (MTA-listed ramp routes, shown ALWAYS) ---
+    // MTA-only; a standing step-free option surfaced regardless of elevator
+    // status. Never flips accessibility state — MTA doesn't deem all ramps ADA.
+    const ramps = data.rampAlternatives ?? [];
+    const rampSection = document.getElementById("ramp-section");
+    rampSection.hidden = ramps.length === 0;
+    if (ramps.length) {
+      const stations = new Set(ramps.map((r) => r.complexId)).size;
+      document.getElementById("ramp-summary").textContent = `${stations} station${stations === 1 ? "" : "s"} with a ramp alternative`;
+      const rmb = document.getElementById("ramp-body");
+      for (const r of ramps) {
+        simpleRow(rmb, [
+          `<td class="white">${esc(r.name)}</td>`,
+          `<td class="dim">${esc(r.elevator)}</td>`,
+          `<td class="info">${esc(r.text)}</td>`,
         ]);
       }
     }
