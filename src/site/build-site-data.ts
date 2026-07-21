@@ -6,9 +6,11 @@ import {
   chainDisplayName,
   chainDownIntervals,
   coveredStationIds,
+  elevatorLetterMap,
   mergeIntervals,
   stationAccessible,
   totalDurationMs,
+  withElevatorLetter,
   type Interval,
   type StationModel,
 } from "../lib/accessibility.js";
@@ -350,7 +352,7 @@ function computeAccessImpact(chainsList: StationModel[], openExtIds: Set<string>
       if (!seg.elevators.some((el) => el.externalId === extId)) continue;
       if (seg.stepFreeAlternative) rampAlternative = true;
       for (const el of seg.elevators) {
-        if (el.externalId !== extId && !openExtIds.has(el.externalId)) backups.add(el.label);
+        if (el.externalId !== extId && !openExtIds.has(el.externalId)) backups.add(namedWithLetter(systemId, el.externalId, el.label));
       }
     }
     if (m.note) notes.add(m.note);
@@ -376,6 +378,25 @@ function chainsForSystem(systemId: string): StationModel[] {
   return c;
 }
 
+// Same-name elevator letter designations (A/B/C…), per system, derived from the
+// curated chains — so an outage on one of several identically-named elevators
+// says WHICH it is. Absent id => unique name => no letter (see elevatorLetterMap).
+const letterMapBySystemCache = new Map<string, Map<string, string>>();
+function letterMapForSystem(systemId: string): Map<string, string> {
+  let m = letterMapBySystemCache.get(systemId);
+  if (!m) letterMapBySystemCache.set(systemId, (m = elevatorLetterMap(chainsForSystem(systemId))));
+  return m;
+}
+/** A displayed elevator name with its same-name letter appended when it has one.
+ *  Nullness is preserved (a null/empty name gets no letter). */
+function namedWithLetter(systemId: string | undefined, externalId: string | undefined, name: string): string;
+function namedWithLetter(systemId: string | undefined, externalId: string | undefined, name: string | null): string | null;
+function namedWithLetter(systemId: string | undefined, externalId: string | undefined, name: string | null): string | null {
+  if (!name) return name;
+  const letter = systemId && externalId ? letterMapForSystem(systemId).get(externalId) : undefined;
+  return withElevatorLetter(name, letter);
+}
+
 const allOpenOutages = (events.data ?? [])
   .filter((e) => !isHidden(e.system_id as string))
   .map((e) => {
@@ -391,7 +412,11 @@ const allOpenOutages = (events.data ?? [])
       systemId: e.system_id as string,
       station: stationName.get((e.station_id ?? unit?.station_id) as string) ?? "Unknown",
       unit: (unit?.external_id as string) ?? "?",
-      unitDesc: preferMtaNote((unit?.description as string | null) ?? null, unit?.external_id as string | undefined),
+      unitDesc: namedWithLetter(
+        e.system_id as string,
+        unit?.external_id as string | undefined,
+        preferMtaNote((unit?.description as string | null) ?? null, unit?.external_id as string | undefined),
+      ),
       soleAccess: confirmedSoleAccess(unit),
       // Live curated-chain impact (mirrors the per-system "Currently broken"
       // board): routes severed now, working backups on this elevator's own
@@ -612,7 +637,7 @@ function buildSystemDetail(systemId: string) {
       return {
         station: displayStationName(sid, ext),
         unitId: ext ?? "?",
-        unit: preferMtaNote((unit?.description as string) ?? null, ext) || ext || "?",
+        unit: namedWithLetter(systemId, ext, preferMtaNote((unit?.description as string) ?? null, ext) || ext || "?"),
         days: daysSince(since),
         since,
         planned: e.is_planned as boolean,
@@ -646,7 +671,7 @@ function buildSystemDetail(systemId: string) {
       const unit = unitById.get(o.unit_id);
       return {
         unitId: (unit?.external_id as string) ?? "?",
-        unit: (unit?.description as string) || (unit?.external_id as string) || "?",
+        unit: namedWithLetter(systemId, unit?.external_id as string | undefined, (unit?.description as string) || (unit?.external_id as string) || "?"),
         station: displayStationName((o.station_id ?? (unit?.station_id as string | null)) as string | null, unit?.external_id as string | undefined),
         since: o.started_at,
         days: daysSince(o.started_at),
@@ -898,7 +923,7 @@ function buildSystemDetail(systemId: string) {
   const mostBrokenUnits = systemUnits
     .filter((u) => !isRetired(u))
     .map((u) => ({
-      unit: (u.description as string) || (u.external_id as string),
+      unit: namedWithLetter(systemId, u.external_id as string | undefined, (u.description as string) || (u.external_id as string)),
       station: displayStationName(u.station_id as string | null, u.external_id as string | undefined),
       count: unitOutageCount.get(u.id as string) ?? 0,
     }))
@@ -922,7 +947,7 @@ function buildSystemDetail(systemId: string) {
       const downNow = unitEvents.some((e) => e.ended_at == null);
       const since = downNow ? null : (latestEnd(unitEvents) ?? (u.first_seen as string));
       return {
-        unit: (u.description as string) || (u.external_id as string),
+        unit: namedWithLetter(systemId, u.external_id as string | undefined, (u.description as string) || (u.external_id as string)),
         station: displayStationName(u.station_id as string | null, u.external_id as string | undefined),
         days: downNow ? 0 : daysSince(since!),
         downNow,

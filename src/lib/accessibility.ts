@@ -132,6 +132,72 @@ export function findElevator(model: StationModel, externalId: string): CuratedEl
   return allElevators(model).find((e) => e.externalId === externalId);
 }
 
+// --- Same-name elevator disambiguation (letter designations) -----------------
+//
+// STANDING RULE (Bryce, 2026-07-20): within a physical station, when two or
+// more curated elevators carry the IDENTICAL label (e.g. Rosslyn's three
+// "street to eastbound platform" elevators), each gets a stable letter — A, B,
+// C, … — so an outage says WHICH one is down. An elevator whose label is unique
+// at its station gets no letter (there's nothing to disambiguate). This is
+// DERIVED, never hand-typed: it applies to every system automatically and can't
+// drift, so labels that already differ ("Platform Elevator 1"/"2", "1 of 4")
+// are left untouched. Assignment is by sorted externalId, so a given elevator
+// keeps the same letter across every chain it appears in and across rebuilds.
+
+/** Spreadsheet-style index → letter: 0→A … 25→Z, 26→AA … (groups are tiny; the
+ *  overflow is just a safety net). */
+function elevatorLetterFor(index: number): string {
+  let n = index + 1;
+  let out = "";
+  while (n > 0) {
+    const rem = (n - 1) % 26;
+    out = String.fromCharCode(65 + rem) + out;
+    n = Math.floor((n - 1) / 26);
+  }
+  return out;
+}
+
+/**
+ * Build the externalId → letter map for a set of station models (typically all
+ * of one system's chains). Only elevators in a same-label group of 2+ at their
+ * physical station appear in the result; everything else is absent (no letter).
+ * Grouping is per stationExternalId, and an elevator that appears in several
+ * segments/chains is counted once (deduped by externalId).
+ */
+export function elevatorLetterMap(models: StationModel[]): Map<string, string> {
+  // stationExternalId -> (externalId -> label), first label seen wins (an
+  // elevator reused across CNF clauses carries the same label everywhere).
+  const byStation = new Map<string, Map<string, string>>();
+  for (const m of models) {
+    let byId = byStation.get(m.stationExternalId);
+    if (!byId) byStation.set(m.stationExternalId, (byId = new Map()));
+    for (const el of allElevators(m)) {
+      if (!byId.has(el.externalId)) byId.set(el.externalId, el.label);
+    }
+  }
+  const letters = new Map<string, string>();
+  for (const byId of byStation.values()) {
+    const groups = new Map<string, string[]>(); // label -> externalIds
+    for (const [extId, label] of byId) {
+      let ids = groups.get(label);
+      if (!ids) groups.set(label, (ids = []));
+      ids.push(extId);
+    }
+    for (const ids of groups.values()) {
+      if (ids.length < 2) continue; // unique name → nothing to disambiguate
+      ids.sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+      ids.forEach((extId, i) => letters.set(extId, elevatorLetterFor(i)));
+    }
+  }
+  return letters;
+}
+
+/** Append a same-name letter designation to a display name, e.g.
+ *  `"…upper platform"` + `"A"` → `"…upper platform (A)"`. No-op without a letter. */
+export function withElevatorLetter(name: string, letter: string | undefined): string {
+  return letter ? `${name} (${letter})` : name;
+}
+
 export interface Attribution {
   // null => the segment is identified but the specific elevator is ambiguous.
   // Never guess a specific elevator: a wrong guess corrupts per-elevator stats
