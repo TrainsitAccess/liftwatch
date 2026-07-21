@@ -200,8 +200,12 @@ check('COLS "parking" advisory -> the wheelchair lift (other equipment, NOT an e
   matchBartOtherEquipment("COLS", "Parking lot lift out")?.facilityExternalId ?? null, "COLS-PARKING-LIFT");
 check('COLS "Terminal/Station" -> NOT other equipment (no parking hint)',
   matchBartOtherEquipment("COLS", "Terminal/Station"), null);
-check('COLS has auxiliary chains -> a platform default there is flagged needsReview',
-  models.get("COLS")!.some((m) => m.auxiliary === true), true);
+// COLS's platform default is confident too — its OAC/arena auxiliaries are all
+// hinted, so a bare "Station" advisory can't be confused with one of them (the
+// standing platformDefaultAmbiguous policy; check:bart also asserts a constructed
+// hint-less auxiliary still flags, the case that keeps this rule meaningful).
+check('COLS platform default is confident (its OAC/arena auxiliaries are hinted)',
+  platformDefaultAmbiguous(models.get("COLS")!), false);
 // RICH now HAS an auxiliary chain (the Amtrak connector), but its bare-"Station"
 // platform default stays confident because that auxiliary elevator is hinted
 // ("amtrak") — so it can't be confused with a hint-less bare advisory.
