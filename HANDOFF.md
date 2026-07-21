@@ -127,9 +127,14 @@ ramp question.
   and usability may vary" — information only, never flips accessibility status. 11
   entries / 6 stations (62 St, Aqueduct, Atlantic Av-Barclays, Bay Pkwy, Coney
   Island-Stillwell Av, New Utrecht).
-- **Open/next**: hand models for Columbus Circle (614) + Bryant Park would clear
-  the 2 logged over-warn fallbacks. Docs (CLAUDE.md/SPEC.md) updated. The
-  ramp-board + settlement-doc + docs commit is separate from the pushed generator.
+- **Columbus Circle (614) hand override shipped** (2026-07-21) — the 10th MTA
+  OVERRIDE, first promoted from the disagreements worklist: a 6-elevator mesh,
+  hand-verified with Bryce (fully step-free interconnected; EL279 real despite a
+  stale "withdrawn" note), encoded as CNF "direct OR detour" paired-segments —
+  every single outage stays accessible (matches MTA), double outages sever;
+  `generator-disagreements.json` now EMPTY. Bryant Park (609) stays correctly
+  unmodeled (its feed elevators are all non-ADA and none reach the platform — not
+  a fallback to fix). Docs (CLAUDE.md/SPEC.md) updated.
 
 ## What shipped this session (2026-07-21) — BART final accuracy audit + Millbrae real-id promotion
 

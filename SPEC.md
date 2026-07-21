@@ -2057,12 +2057,17 @@ label. **Redundancy is READ from MTA's flag, never re-derived** — the feed
 `redundant` flag equals data.ny.gov `redundant_elevator` on all 391 ADA elevators
 (0 disagreements fleet-wide), so a claimed backup is always MTA's own.
 
-**Gate = conform-to-MTA + log** (Bryce's directive): the 9 hand OVERRIDES + the
+**Gate = conform-to-MTA + log** (Bryce's directive): the 10 hand OVERRIDES + the
 multi-line auto tier keep the STRICT self-check; the universal tier CONFORMS — a
 residual mismatch is only ever the SAFE over-warn direction (derived sole where
-MTA=redundant, backup unplaceable) → logged to `generator-disagreements.json` (2
-entries, both Columbus Circle) and never fails the build; an UNDER-warn fails
-loudly. `check:mta` applies the same policy offline via embedded
+MTA=redundant, backup unplaceable) → logged to `generator-disagreements.json` and
+never fails the build; an UNDER-warn fails loudly. **59 St-Columbus Circle (614)**
+was the first worklist entry promoted to a hand OVERRIDE (2026-07-21): a 6-elevator
+mesh, hand-verified with Bryce (fully step-free interconnected — the two opposite-
+side street entrances back each other up via the EL278 cross-under; EL279 real
+despite a stale "withdrawn" note), encoded as "direct OR detour" CNF paired-segments
+(Stamford/Jackson-Red pattern) so every single outage stays accessible (matching
+MTA's all-redundant) while real double outages sever — disagreements log now empty. `check:mta` applies the same policy offline via embedded
 `overrideStations`/`overWarnAllowed`. The 19 pre-existing models are byte-for-byte
 unchanged (51/51 chains identical). New sources: **tsdataclinic/mta**
 (`mta-data/tsdataclinic/`, Apache-2.0, archived Jan 2025) supplies the elevator

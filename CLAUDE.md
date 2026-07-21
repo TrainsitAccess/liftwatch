@@ -232,15 +232,22 @@ parking lot). A station is accessible only if **every** segment is up.
   - **Redundancy is READ from MTA, never re-derived-then-guessed**: the feed
     `redundant` flag == data.ny.gov `redundant_elevator` on all 391 ADA elevators
     (0 disagreements fleet-wide), so a claimed backup is always MTA's own.
-  - **Gate = conform-to-MTA + log** (Bryce, 2026-07-21): the 9 hand-authored
+  - **Gate = conform-to-MTA + log** (Bryce, 2026-07-21): the 10 hand-authored
     OVERRIDES + the multi-line auto tier keep the STRICT self-check (mismatch fails
     unless in `REDUNDANCY_EXCEPTIONS` — 14 St-6 Av EL609/EL610, GCT Shuttle EL607X,
     Times Sq EL619). The universal tier CONFORMS: a residual mismatch is only ever
     the SAFE over-warn direction (derived sole where MTA=redundant, backup
     unplaceable) → logged to `generator-disagreements.json` (the engine-improvement
-    worklist; 2 entries, both Columbus Circle) and never fails the build; an
-    UNDER-warn (derived redundant where MTA=sole) fails loudly. `check:mta` embeds
-    `overrideStations`/`overWarnAllowed` and applies the same policy offline.
+    worklist) and never fails the build; an UNDER-warn (derived redundant where
+    MTA=sole) fails loudly. `check:mta` embeds `overrideStations`/`overWarnAllowed`
+    and applies the same policy offline. **59 St-Columbus Circle (614)** was the
+    first station this worklist promoted to a hand OVERRIDE (2026-07-21): a
+    6-elevator MESH the auto tier over-warned, hand-verified with Bryce (fully
+    step-free interconnected, two opposite-side street entrances back each other
+    up via the EL278 cross-under, EL279 real despite a stale "withdrawn" note),
+    encoded with the Stamford/Jackson-Red "direct OR detour" CNF paired-segments
+    so every single outage stays accessible (matching MTA) while real double
+    outages sever — the disagreements log is now empty.
   - Excluded complexes are correct: no ADA elevator in the live feed (191 St etc.),
     or a data.ny.gov ADA elevator the feed doesn't emit (can't track it).
 - **MTA ground-truth + topology sources (2026-07-21).** data.ny.gov `94fv-bak7`

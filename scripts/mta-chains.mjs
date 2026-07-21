@@ -265,6 +265,52 @@ const OVERRIDES = [
       ]},
     ],
   },
+  {
+    // 59 St-Columbus Circle (614): a 6-elevator MESH the auto tier over-warned
+    // (EL276X/EL280 logged as unplaced-backup). Hand-verified with Bryce
+    // (2026-07-21): the complex is FULLY step-free interconnected, so the two
+    // opposite-side street entrances back each other up — EL276X (8th Av/58 St,
+    // south) reaches the downtown "lower mezzanine"; EL280 (Central Park West/
+    // 60 St, north) reaches the uptown side; and EL278 is the cross-under linking
+    // the lower mezzanine to the uptown A/B/C/D platform. Both downtown-platform
+    // elevators (EL277, EL622) reach BOTH the downtown 1 and A/B/C/D platforms;
+    // uptown A/B/C/D has a redundant pair (EL278 from the south, EL279 from the
+    // north). EL279's feed note says "Withdrawn - Confirmed Duplicate" but it is
+    // a REAL operating elevator (Bryce) — stale MTA bookkeeping (MTA_NOTE_JUNK).
+    // Each leg with a cross-side backup is a "direct OR detour" encoded as CNF
+    // paired segments (the Stamford/Jackson-Red pattern): so every SINGLE elevator
+    // outage still leaves every platform reachable (matching MTA marking all 6
+    // redundant), while a real double-outage that severs a leg still reads out.
+    canonicalId: "614", name: "59 St-Columbus Circle", covers: ["614"],
+    chains: [
+      { label: " (1/A/B/C/D)",
+        note: "Downtown 1 and A/B/C/D share step-free access. Normally: the 8th Av & 58 St elevator to the downtown mezzanine, then either downtown-platform elevator (both reach the 1 and the A/B/C/D platforms). If the 8th Av elevator is out, enter via the Central Park West & 60 St elevator and cross under to the downtown mezzanine — so the two street entrances back each other up.",
+        segments: [
+          // downtown mezzanine reachable via EL276X directly OR (EL280 AND EL278):
+          // CNF -> (276X|280) AND (276X|278).
+          ["dt-entry-a", "Street to downtown mezzanine (8th Av/58 St, or Central Park West/60 St as backup)", ["EL276X", "EL280"]],
+          ["dt-entry-b", "Downtown mezzanine reached directly or via the cross-under from the north side", ["EL276X", "EL278"]],
+          ["dt-platform", "Downtown mezzanine to the downtown 1 and A/B/C/D platforms", ["EL277", "EL622"]],
+        ]},
+      { label: " (A/B/C/D uptown)",
+        note: "The uptown A/B/C/D platform is reached two ways that back each other up: from the 8th Av & 58 St entrance via the cross-under elevator, or from the Central Park West & 60 St entrance via the uptown-mezzanine elevator.",
+        segments: [
+          // UT-ABCD via (276X AND 278) OR (280 AND 279): CNF -> (276X|280)(276X|279)(278|280)(278|279).
+          ["ua-a", "Uptown A/B/C/D — 8th Av entrance or Central Park West entrance", ["EL276X", "EL280"]],
+          ["ua-b", "Uptown A/B/C/D — 8th Av entrance or uptown-mezzanine elevator", ["EL276X", "EL279"]],
+          ["ua-c", "Uptown A/B/C/D — cross-under elevator or Central Park West entrance", ["EL278", "EL280"]],
+          ["ua-d", "Uptown A/B/C/D — cross-under elevator or uptown-mezzanine elevator", ["EL278", "EL279"]],
+        ]},
+      { label: " (1 uptown)",
+        note: "The uptown 1 platform is reached from the Central Park West & 60 St elevator. If it's out, the step-free backup is a longer path from the 8th Av & 58 St entrance via the cross-under and uptown-mezzanine elevators.",
+        segments: [
+          // UT-1 via EL280 OR (276X AND 278 AND 279): CNF -> (280|276X)(280|278)(280|279).
+          ["u1-a", "Uptown 1 — Central Park West entrance, or 8th Av entrance via the detour", ["EL280", "EL276X"]],
+          ["u1-b", "Uptown 1 — Central Park West entrance or the cross-under elevator", ["EL280", "EL278"]],
+          ["u1-c", "Uptown 1 — Central Park West entrance or the uptown-mezzanine elevator", ["EL280", "EL279"]],
+        ]},
+    ],
+  },
 ];
 
 // ---------------------------------------------------------------------------
