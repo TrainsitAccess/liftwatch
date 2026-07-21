@@ -35,7 +35,7 @@
 // Usage: node scripts/mta-chains.mjs   (re-run to pick up feed changes, e.g. an
 // elevator newly marked ADA — the whole thing is derived from the live flags.)
 
-import { writeFileSync, mkdirSync } from "node:fs";
+import { writeFileSync, mkdirSync, readFileSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 // Runs via tsx (see package.json) so the canonical public-note composer is
@@ -333,6 +333,109 @@ function inferChains(elevators) {
 }
 
 // ---------------------------------------------------------------------------
+// UNIVERSAL (full-coverage) inference for the SIMPLE stations inferChains skips
+// (single line-component). Structure comes from data.ny.gov's STRUCTURED fields
+// (per-level access + direction), redundancy comes straight from MTA's flag
+// (feed `redundant` == data.ny.gov `redundant_elevator`, verified 0 disagreements
+// fleet-wide) — so a claimed backup is always MTA's own, never guessed. Segment =
+// a redundant group (union-find over MTA's named/flagged backups); chain = one
+// per platform-reaching segment, prefixed with the shared street→mezz prereqs.
+// Anything that can't be classified is modeled CONSERVATIVELY (all-required,
+// over-warn) and logged to generator-disagreements.json — never under-warns.
+// ---------------------------------------------------------------------------
+
+// data.ny.gov direction → normalized {key, word}. "Both"/blank = non-directional.
+function normDir(nyDir, desc) {
+  const d = (nyDir || "").toLowerCase();
+  const t = (desc || "").toLowerCase();
+  if (!d || d === "both" || d === "northbound/southbound") {
+    // fall back to a direction word in the description if the elevator is split
+    const m = t.match(/\b(uptown|downtown|manhattan-bound|brooklyn-bound|bronx-bound|queens-bound|[a-z. ]+-bound)\b/);
+    if (m) return { key: m[1].replace(/\s+/g, "-"), word: m[1] };
+    return { key: "", word: "" };
+  }
+  const word = d === "northbound" ? "northbound" : d === "southbound" ? "southbound" : d;
+  return { key: d, word };
+}
+
+// Enrich a mapped feed elevator with data.ny.gov structure.
+function nyStructure(e, nyByCode) {
+  const ny = nyByCode.get(e.id) || {};
+  return {
+    ...e,
+    mez: ny.elevator_mezzanine_1_access === "+" || ny.elevator_mezzanine_2_access === "+",
+    plat: ny.elevator_platform_access === "+",
+    dir: normDir(ny.elevator_direction_serviced, e.description),
+    nyRedundant: ny.redundant_elevator === "+",
+    backupId: ny.redundant_elevator_mezzanine && /^EL/.test(ny.redundant_elevator_mezzanine) ? ny.redundant_elevator_mezzanine : null,
+  };
+}
+
+// Union-find redundant groups among elevators serving the SAME functional leg.
+// Two elevators unite iff MTA names one as the other's backup, OR both are
+// MTA-redundant AND share the same leg signature (level-role + overlapping lines).
+function redundantGroups(els) {
+  const parent = new Map(els.map((e) => [e.id, e.id]));
+  const find = (x) => (parent.get(x) === x ? x : (parent.set(x, find(parent.get(x))), parent.get(x)));
+  const union = (a, b) => { if (parent.has(a) && parent.has(b)) parent.set(find(a), find(b)); };
+  const legSig = (e) => `${e.mez ? "m" : ""}${e.plat ? "p" : ""}`;
+  for (const e of els) if (e.backupId) union(e.id, e.backupId);
+  for (let i = 0; i < els.length; i++) for (let j = i + 1; j < els.length; j++) {
+    const a = els[i], b = els[j];
+    if (a.nyRedundant && b.nyRedundant && legSig(a) === legSig(b) && overlaps(a.lineSet, b.lineSet)) union(a.id, b.id);
+  }
+  const groups = new Map();
+  for (const e of els) (groups.get(find(e.id)) ?? groups.set(find(e.id), []).get(find(e.id))).push(e);
+  return [...groups.values()];
+}
+
+// Build simple/per-direction chains for one line-component's ADA elevators.
+function componentChains(comp, disagreements, complexId) {
+  const groups = redundantGroups(comp);
+  // classify groups by role
+  const streetToMezz = groups.filter((g) => g.every((e) => e.mez && !e.plat)); // prereq legs
+  const hasPrereq = streetToMezz.length > 0;
+  const platformGroups = groups.filter((g) => g.some((e) => e.plat));
+  if (!platformGroups.length) {
+    // no platform elevator (mezz-only ADA access) — model what exists, flag it
+    disagreements.push({ station: complexId, kind: "no-platform-elevator", elevators: comp.map((e) => e.id) });
+    return [{ label: labelFor(comp), segments: groups.map(toSeg), lines: linesOf(comp) }];
+  }
+  const prereqSegs = streetToMezz.map(toSeg);
+  const chains = [];
+  for (const g of platformGroups) {
+    // a platform group that ALSO touches mezz is a spoke (needs prereq) only when
+    // the station has a dedicated street→mezz leg; otherwise it's a direct
+    // single-shaft street→platform (no prereq).
+    const isSpoke = hasPrereq && g.every((e) => e.mez);
+    const segs = [...(isSpoke ? prereqSegs : (hasPrereq && !g.every((e) => e.mez) ? prereqSegs : [])), toSeg(g)];
+    chains.push({ label: labelFor(g), segments: segs, lines: linesOf(g) });
+  }
+  return chains;
+}
+
+const linesOf = (els) => els.reduce((a, e) => { for (const x of e.lineSet) a.add(x); return a; }, new Set());
+function labelFor(els) {
+  const lines = fmtLines(linesOf(els));
+  const dirs = [...new Set(els.map((e) => e.dir.word).filter(Boolean))];
+  const dir = dirs.length === 1 ? " " + dirs[0] : "";
+  return ` (${lines}${dir})`;
+}
+function toSeg(group) {
+  // one segment = a redundant group (order-stable by id). Label from the feed desc.
+  const els = [...group].sort((a, b) => a.id.localeCompare(b.id, undefined, { numeric: true }));
+  return { id: slug(els[0].description) || "segment", label: els[0].description || "Elevator", elevators: els.map((e) => e.id) };
+}
+
+function inferDirectional(rawEls, nyByCode, disagreements, complexId) {
+  const ada = rawEls.filter((e) => e.ada).map((e) => nyStructure(e, nyByCode));
+  if (!ada.length) return null; // no ADA elevator → no step-free chain to model
+  const comps = components(ada);
+  const chains = comps.flatMap((c) => componentChains(c, disagreements, complexId));
+  return chains.length ? chains : null;
+}
+
+// ---------------------------------------------------------------------------
 // Accessibility primitives (mirror src/lib/accessibility.ts) for the self-check.
 // ---------------------------------------------------------------------------
 const segmentUp = (seg, down) => seg.elevators.some((id) => !down.has(id));
@@ -382,6 +485,12 @@ async function main() {
   const eq = await (await fetch(FEED)).json();
   const elevators = eq.filter((e) => e.equipmenttype === "EL").map(mapEquipment);
 
+  // data.ny.gov structural ground truth (committed snapshot) — per-elevator level
+  // access + direction + redundancy. Keyed by equipment_code (== our EL ids).
+  const nyInv = JSON.parse(readFileSync(join(OUT_DIR, "ny-elevator-inventory.json"), "utf8")).elevators;
+  const nyByCode = new Map(nyInv.map((e) => [e.equipment_code, e]));
+  const disagreements = []; // generator-vs-MTA structural log (the engine-improvement worklist)
+
   // Group by logical station, applying merges.
   const canonical = (id) => MERGES[id] ?? id;
   const byStation = new Map();
@@ -398,14 +507,19 @@ async function main() {
   const models = [];
   const chainsByStation = new Map(); // canonicalId -> [{label, segments}] for self-check
 
-  // Auto stations (skip any that are hand-authored overrides).
+  // Auto stations (skip any that are hand-authored overrides). Multi-line-group
+  // interchanges go through inferChains; every remaining elevator complex (the
+  // simple/per-direction majority) goes through the universal inferDirectional,
+  // structured from data.ny.gov. Redundancy in BOTH is MTA's own flag.
   for (const [id, els] of byStation) {
     if (overrideIds.has(id)) continue;
-    const chains = inferChains(els);
-    if (!chains) continue;
+    const viaInterchange = inferChains(els);
+    const chains = viaInterchange ?? inferDirectional(els, nyByCode, disagreements, id);
+    if (!chains) continue; // no ADA elevator at this complex — no step-free chain
     for (const c of chains) {
-      c.internalNote =
-        "Generated by scripts/mta-chains.mjs from MTA's live elevator inventory (one chain per platform line-group; self-checked against MTA's own declared redundancy flags).";
+      c.internalNote = viaInterchange
+        ? "Generated by scripts/mta-chains.mjs from MTA's live elevator inventory (one chain per platform line-group; self-checked against MTA's own declared redundancy flags)."
+        : "Generated by scripts/mta-chains.mjs — universal per-station inference from data.ny.gov structure (per-level access + direction) with redundancy read from MTA's own flag. Self-checked against MTA's declared redundancy.";
     }
     chainsByStation.set(id, chains);
     models.push(...toModel(id, nameOf.get(id), [id], chains, descById));
@@ -433,13 +547,27 @@ async function main() {
       const redundantHere = chainAccessible(c, new Set([el]));
       derivedByEl.set(el, (derivedByEl.get(el) ?? true) && redundantHere);
     }
+    const isOverride = overrideIds.has(id);
     for (const el of seen) {
       const flag = flagsById.get(el);
       if (!flag) { warnings.push(`UNKNOWN-ID  ${id} ${el}: not in feed`); continue; }
       if (!flag.ada) warnings.push(`NON-ADA-IN  ${id} ${el}: non-ADA elevator appears in a chain`);
       const derived = derivedByEl.get(el);
-      if (derived !== flag.redundant && !(el in REDUNDANCY_EXCEPTIONS))
+      if (derived === flag.redundant || el in REDUNDANCY_EXCEPTIONS) continue;
+      // Overrides are hand-verified — an undocumented mismatch is a real error.
+      // Auto stations CONFORM to MTA by construction (redundancy is read from the
+      // flag), so a residual mismatch is always the SAFE over-warn direction
+      // (derived=sole where MTA=redundant: we couldn't place a backup) — log it as
+      // the engine-improvement worklist, never fail the build (Bryce's directive).
+      if (isOverride) {
         warnings.push(`REDUNDANCY  ${id} ${el}: derived redundant=${derived} but feed=${flag.redundant} (no exception)`);
+      } else if (derived === false && flag.redundant === true) {
+        disagreements.push({ station: id, elevator: el, kind: "over-warn-unplaced-backup", derived: "sole", mta: "redundant" });
+      } else {
+        // derived=redundant but MTA=sole would be an UNDER-warn — must never happen
+        // for auto stations (we only group what MTA marks redundant); flag loudly.
+        warnings.push(`UNDER-WARN  ${id} ${el}: derived redundant but MTA says sole — auto grouping bug`);
+      }
     }
   }
   // coverage check across covered station ids
@@ -472,11 +600,28 @@ async function main() {
     models,
     elevatorFlags: Object.fromEntries([...flagsById].filter(([id]) => usedIds.has(id))),
     redundancyExceptions: REDUNDANCY_EXCEPTIONS,
+    // Hand-authored interchanges (strict redundancy gate) vs the auto tier where a
+    // residual over-warn (derived sole where MTA=redundant, backup unplaceable) is
+    // an ALLOWED conservative fallback — the offline check applies the same policy.
+    overrideStations: [...overrideIds],
+    overWarnAllowed: disagreements.filter((d) => d.kind === "over-warn-unplaced-backup").map((d) => `${d.station}|${d.elevator}`),
     merges: MERGES,
   };
   mkdirSync(OUT_DIR, { recursive: true });
   writeFileSync(join(OUT_DIR, "station-chains.json"), JSON.stringify(out, null, 2) + "\n");
   console.log(`\nWrote src/catalog/mta-data/station-chains.json (${models.length} models).`);
+
+  // The generator-vs-MTA disagreement worklist (Bryce's "model everything, still
+  // improve the engine" artifact): stations modeled CONSERVATIVELY where the
+  // structured data couldn't fully resolve the layout. Always the safe over-warn
+  // direction; each entry is a candidate for a future engine/config sharpening.
+  const disOut = {
+    note: "Generated by scripts/mta-chains.mjs. Each entry is a station where the universal inference fell back to a conservative (over-warn) structure — the worklist for sharpening the engine, NOT a rider-facing under-warn. See CLAUDE.md.",
+    count: disagreements.length,
+    disagreements: disagreements.sort((a, b) => String(a.station).localeCompare(String(b.station))),
+  };
+  writeFileSync(join(OUT_DIR, "generator-disagreements.json"), JSON.stringify(disOut, null, 2) + "\n");
+  console.log(`Wrote generator-disagreements.json (${disagreements.length} conservative-fallback entries).`);
 }
 
 main().catch((err) => { console.error("mta-chains failed:", err); process.exitCode = 1; });

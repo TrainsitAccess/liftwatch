@@ -26,6 +26,13 @@ const inv = JSON.parse(fs.readFileSync(`${DATA}/ny-elevator-inventory.json`, "ut
 const invArr: any[] = Array.isArray(inv) ? inv : (inv.elevators || Object.values(inv));
 const invByCode = new Map<string, any>(invArr.map((e) => [e.equipment_code, e]));
 
+// Known/expected redundancy differences: human-documented feed exceptions +
+// the generator's logged conservative over-warn fallbacks. These are surfaced
+// as INFO ("known"), not FLAG ("review"), so the audit stays a clean regression.
+const chainsData = JSON.parse(fs.readFileSync(`${DATA}/station-chains.json`, "utf8"));
+const documentedException = new Set(Object.keys(chainsData.redundancyExceptions || {}));
+const overWarnAllowed = new Set<string>(chainsData.overWarnAllowed || []); // "station|elevator"
+
 // Physical stations MTA splits across complex-ids — must match mta-chains.mjs.
 const MERGES: Record<string, string> = { "318": "164", "624": "628" };
 const canon = (id: string) => MERGES[id] ?? id;
@@ -90,6 +97,10 @@ for (const [complexId, chains] of models) {
   for (const m of chains) for (const e of allElevators(m)) {
     const rec = invByCode.get(e.externalId);
     if (!rec) { add("FLAG", "ID-GHOST", `${e.externalId} (${complexId}) modeled but NOT in data.ny.gov inventory`); continue; }
+    if (rec.station_complex_mrn === undefined || String(rec.station_complex_mrn).trim() === "") {
+      add("INFO", "ID-NY-LAG", `${e.externalId} (${complexId}): in the feed but data.ny.gov hasn't catalogued its complex yet (feed authoritative)`);
+      continue;
+    }
     const recCx = canon(String(rec.station_complex_mrn));
     if (recCx !== complexId && !(m.coveredStationExternalIds || []).includes(String(rec.station_complex_mrn)))
       add("FLAG", "ID-COMPLEX", `${e.externalId}: data.ny.gov complex ${rec.station_complex_mrn}(→${recCx}) but modeled at ${complexId}`);
@@ -112,8 +123,15 @@ for (const [complexId, chains] of models) {
     const nyRed = ny === "+";
     const modelRed = modelRedundant([...chains], id);
     if (modelRed !== nyRed) {
-      const nuance = modelRed && !nyRed ? " (likely the stricter-whole-journey nuance — model backs it up at segment level; data.ny.gov wants full-journey replacement)" : " (model says NOT redundant but data.ny.gov marks it redundant — review)";
-      add("FLAG", "REDUND-DIFF", `${id} (${complexId} "${(rec.notes || rec.station_name || "").slice(0, 40)}"): model=${modelRed ? "redundant" : "sole"} vs data.ny.gov=${ny}${nuance}`);
+      const known = documentedException.has(id) || overWarnAllowed.has(`${complexId}|${id}`);
+      const why = documentedException.has(id)
+        ? " (documented human exception — REDUNDANCY_EXCEPTIONS)"
+        : overWarnAllowed.has(`${complexId}|${id}`)
+          ? " (logged conservative over-warn — generator couldn't place MTA's declared backup; safe)"
+          : modelRed && !nyRed
+            ? " (stricter-whole-journey nuance — model backs it up at segment level)"
+            : " (model says NOT redundant but data.ny.gov marks it redundant — REVIEW)";
+      add(known ? "INFO" : "FLAG", "REDUND-DIFF", `${id} (${complexId} "${(rec.notes || rec.station_name || "").slice(0, 40)}"): model=${modelRed ? "redundant" : "sole"} vs data.ny.gov=${ny}${why}`);
     }
   }
 }

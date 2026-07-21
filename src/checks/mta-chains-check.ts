@@ -20,8 +20,12 @@ const data = JSON.parse(
   models: StationModel[];
   elevatorFlags: Record<string, Flags>;
   redundancyExceptions: Record<string, string>;
+  overrideStations: string[];
+  overWarnAllowed: string[]; // "station|elevator" pairs where a conservative over-warn is allowed
   merges: Record<string, string>;
 };
+const overrideStations = new Set(data.overrideStations ?? []);
+const overWarnAllowed = new Set(data.overWarnAllowed ?? []);
 
 let failures = 0;
 const ok = (cond: boolean, msg: string): void => {
@@ -55,8 +59,14 @@ for (const [station, chains] of byStation) {
     if (!flag) { ok(false, `${station} ${el}: missing feed flag`); continue; }
     if (!flag.ada) ok(false, `${station} ${el}: non-ADA elevator present in a chain`);
     if (isRedundant === flag.redundant) { redundancyChecked++; continue; }
-    // mismatch — must be a documented exception
+    // mismatch — allowed only if: (a) a documented human exception, or (b) an
+    // auto-station conservative over-warn (derived SOLE where MTA=redundant — a
+    // backup MTA declares but the generator couldn't place; safe direction).
+    // An under-warn (derived redundant where MTA=sole) is NEVER allowed.
     if (el in data.redundancyExceptions) { exceptionsUsed++; continue; }
+    const isOverride = overrideStations.has(station);
+    const overWarn = isRedundant === false && flag.redundant === true;
+    if (!isOverride && overWarn && overWarnAllowed.has(`${station}|${el}`)) { exceptionsUsed++; continue; }
     ok(false, `${station} ${el}: derived redundant=${isRedundant} but feed=${flag.redundant} with no documented exception`);
   }
 }
@@ -66,7 +76,7 @@ console.log("\n  Verified structural facts (locked from the human walk-through):
 const labelsFor = (station: string) => (byStation.get(station) ?? []).map((m) => m.chainLabel?.trim()).sort();
 const hasChain = (station: string, label: string) => (byStation.get(station) ?? []).some((m) => m.chainLabel?.trim() === label);
 
-ok(byStation.size === 19, `19 multi-chain MTA stations modeled (got ${byStation.size})`);
+ok(byStation.size >= 120, `full-coverage: 120+ MTA elevator complexes modeled (got ${byStation.size}; was 19 interchange-only before the universal generator)`);
 ok(hasChain("604", "(4)") && hasChain("604", "(B/D)"), "161 St-Yankee Stadium splits into (4) + (B/D)");
 ok(JSON.stringify(labelsFor("617")) === JSON.stringify(["(2/3)", "(4/5)", "(B/Q)", "(D/N/R)", "(LIRR)"]), "Atlantic Av = (2/3)+(4/5)+(B/Q)+(D/N/R)+(LIRR)");
 
