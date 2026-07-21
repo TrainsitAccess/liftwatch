@@ -173,6 +173,99 @@ add("INFO", "COVERAGE", `${gapComplexes.length} elevator complexes are NOT yet c
 }
 add("INFO", "NO-COMPLEX", `${noComplex.length} data.ny.gov rows have NO station assignment (relay/equipment buildings, uncatalogued installs) — excluded from modeling`);
 
+// ============================================================
+// CHECK E — TOPOLOGY RECONCILIATION vs the tsdataclinic elevator GRAPH
+//   (edgelist_w_pid.csv), an INDEPENDENT reconstruction of each elevator's
+//   Street/Mezzanine/Platform connections + the platform's line+direction.
+//   Cross-checks every model's STRUCTURE + DIRECTION station-by-station.
+//   Corroboration-tier (the ~2024 snapshot lacks the newest elevators, e.g.
+//   EL622), so conflicts are REVIEW flags, not proof of a bug.
+// ============================================================
+{
+  const edgeText = fs.readFileSync(`${DATA}/tsdataclinic/edgelist_w_pid.csv`, "utf8");
+  type Edge = { station: string; from: string; ft: string; to: string; tt: string };
+  const edges: Edge[] = [];
+  for (const line of edgeText.split("\n").slice(1)) {
+    const m = line.match(/^"([^"]*)","([^"]*)","([^"]*)","([^"]*)","([^"]*)"/);
+    if (m) edges.push({ station: m[1], from: m[2], ft: m[3], to: m[4], tt: m[5] });
+  }
+  const isMezz = (t: string) => /mezzanine|concourse|balcony|footbridge|overpass|retail|connection|passageway|nassau/i.test(t);
+  // platform pid -> set of direction tokens (train label after the first "-")
+  const dirOf = (train: string) => train.split("-").slice(1).join("-").trim();
+  // north/northbound/uptown → N; south/southbound/downtown → S. (Terminus names
+  // like "manhattan"/"brooklyn" are intentionally unmapped — not a global axis.)
+  const axisOf = (d: string): "N" | "S" | null =>
+    /north|uptown/.test(d) ? "N" : /south|downtown/.test(d) ? "S" : null;
+  const pidDirs = new Map<string, Set<string>>();
+  for (const e of edges) {
+    let pid: string | null = null, train: string | null = null;
+    if (e.ft === "Platform" && e.tt === "Train") { pid = `${e.station}|${e.from}`; train = e.to; }
+    else if (e.tt === "Platform" && e.ft === "Train") { pid = `${e.station}|${e.to}`; train = e.from; }
+    if (pid && train) (pidDirs.get(pid) ?? pidDirs.set(pid, new Set()).get(pid)!).add(dirOf(train));
+  }
+  // elevator -> role
+  type Role = { street: boolean; mezz: boolean; platform: boolean; pids: Set<string>; station: string };
+  const gRole = new Map<string, Role>();
+  for (const e of edges) {
+    let el: string | null = null, other = "", otype = "";
+    if (e.ft === "Elevator") { el = e.from; other = e.to; otype = e.tt; }
+    else if (e.tt === "Elevator") { el = e.to; other = e.from; otype = e.ft; }
+    if (!el) continue;
+    const r = gRole.get(el) ?? { street: false, mezz: false, platform: false, pids: new Set<string>(), station: e.station };
+    if (otype === "Street") r.street = true;
+    else if (otype === "Platform") { r.platform = true; r.pids.add(`${e.station}|${other}`); }
+    else if (isMezz(otype)) r.mezz = true;
+    gRole.set(el, r);
+  }
+  const gAxis = (el: string): Set<"N" | "S"> => {
+    const r = gRole.get(el); const out = new Set<"N" | "S">();
+    if (r) for (const pid of r.pids) for (const d of pidDirs.get(pid) ?? []) { const a = axisOf(d); if (a) out.add(a); }
+    return out;
+  };
+  // model per-elevator: complex + set of chain-direction axes
+  const mAxis = new Map<string, Set<"N" | "S">>();
+  const mComplexOf = new Map<string, string>();
+  for (const [complexId, chains] of models) for (const m of chains) {
+    const a = axisOf((m.chainLabel || "").toLowerCase());
+    for (const e of allElevators(m)) {
+      mComplexOf.set(e.externalId, complexId);
+      if (a) (mAxis.get(e.externalId) ?? mAxis.set(e.externalId, new Set()).get(e.externalId)!).add(a);
+    }
+  }
+  // E1 — direction inversion (unambiguous N/S only, both sides one-axis)
+  let checkedStations = new Set<string>(), flaggedStations = new Set<string>(), dirCompared = 0;
+  for (const id of modeledIds) {
+    const g = gAxis(id); const m = mAxis.get(id);
+    if (!gRole.has(id)) continue;
+    checkedStations.add(mComplexOf.get(id) ?? id);
+    if (g.size === 1 && m && m.size === 1) {
+      dirCompared++;
+      const gv = [...g][0], mv = [...m][0];
+      if (gv !== mv) { add("FLAG", "TOPO-DIRECTION", `${id} (${mComplexOf.get(id)}): topology graph puts it on the ${gv === "N" ? "UPTOWN/north" : "DOWNTOWN/south"} platform but the model chains it ${mv === "N" ? "uptown/north" : "downtown/south"} — possible direction inversion`); flaggedStations.add(mComplexOf.get(id) ?? id); }
+    }
+  }
+  // NOTE: a "relative grouping" check (opposite-platform elevators must not share
+  // a chain) was tried and REMOVED — it's confounded by two legitimate patterns
+  // and only produced false positives (flagged Columbus Circle / Penn / 161 St /
+  // every hand-verified override): (1) MTA redundancy spans opposite platforms via
+  // step-free mezzanine cross-connections (Parkchester, Far Rockaway), and (2) a
+  // shared street/mezz prerequisite or a mesh cross-connector legitimately appears
+  // in a chain for a different direction. The graph's platform split and MTA's
+  // redundancy measure different things, so the graph can validate a single
+  // elevator's OWN direction (E1) but not the grouping.
+
+  // E2 — coverage: an ADA graph elevator at a MODELED complex, not in the model
+  for (const [el, r] of gRole) {
+    if (modeledIds.has(el)) continue;
+    const rec = invByCode.get(el); if (!rec) continue;
+    const cx = canon(String(rec.station_complex_mrn ?? "")); if (!cx || !modeledComplexes.has(cx)) continue;
+    const ada = rec.ada_compliant === "YES" || rec.ada_compliant === "1" || rec.ada_compliant === true;
+    if (ada && (r.platform || r.mezz))
+      add("FLAG", "TOPO-MISSING", `${el} (${cx}): in the topology graph as ADA${r.platform ? " platform" : ""} access but NOT in the model — possible missing elevator`);
+  }
+  add("INFO", "TOPO-COVERAGE", `Topology cross-check ran on ${checkedStations.size} modeled complexes present in the graph; ${dirCompared} elevators had an unambiguous N/S axis on BOTH sides and were direction-compared; ${checkedStations.size - flaggedStations.size} complexes clean, ${flaggedStations.size} flagged.`);
+}
+
 // ---- report ----
 const order = { FLAG: 0, GAP: 1, INFO: 2 } as const;
 findings.sort((a, b) => order[a.sev] - order[b.sev] || a.code.localeCompare(b.code));
