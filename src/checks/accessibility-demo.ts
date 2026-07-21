@@ -157,7 +157,7 @@ check("MLBR Platform 3 elevator out alone -> still accessible (Caltrain NB backu
 // The directional hints must stay DISJOINT from the concourse elevators' hints:
 // a plaza/garage advisory must never be dragged onto the platform elevator.
 check('MLBR "Station - East Plaza" (concourse) -> East Plaza elevator, not the platform', attributeOutage("Station - East Plaza", m("MLBR")), {
-  elevatorExternalId: "MLBR-EAST-PLAZA",
+  elevatorExternalId: "W40-116", // East Plaza street elevator (promoted from MLBR-EAST-PLAZA, 2026-07-20 BART audit)
   segmentId: "concourse-access",
 });
 // Synthetic models isolate attributeOutageAcrossChains's own ambiguity rule

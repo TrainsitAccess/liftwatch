@@ -1,4 +1,4 @@
-# LiftWatch — Session Handoff (2026-07-20)
+# LiftWatch — Session Handoff (2026-07-21)
 
 **To start the next session, paste the prompt in [§ Next-session prompt](#next-session-prompt) below.**
 
@@ -96,6 +96,40 @@ new stations.
 ```
 
 ---
+
+## What shipped this session (2026-07-21) — BART final accuracy audit + Millbrae real-id promotion
+
+Bryce asked to run an audit of BART against the new sources (the ADA-settlement
+real-id inventory + the 2022 dimensions guide). Built the BART analog to
+`wmata:audit`:
+
+- **`npm run bart:audit`** (`scripts/bart-final-audit.mts`) — an INDEPENDENT
+  cross-check that re-derives from the raw settlement + dimensions-guide sources
+  rather than reusing `check:bart`, so it can catch shared blind spots. Adds the
+  dimensions `check:bart` lacks: REVERSE coverage (a settlement street/platform
+  elevator in NO model = under-warn candidate), `replacedBy` hygiene, settlement-
+  function-vs-segment placement (esp. redundant pairs with mixed functions), and
+  a dimensions-guide row-count structure cross-check. **0 errors.** Models
+  reconcile cleanly (DELN uses current `R50-164/165` not superseded `R50-49/50`;
+  no ghost/cross-station ids; garages correctly out of chains).
+- **One real gap found + fixed: Millbrae's East Plaza street elevator** was still
+  on invented id `MLBR-EAST-PLAZA` — promoted to its real settlement id
+  **`W40-116`** (confirmed = "STREET ELEVATOR FROM THE EAST PLAZA" on BART's live
+  `/accessible` page in our committed scrape). The settlement's other MLBR
+  platform shafts `W40-108/110/112` (P5/P4/P1) are **Caltrain** platforms in the
+  shared complex (BART runs only Platform 3 = `W40-109`) — out of BART scope,
+  now documented in the model `internalNote`, the inventory JSON, and the audit's
+  `OUT_OF_BART_SCOPE` set so they never re-flag.
+- Two residual WARNs are settlement-func-column imprecision the dimensions guide
+  resolves in the model's favor — **no model change**: 19th's `K20-163` id↔side
+  is inferential but the redundant-pair STRUCTURE is live-verified (BART's page
+  names "Platform Elevator 1 & 2"); Lake Merritt's `A10-140` is a street→platform
+  sequential the guide confirms.
+- Updated `check:bart` + `demo:access` for the promoted id (removed
+  `MLBR-EAST-PLAZA` from `KNOWN_INVENTED`; MLBR East-Plaza attribution test now
+  expects `W40-116`). typecheck + check:bart + demo:access (76) + bart:audit (0
+  errors) + poll:bart:dry (50 stations, 69 chains) all green. No station-review-
+  queue progress this session.
 
 ## What shipped this session (2026-07-20, parallel) — Same-name elevator letter designations
 

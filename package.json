@@ -53,6 +53,7 @@
     "check:wmata": "tsx src/checks/wmata-check.ts",
     "check:bart": "tsx src/checks/bart-check.ts",
     "wmata:audit": "tsx scripts/wmata-final-audit.mts",
+    "bart:audit": "tsx scripts/bart-final-audit.mts",
     "cta:observed": "tsx scripts/cta-observed.mts",
     "check:cta": "tsx src/checks/cta-check.ts",
     "review:queue": "tsx scripts/review-queue.mts",

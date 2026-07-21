@@ -16,9 +16,13 @@ import type { StationModel } from "../lib/accessibility.js";
 // assignment is INFERENTIAL (settlement gives no side) — assigned by position
 // index/listed order; do not treat the exact side as confirmed. (3) A few
 // elevators keep their prior descriptive ids because the settlement has no clean
-// match: Millbrae's Caltrain/plaza/garage access elevators (MLBR-CALTRAIN-NB,
-// MLBR-EAST-PLAZA, MLBR-GARAGE, MLBR-WEST-PLAZA — only MLBR platform-3 = W40-109
-// mapped), Daly City's pedestrian-tunnel elevator (DALY-TUNNEL), Coliseum's arena
+// match: Millbrae's Caltrain/garage access elevators (MLBR-CALTRAIN-NB,
+// MLBR-GARAGE, MLBR-WEST-PLAZA — BART platform-3 = W40-109 and the East Plaza
+// street elevator = W40-116 ARE mapped to real ids; the settlement's remaining
+// W40 platform elevators W40-108/110/112 (P5/P4/P1) are Caltrain-platform shafts
+// in the shared complex, out of BART's step-free scope — BART runs only Platform
+// 3, per bart.gov/stations/mlbr/accessible), Daly City's pedestrian-tunnel
+// elevator (DALY-TUNNEL), Coliseum's arena
 // bridge (COLS-ARENA), and West Dublin's 4 garage elevators (WDUB-GAR-*, garages
 // excluded from the settlement's 87 station elevators). South Hayward's settlement
 // street elevator A75-121 is not on BART's live accessible route (garage/aux), so
@@ -571,6 +575,7 @@ export const BART_STATION_MODELS: StationModel[] = [
     // overlap (a real, deliberately cross-tracked shared physical link).
     systemId: "bart-bay-area",
     stationExternalId: "MLBR",
+    internalNote: "Real BART asset ids from the ADA settlement (Exhibit F): W40-109 = Platform 3 (all BART destinations), W40-116 = East Plaza street elevator (promoted from MLBR-EAST-PLAZA 2026-07-20 during the BART final audit). The settlement's other W40 platform ids — W40-108 (P5), W40-110 (P4), W40-112 (P1) — are Caltrain-platform shafts in this shared BART/Caltrain complex (W40 is the whole-complex asset code); BART operates only Platform 3, so they are out of BART's step-free scope and deliberately unmodeled (confirmed vs bart.gov/stations/mlbr/accessible, which lists exactly 4 elevators). MLBR-CALTRAIN-NB / MLBR-GARAGE / MLBR-WEST-PLAZA stay descriptive (Caltrain access / parking garage — no clean BART settlement id; MLBR-CALTRAIN-NB is possibly W40-110/P4 but the position match is inferential, not adopted).",
     note: "BART's Platform 3 elevator and the Caltrain concourse-to-northbound-platform elevator explicitly back each other up per BART's own guidance (\"use the Caltrain Platform 4/Northbound elevator\" / \"use the BART Platform 3 elevator\") — a real cross-agency backup at this shared station, tracked here even though one elevator is nominally Caltrain's. Separately, the East Plaza street elevator and the parking-garage elevator explicitly back each other up too (\"take the elevator in the BART parking garage\"); the West Plaza (Caltrain) elevator's own guidance is \"access from the opposite (East Plaza) side\", so all three form one shared concourse-access group.",
     segments: [
       { id: "platform-3", label: "Platform access (BART Platform 3 / Caltrain Platform 4 Northbound)", elevators: [
@@ -591,7 +596,7 @@ export const BART_STATION_MODELS: StationModel[] = [
         { externalId: "MLBR-CALTRAIN-NB", label: "Caltrain concourse-to-northbound-platform elevator", matchHints: ["caltrain", "northbound"] },
       ] },
       { id: "concourse-access", label: "Street/plaza to concourse", elevators: [
-        { externalId: "MLBR-EAST-PLAZA", label: "East Plaza street elevator", matchHints: ["east plaza"] },
+        { externalId: "W40-116", label: "East Plaza street elevator", matchHints: ["east plaza"] },
         { externalId: "MLBR-GARAGE", label: "BART parking garage elevator", matchHints: ["garage"] },
         { externalId: "MLBR-WEST-PLAZA", label: "West Plaza (Caltrain) elevator", matchHints: ["west plaza", "caltrain"] },
       ] },

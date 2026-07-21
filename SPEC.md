@@ -434,6 +434,31 @@ tunnel/arena bridge). These are asset-management ids, NOT live-feed ids —
 attribution stays `matchHints`-based; the ids give identity + a ground-truth
 audit (`check:bart` reconciles every real id vs the inventory).
 
+**BART final accuracy audit (2026-07-21, `npm run bart:audit`,
+`scripts/bart-final-audit.mts`)** — the BART analog to `wmata:audit`: an
+INDEPENDENT cross-check that re-derives from the raw sources (settlement
+inventory + the 2022 dimensions guide) rather than reusing `check:bart`'s logic,
+so it catches shared blind spots. It adds the dimensions check:bart lacks — the
+REVERSE coverage direction (a real settlement street/platform elevator in NO
+model = an under-warn candidate), `replacedBy` hygiene (a model must never use a
+superseded id), settlement-function-vs-segment placement (esp. a redundant pair
+whose members have different settlement functions), and a dimensions-guide
+row-count structure cross-check. **Result: 0 errors.** The models reconcile
+cleanly — DELN correctly uses the current `R50-164/165` (not the superseded
+`R50-49/50`), no ghost/cross-station ids, garages correctly out of chains. It
+surfaced exactly one real gap: **Millbrae's East Plaza street elevator was still
+on the invented id `MLBR-EAST-PLAZA`** — promoted to its real settlement id
+**`W40-116`** (the only MLBR street elevator; confirmed as the "STREET ELEVATOR
+FROM THE EAST PLAZA" on BART's live `/accessible` page). The settlement's other
+MLBR platform shafts `W40-108/110/112` (P5/P4/P1) are **Caltrain** platforms in
+the shared complex (BART runs only Platform 3 = `W40-109`) — correctly out of
+BART's step-free scope, documented as such in the model `internalNote`, the
+inventory JSON, and the audit's out-of-scope set so they never re-flag. Two
+residual WARNs are settlement-func-column imprecision the dimensions guide
+resolves in the model's favor (19th's `K20-163` id↔side is inferential but the
+redundant-pair STRUCTURE is live-verified; Lake Merritt's `A10-140` is a
+street→platform sequential the guide confirms) — no model change.
+
 - Real-time (in use): `bsa.aspx?cmd=elev` — a free-text, **station-level**
   advisory ("2 elevators out: MLBR: Station; RICH: Station"). Parsed by matching
   station codes against the station list.

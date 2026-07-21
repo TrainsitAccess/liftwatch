@@ -33,7 +33,8 @@ const isRealAssetId = (id: string) => /^[A-Z][0-9]{2}-[0-9]+$/.test(id);
 // plaza access; a pedestrian tunnel/arena bridge). Documented in
 // bart-station-models.ts's header + bart-ada-settlement.md.
 const KNOWN_INVENTED = new Set<string>([
-  "MLBR-CALTRAIN-NB", "MLBR-EAST-PLAZA", "MLBR-GARAGE", "MLBR-WEST-PLAZA",
+  // MLBR-EAST-PLAZA was promoted to its real id W40-116 (2026-07-20 BART audit).
+  "MLBR-CALTRAIN-NB", "MLBR-GARAGE", "MLBR-WEST-PLAZA",
   "DALY-TUNNEL", "COLS-ARENA", "WDUB-GAR-N1", "WDUB-GAR-N2", "WDUB-GAR-S1", "WDUB-GAR-S2",
 ]);
 

@@ -74,6 +74,7 @@ npm run mbta:chains      # regenerate MBTA simple-station chains (validated vs M
 npm run check:mbta-chains # prove the MBTA chain generator offline (full-feed fixture)
 npm run check:wmata       # prove the WMATA pathways chains + attribution crosswalk (offline)
 npm run check:bart        # reconcile BART models vs the ADA-settlement real-id inventory + attribution (offline)
+npm run bart:audit        # INDEPENDENT BART audit: models vs settlement (coverage/func/replacedBy) + dimensions guide (offline)
 npm run wmata:observed    # refresh observed-units.json (archive + live feed; grows only)
 npm run check:cta         # prove the CTA text-identity parser vs the observed corpus (offline)
 npm run cta:observed      # refresh CTA observed-units.json (archive + live alert texts; grows only)

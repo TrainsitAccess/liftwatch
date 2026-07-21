@@ -347,7 +347,8 @@
       "abbr": "MLBR",
       "station": "Millbrae",
       "func": "platform",
-      "position": "P5"
+      "position": "P5",
+      "note": "Caltrain-platform shaft in the shared BART/Caltrain complex — out of BART's step-free scope (BART runs only Platform 3 = W40-109). Not modeled; see bart-station-models.ts MLBR internalNote (BART final audit 2026-07-20)."
     },
     {
       "id": "W40-109",
@@ -361,14 +362,16 @@
       "abbr": "MLBR",
       "station": "Millbrae",
       "func": "platform",
-      "position": "P4"
+      "position": "P4",
+      "note": "Caltrain-platform shaft (P4/Northbound) in the shared BART/Caltrain complex — out of BART's step-free scope. Possibly the physical elevator our MLBR-CALTRAIN-NB tracks as BART's named backup, but the position match is inferential and not adopted as an id. Not modeled under this id; see bart-station-models.ts MLBR internalNote."
     },
     {
       "id": "W40-112",
       "abbr": "MLBR",
       "station": "Millbrae",
       "func": "platform",
-      "position": "P1"
+      "position": "P1",
+      "note": "Caltrain-platform shaft in the shared BART/Caltrain complex — out of BART's step-free scope (BART runs only Platform 3 = W40-109). Not modeled; see bart-station-models.ts MLBR internalNote (BART final audit 2026-07-20)."
     },
     {
       "id": "W40-116",
