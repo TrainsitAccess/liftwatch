@@ -1,4 +1,5 @@
 import { stationModelsFor } from "../catalog/station-models.js";
+import { platformDefaultAmbiguous } from "../adapters/bart/index.js";
 import { matchBartOtherEquipment } from "../catalog/bart-other-equipment.js";
 import { missingExpectedFields } from "../catalog/field-expectations.js";
 import { MBTA_STATION_MODELS } from "../catalog/mbta-models.js";
@@ -6,9 +7,11 @@ import type { NormalizedOutage, NormalizedUnit } from "../types.js";
 import {
   attributeOutage,
   attributeOutageAcrossChains,
+  elevatorLetterMap,
   platformDefaultElevator,
   isSingleFaultTolerant,
   stationAccessible,
+  withElevatorLetter,
   type StationModel,
 } from "../lib/accessibility.js";
 
@@ -64,57 +67,59 @@ check("WDUB North/Dublin side NOT redundant (shared platform elevator is a SPOF)
 check("WDUB South/Pleasanton side NOT redundant (shared platform elevator is a SPOF)", isSingleFaultTolerant(mChain("WDUB", " (South/Pleasanton side)")), false);
 check("12TH not redundant (single platform elevator)", isSingleFaultTolerant(m("12TH")), false);
 check("19TH not redundant (single street elevator)", isSingleFaultTolerant(m("19TH")), false);
-check("RICH not redundant (single platform elevator)", isSingleFaultTolerant(m("RICH")), false);
+// RICH gained a second (auxiliary "Amtrak connector") chain 2026-07-20, so it
+// no longer has exactly one chain — pick the main BART platform chain explicitly.
+check("RICH not redundant (single platform elevator)", isSingleFaultTolerant(mChain("RICH", undefined)), false);
 
 console.log("\n  accessibility scenarios:");
 check("12TH: all working -> accessible", accessible(m("12TH"), []), true);
-check("12TH: 14th St street elevator out -> accessible", accessible(m("12TH"), ["12TH-ST-14TH"]), true);
-check("12TH: both street elevators out -> inaccessible", accessible(m("12TH"), ["12TH-ST-14TH", "12TH-ST-11TH"]), false);
-check("12TH: platform elevator out -> inaccessible", accessible(m("12TH"), ["12TH-PLAT"]), false);
-check("ASHB: street elevator out -> accessible (parking lot)", accessible(m("ASHB"), ["ASHB-ST-ADELINE-E"]), true);
-check("ASHB: one platform elevator out -> accessible", accessible(m("ASHB"), ["ASHB-PLAT-1"]), true);
-check("ASHB: both platform elevators out -> inaccessible", accessible(m("ASHB"), ["ASHB-PLAT-1", "ASHB-PLAT-2"]), false);
-check("RICH: both street elevators out -> accessible (ramp)", accessible(m("RICH"), ["RICH-ST-1", "RICH-ST-2"]), true);
-check("RICH: platform elevator out -> inaccessible", accessible(m("RICH"), ["RICH-PLAT"]), false);
-check("SFIA: one platform elevator out -> accessible", accessible(m("SFIA"), ["SFIA-PLAT-1"]), true);
-check("SFIA: both platform elevators out -> inaccessible", accessible(m("SFIA"), ["SFIA-PLAT-1", "SFIA-PLAT-2"]), false);
-check("WARM: one street + one platform out -> accessible", accessible(mChain("WARM", undefined), ["WARM-ST-1", "WARM-PLAT-1"]), true);
-check("WARM: both platform elevators out -> inaccessible", accessible(mChain("WARM", undefined), ["WARM-PLAT-1", "WARM-PLAT-2"]), false);
-check("WARM pedestrian bridge: elevator out -> inaccessible (no backup)", accessible(mChain("WARM", " (pedestrian bridge)"), ["WARM-BRIDGE"]), false);
+check("12TH: 14th St street elevator out -> accessible", accessible(m("12TH"), ["K10-22"]), true);
+check("12TH: both street elevators out -> inaccessible", accessible(m("12TH"), ["K10-22", "K10-120"]), false);
+check("12TH: platform elevator out -> inaccessible", accessible(m("12TH"), ["K10-23"]), false);
+check("ASHB: street elevator out -> accessible (parking lot)", accessible(m("ASHB"), ["R10-113"]), true);
+check("ASHB: one platform elevator out -> accessible", accessible(m("ASHB"), ["R10-43"]), true);
+check("ASHB: both platform elevators out -> inaccessible", accessible(m("ASHB"), ["R10-43", "R10-111"]), false);
+check("RICH: both street elevators out -> accessible (ramp)", accessible(mChain("RICH", undefined), ["R60-61", "R60-80"]), true);
+check("RICH: platform elevator out -> inaccessible", accessible(mChain("RICH", undefined), ["R60-51"]), false);
+check("SFIA: one platform elevator out -> accessible", accessible(m("SFIA"), ["Y10-930"]), true);
+check("SFIA: both platform elevators out -> inaccessible", accessible(m("SFIA"), ["Y10-930", "Y10-931"]), false);
+check("WARM: one street + one platform out -> accessible", accessible(mChain("WARM", undefined), ["S20-148", "S20-146"]), true);
+check("WARM: both platform elevators out -> inaccessible", accessible(mChain("WARM", undefined), ["S20-146", "S20-147"]), false);
+check("WARM pedestrian bridge: elevator out -> inaccessible (no backup)", accessible(mChain("WARM", " (pedestrian bridge)"), ["S20-162"]), false);
 
 console.log("\n  new BART stations, curated 2026-07-08 from bart.gov's own outage-options page:");
 check("BALB: single elevator, no working -> accessible", accessible(m("BALB"), []), true);
-check("BALB: single elevator out -> inaccessible (no backup)", accessible(m("BALB"), ["BALB-EL"]), false);
+check("BALB: single elevator out -> inaccessible (no backup)", accessible(m("BALB"), ["M80-38"]), false);
 // DELN's two directions are INDEPENDENT chains (a detour through another
 // station isn't a same-station backup) — one direction's elevator failing
 // must not affect the other direction's chain.
-check("DELN Richmond direction: elevator out -> inaccessible", accessible(mChain("DELN", " (Richmond direction)"), ["DELN-PLAT-1"]), false);
+check("DELN Richmond direction: elevator out -> inaccessible", accessible(mChain("DELN", " (Richmond direction)"), ["R50-164"]), false);
 check(
   "DELN Berryessa/SFO direction: unaffected by the Richmond-direction elevator being out",
-  accessible(mChain("DELN", " (Berryessa/SFO/Millbrae/Daly City direction)"), ["DELN-PLAT-1"]),
+  accessible(mChain("DELN", " (Berryessa/SFO/Millbrae/Daly City direction)"), ["R50-164"]),
   true,
 );
 // WDUB's platform elevator is a SHARED bottleneck across both garage-side
 // chains — it going out must take down BOTH, even though the garage pairs
 // are independently redundant.
 check("WDUB North side: garage pair redundant, one out -> accessible", accessible(mChain("WDUB", " (North/Dublin side)"), ["WDUB-GAR-N1"]), true);
-check("WDUB North side: shared platform elevator out -> inaccessible", accessible(mChain("WDUB", " (North/Dublin side)"), ["WDUB-PLAT"]), false);
-check("WDUB South side: also inaccessible when the SAME shared platform elevator is out", accessible(mChain("WDUB", " (South/Pleasanton side)"), ["WDUB-PLAT"]), false);
+check("WDUB North side: shared platform elevator out -> inaccessible", accessible(mChain("WDUB", " (North/Dublin side)"), ["L20-132"]), false);
+check("WDUB South side: also inaccessible when the SAME shared platform elevator is out", accessible(mChain("WDUB", " (South/Pleasanton side)"), ["L20-132"]), false);
 
 console.log("\n  attribution (advisory text -> elevator or segment):");
 check('12TH "14th St elevator" -> specific elevator', attributeOutage("14th St elevator", m("12TH")), {
-  elevatorExternalId: "12TH-ST-14TH",
+  elevatorExternalId: "K10-22",
   segmentId: "street-concourse",
 });
 check('12TH "platform elevator out" -> specific (only one)', attributeOutage("platform elevator out", m("12TH")), {
-  elevatorExternalId: "12TH-PLAT",
+  elevatorExternalId: "K10-23",
   segmentId: "concourse-platform",
 });
 check('ASHB "platform elevator" -> segment only (two candidates)', attributeOutage("platform elevator", m("ASHB")), {
   elevatorExternalId: null,
   segmentId: "concourse-platform",
 });
-check('RICH "street entrance" -> segment only (two candidates)', attributeOutage("street entrance", m("RICH")), {
+check('RICH "street entrance" -> segment only (two candidates)', attributeOutage("street entrance", mChain("RICH", undefined)), {
   elevatorExternalId: null,
   segmentId: "street-concourse",
 });
@@ -125,17 +130,17 @@ console.log("  say WHICH independent chain it means, e.g. HAYW's two directions)
 const haywChains = models.get("HAYW")!;
 check('HAYW "Station - SF/Richmond" (real historical phrasing) -> Richmond-direction elevator', attributeOutageAcrossChains("Station - SF/Richmond", haywChains), {
   model: mChain("HAYW", " (Richmond/Daly City direction)"),
-  elevatorExternalId: "HAYW-PLAT-2",
+  elevatorExternalId: "A60-7",
   segmentId: "platform-2",
 });
 check('HAYW "Station - Berryessa" -> Berryessa-direction elevator, unaffected by the other chain', attributeOutageAcrossChains("Station - Berryessa", haywChains), {
   model: mChain("HAYW", " (Berryessa direction)"),
-  elevatorExternalId: "HAYW-PLAT-1",
+  elevatorExternalId: "A60-8",
   segmentId: "platform-1",
 });
 check('HAYW "Station" (no direction, both chains) -> unattributed, never guess which chain', attributeOutageAcrossChains("Station", haywChains), null);
 check('12TH "Station - Convention Center" (real historical phrasing) -> 11th St elevator', attributeOutage("Station - Convention Center", m("12TH")), {
-  elevatorExternalId: "12TH-ST-11TH",
+  elevatorExternalId: "K10-120",
   segmentId: "street-concourse",
 });
 // MLBR directional attribution (2026-07-16): Millbrae's real live advisory
@@ -143,12 +148,12 @@ check('12TH "Station - Convention Center" (real historical phrasing) -> 11th St 
 // direction exists) must resolve to the BART Platform 3 elevator, not stay
 // -UNSPECIFIED. Mirrors the confirmed Milpitas "Station - SF/East Bay" pattern.
 check('MLBR "Station - SF/East Bay/SFO Airport" (real advisory) -> BART Platform 3 elevator', attributeOutage("Station - SF/East Bay/SFO Airport", m("MLBR")), {
-  elevatorExternalId: "MLBR-PLAT-3",
+  elevatorExternalId: "W40-109",
   segmentId: "platform-3",
 });
 // MLBR-PLAT-3 is redundant (Caltrain NB backs it up) — so attributing this
 // advisory to it correctly keeps the station ACCESSIBLE, never a false blackout.
-check("MLBR Platform 3 elevator out alone -> still accessible (Caltrain NB backup)", accessible(m("MLBR"), ["MLBR-PLAT-3"]), true);
+check("MLBR Platform 3 elevator out alone -> still accessible (Caltrain NB backup)", accessible(m("MLBR"), ["W40-109"]), true);
 // The directional hints must stay DISJOINT from the concourse elevators' hints:
 // a plaza/garage advisory must never be dragged onto the platform elevator.
 check('MLBR "Station - East Plaza" (concourse) -> East Plaza elevator, not the platform', attributeOutage("Station - East Plaza", m("MLBR")), {
@@ -170,11 +175,11 @@ check("synthetic: text matching only chain A's unique hint -> chain A", attribut
 console.log("\n  platform-default attribution (2026-07-12 — a bare 'station elevator'");
 console.log("  advisory means the platform elevator, but ONLY when unambiguous):");
 check('RICH bare "Station" -> RICH-PLAT (single platform elevator)',
-  platformDefaultElevator(models.get("RICH")!), { elevatorExternalId: "RICH-PLAT", segmentId: "concourse-platform" });
+  platformDefaultElevator(models.get("RICH")!), { elevatorExternalId: "R60-51", segmentId: "concourse-platform" });
 check('POWL bare "Station" -> POWL-PLAT (street elevator is a separate segment)',
-  platformDefaultElevator(models.get("POWL")!), { elevatorExternalId: "POWL-PLAT", segmentId: "mezzanine-platform" });
+  platformDefaultElevator(models.get("POWL")!), { elevatorExternalId: "M30-55", segmentId: "mezzanine-platform" });
 check('COLS bare "Station" -> COLS-EL (auxiliary chains skipped, platform chain remains)',
-  platformDefaultElevator(models.get("COLS")!), { elevatorExternalId: "COLS-EL", segmentId: "station" });
+  platformDefaultElevator(models.get("COLS")!), { elevatorExternalId: "A30-3", segmentId: "station" });
 check('HAYW bare "Station" -> null (two per-direction platform elevators, never guess)',
   platformDefaultElevator(models.get("HAYW")!), null);
 
@@ -184,11 +189,11 @@ const colsChains = models.get("COLS")!;
 check('COLS "Station - Tunnel" -> COLS-ARENA (per Bryce: BART\'s "Tunnel" text is the arena elevator)',
   attributeOutageAcrossChains("Station - Tunnel", colsChains), { model: mChain("COLS", " (Arena footbridge)"), elevatorExternalId: "COLS-ARENA", segmentId: "arena" });
 check('COLS "Airport Connector out" -> COLS-OAC (GUESSED hint, pending live confirmation)',
-  attributeOutageAcrossChains("Airport Connector out", colsChains), { model: mChain("COLS", " (Oakland Airport Connector)"), elevatorExternalId: "COLS-OAC", segmentId: "oac" });
+  attributeOutageAcrossChains("Airport Connector out", colsChains), { model: mChain("COLS", " (Oakland Airport Connector)"), elevatorExternalId: "A30-30", segmentId: "oac" });
 check('COLS "Terminal/Station" -> null via hints (station elevator is hint-free by design)',
   attributeOutageAcrossChains("Terminal/Station", colsChains), null);
 check('COLS "Terminal/Station" then platform-default -> COLS-EL (auxiliaries filtered out)',
-  platformDefaultElevator(colsChains), { elevatorExternalId: "COLS-EL", segmentId: "station" });
+  platformDefaultElevator(colsChains), { elevatorExternalId: "A30-3", segmentId: "station" });
 
 console.log("\n  Other accessibility equipment + unidentified-outage flag (2026-07-12):");
 check('COLS "parking" advisory -> the wheelchair lift (other equipment, NOT an elevator)',
@@ -197,8 +202,11 @@ check('COLS "Terminal/Station" -> NOT other equipment (no parking hint)',
   matchBartOtherEquipment("COLS", "Terminal/Station"), null);
 check('COLS has auxiliary chains -> a platform default there is flagged needsReview',
   models.get("COLS")!.some((m) => m.auxiliary === true), true);
-check('RICH has no auxiliary chains -> its platform default is confident (no flag)',
-  models.get("RICH")!.some((m) => m.auxiliary === true), false);
+// RICH now HAS an auxiliary chain (the Amtrak connector), but its bare-"Station"
+// platform default stays confident because that auxiliary elevator is hinted
+// ("amtrak") — so it can't be confused with a hint-less bare advisory.
+check('RICH platform default is confident despite its (hinted) Amtrak auxiliary',
+  platformDefaultAmbiguous(models.get("RICH")!), false);
 
 console.log("\n  missing-information flag (per-system field expectations, 2026-07-12):");
 const mkO = (o: Partial<NormalizedOutage>): NormalizedOutage =>
@@ -217,7 +225,7 @@ check("WMATA 'Other'-symptom outage WITH a fail-safe note still exempt (symptom 
 check("CTA outage with no return/redundancy -> complete (both are agency limits)",
   missingExpectedFields("cta-chicago", mkO({ unitExternalId: "1" }), undefined), []);
 check("BART curated unit -> complete (no return expected)",
-  missingExpectedFields("bart-bay-area", mkO({ unitExternalId: "RICH-PLAT" }), mkU("curated")), []);
+  missingExpectedFields("bart-bay-area", mkO({ unitExternalId: "R60-51" }), mkU("curated")), []);
 check("BART unspecified (unmodeled) -> route/redundancy flagged",
   missingExpectedFields("bart-bay-area", mkO({ unitExternalId: "RICH-UNSPECIFIED" }), undefined), ["route/redundancy"]);
 check("MBTA un-modeled (assumed) unit -> route/redundancy flagged",
@@ -246,7 +254,33 @@ check("every curated MBTA model is structurally valid (>=1 segment, every segmen
 check("Government Center Blue-Line chain: 722 out is covered by 723 (redundant)",
   MBTA_STATION_MODELS.some((m) => m.stationExternalId === "place-gover" && m.chainLabel === " (Blue Line)" && stationAccessible(m, new Set(["722"]))), true);
 
-const total = 69;
+// --- Same-name elevator letter designations (A/B/C…) -------------------------
+// Standing rule (Bryce, 2026-07-20): within a physical station, elevators that
+// share an IDENTICAL label are lettered so an outage names WHICH one is down;
+// uniquely-named elevators get no letter. Derived, per-system, never hand-typed.
+console.log("\n  same-name elevator letter designations:");
+const wmataLetters = elevatorLetterMap([...stationModelsFor("wmata-dc").values()].flat());
+// Rosslyn (C05) has three identically-labeled "street to eastbound platform"
+// elevators, shared across the eastbound AND westbound chains — lettered A/B/C
+// by sorted id, and the SAME letter in every chain the elevator appears in.
+check("Rosslyn C05E01 → A", wmataLetters.get("C05E01"), "A");
+check("Rosslyn C05E02 → B", wmataLetters.get("C05E02"), "B");
+check("Rosslyn C05E03 → C", wmataLetters.get("C05E03"), "C");
+// C05W04 is the sole upper→lower elevator with a UNIQUE label → no letter.
+check("Rosslyn C05W04 (unique label) → no letter", wmataLetters.get("C05W04"), undefined);
+// The display helper appends the letter in parentheses (Bryce's chosen format);
+// a letterless name is returned unchanged.
+check("withElevatorLetter appends (A)", withElevatorLetter("Elevator between street and upper platform", "A"), "Elevator between street and upper platform (A)");
+check("withElevatorLetter no-op without a letter", withElevatorLetter("Platform elevator", undefined), "Platform elevator");
+// Grouping is per physical station: a station whose elevators all carry
+// distinct labels contributes no letters at all.
+check("distinct-label station contributes no letters", elevatorLetterMap([
+  { systemId: "x", stationExternalId: "S", segments: [
+    { id: "a", label: "a", elevators: [{ externalId: "S-1", label: "Street elevator" }, { externalId: "S-2", label: "Platform elevator" }] },
+  ] },
+]).size, 0);
+
+const total = 76;
 if (failures) {
   console.error(`\n  ${failures} check(s) FAILED\n`);
   process.exitCode = 1;
