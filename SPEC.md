@@ -236,6 +236,23 @@ would drive this exactly. Known limitation (methodology): an outage that later
 becomes attributable splits into two events. Deferred: per-segment modeling for
 MTA; storing/surfacing a live accessibility view beyond the poll output.
 
+**Same-name elevator letters (2026-07-20).** Within one physical station, when
+two or more curated elevators carry the IDENTICAL label (e.g. Rosslyn's three
+"street to eastbound platform" elevators), each gets a stable letter — A, B,
+C… — appended as `(A)` so a rider can tell WHICH one is down. A uniquely-named
+elevator gets no letter. It is **derived, never hand-typed**: `elevatorLetterMap`
+(`src/lib/accessibility.ts`) groups per `stationExternalId` by exact label,
+dedups by `externalId`, and assigns by sorted id — so a given elevator keeps its
+letter across every chain it appears in and across rebuilds; `withElevatorLetter`
+is the display suffix. `build-site-data.ts` applies it (via `letterMapForSystem`
+/ `namedWithLetter`) at every elevator-name emit point — the cross-system longest
+board, per-system currently-broken, offline log, most-broken, uptime streak, and
+the "backed up by" list — so it is automatic and universal across all systems and
+retroactive with zero model edits (33 same-name groups today: WMATA 17, MTA
+subway 10, Metro-North 4, MBTA 2; BART/TfL/CTA already have distinct labels so
+none). Keyed by `externalId`, the letter rides the feed description shown on the
+board, not just the curated label. Locked in `demo:access`.
+
 Rules baked into the metrics:
 - Currently-out = streak of 0 ("currently out of service"), never a stale streak.
 - New units are labeled ("90 days — monitored since …"), ranked fairly, not hidden.

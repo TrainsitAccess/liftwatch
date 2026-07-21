@@ -97,6 +97,41 @@ new stations.
 
 ---
 
+## What shipped this session (2026-07-20, parallel) — Same-name elevator letter designations
+
+Ran alongside the BART re-sourcing below (same working tree; see the
+coordination note at the end of this section). Bryce's standing rule: within
+one physical station, elevators that share an IDENTICAL label (e.g. Rosslyn's
+three "street to eastbound platform" elevators `C05E01/02/03`) each get a
+stable letter — A, B, C… — appended as `(A)` so an outage names WHICH one is
+down; uniquely-named elevators get none.
+
+- **Derived, never hand-typed** — `elevatorLetterMap` (`src/lib/accessibility.ts`)
+  groups per `stationExternalId` by exact label, dedups by `externalId`, assigns
+  by sorted id (stable across chains + rebuilds); `withElevatorLetter` is the
+  `(X)` suffix. Wired into every site elevator-name emit point in
+  `build-site-data.ts` (cross-system longest board, per-system currently-broken,
+  offline log, most-broken, uptime streak, "backed up by" list) via
+  `letterMapForSystem` / `namedWithLetter`. Automatic + universal, retroactive
+  with zero model edits — lit up **33 same-name groups** (WMATA 17, MTA subway
+  10, Metro-North 4, MBTA 2; BART/TfL/CTA have distinct labels → none). Keyed by
+  `externalId`, so it rides the feed description on the board. Format `(A)` was
+  Bryce's pick. Locked in `demo:access` (7 checks).
+- **Commits** (all pushed to main): `10a9be0` (feature code), `f7ddd3d`
+  (regression block + finished the BART session's uncommitted RICH→Amtrak demo
+  migration: `m("RICH")`→`mChain("RICH", undefined)` since RICH gained a 2nd
+  chain, and a truthful `platformDefaultAmbiguous(RICH)` check), `b71c092`
+  (realigned the COLS assertion to the new platform-default policy, per the BART
+  session's request). CLAUDE.md convention + SPEC.md §5 updated.
+- **Coordination note (two parallel sessions, ONE working tree):** the BART
+  re-sourcing session and this one committed to the same local `main`
+  simultaneously. A BART `git add`/commit swept this feature's CLAUDE.md bullet
+  into BART commit `ae8897f`; the shared `accessibility-demo.ts` had to be
+  reconciled by hand (BART's uncommitted id/chain updates + these letter tests).
+  No content was lost and no interaction exists (letters key on label, so BART's
+  id re-sourcing is irrelevant — verified 0 BART elevators lettered). Lesson for
+  future parallel work: avoid `git add -A` when another session shares the tree.
+
 ## What shipped this session (2026-07-20, latest) — BART re-sourced from its ADA settlement (real elevator ids)
 
 Bryce asked to hunt for better BART sources (BART was our weakest-sourced
