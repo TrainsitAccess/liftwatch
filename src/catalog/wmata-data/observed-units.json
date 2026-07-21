@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-20T12:28:12.542Z",
+  "updatedAt": "2026-07-21T12:04:22.722Z",
   "note": "Every WMATA elevator UnitName ever observed (archive + live feed). Grows only. Consumed by scripts/wmata-pathways.mts as an undercount/vocabulary gate.",
   "units": [
     {
@@ -517,6 +517,12 @@
       "stationCode": "F09",
       "location": "Elevator between mezzanine and platform",
       "firstObserved": "2026-07-16T19:03:18.254276+00:00"
+    },
+    {
+      "unitName": "F10X01",
+      "stationCode": "F10",
+      "location": "Elevator between mezzanine and platform",
+      "firstObserved": "2026-07-20T22:53:25.216384+00:00"
     },
     {
       "unitName": "F11X01",

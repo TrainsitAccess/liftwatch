@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-20T12:28:20.773Z",
+ "updatedAt": "2026-07-21T12:04:31.933Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -162,6 +162,10 @@
     {
      "source": "live feed (alert text)",
      "text": "Elevator at Cermak-McCormick Place (Green Line) Temporarily Out-of-Service — The elevator to/from 23rd street at Cermak-McCormick Place (Green Line) is temporarily out-of-service."
+    },
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Cermak Temporarily Out-of-Service — The elevator to/from 23rd Street at Cermak-McCormick Place (Green Line) is temporarily out-of-service."
     },
     {
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
@@ -434,6 +438,10 @@
     {
      "source": "live feed (alert text)",
      "text": "The elevator to/from street at Ashland (Green, Pink Lines) is temporarily out of service."
+    },
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Ashland Temporarily Out-of-Service — The elevator to/from street at Ashland (Green, Pink Lines) is temporarily out of service."
     },
     {
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
@@ -4137,6 +4145,10 @@
     {
      "source": "GTFS roster",
      "text": "WMATA-F10_MZ_ELE2: Street/Mezzanine ↔ Platform"
+    },
+    {
+     "source": "live feed (observed)",
+     "text": "F10X01: \"Elevator between mezzanine and platform\""
     }
    ],
    "resolution": {
@@ -4413,6 +4425,25 @@
    }
   },
   {
+   "key": "cta:40300",
+   "system": "cta-chicago",
+   "stationId": "40300",
+   "name": "Indiana",
+   "status": "pending",
+   "priority": 50,
+   "reason": "no chains modeled (no agency inventory — text-identity only)",
+   "evidence": [
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Indiana Temporarily Out-of-Service — The 63rd-bound platform elevator at Indiana (Green Line) is temporarily out-of-service."
+    },
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Indiana Temporarily Out-of-Service — The Harlem-bound platform elevator at Indiana (Green Line) is temporarily out-of-service."
+    }
+   ]
+  },
+  {
    "key": "cta:40360",
    "system": "cta-chicago",
    "stationId": "40360",
@@ -4613,6 +4644,10 @@
     {
      "source": "live feed (alert text)",
      "text": "Elevator at Wilson Temporarily Out-of-Service — The 95th-bound and Loop-bound platform elevator at Wilson (Red, Purple Lines) is temporarily out-of-service."
+    },
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Wilson Temporarily Out-of-Service — The 95th- and- Loop- bound platform elevator at Wilson (Red, Purple Lines) is temporarily out-of-service due to an electrical issue."
     },
     {
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
@@ -4847,6 +4882,10 @@
      "text": "Elevator at 35th-Bronzeville-IIT Temporarily Out-of-Service — The elevator at 35th-Bronzeville-IIT (Green Line) is temporarily out-of-service."
     },
     {
+     "source": "live feed (alert text)",
+     "text": "Elevator at 35th- Bronzeville Temporarily Out-of-Service — The elevator at 35th- Bronzeville- IIT (Green Line) is temporarily out-of-service."
+    },
+    {
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **41120 35th-Bronzeville-IIT (Green)** — center island (1960s config); one elevator added in rehab. observed: vague."
     }
@@ -5067,6 +5106,10 @@
     {
      "source": "live feed (alert text)",
      "text": "Elevator at Morgan Temporarily Out-of-Service — The Harlem-bound and 54th-bound platform elevator at Morgan (Green, Pink Lines) is temporarily out-of-service."
+    },
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Morgan Temporarily Out-of-Service — The Harlem- and- 54th- bound platform elevator at Morgan (Green, Pink Lines) is temporarily out-of-service."
     },
     {
      "source": "live feed (alert text)",

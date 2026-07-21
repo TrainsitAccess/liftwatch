@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-20T12:28:13.992Z",
+  "updatedAt": "2026-07-21T12:04:24.175Z",
   "note": "Every CTA elevator identity ever observed (archive + live alert texts, parsed by src/adapters/cta/location.ts). Grows only. Regression fixture for check:cta and the curation aid for a future chains pass.",
   "units": [
     {
@@ -49,7 +49,8 @@
       "stationId": "40170",
       "texts": [
         "The elevator to/from street at Ashland (Green, Pink Lines) is temporarily out-of-service due to an electrical issue.",
-        "The elevator to/from street at Ashland (Green, Pink Lines) is temporarily out of service."
+        "The elevator to/from street at Ashland (Green, Pink Lines) is temporarily out of service.",
+        "Elevator at Ashland Temporarily Out-of-Service — The elevator to/from street at Ashland (Green, Pink Lines) is temporarily out of service."
       ],
       "firstObserved": "2026-07-05T00:57:40.161+00:00"
     },
@@ -92,6 +93,22 @@
         "Elevator at Central Temporarily Out-of-Service — The elevator at Central (Green Line) is temporarily out-of-service."
       ],
       "firstObserved": "2026-07-13T23:05:49.931+00:00"
+    },
+    {
+      "unitId": "40300-63RD-BOUND",
+      "stationId": "40300",
+      "texts": [
+        "Elevator at Indiana Temporarily Out-of-Service — The 63rd-bound platform elevator at Indiana (Green Line) is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-07-20T19:36:22.843+00:00"
+    },
+    {
+      "unitId": "40300-HARLEM-BOUND",
+      "stationId": "40300",
+      "texts": [
+        "Elevator at Indiana Temporarily Out-of-Service — The Harlem-bound platform elevator at Indiana (Green Line) is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-07-20T19:25:17.156+00:00"
     },
     {
       "unitId": "40330-95TH-BOUND",
@@ -189,7 +206,8 @@
       "texts": [
         "The 95th- and- Loop- bound platform elevator at Wilson (Red, Purple Lines) is temporarily out-of-service due to an electrical issue.",
         "The 95th- and- Loop- bound platform elevator at Wilson (Red, Purple Lines) is temporarily out-of-service.",
-        "Elevator at Wilson Temporarily Out-of-Service — The 95th-bound and Loop-bound platform elevator at Wilson (Red, Purple Lines) is temporarily out-of-service."
+        "Elevator at Wilson Temporarily Out-of-Service — The 95th-bound and Loop-bound platform elevator at Wilson (Red, Purple Lines) is temporarily out-of-service.",
+        "Elevator at Wilson Temporarily Out-of-Service — The 95th- and- Loop- bound platform elevator at Wilson (Red, Purple Lines) is temporarily out-of-service due to an electrical issue."
       ],
       "firstObserved": "2026-07-05T00:57:40.161+00:00"
     },
@@ -307,7 +325,8 @@
       "stationId": "41120",
       "texts": [
         "The elevator at 35th-Bronzeville-IIT (Green Line) is temporarily out-of-service due to an electrical issue.",
-        "Elevator at 35th-Bronzeville-IIT Temporarily Out-of-Service — The elevator at 35th-Bronzeville-IIT (Green Line) is temporarily out-of-service."
+        "Elevator at 35th-Bronzeville-IIT Temporarily Out-of-Service — The elevator at 35th-Bronzeville-IIT (Green Line) is temporarily out-of-service.",
+        "Elevator at 35th- Bronzeville Temporarily Out-of-Service — The elevator at 35th- Bronzeville- IIT (Green Line) is temporarily out-of-service."
       ],
       "firstObserved": "2026-07-05T00:57:40.161+00:00"
     },
@@ -466,7 +485,8 @@
       "unitId": "41510-54TH-HARLEM-BOUND",
       "stationId": "41510",
       "texts": [
-        "Elevator at Morgan Temporarily Out-of-Service — The Harlem-bound and 54th-bound platform elevator at Morgan (Green, Pink Lines) is temporarily out-of-service."
+        "Elevator at Morgan Temporarily Out-of-Service — The Harlem-bound and 54th-bound platform elevator at Morgan (Green, Pink Lines) is temporarily out-of-service.",
+        "Elevator at Morgan Temporarily Out-of-Service — The Harlem- and- 54th- bound platform elevator at Morgan (Green, Pink Lines) is temporarily out-of-service."
       ],
       "firstObserved": "2026-07-18T20:18:31.092+00:00"
     },
@@ -500,7 +520,8 @@
       "stationId": "41690",
       "texts": [
         "The elevator to/from 23rd street at Cermak-McCormick Place (Green Line) is temporarily out-of-service.",
-        "Elevator at Cermak-McCormick Place (Green Line) Temporarily Out-of-Service — The elevator to/from 23rd street at Cermak-McCormick Place (Green Line) is temporarily out-of-service."
+        "Elevator at Cermak-McCormick Place (Green Line) Temporarily Out-of-Service — The elevator to/from 23rd street at Cermak-McCormick Place (Green Line) is temporarily out-of-service.",
+        "Elevator at Cermak Temporarily Out-of-Service — The elevator to/from 23rd Street at Cermak-McCormick Place (Green Line) is temporarily out-of-service."
       ],
       "firstObserved": "2026-07-06T21:05:52.004+00:00"
     },

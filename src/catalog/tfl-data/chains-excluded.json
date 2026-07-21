@@ -1,7 +1,7 @@
 {
   "note": "Stations/access-components whose lift topology is too ambiguous to auto-model safely: a branching hub node (3+ distinct routes through one shared area), a multi-destination lift within a multi-lift route, or an unclear traversal. Needs a human station-by-station review (walking each through with a person who knows the station, per this project's established practice for MTA's tangled interchanges) before adding to chains.json. Entries with evidenceHints have a real, TfL-published alternative-route mention for one of their lifts (from alert-evidence.json) — a head start for the review, not a resolution of the whole station's topology.",
   "excludedStationCount": 71,
-  "excludedWithEvidenceHints": 3,
+  "excludedWithEvidenceHints": 4,
   "excluded": [
     {
       "station": "Brent Cross West Station",
@@ -631,7 +631,14 @@
         "HUBLST-Lift-B",
         "HUBLST-Lift-A"
       ],
-      "reason": "multi-destination edge in a multi-edge component"
+      "reason": "multi-destination edge in a multi-edge component",
+      "evidenceHints": [
+        {
+          "liftId": "HUBLST-Lift-B",
+          "phrase": "the Moorgate station entrance",
+          "message": "Moorgate: No Step Free Access - Step free access to/from the Elizabeth line is not available via the Broadgate entrance / Liverpool St National Rail concourse due to a faulty lift. For step free access use the Moorgate station entrance."
+        }
+      ]
     },
     {
       "station": "New Cross Gate",
