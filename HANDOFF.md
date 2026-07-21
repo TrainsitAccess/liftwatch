@@ -162,7 +162,17 @@ own asset ids + function/position — extracted via `curl -A "<UA>"` +
 - **New `check:bart`** (`src/checks/bart-check.ts`) — BART's first self-check AND
   independent audit (reconciles every real id vs the settlement inventory +
   attribution crosswalk + hygiene), closing the playbook Part V gap.
-- typecheck + demo:access (69) + check:bart + poll:bart:dry all green.
+- **Standing BART platform-default policy** (`platformDefaultAmbiguous`, commit
+  `20f49d9`): a bare/unhinted "Station" advisory that falls through to the
+  platform elevator is CONFIDENT (no `needsReview`) UNLESS the station has an
+  auxiliary elevator with NO matchHints. Since the adapter tries every hint
+  first, a real auxiliary outage only reaches the platform default if it matched
+  no hint — so hint-distinguishable auxiliaries (Coliseum OAC/arena, Richmond
+  Amtrak) never make it ambiguous. Every BART auxiliary carries hints today, so
+  NO BART station flags on the platform default anymore (this flipped Coliseum
+  from flagged → confident; replaces the old "any auxiliary ⇒ flag" rule).
+  Regressions in `check:bart`; policy documented in CLAUDE.md + SPEC.md.
+- typecheck + demo:access + check:bart + poll:bart:dry all green.
 - Follow-ups noted, not blocking: Millbrae's Caltrain/plaza ids + Daly City's
   tunnel elevator have no clean settlement id (kept descriptive); the settlement
   also has Exhibit D (SMP memo) + a per-station outage-options section (~p.8560)
