@@ -1,0 +1,1684 @@
+{
+ "note": "MTA's own STATION-LEVEL ADA accessibility declaration for the commuter railroads (design-time, not live outage status) — the railroad analog to mta-station-ada.json. Source: data.ny.gov wxmd-5cpm (MTA Rail Stations). Refresh: npm run rail:station-ada. Join key = `code` == our rail stationExternalId (clean for both railroads). ada: 0=not accessible, 1=fully accessible, 2=partially accessible. wxmd-5cpm has no per-direction ADA field, so PARTIAL explanations are station-level.",
+ "source": "https://data.ny.gov/resource/wxmd-5cpm.json",
+ "railroads": {
+  "mta-lirr": {
+   "systemId": "mta-lirr",
+   "stationCount": 126,
+   "stations": [
+    {
+     "code": "ABT",
+     "name": "Albertson",
+     "branch": "Oyster Bay",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "AGT",
+     "name": "Amagansett",
+     "branch": "Montauk",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "AVL",
+     "name": "Amityville",
+     "branch": "Babylon",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "ATL",
+     "name": "Atlantic Terminal",
+     "branch": "City Terminal Zone",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "ADL",
+     "name": "Auburndale",
+     "branch": "Port Washington",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "BTA",
+     "name": "Babylon",
+     "branch": "Babylon",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "BWN",
+     "name": "Baldwin",
+     "branch": "Babylon",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "BSR",
+     "name": "Bay Shore",
+     "branch": "Montauk",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "BSD",
+     "name": "Bayside",
+     "branch": "Port Washington",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "BRS",
+     "name": "Bellerose",
+     "branch": "Hempstead",
+     "ada": 0,
+     "explanation": "Not accessible — MTA rates this Hempstead Line station as having no step-free access to the platforms."
+    },
+    {
+     "code": "BMR",
+     "name": "Bellmore",
+     "branch": "Babylon",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "BPT",
+     "name": "Bellport",
+     "branch": "Montauk",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "BRT",
+     "name": "Belmont Park",
+     "branch": "Belmont",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "BPG",
+     "name": "Bethpage",
+     "branch": "Ronkonkoma",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "BWD",
+     "name": "Brentwood",
+     "branch": "Ronkonkoma",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "BHN",
+     "name": "Bridgehampton",
+     "branch": "Montauk",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "BDY",
+     "name": "Broadway",
+     "branch": "Port Washington",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "CPL",
+     "name": "Carle Place",
+     "branch": "Port Jefferson",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "CHT",
+     "name": "Cedarhurst",
+     "branch": "Far Rockaway",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "CI",
+     "name": "Central Islip",
+     "branch": "Ronkonkoma",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "CAV",
+     "name": "Centre Av",
+     "branch": "Long Beach",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "CSH",
+     "name": "Cold Spring Harbor",
+     "branch": "Port Jefferson",
+     "ada": 2,
+     "explanation": "Partially accessible — only part of this Port Jefferson Line station is step-free (e.g. one platform or entrance); MTA's accessibility dataset doesn't specify which."
+    },
+    {
+     "code": "CPG",
+     "name": "Copiague",
+     "branch": "Babylon",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "CLP",
+     "name": "Country Life Press",
+     "branch": "Hempstead",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "DPK",
+     "name": "Deer Park",
+     "branch": "Ronkonkoma",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "DGL",
+     "name": "Douglaston",
+     "branch": "Port Washington",
+     "ada": 2,
+     "explanation": "Partially accessible — only part of this Port Washington Line station is step-free (e.g. one platform or entrance); MTA's accessibility dataset doesn't specify which."
+    },
+    {
+     "code": "EHN",
+     "name": "East Hampton",
+     "branch": "Montauk",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "ENY",
+     "name": "East New York",
+     "branch": "City Terminal Zone",
+     "ada": 0,
+     "explanation": "Not accessible — MTA rates this City Terminal Zone Line station as having no step-free access to the platforms."
+    },
+    {
+     "code": "ERY",
+     "name": "East Rockaway",
+     "branch": "Long Beach",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "EWN",
+     "name": "East Williston",
+     "branch": "Oyster Bay",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "EMT",
+     "name": "Elmont-UBS Arena",
+     "branch": "Hempstead",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "FRY",
+     "name": "Far Rockaway",
+     "branch": "Far Rockaway",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "FMD",
+     "name": "Farmingdale",
+     "branch": "Ronkonkoma",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "FPK",
+     "name": "Floral Park",
+     "branch": "Hempstead",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "FLS",
+     "name": "Flushing Main Street",
+     "branch": "Port Washington",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "FHL",
+     "name": "Forest Hills",
+     "branch": "City Terminal Zone",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "FPT",
+     "name": "Freeport",
+     "branch": "Babylon",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "GCY",
+     "name": "Garden City",
+     "branch": "Hempstead",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "GBN",
+     "name": "Gibson",
+     "branch": "Far Rockaway",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "GCV",
+     "name": "Glen Cove",
+     "branch": "Oyster Bay",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "GHD",
+     "name": "Glen Head",
+     "branch": "Oyster Bay",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "GST",
+     "name": "Glen Street",
+     "branch": "Oyster Bay",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "GCT",
+     "name": "Grand Central",
+     "branch": "City Terminal Zone",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "GNK",
+     "name": "Great Neck",
+     "branch": "Port Washington",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "GRV",
+     "name": "Great River",
+     "branch": "Montauk",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "GWN",
+     "name": "Greenlawn",
+     "branch": "Port Jefferson",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "GPT",
+     "name": "Greenport",
+     "branch": "Greenport",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "GVL",
+     "name": "Greenvale",
+     "branch": "Oyster Bay",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "HBY",
+     "name": "Hampton Bays",
+     "branch": "Montauk",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "HEM",
+     "name": "Hempstead",
+     "branch": "Hempstead",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "HGN",
+     "name": "Hempstead Gardens",
+     "branch": "West Hempstead",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "HWT",
+     "name": "Hewlett",
+     "branch": "Far Rockaway",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "HVL",
+     "name": "Hicksville",
+     "branch": "Port Jefferson",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "HOL",
+     "name": "Hollis",
+     "branch": "Hempstead",
+     "ada": 0,
+     "explanation": "Not accessible — MTA rates this Hempstead Line station as having no step-free access to the platforms."
+    },
+    {
+     "code": "HPA",
+     "name": "Hunterspoint Av",
+     "branch": "City Terminal Zone",
+     "ada": 0,
+     "explanation": "Not accessible — MTA rates this City Terminal Zone Line station as having no step-free access to the platforms."
+    },
+    {
+     "code": "HUN",
+     "name": "Huntington",
+     "branch": "Port Jefferson",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "IWD",
+     "name": "Inwood",
+     "branch": "Far Rockaway",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "IPK",
+     "name": "Island Park",
+     "branch": "Long Beach",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "ISP",
+     "name": "Islip",
+     "branch": "Montauk",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "JAM",
+     "name": "Jamaica",
+     "branch": "City Terminal Zone",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "KGN",
+     "name": "Kew Gardens",
+     "branch": "City Terminal Zone",
+     "ada": 0,
+     "explanation": "Not accessible — MTA rates this City Terminal Zone Line station as having no step-free access to the platforms."
+    },
+    {
+     "code": "KPK",
+     "name": "Kings Park",
+     "branch": "Port Jefferson",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "LVW",
+     "name": "Lakeview",
+     "branch": "West Hempstead",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "LTN",
+     "name": "Laurelton",
+     "branch": "Far Rockaway",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "LCE",
+     "name": "Lawrence",
+     "branch": "Far Rockaway",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "LHT",
+     "name": "Lindenhurst",
+     "branch": "Babylon",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "LNK",
+     "name": "Little Neck",
+     "branch": "Port Washington",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "LMR",
+     "name": "Locust Manor",
+     "branch": "Far Rockaway",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "LVL",
+     "name": "Locust Valley",
+     "branch": "Oyster Bay",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "LBH",
+     "name": "Long Beach",
+     "branch": "Long Beach",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "LIC",
+     "name": "Long Island City",
+     "branch": "City Terminal Zone",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "LYN",
+     "name": "Lynbrook",
+     "branch": "Long Beach",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "MVN",
+     "name": "Malverne",
+     "branch": "West Hempstead",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "MHT",
+     "name": "Manhasset",
+     "branch": "Port Washington",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "MQA",
+     "name": "Massapequa",
+     "branch": "Babylon",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "MPK",
+     "name": "Massapequa Park",
+     "branch": "Babylon",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "MSY",
+     "name": "Mastic-Shirley",
+     "branch": "Montauk",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "MAK",
+     "name": "Mattituck",
+     "branch": "Greenport",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "MFD",
+     "name": "Medford",
+     "branch": "Greenport",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "MAV",
+     "name": "Merillon Av",
+     "branch": "Port Jefferson",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "MRK",
+     "name": "Merrick",
+     "branch": "Babylon",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "SSM",
+     "name": "Mets-Willets Point",
+     "branch": "Port Washington",
+     "ada": 0,
+     "explanation": "Not accessible — MTA rates this Port Washington Line station as having no step-free access to the platforms."
+    },
+    {
+     "code": "MIN",
+     "name": "Mineola",
+     "branch": "Port Jefferson",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "MTK",
+     "name": "Montauk",
+     "branch": "Montauk",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "MHL",
+     "name": "Murray Hill",
+     "branch": "Port Washington",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "NBD",
+     "name": "Nassau Blvd",
+     "branch": "Hempstead",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "NHP",
+     "name": "New Hyde Park",
+     "branch": "Port Jefferson",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "NPT",
+     "name": "Northport",
+     "branch": "Port Jefferson",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "NAV",
+     "name": "Nostrand Av",
+     "branch": "City Terminal Zone",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "ODL",
+     "name": "Oakdale",
+     "branch": "Montauk",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "ODE",
+     "name": "Oceanside",
+     "branch": "Long Beach",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "OBY",
+     "name": "Oyster Bay",
+     "branch": "Oyster Bay",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "PGE",
+     "name": "Patchogue",
+     "branch": "Montauk",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "NYK",
+     "name": "Penn Station",
+     "branch": "City Terminal Zone",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "PLN",
+     "name": "Pinelawn",
+     "branch": "Ronkonkoma",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "PDM",
+     "name": "Plandome",
+     "branch": "Port Washington",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "PJN",
+     "name": "Port Jefferson",
+     "branch": "Port Jefferson",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "PWS",
+     "name": "Port Washington",
+     "branch": "Port Washington",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "QVG",
+     "name": "Queens Village",
+     "branch": "Hempstead",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "RHD",
+     "name": "Riverhead",
+     "branch": "Greenport",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "RVC",
+     "name": "Rockville Centre",
+     "branch": "Babylon",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "RON",
+     "name": "Ronkonkoma",
+     "branch": "Ronkonkoma",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "ROS",
+     "name": "Rosedale",
+     "branch": "Far Rockaway",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "RSN",
+     "name": "Roslyn",
+     "branch": "Oyster Bay",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "SVL",
+     "name": "Sayville",
+     "branch": "Montauk",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "SCF",
+     "name": "Sea Cliff",
+     "branch": "Oyster Bay",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "SFD",
+     "name": "Seaford",
+     "branch": "Babylon",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "STN",
+     "name": "Smithtown",
+     "branch": "Port Jefferson",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "SHN",
+     "name": "Southampton",
+     "branch": "Montauk",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "SHD",
+     "name": "Southold",
+     "branch": "Greenport",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "SPK",
+     "name": "Speonk",
+     "branch": "Montauk",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "SAB",
+     "name": "St. Albans",
+     "branch": "West Hempstead",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "SJM",
+     "name": "St. James",
+     "branch": "Port Jefferson",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "SMR",
+     "name": "Stewart Manor",
+     "branch": "Hempstead",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "BK",
+     "name": "Stony Brook",
+     "branch": "Port Jefferson",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "SYT",
+     "name": "Syosset",
+     "branch": "Port Jefferson",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "VSM",
+     "name": "Valley Stream",
+     "branch": "Far Rockaway",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "WGH",
+     "name": "Wantagh",
+     "branch": "Babylon",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "WHD",
+     "name": "West Hempstead",
+     "branch": "West Hempstead",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "WBY",
+     "name": "Westbury",
+     "branch": "Port Jefferson",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "WHN",
+     "name": "Westhampton",
+     "branch": "Montauk",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "WWD",
+     "name": "Westwood",
+     "branch": "West Hempstead",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "WMR",
+     "name": "Woodmere",
+     "branch": "Far Rockaway",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "WDD",
+     "name": "Woodside",
+     "branch": "City Terminal Zone",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "WYD",
+     "name": "Wyandanch",
+     "branch": "Ronkonkoma",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "YPK",
+     "name": "Yaphank-BNL",
+     "branch": "Greenport",
+     "ada": 1,
+     "explanation": null
+    }
+   ]
+  },
+  "mta-mnr": {
+   "systemId": "mta-mnr",
+   "stationCount": 112,
+   "stations": [
+    {
+     "code": "5AN",
+     "name": "Ansonia",
+     "branch": "Waterbury",
+     "ada": 0,
+     "explanation": "Not accessible — MTA rates this Waterbury Line station as having no step-free access to the platforms."
+    },
+    {
+     "code": "1AT",
+     "name": "Appalachian Trail",
+     "branch": "Wassaic",
+     "ada": 0,
+     "explanation": "Not accessible — MTA rates this Wassaic Line station as having no step-free access to the platforms."
+    },
+    {
+     "code": "0AR",
+     "name": "Ardsley-on-Hudson",
+     "branch": "Hudson",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "0BC",
+     "name": "Beacon",
+     "branch": "Hudson",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "5BF",
+     "name": "Beacon Falls",
+     "branch": "Waterbury",
+     "ada": 0,
+     "explanation": "Not accessible — MTA rates this Waterbury Line station as having no step-free access to the platforms."
+    },
+    {
+     "code": "1BH",
+     "name": "Bedford Hills",
+     "branch": "Harlem",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "4BE",
+     "name": "Bethel",
+     "branch": "Danbury",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "1BG",
+     "name": "Botanical Garden",
+     "branch": "Harlem",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "4BV",
+     "name": "Branchville",
+     "branch": "Danbury",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "0BK",
+     "name": "Breakneck Ridge",
+     "branch": "Hudson",
+     "ada": 0,
+     "explanation": "Not accessible — MTA rates this Hudson Line station as having no step-free access to the platforms."
+    },
+    {
+     "code": "1BW",
+     "name": "Brewster",
+     "branch": "Harlem",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "2BP",
+     "name": "Bridgeport",
+     "branch": "New Haven",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "1BX",
+     "name": "Bronxville",
+     "branch": "Harlem",
+     "ada": 2,
+     "explanation": "Partially accessible — only part of this Harlem Line station is step-free (e.g. one platform or entrance); MTA's accessibility dataset doesn't specify which."
+    },
+    {
+     "code": "4CA",
+     "name": "Cannondale",
+     "branch": "Danbury",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "1CQ",
+     "name": "Chappaqua",
+     "branch": "Harlem",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "0CS",
+     "name": "Cold Spring",
+     "branch": "Hudson",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "0CT",
+     "name": "Cortlandt",
+     "branch": "Hudson",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "2CC",
+     "name": "Cos Cob",
+     "branch": "New Haven",
+     "ada": 2,
+     "explanation": "Partially accessible — only part of this New Haven Line station is step-free (e.g. one platform or entrance); MTA's accessibility dataset doesn't specify which."
+    },
+    {
+     "code": "1CW",
+     "name": "Crestwood",
+     "branch": "Harlem",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "1CF",
+     "name": "Croton Falls",
+     "branch": "Harlem",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "0HM",
+     "name": "Croton-Harmon",
+     "branch": "Hudson",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "4DN",
+     "name": "Danbury",
+     "branch": "Danbury",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "2DA",
+     "name": "Darien",
+     "branch": "New Haven",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "5DB",
+     "name": "Derby-Shelton",
+     "branch": "Waterbury",
+     "ada": 0,
+     "explanation": "Not accessible — MTA rates this Waterbury Line station as having no step-free access to the platforms."
+    },
+    {
+     "code": "0DF",
+     "name": "Dobbs Ferry",
+     "branch": "Hudson",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "1DO",
+     "name": "Dover Plains",
+     "branch": "Wassaic",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "2EN",
+     "name": "East Norwalk",
+     "branch": "New Haven",
+     "ada": 2,
+     "explanation": "Partially accessible — only part of this New Haven Line station is step-free (e.g. one platform or entrance); MTA's accessibility dataset doesn't specify which."
+    },
+    {
+     "code": "2FF",
+     "name": "Fairfield",
+     "branch": "New Haven",
+     "ada": 2,
+     "explanation": "Partially accessible — only part of this New Haven Line station is step-free (e.g. one platform or entrance); MTA's accessibility dataset doesn't specify which."
+    },
+    {
+     "code": "2FM",
+     "name": "Fairfield-Black Rock",
+     "branch": "New Haven",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "1FW",
+     "name": "Fleetwood",
+     "branch": "Harlem",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "1FO",
+     "name": "Fordham",
+     "branch": "Harlem",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "0GA",
+     "name": "Garrison",
+     "branch": "Hudson",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "3GB",
+     "name": "Glenbrook",
+     "branch": "New Canaan",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "0GD",
+     "name": "Glenwood",
+     "branch": "Hudson",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "1GO",
+     "name": "Goldens Bridge",
+     "branch": "Harlem",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "0NY",
+     "name": "Grand Central",
+     "branch": "City Terminal Zone",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "2GF",
+     "name": "Green's Farms",
+     "branch": "New Haven",
+     "ada": 2,
+     "explanation": "Partially accessible — only part of this New Haven Line station is step-free (e.g. one platform or entrance); MTA's accessibility dataset doesn't specify which."
+    },
+    {
+     "code": "2GN",
+     "name": "Greenwich",
+     "branch": "New Haven",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "0GY",
+     "name": "Greystone",
+     "branch": "Hudson",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "1WI",
+     "name": "Harlem Valley-Wingdale",
+     "branch": "Wassaic",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "0HL",
+     "name": "Harlem-125 St",
+     "branch": "City Terminal Zone",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "2HS",
+     "name": "Harrison",
+     "branch": "New Haven",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "1HA",
+     "name": "Hartsdale",
+     "branch": "Harlem",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "0HS",
+     "name": "Hastings-on-Hudson",
+     "branch": "Hudson",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "1HN",
+     "name": "Hawthorne",
+     "branch": "Harlem",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "0IV",
+     "name": "Irvington",
+     "branch": "Hudson",
+     "ada": 2,
+     "explanation": "Partially accessible — only part of this Hudson Line station is step-free (e.g. one platform or entrance); MTA's accessibility dataset doesn't specify which."
+    },
+    {
+     "code": "1KA",
+     "name": "Katonah",
+     "branch": "Harlem",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "2LA",
+     "name": "Larchmont",
+     "branch": "New Haven",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "0LU",
+     "name": "Ludlow",
+     "branch": "Hudson",
+     "ada": 0,
+     "explanation": "Not accessible — MTA rates this Hudson Line station as having no step-free access to the platforms."
+    },
+    {
+     "code": "2MA",
+     "name": "Mamaroneck",
+     "branch": "New Haven",
+     "ada": 2,
+     "explanation": "Partially accessible — only part of this New Haven Line station is step-free (e.g. one platform or entrance); MTA's accessibility dataset doesn't specify which."
+    },
+    {
+     "code": "0MN",
+     "name": "Manitou",
+     "branch": "Hudson",
+     "ada": 0,
+     "explanation": "Not accessible — MTA rates this Hudson Line station as having no step-free access to the platforms."
+    },
+    {
+     "code": "0MB",
+     "name": "Marble Hill",
+     "branch": "Hudson",
+     "ada": 0,
+     "explanation": "Not accessible — MTA rates this Hudson Line station as having no step-free access to the platforms."
+    },
+    {
+     "code": "1ML",
+     "name": "Melrose",
+     "branch": "Harlem",
+     "ada": 0,
+     "explanation": "Not accessible — MTA rates this Harlem Line station as having no step-free access to the platforms."
+    },
+    {
+     "code": "4M7",
+     "name": "Merritt 7",
+     "branch": "Danbury",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "2MI",
+     "name": "Milford",
+     "branch": "New Haven",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "0MH",
+     "name": "Morris Heights",
+     "branch": "Hudson",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "1MK",
+     "name": "Mt Kisco",
+     "branch": "Harlem",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "1MP",
+     "name": "Mt Pleasant",
+     "branch": "Harlem",
+     "ada": 0,
+     "explanation": "Not accessible — MTA rates this Harlem Line station as having no step-free access to the platforms."
+    },
+    {
+     "code": "2ME",
+     "name": "Mt Vernon East",
+     "branch": "New Haven",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "1MW",
+     "name": "Mt Vernon West",
+     "branch": "Harlem",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "5NG",
+     "name": "Naugatuck",
+     "branch": "Waterbury",
+     "ada": 0,
+     "explanation": "Not accessible — MTA rates this Waterbury Line station as having no step-free access to the platforms."
+    },
+    {
+     "code": "3NC",
+     "name": "New Canaan",
+     "branch": "New Canaan",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "0NM",
+     "name": "New Hamburg",
+     "branch": "Hudson",
+     "ada": 2,
+     "explanation": "Partially accessible — only part of this Hudson Line station is step-free (e.g. one platform or entrance); MTA's accessibility dataset doesn't specify which."
+    },
+    {
+     "code": "2NH",
+     "name": "New Haven",
+     "branch": "New Haven",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "2SS",
+     "name": "New Haven-State St",
+     "branch": "New Haven",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "2NR",
+     "name": "New Rochelle",
+     "branch": "New Haven",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "2NO",
+     "name": "Noroton Heights",
+     "branch": "New Haven",
+     "ada": 2,
+     "explanation": "Partially accessible — only part of this New Haven Line station is step-free (e.g. one platform or entrance); MTA's accessibility dataset doesn't specify which."
+    },
+    {
+     "code": "1NW",
+     "name": "North White Plains",
+     "branch": "Harlem",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "2OG",
+     "name": "Old Greenwich",
+     "branch": "New Haven",
+     "ada": 2,
+     "explanation": "Partially accessible — only part of this New Haven Line station is step-free (e.g. one platform or entrance); MTA's accessibility dataset doesn't specify which."
+    },
+    {
+     "code": "0OS",
+     "name": "Ossining",
+     "branch": "Hudson",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "1PA",
+     "name": "Patterson",
+     "branch": "Wassaic",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "1PW",
+     "name": "Pawling",
+     "branch": "Wassaic",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "0PE",
+     "name": "Peekskill",
+     "branch": "Hudson",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "2PH",
+     "name": "Pelham",
+     "branch": "New Haven",
+     "ada": 2,
+     "explanation": "Partially accessible — only part of this New Haven Line station is step-free (e.g. one platform or entrance); MTA's accessibility dataset doesn't specify which."
+    },
+    {
+     "code": "0PM",
+     "name": "Philipse Manor",
+     "branch": "Hudson",
+     "ada": 2,
+     "explanation": "Partially accessible — only part of this Hudson Line station is step-free (e.g. one platform or entrance); MTA's accessibility dataset doesn't specify which."
+    },
+    {
+     "code": "1PV",
+     "name": "Pleasantville",
+     "branch": "Harlem",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "2PC",
+     "name": "Port Chester",
+     "branch": "New Haven",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "0PO",
+     "name": "Poughkeepsie",
+     "branch": "Hudson",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "1PY",
+     "name": "Purdy's",
+     "branch": "Harlem",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "4RD",
+     "name": "Redding",
+     "branch": "Danbury",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "0RV",
+     "name": "Riverdale",
+     "branch": "Hudson",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "2RS",
+     "name": "Riverside",
+     "branch": "New Haven",
+     "ada": 2,
+     "explanation": "Partially accessible — only part of this New Haven Line station is step-free (e.g. one platform or entrance); MTA's accessibility dataset doesn't specify which."
+    },
+    {
+     "code": "2RO",
+     "name": "Rowayton",
+     "branch": "New Haven",
+     "ada": 2,
+     "explanation": "Partially accessible — only part of this New Haven Line station is step-free (e.g. one platform or entrance); MTA's accessibility dataset doesn't specify which."
+    },
+    {
+     "code": "2RY",
+     "name": "Rye",
+     "branch": "New Haven",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "0SB",
+     "name": "Scarborough",
+     "branch": "Hudson",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "1SC",
+     "name": "Scarsdale",
+     "branch": "Harlem",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "5SY",
+     "name": "Seymour",
+     "branch": "Waterbury",
+     "ada": 0,
+     "explanation": "Not accessible — MTA rates this Waterbury Line station as having no step-free access to the platforms."
+    },
+    {
+     "code": "2SN",
+     "name": "South Norwalk",
+     "branch": "New Haven",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "1BR",
+     "name": "Southeast",
+     "branch": "Harlem",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "2SP",
+     "name": "Southport",
+     "branch": "New Haven",
+     "ada": 2,
+     "explanation": "Partially accessible — only part of this New Haven Line station is step-free (e.g. one platform or entrance); MTA's accessibility dataset doesn't specify which."
+    },
+    {
+     "code": "3SD",
+     "name": "Springdale",
+     "branch": "New Canaan",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "0DV",
+     "name": "Spuyten Duyvil",
+     "branch": "Hudson",
+     "ada": 0,
+     "explanation": "Not accessible — MTA rates this Hudson Line station as having no step-free access to the platforms."
+    },
+    {
+     "code": "2SM",
+     "name": "Stamford",
+     "branch": "New Haven",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "2SR",
+     "name": "Stratford",
+     "branch": "New Haven",
+     "ada": 2,
+     "explanation": "Partially accessible — only part of this New Haven Line station is step-free (e.g. one platform or entrance); MTA's accessibility dataset doesn't specify which."
+    },
+    {
+     "code": "3TH",
+     "name": "Talmadge Hill",
+     "branch": "New Canaan",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "0TT",
+     "name": "Tarrytown",
+     "branch": "Hudson",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "1TM",
+     "name": "Tenmile River",
+     "branch": "Wassaic",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "1TR",
+     "name": "Tremont",
+     "branch": "Harlem",
+     "ada": 0,
+     "explanation": "Not accessible — MTA rates this Harlem Line station as having no step-free access to the platforms."
+    },
+    {
+     "code": "1TK",
+     "name": "Tuckahoe",
+     "branch": "Harlem",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "0UH",
+     "name": "University Heights",
+     "branch": "Hudson",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "1VA",
+     "name": "Valhalla",
+     "branch": "Harlem",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "1WF",
+     "name": "Wakefield",
+     "branch": "Harlem",
+     "ada": 0,
+     "explanation": "Not accessible — MTA rates this Harlem Line station as having no step-free access to the platforms."
+    },
+    {
+     "code": "1WA",
+     "name": "Wassaic",
+     "branch": "Wassaic",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "5WB",
+     "name": "Waterbury",
+     "branch": "Waterbury",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "2WH",
+     "name": "West Haven",
+     "branch": "New Haven",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "2WP",
+     "name": "Westport",
+     "branch": "New Haven",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "1WP",
+     "name": "White Plains",
+     "branch": "Harlem",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "1WG",
+     "name": "Williams Bridge",
+     "branch": "Harlem",
+     "ada": 0,
+     "explanation": "Not accessible — MTA rates this Harlem Line station as having no step-free access to the platforms."
+    },
+    {
+     "code": "4WI",
+     "name": "Wilton",
+     "branch": "Danbury",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "1WN",
+     "name": "Woodlawn",
+     "branch": "Harlem",
+     "ada": 0,
+     "explanation": "Not accessible — MTA rates this Harlem Line station as having no step-free access to the platforms."
+    },
+    {
+     "code": "0YS",
+     "name": "Yankees-E 153 St",
+     "branch": "Hudson",
+     "ada": 1,
+     "explanation": null
+    },
+    {
+     "code": "0YK",
+     "name": "Yonkers",
+     "branch": "Hudson",
+     "ada": 1,
+     "explanation": null
+    }
+   ]
+  }
+ }
+}

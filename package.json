@@ -48,6 +48,8 @@
     "netlify:deploy": "netlify deploy --prod",
     "rail:chains": "tsx scripts/rail-chains.mts",
     "check:rail-chains": "tsx src/checks/rail-chains-check.ts",
+    "rail:station-ada": "tsx scripts/rail-station-ada.mts",
+    "check:rail-station-ada": "tsx scripts/check-rail-station-ada.mts",
     "mbta:chains": "tsx scripts/mbta-chains.mts",
     "check:mbta-chains": "tsx src/checks/mbta-chains-check.ts",
     "wmata:observed": "tsx scripts/wmata-observed.mts",

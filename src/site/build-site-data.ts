@@ -16,6 +16,7 @@ import {
 } from "../lib/accessibility.js";
 import nyInventory from "../catalog/mta-data/ny-elevator-inventory.json" with { type: "json" };
 import mtaStationAda from "../catalog/mta-data/mta-station-ada.json" with { type: "json" };
+import railStationAda from "../catalog/mta-rail-data/station-ada.json" with { type: "json" };
 
 // MTA's OWN per-elevator text, keyed by equipment code (= our MTA external
 // ids), from the data.ny.gov inventory (94fv-bak7; see
@@ -1017,6 +1018,36 @@ function buildSystemDetail(systemId: string) {
       rampAlternatives.push({ complexId: cx, name: nameByComplex.get(cx) ?? e.station_name ?? cx, elevator: e.equipment_code, text: e.alternative_route });
     }
     rampAlternatives.sort((a, b) => a.name.localeCompare(b.name) || a.elevator.localeCompare(b.elevator, undefined, { numeric: true }));
+  } else if (systemId === "mta-lirr" || systemId === "mta-mnr") {
+    // LIRR + Metro-North get the SAME station-accessibility board, from MTA's
+    // own rail-station ADA declaration (data.ny.gov wxmd-5cpm; see
+    // scripts/rail-station-ada.mts). Design-time, not live outage status; same
+    // 0/1/2 scheme + render path as the subway board.
+    //
+    // DIFFERENT SCOPING from the subway board (deliberate): the subway restricts
+    // to complexes we track elevators at, because a partial subway complex still
+    // HAS a tracked elevator (one line's platform is served, another isn't). A
+    // commuter-rail station, by contrast, is either fully step-free (has an
+    // elevator -> tracked, FULL) or is PARTIAL/NONE precisely because it has NO
+    // elevator (ramp-only or stairs-only). So restricting to tracked stations
+    // would empty the board (verified 2026-07-22: 0 of ~99 tracked rail stations
+    // is partial/none). We therefore list EVERY partial/none station for the
+    // railroad — the only way the board conveys the real accessibility gaps,
+    // and useful rider info the live-elevator layer can't show. wxmd-5cpm has no
+    // per-direction field, so a PARTIAL explanation is station-level.
+    const rr = (railStationAda as {
+      railroads: Record<string, { stations: { code: string; name: string; ada: number; explanation: string | null }[] }>;
+    }).railroads[systemId];
+    stationAccessibility = (rr?.stations ?? [])
+      .filter((s) => s.ada !== 1)
+      .map((s) => ({
+        complexId: s.code,
+        name: s.name,
+        ada: s.ada,
+        adaLabel: s.ada === 0 ? "Not accessible" : "Partially accessible",
+        explanation: s.explanation ?? "",
+      }))
+      .sort((a, b) => a.ada - b.ada || a.name.localeCompare(b.name));
   }
 
   // "Needs review" — currently-open outages we couldn't confidently place onto
