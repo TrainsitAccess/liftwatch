@@ -261,9 +261,29 @@ parking lot). A station is accessible only if **every** segment is up.
   Universal join key across all three (+ the feed): the elevator id `EL###`;
   data.ny.gov `station_complex_mrn` == our `stationExternalId` (pre-`MERGES`).
   **`npm run mta:audit`** (`scripts/mta-final-audit.mts`) is the independent NYCT
-  reconciliation (analog to bart/wmata:audit): models + fleet vs data.ny.gov, with
-  tsdataclinic as context — 0 review flags (known items = documented exceptions,
-  logged over-warn fallbacks, data.ny.gov catalog lag).
+  reconciliation (analog to bart/wmata:audit): models + fleet vs data.ny.gov, plus
+  a **topology reconciliation** against the tsdataclinic elevator GRAPH
+  (edgelist_w_pid.csv) — id authenticity, whole-fleet coverage, and per-elevator
+  DIRECTION (an unambiguous N/S axis on both the graph and model side must agree).
+  0 review flags (known items = documented exceptions, logged over-warn fallbacks,
+  data.ny.gov catalog lag). NOTE: a relative "grouping" check was tried + removed —
+  it only false-flagged the hand overrides, because MTA redundancy legitimately
+  spans opposite platforms via mezzanine cross-connections (the graph validates a
+  single elevator's own direction, never the grouping).
+- **MTA direction accuracy — exhaustively verified (2026-07-21/22): 0 inversions.**
+  The `mta:audit` N/S check covers the IRT numbered lines; the lettered lines use
+  terminus-name directions (e.g. "manhattan"/"woodlawn") that don't map to a global
+  N/S axis, so those 62 were verified by an adversarial per-line workflow (agents
+  reasoning from each line's real terminals). Combined, all ~200 directional
+  platform elevators reconcile with the independent graph — the models faithfully
+  carry MTA's own `elevator_direction_serviced` field. The 5 non-clean cases were a
+  cosmetic label artifact, since **fixed at the root**: when MTA marks an elevator
+  `elevator_direction_serviced = "Both"` (island platforms, line termini,
+  multi-platform), `normDir` no longer parses a stray direction fragment out of the
+  feed description — it stays non-directional. A `disambiguateLabels` pass gives two
+  colliding "Both" chains at one complex a distinct suffix (real direction if the
+  description has one, else a lettered ordinal), which also fixed 2 pre-existing
+  duplicate-chainLabel bugs (Coney Island-Stillwell D, WTC Cortlandt 1).
 - **MTA ramp/other-access: CHECKED and ruled out (2026-07-21, standing ramp
   rule).** Unlike MBTA (a `RAMP` facilities feed) and TfL (`RampRoutes`/
   `SameLevelPaths`), MTA publishes **no structured ramp data** usable as a

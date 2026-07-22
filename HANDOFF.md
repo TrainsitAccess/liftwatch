@@ -135,6 +135,23 @@ ramp question.
   `generator-disagreements.json` now EMPTY. Bryant Park (609) stays correctly
   unmodeled (its feed elevators are all non-ADA and none reach the platform — not
   a fallback to fix). Docs (CLAUDE.md/SPEC.md) updated.
+- **Thorough accuracy audit: `mta:audit` topology reconciliation + exhaustive
+  direction verification (2026-07-21/22).** `mta:audit` now cross-checks every
+  model against the independent tsdataclinic elevator GRAPH (structure + direction
+  + coverage), not just data.ny.gov — 0 review flags. Direction was verified
+  EXHAUSTIVELY: the IRT N/S labels by the audit, the 62 lettered-line labels by an
+  adversarial per-line agent workflow (`scripts/` workflow, agents reasoning from
+  each line's real terminals). **Result: 0 direction inversions across ~200
+  directional platform elevators.** The only 5 non-clean cases were a cosmetic
+  label bug — for `elevator_direction_serviced = "Both"` elevators, `normDir` had
+  been parsing a stray direction fragment from the description; fixed to stay
+  non-directional, with a `disambiguateLabels` pass that also repaired 2
+  pre-existing duplicate-chainLabel bugs (Coney Island-Stillwell, WTC Cortlandt).
+  Commits `4953e51` (topology audit) + `e797472` (direction fix), pushed. NOTE:
+  one workflow reverify agent hit the session usage limit mid-run — didn't affect
+  the result. **Net: the 123-station MTA models reconcile cleanly vs two
+  independent sources on ids/redundancy/coverage/structure/direction — no open
+  discrepancies.**
 
 ## What shipped this session (2026-07-21) — BART final accuracy audit + Millbrae real-id promotion
 

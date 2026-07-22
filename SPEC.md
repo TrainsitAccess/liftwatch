@@ -2077,7 +2077,25 @@ settlement** (CIDNY/De La Rosa, `mta-ada-settlement.md`) is a station-level
 buildout roadmap with no per-station/elevator list → corroboration-tier only.
 Universal join key: the `EL###` id (data.ny.gov `station_complex_mrn` == our
 `stationExternalId`, pre-`MERGES`). **`npm run mta:audit`**
-(`scripts/mta-final-audit.mts`) is the independent reconciliation — 0 review flags.
+(`scripts/mta-final-audit.mts`) is the independent reconciliation — id
+authenticity, whole-fleet coverage, redundancy, AND a topology reconciliation vs
+the tsdataclinic elevator graph (per-elevator direction on the unambiguous N/S
+axis). 0 review flags. (A relative "grouping" check was tried + removed: MTA
+redundancy legitimately spans opposite platforms via mezzanine cross-connections,
+so the graph can validate a single elevator's own direction but not the grouping.)
+
+**Direction accuracy — exhaustively verified, 0 inversions (2026-07-21/22).** The
+audit's N/S check covers the IRT numbered lines; the 62 lettered-line labels
+(terminus-name directions like "manhattan"/"woodlawn" that don't map to a global
+N/S axis) were verified by an adversarial per-line agent workflow reasoning from
+each line's real terminals. All ~200 directional platform elevators reconcile with
+the independent graph. The only 5 non-clean cases were a cosmetic label artifact,
+fixed at the root: for elevators MTA marks `elevator_direction_serviced = "Both"`,
+`normDir` no longer parses a stray direction fragment from the feed description
+(e.g. "…transfer to 4/5 via Manhattan-bound 2/3") — it stays non-directional. A
+`disambiguateLabels` pass distinguishes two colliding "Both" chains at one complex
+(real direction if the description carries one, else a lettered ordinal), which
+also repaired 2 pre-existing duplicate-chainLabel bugs.
 
 **Ramps — checked and ruled out as a `stepFreeAlternative` (standing ramp rule).**
 Unlike MBTA (a `RAMP` facilities feed) and TfL (`RampRoutes`/`SameLevelPaths`),
