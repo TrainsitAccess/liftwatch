@@ -34,10 +34,25 @@ const marble = byCode.get("0MB"); // Marble Hill (MNR)
 assert(marble?.ada === 0, `Marble Hill (0MB) should be not accessible (ada 0), got ${marble?.ada}`);
 assert(/not accessible/i.test(marble?.explanation ?? ""), `Marble Hill explanation must say not accessible, got: ${marble?.explanation}`);
 
-// A known PARTIAL station: ada 2 + a real explanation.
+// A known PARTIAL station: ada 2 + MTA's OWN specific "what partial means" text
+// (from mta-ada-details.json), not the generic fallback.
 const rowayton = byCode.get("2RO"); // Rowayton (MNR)
 assert(rowayton?.ada === 2, `Rowayton (2RO) should be partially accessible (ada 2), got ${rowayton?.ada}`);
-assert(/partially accessible/i.test(rowayton?.explanation ?? ""), `Rowayton explanation must say partially accessible, got: ${rowayton?.explanation}`);
+assert(
+  /no accessible path between the platforms/i.test(rowayton?.explanation ?? "") && /Darien.*South Norwalk/i.test(rowayton?.explanation ?? ""),
+  `Rowayton explanation must carry MTA's specific text (no accessible path between platforms; nearest Darien/South Norwalk), got: ${rowayton?.explanation}`,
+);
+
+// Every station in mta-ada-details.json must have its MTA text applied verbatim
+// in the snapshot — locks the PARTIAL enrichment so a regeneration can't drop it.
+const details = JSON.parse(readFileSync("src/catalog/mta-rail-data/mta-ada-details.json", "utf8")) as { details: Record<string, string> };
+for (const [code, text] of Object.entries(details.details)) {
+  const s = byCode.get(code);
+  if (!s) fail.push(`mta-ada-details has ${code} but it's absent from station-ada.json`);
+  else if (s.explanation !== text) fail.push(`${code} ${s.name}: explanation is not MTA's detail text`);
+  else pass++;
+}
+assert(Object.keys(details.details).length >= 18, `expected 18+ MTA detail entries, got ${Object.keys(details.details).length}`);
 
 // The join key is `code` == our rail stationExternalId — codes must be the raw
 // station codes (LIRR all-letters, MNR digit-prefixed), never a synthesized id.

@@ -19,9 +19,19 @@
 //
 // Refresh: npm run rail:station-ada.
 
-import { writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 
 const URL = "https://data.ny.gov/resource/wxmd-5cpm.json?$limit=1000";
+
+// MTA's OWN per-station accessibility text for PARTIAL stations (scraped from
+// mta.info station pages; see mta-ada-details.json for provenance). mta.info's
+// WAF blocks scripted fetches, so this is a committed manual snapshot, not
+// re-fetched here. When present it replaces the generic PARTIAL sentence with
+// MTA's specific "what partial means" wording (usually: platforms are ramp-
+// accessible but there's no accessible path BETWEEN them).
+const DETAILS = (JSON.parse(
+  readFileSync("src/catalog/mta-rail-data/mta-ada-details.json", "utf8"),
+) as { details: Record<string, string> }).details;
 
 interface Row {
   railroad: "LIRR" | "MNR";
@@ -42,12 +52,16 @@ const ADA: Record<Row["accessibility"], number> = { FULL: 1, PARTIAL: 2, NONE: 0
 
 function explain(r: Row): string | null {
   if (r.accessibility === "FULL") return null; // fully accessible -> quiet (no noise)
+  // Prefer MTA's OWN per-station accessibility text where we have it (the 18
+  // PARTIAL stations) — the specific, rider-useful "what partial means".
+  const detail = DETAILS[r.code];
+  if (detail) return detail;
   const line = r.branch ? `${r.branch} Line ` : "";
   if (r.accessibility === "NONE") {
     return `Not accessible — MTA rates this ${line}station as having no step-free access to the platforms.`;
   }
-  // PARTIAL — honest station-level statement; MTA's dataset carries no
-  // per-platform/direction breakdown for the railroads.
+  // PARTIAL with no MTA detail on file — honest station-level statement (MTA's
+  // wxmd-5cpm dataset carries no per-platform/direction breakdown).
   return `Partially accessible — only part of this ${line}station is step-free (e.g. one platform or entrance); MTA's accessibility dataset doesn't specify which.`;
 }
 
