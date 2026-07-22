@@ -83,6 +83,8 @@ npm run mta:ny-inventory  # refresh the data.ny.gov MTA elevator ground-truth sn
 npm run check:mta-ny      # cross-check every modeled MTA elevator vs the data.ny.gov inventory (offline)
 npm run mta:station-ada   # refresh MTA's own station-level ADA accessibility crosswalk (445 complexes)
 npm run check:mta-ada     # prove every partial/inaccessible MTA station carries a real explanation (offline)
+npm run rail:station-ada  # refresh the LIRR/MNR station-ADA board data (data.ny.gov wxmd-5cpm)
+npm run check:rail-station-ada # prove every partial/none LIRR/MNR station carries an explanation (offline)
 npm run review:status     # station-review walkthrough tracker (103/214 as of 2026-07-17)
 npm run review:queue      # rebuild the review queue (verdicts + hand-added evidence persist)
 npm run typecheck        # tsc --noEmit — run after edits
@@ -932,14 +934,44 @@ parking lot). A station is accessible only if **every** segment is up.
      `npm run check:mta-ada` locks this in as an assertion (452 checks): every
      non-fully-accessible entry MUST carry a real explanation, every fully-
      accessible entry stays quiet. New "Station accessibility" board on
-     `system.html`, MTA-only (hidden entirely elsewhere, same pattern as
-     `otherEquipment`), restricted to complexes our archive actually tracks
+     `system.html` (originally MTA-only, later shared with LIRR/MNR — see the
+     rail station-ADA bullet below; hidden for systems with no such data, same
+     pattern as `otherEquipment`), restricted to complexes our archive tracks
      elevators at; explanation shown directly in the row, never behind an
      expand toggle. Verified against real production data (21 stations),
      including a nice validation of the underlying data: Clark St correctly
      reads NOT ACCESSIBLE despite having an elevator — it only reaches the
      mezzanine, matching MTA's own documented example of a non-step-free
      pathway.
+- **LIRR + Metro-North station-ADA board — the railroads' first station-ADA
+  source (2026-07-22).** The two thinnest systems now carry the SAME design-time
+  "Station accessibility" board the subway has, from MTA's own
+  `data.ny.gov/resource/wxmd-5cpm.json` ("MTA Rail Stations" — one row per
+  station with `accessibility` = FULL/PARTIAL/NONE). `npm run rail:station-ada`
+  (`scripts/rail-station-ada.mts`) snapshots it to
+  `src/catalog/mta-rail-data/station-ada.json` (FULL/PARTIAL/NONE → ada 1/2/0,
+  the SAME scheme + render path + `stationAccessibility` payload field as the
+  subway board — so the `system.html` board is now shared, its header wording
+  generalized off "MTA/line/direction"). Join key = `code`, which equals our rail
+  `stationExternalId` CLEANLY for BOTH railroads (verified 0 missing — the source
+  audit's "MNR needs a crosswalk" worry was wrong). **Different scoping from the
+  subway board, deliberate + documented in build-site-data**: the subway restricts
+  to tracked complexes (a partial subway complex still HAS a tracked elevator), but
+  a rail station is FULL (has an elevator → tracked) or PARTIAL/NONE precisely
+  because it has NO elevator (ramp-only/stairs) — so restricting empties the board
+  (0 of ~99 tracked rail stations is partial/none). Rail therefore lists EVERY
+  partial/none station (8 LIRR + 33 MNR). **PARTIAL enrichment**: `wxmd-5cpm` has no
+  per-direction ADA field, so the 18 PARTIAL stations get MTA's OWN per-station text
+  from `src/catalog/mta-rail-data/mta-ada-details.json` — the `field-ada-information`
+  field scraped from each `mta.info/stations/<slug>` page via the in-app Browser
+  pane (same-origin `fetch()` in the page context; mta.info's WAF 403s
+  curl/WebFetch/Node, so this is a COMMITTED manual snapshot, not auto-refreshed).
+  MTA's text reveals the consistent meaning: each platform is ramp-accessible but
+  there's no accessible path BETWEEN them (drop off on the correct side), and it
+  names the nearest fully-accessible stations. NONE stations keep a generic
+  sentence. `npm run check:rail-station-ada` (267 checks) locks the enrichment +
+  the "never a bare status word" guarantee. See `SOURCE-AUDIT.md` for the source
+  hunt that surfaced wxmd-5cpm.
 
 ## Conventions
 

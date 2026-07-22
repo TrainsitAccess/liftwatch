@@ -1,4 +1,4 @@
-# LiftWatch — Session Handoff (2026-07-21)
+# LiftWatch — Session Handoff (2026-07-22)
 
 **To start the next session, paste the prompt in [§ Next-session prompt](#next-session-prompt) below.**
 
@@ -96,6 +96,48 @@ new stations.
 ```
 
 ---
+
+## What shipped this session (2026-07-22) — cross-system source audit + LIRR/MNR station-ADA board
+
+Two things: a cross-system data-source audit, then the first station-ADA source
+for the commuter railroads (with a rider-facing enrichment).
+
+- **`SOURCE-AUDIT.md` — per-system source gap matrix + outside research** (commit
+  `ab09000`). Inventoried all 9 systems against 10 resource types (live status,
+  official inventory-with-ids, topology, ADA settlement, ramp feed, rider
+  guidance, station-ADA rollup, capital doc, dimensions, redundancy flag), found
+  where a system lacks a resource its peers have, and ran live-verified web
+  research to fill the gaps. Headline NEW sources: LIRR/MNR + CTA + TfL each have
+  an unused official station-ADA dataset; BART can get topology from the 511
+  regional GTFS (`operator_id=RG` has pathways/levels); **the TMB
+  `itransit/metro/ascensors` feed is actually usable** with an `origen==INTEGRAT`
+  trust gate — which CONTRADICTS the current CLAUDE.md/SPEC.md "274 KO" TMB note
+  (the 274 was KO + NO_INFO lumped together) and is a path to un-hide TMB.
+  Confirmed dead-ends recorded so nobody re-chases them (CTA GTFS has no
+  pathways/levels; LIRR/MNR have no per-elevator inventory anywhere; WMATA has no
+  ADA settlement — Metrorail is fully accessible by design).
+- **LIRR + Metro-North station-ADA board** (commits `60f5e90` + enrichment
+  `1c487a5`, pushed). The first station-ADA source either railroad has had, from
+  data.ny.gov `wxmd-5cpm`. `npm run rail:station-ada` →
+  `src/catalog/mta-rail-data/station-ada.json`, wired into the shared
+  `stationAccessibility` board for mta-lirr/mta-mnr (8 LIRR + 33 MNR rows). Join
+  on `code` is clean for BOTH railroads (no crosswalk needed, contra the audit's
+  note). **Scoped to show ALL partial/none stations** — NOT tracked-restricted
+  like the subway board, because rail accessibility gaps are at UN-elevatored
+  stations, so restricting would empty the board (documented in build-site-data).
+  **PARTIAL enrichment**: the 18 PARTIAL stations carry MTA's OWN per-station
+  `field-ada-information` text (each reveals "platforms are ramp-accessible but
+  there's no accessible path between them + nearest fully-accessible stations"),
+  scraped from `mta.info/stations/<slug>` via the in-app Browser pane
+  (same-origin `fetch()` — mta.info's WAF 403s curl/WebFetch/Node), committed as
+  `mta-ada-details.json`. `npm run check:rail-station-ada` (267) + typecheck +
+  demo:access (76) green. Full writeups in CLAUDE.md + SPEC.md.
+- **Follow-ups queued (not started)**: the CTA (`8pix-ypme`) and TfL (`StopPoint`
+  Accessibility props — the only source with real "why partial" detail)
+  station-ADA boards from the same audit; the TMB itransit reversal (needs
+  multi-day sampling before un-hiding + the stale CLAUDE.md/SPEC.md TMB note
+  corrected). NONE rail stations (6 LIRR + 17 MNR) still use a generic sentence —
+  could be enriched from mta.info the same way if wanted.
 
 ## What shipped this session (2026-07-21, later) — MTA full-coverage modeling + new sources + ramp ruling
 

@@ -2023,9 +2023,10 @@ explain what that means, naming the specific lines and directions.** This is
 enforced, not just styled: `npm run check:mta-ada` (452 checks) asserts
 every complex with `ada !== 1` carries a non-empty explanation, and every
 fully-accessible complex stays quiet (no noise). New "Station accessibility"
-board on `system.html`, MTA-only (hidden entirely for every other system,
-same visibility pattern as the "Other accessibility equipment" board),
-scoped to complexes our archive actually tracks elevators at (grounds the
+board on `system.html` (originally MTA-only; later shared with LIRR/MNR — see
+the next subsection — and hidden for systems with no such data, same
+visibility pattern as the "Other accessibility equipment" board), scoped for
+the subway to complexes our archive actually tracks elevators at (grounds the
 board in real monitored stations rather than the full 445-complex network).
 The explanation is shown directly in the row — never hidden behind an
 expand toggle, since the whole point is that riders shouldn't have to click
@@ -2039,6 +2040,61 @@ having a tracked elevator** — that elevator only reaches the mezzanine, with
 no step-free path onward to the platform, which is the EXACT example MTA's
 own display-guidance doc uses to illustrate why "has an elevator" and "is
 accessible" are different questions.
+
+### LIRR + Metro-North station accessibility board (2026-07-22)
+
+The two thinnest systems (LIRR + Metro-North) now carry the SAME design-time
+"Station accessibility" board the subway has — their first station-ADA source of
+any kind. It comes from **`data.ny.gov/resource/wxmd-5cpm.json`** ("MTA Rail
+Stations"), an official per-station dataset with one row per LIRR/MNR station
+carrying `accessibility` = FULL / PARTIAL / NONE plus `code`, `station_name`,
+`branch`, and coordinates. `npm run rail:station-ada`
+(`scripts/rail-station-ada.mts`) snapshots it to
+`src/catalog/mta-rail-data/station-ada.json`, mapping FULL/PARTIAL/NONE → the
+SAME `ada` 0/1/2 scheme as `mta-station-ada.json` so both boards share one render
+path (the `stationAccessibility` payload field + the `system.html` board, whose
+header wording was generalized off the MTA-line/direction-specific phrasing). The
+**join key is `code`, which equals our rail `stationExternalId` cleanly for BOTH
+railroads** (verified 0 codes missing — the SOURCE-AUDIT research note that "MNR
+needs a crosswalk" was wrong; the adapter's MNR codes like `0BC`/`1BW` ARE these
+codes).
+
+**Deliberately different SCOPING from the subway board** (documented inline in
+`build-site-data.ts`): the subway restricts the board to complexes we track
+elevators at, because a partial subway complex still HAS a tracked elevator (one
+line served, another not). A commuter-rail station, by contrast, is either fully
+step-free (has an elevator → tracked → FULL) or is PARTIAL/NONE precisely because
+it has NO elevator (ramp-only or stairs-only). Restricting to tracked stations
+therefore empties the rail board (verified: 0 of ~99 tracked rail stations is
+partial/none). So the rail board lists EVERY partial/none station for the
+railroad instead — the only way it conveys the real accessibility gaps, and
+genuinely useful rider info the live-elevator layer can't show. Result: 8 LIRR +
+33 MNR stations.
+
+**PARTIAL enrichment (Bryce's "never a bare status word" rule).** `wxmd-5cpm`
+has no per-line/per-direction ADA field (the railroads are single-line, and the
+dataset carries one flag per station), so a PARTIAL station's status can't be
+explained from that dataset alone. The 18 PARTIAL stations therefore carry MTA's
+OWN per-station accessibility text, committed as
+`src/catalog/mta-rail-data/mta-ada-details.json` — the `field-ada-information`
+field scraped from each `mta.info/stations/<slug>` page. mta.info runs a Drupal
+site behind a WAF that 403s curl / WebFetch / Node `fetch`, so the scrape was
+done from inside the in-app Browser pane: load one station page, then
+same-origin `fetch()` all 18 pages from the page's JS context and pull the field
+via `DOMParser`. This is a MANUAL snapshot `rail:station-ada` cannot auto-refresh
+(re-scrape via the browser when it drifts). MTA's text reveals the consistent
+meaning of PARTIAL for these stations — each platform is ramp-accessible but
+there is no accessible path BETWEEN the platforms, so a rider must be dropped off
+on the correct side — and names the nearest fully-accessible stations (e.g.
+Rowayton → "The platforms are accessible by ramp, but there is no accessible path
+between the platforms… The nearest fully accessible stations on this line are
+Darien and South Norwalk"). A few obvious typos in MTA's source text were
+corrected (Farifield → Fairfield). NONE stations keep a generic station-level
+sentence. `npm run check:rail-station-ada` (267 checks) asserts every non-full
+station carries a non-empty explanation, every full station stays quiet, and each
+`mta-ada-details.json` entry is applied verbatim. The source hunt that surfaced
+`wxmd-5cpm` (and the confirmed dead-ends for LIRR/MNR — no per-elevator inventory,
+no GTFS pathways) is written up in `SOURCE-AUDIT.md`.
 
 ### MTA full-coverage station modeling + topology sources (2026-07-21)
 
