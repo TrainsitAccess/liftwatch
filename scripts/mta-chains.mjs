@@ -394,8 +394,14 @@ function inferChains(elevators) {
 function normDir(nyDir, desc) {
   const d = (nyDir || "").toLowerCase();
   const t = (desc || "").toLowerCase();
-  if (!d || d === "both" || d === "northbound/southbound") {
-    // fall back to a direction word in the description if the elevator is split
+  // MTA explicitly says the elevator serves BOTH directions → never assert a
+  // single direction (don't parse a stray direction fragment out of the feed
+  // description, e.g. "…transfer to 4/5 via Manhattan-bound 2/3"). Verified
+  // 2026-07-21 by the direction-reconciliation workflow: these 5 were the only
+  // "uncertain" cases and were all cosmetic-label artifacts, never under-warns.
+  if (d === "both" || d === "northbound/southbound") return { key: "", word: "" };
+  if (!d) {
+    // MTA left direction blank — fall back to a direction word in the description.
     const m = t.match(/\b(uptown|downtown|manhattan-bound|brooklyn-bound|bronx-bound|queens-bound|[a-z. ]+-bound)\b/);
     if (m) return { key: m[1].replace(/\s+/g, "-"), word: m[1] };
     return { key: "", word: "" };
@@ -473,11 +479,38 @@ function toSeg(group) {
   return { id: slug(els[0].description) || "segment", label: els[0].description || "Elevator", elevators: els.map((e) => e.id) };
 }
 
+// When MTA marks an elevator "Both" we drop the direction label — but if that
+// leaves two chains at one complex with an IDENTICAL label (same lines, both
+// non-directional), the "Both" was imprecise and they actually serve different
+// platforms. Disambiguate from the platform-segment description (a real direction
+// word if present, else the segment id), so labels stay unique and meaningful.
+function disambiguateLabels(chains) {
+  const byLabel = new Map();
+  for (const ch of chains) (byLabel.get(ch.label) ?? byLabel.set(ch.label, []).get(ch.label)).push(ch);
+  const dirOf = (ch) => {
+    const desc = (ch.segments[ch.segments.length - 1]?.label || "").toLowerCase();
+    const m = desc.match(/\b(uptown|downtown|manhattan-bound|brooklyn-bound|bronx-bound|queens-bound|coney island-bound|northbound|southbound)\b/);
+    return m ? m[1] : "";
+  };
+  for (const [label, group] of byLabel) {
+    if (group.length < 2) continue;
+    const dirs = group.map(dirOf);
+    // Use real direction words only if they UNIQUELY distinguish every chain;
+    // otherwise fall back to short lettered ordinals so labels stay clean + unique.
+    const clean = dirs.every(Boolean) && new Set(dirs).size === dirs.length;
+    group.forEach((ch, i) => {
+      const suffix = clean ? dirs[i] : String.fromCharCode(65 + i); // A, B, C…
+      ch.label = label.replace(/\)$/, ` ${suffix})`);
+    });
+  }
+  return chains;
+}
+
 function inferDirectional(rawEls, nyByCode, disagreements, complexId) {
   const ada = rawEls.filter((e) => e.ada).map((e) => nyStructure(e, nyByCode));
   if (!ada.length) return null; // no ADA elevator → no step-free chain to model
   const comps = components(ada);
-  const chains = comps.flatMap((c) => componentChains(c, disagreements, complexId));
+  const chains = disambiguateLabels(comps.flatMap((c) => componentChains(c, disagreements, complexId)));
   return chains.length ? chains : null;
 }
 
