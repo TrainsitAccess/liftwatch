@@ -1053,7 +1053,8 @@ parking lot). A station is accessible only if **every** segment is up.
   unit ids from the alert text's persistent location identity
   ("The Harlem-bound platform elevator at Pulaski" → `40030-HARLEM-BOUND`,
   parsed by `src/adapters/cta/location.ts` — tolerant of CTA's hyphen-space
-  explosions, headline station names, and consequence clauses; the full
+  explosions, headline station names, consequence clauses, and articles
+  before the leg; the full
   observed corpus is the regression fixture, `npm run check:cta`, snapshot
   via `npm run cta:observed`). A vague alert ("The elevator at Central")
   falls back to the BARE station id — the pre-identity unit id, so archive
@@ -1254,6 +1255,23 @@ parking lot). A station is accessible only if **every** segment is up.
   (Willesden Junction regression). Derived-vs-catalog redundancy mismatches
   caused by paths are documented in the same `evidenceExceptions` channel as
   alert evidence. Re-run `tfl-import.mjs` when TfL republishes the export.
+- **CTA article trap — it stalled the daily refresh for 5 days (2026-07-22 →
+  27)**: CTA writes the same elevator's leg both "to/from street" and "to/from
+  **the** street" (the latter live-observed once, at Harold Washington
+  Library `40850`). The article rode into the id, tripping `check:cta`'s
+  "no article artifacts" assertion; since the text lives in the ARCHIVE,
+  `cta:observed` re-derived it every sweep and `model-refresh.yml` failed
+  identically every day, shipping nothing. Fixed by dropping a standalone
+  `THE` in `slugify` alongside `AND`, so all four capture paths are covered
+  at once. Two rules this bought: (1) an article is NOT cosmetic — "to/from
+  the platform" on a direction-qualified alert slugs to `THE-PLATFORM`, which
+  defeats the drop-generic-PLATFORM rule and forks one elevator into two ids;
+  (2) **when a check fails ONLY in CI, re-run the SWEEP against the live
+  archive, not the check** — the committed snapshot fixture stays clean and
+  hides the offending row, which is exactly why this looked green locally for
+  five days. Archive backfilled (see SPEC.md) so the elevator kept one
+  identity; `units(id)` has no `ON UPDATE CASCADE`, so re-keying a unit is
+  insert-new → repoint referrers → delete-old, never a rename.
 - **CTA text-classification trap**: never classify planned-vs-unplanned
   against `FullDescription` — it carries a boilerplate "...repair and
   upgrade elevators" footer link on nearly every alert regardless of cause

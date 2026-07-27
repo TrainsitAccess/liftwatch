@@ -1292,7 +1292,8 @@ headline station names ("Western Kimball-bound Platform Elevator" — the
 station never leaks), consequence clauses ("elevator to/from street and
 elevators needed to access the Harlem-bound platforms" → `STREET`, direction
 never leaks), named streets ("to/from 23rd street" ≠ generic street),
-entrance qualifiers carried only by the headline (Lake's Washington/Randolph).
+entrance qualifiers carried only by the headline (Lake's Washington/Randolph),
+and ARTICLES before the leg ("to/from the street" — see the trap below).
 A VAGUE alert ("The elevator at Central") falls back to the bare station id —
 the pre-identity unit id, so archive history continues unbroken; nothing is
 ever guessed. Deliberately NO chains/redundancy claims: without an agency
@@ -1312,6 +1313,40 @@ redundancy candidates flagged — Cermak's bookend pair first — plus the King
 Drive/Cottage Grove exit-only-rotogate policy question and a suggested
 verification order); the walkthrough with Bryce is deliberately parked until
 he's ready.
+
+**The article trap, and why it stalled the daily refresh for 5 days
+(2026-07-22 → 27).** CTA writes the SAME elevator's leg both ways — "to/from
+street" everywhere in the corpus, but "to/from **the** street" in one alert
+first archived 2026-07-22T12:05 (Harold Washington Library-State/Van Buren,
+`40850`). The leg capture took the article with it, minting
+`40850-BROWN-LINE-PLATFORM-THE-STREET`, which tripped `check:cta`'s
+"no article artifacts in ids" hygiene assertion — and because the offending
+text lives in the ARCHIVE, `cta:observed` re-derived it on every sweep, so
+`model-refresh.yml` failed identically every day (2026-07-22 through 07-27)
+and nothing shipped for five days. Two lessons worth generalizing:
+
+- **The assertion was catching a real identity fork, not a cosmetic blemish.**
+  An article is invisible in a street leg but destructive in a generic one:
+  `to/from the platform` on a direction-qualified alert slugs to
+  `THE-PLATFORM`, which the "drop generic PLATFORM when a direction already
+  identifies the elevator" rule no longer recognizes — so one physical
+  elevator forks into two unit ids. This is the same class of bug as the
+  hyphen-space explosions, just rarer.
+- **A committed-snapshot fixture can hide an archive-driven failure.**
+  `check:cta` passed locally the entire time (the committed
+  `observed-units.json` was clean); only CI's fresh sweep pulled the row in.
+  When a check fails ONLY in CI, reproduce it by re-running the sweep against
+  the live archive, not by re-running the check.
+
+Fix: `slugify` drops a standalone `THE` exactly as it already dropped `AND`,
+so every capture path (entrance, named terminal, line-platform, leg) is
+protected at once rather than patching the one regex that happened to break.
+Verified via the re-slug guard that no previously recorded id changed.
+The archive row was BACKFILLED (the closed 07-22 outage + its `units` row
+re-keyed to the article-free id) so the elevator keeps a single identity —
+`units(id)` has no `ON UPDATE CASCADE`, so that is insert-new → repoint every
+referrer (`outage_events`, `offline_events`, `daily_rollups`,
+`redundancy_flags`) → delete-old, never a rename.
 
 ### CTA feeds (in use) — station-level, discovered inventory
 

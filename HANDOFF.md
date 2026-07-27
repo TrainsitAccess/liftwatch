@@ -1,4 +1,4 @@
-# LiftWatch — Session Handoff (2026-07-22)
+# LiftWatch — Session Handoff (2026-07-27)
 
 **To start the next session, paste the prompt in [§ Next-session prompt](#next-session-prompt) below.**
 
@@ -25,6 +25,13 @@ their curated chains were silently bypassed. **Fixed + regression-locked**
 station-review backlog** (TfL/CTA/MBTA/MTA-rail, table below) via
 `/liftwatch-station-review`.
 
+**Note on the 5-day gap in this log (2026-07-22 → 27):** the daily
+`model-refresh.yml` was RED every one of those days on a one-character CTA
+parser bug, so no automated model updates shipped in that window. Fixed
+2026-07-27 (first section below) and the backlog has since been absorbed in a
+single auto-refresh commit — nothing was lost, but any dated claim about model
+state between those two dates should be read as "as of 07-21".
+
 ---
 
 ## Next-session prompt
@@ -44,6 +51,13 @@ platform elevator is one of two real ids (K04X01/K04X03) but which one is
 unconfirmed — modeled conservatively (both required, over-warn) with a
 standing internalNote TODO to watch future WMATA alert wording for
 disambiguating text.
+
+The daily model-refresh is GREEN again as of 2026-07-27 (it had been red
+since 07-22 on a CTA parser bug — see the top section of HANDOFF.md). Worth a
+10-second `gh run list --workflow=model-refresh.yml --limit 5` at session
+start: it is the only unattended thing in this project, its failures are
+silent unless you look (or the ntfy push is seen), and a red streak means NO
+model updates have shipped for that many days.
 
 PRIMARY TASK: continue the /liftwatch-station-review walkthrough (103/214
 stations done — WMATA's review tier is COMPLETE at 42/42; the table below
@@ -96,6 +110,55 @@ new stations.
 ```
 
 ---
+
+## What shipped this session (2026-07-27) — daily model-refresh unblocked (CTA article trap)
+
+The daily refresh had failed **every run since 2026-07-22** (6 consecutive
+scheduled runs, each ~30s, each sending the high-priority "needs review" ntfy
+push). Diagnosed, fixed, backfilled, and verified green end-to-end.
+
+- **Root cause — one archived alert with an article** (commit `7f5937e`).
+  A CTA alert first archived 2026-07-22T12:05, three minutes before the first
+  failing run, phrases the leg as "The Brown Line platform elevator **to/from
+  the street** at Harold Washington Library-State/Van Buren…" where every
+  other observed CTA text says "to/from street". The leg regex captured
+  `the street` → `40850-BROWN-LINE-PLATFORM-THE-STREET`, tripping
+  `check:cta`'s "no article artifacts in ids" hygiene assertion. Because the
+  text lives in the Supabase ARCHIVE, `cta:observed` re-derived it on every
+  sweep — a permanently self-repeating failure, not a transient one.
+- **Why it hid**: `check:cta` passed LOCALLY the whole time — the committed
+  `observed-units.json` fixture was clean, and only CI's fresh sweep pulls the
+  archive row. **When a check fails only in CI, re-run the sweep against the
+  live archive, not the check.** (Reproduced here with a throwaway script that
+  parsed every archived CTA text and printed the offenders — 1 hit.)
+- **The assertion was right to fail.** The article is identity-corrupting, not
+  cosmetic: `to/from the platform` on a direction-qualified alert slugs to
+  `THE-PLATFORM`, defeating the "drop generic PLATFORM when a direction
+  already identifies the elevator" rule and forking one physical elevator into
+  two unit ids.
+- **Fix**: `slugify` now drops a standalone `THE` exactly as it already
+  dropped `AND` — covering all four capture paths (entrance, named terminal,
+  line-platform, leg) rather than patching the one regex that broke. Three
+  regressions added to `check:cta` (the real observed text; articled vs
+  article-free collapsing to one id; the articled-generic-platform drop).
+  The re-slug guard confirms **zero** previously recorded ids changed.
+- **Archive backfilled**: the 07-22 outage (closed, 29 min) and its `units`
+  row were re-keyed to `40850-BROWN-LINE-PLATFORM-STREET` so the elevator
+  keeps one identity. `units(id)` has **no `ON UPDATE CASCADE`**, so this was
+  insert-new → repoint referrers → delete-old, never a rename; a survey of all
+  four referring tables found rows only in `outage_events` (1).
+- **Verified**: all 12 checks green locally, then dispatched
+  [run 30303766569](https://github.com/TrainsitAccess/liftwatch/actions/runs/30303766569)
+  — green in 29s and it SHIPPED (`1379986`), absorbing 5 days of backed-up
+  drift in one commit: +247 lines review-queue evidence, +535 TfL
+  alert-evidence, +164 WMATA observed-units, 20 files total. Note everything
+  after `check:cta` in the suite had not actually run since 07-22, so this was
+  also the first clean full-suite pass in that window.
+- **Surfaced by the catch-up, no action needed**: WMATA **B09 Rhode Island
+  Ave** now reports a 5th live unit (`B09X03`) vs GTFS's 1 — same existing
+  exclusion, just more precise; TfL **Farringdon** gained an `evidenceHints`
+  entry pointing at the National Rail entrance for step-free access, a head
+  start for its eventual station review.
 
 ## What shipped this session (2026-07-22) — cross-system source audit + LIRR/MNR station-ADA board
 
