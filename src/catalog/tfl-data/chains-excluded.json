@@ -1,7 +1,7 @@
 {
   "note": "Stations/access-components whose lift topology is too ambiguous to auto-model safely: a branching hub node (3+ distinct routes through one shared area), a multi-destination lift within a multi-lift route, or an unclear traversal. Needs a human station-by-station review (walking each through with a person who knows the station, per this project's established practice for MTA's tangled interchanges) before adding to chains.json. Entries with evidenceHints have a real, TfL-published alternative-route mention for one of their lifts (from alert-evidence.json) — a head start for the review, not a resolution of the whole station's topology.",
   "excludedStationCount": 71,
-  "excludedWithEvidenceHints": 4,
+  "excludedWithEvidenceHints": 5,
   "excluded": [
     {
       "station": "Brent Cross West Station",
@@ -784,7 +784,19 @@
         "HUBZFD-Lift-6",
         "HUBZFD-Lift-8"
       ],
-      "reason": "multi-level lift (intermediate landing) in a multi-edge component"
+      "reason": "multi-level lift (intermediate landing) in a multi-edge component",
+      "evidenceHints": [
+        {
+          "liftId": "HUBZFD-Lift-7",
+          "phrase": "the National Rail entrance at Farringdon",
+          "message": "Farringdon: No Step Free Access - Step free access is not available between the Smithfield ticket hall / Barbican westbound platform and the Elizabeth line. For step free access, use the National Rail entrance at Farringdon."
+        },
+        {
+          "liftId": "HUBZFD-Lift-6",
+          "phrase": "the National Rail entrance at Farringdon",
+          "message": "Farringdon: No Step Free Access - Step free access is not available between the Smithfield ticket hall / Barbican westbound platform and the Elizabeth line. For step free access, use the National Rail entrance at Farringdon."
+        }
+      ]
     },
     {
       "station": "Ealing Broadway",

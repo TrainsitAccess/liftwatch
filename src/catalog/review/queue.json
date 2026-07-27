@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-21T12:04:31.933Z",
+ "updatedAt": "2026-07-27T20:43:24.226Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -244,6 +244,10 @@
      "text": "The Loop- bound platform elevator at Addison (Brown Line) is temporarily out-of-service."
     },
     {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Addison Temporarily Out-of-Service — The Loop-bound platform elevator at Addison (Brown Line) is temporarily out-of-service."
+    },
+    {
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **41440 Addison (Brown)** — dual side platforms; dual elevator towers (the Ron Santo box-score ones). observed: KIMBALL-BOUND, LOOP-BOUND ✓ both."
     }
@@ -344,6 +348,10 @@
      "text": "The 95th-bound platform elevator at Grand (Red Line) is temporarily out-of-service."
     },
     {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Grand Temporarily Out-of-Service — The 95th- bound platform elevator at Grand (Red Line) is temporarily out-of-service."
+    },
+    {
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **40330 Grand (Red)** — subway, dual side platforms + mezzanine: street→mezz elevator (NW corner kiosk) PLUS a new elevator to EACH platform (2000s rehab). 3 elevators: series street→mezz then per-direction mezz→platform — same shape as WMATA's E01. observed: 95TH-BOUND ✓ fits."
     }
@@ -433,6 +441,10 @@
     },
     {
      "source": "live feed (alert text)",
+     "text": "Elevator at Ashland/Lake Temporarily Out-of-Service — An elevator needed to access the 63rd-bound and Loop-bound platform at Ashland (Green, Pink Lines) is temporarily out-of-service. (unidentified elevator at a modeled station — access shown as unknown)"
+    },
+    {
+     "source": "live feed (alert text)",
      "text": "The elevator to/from street at Ashland (Green, Pink Lines) is temporarily out-of-service due to an electrical issue."
     },
     {
@@ -470,6 +482,10 @@
     {
      "source": "live feed (alert text)",
      "text": "The elevator to/from street, platforms and bridge at 43rd (Green Line) is temporarily out-of-service."
+    },
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at 43rd Temporarily Out-of-Service — The elevator to/from street, platforms and bridge at 43rd (Green Line) is temporarily out-of-service."
     },
     {
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
@@ -605,7 +621,7 @@
    "evidence": [
     {
      "source": "exclusion gate",
-     "text": "observed-undercount: 4 distinct live units (B09X02, B09X04, B09X05, B09X06) on Mezzanine→Platform vs 1 in GTFS (levels: Mezzanine, Platform)"
+     "text": "observed-undercount: 5 distinct live units (B09X02, B09X03, B09X04, B09X05, B09X06) on Mezzanine→Platform vs 1 in GTFS (levels: Mezzanine, Platform)"
     },
     {
      "source": "GTFS roster",
@@ -614,6 +630,10 @@
     {
      "source": "live feed (observed)",
      "text": "B09X02: \"Elevator between mezzanine and platform\""
+    },
+    {
+     "source": "live feed (observed)",
+     "text": "B09X03: \"Elevator between mezzanine and platform\""
     },
     {
      "source": "live feed (observed)",
@@ -626,6 +646,10 @@
     {
      "source": "live feed (observed)",
      "text": "B09X06: \"Elevator between mezzanine and platform\""
+    },
+    {
+     "source": "exclusion gate",
+     "text": "observed-undercount: 4 distinct live units (B09X02, B09X04, B09X05, B09X06) on Mezzanine→Platform vs 1 in GTFS (levels: Mezzanine, Platform)"
     },
     {
      "source": "exclusion gate",
@@ -794,6 +818,14 @@
     {
      "source": "live feed (observed)",
      "text": "G05X01: \"Elevator between street and mezzanine\""
+    },
+    {
+     "source": "live feed (observed)",
+     "text": "G05X02: \"Elevator between mezzanine and platform\""
+    },
+    {
+     "source": "live feed (observed)",
+     "text": "G05X04: \"Elevator between north garage and mezzanine\""
     },
     {
      "source": "Bryce (2026-07-16)",
@@ -1519,6 +1551,10 @@
     {
      "source": "live feed (observed)",
      "text": "C08X01: \"Elevator between street and mezzanine on west side of Hayes street, at The Fashion Center\""
+    },
+    {
+     "source": "live feed (observed)",
+     "text": "C08X02: \"Elevator between mezzanine and platform to Mt. Vernon Sq/Largo Town Center\""
     }
    ],
    "resolution": {
@@ -1555,6 +1591,10 @@
     {
      "source": "live feed (observed)",
      "text": "C09X01: \"Elevator between street and mezzanine\""
+    },
+    {
+     "source": "live feed (observed)",
+     "text": "C09X02: \"Elevator between mezzanine and platform to Huntington/Franconia-Springfield\""
     }
    ],
    "resolution": {
@@ -1767,6 +1807,10 @@
     {
      "source": "GTFS roster",
      "text": "WMATA-E08_MZ_S_ELV: Street/Mezzanine ↔ Platform"
+    },
+    {
+     "source": "live feed (observed)",
+     "text": "E08X01: \"Elevator between mezzanine and platform to Branch Ave\""
     }
    ],
    "resolution": {
@@ -3588,6 +3632,10 @@
     },
     {
      "source": "live feed (observed)",
+     "text": "K04X01: \"Elevator between street and mezzanine to Vienna\""
+    },
+    {
+     "source": "live feed (observed)",
      "text": "K04X03: \"Elevator between street and mezzanine to Vienna\""
     },
     {
@@ -3639,6 +3687,10 @@
      "text": "C01N01: \"Elevator between street and mezzanine\""
     },
     {
+     "source": "live feed (observed)",
+     "text": "C01N03: \"Elevator between upper platform to Glenmont and lower platform for Blue/Orange Lines\""
+    },
+    {
      "source": "Bryce (2026-07-16), quoting WMATA's own elevator descriptions",
      "text": "The mezzanine is at the same level as the Shady Grove-bound Red Line platform, so reaching it only needs the street-to-mezzanine elevator. To reach Glenmont-bound Red Line trains you take an elevator down to the Blue/Orange/Silver platform, then another back up. WMATA's 3 descriptions: 'Elevator between street and mezzanine'; 'Elevator between upper platform to Shady Grove and lower platform for Blue/Orange Lines'; 'Elevator between upper platform to Glenmont and lower platform for Blue/Orange Lines'. So: 1 elevator for Shady Grove-bound Red Line, 2 for Blue/Silver/Orange, 3 for Glenmont-bound Red Line (in series)."
     }
@@ -3669,6 +3721,10 @@
     {
      "source": "GTFS roster",
      "text": "WMATA-A04_N_ELE: Street ↔ Mezzanine/Intermediate Passageway"
+    },
+    {
+     "source": "live feed (observed)",
+     "text": "A04X01: \"Elevator between street and mezzanine, SW corner of Woodley Rd. & Connecticut Ave., N.W.\""
     }
    ],
    "resolution": {
@@ -3761,6 +3817,10 @@
     {
      "source": "GTFS roster",
      "text": "WMATA-B01_F01_E_ELE2: Platform ↔ Lower Mezzanine/Upper Platform"
+    },
+    {
+     "source": "live feed (observed)",
+     "text": "B01E01: \"Elevator between street and platform to Glenmont\""
     },
     {
      "source": "live feed (observed)",
@@ -3885,6 +3945,10 @@
     {
      "source": "GTFS roster",
      "text": "WMATA-C15_S_ELE2: South Mezzanine ↔ Platform"
+    },
+    {
+     "source": "live feed (observed)",
+     "text": "C15N01: \"Elevator between mezzanine and platform\""
     },
     {
      "source": "live feed (observed)",
@@ -4027,6 +4091,10 @@
      "text": "WMATA-E03_MZ_ELE_W: East/West Mezzanine ↔ Platform"
     },
     {
+     "source": "live feed (observed)",
+     "text": "E03W01: \"Elevator between street and mezzanine\""
+    },
+    {
      "source": "Bryce (2026-07-16)",
      "text": "There are two elevators: street to mezzanine, and mezzanine to the center platform. The street elevator is embedded in the building at 38.91682122969772, -77.02897751998267 on U St's south side. No east-side elevator exists."
     }
@@ -4117,6 +4185,14 @@
     {
      "source": "GTFS roster",
      "text": "WMATA-F08_MZ_ELE2: Street/Mezzanine ↔ Platform"
+    },
+    {
+     "source": "live feed (observed)",
+     "text": "F08X01: \"Elevator between mezzanine and garage\""
+    },
+    {
+     "source": "live feed (observed)",
+     "text": "F08X02: \"Elevator between mezzanine and platform\""
     }
    ],
    "resolution": {
@@ -4326,6 +4402,21 @@
    }
   },
   {
+   "key": "cta:40130",
+   "system": "cta-chicago",
+   "stationId": "40130",
+   "name": "51st",
+   "status": "pending",
+   "priority": 50,
+   "reason": "no chains modeled (no agency inventory — text-identity only)",
+   "evidence": [
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at 51st Temporarily Out-of-Service — The elevator to/from street, platforms and bridge at 51st (Green Line) is temporarily out-of-service."
+    }
+   ]
+  },
+  {
    "key": "cta:40150",
    "system": "cta-chicago",
    "stationId": "40150",
@@ -4401,6 +4492,21 @@
    ]
   },
   {
+   "key": "cta:40240",
+   "system": "cta-chicago",
+   "stationId": "40240",
+   "name": "79th",
+   "status": "pending",
+   "priority": 50,
+   "reason": "no chains modeled (no agency inventory — text-identity only)",
+   "evidence": [
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at 79th Temporarily Out-of-Service — The elevator at 79th (Red Line) is temporarily out-of-service."
+    }
+   ]
+  },
+  {
    "key": "cta:40280",
    "system": "cta-chicago",
    "stationId": "40280",
@@ -4436,6 +4542,10 @@
     {
      "source": "live feed (alert text)",
      "text": "Elevator at Indiana Temporarily Out-of-Service — The 63rd-bound platform elevator at Indiana (Green Line) is temporarily out-of-service."
+    },
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Indiana Temporarily Out-of-Service — The 63rd- bound platform elevator at Indiana (Green Line) is temporarily out-of-service."
     },
     {
      "source": "live feed (alert text)",
@@ -4546,6 +4656,10 @@
     {
      "source": "live feed (alert text)",
      "text": "Elevator at Merchandise Mart Temporarily Out-of-Service — The Kimball-bound and Linden-bound platform elevator at Merchandise Mart (Brown, Purple Lines) is temporarily out-of-service."
+    },
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Merchandise Mart Temporarily Out-of-Service — The Kimball- and- Linden- bound platform elevator at Merchandise Mart (Brown, Purple Lines) is temporarily out-of-service."
     }
    ]
   },
@@ -4661,6 +4775,21 @@
    }
   },
   {
+   "key": "cta:40630",
+   "system": "cta-chicago",
+   "stationId": "40630",
+   "name": "Clark/Division",
+   "status": "pending",
+   "priority": 50,
+   "reason": "no chains modeled (no agency inventory — text-identity only)",
+   "evidence": [
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Clark/Division Temporarily Out-of-Service — The elevator to/from street at Clark/Division (Red Line) is temporarily out-of-service."
+    }
+   ]
+  },
+  {
    "key": "cta:40730",
    "system": "cta-chicago",
    "stationId": "40730",
@@ -4671,7 +4800,15 @@
    "evidence": [
     {
      "source": "live feed (alert text)",
+     "text": "Elevator at Washington/Wells Temporarily Out-of-Service — The elevator to/from street and Orange/Pink/Purple Line platform at Washington/Wells is temporarily out-of-service."
+    },
+    {
+     "source": "live feed (alert text)",
      "text": "The Brown Line platform elevator at Washington/Wells is temporarily out-of-service."
+    },
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Washington/Wells Temporarily Out-of-Service — The Brown Line platform elevator at Washington/Wells is temporarily out-of-service."
     },
     {
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
@@ -4704,6 +4841,25 @@
    }
   },
   {
+   "key": "cta:40800",
+   "system": "cta-chicago",
+   "stationId": "40800",
+   "name": "Sedgwick",
+   "status": "pending",
+   "priority": 50,
+   "reason": "no chains modeled (no agency inventory — text-identity only)",
+   "evidence": [
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Sedgwick Temporarily Out-of-Service — The Kimball- and Linden-bound platform elevator at Sedgwick (Brown, Purple Lines) is temporarily out-of-service."
+    },
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Sedgwick Temporarily Out-of-Service — The Loop-bound platform elevator at Sedgwick (Brown, Purple Lines) is temporarily out-of-service."
+    }
+   ]
+  },
+  {
    "key": "cta:40830",
    "system": "cta-chicago",
    "stationId": "40830",
@@ -4719,6 +4875,21 @@
    ]
   },
   {
+   "key": "cta:40850",
+   "system": "cta-chicago",
+   "stationId": "40850",
+   "name": "40850",
+   "status": "pending",
+   "priority": 50,
+   "reason": "no chains modeled (no agency inventory — text-identity only)",
+   "evidence": [
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Harold Washington Library-State/Van Buren Temporarily Out-of-Service — The Brown Line platform elevator to/from the street at Harold Washington Library-State/Van Buren is temporarily out-of-service."
+    }
+   ]
+  },
+  {
    "key": "cta:40900",
    "system": "cta-chicago",
    "stationId": "40900",
@@ -4730,6 +4901,10 @@
     {
      "source": "live feed (alert text)",
      "text": "The 95th- and- Loop bound platform elevator at Howard (Red, Purple, Yellow Lines) is temporarily out-of-service."
+    },
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Howard Temporarily Out-of-Service — The 95th- and Loop- bound platform elevator at Howard (Red, Purple, Yellow Lines) is temporarily out-of-service."
     },
     {
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
@@ -4764,6 +4939,21 @@
     "notes": "Batch 2 (15 CTA single/no-redundancy stations), approved by Bryce as a group 2026-07-15. Bucket A: single island-platform elevator, never individually identified (bare station id — safe since no OR to hide behind). Bucket B (Morgan): single island elevator, agency-identified, serves both directions. Bucket C: Diversey-pattern per-direction chains (one real observed elevator, one synthetic placeholder for the never-observed opposite direction). Confidence 8/10 collectively. Implemented in src/catalog/cta-models.ts.",
     "date": "2026-07-15"
    }
+  },
+  {
+   "key": "cta:40930",
+   "system": "cta-chicago",
+   "stationId": "40930",
+   "name": "Midway",
+   "status": "pending",
+   "priority": 50,
+   "reason": "no chains modeled (no agency inventory — text-identity only)",
+   "evidence": [
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Midway Temporarily Out-of-Service — The main platform elevator at Midway (Orange Line) is temporarily out-of-service."
+    }
+   ]
   },
   {
    "key": "cta:40990",
@@ -4835,6 +5025,21 @@
     "notes": "Batch 2 (15 CTA single/no-redundancy stations), approved by Bryce as a group 2026-07-15. Bucket A: single island-platform elevator, never individually identified (bare station id — safe since no OR to hide behind). Bucket B (Morgan): single island elevator, agency-identified, serves both directions. Bucket C: Diversey-pattern per-direction chains (one real observed elevator, one synthetic placeholder for the never-observed opposite direction). Confidence 8/10 collectively. Implemented in src/catalog/cta-models.ts.",
     "date": "2026-07-15"
    }
+  },
+  {
+   "key": "cta:41040",
+   "system": "cta-chicago",
+   "stationId": "41040",
+   "name": "Kedzie",
+   "status": "pending",
+   "priority": 50,
+   "reason": "no chains modeled (no agency inventory — text-identity only)",
+   "evidence": [
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Kedzie Temporarily Out-of-Service — The elevator at Kedzie (Pink Line) is temporarily out-of-service."
+    }
+   ]
   },
   {
    "key": "cta:41080",
@@ -4973,6 +5178,21 @@
    }
   },
   {
+   "key": "cta:41240",
+   "system": "cta-chicago",
+   "stationId": "41240",
+   "name": "Addison",
+   "status": "pending",
+   "priority": 50,
+   "reason": "no chains modeled (no agency inventory — text-identity only)",
+   "evidence": [
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Addison Temporarily Out-of-Service — The elevator at Addison (Blue Line) is temporarily out-of-service."
+    }
+   ]
+  },
+  {
    "key": "cta:41300",
    "system": "cta-chicago",
    "stationId": "41300",
@@ -5095,6 +5315,21 @@
    }
   },
   {
+   "key": "cta:41450",
+   "system": "cta-chicago",
+   "stationId": "41450",
+   "name": "Chicago",
+   "status": "pending",
+   "priority": 50,
+   "reason": "no chains modeled (no agency inventory — text-identity only)",
+   "evidence": [
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Chicago Temporarily Out-of-Service — The elevator to/from street at Chicago (Red Line) is temporarily out-of-service."
+    }
+   ]
+  },
+  {
    "key": "cta:41510",
    "system": "cta-chicago",
    "stationId": "41510",
@@ -5157,6 +5392,10 @@
     {
      "source": "live feed (alert text)",
      "text": "Elevator at Washington/Wabash Temporarily Out-of-Service — The Orange, Pink, Purple and 63rd-bound Green Line platform elevator at Washington/Wabash is temporarily out-of-service."
+    },
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Washington/Wabash Temporarily Out-of-Service — The Brown Line and Harlem-bound Green Line platform elevator at Washington/Wabash is temporarily out-of-service."
     }
    ]
   },
@@ -6009,6 +6248,10 @@
     {
      "source": "exclusion gate",
      "text": "multi-destination edge in a multi-edge component; lifts: HUBLST-Lift-1, HUBLST-Lift-C, HUBLST-Lift-B, HUBLST-Lift-A"
+    },
+    {
+     "source": "TfL alert evidence (hint)",
+     "text": "HUBLST-Lift-B: \"the Moorgate station entrance\" — from alert: Moorgate: No Step Free Access - Step free access to/from the Elizabeth line is not available via the Broadgate entrance / Liverpool St National Rail concourse due to a faulty lift. For step free acces"
     }
    ]
   },

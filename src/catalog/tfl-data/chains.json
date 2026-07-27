@@ -3998,7 +3998,8 @@
               "externalId": "940GZZLUBBN-Lift-7",
               "label": "Lift F"
             }
-          ]
+          ],
+          "stepFreeAlternative": true
         },
         {
           "id": "seg-2",
@@ -4011,8 +4012,8 @@
           ]
         }
       ],
-      "note": "Leg 1: one lift, no backup. Leg 2: one lift, no backup. None of these legs has a backup — if any one of these lifts is out of service, this route is not step-free.",
-      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal."
+      "note": "Leg 1: step-free even without a lift (a non-lift route exists). Leg 2: one lift, no backup. A leg with a single lift has no backup — an outage there makes this route not step-free. TfL has confirmed a step-free alternative for Lift F: the National Rail entrance at Farringdon.",
+      "internalNote": "Generated from TfL's published lift-route topology (scripts/tfl-chains.mjs). Area codes are deliberately not decoded — legs are ordinal. Alert-evidence enrichment: 940GZZLUBBN-Lift-7 pattern \"use-the-X\" — \"the National Rail entrance at Farringdon\"."
     },
     {
       "systemId": "tfl-london",
@@ -4311,6 +4312,7 @@
     "HUBWFJ-Lift-3": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
     "HUBWWA-Lift-2": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
     "HUBWWA-Lift-3": "TfL published ramp/same-level step-free path (step-free-paths.json) parallels this lift's route",
-    "910GHACKNYW-Lift-1": "TfL alert-confirmed alternative (use-the-X): \"the ramp on Hepscott Road\""
+    "910GHACKNYW-Lift-1": "TfL alert-confirmed alternative (use-the-X): \"the ramp on Hepscott Road\"",
+    "940GZZLUBBN-Lift-7": "TfL alert-confirmed alternative (use-the-X): \"the National Rail entrance at Farringdon\""
   }
 }
