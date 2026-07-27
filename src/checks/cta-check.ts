@@ -69,6 +69,13 @@ ok(p("The South Terminal elevator to/from platform at 95th/Dan Ryan (Red Line) i
   "named terminal + leg");
 ok(p("The elevator to/from bus terminal and garage at Cumberland (Blue Line) is temporarily out-of-service.") === "BUS-TERMINAL-GARAGE",
   "compound leg (bus terminal and garage)");
+ok(p("Elevator at Harold Washington Library-State/Van Buren Temporarily Out-of-Service — The Brown Line platform elevator to/from the street at Harold Washington Library-State/Van Buren is temporarily out-of-service.") === "BROWN-LINE-PLATFORM-STREET",
+  "an article before the leg ('to/from the street') never reaches the id");
+ok(p("The elevator to/from the street at Ashland (Green, Pink Lines) is temporarily out-of-service.") ===
+   p("The elevator to/from street at Ashland (Green, Pink Lines) is temporarily out-of-service."),
+  "articled and article-free phrasings of one elevator collapse to the same id");
+ok(p("The Harlem-bound platform elevator to/from the platform at Pulaski (Green Line) is temporarily out-of-service.") === "HARLEM-BOUND",
+  "articled generic 'platform' leg still drops when a direction identifies the elevator");
 ok(p("The elevator at Central (Green Line) is temporarily out-of-service.") === null,
   "vague text → null (adapter falls back to the bare station id — history continuity)");
 ok(p("Elevator at Loyola Temporarily Out-of-Service — The elevator at Loyola ( Red Line) is temporarily out-of-service.") === null,

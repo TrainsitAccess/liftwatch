@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-21T12:04:24.175Z",
+  "updatedAt": "2026-07-27T20:37:42.470Z",
   "note": "Every CTA elevator identity ever observed (archive + live alert texts, parsed by src/adapters/cta/location.ts). Grows only. Regression fixture for check:cta and the curation aid for a future chains pass.",
   "units": [
     {
@@ -29,6 +29,14 @@
       "firstObserved": "2026-07-12T21:22:40.665+00:00"
     },
     {
+      "unitId": "40130-STREET-PLATFORMS-BRIDGE",
+      "stationId": "40130",
+      "texts": [
+        "Elevator at 51st Temporarily Out-of-Service — The elevator to/from street, platforms and bridge at 51st (Green Line) is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-07-23T11:11:36.046+00:00"
+    },
+    {
       "unitId": "40150",
       "stationId": "40150",
       "texts": [
@@ -40,7 +48,8 @@
       "unitId": "40170",
       "stationId": "40170",
       "texts": [
-        "Elevator at Ashland/Lake Temporarily Out-of-Service — An elevator needed to access the Harlem- and 54th/Cermak-bound platform at Ashland (Green, Pink Lines) is temporarily out-of-service. (unidentified elevator at a modeled station — access shown as unknown)"
+        "Elevator at Ashland/Lake Temporarily Out-of-Service — An elevator needed to access the Harlem- and 54th/Cermak-bound platform at Ashland (Green, Pink Lines) is temporarily out-of-service. (unidentified elevator at a modeled station — access shown as unknown)",
+        "Elevator at Ashland/Lake Temporarily Out-of-Service — An elevator needed to access the 63rd-bound and Loop-bound platform at Ashland (Green, Pink Lines) is temporarily out-of-service. (unidentified elevator at a modeled station — access shown as unknown)"
       ],
       "firstObserved": "2026-07-18T20:05:42.948+00:00"
     },
@@ -87,6 +96,14 @@
       "firstObserved": "2026-07-14T12:02:45.491+00:00"
     },
     {
+      "unitId": "40240",
+      "stationId": "40240",
+      "texts": [
+        "Elevator at 79th Temporarily Out-of-Service — The elevator at 79th (Red Line) is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-07-27T19:53:44.941+00:00"
+    },
+    {
       "unitId": "40280",
       "stationId": "40280",
       "texts": [
@@ -98,7 +115,8 @@
       "unitId": "40300-63RD-BOUND",
       "stationId": "40300",
       "texts": [
-        "Elevator at Indiana Temporarily Out-of-Service — The 63rd-bound platform elevator at Indiana (Green Line) is temporarily out-of-service."
+        "Elevator at Indiana Temporarily Out-of-Service — The 63rd-bound platform elevator at Indiana (Green Line) is temporarily out-of-service.",
+        "Elevator at Indiana Temporarily Out-of-Service — The 63rd- bound platform elevator at Indiana (Green Line) is temporarily out-of-service."
       ],
       "firstObserved": "2026-07-20T19:36:22.843+00:00"
     },
@@ -114,7 +132,8 @@
       "unitId": "40330-95TH-BOUND",
       "stationId": "40330",
       "texts": [
-        "The 95th-bound platform elevator at Grand (Red Line) is temporarily out-of-service."
+        "The 95th-bound platform elevator at Grand (Red Line) is temporarily out-of-service.",
+        "Elevator at Grand Temporarily Out-of-Service — The 95th- bound platform elevator at Grand (Red Line) is temporarily out-of-service."
       ],
       "firstObserved": "2026-07-06T19:18:24.687+00:00"
     },
@@ -155,7 +174,8 @@
       "unitId": "40460-KIMBALL-LINDEN-BOUND",
       "stationId": "40460",
       "texts": [
-        "Elevator at Merchandise Mart Temporarily Out-of-Service — The Kimball-bound and Linden-bound platform elevator at Merchandise Mart (Brown, Purple Lines) is temporarily out-of-service."
+        "Elevator at Merchandise Mart Temporarily Out-of-Service — The Kimball-bound and Linden-bound platform elevator at Merchandise Mart (Brown, Purple Lines) is temporarily out-of-service.",
+        "Elevator at Merchandise Mart Temporarily Out-of-Service — The Kimball- and- Linden- bound platform elevator at Merchandise Mart (Brown, Purple Lines) is temporarily out-of-service."
       ],
       "firstObserved": "2026-07-16T14:33:52.31+00:00"
     },
@@ -228,6 +248,14 @@
       "firstObserved": "2026-07-14T21:35:34.321+00:00"
     },
     {
+      "unitId": "40630-STREET",
+      "stationId": "40630",
+      "texts": [
+        "Elevator at Clark/Division Temporarily Out-of-Service — The elevator to/from street at Clark/Division (Red Line) is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-07-23T13:06:46.827+00:00"
+    },
+    {
       "unitId": "40710-LOOP-BOUND",
       "stationId": "40710",
       "texts": [
@@ -245,10 +273,19 @@
       "firstObserved": "2026-07-06T14:33:33.788+00:00"
     },
     {
+      "unitId": "40730",
+      "stationId": "40730",
+      "texts": [
+        "Elevator at Washington/Wells Temporarily Out-of-Service — The elevator to/from street and Orange/Pink/Purple Line platform at Washington/Wells is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-07-25T13:24:12.139+00:00"
+    },
+    {
       "unitId": "40730-BROWN-LINE-PLATFORM",
       "stationId": "40730",
       "texts": [
-        "The Brown Line platform elevator at Washington/Wells is temporarily out-of-service."
+        "The Brown Line platform elevator at Washington/Wells is temporarily out-of-service.",
+        "Elevator at Washington/Wells Temporarily Out-of-Service — The Brown Line platform elevator at Washington/Wells is temporarily out-of-service."
       ],
       "firstObserved": "2026-07-05T00:57:40.161+00:00"
     },
@@ -261,6 +298,22 @@
       "firstObserved": "2026-07-13T13:35:38.244+00:00"
     },
     {
+      "unitId": "40800-KIMBALL-LINDEN-BOUND",
+      "stationId": "40800",
+      "texts": [
+        "Elevator at Sedgwick Temporarily Out-of-Service — The Kimball- and Linden-bound platform elevator at Sedgwick (Brown, Purple Lines) is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-07-22T00:52:13.228+00:00"
+    },
+    {
+      "unitId": "40800-LOOP-BOUND",
+      "stationId": "40800",
+      "texts": [
+        "Elevator at Sedgwick Temporarily Out-of-Service — The Loop-bound platform elevator at Sedgwick (Brown, Purple Lines) is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-07-22T01:56:23.396+00:00"
+    },
+    {
       "unitId": "40830-54TH-BOUND",
       "stationId": "40830",
       "texts": [
@@ -269,10 +322,19 @@
       "firstObserved": "2026-07-19T09:48:11.634+00:00"
     },
     {
+      "unitId": "40850-BROWN-LINE-PLATFORM-STREET",
+      "stationId": "40850",
+      "texts": [
+        "Elevator at Harold Washington Library-State/Van Buren Temporarily Out-of-Service — The Brown Line platform elevator to/from the street at Harold Washington Library-State/Van Buren is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-07-22T12:05:30.707+00:00"
+    },
+    {
       "unitId": "40900-95TH-LOOP-BOUND",
       "stationId": "40900",
       "texts": [
-        "The 95th- and- Loop bound platform elevator at Howard (Red, Purple, Yellow Lines) is temporarily out-of-service."
+        "The 95th- and- Loop bound platform elevator at Howard (Red, Purple, Yellow Lines) is temporarily out-of-service.",
+        "Elevator at Howard Temporarily Out-of-Service — The 95th- and Loop- bound platform elevator at Howard (Red, Purple, Yellow Lines) is temporarily out-of-service."
       ],
       "firstObserved": "2026-07-05T00:57:40.161+00:00"
     },
@@ -284,6 +346,14 @@
         "Elevator at 63rd Temporarily Out-of-Service — The elevator at 63rd (Red Line) is temporarily out-of-service."
       ],
       "firstObserved": "2026-07-05T00:57:40.161+00:00"
+    },
+    {
+      "unitId": "40930",
+      "stationId": "40930",
+      "texts": [
+        "Elevator at Midway Temporarily Out-of-Service — The main platform elevator at Midway (Orange Line) is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-07-23T00:36:06.913+00:00"
     },
     {
       "unitId": "40990",
@@ -310,6 +380,14 @@
         "The 54th-bound platform elevator at Polk (Pink Line) is temporarily out-of-service."
       ],
       "firstObserved": "2026-07-06T19:18:24.687+00:00"
+    },
+    {
+      "unitId": "41040",
+      "stationId": "41040",
+      "texts": [
+        "Elevator at Kedzie Temporarily Out-of-Service — The elevator at Kedzie (Pink Line) is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-07-27T20:02:04.836+00:00"
     },
     {
       "unitId": "41080-HARLEM-BOUND",
@@ -365,6 +443,14 @@
       "firstObserved": "2026-07-05T00:57:40.161+00:00"
     },
     {
+      "unitId": "41240",
+      "stationId": "41240",
+      "texts": [
+        "Elevator at Addison Temporarily Out-of-Service — The elevator at Addison (Blue Line) is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-07-27T12:13:08.38+00:00"
+    },
+    {
       "unitId": "41270-HARLEM-BOUND",
       "stationId": "41270",
       "texts": [
@@ -376,7 +462,8 @@
       "unitId": "41270-STREET-PLATFORMS-BRIDGE",
       "stationId": "41270",
       "texts": [
-        "The elevator to/from street, platforms and bridge at 43rd (Green Line) is temporarily out-of-service."
+        "The elevator to/from street, platforms and bridge at 43rd (Green Line) is temporarily out-of-service.",
+        "Elevator at 43rd Temporarily Out-of-Service — The elevator to/from street, platforms and bridge at 43rd (Green Line) is temporarily out-of-service."
       ],
       "firstObserved": "2026-07-07T14:32:34.172+00:00"
     },
@@ -453,9 +540,18 @@
       "unitId": "41440-LOOP-BOUND",
       "stationId": "41440",
       "texts": [
-        "The Loop- bound platform elevator at Addison (Brown Line) is temporarily out-of-service."
+        "The Loop- bound platform elevator at Addison (Brown Line) is temporarily out-of-service.",
+        "Elevator at Addison Temporarily Out-of-Service — The Loop-bound platform elevator at Addison (Brown Line) is temporarily out-of-service."
       ],
       "firstObserved": "2026-07-07T20:57:21.652+00:00"
+    },
+    {
+      "unitId": "41450-STREET",
+      "stationId": "41450",
+      "texts": [
+        "Elevator at Chicago Temporarily Out-of-Service — The elevator to/from street at Chicago (Red Line) is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-07-23T21:49:50.747+00:00"
     },
     {
       "unitId": "41480-KIMBALL-BOUND",
@@ -529,7 +625,8 @@
       "unitId": "41700",
       "stationId": "41700",
       "texts": [
-        "Elevator at Washington/Wabash Temporarily Out-of-Service — The Orange, Pink, Purple and 63rd-bound Green Line platform elevator at Washington/Wabash is temporarily out-of-service."
+        "Elevator at Washington/Wabash Temporarily Out-of-Service — The Orange, Pink, Purple and 63rd-bound Green Line platform elevator at Washington/Wabash is temporarily out-of-service.",
+        "Elevator at Washington/Wabash Temporarily Out-of-Service — The Brown Line and Harlem-bound Green Line platform elevator at Washington/Wabash is temporarily out-of-service."
       ],
       "firstObserved": "2026-07-16T05:40:30.853+00:00"
     }

@@ -27,11 +27,17 @@
 //    the unit is the STREET elevator; "Harlem-bound" must NOT be extracted)
 //   "The elevator to/from 23rd street at Cermak…"     (named street ≠ street)
 //   "Elevator at Lake (Washington/Randolph Entrance)…" (entrance in HEADLINE)
+//   "…platform elevator to/from the street at Harold Washington Library…"
+//                                                     (article before the leg)
 
+// Articles carry no identity and CTA uses them inconsistently for the SAME
+// elevator ("to/from street" vs "to/from the street" — both live-observed at
+// Harold Washington Library), so a stray "the" must never fork an id. Dropped
+// here, like "and", so every capture path below is protected at once.
 const slugify = (s: string): string =>
   s
     .toUpperCase()
-    .replace(/\bAND\b/g, " ")
+    .replace(/\b(?:AND|THE)\b/g, " ")
     .replace(/[^A-Z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
 
