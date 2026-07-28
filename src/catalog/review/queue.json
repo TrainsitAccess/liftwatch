@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-27T20:43:24.226Z",
+ "updatedAt": "2026-07-28T12:17:30.194Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -4402,6 +4402,21 @@
    }
   },
   {
+   "key": "cta:40050",
+   "system": "cta-chicago",
+   "stationId": "40050",
+   "name": "Davis",
+   "status": "pending",
+   "priority": 50,
+   "reason": "no chains modeled (no agency inventory — text-identity only)",
+   "evidence": [
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Davis Temporarily Out-of-Service — The Howard- and - Loop bound platform elevator at Davis (Purple Line) is temporarily out-of-service."
+    }
+   ]
+  },
+  {
    "key": "cta:40130",
    "system": "cta-chicago",
    "stationId": "40130",
@@ -5130,6 +5145,21 @@
    }
   },
   {
+   "key": "cta:41160",
+   "system": "cta-chicago",
+   "stationId": "41160",
+   "name": "Clinton",
+   "status": "pending",
+   "priority": 50,
+   "reason": "no chains modeled (no agency inventory — text-identity only)",
+   "evidence": [
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Clinton Temporarily Out-of-Service — The elevator to/from street at Clinton (Green, Pink Lines) is temporarily out-of-service."
+    }
+   ]
+  },
+  {
    "key": "cta:41200",
    "system": "cta-chicago",
    "stationId": "41200",
@@ -5396,6 +5426,21 @@
     {
      "source": "live feed (alert text)",
      "text": "Elevator at Washington/Wabash Temporarily Out-of-Service — The Brown Line and Harlem-bound Green Line platform elevator at Washington/Wabash is temporarily out-of-service."
+    }
+   ]
+  },
+  {
+   "key": "cta:41710",
+   "system": "cta-chicago",
+   "stationId": "41710",
+   "name": "Damen",
+   "status": "pending",
+   "priority": 50,
+   "reason": "no chains modeled (no agency inventory — text-identity only)",
+   "evidence": [
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Damen Temporarily Out-of-Service — The elevator to/from the Harlem-bound platforms at Damen (Green Line)  is temporarily out-of-service."
     }
    ]
   },
@@ -6447,6 +6492,14 @@
     {
      "source": "exclusion gate",
      "text": "multi-level lift (intermediate landing) in a multi-edge component; lifts: HUBZFD-Lift-1, HUBZFD-Lift-2, HUBZFD-Lift-3, HUBZFD-Lift-4, HUBZFD-Lift-5, HUBZFD-Lift-7, HUBZFD-Lift-6, HUBZFD-Lift-8"
+    },
+    {
+     "source": "TfL alert evidence (hint)",
+     "text": "HUBZFD-Lift-7: \"the National Rail entrance at Farringdon\" — from alert: Farringdon: No Step Free Access - Step free access is not available between the Smithfield ticket hall / Barbican westbound platform and the Elizabeth line. For step free access, use the National Rail"
+    },
+    {
+     "source": "TfL alert evidence (hint)",
+     "text": "HUBZFD-Lift-6: \"the National Rail entrance at Farringdon\" — from alert: Farringdon: No Step Free Access - Step free access is not available between the Smithfield ticket hall / Barbican westbound platform and the Elizabeth line. For step free access, use the National Rail"
     }
    ]
   },

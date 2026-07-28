@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-27T20:43:18.034Z",
+  "updatedAt": "2026-07-28T12:17:22.224Z",
   "note": "Every CTA elevator identity ever observed (archive + live alert texts, parsed by src/adapters/cta/location.ts). Grows only. Regression fixture for check:cta and the curation aid for a future chains pass.",
   "units": [
     {
@@ -19,6 +19,14 @@
         "Elevator at Pulaski Temporarily Out-of-Service — The Harlem-bound platform elevator at Pulaski (Green Line) is temporarily out-of-service."
       ],
       "firstObserved": "2026-07-05T14:46:11.889+00:00"
+    },
+    {
+      "unitId": "40050-LOOP-BOUND",
+      "stationId": "40050",
+      "texts": [
+        "Elevator at Davis Temporarily Out-of-Service — The Howard- and - Loop bound platform elevator at Davis (Purple Line) is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-07-28T10:48:48.211+00:00"
     },
     {
       "unitId": "40070-STREET",
@@ -427,6 +435,14 @@
       "firstObserved": "2026-07-05T00:57:40.161+00:00"
     },
     {
+      "unitId": "41160-STREET",
+      "stationId": "41160",
+      "texts": [
+        "Elevator at Clinton Temporarily Out-of-Service — The elevator to/from street at Clinton (Green, Pink Lines) is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-07-28T10:06:52.885+00:00"
+    },
+    {
       "unitId": "41200",
       "stationId": "41200",
       "texts": [
@@ -629,6 +645,14 @@
         "Elevator at Washington/Wabash Temporarily Out-of-Service — The Brown Line and Harlem-bound Green Line platform elevator at Washington/Wabash is temporarily out-of-service."
       ],
       "firstObserved": "2026-07-16T05:40:30.853+00:00"
+    },
+    {
+      "unitId": "41710",
+      "stationId": "41710",
+      "texts": [
+        "Elevator at Damen Temporarily Out-of-Service — The elevator to/from the Harlem-bound platforms at Damen (Green Line)  is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-07-28T02:20:40.692+00:00"
     }
   ]
 }
