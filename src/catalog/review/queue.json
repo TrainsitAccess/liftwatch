@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-28T12:17:30.194Z",
+ "updatedAt": "2026-07-29T12:25:53.466Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -513,6 +513,10 @@
     },
     {
      "source": "live feed (alert text)",
+     "text": "Elevator at California Temporarily Out-of-Service — An elevator needed to access the Harlem-bound platform at California (Green Line) is temporarily out-of-service. (unidentified elevator at a modeled station — access shown as unknown)"
+    },
+    {
+     "source": "live feed (alert text)",
      "text": "The elevator to/from street and elevators needed to access the Harlem-bound platforms at California (Green Line) is temporarily out-of-service."
     },
     {
@@ -591,6 +595,14 @@
    "priority": 18,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at King Drive Temporarily Out-of-Service — The exit-only elevator from the Cottage Grove-bound platform at King Drive (Green Line) is temporarily out-of-service. (unidentified elevator at a modeled station — access shown as unknown)"
+    },
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at King Drive Temporarily Out-of-Service — The exit-only elevator from the Cottage Grove-bound platform at King Drive (Green Line) is temporarily out-of-service."
+    },
     {
      "source": "live feed (alert text)",
      "text": "The Harlem-bound elevator at King Drive (Green Line) is temporarily out-of-service."
@@ -1595,6 +1607,10 @@
     {
      "source": "live feed (observed)",
      "text": "C09X02: \"Elevator between mezzanine and platform to Huntington/Franconia-Springfield\""
+    },
+    {
+     "source": "live feed (observed)",
+     "text": "C09X03: \"Elevator between mezzanine and platform to Mt. Vernon Sq/Largo Town Center\""
     }
    ],
    "resolution": {
@@ -1739,6 +1755,10 @@
     {
      "source": "GTFS roster",
      "text": "WMATA-D11_MZ_ELE3: Mezzanine ↔ Platform"
+    },
+    {
+     "source": "live feed (observed)",
+     "text": "D11X01: \"Elevator between street and mezzanine\""
     },
     {
      "source": "live feed (observed)",
@@ -3911,6 +3931,10 @@
      "text": "WMATA-C07_M_ELE: Mezzanine/Upper Platform ↔ Lower Platform"
     },
     {
+     "source": "live feed (observed)",
+     "text": "C07E05: \"Elevator between the lower bus platform and the upper platform\""
+    },
+    {
      "source": "Bryce (2026-07-16), quoting WMATA's own elevator descriptions",
      "text": "5 elevators total: 2 redundant 'Elevator between the bus bay and the mezzanine' (the real street-equivalent entrance -- Bryce: the bus-bay elevators can be understood as street elevators), 1 'Elevator between upper and lower platforms' (sole access, train levels), and 2 redundant 'Elevator between the lower bus platform and the upper platform' -- confirmed to be a bus-to-bus connection only, between two bus platforms, unrelated to the train platforms despite the wording; still tracked, as its own auxiliary chain."
     }
@@ -4670,6 +4694,10 @@
    "evidence": [
     {
      "source": "live feed (alert text)",
+     "text": "Elevator at Merchandise Mart Temporarily Out-of-Service — The elevator to/from either platform at Merchandise Mart (Brown, Purple Lines) is temporarily out-of-service."
+    },
+    {
+     "source": "live feed (alert text)",
      "text": "Elevator at Merchandise Mart Temporarily Out-of-Service — The Kimball-bound and Linden-bound platform elevator at Merchandise Mart (Brown, Purple Lines) is temporarily out-of-service."
     },
     {
@@ -4971,6 +4999,21 @@
    ]
   },
   {
+   "key": "cta:40940",
+   "system": "cta-chicago",
+   "stationId": "40940",
+   "name": "Halsted",
+   "status": "pending",
+   "priority": 50,
+   "reason": "no chains modeled (no agency inventory — text-identity only)",
+   "evidence": [
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Halsted Temporarily-Out-of-Service — The Harlem-bound platform elevator at Halsted (Green Line) is temporarily out-of-service."
+    }
+   ]
+  },
+  {
    "key": "cta:40990",
    "system": "cta-chicago",
    "stationId": "40990",
@@ -5223,6 +5266,21 @@
    ]
   },
   {
+   "key": "cta:41280",
+   "system": "cta-chicago",
+   "stationId": "41280",
+   "name": "Jefferson Park",
+   "status": "pending",
+   "priority": 50,
+   "reason": "no chains modeled (no agency inventory — text-identity only)",
+   "evidence": [
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Jefferson Park Temporarily Out-of-Service — The elevator at Jefferson Park (Blue Line) is temporarily out-of-service."
+    }
+   ]
+  },
+  {
    "key": "cta:41300",
    "system": "cta-chicago",
    "stationId": "41300",
@@ -5259,6 +5317,10 @@
    "priority": 50,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Belmont Temporarily Out-of-Service — The 95th- and- Loop- bound platform elevator at Belmont (Red, Brown, Purple Lines) is temporarily out-of-service."
+    },
     {
      "source": "live feed (alert text)",
      "text": "Elevator at Belmont Temporarily Out-of-Service — The Howard-, Kimball- and Linden-bound platform elevator at Belmont (Red, Brown, Purple Lines) is temporarily out-of-service."

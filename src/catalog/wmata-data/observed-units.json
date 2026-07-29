@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-28T12:17:20.455Z",
+  "updatedAt": "2026-07-29T12:25:45.174Z",
   "note": "Every WMATA elevator UnitName ever observed (archive + live feed). Grows only. Consumed by scripts/wmata-pathways.mts as an undercount/vocabulary gate.",
   "units": [
     {
@@ -31,6 +31,18 @@
       "stationCode": "A08",
       "location": "Elevator between mezzanine and platform",
       "firstObserved": "2026-07-21T18:07:02.63432+00:00"
+    },
+    {
+      "unitName": "A08S01",
+      "stationCode": "A08",
+      "location": "Elevator between street and mezzanine",
+      "firstObserved": "2026-07-28T13:17:44.924531+00:00"
+    },
+    {
+      "unitName": "A08S02",
+      "stationCode": "A08",
+      "location": "Elevator between street and mezzanine",
+      "firstObserved": "2026-07-28T13:35:45.684609+00:00"
     },
     {
       "unitName": "A09X01",
@@ -267,6 +279,12 @@
       "firstObserved": "2026-07-16T18:37:47.143617+00:00"
     },
     {
+      "unitName": "C07E05",
+      "stationCode": "C07",
+      "location": "Elevator between the lower bus platform and the upper platform",
+      "firstObserved": "2026-07-28T18:54:22.452406+00:00"
+    },
+    {
       "unitName": "C08X01",
       "stationCode": "C08",
       "location": "Elevator between street and mezzanine on west side of Hayes street, at The Fashion Center",
@@ -289,6 +307,12 @@
       "stationCode": "C09",
       "location": "Elevator between mezzanine and platform to Huntington/Franconia-Springfield",
       "firstObserved": "2026-07-21T13:07:26.951068+00:00"
+    },
+    {
+      "unitName": "C09X03",
+      "stationCode": "C09",
+      "location": "Elevator between mezzanine and platform to Mt. Vernon Sq/Largo Town Center",
+      "firstObserved": "2026-07-29T09:27:10.623894+00:00"
     },
     {
       "unitName": "C10S01",
@@ -415,6 +439,12 @@
       "stationCode": "D10",
       "location": "Elevator between mezzanine and platform",
       "firstObserved": "2026-07-10T18:23:02.490365+00:00"
+    },
+    {
+      "unitName": "D11X01",
+      "stationCode": "D11",
+      "location": "Elevator between street and mezzanine",
+      "firstObserved": "2026-07-28T18:13:03.341455+00:00"
     },
     {
       "unitName": "D11X02",
@@ -805,6 +835,18 @@
       "stationCode": "N03",
       "location": "Elevator between mezzanine and platform",
       "firstObserved": "2026-07-24T09:04:19.732501+00:00"
+    },
+    {
+      "unitName": "N04X05",
+      "stationCode": "N04",
+      "location": "Elevator between mezzanine and platform",
+      "firstObserved": "2026-07-28T18:13:03.341455+00:00"
+    },
+    {
+      "unitName": "N04X06",
+      "stationCode": "N04",
+      "location": "Elevator between mezzanine and platform",
+      "firstObserved": "2026-07-28T22:18:25.611169+00:00"
     },
     {
       "unitName": "N06X02",

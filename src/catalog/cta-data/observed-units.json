@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-28T12:17:22.224Z",
+  "updatedAt": "2026-07-29T12:25:46.825Z",
   "note": "Every CTA elevator identity ever observed (archive + live alert texts, parsed by src/adapters/cta/location.ts). Grows only. Regression fixture for check:cta and the curation aid for a future chains pass.",
   "units": [
     {
@@ -177,6 +177,14 @@
         "The South Terminal elevator to/from platform at 95th/Dan Ryan (Red Line) is temporarily out-of-service."
       ],
       "firstObserved": "2026-07-09T23:46:13.649+00:00"
+    },
+    {
+      "unitId": "40460-EITHER-PLATFORM",
+      "stationId": "40460",
+      "texts": [
+        "Elevator at Merchandise Mart Temporarily Out-of-Service — The elevator to/from either platform at Merchandise Mart (Brown, Purple Lines) is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-07-29T12:25:46.817Z"
     },
     {
       "unitId": "40460-KIMBALL-LINDEN-BOUND",
@@ -364,6 +372,14 @@
       "firstObserved": "2026-07-23T00:36:06.913+00:00"
     },
     {
+      "unitId": "40940-HARLEM-BOUND",
+      "stationId": "40940",
+      "texts": [
+        "Elevator at Halsted Temporarily-Out-of-Service — The Harlem-bound platform elevator at Halsted (Green Line) is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-07-28T22:12:12.818+00:00"
+    },
+    {
       "unitId": "40990",
       "stationId": "40990",
       "texts": [
@@ -426,6 +442,15 @@
       "firstObserved": "2026-07-10T04:01:32.719+00:00"
     },
     {
+      "unitId": "41140",
+      "stationId": "41140",
+      "texts": [
+        "Elevator at King Drive Temporarily Out-of-Service — The exit-only elevator from the Cottage Grove-bound platform at King Drive (Green Line) is temporarily out-of-service. (unidentified elevator at a modeled station — access shown as unknown)",
+        "Elevator at King Drive Temporarily Out-of-Service — The exit-only elevator from the Cottage Grove-bound platform at King Drive (Green Line) is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-07-28T22:37:49.711+00:00"
+    },
+    {
       "unitId": "41140-HARLEM-BOUND",
       "stationId": "41140",
       "texts": [
@@ -484,6 +509,14 @@
       "firstObserved": "2026-07-07T14:32:34.172+00:00"
     },
     {
+      "unitId": "41280",
+      "stationId": "41280",
+      "texts": [
+        "Elevator at Jefferson Park Temporarily Out-of-Service — The elevator at Jefferson Park (Blue Line) is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-07-29T05:49:56.604+00:00"
+    },
+    {
       "unitId": "41300",
       "stationId": "41300",
       "texts": [
@@ -491,6 +524,14 @@
         "Elevator at Loyola Temporarily Out-of-Service — The elevator at Loyola ( Red Line) is temporarily out-of-service."
       ],
       "firstObserved": "2026-07-05T00:57:40.161+00:00"
+    },
+    {
+      "unitId": "41320-95TH-LOOP-BOUND",
+      "stationId": "41320",
+      "texts": [
+        "Elevator at Belmont Temporarily Out-of-Service — The 95th- and- Loop- bound platform elevator at Belmont (Red, Brown, Purple Lines) is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-07-28T21:20:22.455+00:00"
     },
     {
       "unitId": "41320-KIMBALL-LINDEN-BOUND",
@@ -504,7 +545,8 @@
       "unitId": "41360",
       "stationId": "41360",
       "texts": [
-        "Elevator at California Temporarily Out-of-Service — An elevator needed to access the Harlem-bound platform at California (Green Line) is temporarily out-of-service."
+        "Elevator at California Temporarily Out-of-Service — An elevator needed to access the Harlem-bound platform at California (Green Line) is temporarily out-of-service.",
+        "Elevator at California Temporarily Out-of-Service — An elevator needed to access the Harlem-bound platform at California (Green Line) is temporarily out-of-service. (unidentified elevator at a modeled station — access shown as unknown)"
       ],
       "firstObserved": "2026-07-14T15:07:44.554+00:00"
     },
