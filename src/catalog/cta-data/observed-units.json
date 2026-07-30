@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-29T12:25:46.825Z",
+  "updatedAt": "2026-07-30T12:09:15.712Z",
   "note": "Every CTA elevator identity ever observed (archive + live alert texts, parsed by src/adapters/cta/location.ts). Grows only. Regression fixture for check:cta and the curation aid for a future chains pass.",
   "units": [
     {
@@ -207,7 +207,8 @@
       "unitId": "40480-STREET",
       "stationId": "40480",
       "texts": [
-        "The elevator to/from street at Cicero (Green Line) is temporarily out-of-service."
+        "The elevator to/from street at Cicero (Green Line) is temporarily out-of-service.",
+        "Elevator at Cicero Temporarily Out-of-Service — The elevator to/from street at Cicero (Green Line) is temporarily out-of-service."
       ],
       "firstObserved": "2026-07-06T17:27:57.197+00:00"
     },
@@ -344,6 +345,14 @@
         "Elevator at Harold Washington Library-State/Van Buren Temporarily Out-of-Service — The Brown Line platform elevator to/from the street at Harold Washington Library-State/Van Buren is temporarily out-of-service."
       ],
       "firstObserved": "2026-07-22T12:05:30.707+00:00"
+    },
+    {
+      "unitId": "40900",
+      "stationId": "40900",
+      "texts": [
+        "Elevator at Howard Temporarily Out-of-Service — The Linden- and- Skokie - bound platform elevator at Howard (Red, Purple, Yellow Lines) is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-07-30T00:17:05.416+00:00"
     },
     {
       "unitId": "40900-95TH-LOOP-BOUND",
@@ -529,7 +538,8 @@
       "unitId": "41320-95TH-LOOP-BOUND",
       "stationId": "41320",
       "texts": [
-        "Elevator at Belmont Temporarily Out-of-Service — The 95th- and- Loop- bound platform elevator at Belmont (Red, Brown, Purple Lines) is temporarily out-of-service."
+        "Elevator at Belmont Temporarily Out-of-Service — The 95th- and- Loop- bound platform elevator at Belmont (Red, Brown, Purple Lines) is temporarily out-of-service.",
+        "Elevator at Belmont Temporarily Out-of-Service — The 95th and Loop-bound platform elevator at Belmont (Red, Brown, Purple Lines) is temporarily out-of-service."
       ],
       "firstObserved": "2026-07-28T21:20:22.455+00:00"
     },

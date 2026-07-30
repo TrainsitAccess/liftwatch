@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-29T12:25:45.174Z",
+  "updatedAt": "2026-07-30T12:09:13.672Z",
   "note": "Every WMATA elevator UnitName ever observed (archive + live feed). Grows only. Consumed by scripts/wmata-pathways.mts as an undercount/vocabulary gate.",
   "units": [
     {
@@ -399,6 +399,12 @@
       "firstObserved": "2026-07-07T23:16:53.800561+00:00"
     },
     {
+      "unitName": "D04X01",
+      "stationCode": "D04",
+      "location": "Elevator between street and mezzanine",
+      "firstObserved": "2026-07-30T09:18:47.095457+00:00"
+    },
+    {
       "unitName": "D05X02",
       "stationCode": "D05",
       "location": "Elevator between mezzanine and platform",
@@ -409,6 +415,12 @@
       "stationCode": "D06",
       "location": "Elevator between street and mezzanine",
       "firstObserved": "2026-07-08T15:21:59.95168+00:00"
+    },
+    {
+      "unitName": "D06X02",
+      "stationCode": "D06",
+      "location": "Elevator between mezzanine and platform",
+      "firstObserved": "2026-07-29T22:13:42.226083+00:00"
     },
     {
       "unitName": "D07X02",
@@ -469,6 +481,18 @@
       "stationCode": "D13",
       "location": "Elevator between mezzanine and platform",
       "firstObserved": "2026-07-18T14:56:56.67218+00:00"
+    },
+    {
+      "unitName": "D13X03",
+      "stationCode": "D13",
+      "location": "Garage elevator",
+      "firstObserved": "2026-07-30T08:23:43.653358+00:00"
+    },
+    {
+      "unitName": "D13X04",
+      "stationCode": "D13",
+      "location": "Garage elevator",
+      "firstObserved": "2026-07-30T08:04:56.182905+00:00"
     },
     {
       "unitName": "D13X05",
@@ -723,6 +747,12 @@
       "firstObserved": "2026-07-09T15:19:05.190777+00:00"
     },
     {
+      "unitName": "J03X06",
+      "stationCode": "J03",
+      "location": "Garage elevator",
+      "firstObserved": "2026-07-29T17:24:17.738945+00:00"
+    },
+    {
       "unitName": "K01X01",
       "stationCode": "K01",
       "location": "Elevator between street and mezzanine",
@@ -763,6 +793,12 @@
       "stationCode": "K05",
       "location": "Elevator between mezzanine and platform",
       "firstObserved": "2026-07-11T12:30:28.457677+00:00"
+    },
+    {
+      "unitName": "K06X01",
+      "stationCode": "K06",
+      "location": "Elevator between mezzanine and platform to New Carrolton",
+      "firstObserved": "2026-07-30T09:56:20.443088+00:00"
     },
     {
       "unitName": "K06X04",

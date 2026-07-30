@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-29T12:25:53.466Z",
+ "updatedAt": "2026-07-30T12:09:22.508Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -1931,6 +1931,10 @@
     {
      "source": "GTFS roster",
      "text": "WMATA-K06_ELE3: Street ↔ Mezzanine"
+    },
+    {
+     "source": "live feed (observed)",
+     "text": "K06X01: \"Elevator between mezzanine and platform to New Carrolton\""
     },
     {
      "source": "live feed (observed)",
@@ -4084,6 +4088,14 @@
     },
     {
      "source": "live feed (observed)",
+     "text": "D13X03: \"Garage elevator\""
+    },
+    {
+     "source": "live feed (observed)",
+     "text": "D13X04: \"Garage elevator\""
+    },
+    {
+     "source": "live feed (observed)",
      "text": "D13X05: \"Garage elevator\""
     }
    ],
@@ -4281,6 +4293,10 @@
     {
      "source": "live feed (observed)",
      "text": "J03X02: \"Elevator between mezzanine and platform\""
+    },
+    {
+     "source": "live feed (observed)",
+     "text": "J03X06: \"Garage elevator\""
     }
    ],
    "resolution": {
@@ -4744,6 +4760,10 @@
      "text": "The elevator to/from street at Cicero (Green Line) is temporarily out-of-service."
     },
     {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Cicero Temporarily Out-of-Service — The elevator to/from street at Cicero (Green Line) is temporarily out-of-service."
+    },
+    {
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **40480 Cicero (Green/Lake)** — two-story station house: street→2nd-floor fare (elevator #1) → mezzanine passageway over the street → island platform (elevator #2). TWO IN SERIES. observed: STREET ✓ fits elevator #1."
     }
@@ -4941,6 +4961,10 @@
    "priority": 50,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Howard Temporarily Out-of-Service — The Linden- and- Skokie - bound platform elevator at Howard (Red, Purple, Yellow Lines) is temporarily out-of-service."
+    },
     {
      "source": "live feed (alert text)",
      "text": "The 95th- and- Loop bound platform elevator at Howard (Red, Purple, Yellow Lines) is temporarily out-of-service."
@@ -5320,6 +5344,10 @@
     {
      "source": "live feed (alert text)",
      "text": "Elevator at Belmont Temporarily Out-of-Service — The 95th- and- Loop- bound platform elevator at Belmont (Red, Brown, Purple Lines) is temporarily out-of-service."
+    },
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Belmont Temporarily Out-of-Service — The 95th and Loop-bound platform elevator at Belmont (Red, Brown, Purple Lines) is temporarily out-of-service."
     },
     {
      "source": "live feed (alert text)",
