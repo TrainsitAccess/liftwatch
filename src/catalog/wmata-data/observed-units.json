@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-30T12:09:13.672Z",
+  "updatedAt": "2026-07-31T12:23:12.838Z",
   "note": "Every WMATA elevator UnitName ever observed (archive + live feed). Grows only. Consumed by scripts/wmata-pathways.mts as an undercount/vocabulary gate.",
   "units": [
     {
@@ -7,6 +7,12 @@
       "stationCode": "A02",
       "location": "Elevator between mezzanine and platform",
       "firstObserved": "2026-07-16T14:55:33.48076+00:00"
+    },
+    {
+      "unitName": "A03N01",
+      "stationCode": "A03",
+      "location": "Elevator between street and mezzanine",
+      "firstObserved": "2026-07-30T12:34:45.010039+00:00"
     },
     {
       "unitName": "A04X01",
@@ -229,6 +235,12 @@
       "stationCode": "C01",
       "location": "Elevator between street and mezzanine",
       "firstObserved": "2026-07-05T00:16:15.96259+00:00"
+    },
+    {
+      "unitName": "C01N02",
+      "stationCode": "C01",
+      "location": "Elevator between upper platform to Shady Grove and lower platform for Blue/Orange Lines",
+      "firstObserved": "2026-07-30T14:45:04.375517+00:00"
     },
     {
       "unitName": "C01N03",
@@ -739,6 +751,12 @@
       "stationCode": "G05",
       "location": "Elevator between north garage and mezzanine",
       "firstObserved": "2026-07-27T16:42:44.955038+00:00"
+    },
+    {
+      "unitName": "G05X07",
+      "stationCode": "G05",
+      "location": "Elevator between south garage and mezzanine",
+      "firstObserved": "2026-07-31T00:23:25.040903+00:00"
     },
     {
       "unitName": "J03X02",

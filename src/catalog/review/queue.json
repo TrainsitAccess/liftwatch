@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-30T12:09:22.508Z",
+ "updatedAt": "2026-07-31T12:23:23.528Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -262,7 +262,7 @@
    "key": "cta:41480",
    "system": "cta-chicago",
    "stationId": "41480",
-   "name": "41480",
+   "name": "Western",
    "status": "modeled",
    "priority": 12,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
@@ -270,6 +270,10 @@
     {
      "source": "live feed (alert text)",
      "text": "Western Kimball-bound Platform Elevator Out of Service — The Kimball-bound platform elevator at Western Brown Line stn is temporarily out of service. It is being upgraded to ensure continued safe, accessible service."
+    },
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Western Temporarily Out-of-Service — The Kimball-bound platform elevator at Western (Brown Line) is temporarily out-of-service due to elevator upgrades."
     },
     {
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
@@ -352,6 +356,10 @@
      "text": "Elevator at Grand Temporarily Out-of-Service — The 95th- bound platform elevator at Grand (Red Line) is temporarily out-of-service."
     },
     {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Grand Temporarily Out-of-Service — The 95th-bound platform elevator at Grand (Red Line) is temporarily out-of-service."
+    },
+    {
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **40330 Grand (Red)** — subway, dual side platforms + mezzanine: street→mezz elevator (NW corner kiosk) PLUS a new elevator to EACH platform (2000s rehab). 3 elevators: series street→mezz then per-direction mezz→platform — same shape as WMATA's E01. observed: 95TH-BOUND ✓ fits."
     }
@@ -394,11 +402,19 @@
    "key": "cta:41400",
    "system": "cta-chicago",
    "stationId": "41400",
-   "name": "Roosevelt",
+   "name": "Roosevelt is temporarily out of service.",
    "status": "modeled",
    "priority": 14,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Roosevelt Temporarily Out-of-Service — The Orange and Green Line platform elevator at Roosevelt is temporarily out of service. (unidentified elevator at a modeled station — access shown as unknown)"
+    },
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Roosevelt Temporarily Out-of-Service — The elevator to/from State Street at Roosevelt (Red, Orange and Green Lines) is temporarily out-of-service."
+    },
     {
      "source": "live feed (alert text)",
      "text": "The transfer tunnel elevator at Roosevelt (Red, Orange and Green Lines) is temporarily out-of-service."
@@ -838,6 +854,10 @@
     {
      "source": "live feed (observed)",
      "text": "G05X04: \"Elevator between north garage and mezzanine\""
+    },
+    {
+     "source": "live feed (observed)",
+     "text": "G05X07: \"Elevator between south garage and mezzanine\""
     },
     {
      "source": "Bryce (2026-07-16)",
@@ -1387,6 +1407,10 @@
     {
      "source": "GTFS roster",
      "text": "WMATA-A03_N_ELE3: Mezzanine ↔ Platform"
+    },
+    {
+     "source": "live feed (observed)",
+     "text": "A03N01: \"Elevator between street and mezzanine\""
     }
    ],
    "resolution": {
@@ -3712,6 +3736,10 @@
     },
     {
      "source": "live feed (observed)",
+     "text": "C01N02: \"Elevator between upper platform to Shady Grove and lower platform for Blue/Orange Lines\""
+    },
+    {
+     "source": "live feed (observed)",
      "text": "C01N03: \"Elevator between upper platform to Glenmont and lower platform for Blue/Orange Lines\""
     },
     {
@@ -4827,6 +4855,10 @@
      "text": "Elevator at Wilson Temporarily Out-of-Service — The 95th- and- Loop- bound platform elevator at Wilson (Red, Purple Lines) is temporarily out-of-service due to an electrical issue."
     },
     {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Wilson Temporarily Out-of-Service — The Howard- and - Linden bound platform elevator at Wilson (Red, Purple Lines) is temporarily out-of-service."
+    },
+    {
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **40540 Wilson (Red/Purple)** — rebuilt 2017, dual island platforms, elevators from the main station house to each island. observed: 95TH-LOOP-BOUND ✓ (island phrasing — one elevator serves both directions)."
     }
@@ -4876,6 +4908,21 @@
     {
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **40730 Washington/Wells (Loop)** — thin data on chicago-L (station opened 1995; multiple vertical accessways along Wells). observed: BROWN-LINE-PLATFORM implies per-platform elevators. ⚠ needs another source (CTA press releases mention elevator replacement here — see ASAP Table 1, which lists Washington/Wells as a funded replacement)."
+    }
+   ]
+  },
+  {
+   "key": "cta:40770",
+   "system": "cta-chicago",
+   "stationId": "40770",
+   "name": "Lawrence",
+   "status": "pending",
+   "priority": 50,
+   "reason": "no chains modeled (no agency inventory — text-identity only)",
+   "evidence": [
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Lawrence Temporarily Out-of-Service — The elevator at Lawrence (Red Line) is temporarily out-of-service."
     }
    ]
   },
@@ -5249,6 +5296,21 @@
     "notes": "Argyle (Red Line, RPM Phase One, reopened 2025-07-20). Single elevator, single ~520-ft island platform; auxiliary exit stairs-only (unlike RPM sibling Bryn Mawr, which got a redundant pair). Live alert 'The elevator at Argyle (Red Line)' (singular) + prior-session research. Confidence 9/10.",
     "date": "2026-07-16"
    }
+  },
+  {
+   "key": "cta:41210",
+   "system": "cta-chicago",
+   "stationId": "41210",
+   "name": "Wellington",
+   "status": "pending",
+   "priority": 50,
+   "reason": "no chains modeled (no agency inventory — text-identity only)",
+   "evidence": [
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Wellington Temporarily Out-of-Service — The Loop-bound platform elevator at Wellington (Brown, Purple Lines) is temporarily out of service."
+    }
+   ]
   },
   {
    "key": "cta:41230",

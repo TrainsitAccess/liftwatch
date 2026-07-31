@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-30T12:09:15.712Z",
+  "updatedAt": "2026-07-31T12:23:14.770Z",
   "note": "Every CTA elevator identity ever observed (archive + live alert texts, parsed by src/adapters/cta/location.ts). Grows only. Regression fixture for check:cta and the curation aid for a future chains pass.",
   "units": [
     {
@@ -141,7 +141,8 @@
       "stationId": "40330",
       "texts": [
         "The 95th-bound platform elevator at Grand (Red Line) is temporarily out-of-service.",
-        "Elevator at Grand Temporarily Out-of-Service — The 95th- bound platform elevator at Grand (Red Line) is temporarily out-of-service."
+        "Elevator at Grand Temporarily Out-of-Service — The 95th- bound platform elevator at Grand (Red Line) is temporarily out-of-service.",
+        "Elevator at Grand Temporarily Out-of-Service — The 95th-bound platform elevator at Grand (Red Line) is temporarily out-of-service."
       ],
       "firstObserved": "2026-07-06T19:18:24.687+00:00"
     },
@@ -249,6 +250,14 @@
       "firstObserved": "2026-07-05T00:57:40.161+00:00"
     },
     {
+      "unitId": "40540-LINDEN-BOUND",
+      "stationId": "40540",
+      "texts": [
+        "Elevator at Wilson Temporarily Out-of-Service — The Howard- and - Linden bound platform elevator at Wilson (Red, Purple Lines) is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-07-31T00:37:09.664+00:00"
+    },
+    {
       "unitId": "40560-ADAMS-JACKSON-PLATFORM",
       "stationId": "40560",
       "texts": [
@@ -305,6 +314,14 @@
         "Elevator at Washington/Wells Temporarily Out-of-Service — The Brown Line platform elevator at Washington/Wells is temporarily out-of-service."
       ],
       "firstObserved": "2026-07-05T00:57:40.161+00:00"
+    },
+    {
+      "unitId": "40770",
+      "stationId": "40770",
+      "texts": [
+        "Elevator at Lawrence Temporarily Out-of-Service — The elevator at Lawrence (Red Line) is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-07-30T14:03:01.963+00:00"
     },
     {
       "unitId": "40780",
@@ -485,6 +502,14 @@
       "firstObserved": "2026-07-10T15:05:57.791+00:00"
     },
     {
+      "unitId": "41210-LOOP-BOUND",
+      "stationId": "41210",
+      "texts": [
+        "Elevator at Wellington Temporarily Out-of-Service — The Loop-bound platform elevator at Wellington (Brown, Purple Lines) is temporarily out of service."
+      ],
+      "firstObserved": "2026-07-30T15:35:52.751+00:00"
+    },
+    {
       "unitId": "41230",
       "stationId": "41230",
       "texts": [
@@ -570,6 +595,22 @@
       "firstObserved": "2026-07-05T00:57:40.161+00:00"
     },
     {
+      "unitId": "41400",
+      "stationId": "41400",
+      "texts": [
+        "Elevator at Roosevelt Temporarily Out-of-Service — The Orange and Green Line platform elevator at Roosevelt is temporarily out of service. (unidentified elevator at a modeled station — access shown as unknown)"
+      ],
+      "firstObserved": "2026-07-30T18:56:42.147+00:00"
+    },
+    {
+      "unitId": "41400-STATE-STREET",
+      "stationId": "41400",
+      "texts": [
+        "Elevator at Roosevelt Temporarily Out-of-Service — The elevator to/from State Street at Roosevelt (Red, Orange and Green Lines) is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-07-30T15:35:52.751+00:00"
+    },
+    {
       "unitId": "41400-TRANSFER-TUNNEL",
       "stationId": "41400",
       "texts": [
@@ -625,7 +666,8 @@
       "unitId": "41480-KIMBALL-BOUND",
       "stationId": "41480",
       "texts": [
-        "Western Kimball-bound Platform Elevator Out of Service — The Kimball-bound platform elevator at Western Brown Line stn is temporarily out of service. It is being upgraded to ensure continued safe, accessible service."
+        "Western Kimball-bound Platform Elevator Out of Service — The Kimball-bound platform elevator at Western Brown Line stn is temporarily out of service. It is being upgraded to ensure continued safe, accessible service.",
+        "Elevator at Western Temporarily Out-of-Service — The Kimball-bound platform elevator at Western (Brown Line) is temporarily out-of-service due to elevator upgrades."
       ],
       "firstObserved": "2026-07-05T00:57:40.161+00:00"
     },
