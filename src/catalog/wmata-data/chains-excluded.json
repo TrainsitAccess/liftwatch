@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-31T12:23:18.589Z",
+  "generatedAt": "2026-08-01T11:37:43.679Z",
   "note": "Stations NOT auto-modeled — complex/side-platform/non-standard, pending a human pass.",
   "stations": [
     {
@@ -124,7 +124,7 @@
       "station": "B09",
       "name": "Forest Glen",
       "reason": "observed-undercount",
-      "detail": "5 distinct live units (B09X02, B09X03, B09X04, B09X05, B09X06) on Mezzanine→Platform vs 1 in GTFS",
+      "detail": "6 distinct live units (B09X01, B09X02, B09X03, B09X04, B09X05, B09X06) on Mezzanine→Platform vs 1 in GTFS",
       "levels": [
         "Mezzanine",
         "Platform"
@@ -351,7 +351,7 @@
       "station": "E01",
       "name": "Mt Vernon Sq",
       "reason": "observed-undercount",
-      "detail": "2 distinct live units (E01X04, E01X05) on Mezzanine→Platform vs 1 in GTFS",
+      "detail": "3 distinct live units (E01X01, E01X02, E01X03) on Street→Mezzanine vs 2 in GTFS",
       "levels": [
         "Street",
         "Mezzanine",

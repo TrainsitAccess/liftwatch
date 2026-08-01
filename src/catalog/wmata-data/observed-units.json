@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-31T12:23:12.838Z",
+  "updatedAt": "2026-08-01T11:37:38.989Z",
   "note": "Every WMATA elevator UnitName ever observed (archive + live feed). Grows only. Consumed by scripts/wmata-pathways.mts as an undercount/vocabulary gate.",
   "units": [
     {
@@ -141,6 +141,12 @@
       "firstObserved": "2026-07-17T09:54:12.684592+00:00"
     },
     {
+      "unitName": "B09X01",
+      "stationCode": "B09",
+      "location": "Elevator between mezzanine and platform",
+      "firstObserved": "2026-07-31T22:16:34.136213+00:00"
+    },
+    {
       "unitName": "B09X02",
       "stationCode": "B09",
       "location": "Elevator between mezzanine and platform",
@@ -225,6 +231,12 @@
       "firstObserved": "2026-07-10T13:06:03.407004+00:00"
     },
     {
+      "unitName": "B35N01",
+      "stationCode": "B35",
+      "location": "Elevator between platform and mezzanine",
+      "firstObserved": "2026-07-31T18:36:17.481644+00:00"
+    },
+    {
       "unitName": "B35N02",
       "stationCode": "B35",
       "location": "Elevator between bike trail and mezzanine",
@@ -289,6 +301,12 @@
       "stationCode": "C06",
       "location": "Elevator between mezzanine and platform to Franconia Springfield",
       "firstObserved": "2026-07-16T18:37:47.143617+00:00"
+    },
+    {
+      "unitName": "C07E04",
+      "stationCode": "C07",
+      "location": "Elevator between the lower bus platform and the upper platform",
+      "firstObserved": "2026-07-31T15:56:14.125718+00:00"
     },
     {
       "unitName": "C07E05",
@@ -523,6 +541,12 @@
       "stationCode": "E01",
       "location": "Elevator between street and mezzanine",
       "firstObserved": "2026-07-07T11:51:58.042144+00:00"
+    },
+    {
+      "unitName": "E01X03",
+      "stationCode": "E01",
+      "location": "Elevator between street and mezzanine",
+      "firstObserved": "2026-07-31T18:21:22.504664+00:00"
     },
     {
       "unitName": "E01X04",

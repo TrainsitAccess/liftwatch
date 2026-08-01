@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-31T12:23:14.770Z",
+  "updatedAt": "2026-08-01T11:37:40.673Z",
   "note": "Every CTA elevator identity ever observed (archive + live alert texts, parsed by src/adapters/cta/location.ts). Grows only. Regression fixture for check:cta and the curation aid for a future chains pass.",
   "units": [
     {
@@ -19,6 +19,14 @@
         "Elevator at Pulaski Temporarily Out-of-Service — The Harlem-bound platform elevator at Pulaski (Green Line) is temporarily out-of-service."
       ],
       "firstObserved": "2026-07-05T14:46:11.889+00:00"
+    },
+    {
+      "unitId": "40050-HOWARD-LOOP-BOUND",
+      "stationId": "40050",
+      "texts": [
+        "Elevator at Davis Temporarily Out-of-Service — The Howard- and Loop-bound platform elevator at Davis (Purple Line) is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-07-31T14:46:49.022+00:00"
     },
     {
       "unitId": "40050-LOOP-BOUND",
@@ -720,6 +728,14 @@
         "The 63rd-bound platform elevator at Conservatory (Green Line) is temporarily out-of-service."
       ],
       "firstObserved": "2026-07-05T00:57:40.161+00:00"
+    },
+    {
+      "unitId": "41670-HARLEM-BOUND",
+      "stationId": "41670",
+      "texts": [
+        "Elevator at Conservatory Temporarily Out-of-Service — The Harlem-bound platform elevator at Conservatory (Green Line) is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-08-01T01:41:14.759+00:00"
     },
     {
       "unitId": "41690-23RD-STREET",

@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-31T12:23:23.528Z",
+ "updatedAt": "2026-08-01T11:37:47.259Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -564,6 +564,10 @@
      "text": "The 63rd-bound platform elevator at Conservatory (Green Line) is temporarily out-of-service."
     },
     {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Conservatory Temporarily Out-of-Service — The Harlem-bound platform elevator at Conservatory (Green Line) is temporarily out-of-service."
+    },
+    {
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **41670 Conservatory (Green/Lake)** — twin station houses, side platforms, elevator towers + overhead transfer bridge (2001, Homan relocation). observed: 63RD-BOUND."
     }
@@ -649,11 +653,15 @@
    "evidence": [
     {
      "source": "exclusion gate",
-     "text": "observed-undercount: 5 distinct live units (B09X02, B09X03, B09X04, B09X05, B09X06) on Mezzanine→Platform vs 1 in GTFS (levels: Mezzanine, Platform)"
+     "text": "observed-undercount: 6 distinct live units (B09X01, B09X02, B09X03, B09X04, B09X05, B09X06) on Mezzanine→Platform vs 1 in GTFS (levels: Mezzanine, Platform)"
     },
     {
      "source": "GTFS roster",
      "text": "WMATA-B09_ELE: Mezzanine ↔ Platform"
+    },
+    {
+     "source": "live feed (observed)",
+     "text": "B09X01: \"Elevator between mezzanine and platform\""
     },
     {
      "source": "live feed (observed)",
@@ -674,6 +682,10 @@
     {
      "source": "live feed (observed)",
      "text": "B09X06: \"Elevator between mezzanine and platform\""
+    },
+    {
+     "source": "exclusion gate",
+     "text": "observed-undercount: 5 distinct live units (B09X02, B09X03, B09X04, B09X05, B09X06) on Mezzanine→Platform vs 1 in GTFS (levels: Mezzanine, Platform)"
     },
     {
      "source": "exclusion gate",
@@ -701,7 +713,7 @@
    "evidence": [
     {
      "source": "exclusion gate",
-     "text": "observed-undercount: 2 distinct live units (E01X04, E01X05) on Mezzanine→Platform vs 1 in GTFS (levels: Street, Mezzanine, Platform)"
+     "text": "observed-undercount: 3 distinct live units (E01X01, E01X02, E01X03) on Street→Mezzanine vs 2 in GTFS (levels: Street, Mezzanine, Platform)"
     },
     {
      "source": "GTFS roster",
@@ -725,11 +737,19 @@
     },
     {
      "source": "live feed (observed)",
+     "text": "E01X03: \"Elevator between street and mezzanine\""
+    },
+    {
+     "source": "live feed (observed)",
      "text": "E01X04: \"Elevator between mezzanine and platform\""
     },
     {
      "source": "live feed (observed)",
      "text": "E01X05: \"Elevator between mezzanine and platform\""
+    },
+    {
+     "source": "exclusion gate",
+     "text": "observed-undercount: 2 distinct live units (E01X04, E01X05) on Mezzanine→Platform vs 1 in GTFS (levels: Street, Mezzanine, Platform)"
     },
     {
      "source": "WMATA FY26 Q3 Capital Improvement Program report (2026-07-16)",
@@ -802,6 +822,10 @@
     {
      "source": "GTFS roster",
      "text": "WMATA-B35_ELE: Street/Mezzanine ↔ Platform"
+    },
+    {
+     "source": "live feed (observed)",
+     "text": "B35N01: \"Elevator between platform and mezzanine\""
     },
     {
      "source": "live feed (observed)",
@@ -3964,6 +3988,10 @@
     },
     {
      "source": "live feed (observed)",
+     "text": "C07E04: \"Elevator between the lower bus platform and the upper platform\""
+    },
+    {
+     "source": "live feed (observed)",
      "text": "C07E05: \"Elevator between the lower bus platform and the upper platform\""
     },
     {
@@ -4478,6 +4506,10 @@
    "priority": 50,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Davis Temporarily Out-of-Service — The Howard- and Loop-bound platform elevator at Davis (Purple Line) is temporarily out-of-service."
+    },
     {
      "source": "live feed (alert text)",
      "text": "Elevator at Davis Temporarily Out-of-Service — The Howard- and - Loop bound platform elevator at Davis (Purple Line) is temporarily out-of-service."
