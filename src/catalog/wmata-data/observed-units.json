@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-01T11:37:38.989Z",
+  "updatedAt": "2026-08-02T11:38:12.176Z",
   "note": "Every WMATA elevator UnitName ever observed (archive + live feed). Grows only. Consumed by scripts/wmata-pathways.mts as an undercount/vocabulary gate.",
   "units": [
     {
@@ -513,6 +513,12 @@
       "firstObserved": "2026-07-18T14:56:56.67218+00:00"
     },
     {
+      "unitName": "D13X02",
+      "stationCode": "D13",
+      "location": "Elevator between mezzanine and street at Route 450",
+      "firstObserved": "2026-08-01T11:56:23.244867+00:00"
+    },
+    {
       "unitName": "D13X03",
       "stationCode": "D13",
       "location": "Garage elevator",
@@ -781,6 +787,12 @@
       "stationCode": "G05",
       "location": "Elevator between south garage and mezzanine",
       "firstObserved": "2026-07-31T00:23:25.040903+00:00"
+    },
+    {
+      "unitName": "J03X01",
+      "stationCode": "J03",
+      "location": "Elevator between ground and pedestrian bridge",
+      "firstObserved": "2026-08-01T18:26:17.938709+00:00"
     },
     {
       "unitName": "J03X02",

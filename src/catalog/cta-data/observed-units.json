@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-01T11:37:40.673Z",
+  "updatedAt": "2026-08-02T11:38:13.488Z",
   "note": "Every CTA elevator identity ever observed (archive + live alert texts, parsed by src/adapters/cta/location.ts). Grows only. Regression fixture for check:cta and the curation aid for a future chains pass.",
   "units": [
     {
@@ -566,6 +566,14 @@
         "Elevator at Loyola Temporarily Out-of-Service — The elevator at Loyola ( Red Line) is temporarily out-of-service."
       ],
       "firstObserved": "2026-07-05T00:57:40.161+00:00"
+    },
+    {
+      "unitId": "41310-KIMBALL-BOUND",
+      "stationId": "41310",
+      "texts": [
+        "Elevator at Paulina Temporarily Out-of-Service — The Kimball-bound platform elevator at Paulina (Brown Line) is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-08-02T08:25:25.182+00:00"
     },
     {
       "unitId": "41320-95TH-LOOP-BOUND",

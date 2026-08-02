@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-08-01T11:37:47.259Z",
+ "updatedAt": "2026-08-02T11:38:20.461Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -4144,6 +4144,10 @@
     },
     {
      "source": "live feed (observed)",
+     "text": "D13X02: \"Elevator between mezzanine and street at Route 450\""
+    },
+    {
+     "source": "live feed (observed)",
      "text": "D13X03: \"Garage elevator\""
     },
     {
@@ -4345,6 +4349,10 @@
     {
      "source": "GTFS roster",
      "text": "WMATA-J03_MZ_ELV2: Mezzanine ↔ Platform"
+    },
+    {
+     "source": "live feed (observed)",
+     "text": "J03X01: \"Elevator between ground and pedestrian bridge\""
     },
     {
      "source": "live feed (observed)",
@@ -5425,6 +5433,21 @@
     "notes": "Batch 2 (15 CTA single/no-redundancy stations), approved by Bryce as a group 2026-07-15. Bucket A: single island-platform elevator, never individually identified (bare station id — safe since no OR to hide behind). Bucket B (Morgan): single island elevator, agency-identified, serves both directions. Bucket C: Diversey-pattern per-direction chains (one real observed elevator, one synthetic placeholder for the never-observed opposite direction). Confidence 8/10 collectively. Implemented in src/catalog/cta-models.ts.",
     "date": "2026-07-15"
    }
+  },
+  {
+   "key": "cta:41310",
+   "system": "cta-chicago",
+   "stationId": "41310",
+   "name": "Paulina",
+   "status": "pending",
+   "priority": 50,
+   "reason": "no chains modeled (no agency inventory — text-identity only)",
+   "evidence": [
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Paulina Temporarily Out-of-Service — The Kimball-bound platform elevator at Paulina (Brown Line) is temporarily out-of-service."
+    }
+   ]
   },
   {
    "key": "cta:41320",
