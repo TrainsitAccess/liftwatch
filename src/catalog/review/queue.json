@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-08-02T11:38:20.461Z",
+ "updatedAt": "2026-08-03T13:22:10.967Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -5006,6 +5006,21 @@
     {
      "source": "live feed (alert text)",
      "text": "Elevator at Sedgwick Temporarily Out-of-Service — The Loop-bound platform elevator at Sedgwick (Brown, Purple Lines) is temporarily out-of-service."
+    }
+   ]
+  },
+  {
+   "key": "cta:40820",
+   "system": "cta-chicago",
+   "stationId": "40820",
+   "name": "Rosemont",
+   "status": "pending",
+   "priority": 50,
+   "reason": "no chains modeled (no agency inventory — text-identity only)",
+   "evidence": [
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Rosemont Temporarily Out-of-Service — The elevator at Rosemont (Blue Line) is temporarily out-of-service."
     }
    ]
   },

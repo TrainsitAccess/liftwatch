@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-02T11:38:12.176Z",
+  "updatedAt": "2026-08-03T13:22:03.383Z",
   "note": "Every WMATA elevator UnitName ever observed (archive + live feed). Grows only. Consumed by scripts/wmata-pathways.mts as an undercount/vocabulary gate.",
   "units": [
     {

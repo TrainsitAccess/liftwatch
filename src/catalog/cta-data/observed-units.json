@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-02T11:38:13.488Z",
+  "updatedAt": "2026-08-03T13:22:04.965Z",
   "note": "Every CTA elevator identity ever observed (archive + live alert texts, parsed by src/adapters/cta/location.ts). Grows only. Regression fixture for check:cta and the curation aid for a future chains pass.",
   "units": [
     {
@@ -354,6 +354,14 @@
         "Elevator at Sedgwick Temporarily Out-of-Service — The Loop-bound platform elevator at Sedgwick (Brown, Purple Lines) is temporarily out-of-service."
       ],
       "firstObserved": "2026-07-22T01:56:23.396+00:00"
+    },
+    {
+      "unitId": "40820",
+      "stationId": "40820",
+      "texts": [
+        "Elevator at Rosemont Temporarily Out-of-Service — The elevator at Rosemont (Blue Line) is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-08-03T12:35:19.542+00:00"
     },
     {
       "unitId": "40830-54TH-BOUND",
