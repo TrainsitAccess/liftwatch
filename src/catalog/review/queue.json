@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-08-03T13:22:10.967Z",
+ "updatedAt": "2026-08-04T12:22:20.509Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -5010,6 +5010,21 @@
    ]
   },
   {
+   "key": "cta:40810",
+   "system": "cta-chicago",
+   "stationId": "40810",
+   "name": "Illinois Medical District-Ogden",
+   "status": "pending",
+   "priority": 50,
+   "reason": "no chains modeled (no agency inventory — text-identity only)",
+   "evidence": [
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at IMD-Ogden Temporarily Out-of-Service — The elevator to/from street at Illinois Medical District-Ogden (Blue Line) is temporarily out-of-service."
+    }
+   ]
+  },
+  {
    "key": "cta:40820",
    "system": "cta-chicago",
    "stationId": "40820",
@@ -5461,6 +5476,10 @@
     {
      "source": "live feed (alert text)",
      "text": "Elevator at Paulina Temporarily Out-of-Service — The Kimball-bound platform elevator at Paulina (Brown Line) is temporarily out-of-service."
+    },
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Paulina Temporarily Out-of-Service — The Loop-bound platform elevator at Paulina (Brown) is temporarily out-of-service."
     }
    ]
   },

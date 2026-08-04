@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-03T13:22:04.965Z",
+  "updatedAt": "2026-08-04T12:22:13.264Z",
   "note": "Every CTA elevator identity ever observed (archive + live alert texts, parsed by src/adapters/cta/location.ts). Grows only. Regression fixture for check:cta and the curation aid for a future chains pass.",
   "units": [
     {
@@ -356,6 +356,14 @@
       "firstObserved": "2026-07-22T01:56:23.396+00:00"
     },
     {
+      "unitId": "40810-STREET",
+      "stationId": "40810",
+      "texts": [
+        "Elevator at IMD-Ogden Temporarily Out-of-Service — The elevator to/from street at Illinois Medical District-Ogden (Blue Line) is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-08-03T18:35:14.847+00:00"
+    },
+    {
       "unitId": "40820",
       "stationId": "40820",
       "texts": [
@@ -582,6 +590,14 @@
         "Elevator at Paulina Temporarily Out-of-Service — The Kimball-bound platform elevator at Paulina (Brown Line) is temporarily out-of-service."
       ],
       "firstObserved": "2026-08-02T08:25:25.182+00:00"
+    },
+    {
+      "unitId": "41310-LOOP-BOUND",
+      "stationId": "41310",
+      "texts": [
+        "Elevator at Paulina Temporarily Out-of-Service — The Loop-bound platform elevator at Paulina (Brown) is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-08-03T17:35:14.9+00:00"
     },
     {
       "unitId": "41320-95TH-LOOP-BOUND",

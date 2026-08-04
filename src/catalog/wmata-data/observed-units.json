@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-03T13:22:03.383Z",
+  "updatedAt": "2026-08-04T12:22:11.204Z",
   "note": "Every WMATA elevator UnitName ever observed (archive + live feed). Grows only. Consumed by scripts/wmata-pathways.mts as an undercount/vocabulary gate.",
   "units": [
     {
@@ -601,6 +601,18 @@
       "stationCode": "E08",
       "location": "Elevator between mezzanine and platform to Branch Ave",
       "firstObserved": "2026-07-22T17:06:22.731383+00:00"
+    },
+    {
+      "unitName": "E09X01",
+      "stationCode": "E09",
+      "location": "Elevator between street and mezzanine on west side of station at Post Office",
+      "firstObserved": "2026-08-03T20:40:28.664974+00:00"
+    },
+    {
+      "unitName": "E09X02",
+      "stationCode": "E09",
+      "location": "Elevator between street and mezzanine on east side of station at Kiss & Ride",
+      "firstObserved": "2026-08-03T20:30:21.154896+00:00"
     },
     {
       "unitName": "E09X03",
