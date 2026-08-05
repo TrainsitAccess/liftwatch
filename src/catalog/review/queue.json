@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-08-04T12:22:20.509Z",
+ "updatedAt": "2026-08-05T12:20:44.193Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -276,6 +276,10 @@
      "text": "Elevator at Western Temporarily Out-of-Service — The Kimball-bound platform elevator at Western (Brown Line) is temporarily out-of-service due to elevator upgrades."
     },
     {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Western Temporarily Out-of-Service — The Kimball-bound platform elevator and the Loop-bound platform elevator at Western (Brown Line) is temporarily out-of-service due to elevator upgrades."
+    },
+    {
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **41480 Western (Brown)** — side platforms; ADA since 1981 (among CTA's first elevator stations); elevator cabs being replaced 2024-26 (explains the long planned outage). observed: KIMBALL-BOUND."
     }
@@ -326,6 +330,10 @@
     {
      "source": "live feed (alert text)",
      "text": "Elevator at Jackson Temporarily Out-of-Service — The elevator to/from street at Jackson (Blue Line)is temporarily out-of-service."
+    },
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Jackson Temporarily Out-of-Service — The elevator to/from street at Jackson (Blue Line)is temporarily out-of-service due to Mechanical issue."
     },
     {
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
@@ -622,6 +630,14 @@
     {
      "source": "live feed (alert text)",
      "text": "Elevator at King Drive Temporarily Out-of-Service — The exit-only elevator from the Cottage Grove-bound platform at King Drive (Green Line) is temporarily out-of-service."
+    },
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at King Drive Temporarily Out-of-Service — The exit-only elevator from the Cottage Grove-bound platform at King Drive (Green Line) is temporarily out-of-service due to Electrical issue. (unidentified elevator at a modeled station — access shown as unknown)"
+    },
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at King Drive Temporarily Out-of-Service — The exit-only elevator from the Cottage Grove-bound platform at King Drive (Green Line) is temporarily out-of-service due to Electrical issue."
     },
     {
      "source": "live feed (alert text)",
@@ -4321,6 +4337,10 @@
     {
      "source": "live feed (observed)",
      "text": "F10X01: \"Elevator between mezzanine and platform\""
+    },
+    {
+     "source": "live feed (observed)",
+     "text": "F10X03: \"Elevator between mezzanine and garage\""
     }
    ],
    "resolution": {
@@ -4453,6 +4473,10 @@
     {
      "source": "GTFS roster",
      "text": "WMATA-A02_S_ELE2: Mezzanine ↔ Platform"
+    },
+    {
+     "source": "live feed (observed)",
+     "text": "A02S01: \"Elevator between street and mezzanine, east side of Connecticut Ave near K Street\""
     },
     {
      "source": "live feed (observed)",
@@ -4948,6 +4972,21 @@
     {
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
      "text": "- **40730 Washington/Wells (Loop)** — thin data on chicago-L (station opened 1995; multiple vertical accessways along Wells). observed: BROWN-LINE-PLATFORM implies per-platform elevators. ⚠ needs another source (CTA press releases mention elevator replacement here — see ASAP Table 1, which lists Washington/Wells as a funded replacement)."
+    }
+   ]
+  },
+  {
+   "key": "cta:40740",
+   "system": "cta-chicago",
+   "stationId": "40740",
+   "name": "Western",
+   "status": "pending",
+   "priority": 50,
+   "reason": "no chains modeled (no agency inventory — text-identity only)",
+   "evidence": [
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Western Temporarily Out-of-Service — The elevator at Western (Pink Line) is temporarily out-of-service."
     }
    ]
   },
@@ -5480,6 +5519,10 @@
     {
      "source": "live feed (alert text)",
      "text": "Elevator at Paulina Temporarily Out-of-Service — The Loop-bound platform elevator at Paulina (Brown) is temporarily out-of-service."
+    },
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Paulina Temporarily Out-of-Service — The Loop-bound platform elevator at Paulina (Brown) is temporarily out-of-service due to an electrical issue."
     }
    ]
   },

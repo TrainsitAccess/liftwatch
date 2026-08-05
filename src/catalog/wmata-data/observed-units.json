@@ -1,7 +1,13 @@
 {
-  "updatedAt": "2026-08-04T12:22:11.204Z",
+  "updatedAt": "2026-08-05T12:20:36.170Z",
   "note": "Every WMATA elevator UnitName ever observed (archive + live feed). Grows only. Consumed by scripts/wmata-pathways.mts as an undercount/vocabulary gate.",
   "units": [
+    {
+      "unitName": "A02S01",
+      "stationCode": "A02",
+      "location": "Elevator between street and mezzanine, east side of Connecticut Ave near K Street",
+      "firstObserved": "2026-08-04T21:55:13.953411+00:00"
+    },
     {
       "unitName": "A02S02",
       "stationCode": "A02",
@@ -435,6 +441,12 @@
       "firstObserved": "2026-07-30T09:18:47.095457+00:00"
     },
     {
+      "unitName": "D05X01",
+      "stationCode": "D05",
+      "location": "Elevator between street and mezzanine",
+      "firstObserved": "2026-08-05T11:30:18.922184+00:00"
+    },
+    {
       "unitName": "D05X02",
       "stationCode": "D05",
       "location": "Elevator between mezzanine and platform",
@@ -463,6 +475,12 @@
       "stationCode": "D08",
       "location": "Elevator between street and mezzanine",
       "firstObserved": "2026-07-14T13:55:44.678409+00:00"
+    },
+    {
+      "unitName": "D09X02",
+      "stationCode": "D09",
+      "location": "Elevator between mezzanine and platform",
+      "firstObserved": "2026-08-05T10:10:12.954566+00:00"
     },
     {
       "unitName": "D09X04",
@@ -735,6 +753,12 @@
       "firstObserved": "2026-07-20T22:53:25.216384+00:00"
     },
     {
+      "unitName": "F10X03",
+      "stationCode": "F10",
+      "location": "Elevator between mezzanine and garage",
+      "firstObserved": "2026-08-04T14:45:55.298324+00:00"
+    },
+    {
       "unitName": "F11X01",
       "stationCode": "F11",
       "location": "Elevator between mezzanine and platform",
@@ -901,6 +925,12 @@
       "stationCode": "N01",
       "location": "Elevator - south entry pavilion",
       "firstObserved": "2026-07-09T11:57:17.772448+00:00"
+    },
+    {
+      "unitName": "N01X02",
+      "stationCode": "N01",
+      "location": "Elevator - south entry pavilion",
+      "firstObserved": "2026-08-04T19:15:44.38561+00:00"
     },
     {
       "unitName": "N02X01",

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-04T12:22:13.264Z",
+  "updatedAt": "2026-08-05T12:20:37.532Z",
   "note": "Every CTA elevator identity ever observed (archive + live alert texts, parsed by src/adapters/cta/location.ts). Grows only. Regression fixture for check:cta and the curation aid for a future chains pass.",
   "units": [
     {
@@ -40,7 +40,8 @@
       "unitId": "40070-STREET",
       "stationId": "40070",
       "texts": [
-        "Elevator at Jackson Temporarily Out-of-Service — The elevator to/from street at Jackson (Blue Line)is temporarily out-of-service."
+        "Elevator at Jackson Temporarily Out-of-Service — The elevator to/from street at Jackson (Blue Line)is temporarily out-of-service.",
+        "Elevator at Jackson Temporarily Out-of-Service — The elevator to/from street at Jackson (Blue Line)is temporarily out-of-service due to Mechanical issue."
       ],
       "firstObserved": "2026-07-12T21:22:40.665+00:00"
     },
@@ -324,6 +325,14 @@
       "firstObserved": "2026-07-05T00:57:40.161+00:00"
     },
     {
+      "unitId": "40740",
+      "stationId": "40740",
+      "texts": [
+        "Elevator at Western Temporarily Out-of-Service — The elevator at Western (Pink Line) is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-08-04T20:30:34.594+00:00"
+    },
+    {
       "unitId": "40770",
       "stationId": "40770",
       "texts": [
@@ -496,7 +505,9 @@
       "stationId": "41140",
       "texts": [
         "Elevator at King Drive Temporarily Out-of-Service — The exit-only elevator from the Cottage Grove-bound platform at King Drive (Green Line) is temporarily out-of-service. (unidentified elevator at a modeled station — access shown as unknown)",
-        "Elevator at King Drive Temporarily Out-of-Service — The exit-only elevator from the Cottage Grove-bound platform at King Drive (Green Line) is temporarily out-of-service."
+        "Elevator at King Drive Temporarily Out-of-Service — The exit-only elevator from the Cottage Grove-bound platform at King Drive (Green Line) is temporarily out-of-service.",
+        "Elevator at King Drive Temporarily Out-of-Service — The exit-only elevator from the Cottage Grove-bound platform at King Drive (Green Line) is temporarily out-of-service due to Electrical issue. (unidentified elevator at a modeled station — access shown as unknown)",
+        "Elevator at King Drive Temporarily Out-of-Service — The exit-only elevator from the Cottage Grove-bound platform at King Drive (Green Line) is temporarily out-of-service due to Electrical issue."
       ],
       "firstObserved": "2026-07-28T22:37:49.711+00:00"
     },
@@ -595,7 +606,8 @@
       "unitId": "41310-LOOP-BOUND",
       "stationId": "41310",
       "texts": [
-        "Elevator at Paulina Temporarily Out-of-Service — The Loop-bound platform elevator at Paulina (Brown) is temporarily out-of-service."
+        "Elevator at Paulina Temporarily Out-of-Service — The Loop-bound platform elevator at Paulina (Brown) is temporarily out-of-service.",
+        "Elevator at Paulina Temporarily Out-of-Service — The Loop-bound platform elevator at Paulina (Brown) is temporarily out-of-service due to an electrical issue."
       ],
       "firstObserved": "2026-08-03T17:35:14.9+00:00"
     },
@@ -710,6 +722,14 @@
         "Elevator at Western Temporarily Out-of-Service — The Kimball-bound platform elevator at Western (Brown Line) is temporarily out-of-service due to elevator upgrades."
       ],
       "firstObserved": "2026-07-05T00:57:40.161+00:00"
+    },
+    {
+      "unitId": "41480-KIMBALL-LOOP-BOUND",
+      "stationId": "41480",
+      "texts": [
+        "Elevator at Western Temporarily Out-of-Service — The Kimball-bound platform elevator and the Loop-bound platform elevator at Western (Brown Line) is temporarily out-of-service due to elevator upgrades."
+      ],
+      "firstObserved": "2026-08-05T12:20:37.525Z"
     },
     {
       "unitId": "41500-KIMBALL-BOUND",
