@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-05T12:20:36.170Z",
+  "updatedAt": "2026-08-06T12:23:04.163Z",
   "note": "Every WMATA elevator UnitName ever observed (archive + live feed). Grows only. Consumed by scripts/wmata-pathways.mts as an undercount/vocabulary gate.",
   "units": [
     {
@@ -97,6 +97,18 @@
       "stationCode": "A14",
       "location": "Elevator between pedestrian bridge and mezzanine",
       "firstObserved": "2026-07-13T16:56:32.168769+00:00"
+    },
+    {
+      "unitName": "A15X03",
+      "stationCode": "A15",
+      "location": "Garage elevator",
+      "firstObserved": "2026-08-06T02:15:20.502868+00:00"
+    },
+    {
+      "unitName": "A15X06",
+      "stationCode": "A15",
+      "location": "Garage elevator",
+      "firstObserved": "2026-08-06T02:15:20.502868+00:00"
     },
     {
       "unitName": "B01E01",
@@ -319,6 +331,12 @@
       "stationCode": "C07",
       "location": "Elevator between the lower bus platform and the upper platform",
       "firstObserved": "2026-07-28T18:54:22.452406+00:00"
+    },
+    {
+      "unitName": "C07N02",
+      "stationCode": "C07",
+      "location": "Elevator between the bus bay and the mezzanine",
+      "firstObserved": "2026-08-05T22:20:15.473011+00:00"
     },
     {
       "unitName": "C08X01",
@@ -585,6 +603,12 @@
       "firstObserved": "2026-07-12T19:17:18.430796+00:00"
     },
     {
+      "unitName": "E02N01",
+      "stationCode": "E02",
+      "location": "Elevator between street and mezzanine",
+      "firstObserved": "2026-08-05T19:50:23.722329+00:00"
+    },
+    {
       "unitName": "E03W01",
       "stationCode": "E03",
       "location": "Elevator between street and mezzanine",
@@ -717,6 +741,12 @@
       "firstObserved": "2026-07-11T10:45:18.647671+00:00"
     },
     {
+      "unitName": "F06S01",
+      "stationCode": "F06",
+      "location": "Elevator between mezzanine and platform",
+      "firstObserved": "2026-08-05T14:30:48.763791+00:00"
+    },
+    {
       "unitName": "F07X01",
       "stationCode": "F07",
       "location": "Elevator between mezzanine and street",
@@ -751,6 +781,12 @@
       "stationCode": "F10",
       "location": "Elevator between mezzanine and platform",
       "firstObserved": "2026-07-20T22:53:25.216384+00:00"
+    },
+    {
+      "unitName": "F10X02",
+      "stationCode": "F10",
+      "location": "Elevator between mezzanine and pedestrian bridge",
+      "firstObserved": "2026-08-05T14:25:10.853611+00:00"
     },
     {
       "unitName": "F10X03",

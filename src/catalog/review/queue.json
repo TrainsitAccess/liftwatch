@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-08-05T12:20:44.193Z",
+ "updatedAt": "2026-08-06T12:23:11.675Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -4011,6 +4011,10 @@
      "text": "C07E05: \"Elevator between the lower bus platform and the upper platform\""
     },
     {
+     "source": "live feed (observed)",
+     "text": "C07N02: \"Elevator between the bus bay and the mezzanine\""
+    },
+    {
      "source": "Bryce (2026-07-16), quoting WMATA's own elevator descriptions",
      "text": "5 elevators total: 2 redundant 'Elevator between the bus bay and the mezzanine' (the real street-equivalent entrance -- Bryce: the bus-bay elevators can be understood as street elevators), 1 'Elevator between upper and lower platforms' (sole access, train levels), and 2 redundant 'Elevator between the lower bus platform and the upper platform' -- confirmed to be a bus-to-bus connection only, between two bus platforms, unrelated to the train platforms despite the wording; still tracked, as its own auxiliary chain."
     }
@@ -4337,6 +4341,10 @@
     {
      "source": "live feed (observed)",
      "text": "F10X01: \"Elevator between mezzanine and platform\""
+    },
+    {
+     "source": "live feed (observed)",
+     "text": "F10X02: \"Elevator between mezzanine and pedestrian bridge\""
     },
     {
      "source": "live feed (observed)",
@@ -4826,6 +4834,10 @@
     {
      "source": "live feed (alert text)",
      "text": "The elevator at Racine (Blue Line) is temporarily out-of-service."
+    },
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Racine Temporarily Out-of-Service — The elevator at Racine (Blue Line) is temporarily out-of-service."
     },
     {
      "source": "chicago-L.org research (STATION-RESEARCH.md)",
