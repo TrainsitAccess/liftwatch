@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-06T12:23:04.163Z",
+  "updatedAt": "2026-08-07T11:12:36.719Z",
   "note": "Every WMATA elevator UnitName ever observed (archive + live feed). Grows only. Consumed by scripts/wmata-pathways.mts as an undercount/vocabulary gate.",
   "units": [
     {
@@ -145,6 +145,12 @@
       "stationCode": "B02",
       "location": "Elevator between street and platform to Glenmont",
       "firstObserved": "2026-07-17T10:18:07.018548+00:00"
+    },
+    {
+      "unitName": "B05X01",
+      "stationCode": "B05",
+      "location": "Elevator between mezzanine and street at bus terminal",
+      "firstObserved": "2026-08-06T16:50:20.954234+00:00"
     },
     {
       "unitName": "B05X02",
@@ -349,6 +355,12 @@
       "stationCode": "C08",
       "location": "Elevator between mezzanine and platform to Mt. Vernon Sq/Largo Town Center",
       "firstObserved": "2026-07-21T16:26:28.166365+00:00"
+    },
+    {
+      "unitName": "C08X03",
+      "stationCode": "C08",
+      "location": "Elevator between mezzanine and platform to Huntington/Franconia-Springfield",
+      "firstObserved": "2026-08-06T17:20:28.778117+00:00"
     },
     {
       "unitName": "C09X01",

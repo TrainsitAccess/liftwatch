@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-08-06T12:23:11.675Z",
+ "updatedAt": "2026-08-07T11:12:46.273Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -1631,6 +1631,10 @@
     {
      "source": "live feed (observed)",
      "text": "C08X02: \"Elevator between mezzanine and platform to Mt. Vernon Sq/Largo Town Center\""
+    },
+    {
+     "source": "live feed (observed)",
+     "text": "C08X03: \"Elevator between mezzanine and platform to Huntington/Franconia-Springfield\""
     }
    ],
    "resolution": {
@@ -4784,6 +4788,10 @@
    "priority": 50,
    "reason": "no chains modeled (no agency inventory — text-identity only)",
    "evidence": [
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at 95th Temporarily Out-of-Service — 95th elevator to/from the bridge between terminal buildings at 95th/Dan Ryan (Red Line) is temporarily out-of-service."
+    },
     {
      "source": "live feed (alert text)",
      "text": "The South Terminal elevator to/from platform at 95th/Dan Ryan (Red Line) is temporarily out-of-service."
