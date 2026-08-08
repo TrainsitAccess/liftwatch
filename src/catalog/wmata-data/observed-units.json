@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-07T11:12:36.719Z",
+  "updatedAt": "2026-08-08T10:55:54.509Z",
   "note": "Every WMATA elevator UnitName ever observed (archive + live feed). Grows only. Consumed by scripts/wmata-pathways.mts as an undercount/vocabulary gate.",
   "units": [
     {
@@ -979,6 +979,12 @@
       "stationCode": "N01",
       "location": "Elevator - south entry pavilion",
       "firstObserved": "2026-08-04T19:15:44.38561+00:00"
+    },
+    {
+      "unitName": "N01X03",
+      "stationCode": "N01",
+      "location": "Elevator between mezzanine to grade/street",
+      "firstObserved": "2026-08-07T19:40:22.060302+00:00"
     },
     {
       "unitName": "N02X01",

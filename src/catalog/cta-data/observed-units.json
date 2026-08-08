@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-07T11:12:38.283Z",
+  "updatedAt": "2026-08-08T10:55:55.740Z",
   "note": "Every CTA elevator identity ever observed (archive + live alert texts, parsed by src/adapters/cta/location.ts). Grows only. Regression fixture for check:cta and the curation aid for a future chains pass.",
   "units": [
     {
@@ -300,6 +300,14 @@
       "firstObserved": "2026-07-23T13:06:46.827+00:00"
     },
     {
+      "unitId": "40670-BOTH-PLATFORMS",
+      "stationId": "40670",
+      "texts": [
+        "Elevator at Western (O'Hare Blue Line) Temporarily Out-of-Service — The elevator to/from both platforms at Western (Blue Line O'Hare Branch) is temporarily out-of-service."
+      ],
+      "firstObserved": "2026-08-07T18:50:21.591+00:00"
+    },
+    {
       "unitId": "40710-LOOP-BOUND",
       "stationId": "40710",
       "texts": [
@@ -340,6 +348,14 @@
         "Elevator at Western Temporarily Out-of-Service — The elevator at Western (Pink Line) is temporarily out-of-service."
       ],
       "firstObserved": "2026-08-04T20:30:34.594+00:00"
+    },
+    {
+      "unitId": "40750",
+      "stationId": "40750",
+      "texts": [
+        "Elevator at Harlem Temporarily Out-of-Service — The elevator at Harlem (Blue Line O'Hare Branch) is temporarily out of service."
+      ],
+      "firstObserved": "2026-08-07T14:35:17.193+00:00"
     },
     {
       "unitId": "40770",

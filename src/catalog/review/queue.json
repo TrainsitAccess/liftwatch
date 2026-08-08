@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-08-07T11:12:46.273Z",
+ "updatedAt": "2026-08-08T10:56:01.317Z",
  "note": "Human station-review queue (one station at a time — /liftwatch-station-review). Rebuild with `npm run review:queue` (verdicts/priorities survive); progress via `npm run review:status`. Statuses: pending → modeled | excluded-confirmed | deferred.",
  "stations": [
   {
@@ -4969,6 +4969,21 @@
    ]
   },
   {
+   "key": "cta:40670",
+   "system": "cta-chicago",
+   "stationId": "40670",
+   "name": "Western",
+   "status": "pending",
+   "priority": 50,
+   "reason": "no chains modeled (no agency inventory — text-identity only)",
+   "evidence": [
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Western (O'Hare Blue Line) Temporarily Out-of-Service — The elevator to/from both platforms at Western (Blue Line O'Hare Branch) is temporarily out-of-service."
+    }
+   ]
+  },
+  {
    "key": "cta:40730",
    "system": "cta-chicago",
    "stationId": "40730",
@@ -5007,6 +5022,21 @@
     {
      "source": "live feed (alert text)",
      "text": "Elevator at Western Temporarily Out-of-Service — The elevator at Western (Pink Line) is temporarily out-of-service."
+    }
+   ]
+  },
+  {
+   "key": "cta:40750",
+   "system": "cta-chicago",
+   "stationId": "40750",
+   "name": "Harlem",
+   "status": "pending",
+   "priority": 50,
+   "reason": "no chains modeled (no agency inventory — text-identity only)",
+   "evidence": [
+    {
+     "source": "live feed (alert text)",
+     "text": "Elevator at Harlem Temporarily Out-of-Service — The elevator at Harlem (Blue Line O'Hare Branch) is temporarily out of service."
     }
    ]
   },
